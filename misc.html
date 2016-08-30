@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<title>Misc. - Reyes, Eric M.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./w3css/w3.css" type="text/css">
+<link rel="stylesheet" href="./w3css/rhit.css" type="text/css">
+<link rel="stylesheet" href="./w3css/w3-theme-black.css" type="text/css">
+<link rel="stylesheet" href="./font-awesome-4.6.3/css/font-awesome.min.css">
+<body>
+
+
+<!-- Side Navigation -->
+<nav class="w3-sidenav w3-white w3-card-2 w3-animate-left" style="display:none" id="mySidenav">
+  <h1 class="w3-xxxlarge w3-text-teal">Menu</h1>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-xxxlarge w3-text-theme"><i class="fa fa-remove"></i> Close</a>
+  <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+  <a href="./teaching.html"><i class="fa fa-university"></i> Teaching</a>
+  <a href="./research.html"><i class="fa fa-book"></i> Research</a>
+  <a href="./misc.html"><i class="fa fa-bar-chart"></i> Miscellaneous</a>
+</nav>
+
+
+<!-- Header -->
+<header class="w3-container w3-theme w3-padding">
+  <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-opennav"></i>
+  <h1 class="w3-xxxlarge">Miscellaneous</h1>
+</header>
+
+
+<!-- Interesting Statistics Links -->
+<header class="w3-container w3-rhitred">
+  <h3>Interesting Statistics Links</h3>
+</header>
+
+<div class="w3-padding w3-white">
+  <ul>
+ 	<li><strong><a href="http://www.stat.ncsu.edu/programs/sibs/">SIBS Program</a>: </strong>The Summer Institute for Training in Biostatistics (SIBS) program is a wonderful glimpse into the world of biostatistics.  This program is intended for undergraduate students of any major with an interest in learning how statistics plays a role in the medical world.  I attended this program in the summer of 2005 at North Carolina State University.  This program played a large role in my decision to attend graduate school, study at North Carolina State University, and concentrate in biostatistics.  In addition, this is where I met my wife!</li><br>
+ 	
+ 	<li><strong><a href="http://www.causeweb.org/">CAUSEweb</a>: </strong>This website has become a new favorite.  It is a great resource for statistics education.  This includes access to activities, workshops, and articles regarding statistics education.</li><br>
+ 	
+ 	<li><strong>Conferences: </strong>There are some really great conferences out there.  Here are a few of my favorite: <a href="http://www.enar.org/">ENAR</a> focuses on biostatistics, and provides some great short courses on learning the latest methods for addressing the statistical issues that arise in medical research.  <a href="http://www.amstat.org/meetings/jsm.cfm">JSM</a> is the largest gathering of statisticians in one place. <a href="http://www.mbswonline.com/">MBSW</a> is a conference local to Indiana; though small, this conference remains relevant to statisticians interested in biostatistics - particularly the biopharmaceutical world.  <a href="http://www.causeweb.org/uscots/">USCOTS</a> is a conference on teaching statistics; while only held during odd years, an online version is held during even years and an international version occurs every few years.  This has become my favorite conference as the atmosphere is amazing.</li><br>
+  </ul>
+</div>
+
+
+<!-- Additional Stuff -->
+<header class="w3-container w3-rhitred">
+  <h3>The Good Stuff</h3>
+</header>
+
+<div class="w3-padding w3-white">
+  <ul>
+ 	<li><strong>Family: </strong>I have been blessed with a wonderful family.  My wife (Jamie) and I were married in 2006, shortly after receiving our undergraduate degrees.  We make a great team - both being statisticians, we attended graduate school together and both received our Master of Statistics Degree, with a concentration in biostatistics, from North Carolina State University.  We studied together then, and she continues to be an invaluable resource when it comes to writing exams, grading, and bouncing ideas off someone when I am doing research.  After graduate school, she went on to work for several years at BD Technologies aiding in cellular biology research before choosing to become a stay-at-home-mom when our first daughter was born.  Our oldest daughter was born in early 2012, and has the sweetest demeanor and can often be found with a book.  Our second daughter was born during a snowstorm in early 2014 (that's a story in and of itself).  She is a little ball of energy who is eager to share what is on her mind (probably at the top of her lungs).</li><br>
+ 	
+ 	<li><strong>InterVarsity: </strong> I was a part of the <a href="http://roseiv.org/">Rose-Hulman chapter of InterVarsity</a> (IV) throughout my undergraduate career.  Now that I am back on campus, I enjoy serving the chapter as the faculty advisor.  This Christian group is dedicated to seeing lives transformed through the power of the gospel.</li><br>
+ 	
+ 	<li><strong>Church: </strong>We have decided to call <a href="http://www.worldgospelchurch.org/">World Gospel Church</a> home.  Perhaps the thing we enjoy most about this church is the ability to worship as a family, which we find to be extremely valuable, both for us and our children.</li>
+  </ul>
+</div>
+
+
+
+
+<!-- Script for Sidenav, Tabs, Accordions, Progress bars and slideshows -->
+<script>
+// Side navigation
+function w3_open() {
+    var x = document.getElementById("mySidenav");
+    x.style.width = "100%";
+    x.style.textAlign = "center";
+    x.style.fontSize = "50px";
+    x.style.paddingTop = "10%";
+    x.style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidenav").style.display = "none";
+}
+
+// Tabs
+function openCity(evt, cityName) {
+  var i;
+  var x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  var activebtn = document.getElementsByClassName("testbtn");
+  for (i = 0; i < x.length; i++) {
+      activebtn[i].className = activebtn[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " w3-dark-grey";
+}
+
+var mybtn = document.getElementsByClassName("testbtn")[0];
+mybtn.click();
+
+// Accordions
+function myAccFunc(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-dark-grey";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className =
+        x.previousElementSibling.className.replace(" w3-dark-grey", "");
+    }
+}
+
+// Slideshows
+var slideIndex = 1;
+
+function plusDivs(n) {
+slideIndex = slideIndex + n;
+showDivs(slideIndex);
+}
+
+function showDivs(n) {
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+
+showDivs(1);
+
+// Progress Bars
+function move() {
+  var elem = document.getElementById("myBar");
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width == 100) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      document.getElementById("demoprgr").innerHTML = width * 1  + '%';
+    }
+  }
+}
+</script>
+</body>
+</html>
+

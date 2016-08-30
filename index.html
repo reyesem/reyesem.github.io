@@ -2,20 +2,21 @@
 <html>
 <title>Reyes, Eric M.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/css/w3.css">
-<link rel="stylesheet" href="/css/w3-theme-black.css">
-<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="./w3css/w3.css" type="text/css">
+<link rel="stylesheet" href="./w3css/rhit.css" type="text/css">
+<link rel="stylesheet" href="./w3css/w3-theme-black.css" type="text/css">
+<link rel="stylesheet" href="./font-awesome-4.6.3/css/font-awesome.min.css">
 <body>
 
 
 <!-- Side Navigation -->
 <nav class="w3-sidenav w3-white w3-card-2 w3-animate-left" style="display:none" id="mySidenav">
   <h1 class="w3-xxxlarge w3-text-teal">Menu</h1>
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-xxxlarge w3-text-theme">Close <i class="fa fa-remove"></i></a>
-  <a href="https://reyesem.github.io">Home</a>
-  <a href="javascript:void(0)">Teaching</a>
-  <a href="javascript:void(0)">Research</a>
-  <a href="javascript:void(0)">Miscellaneous</a>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-xxxlarge w3-text-theme"><i class="fa fa-remove"></i> Close</a>
+  <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+  <a href="./teaching.html"><i class="fa fa-university"></i> Teaching</a>
+  <a href="./research.html"><i class="fa fa-book"></i> Research</a>
+  <a href="./misc.html"><i class="fa fa-bar-chart"></i> Miscellaneous</a>
 </nav>
 
 
@@ -23,551 +24,79 @@
 <header class="w3-container w3-theme w3-padding" id="myHeader">
   <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-opennav"></i>
   <div class="w3-center">
-  <h3>Eric M. Reyes</h3>
+  <h2>Eric M. Reyes</h2>
   </div>
   
   <div class="w3-row-padding">
     <div class="w3-third">
       <div class="w3-card-4">
-        <img src="/images/eric_reyes.jpg" alt="portrait" style="width:50%">
+        <img src="./images/eric_reyes.jpg" alt="portrait" style="width:50%">
       </div>
     </div>
   
     <div class="w3-third">
       <div class="w3-card-4">
-        <h3 style="color: #800000">Contact Info</h3>
-        <p style="color: #808080">Department of Mathematics<br>
+        <h3 style="color: #800000; font-weight: bold">Contact Info</h3>
+        <p style="color: #808080; font-weight: bold">Department of Mathematics<br>
         Rose-Hulman Institute of Technology<br>
         5500 Wabash Ave.<br>
         Terre Haute, IN 47803<br>
         <br>
-        Phone: 812.877.8287 | Fax: 812.877.8883<br>
+        Phone: 812.877.8287<br>
+        Fax: 812.877.8883<br>
         Email: <a href="mailto:reyesem@rose-hulman.edu">reyesem [at] rose-hulman [dot] edu</a></p>
       </div>
     </div>
-
-<div class="w3-third">
-<div class="w3-card-4">
-  <img src="img_car.jpg" alt="Car" style="width:100%">
-  <div class="w3-container">
-  <p>w3-card-4</p>
-  </div>
-</div>
-</div>
-
-<div class="w3-third">
-<div class="w3-card-8">
-  <img src="img_car.jpg" alt="Car" style="width:100%">
-  <div class="w3-container">
-  <p>w3-card-8</p>
-  </div>
-</div>
-</div>
 </div>
 </header>
 
-<!-- Modal -->
-<div id="id01" class="w3-modal">
-    <div class="w3-modal-content w3-card-8 w3-animate-top">
-      <header class="w3-container w3-theme-l1">
-        <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">×</span>
-        <h4>Oh snap! We just showed you a modal..</h4>
-        <h5>Because we can <i class="fa fa-smile-o"></i></h5>
-      </header>
-      <div class="w3-padding">
-        <p>Cool huh? Ok, enough teasing around..</p>
-        <p>Go to our <a class="w3-btn" href="/w3css/default.asp">W3.CSS Tutorial</a> to learn more!</p>
-      </div>
-      <footer class="w3-container w3-theme-l1">
-        <p>Modal footer</p>
-      </footer>
-    </div>
-</div>
 
-<div class="w3-row-padding w3-center w3-margin-top">
-<div class="w3-third">
-  <div class="w3-card-2 w3-padding-top" style="min-height:460px">
-  <h4>Responsive</h4><br>
-  <i class="fa fa-desktop w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
-  <p>Built-in responsiveness</p>
-  <p>Mobile first fluid grid</p>
-  <p>Fits any screen sizes</p>
-  <p>PC Tablet and Mobile</p>
-  </div>
-</div>
-
-<div class="w3-third">
-  <div class="w3-card-2 w3-padding-top" style="min-height:460px">
-  <h4>Standard CSS</h4><br>
-  <i class="fa fa-css3 w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
-  <p>Standard CSS only</p>
-  <p>Easy to learn</p>
-  <p>No need for jQuery</p>
-  <p>No JavaScript library</p>
-  </div>
-</div>
-
-<div class="w3-third">
-  <div class="w3-card-2 w3-padding-top" style="min-height:460px">
-  <h4>Design</h4><br>
-  <i class="fa fa-diamond w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
-  <p>Paper like design</p>
-  <p>Bold colors and shadows</p>
-  <p>Equal across platforms</p>
-  <p>Equal across devices</p>
-  </div>
-</div>
-</div>
-
-<div class="w3-container">
-<hr>
-<div class="w3-center">
-  <h2>Color Classes</h2>
-</div>
-
-<div class="w3-row">
-  <div class="w3-col w3-container m2 w3-red"><p>Red</p></div>
-  <div class="w3-col w3-container m2 w3-blue"><p>Blue</p></div>
-  <div class="w3-col w3-container m2 w3-blue-grey"><p>Blue Grey</p></div>
-  <div class="w3-col w3-container m2 w3-teal"><p>Teal</p></div>
-  <div class="w3-col w3-container m2 w3-yellow"><p>Yellow</p></div>
-  <div class="w3-col w3-container m2 w3-orange"><p>Orange</p></div>
-</div>
-
-<hr>
-<div class="w3-center">
-  <h2>Built-In Responsiveness</h2>
-  <p class="w3-large">Resize the page to see the effect!</p>
-</div>
-<br>
-
-<div class="w3-row w3-border">
-  <div class="w3-half w3-container w3-blue w3-border">
-    <h5>w3-half</h5>
-    <p>The w3-half class uses half (50%) of the screen window.</p>
-    <p>On small screens (max 600 pixels) it automatically resizes to full screen width.</p>
-  </div>
-  <div class="w3-half w3-container">
-    <h5>w3-half</h5>
-  </div>
-</div>
-<br>
-
-<div class="w3-row w3-border">
-  <div class="w3-third w3-container w3-green">
-    <h5>w3-third</h5>
-    <p>The w3-third class uses one third (33.33%) of the screen widow.</p>
-    <p>On small screens (max 600 pixels) it automatically resizes to full screen width.</p>
-  </div>
-  <div class="w3-third w3-container">
-    <h5>w3-third</h5>
-  </div>
-  <div class="w3-third w3-container">
-    <h5>w3-third</h5>
-  </div>
-</div>
-<br>
-
-<div class="w3-row w3-border">
-  <div class="w3-quarter w3-container w3-red">
-    <h5>w3-quarter</h5>
-    <p>The w3-quarter class uses one quarter (25%) of the screen window.</p>
-    <p>On small screens (max 600 pixels) it automatically resizes to full screen width.</p>
-  </div>
-  <div class="w3-quarter w3-container">
-    <h5>w3-quarter</h5>
-  </div>
-  <div class="w3-quarter w3-container">
-    <h5>w3-quarter</h5>
-  </div>
-  <div class="w3-quarter w3-container">
-    <h5>w3-quarter</h5>
-  </div>
-</div>
-     
-<div class="w3-center">
-  <h2>Containers</h2>
-  <p>Use containers to create headers, sections and footers.</p>
-</div>
-
-<header class="w3-container w3-blue-grey">
-  <h2>Header</h2>
-</header>
-
-<div class="w3-padding w3-white">
-  <span onclick="this.parentElement.style.display='none'" class="w3-closebtn"><i class="fa fa-remove"></i></span>
-  <h2>London</h2>
-  <p>London is the capital city of England. It is the most populous city in the United Kingdom,
-  with a metropolitan area of over 13 million inhabitants.</p>
-  <p>Standing on the River Thames, London has been a major settlement for two millennia,
-  its history going back to its founding by the Romans, who named it Londinium.</p>
-  <p>By the way, you can add a close icon to all containers if you want the ability to hide them. Look to your right!</p>
-</div>
-
-<footer class="w3-container w3-blue-grey">
-  <h5>Footer</h5>
-  <p class="w3-opacity">Footer information goes here</p>
-</footer>
-
-<hr>
-<div class="w3-center">
-  <h2>Color Themes</h2>
-  <p>The color themes have been designed to work harmoniously with each other.</p>
-</div>
-</div>
-
-<div class="w3-row-padding">
-
-<div class="w3-half">
-<div class="w3-card white">
-  <div class="w3-container w3-indigo">
-    <h3>Theme Indigo</h3>
-  </div>
-  <div class="w3-container">
-  <h3 class="w3-text-indigo">Movies 2014</h3>
-  </div>
-  <ul class="w3-ul w3-border-top">
-    <li>
-      <h3>Frozen</h3>
-      <p>The response to the animations was ridiculous</p>
-    </li>
-    <li>
-      <h3>The Fault in Our Stars</h3>
-      <p>Touching, gripping and genuinely well made</p>
-    </li>
-    <li>
-      <h3>The Avengers</h3>
-      <p>A huge success for Marvel and Disney</p>
-    </li>
-  </ul>
-  <div class="w3-container w3-indigo w3-large"><span class="w3-right">Next</span></div>
-</div>
-</div>
-
-<div class="w3-half">
-<div class="w3-card white">
-  <div class="w3-container w3-theme">
-    <h3>Theme</h3>
-  </div>
-  <div class="w3-container">
-  <h3 class="w3-text-theme">Movies 2014</h3>
-  </div>
-  <ul class="w3-ul w3-border-top">
-    <li>
-      <h3>Frozen</h3>
-      <p>The response to the animations was ridiculous</p>
-    </li>
-    <li>
-      <h3>The Fault in Our Stars</h3>
-      <p>Touching, gripping and genuinely well made</p>
-    </li>
-    <li>
-      <h3>The Avengers</h3>
-      <p>A huge success for Marvel and Disney</p>
-    </li>
-  </ul>
-  <div class="w3-container w3-theme w3-large"><span class="w3-right">Next</span></div>
-</div>
-</div>
-</div>
-
-<div class="w3-container w3-center">
-  <hr>
-  <h3>Paper-like Cards with Shadows</h3>
-</div>
-
-<div class="w3-row-padding">
-
-<div class="w3-third">
-<div class="w3-card-2">
-  <img src="img_car.jpg" alt="Car" style="width:100%">
-  <div class="w3-container">
-  <p>w3-card-2</p>
-  </div>
-</div>
-</div>
-
-<div class="w3-third">
-<div class="w3-card-4">
-  <img src="img_car.jpg" alt="Car" style="width:100%">
-  <div class="w3-container">
-  <p>w3-card-4</p>
-  </div>
-</div>
-</div>
-
-<div class="w3-third">
-<div class="w3-card-8">
-  <img src="img_car.jpg" alt="Car" style="width:100%">
-  <div class="w3-container">
-  <p>w3-card-8</p>
-  </div>
-</div>
-</div>
-</div>
-
-<div class="w3-container">
+<!-- About Me -->
+<div id="aboutme" class="w3-container">
   <hr>
   <div class="w3-center">
-    <h2>Tables</h2>
-    <p w3-class="w3-large">Don't worry. W3.CSS takes care of your tables.</p>
-  </div>
-<div class="w3-responsive w3-card-4">
-<table class="w3-table w3-striped w3-bordered">
-<thead>
-<tr class="w3-theme">
-  <th>First Name</th>
-  <th>Last Name</th>
-  <th>Points</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>Jill</td>
-  <td>Smith</td>
-  <td>50</td>
-</tr>
-<tr class="w3-white">
-  <td>Eve</td>
-  <td>Jackson</td>
-  <td>94</td>
-</tr>
-<tr>
-  <td>Adam</td>
-  <td>Johnson</td>
-  <td>67</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<hr>
-<h2 class="w3-center">Forms and Lists</h2>
-</div>
-
-<div class="w3-row-padding">
-
-<div class="w3-half">
-<form class="w3-container w3-card-4">
-
-  <div class="w3-group">
-    <input class="w3-input" type="text" required>
-    <label class="w3-label w3-validate">Name</label>
-  </div>
-  <div class="w3-group">
-    <input class="w3-input" type="text" required>
-    <label class="w3-label w3-validate">Email</label>
-  </div>
-  <div class="w3-group">
-    <input class="w3-input" type="text" required>
-    <label class="w3-label">Subject</label>
-  </div>
-
-  <div class="w3-row">
-  <div class="w3-half">
-    <input id="milk" class="w3-check" type="checkbox" checked="checked">
-    <label class="w3-validate">Milk</label>
-    <br>
-    <input id="sugar" class="w3-check" type="checkbox">
-    <label class="w3-validate">Sugar</label>
-    <br>
-    <input id="lemon" class="w3-check" type="checkbox" disabled>
-    <label class="w3-validate">Lemon (Disabled)</label>
-    <br><br>
-  </div>
-
-  <div class="w3-half">
-    <input id="male" class="w3-radio" type="radio" name="gender" value="male" checked>
-    <label class="w3-validate">Male</label>
-    <br>
-    <input id="female" class="w3-radio" type="radio" name="gender" value="female">
-    <label class="w3-validate">Female</label>
-    <br>
-    <input id="unknown" class="w3-radio" type="radio" name="gender" value="" disabled>
-    <label class="w3-validate"> Don't know (Disabled)</label>
-  </div>
+    <h2 style="color: #800000; font-weight: bold">About Me</h2>
   </div>
   
-</form>
-</div>
-<div class="w3-half">
-<div class="w3-card-4 w3-container">
-<h2>Lists</h2>
-<ul class="w3-ul w3-margin-bottom">
-  <li>Jill</li>
-  <li>Eve</li>
-  <li>Adam</li>
-</ul>
-<br>
-<ul class="w3-ul w3-border w3-hoverable">
-  <li class="w3-theme">Jill</li>
-  <li>Eve</li>
-  <li>Adam</li>
-  <li>Steve</li>
-</ul>
-<br>
-</div>
-</div>
-</div>
-<hr>
+  <p>I am an Assistant Professor in the Department of Mathematics. Since joining the faculty in 2012, I have been primarily responsible for contributing to the statistics curriculum within the department.</p>
+    
+  <p>I received my Ph.D. in Statistics from <a href="http://www.stat.ncsu.edu/"><span style="color: #808080">North Carolina State University</span></a> in 2012 under the direction of <a href="http://www.stat.ncsu.edu/people/boos/"><span style="color: #808080">Dennis Boos</span></a> and <a href="http://www.stat.ncsu.edu/people/stefanski/"><span style="color: #808080">Len Stefanski</span></a>.  My primary interest is biostatistics - the application of statistical methodology to medical research.  As a former <a href="http://www.stat.ncsu.edu/programs/nhlbi/"><span style="color: #808080">NHLBI Integrated Biostatistical Training Program for CVD Research</span></a> trainee, I spent five years as a graduate student intern at the <a href="http://www.dcri.org/"><span style="color: #808080">Duke Clinical Research Institute</span></a> (DCRI), under the direction of Karen Pieper, serving as a statistical collaborator alongside clinicians in cardiovascular research.</p>
 
-<h2 class="w3-center">Progress Bars</h2>
-<div class="w3-container">
-<p>The <strong><a href="w3css_progressbar.asp">w3-progressbar</a></strong>
-class creates progress bars:</p>
-
-<div class="w3-progress-container" style="height:30px;">
-  <div id="myBar" class="w3-progressbar w3-theme" style="width:1%"></div>
-</div><br>
-<p class="w3-right" id="demoprgr">1%</p>
-<button class="w3-btn w3-theme" onclick="move()">Click Me</button>
-</div>
-<hr>
-
-<h2 class="w3-center">Slideshows</h2>
-<div class="w3-content" style="max-width:800px;position:relative">
-
-<img class="mySlides w3-animate-opacity" src="img_fjords.jpg" style="width:100%">
-<img class="mySlides w3-animate-opacity" src="img_lights.jpg" style="width:100%">
-<img class="mySlides w3-animate-opacity" src="img_mountains.jpg" style="width:100%">
-<img class="mySlides w3-animate-opacity" src="img_forest.jpg" style="width:100%">
-
-<a class="w3-btn-floating w3-hover-dark-grey" style="position:absolute;top:45%;left:0;" onclick="plusDivs(-1)">???</a>
-<a class="w3-btn-floating w3-hover-dark-grey" style="position:absolute;top:45%;right:0;" onclick="plusDivs(+1)">???</a>
+  <p>My research includes methods for variable selection (the process of discerning which variables are useful for prediction in a particular model) and screening (a precursor to variable selection in high-dimensional settings), especially in the presence of missing data.  However, consulting with medical research is where I spend the bulk of my professional time.  While at Rose-Hulman, I have worked with the engineers in the <a href="http://www.rose-hulman.edu/offices-and-services/jrsi.aspx"><span style="color: #808080">JRSI lab</span></a> on campus and served on several Master's theses for students in the Biomedical Engineering graduate program.</p>
 </div>
 
-<div class="w3-container">
-<hr>
-<h2 class="w3-center">Navigation</h2>
 
-<ul class="w3-navbar w3-theme">
-  <li><a class="w3-dark-grey w3-padding-16" href="javascript:void(0)">Home</a></li>
-  <li><a class="w3-padding-16" href="javascript:void(0)">Link 1</a></li>
-  <li><a class="w3-padding-16" href="javascript:void(0)">Link 2</a></li>
-  <li class="w3-dropdown-hover">
-    <a class="w3-padding-16" href="javascript:void(0)">Dropdown <i class="fa fa-caret-down"></i></a>
-    <div class="w3-dropdown-content w3-card-4">
-      <a class="w3-padding-16" href="javascript:void(0)">Link 1</a>
-      <a class="w3-padding-16" href="javascript:void(0)">Link 2</a>
-      <a class="w3-padding-16" href="javascript:void(0)">Link 3</a>
-    </div>
-  </li>
-  <li class="w3-right"><a class="w3-padding-16" href="javascript:void(0)"><i class="fa fa-search"></i></a></li>
-</ul>
-
-<hr>
-<h2 class="w3-center">Accordions</h2>
-<div class="w3-container">
-<div class="w3-accordion">
-  <button onclick="myAccFunc('Demo1')" class="w3-padding-16 w3-hover-dark-grey w3-btn-block w3-left-align">Open Section 1</button>
-  <div id="Demo1" class="w3-accordion-content">
-    <div class="w3-container">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<!-- Primary Links -->
+<div id="primarylinks" class="w3-row-padding w3-center w3-margin-top">
+  <div class="w3-third">
+    <div class="w3-card-2 w3-padding-top" style="min-height:460px">
+      <h4 style="color: #800000">Teaching</h4><br>
+      <a href="./teaching.html"><i class="fa fa-university w3-margin-bottom w3-text-theme" style="font-size:120px"></i></a>
+      <p>List of Courses Taught</p>
+      <p>Sample Lesson Plans / Activities</p>
     </div>
   </div>
-  <button onclick="myAccFunc('Demo2')" class="w3-padding-16 w3-hover-dark-grey w3-btn-block w3-left-align">Open Section 2</button>
-  <div id="Demo2" class="w3-accordion-content">
-    <a class="w3-text-black w3-padding-16" href="javascript:void(0)">Link 1</a>
-    <a class="w3-text-black w3-padding-16" href="javascript:void(0)">Link 2</a>
-    <a class="w3-text-black w3-padding-16" href="javascript:void(0)">Link 3</a>
+
+  <div class="w3-third">
+    <div class="w3-card-2 w3-padding-top" style="min-height:460px">
+      <h4 style="color: #800000">Research</h4><br>
+      <a href="./research.html"><i class="fa fa-book w3-margin-bottom w3-text-theme" style="font-size:120px"></i></a>
+      <p>Selected Publications &amp; Presentations</p>
+      <p>Undergraduate Students Directed</p>
+    </div>
   </div>
-  <button onclick="myAccFunc('Demo3')" class="w3-padding-16 w3-hover-dark-grey w3-btn-block w3-left-align">Open Section 3</button>
-  <div id="Demo3" class="w3-accordion-content w3-border">
-    <div class="w3-container">
-      <p>Accordion with Images:</p>
-      <img src="img_fjords.jpg" style="width:30%;" class="w3-animate-zoom">
-      <p>Trolltunga, Norway</p>
+
+  <div class="w3-third">
+    <div class="w3-card-2 w3-padding-top" style="min-height:460px">
+      <h4 style="color: #800000">Miscellaneous</h4><br>
+      <a href="./misc.html"><i class="fa fa-bar-chart w3-margin-bottom w3-text-theme" style="font-size:120px"></i></a>
+      <p>Interesting Links</p>
+      <p>The Fun Stuff</p>
     </div>
   </div>
 </div>
-</div>
 
-<hr>
-<h2 class="w3-center">Tabs</h2>
-<div class="w3-container">
-<div class="w3-border">
-<ul class="w3-navbar w3-light-grey">
-  <li><a class="w3-btn testbtn" onclick="openCity(event, 'London')">London</a></li>
-  <li><a class="w3-btn testbtn" onclick="openCity(event, 'Paris')">Paris</a></li>
-  <li><a class="w3-btn testbtn" onclick="openCity(event, 'Tokyo')">Tokyo</a></li>
-</ul>
 
-<div id="London" class="w3-container city w3-animate-opacity">
-  <h2>London</h2>
-  <p>London is the capital city of England.</p>
-  <p>It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
-</div>
-
-<div id="Paris" class="w3-container city w3-animate-opacity">
-  <h2>Paris</h2>
-  <p>Paris is the capital of France.</p>
-  <p>The Paris area is one of the largest population centers in Europe, with more than 12 million inhabitants.</p>
-</div>
-
-<div id="Tokyo" class="w3-container city w3-animate-opacity">
-  <h2>Tokyo</h2>
-  <p>Tokyo is the capital of Japan.</p>
-  <p>It is the center of the Greater Tokyo Area, and the most populous metropolitan area in the world.</p>
-</div>
-</div>
-</div>
-
-<hr>
-<h2 class="w3-center">Buttons</h2>
-<div class="w3-center">
-  <br>
-  <a class="w3-btn">Button</a>
-  <a class="w3-btn w3-theme">Button</a>
-  <a class="w3-btn w3-disabled">Button</a>
-  <br><br>
-  <a class="w3-btn-floating w3-teal"><i class="fa fa-plus"></i></a>
-  <a class="w3-btn-floating w3-theme"><i class="fa fa-plus"></i></a>
-  <a class="w3-btn-floating w3-disabled"><i class="fa fa-plus"></i></a>
-  <br><br>
-  <a class="w3-btn-floating-large w3-teal"><i class="fa fa-plus"></i></a>
-  <a class="w3-btn-floating-large w3-theme"><i class="fa fa-plus"></i></a>
-  <a class="w3-btn-floating-large w3-disabled"><i class="fa fa-plus"></i></a>
-</div>
-<br>
-<div class="w3-center">
-<div class="w3-dropdown-hover">
-  <button class="w3-btn w3-theme w3-large">Dropdown <i class="fa fa-caret-down"></i></button>
-  <div class="w3-dropdown-content w3-light-grey w3-grey w3-left-align">
-    <a href="javascript:void(0)">Link 1</a>
-    <a href="javascript:void(0)">Link 2</a>
-    <a href="javascript:void(0)">Link 3</a>
-  </div>
-</div>
-</div>
-
-</div>
-
-<hr>
-<div class="w3-center">
-  <h2>Pagination</h2>
-  <ul class="w3-pagination w3-padding-32">
-    <li><a href="javascript:void(0)">«</a></li>
-    <li><a class="w3-theme" href="javascript:void(0)">1</a></li>
-    <li><a href="javascript:void(0)">2</a></li>
-    <li><a href="javascript:void(0)">3</a></li>
-    <li><a href="javascript:void(0)">4</a></li>
-    <li><a href="javascript:void(0)">5</a></li>
-    <li><a href="javascript:void(0)">»</a></li>
-  </ul>
-</div>
-<br>
-
-<!-- Footer -->
-<footer class="w3-container w3-theme-dark w3-padding-16">
-  <h3>Footer</h3>
-  <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-  <div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
-    <span class="w3-text w3-theme-light w3-padding">Go To Top</span> 
-    <a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
-    <i class="fa fa-chevron-circle-up"></i></span></a>
-  </div>
-  <p>Remember to check out our  <a href="w3css_references.asp" class="w3-btn w3-theme-light" target="_blank">W3.CSS Reference</a></p>
-</footer>
 
 <!-- Script for Sidenav, Tabs, Accordions, Progress bars and slideshows -->
 <script>
