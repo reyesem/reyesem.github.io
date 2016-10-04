@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<title>MA223 Sample - Reyes, Eric M.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./w3css/w3.css" type="text/css">
+<link rel="stylesheet" href="./w3css/rhit.css" type="text/css">
+<link rel="stylesheet" href="./w3css/w3-theme-black.css" type="text/css">
+<link rel="stylesheet" href="./font-awesome-4.6.3/css/font-awesome.min.css">
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<body>
+
+
+<!-- Side Navigation -->
+<nav class="w3-sidenav w3-white w3-card-2 w3-animate-left" style="display:none" id="mySidenav">
+  <h1 class="w3-xxxlarge w3-text-teal">Menu</h1>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-xxxlarge w3-text-theme"><i class="fa fa-remove"></i> Close</a>
+  <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+  <a href="./teaching.html"><i class="fa fa-university"></i> Teaching</a>
+  <a href="./research.html"><i class="fa fa-book"></i> Research</a>
+  <a href="./misc.html"><i class="fa fa-bar-chart"></i> Miscellaneous</a>
+</nav>
+
+
+<!-- Header -->
+<header class="w3-container w3-theme w3-padding">
+  <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-opennav"></i>
+  <h1 class="w3-xxxlarge">MA481 (Mathematical Statistics) Sample</h1>
+</header>
+
+<div class="w3-padding w3-white">
+  <p>This course discusses the foundational theory for statistical inference.  As we explore the justifications for common statistical procedures (for example, why can the ratio \(\frac{\bar{x}-\mu}{s/\sqrt{n}}\) be modeled as a standard normal distribution when the sample size gets large), we are able to describe an approach for a broader class of inference problems, develop inferential thinking, and prepare students for graduate study in statistics.  This course assumes a an introductory course in statistical methods, a course in probability theory, and some computational experience.</p>
+  
+  <p>As with all courses in statistics, we develop statistical literacy and statistical reasoning.  This is accomplished through a mix of problems including analytical work (theorems/proofs), simulation, and data analysis.  Throughout the course, we emphasize the <i>application</i> of statistical theory.  Throughout the course, we build on five fundamental concepts in inference:</p>
+  
+  <ol>
+ 	  <li>Research questions can often be framed in terms of a parameter characterizing the variable of interest within the population.</li>
+ 	  <li>If data is to be useful for making conclusions about the population, a process referred to as drawing inference, we must consider the method in which the data was collected.</li>
+ 	  <li>The use of data for decision making requires the data be summarized and presented in ways that address the question of interest.</li>
+ 	  <li>Variability is inherit in any process, and as a result, the data is subject to sampling variability.  Statistics vary across samples in a predictable way; that is, they have a distribution which can be modeled.</li>
+ 	  <li>With a model for the distribution of a statistics, we can quantify the strength of evidence against a particular hypothesis or construct an estimate of the parameter which accounts for the variability.  This allows us to draw conclusions about the corresponding parameter.</li>
+  </ol>
+
+  <p>With these guiding principles, we begin with a review of probability theory and then examine the properties of estimators from a random sample.  We then consider likelihood-based estimation and inference.  The course concludes with a discussion of nonparametric methods in inference.  Topics include the following:</p>
+  <ol>
+    <li>Probability Distributions and Simulation</li>
+    <li>Expectation of Random Variables</li>
+    <li>Random Samples and Modes of Convergence</li>
+    <li>Point Estimation and Likelihood Theory</li>
+    <li>Sufficiency and Fisher's Information</li>
+    <li>Multivariate Normal Distribution</li>
+    <li>Inference via Likelihood Methods</li>
+    <li>Nonparametric Methods</li>
+  </ol>
+  
+  <p>The remainder of this page provides an excerpt of the course content corresponding to the module on Random Samples and Convergence.</p>
+</div>
+
+
+<!-- Course Content in Tabs -->
+<div class="w3-container">
+  <div class="w3-border">
+    <ul class="w3-navbar w3-light-grey">
+      <li><a class="w3-btn testbtn" onclick="openCity(event, 'Learning Objectives')">Learning Objectives</a></li>
+      <li><a class="w3-btn testbtn" onclick="openCity(event, 'Sample Lecture')">Sample Lecture</a></li>
+      <li><a class="w3-btn testbtn" onclick="openCity(event, 'Portfolio Assignment')">Portfolio Assignment</a></li>
+      <li><a class="w3-btn testbtn" onclick="openCity(event, 'Example Assessment Item')">Example Assessment Item</a></li>
+    </ul>
+    
+  <div id="Learning Objectives" class="w3-container city w3-animate-opacity">
+    <h2 style="color: #800000">Course Learning Objectives</h2>
+    
+    <ul>
+ 	    <li><b>Describe</b> the role of probability theory when making inference on a population.</li>
+ 	    <li><b>Compare</b> and <b>contrast</b> modes of convergence and <b>describe</b> their role in sampling distributions.</li>
+ 	    <li><b>Construct</b> a proof to establish a property of an estimator or sequence of random variables.</li>
+ 	    <li>Given an analysis situation, <b>formulate</b> research questions as measurable statements about parameters in the population.</li>
+ 	    <li><b>Associate</b> a given statistical method with various statistical properties such as consistency, unbiasedness, and asymptotic normality.</li>
+ 	    <li>Clearly <b>communicate</b> statistical theory and its applications through both written and oral presentations.</li>
+ 	    <li><b>Collaborate</b> with others when applying statistical theory to establish specified properties of an estimator.</li>
+ 	    <li><b>Appreciate</b> the use of mathematics in statistical theory and <b>compare</b> and <b>contrast</b> mathematical and statistical thinking.</li>
+ 	    <li>Using fundamental ideas of convergence, likelihood, and probability, <b>research</b> a new topic in statistical theory and <b>educate</b> your peers on the topic.</li>
+    </ul>
+  </div>
+
+  <div id="Sample Lecture" class="w3-container city w3-animate-opacity">
+    <h2 style="color: #800000">Sample Lecture</h2>
+    
+    <p>This is a traditional course in which the instructor "lectures" most days.  However, students are expected to participate in the lecture helping to solve posed problems and add to the classroom discussion.  To reduce the amount of time spent copying a problem and increase the discussion in the class, course notes are provided which correspond to the lecture.  Below is a sample of the course notes corresponding to Random Samples and Convergence.</p>
+
+    <p><a href="./files/MA481Notes.pdf">Course Notes</a></p>
+  </div>
+
+  <div id="Portfolio Assignment" class="w3-container city w3-animate-opacity">
+    <h2 style="color: #800000">Portfolio Assignment</h2>
+    
+    <p>This course emphasizes the <i>application</i> of statistical theory.  That is, students are exposed to real-world problems for which an understanding of the statistical theory can aid in developing a solution.  The primary avenue for this exposure is the portfolio assignments.  Students will develop a portfolio in which they communicate solutions to applied problems.  By the end of the term, each student will have a collection of assignments which demonstrates their mastery of and ability to communicate the topics in the course.  Below is the question associated with random samples and convergence.</p>
+    
+    <p><b>Quantization Error:</b>  Analog-to-digital conversion is the process of taking a continuous-valued input and mapping it to a discrete output using an electronic sensor.  For example, Reyi Corporation regularly takes measurements regarding the concentration of a particular substance.  The actual concentration is a real-values measurement with infinite precision, but the measurement device performs an analog-to-digital conversion and returns the nearest integer.</p>
+    
+    <p>Engineers at the company state that it is safe to assume that the error in the measurements due to rounding (known as quantization error) are independent from one another and are uniformly distributed on the interval \((-0.5,0.5)\).  Of interest is the <i>total concentration</i>, the sum of the \(n\) concentration measurements taken.  If 50 measurements are taken \((n=50)\), the company would like to know the probability that the observed total concentration (after rounding) is within two units of the true underlying concntration (before rounding).  Further, how will this probability be affected as \(n\) is increased or decreased?</p>
+  </div>
+  
+  <div id="Example Assessment Item" class="w3-container city w3-animate-opacity">
+    <h2 style="color: #800000">Example Assessment Item</h2>
+    
+    <p>The following is an example of a homework question that would accompany this unit on Random Samples and Convergence.  This particular assignment focuses on the use of theory to understand a popular approximation.</p>
+    
+    <p><b>Stirling's Formula:</b> In advanced calculus, the following approximation is derived:</p>
+    \[\Gamma(k+1) \approxeq k^{k+(1/2)} e^{-k} \sqrt{2\pi}\]
+    <p>This is known as Stirling's Formula, and it is an excellent approximation when \(k\) is large.  It is useful for approximating \(k!\) since \(\Gamma(k+1) = k!\) when \(k\) is an integer.  While it is typically derived from a calculus perspective, we will consider a probability argument.  Consider \(X_i \stackrel{IID}{\sim} Exp(1)\) for \(i = 1,2,\dots,n\).</p>
+    
+    <ul>
+ 	  <li>(a) Determine the <i>exact</i> distribution of \(\bar{X}\).</li>
+ 	  <li>(b) Argue that for every \(x\),
+ 	    \[Pr\left(\frac{\bar{X}-1}{1/\sqrt{n}} \leq x\right) \rightarrow Pr(Z \leq x)\]
+ 	    where \(Z \sim N(0,1)\).
+ 	  </li>
+ 	  <li>(c) Show that differentiating both sides of the approximation in part (b) and plugging in 0 for \(x\) gives Stirling's Formula.  Tip: Observe that the left-hand side of the approximation in part (b) can be written in terms of \(\bar{X}\), which you found the exact distribution of in part (a).</li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+<!-- Script for Sidenav, Tabs, Accordions, Progress bars and slideshows -->
+<script>
+// Side navigation
+function w3_open() {
+    var x = document.getElementById("mySidenav");
+    x.style.width = "100%";
+    x.style.textAlign = "center";
+    x.style.fontSize = "50px";
+    x.style.paddingTop = "10%";
+    x.style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidenav").style.display = "none";
+}
+
+// Tabs
+function openCity(evt, cityName) {
+  var i;
+  var x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  var activebtn = document.getElementsByClassName("testbtn");
+  for (i = 0; i < x.length; i++) {
+      activebtn[i].className = activebtn[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " w3-dark-grey";
+}
+
+var mybtn = document.getElementsByClassName("testbtn")[0];
+mybtn.click();
+
+// Accordions
+function myAccFunc(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-dark-grey";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className =
+        x.previousElementSibling.className.replace(" w3-dark-grey", "");
+    }
+}
+
+// Slideshows
+var slideIndex = 1;
+
+function plusDivs(n) {
+slideIndex = slideIndex + n;
+showDivs(slideIndex);
+}
+
+function showDivs(n) {
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+
+showDivs(1);
+
+// Progress Bars
+function move() {
+  var elem = document.getElementById("myBar");
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width == 100) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      document.getElementById("demoprgr").innerHTML = width * 1  + '%';
+    }
+  }
+}
+</script>
+</body>
+</html>
+
