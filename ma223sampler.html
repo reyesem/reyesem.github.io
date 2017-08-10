@@ -17,6 +17,7 @@
   <a href="./teaching.html"><i class="fa fa-university"></i> Teaching</a>
   <a href="./research.html"><i class="fa fa-book"></i> Research</a>
   <a href="./misc.html"><i class="fa fa-bar-chart"></i> Miscellaneous</a>
+  <a href="./files/ReyesCV.pdf"><i class="fa fa-file-text-o"></i> Curriculum Vitae</a>
 </nav>
 
 
@@ -28,7 +29,7 @@
 
 <div class="w3-padding w3-white">
   <p>Many traditional textbooks group the material according to topics (statistical graphics, confidence intervals, hypothesis testing).  I have organized the course according to "analysis scenarios" (one-sample inference about the mean, ANOVA, simple linear regression).  Each scenario includes a discussion about appropriate graphics, models and analysis for the corresponding question of interest.  This led to a natural breakdown of the course content into 9 modules:</p>
-  
+
   <ol>
  	  <li>Basics of Probability</li>
  	  <li>Statistical Thinking</li>
@@ -42,7 +43,7 @@
   </ol>
 
   <p>The 2nd module acts as an introduction to the inferential framework which is unpacked in the remaining modules with the 4th module acting as the climax of the course.</p>
-  
+
   <p>The remainder of this page provides an excerpt of the course content corresponding to Module 2: Statistical Thinking.</p>
 </div>
 
@@ -56,10 +57,10 @@
       <li><a class="w3-btn testbtn" onclick="openCity(event, 'Lab Activity')">Lab Activity</a></li>
       <li><a class="w3-btn testbtn" onclick="openCity(event, 'Example Assessment Item')">Example Assessment Item</a></li>
     </ul>
-    
+
   <div id="Learning Objectives" class="w3-container city w3-animate-opacity">
     <h2 style="color: #800000">Learning Objectives</h2>
-    
+
     <ul>
  	  <li>2.a - <strong>Define</strong> the terms <em>sample</em> and <em>population</em>.</li>
  	  <li>2.b - <strong>Compare</strong> and <strong>contrast</strong> the terms <em>statistic</em> and <em>parameter</em>.</li>
@@ -76,7 +77,7 @@
 
   <div id="Sample Lecture" class="w3-container city w3-animate-opacity">
     <h2 style="color: #800000">Sample Lecture</h2>
-    
+
     <p>This is a "flipped course" in which the content is primarily delivered online and class time is reserved for activities and homework.  The following lecture anchors the 2nd module and presents what I call the "Five Fundamental Ideas" of statistical inference.  These fundamental ideas provide the lens through which each analysis scenario is viewed.</p>
 
     <p><a href="https://rose-hulman.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c096633d-404f-44cc-a89b-1bfc4248af22">Panopto Video (https://rose-hulman.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c096633d-404f-44cc-a89b-1bfc4248af22)</a></p>
@@ -84,32 +85,32 @@
 
   <div id="Lab Activity" class="w3-container city w3-animate-opacity">
     <h2 style="color: #800000">Lab Activity</h2>
-    
+
     <p>In the previous module we introduced the idea of a probability being developed from repeatedly conducting an experiment.  In this module, we apply this definition to help in making decisions from data.  In your project groups, you will be investigating the distribution of M&amp;M's and building on our definition of probability to investigate a research question.</p>
-    
+
     <p>Following the data collection, you will be guided through some computational as well as discussion-based questions.</p>
-      
+
     <p>M&amp;M's have a variety of colors.  In order to produce the blissful candies, the following production process is implemented.  M&amp;M's are produced according to a specified color distribution (some % are blue, some % are green, etc.).  These candies are then thoroughly mixed and bags are filled by weight.</p>
-    
+
     <p>Despite every color being the same, our society becomes fixated on certain colors.  For example, in the late 90's there was an urban myth surrounding the green M&amp;M's.  For our research purposes, we are curious as to the fraction of M&amp;M's that are green.  In particular, consider the following question: "is there evidence that the proportion of green M&amp;M's exceeds 1/6?"</p>
-    
+
     <p>We want to collect a sample in order to address the above question.  Specifically, we are interested in each group taking a sample of size 12.  To obtain this, perform the following procedure:</p>
-    
+
     <ul>
  	  <li>Each group has been given a "fun size" bag of M&amp;M's (which typically contains 18-19 candies). Shake the bag to thoroughly mix the candies in the bag.</li>
  	  <li>Open the top of the bag and pour out the <strong>first 12 candies.</strong>  The remainder of the candies in the bag can be destroyed (that is, eaten by the group members).</li>
  	  <li>From the 12 candies that are on the table, count the number of<strong>green</strong> candies and record the number somewhere.</li>
  	  <li>The 12 candies may now be destroyed.</li>
  	  </ul>
- 	  
+
  	  <p><strong>Sample Question:</strong> Suppose we observe a bag of 12 M&amp;M's, 3 of which are green.  What do you think about the manufacturer's claim that "no more than 1/6 of M&amp;M's in a bag are green?"  Suppose we observe a bag of 12 M&amp;M's, 10 of which are green.  What do you think about the manufacturer's claim that "no more than 1/6 of M&amp;M's in a bag are green?"  Explain.</p>
   </div>
-  
+
   <div id="Example Assessment Item" class="w3-container city w3-animate-opacity">
     <h2 style="color: #800000">Example Assessment Item</h2>
-    
+
     <p>Roger was a struggling song writer until he penned the hit "Cruella De Vil."  He has been approached by the record company to consider a re-release of the populat song on iTunes.  As part of his decision process, Roger is interested in determining if more than 40% of iTunes members will purchase the song.  On his behalf, the record label conducts a small study to address his question.  Specifically, a random sample of 40 iTunes members is obtained, and each is provided with a short survey.  Of the 40 members surveyed, 20 said they would purchase the song.</p>
-    
+
     <ul>
  	  <li>(a) State the population of interest.</li>
  	  <li>(b) State the parameter of interest.</li>

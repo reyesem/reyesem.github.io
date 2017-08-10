@@ -20,6 +20,7 @@
   <a href="./teaching.html"><i class="fa fa-university"></i> Teaching</a>
   <a href="./research.html"><i class="fa fa-book"></i> Research</a>
   <a href="./misc.html"><i class="fa fa-bar-chart"></i> Miscellaneous</a>
+  <a href="./files/ReyesCV.pdf"><i class="fa fa-file-text-o"></i> Curriculum Vitae</a>
 </nav>
 
 
@@ -31,9 +32,9 @@
 
 <div class="w3-padding w3-white">
   <p>The biological sciences often yield datasets which present unique challenges to data analysis.  This course introduces these challenges and the statistical methods employed to overcome them.  We begin with an introduction to the use of statistical regression models and then explore how such models can be altered to account for various features in the dataset.  This could include non-linear or categorical response variables, censored survival (or reliability) data, repeated measurements on the same subject, and missing data.  Other topics discussed as time permits include pooling results from multiple studies, study design and power, drawing causal conclusions from observational data, and general modeling techniques.  This course will enable students to evaluate the strength of evidence presented in the literature within their field of study.</p>
-  
+
   <p>As with all courses in statistics, we develop statistical literacy and statistical reasoning.  This is accomplished through a mix of assignments in the class ranging from data analysis to critiquing published research articles.  Throughout the course, we build on five fundamental concepts in inference:</p>
-  
+
   <ol>
  	  <li>Research questions can often be framed in terms of a parameter characterizing the variable of interest within the population.</li>
  	  <li>If data is to be useful for making conclusions about the population, a process referred to as drawing inference, we must consider the method in which the data was collected.</li>
@@ -53,10 +54,10 @@
       <li><a class="w3-btn testbtn" onclick="openCity(event, 'Case Study')">Portfolio Assignment</a></li>
       <li><a class="w3-btn testbtn" onclick="openCity(event, 'Example Assessment Item')">Example Assessment Item</a></li>
     </ul>
-    
+
   <div id="Learning Objectives" class="w3-container city w3-animate-opacity">
     <h2 style="color: #800000">Course Learning Objectives</h2>
-    
+
     <ul>
       <li><b>Describe</b> situations for which mulit-predictor regression models are needed to address the research question of interest.  Specifically, <b>describe</b> the role multi-predictor regression models play in isolating the effect of a variable and investigating the interplay between multiple variables.</li>
       <li>Given an analysis situation, <b>state</b> the appropriate regression modeling technique (linear, non-linear, survival, or repeated measures) and <b>justify</b> your choice.</li>
@@ -73,7 +74,7 @@
 
   <div id="Sample Lecture" class="w3-container city w3-animate-opacity">
     <h2 style="color: #800000">Sample Lecture</h2>
-    
+
     <p>This is a traditional course in which the instructor "lectures" most days.  However, several days involve group work on applied problems posed to the class.  We also set aside time for classroom discussion around a particular research article or for designing and conducting a short study to investigate a research question in class.  To reduce the amount of time spent copying a problem and increase the discussion in the class, course notes are provided which correspond to the lecture.  Below is a sample of the course notes introducing the need for Repeated Measures analysis.</p>
 
     <p><a href="./files/MA482Notes.pdf">Course Notes</a></p>
@@ -81,23 +82,23 @@
 
   <div id="Case Study" class="w3-container city w3-animate-opacity">
     <h2 style="color: #800000">Case Study</h2>
-    
+
     <p>This course emphasizes the application of statistical modeling to the biological sciences.  That is, students are exposed to real-world problems for which they use previously collected data to answer a research question.  This involves positing and fitting an appropriate model to the data.  The primary avenue for this exposure is through case studies.  Students will develop a portfolio in which they communicate solutions to applied problems.  By the end of the term, each student will have a collection of assignments which demonstrates their mastery of and ability to communicate the topics in the course.  Below is a question that might be associated with unit on repeated measures.</p>
-    
+
     <p><b>Guinea Pig Growth:</b>  A small study was conducted to examine the effect of a vitamin E diet supplement on the growth of guinea pigs. A sample of 15 guinea pigs was obtained; each guinea pig was given a growth-inhibiting substance at baseline (study start). Body weight was recorded weekly for three weeks. After weighing the pigs at week 3, the guinea pigs were randomized to one of three vitamin E doses (three groups of five pigs each).  Body weights were then measured for an additional three weeks (for a total of 6 weeks of measurements on each guinea pig).</p>
-    
+
     <p>Researchers are interested in determining if the dose level of the vitamin E has an effect on the growth of the guinea pigs. In particular, of primary interest is whether the growth profile for guinea pigs after being given a vitamin E supplement, for any dose, differs from the growth profile prior to receiving the vitamin E supplement. Of secondary interest is whether the growth profile depends on the vitamin E dosage.  You have been asked to collaborate on this project and provide a statistical analysis
 to address these two questions.
 </p>
   </div>
-  
+
   <div id="Example Assessment Item" class="w3-container city w3-animate-opacity">
     <h2 style="color: #800000">Example Assessment Item</h2>
-    
+
     <p>The following is an example of a homework question that would accompany this unit on Repeated Measures. This question presents a scenario that students may encounter in the future (as applied scientists or engineers on a collaborative team).  They must respond to the current line of thinking within the group.</p>
-    
+
     <p>A study was conducted by a student in the Department of Crop Science at the university with which your company is affiliated.  The goal of the study was to compare the growth patterns of two soybean genotypes: a commercial variety, and an experimental strain.  Data were collected in each of three consecutive years.  In each year, 8 plots were planted with each variety.  Over the course of the growing season, each plot was sampled at weekly intervals.  At each sampling time, 6 plants were randomly selected from each plot, leaves from these plants were mixed together and weighed, and an average leaf weight per plant (g) was calculated.</p>
-    
+
     <p>The primary objective of the study was to compare the growth characteristics of the two genotypes.  A reviewer on the paper has requested a "nonparametric" analysis; in particular, he is fearful that the normality assumption on the error term is unreasonable.  He has suggested that the team use bootstrapping to derive the required confidence intervals.  The default in most programs for bootstrapping, and the way it is often presented in an introductory course, is to resample individual observations (that is, it would resample individual records in the dataset).  Before proceeding with the analysis, you should explain to the research team why a custom-bootstrap procedure should be written instead of relying on the default behavior of most programs.</p>
   </div>
 </div>

@@ -20,6 +20,7 @@
   <a href="./teaching.html"><i class="fa fa-university"></i> Teaching</a>
   <a href="./research.html"><i class="fa fa-book"></i> Research</a>
   <a href="./misc.html"><i class="fa fa-bar-chart"></i> Miscellaneous</a>
+  <a href="./files/ReyesCV.pdf"><i class="fa fa-file-text-o"></i> Curriculum Vitae</a>
 </nav>
 
 
@@ -31,9 +32,9 @@
 
 <div class="w3-padding w3-white">
   <p>This course discusses the foundational theory for statistical inference.  As we explore the justifications for common statistical procedures (for example, why can the ratio \(\frac{\bar{x}-\mu}{s/\sqrt{n}}\) be modeled as a standard normal distribution when the sample size gets large), we are able to describe an approach for a broader class of inference problems, develop inferential thinking, and prepare students for graduate study in statistics.  This course assumes an introductory course in statistical methods, a course in probability theory, and some computational experience.</p>
-  
+
   <p>As with all courses in statistics, we develop statistical literacy and statistical reasoning.  This is accomplished through a mix of problems including analytical work (theorems/proofs), simulation, and data analysis.  Throughout the course, we emphasize the <i>application</i> of statistical theory.  Throughout the course, we build on five fundamental concepts in inference:</p>
-  
+
   <ol>
  	  <li>Research questions can often be framed in terms of a parameter characterizing the variable of interest within the population.</li>
  	  <li>If data is to be useful for making conclusions about the population, a process referred to as drawing inference, we must consider the method in which the data was collected.</li>
@@ -53,7 +54,7 @@
     <li>Inference via Likelihood Methods</li>
     <li>Nonparametric Methods</li>
   </ol>
-  
+
   <p>The remainder of this page provides an excerpt of the course content corresponding to the module on Random Samples and Convergence.</p>
 </div>
 
@@ -67,10 +68,10 @@
       <li><a class="w3-btn testbtn" onclick="openCity(event, 'Portfolio Assignment')">Portfolio Assignment</a></li>
       <li><a class="w3-btn testbtn" onclick="openCity(event, 'Example Assessment Item')">Example Assessment Item</a></li>
     </ul>
-    
+
   <div id="Learning Objectives" class="w3-container city w3-animate-opacity">
     <h2 style="color: #800000">Course Learning Objectives</h2>
-    
+
     <ul>
  	    <li><b>Describe</b> the role of probability theory when making inference on a population.</li>
  	    <li><b>Compare</b> and <b>contrast</b> modes of convergence and <b>describe</b> their role in sampling distributions.</li>
@@ -86,7 +87,7 @@
 
   <div id="Sample Lecture" class="w3-container city w3-animate-opacity">
     <h2 style="color: #800000">Sample Lecture</h2>
-    
+
     <p>This is a traditional course in which the instructor "lectures" most days.  However, students are expected to participate in the lecture helping to solve posed problems and add to the classroom discussion.  To reduce the amount of time spent copying a problem and increase the discussion in the class, course notes are provided which correspond to the lecture.  Below is a sample of the course notes corresponding to Random Samples and Convergence.</p>
 
     <p><a href="./files/MA481Notes.pdf">Course Notes</a></p>
@@ -94,23 +95,23 @@
 
   <div id="Portfolio Assignment" class="w3-container city w3-animate-opacity">
     <h2 style="color: #800000">Portfolio Assignment</h2>
-    
+
     <p>This course emphasizes the <i>application</i> of statistical theory.  That is, students are exposed to real-world problems for which an understanding of the statistical theory can aid in developing a solution.  The primary avenue for this exposure is the portfolio assignments.  Students will develop a portfolio in which they communicate solutions to applied problems.  By the end of the term, each student will have a collection of assignments which demonstrates their mastery of and ability to communicate the topics in the course.  Below is the question associated with random samples and convergence.</p>
-    
+
     <p><b>Quantization Error:</b>  Analog-to-digital conversion is the process of taking a continuous-valued input and mapping it to a discrete output using an electronic sensor.  For example, Reyi Corporation regularly takes measurements regarding the concentration of a particular substance.  The actual concentration is a real-values measurement with infinite precision, but the measurement device performs an analog-to-digital conversion and returns the nearest integer.</p>
-    
+
     <p>Engineers at the company state that it is safe to assume that the error in the measurements due to rounding (known as quantization error) are independent from one another and are uniformly distributed on the interval \((-0.5,0.5)\).  Of interest is the <i>total concentration</i>, the sum of the \(n\) concentration measurements taken.  If 50 measurements are taken \((n=50)\), the company would like to know the probability that the observed total concentration (after rounding) is within two units of the true underlying concntration (before rounding).  Further, how will this probability be affected as \(n\) is increased or decreased?</p>
   </div>
-  
+
   <div id="Example Assessment Item" class="w3-container city w3-animate-opacity">
     <h2 style="color: #800000">Example Assessment Item</h2>
-    
+
     <p>The following is an example of a homework question that would accompany this unit on Random Samples and Convergence.  This particular assignment focuses on the use of theory to understand a popular approximation.</p>
-    
+
     <p><b>Stirling's Formula:</b> In advanced calculus, the following approximation is derived:</p>
     \[\Gamma(k+1) \approxeq k^{k+(1/2)} e^{-k} \sqrt{2\pi}\]
     <p>This is known as Stirling's Formula, and it is an excellent approximation when \(k\) is large.  It is useful for approximating \(k!\) since \(\Gamma(k+1) = k!\) when \(k\) is an integer.  While it is typically derived from a calculus perspective, we will consider a probability argument.  Consider \(X_i \stackrel{IID}{\sim} Exp(1)\) for \(i = 1,2,\dots,n\).</p>
-    
+
     <ul>
  	  <li>(a) Determine the <i>exact</i> distribution of \(\bar{X}\).</li>
  	  <li>(b) Argue that for every \(x\),
