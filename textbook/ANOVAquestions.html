@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statistical Foundations for Engineers and Scientists</title>
+  <meta name="description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology.">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Statistical Foundations for Engineers and Scientists" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Statistical Foundations for Engineers and Scientists" />
+  
+  <meta name="twitter:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="CaseOrganic.html">
+<link rel="next" href="ANOVAdata.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Modeling</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Unit I: Language and Logic of Inference</b></span></li>
+<li class="chapter" data-level="1" data-path="Basics.html"><a href="Basics.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1.1" data-path="Basics.html"><a href="Basics.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="1.2" data-path="Basics.html"><a href="Basics.html#anatomy-of-a-dataset"><i class="fa fa-check"></i><b>1.2</b> Anatomy of a Dataset</a></li>
+<li class="chapter" data-level="1.3" data-path="Basics.html"><a href="Basics.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.3</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="CaseDeepwater.html"><a href="CaseDeepwater.html"><i class="fa fa-check"></i><b>2</b> Case Study: Health Effects of the Deepwater Horizon Oil Spill</a></li>
+<li class="chapter" data-level="3" data-path="Questions.html"><a href="Questions.html"><i class="fa fa-check"></i><b>3</b> Asking the Right Questions</a><ul>
+<li class="chapter" data-level="3.1" data-path="Questions.html"><a href="Questions.html#characterizing-a-variable"><i class="fa fa-check"></i><b>3.1</b> Characterizing a Variable</a></li>
+<li class="chapter" data-level="3.2" data-path="Questions.html"><a href="Questions.html#framing-the-question"><i class="fa fa-check"></i><b>3.2</b> Framing the Question</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>4</b> Gathering the Evidence (Data Collection)</a><ul>
+<li class="chapter" data-level="4.1" data-path="Data.html"><a href="Data.html#what-makes-a-sample-reliable"><i class="fa fa-check"></i><b>4.1</b> What Makes a Sample Reliable</a></li>
+<li class="chapter" data-level="4.2" data-path="Data.html"><a href="Data.html#poor-methods-of-data-collection"><i class="fa fa-check"></i><b>4.2</b> Poor Methods of Data Collection</a></li>
+<li class="chapter" data-level="4.3" data-path="Data.html"><a href="Data.html#preferred-methods-of-sampling"><i class="fa fa-check"></i><b>4.3</b> Preferred Methods of Sampling</a></li>
+<li class="chapter" data-level="4.4" data-path="Data.html"><a href="Data.html#two-types-of-studies"><i class="fa fa-check"></i><b>4.4</b> Two Types of Studies</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Summaries.html"><a href="Summaries.html"><i class="fa fa-check"></i><b>5</b> Presenting the Evidence (Summarizing Data)</a><ul>
+<li class="chapter" data-level="5.1" data-path="Summaries.html"><a href="Summaries.html#characteristics-of-a-distribution-summarizing-a-single-variable"><i class="fa fa-check"></i><b>5.1</b> Characteristics of a Distribution (Summarizing a Single Variable)</a></li>
+<li class="chapter" data-level="5.2" data-path="Summaries.html"><a href="Summaries.html#summarizing-relationships"><i class="fa fa-check"></i><b>5.2</b> Summarizing Relationships</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="SamplingDistns.html"><a href="SamplingDistns.html"><i class="fa fa-check"></i><b>6</b> Assessing the Evidence (Quantifying the Variability in Estimates)</a><ul>
+<li class="chapter" data-level="6.1" data-path="SamplingDistns.html"><a href="SamplingDistns.html#conceptualizing-the-sampling-distribution"><i class="fa fa-check"></i><b>6.1</b> Conceptualizing the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="SamplingDistns.html"><a href="SamplingDistns.html#example-of-a-sampling-distribution"><i class="fa fa-check"></i><b>6.2</b> Example of a Sampling Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="SamplingDistns.html"><a href="SamplingDistns.html#modeling-the-sampling-distribution"><i class="fa fa-check"></i><b>6.3</b> Modeling the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="SamplingDistns.html"><a href="SamplingDistns.html#using-a-model-for-the-sampling-distributions-confidence-intervals"><i class="fa fa-check"></i><b>6.4</b> Using a Model for the Sampling Distributions (Confidence Intervals)</a></li>
+<li class="chapter" data-level="6.5" data-path="SamplingDistns.html"><a href="SamplingDistns.html#bringing-it-all-together"><i class="fa fa-check"></i><b>6.5</b> Bringing it All Together</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="NullDistns.html"><a href="NullDistns.html"><i class="fa fa-check"></i><b>7</b> Quantifying the Evidence (Rejecting Bad Models)</a><ul>
+<li class="chapter" data-level="7.1" data-path="NullDistns.html"><a href="NullDistns.html#some-subtleties"><i class="fa fa-check"></i><b>7.1</b> Some Subtleties</a></li>
+<li class="chapter" data-level="7.2" data-path="NullDistns.html"><a href="NullDistns.html#assuming-the-null-hypothesis"><i class="fa fa-check"></i><b>7.2</b> Assuming the Null Hypothesis</a></li>
+<li class="chapter" data-level="7.3" data-path="NullDistns.html"><a href="NullDistns.html#using-the-null-distribution"><i class="fa fa-check"></i><b>7.3</b> Using the Null Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="NullDistns.html"><a href="NullDistns.html#sampling-distributions-vs.null-distributions"><i class="fa fa-check"></i><b>7.4</b> Sampling Distributions vs. Null Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="RecapLanguage.html"><a href="RecapLanguage.html"><i class="fa fa-check"></i><b>8</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="8.1" data-path="RecapLanguage.html"><a href="RecapLanguage.html#framing-the-question-fundamental-idea-i"><i class="fa fa-check"></i><b>8.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="8.2" data-path="RecapLanguage.html"><a href="RecapLanguage.html#getting-good-data-fundamental-idea-ii"><i class="fa fa-check"></i><b>8.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="8.3" data-path="RecapLanguage.html"><a href="RecapLanguage.html#presenting-the-data-fundamental-idea-iii"><i class="fa fa-check"></i><b>8.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="8.4" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv"><i class="fa fa-check"></i><b>8.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="8.5" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-evidence-fundamental-idea-v"><i class="fa fa-check"></i><b>8.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="8.6" data-path="RecapLanguage.html"><a href="RecapLanguage.html#summary"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>II Unit II: Comparing the Average Response Across Groups</b></span></li>
+<li class="chapter" data-level="9" data-path="CaseOrganic.html"><a href="CaseOrganic.html"><i class="fa fa-check"></i><b>9</b> Case Study: Organic Foods and Superior Morals</a></li>
+<li class="chapter" data-level="10" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html"><i class="fa fa-check"></i><b>10</b> Framing the Question</a><ul>
+<li class="chapter" data-level="10.1" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html#general-setting"><i class="fa fa-check"></i><b>10.1</b> General Setting</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="ANOVAdata.html"><a href="ANOVAdata.html"><i class="fa fa-check"></i><b>11</b> Study Design</a><ul>
+<li class="chapter" data-level="11.1" data-path="ANOVAdata.html"><a href="ANOVAdata.html#aspects-of-a-well-designed-experiment"><i class="fa fa-check"></i><b>11.1</b> Aspects of a Well Designed Experiment</a></li>
+<li class="chapter" data-level="11.2" data-path="ANOVAdata.html"><a href="ANOVAdata.html#collecting-observational-data"><i class="fa fa-check"></i><b>11.2</b> Collecting Observational Data</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="ANOVAsummaries.html"><a href="ANOVAsummaries.html"><i class="fa fa-check"></i><b>12</b> Presenting the Data</a></li>
+<li class="chapter" data-level="13" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html"><i class="fa fa-check"></i><b>13</b> Quantifying the Evidence</a><ul>
+<li class="chapter" data-level="13.1" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="13.2" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#forming-a-standardized-test-statistic"><i class="fa fa-check"></i><b>13.2</b> Forming a Standardized Test Statistic</a></li>
+<li class="chapter" data-level="13.3" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#obtaining-a-p-value"><i class="fa fa-check"></i><b>13.3</b> Obtaining a P-value</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html"><i class="fa fa-check"></i><b>14</b> Building the Statistical Model</a><ul>
+<li class="chapter" data-level="14.1" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#general-formulation"><i class="fa fa-check"></i><b>14.1</b> General Formulation</a></li>
+<li class="chapter" data-level="14.2" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#statistical-model-for-a-quantitative-response-and-a-categorical-predictor"><i class="fa fa-check"></i><b>14.2</b> Statistical Model for A Quantitative Response and a Categorical Predictor</a></li>
+<li class="chapter" data-level="14.3" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#conditions-on-the-error-distribution"><i class="fa fa-check"></i><b>14.3</b> Conditions on the Error Distribution</a></li>
+<li class="chapter" data-level="14.4" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#simulating-the-null-distribution"><i class="fa fa-check"></i><b>14.4</b> Simulating the Null Distribution</a></li>
+<li class="chapter" data-level="14.5" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#recap"><i class="fa fa-check"></i><b>14.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html"><i class="fa fa-check"></i><b>15</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="15.1" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-independence"><i class="fa fa-check"></i><b>15.1</b> Assessing Independence</a></li>
+<li class="chapter" data-level="15.2" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-homoskedasticity"><i class="fa fa-check"></i><b>15.2</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="15.3" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-normality"><i class="fa fa-check"></i><b>15.3</b> Assessing Normality</a></li>
+<li class="chapter" data-level="15.4" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#general-tips-for-assessing-assumptions"><i class="fa fa-check"></i><b>15.4</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Foundations for Engineers and Scientists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ANOVAquestions" class="section level1">
+<h1><span class="header-section-number">10</span> Framing the Question</h1>
+<p>“Does exposure to various food types lead to different moral expectations?” The primary question from the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a> is primarily about the relationship between two variables: the response (see Definition <a href="Questions.html#def:defn-response">3.2</a>; moral expectations) and the <strong>factor</strong> of interest (food type).</p>
+
+<div class="definition">
+<span id="def:defn-factor" class="definition"><strong>Definition 10.1  (Factor)  </strong></span>Also referred to as the “treamtent,” a categorical variable used to explain/predict a response.
+</div>
+<p></p>
+<p>The majority of interesting research questions involve identifying or quantifying the relationship between two variables. Despite the complexity of the analyses sometimes employed to address these questions, the basic principles are the same as those studied in Unit 1. To begin, asking good questions involves defining the population of interest and characterizing the variable(s) at the population level through well-defined parameters.</p>
+<p>The question of the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a>, as stated above, is ill-posed. Almost certainly, there are individuals for which exposure to organic foods may result in higher moral expectations compared to exposure to comfort foods. However, there are almost certainly individuals for which the effect is reversed — higher moral expectations are expected following exposure to comfort foods compared with organic foods. That is, we expect there to be <em>variability</em> in the effect of food types on the resulting moral expectations. The question needs to be refined.</p>
+<p>While the study was conducted using college students, the original question seems quite broad (we discuss this discrepancy in more detail in the next chapter). Notice that the original question is not predicated on <em>consuming</em> various foods but simply <em>exposure</em> to various foods. The question itself is not limited to only those individuals which purchase a specific type of food but concerns all individuals. More, we really see that there are three groups of interest — those which are exposed to organic foods, those exposed to comfort foods, and those exposed to the control foods. We can think of actually three distinct populations:</p>
+<ol style="list-style-type: decimal">
+<li>All individuals exposed to organic foods.</li>
+<li>All individuals exposed to comfort foods.</li>
+<li>All individuals exposed to control foods.</li>
+</ol>
+<p>We now work to characterize the response within each of these three populations. Since the response of interest is a numeric variable (taking values between 1 and 7 with higher values indicating higher moral expectations), summarizing the variable using the mean is reasonable. That is, we might ask “does exposure to various food types lead to different moral expectations, <em>on average</em>?” Our question now compares the mean response across the groups. In particular, our question is looking for some type of difference in this mean response across the groups; our working hypothesis is then that the groups are all equivalent, on average. This could be framed in the following hypotheses:</p>
+<blockquote>
+<p><span class="math inline">\(H_0:\)</span> the average moral expectations are the same following exposure to each of the three types of food.<br />
+<span class="math inline">\(H_1:\)</span> the average moral expectations following exposure to food differ for at least one of the three types.</p>
+</blockquote>
+<p>This is equivalent to expressing the hypotheses in terms of a relation between the two variables:</p>
+<blockquote>
+<p><span class="math inline">\(H_0:\)</span> there is no association between the type of food an individual is exposed to and their moral expectations, on average.<br />
+<span class="math inline">\(H_1:\)</span> there is is an association between the type of food an individual is exposed to and their moral expectations, on average.</p>
+</blockquote>
+<p>We can represent these hypotheses mathematically as</p>
+<blockquote>
+<p><span class="math inline">\(H_0: \mu_{\text{comfort}} = \mu_{\text{control}} = \mu_{\text{organic}}\)</span><br />
+<span class="math inline">\(H_1:\)</span> At least one <span class="math inline">\(\mu\)</span> differs from the others</p>
+</blockquote>
+<p>where <span class="math inline">\(\mu_{\text{comfort}}\)</span> is the mean moral expectations for individuals exposed to comfort foods, etc. The question is now well-posed — it is centered on the population and captured through parameters.</p>
+<p>For this particular setting, there is an alternative way of thinking about the population. You might argue that there are not three distinct populations; instead, there is only a single population (all individuals) and three different exposures (organic, comfort and control foods). This is a reasonable way of characterizing the population. The hypotheses remain the same:</p>
+<blockquote>
+<p><span class="math inline">\(H_0: \mu_{\text{comfort}} = \mu_{\text{control}} = \mu_{\text{organic}}\)</span><br />
+<span class="math inline">\(H_1:\)</span> At least one <span class="math inline">\(\mu\)</span> differs from the others</p>
+</blockquote>
+<p>The difference is in our interpretation of the parameters. We would describe <span class="math inline">\(\mu_{\text{comfort}}\)</span> as the mean moral expectations when an individual is exposed to comfort foods. The distinction, while subtle is to place emphasis on switching an individual from one group to another instead of the groups being completely distinct. In fact, this latter way of thinking is more in line with how the study was conducted. Individuals were allocated to one of the exposure groups, suggesting that exposure is something that could be changed for an individual.</p>
+<p>From an analysis perspective, there is little difference between these two ways of describing the population. The difference is primarily in our interpretation. In many cases, we can envision the population either way; however, there are a few instances where that is not possible. Suppose we were comparing the average number of offspring of mice compared to rats (a lovely thought, I know). It does not make sense to think about changing a mouse into a rat; here, it only makes sense to think about two distinct populations being compared on some metric. How we describe the population is often related to the question we are asking.</p>
+
+<div class="rmdtip">
+How we describe the population is often connected to the study design we implement. In a controlled experiment, we envision a single population under various conditions. For an observational study, we generally consider distinct populations.
+</div>
+<p></p>
+<div id="general-setting" class="section level2">
+<h2><span class="header-section-number">10.1</span> General Setting</h2>
+<p>This unit is concerned with comparing the mean response of a numeric variable across <span class="math inline">\(k\)</span> groups. Let <span class="math inline">\(\mu_1, \mu_2, \dotsc, \mu_k\)</span> represent the mean response for each of the <span class="math inline">\(k\)</span> groups. Then, we are primarily interested in the following hypotheses:</p>
+<blockquote>
+<p><span class="math inline">\(H_0: \mu_1 = \mu_2 = \dotsb = \mu_k\)</span><br />
+<span class="math inline">\(H_1:\)</span> At least one <span class="math inline">\(\mu\)</span> differs from the others</p>
+</blockquote>
+<p>When there are only two groups (<span class="math inline">\(k = 2\)</span>), then this can be written as</p>
+<blockquote>
+<p><span class="math inline">\(H_0: \mu_1 = \mu_2\)</span><br />
+<span class="math inline">\(H_1: \mu_1 \neq \mu_2\)</span></p>
+</blockquote>
+
+<div class="rmdtip">
+When there are two groups, it makes sense to say the means are equal or not. While tempting to do something when there are more than two groups, it is not possible. The opposite of “all groups equal” is <em>not</em> “all groups differ.” The opposite of “all groups equal” is “at least one differs,” which is what we are capturing with the above hypotheses. Keep it simple and do not try to get fancy with the notation.
+</div>
+<p></p>
+<p>Here we are writing things in the mathematical notation, but let’s not forget that every hypothesis has a context. Throughout this unit, we are looking for some signal in the <em>location</em> of the response across the groups. Our working assumption then states that the groups are all similar, <em>on average</em>. This may not be the only comparison of interest to make in practice. For example, it may not be the location that is of interest but the spread of a process. In some applications, managers would prefer to choose the process that is the most precise. These questions are beyond the scope of this unit, but the concepts are similar to what we discuss here.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="CaseOrganic.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ANOVAdata.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": ["MA223CourseNotes.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

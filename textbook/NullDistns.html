@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statistical Foundations for Engineers and Scientists</title>
+  <meta name="description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology.">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Statistical Foundations for Engineers and Scientists" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Statistical Foundations for Engineers and Scientists" />
+  
+  <meta name="twitter:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="SamplingDistns.html">
+<link rel="next" href="RecapLanguage.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Modeling</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Unit I: Language and Logic of Inference</b></span></li>
+<li class="chapter" data-level="1" data-path="Basics.html"><a href="Basics.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1.1" data-path="Basics.html"><a href="Basics.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="1.2" data-path="Basics.html"><a href="Basics.html#anatomy-of-a-dataset"><i class="fa fa-check"></i><b>1.2</b> Anatomy of a Dataset</a></li>
+<li class="chapter" data-level="1.3" data-path="Basics.html"><a href="Basics.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.3</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="CaseDeepwater.html"><a href="CaseDeepwater.html"><i class="fa fa-check"></i><b>2</b> Case Study: Health Effects of the Deepwater Horizon Oil Spill</a></li>
+<li class="chapter" data-level="3" data-path="Questions.html"><a href="Questions.html"><i class="fa fa-check"></i><b>3</b> Asking the Right Questions</a><ul>
+<li class="chapter" data-level="3.1" data-path="Questions.html"><a href="Questions.html#characterizing-a-variable"><i class="fa fa-check"></i><b>3.1</b> Characterizing a Variable</a></li>
+<li class="chapter" data-level="3.2" data-path="Questions.html"><a href="Questions.html#framing-the-question"><i class="fa fa-check"></i><b>3.2</b> Framing the Question</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>4</b> Gathering the Evidence (Data Collection)</a><ul>
+<li class="chapter" data-level="4.1" data-path="Data.html"><a href="Data.html#what-makes-a-sample-reliable"><i class="fa fa-check"></i><b>4.1</b> What Makes a Sample Reliable</a></li>
+<li class="chapter" data-level="4.2" data-path="Data.html"><a href="Data.html#poor-methods-of-data-collection"><i class="fa fa-check"></i><b>4.2</b> Poor Methods of Data Collection</a></li>
+<li class="chapter" data-level="4.3" data-path="Data.html"><a href="Data.html#preferred-methods-of-sampling"><i class="fa fa-check"></i><b>4.3</b> Preferred Methods of Sampling</a></li>
+<li class="chapter" data-level="4.4" data-path="Data.html"><a href="Data.html#two-types-of-studies"><i class="fa fa-check"></i><b>4.4</b> Two Types of Studies</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Summaries.html"><a href="Summaries.html"><i class="fa fa-check"></i><b>5</b> Presenting the Evidence (Summarizing Data)</a><ul>
+<li class="chapter" data-level="5.1" data-path="Summaries.html"><a href="Summaries.html#characteristics-of-a-distribution-summarizing-a-single-variable"><i class="fa fa-check"></i><b>5.1</b> Characteristics of a Distribution (Summarizing a Single Variable)</a></li>
+<li class="chapter" data-level="5.2" data-path="Summaries.html"><a href="Summaries.html#summarizing-relationships"><i class="fa fa-check"></i><b>5.2</b> Summarizing Relationships</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="SamplingDistns.html"><a href="SamplingDistns.html"><i class="fa fa-check"></i><b>6</b> Assessing the Evidence (Quantifying the Variability in Estimates)</a><ul>
+<li class="chapter" data-level="6.1" data-path="SamplingDistns.html"><a href="SamplingDistns.html#conceptualizing-the-sampling-distribution"><i class="fa fa-check"></i><b>6.1</b> Conceptualizing the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="SamplingDistns.html"><a href="SamplingDistns.html#example-of-a-sampling-distribution"><i class="fa fa-check"></i><b>6.2</b> Example of a Sampling Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="SamplingDistns.html"><a href="SamplingDistns.html#modeling-the-sampling-distribution"><i class="fa fa-check"></i><b>6.3</b> Modeling the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="SamplingDistns.html"><a href="SamplingDistns.html#using-a-model-for-the-sampling-distributions-confidence-intervals"><i class="fa fa-check"></i><b>6.4</b> Using a Model for the Sampling Distributions (Confidence Intervals)</a></li>
+<li class="chapter" data-level="6.5" data-path="SamplingDistns.html"><a href="SamplingDistns.html#bringing-it-all-together"><i class="fa fa-check"></i><b>6.5</b> Bringing it All Together</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="NullDistns.html"><a href="NullDistns.html"><i class="fa fa-check"></i><b>7</b> Quantifying the Evidence (Rejecting Bad Models)</a><ul>
+<li class="chapter" data-level="7.1" data-path="NullDistns.html"><a href="NullDistns.html#some-subtleties"><i class="fa fa-check"></i><b>7.1</b> Some Subtleties</a></li>
+<li class="chapter" data-level="7.2" data-path="NullDistns.html"><a href="NullDistns.html#assuming-the-null-hypothesis"><i class="fa fa-check"></i><b>7.2</b> Assuming the Null Hypothesis</a></li>
+<li class="chapter" data-level="7.3" data-path="NullDistns.html"><a href="NullDistns.html#using-the-null-distribution"><i class="fa fa-check"></i><b>7.3</b> Using the Null Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="NullDistns.html"><a href="NullDistns.html#sampling-distributions-vs.null-distributions"><i class="fa fa-check"></i><b>7.4</b> Sampling Distributions vs. Null Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="RecapLanguage.html"><a href="RecapLanguage.html"><i class="fa fa-check"></i><b>8</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="8.1" data-path="RecapLanguage.html"><a href="RecapLanguage.html#framing-the-question-fundamental-idea-i"><i class="fa fa-check"></i><b>8.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="8.2" data-path="RecapLanguage.html"><a href="RecapLanguage.html#getting-good-data-fundamental-idea-ii"><i class="fa fa-check"></i><b>8.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="8.3" data-path="RecapLanguage.html"><a href="RecapLanguage.html#presenting-the-data-fundamental-idea-iii"><i class="fa fa-check"></i><b>8.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="8.4" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv"><i class="fa fa-check"></i><b>8.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="8.5" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-evidence-fundamental-idea-v"><i class="fa fa-check"></i><b>8.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="8.6" data-path="RecapLanguage.html"><a href="RecapLanguage.html#summary"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>II Unit II: Comparing the Average Response Across Groups</b></span></li>
+<li class="chapter" data-level="9" data-path="CaseOrganic.html"><a href="CaseOrganic.html"><i class="fa fa-check"></i><b>9</b> Case Study: Organic Foods and Superior Morals</a></li>
+<li class="chapter" data-level="10" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html"><i class="fa fa-check"></i><b>10</b> Framing the Question</a><ul>
+<li class="chapter" data-level="10.1" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html#general-setting"><i class="fa fa-check"></i><b>10.1</b> General Setting</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="ANOVAdata.html"><a href="ANOVAdata.html"><i class="fa fa-check"></i><b>11</b> Study Design</a><ul>
+<li class="chapter" data-level="11.1" data-path="ANOVAdata.html"><a href="ANOVAdata.html#aspects-of-a-well-designed-experiment"><i class="fa fa-check"></i><b>11.1</b> Aspects of a Well Designed Experiment</a></li>
+<li class="chapter" data-level="11.2" data-path="ANOVAdata.html"><a href="ANOVAdata.html#collecting-observational-data"><i class="fa fa-check"></i><b>11.2</b> Collecting Observational Data</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="ANOVAsummaries.html"><a href="ANOVAsummaries.html"><i class="fa fa-check"></i><b>12</b> Presenting the Data</a></li>
+<li class="chapter" data-level="13" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html"><i class="fa fa-check"></i><b>13</b> Quantifying the Evidence</a><ul>
+<li class="chapter" data-level="13.1" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="13.2" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#forming-a-standardized-test-statistic"><i class="fa fa-check"></i><b>13.2</b> Forming a Standardized Test Statistic</a></li>
+<li class="chapter" data-level="13.3" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#obtaining-a-p-value"><i class="fa fa-check"></i><b>13.3</b> Obtaining a P-value</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html"><i class="fa fa-check"></i><b>14</b> Building the Statistical Model</a><ul>
+<li class="chapter" data-level="14.1" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#general-formulation"><i class="fa fa-check"></i><b>14.1</b> General Formulation</a></li>
+<li class="chapter" data-level="14.2" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#statistical-model-for-a-quantitative-response-and-a-categorical-predictor"><i class="fa fa-check"></i><b>14.2</b> Statistical Model for A Quantitative Response and a Categorical Predictor</a></li>
+<li class="chapter" data-level="14.3" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#conditions-on-the-error-distribution"><i class="fa fa-check"></i><b>14.3</b> Conditions on the Error Distribution</a></li>
+<li class="chapter" data-level="14.4" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#simulating-the-null-distribution"><i class="fa fa-check"></i><b>14.4</b> Simulating the Null Distribution</a></li>
+<li class="chapter" data-level="14.5" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#recap"><i class="fa fa-check"></i><b>14.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html"><i class="fa fa-check"></i><b>15</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="15.1" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-independence"><i class="fa fa-check"></i><b>15.1</b> Assessing Independence</a></li>
+<li class="chapter" data-level="15.2" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-homoskedasticity"><i class="fa fa-check"></i><b>15.2</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="15.3" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-normality"><i class="fa fa-check"></i><b>15.3</b> Assessing Normality</a></li>
+<li class="chapter" data-level="15.4" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#general-tips-for-assessing-assumptions"><i class="fa fa-check"></i><b>15.4</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Foundations for Engineers and Scientists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="NullDistns" class="section level1">
+<h1><span class="header-section-number">7</span> Quantifying the Evidence (Rejecting Bad Models)</h1>
+<p>Again, the goal of statistical inference is to use the sample as a snapshot of the underlying population (Figure <a href="NullDistns.html#fig:nulldistns-statistical-process">7.1</a>). Recall that there are essentially two categories of questions we ask when trying to perform inference:</p>
+<ul>
+<li>Estimation: what <em>proportion</em> of volunteers who clean wildlife following an oil spill will experience adverse respiratory symptoms?</li>
+<li>Model Consistency: is it reasonable that no more than 1 in 5 volunteers who clean wildlife following an oil spill will experience adverse respiratory symptoms?</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:nulldistns-statistical-process"></span>
+<img src="images/Basics-Stat-Process.jpg" alt="Illustration of the statistical process (reprinted from Chapter 1)." width="80%" />
+<p class="caption">
+Figure 7.1: Illustration of the statistical process (reprinted from Chapter 1).
+</p>
+</div>
+<p>In the previous chapter we addressed these questions through the use of confidence intervals — by specifying reasonable values of the parameters through a model of the sampling distribution. However, when working with questions of the second type (model consistency), there is a second approach; this latter approach is useful when confidence intervals cannot be constructed for the particular question of interest (see Unit 2).</p>
+<p>Remember, assessing model consistency is similar to performing a trial in a court of law. After gathering the evidence, the jury is left with the following decision:</p>
+<ul>
+<li>Assuming the defendant is innocent, if the evidence is unlikely to have occurred (so is not consistent with innocence), then they vote “guilty.”</li>
+<li>Assuming the defendant is innocent, if the evidence is reasonably likely to have occurred (so is consistent with innocence), then they vote “not guilty.”</li>
+</ul>
+<p>The goal in this section is to somehow quantify the evidence against a particular model to determine if we can say that the data is not consistent with the given model.</p>
+<div id="some-subtleties" class="section level2">
+<h2><span class="header-section-number">7.1</span> Some Subtleties</h2>
+<p>In a U.S. trial, there are some subtleties that we should be aware of, as they also creep up in statistical analyses and have implications for how we interpret statistical results. First, the jury weighs the evidence <em>under the assumption of innocence</em>. That is, they first develop a working hypothesis (the defendant is innocent). Then, the likelihood of the evidence <em>under this assumption</em> is determined. For example, if a defendant were innocent of murder, it is unlikely to have five eye witnesses stating the defendant was seen standing over the victim, holding the murder weapon, and screaming “I killed him!” Since that evidence does not jive with innocence, the jury convicts. If, however, the only evidence is that five eye witnesses place the defendant in the same city as the victim and the defendant matches the description of someone seen fleeing the crime scene, then the jury would not convict. Why? Because the evidence, while pointing toward guilt, is not overwhelming; these things could have happened by chance alone. Therefore, the evidence, while consistent with guilt does not provide evidence for guilt.</p>
+<p>Also notice that a jury saying “not guilty” is not the same as saying “innocent.” That is, a lack of evidence to convict does not imply the defendant is innocent. A lack of evidence is simply a lack of evidence. The defendant may still be guilty, but the evidence has just not proven it.</p>
+<p>Similarly, when assessing model consistency, we will weigh the data <em>under the null hypothesis</em> (our working assumption). Then, the likelihood of our data occurring by chance alone <em>under this hypothesis</em> is determined. If that likelihood is small (data is not consistent with the null hypothesis), we can conclude the data supports the alternative hypothesis (guilty). If, however, that likelihood is large (data is consistent with the null hypothesis), we can only conclude that the data is consistent with the hypotheses. We are <em>not</em> able to say “supports the null” because that would be like saying a defendant is innocent. We can’t prove innocence because we started by assuming it!</p>
+</div>
+<div id="assuming-the-null-hypothesis" class="section level2">
+<h2><span class="header-section-number">7.2</span> Assuming the Null Hypothesis</h2>
+<p>Consider the question we have been asking regarding the <a href="CaseDeepwater.html#CaseDeepwater">Deepwater Horizon Case Study</a>:</p>
+<blockquote>
+<p>Is there evidence that more than 1 in 5 volunteers assigned to clean wildlife will develop adverse respiratory conditions?</p>
+</blockquote>
+<p>Remember, we framed this question through statements about a parameter in Chapter <a href="Questions.html#Questions">3</a>:</p>
+<blockquote>
+<p><span class="math inline">\(H_0:\)</span> the proportion of volunteers assigned to clean wildlife who develop adverse respiratory symptoms is no more than 0.20.<br />
+<span class="math inline">\(H_1:\)</span> the proportion of volunteers assigned to clean wildlife who develop adverse respiratory symptoms exceeds 0.20.</p>
+</blockquote>
+<p>Within the sample we observed that 27.8% of volunteers experienced adverse symptoms, which is certainly more than the 0.20 in the claim; therefore, the data is at least trending toward the alternative hypothesis. However, it is possible that we just have a strange sample. Remember in our discussion of sampling distributions in the previous chapter, however, that we expect the estimate to vary from one sample to another. Essentially, we need to know whether 27.8% of volunteers experiencing symptoms is a strong signal that the rate within the popoulation is larger than 0.2 (1 in 5) or 27.8% is simply a fluke that might happen due to sampling variability. While we are going to be attacking the question differently in this chapter than the previous, we see that the key is still variability in the estimate. That is, we are back to the <em>Fourth Fundamental Idea of Inference</em>. As stated above, in order to determine evidence for one statement (captured by the alternative hypothesis), we begin by assuming the opposite statement (captured by the null hypothesis) as our working assumption. That is, if we want to know if 27.8% of volunteers experiencing adverse symptoms is “evidence,” we need to figure out what we <em>expect</em> to happen <em>if only 1 in 5 volunteers actually develop adverse respiratory symptoms</em>.</p>
+<p>Consider this last statement. It is equivalent to saying “what type of evidence would we expect for an innocent person?” Only if we know what to expect can we determine if the evidence in front of us is extreme enough to convict. Only if we know what to expect can we determine if the observed sample provides evidence in favor of the alternative. So, we enter a fake world…a world in which exactly 1 in 5 volunteers actually develop respiratory symptoms. That is, we enter a world in which the null hypothesis is true. Now, in this world, how do we know what to expect? We construct the sampling distribution for the proportion under this assumption that the null hypothesis is true; this is known as the <strong>null distribution</strong>.</p>
+
+<div class="definition">
+<span id="def:defn-null-distribution" class="definition"><strong>Definition 7.1  (Null Distribution)  </strong></span>The sampling distribution of a statistic <em>if</em> the null hypothesis is true.
+</div>
+<p></p>
+<p>To construct the null distribution, we do the following steps (illustrated in Figure <a href="NullDistns.html#fig:nulldistns-null-distribution">7.2</a>:</p>
+<ol style="list-style-type: decimal">
+<li>Sample randomly from a fake population where the null hypothesis is true.</li>
+<li>For each sample, compute the statistic of interest.</li>
+<li>Repeat steps 1 and 2 several thousand times.</li>
+<li>Plot the statistics retained from each sample.</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:nulldistns-null-distribution"></span>
+<img src="images/NullDistns-Null-Distribution.jpg" alt="Illustration of constructing a null distribution.  Notice the similarity to constructing the sampling distributon." width="80%" />
+<p class="caption">
+Figure 7.2: Illustration of constructing a null distribution. Notice the similarity to constructing the sampling distributon.
+</p>
+</div>
+<p>Notice that these are the same steps as in constructing a sampling distribution with the exception that instead of sampling from the population of interest, we sample from a hypothetical population in which the null distribution is true. With today’s computational power, we are able to make such samples possible similar to bootstrapping since we can make the null population in a virtual world and sample from it. That is, we are simulating what would happen if the null hypothesis were true. Figure <a href="NullDistns.html#fig:nulldistns-deepwater-null">7.3</a> represents the null distribution for the proportion of volunteers in a sample of 54 assigned to clean wildlife which would develop adverse sympoms when the null hypothesis is that the proportion is 0.20.</p>
+<div class="figure" style="text-align: center"><span id="fig:nulldistns-deepwater-null"></span>
+<img src="images/nulldistns-deepwater-null-1.png" alt="Null distribution for the proportion of volunteers assigned to clean wildlife experiencing adverse respiratory symptoms.  Null hypothesis is that the proportion is 0.20; this is based on a sample of size 54." width="80%" />
+<p class="caption">
+Figure 7.3: Null distribution for the proportion of volunteers assigned to clean wildlife experiencing adverse respiratory symptoms. Null hypothesis is that the proportion is 0.20; this is based on a sample of size 54.
+</p>
+</div>
+</div>
+<div id="using-the-null-distribution" class="section level2">
+<h2><span class="header-section-number">7.3</span> Using the Null Distribution</h2>
+<p>From the figure, we see that <em>if the null hypothesis were true</em> — if only 1 in 5 volunteers assigned to clean wildlife experienced symptoms — then in a sample of 54 individuals, we would expect the proportion who experienced symptoms to be somewhere between 0.1 and 0.3. <em>If the null hypothesis were true</em>, it would be nearly impossible that half of the individuals experienced symptoms (since 0.5 is way off in the tail of the distribution). The further in the tail region, the more extreme the sample. The question is then how extreme is our sample? Again, the null distribution is just setting up expectations; now, we have to weigh the evidence against those expectations.</p>
+<p>In our sample, we observed 27.8% of volunteers who experienced symptoms. Since 0.278 is towards the center of the distribution, we would say that it is not an extreme sample. In order to quantify how extreme (or not extreme) its, we find out what fraction of values are more extreme (larger than in this case) than the value observed; that is, what fraction of values appear in the right tail of the distribution. Figure <a href="NullDistns.html#fig:nulldistns-deepwater-pvalue">7.4</a> illustrates this computation. Based on the null distribution, there is a 10.6% chance that <em>if the null hypothesis were true</em> — only 1 in 5 volunteers actually experienced symptoms — that in a random sample of 54 volunteers we would obtain data this extreme or moreso by chance alone. Essentially, this tail area is quantifying the strength of the evidence. The smaller this area, the further in the tail region our data is; that is, our data is more unexpected. Therefore, small areas indicate that the data (our evidence) does not jive with our expectations under the null (innocence), forcing us to conclude the data provides evidence <em>against</em> the null hypothesis. In our case, since the area is relatively large, our data is completely consistent with what we might expect if the null were true. Therefore, in this case, we conclude that there is no evidence that the rate of those experiencing symptoms exceeds 1 in 5. This area is known as the <strong>p-value</strong>.</p>
+<div class="figure" style="text-align: center"><span id="fig:nulldistns-deepwater-pvalue"></span>
+<img src="images/nulldistns-deepwater-pvalue-1.png" alt="Likelihood of obtaining a sample as extreme or moreso as that of the original sample when the parameter of interest is the proportion of volunteers assigned to clean wildlife experiencing adverse respiratory symptoms.  Null hypothesis is that the proportion is 0.20; this is based on a sample of size 54." width="80%" />
+<p class="caption">
+Figure 7.4: Likelihood of obtaining a sample as extreme or moreso as that of the original sample when the parameter of interest is the proportion of volunteers assigned to clean wildlife experiencing adverse respiratory symptoms. Null hypothesis is that the proportion is 0.20; this is based on a sample of size 54.
+</p>
+</div>
+
+<div class="definition">
+<span id="def:defn-pvalue" class="definition"><strong>Definition 7.2  (P-Value)  </strong></span>The probability, assuming the null hypothesis is true, that we would observe a statistic, by chance alone, as extreme or moreso as that observed in our sample. This quantifies the strength of evidence against the null hypothesis. Smaller values indicate stronger evidence.
+</div>
+<p></p>
+<p>It is natural to ask “how small does the p-value need to be to prove a statement?” Like a trial, the weight of the evidence presented depends on the context. In some studies, a p-value less than 0.01 may be strong evidence while in other studies a p-value less than <span class="math inline">\(10^{-6}\)</span> is required. And, as in a trial, it is not only the strength of the evidence but the type of evidence presented (DNA evidence may be stronger than fingerprint evidence). In statistics, it is important to consider the effect size as well as the p-value. That is, consider whether the difference between the estimate and the null value is actually large; this is always based on subject-matter expertise. It is often helpful to report a confidence interval alongside a p-value.</p>
+
+<div class="rmdtip">
+<p>While what constitutes “significant” may vary from discipline to discipline, the list below is a good rule of thumb:</p>
+<ul>
+<li><span class="math inline">\(p \geq 0.1\)</span>: no evidence against the null hypothesis.</li>
+<li><span class="math inline">\(0.05 \leq p &lt; 0.1\)</span>: weak evidence against the null hypothesis.</li>
+<li><span class="math inline">\(0.01 \leq p &lt; 0.05\)</span>: some evidence against the null hypothesis.</li>
+<li><span class="math inline">\(0.001 \leq p &lt; 0.01\)</span>: evidence against the null hypothesis.</li>
+<li><span class="math inline">\(p &lt; 0.001\)</span>: strong evidence against the null hypothesis.</li>
+</ul>
+As with any rule of thumb, this should not be considered binding and may vary depending on the application.
+</div>
+<p></p>
+<p>Like confidence intervals, p-values are often misinterpreted. In fact, they have become so abused that some researchers argue against their use. It is our opinion that the p-value can be a useful tool once it is appropriately understood; so, let’s dispell some of these misconceptions. Consider these <em>incorrect</em> statements regarding the p-value obtained for the <a href="CaseDeepwater.html#CaseDeepwater">Deewater Horizon Case Study</a> computed above:</p>
+<ul>
+<li>There is a 10.6% chance that only 1 in 5 volunteers assigned to clean wildlife will experience adverse symptoms.</li>
+<li>Since the p-value is large, there is evidence (or the data supports the claim) that 1 in 5 volunteers assigned to clean wildlife will experience adverse symptoms.</li>
+</ul>
+<p>The first statement incorrectly assumes that there is some chance that the null hypothesis is true. Remember, our two hypotheses are statements about the parameter. One is true and other is not. Our ignorance does not change this; therefore, it does not make sense to talk about the probability of the null being true or false. Instead, our job is to quantify the likelihood of the data <em>assuming the null is true</em>. The p-value is about the likelihood of the data under a particular model (the null hypothesis).</p>
+<p>The second statement makes the common mistake that a lack of evidence for the alternative is evidence in favor of the null. A lack of evidence is like a “not guilty” verdict. It simply means we were not convinced. However, it does not mean that the defendant is innocent. All we are saying with the large p-value in this case is that the data is <em>consistent</em> with only 1 in 5 volunteers getting adverse symptoms; unfortunately, it is also <em>consistent</em> with more than 1 in 5 volunteers getting adverse symptoms. This may be an unsatisfying conclusion, but it is still a conclusion nonetheless. Our conclusion was based on assessing the variability of a the statistic under a particular model. This is captured in our last of the <em>Five Fundamental Ideas of Inference</em>:</p>
+
+<div class="rmdfivefund">
+<strong>Fundamental Idea V</strong>: With a model for the distribution of a statistic, we can quantify the error in our estimate and the likelihood of a sample under a proposed model. This allows us to draw conclusions about the corresponding parameter, and therefore the population, of interest.
+</div>
+<p></p>
+</div>
+<div id="sampling-distributions-vs.null-distributions" class="section level2">
+<h2><span class="header-section-number">7.4</span> Sampling Distributions vs. Null Distributions</h2>
+<p>Clearly the sampling distribution and null distribution of a statistic are closely related. The difference is that the null distribution is created under a proposed model while the sampling distribution lets the data speak for itself. It is worth taking just a moment to highlight the differences in the use of these two components of the <em>Distributional Quartet</em>.</p>
+<p>The sampling distribution is centered on the true value of the parameter; the null distribution is centered on the null value. Once we assume the null hypothesis is true, we have a value for the parameter; as a result, we expect the sampling distribution under this assumption (that is, the null distribution) to be centered on this hypothesized value. So, null distributions are <em>always</em> centered on the null value.</p>
+<p>Sampling distributions lead to confidence intervals by specifying reasonable values of the parameter.</p>
+<p>Null distributions lead to p-values by quantifying the likelihood of our data under a proposed model.</p>
+
+<div class="rmdtip">
+<p>Model the sampling distribution to construct a confidence interval; to assess a hypothesis the null value is overlayed on the sampling distribution. Extreme values of the distribution are unreasonable values for the parameter.</p>
+Model the null distribution to compute a p-value; to assess a hypothesis, the statistic from the sample is overlayed on the null distribution. Extreme values of the distribution are values which provide evidence against the null hypothesis.
+</div>
+<p></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="SamplingDistns.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="RecapLanguage.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": ["MA223CourseNotes.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
