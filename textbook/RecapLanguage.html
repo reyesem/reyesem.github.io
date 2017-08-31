@@ -1,3 +1,298 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statistical Foundations for Engineers and Scientists</title>
+  <meta name="description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology.">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Statistical Foundations for Engineers and Scientists" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Statistical Foundations for Engineers and Scientists" />
+  
+  <meta name="twitter:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="NullDistns.html">
+<link rel="next" href="CaseOrganic.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Modeling</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Unit I: Language and Logic of Inference</b></span></li>
+<li class="chapter" data-level="1" data-path="Basics.html"><a href="Basics.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1.1" data-path="Basics.html"><a href="Basics.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="1.2" data-path="Basics.html"><a href="Basics.html#anatomy-of-a-dataset"><i class="fa fa-check"></i><b>1.2</b> Anatomy of a Dataset</a></li>
+<li class="chapter" data-level="1.3" data-path="Basics.html"><a href="Basics.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.3</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="CaseDeepwater.html"><a href="CaseDeepwater.html"><i class="fa fa-check"></i><b>2</b> Case Study: Health Effects of the Deepwater Horizon Oil Spill</a></li>
+<li class="chapter" data-level="3" data-path="Questions.html"><a href="Questions.html"><i class="fa fa-check"></i><b>3</b> Asking the Right Questions</a><ul>
+<li class="chapter" data-level="3.1" data-path="Questions.html"><a href="Questions.html#characterizing-a-variable"><i class="fa fa-check"></i><b>3.1</b> Characterizing a Variable</a></li>
+<li class="chapter" data-level="3.2" data-path="Questions.html"><a href="Questions.html#framing-the-question"><i class="fa fa-check"></i><b>3.2</b> Framing the Question</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>4</b> Gathering the Evidence (Data Collection)</a><ul>
+<li class="chapter" data-level="4.1" data-path="Data.html"><a href="Data.html#what-makes-a-sample-reliable"><i class="fa fa-check"></i><b>4.1</b> What Makes a Sample Reliable</a></li>
+<li class="chapter" data-level="4.2" data-path="Data.html"><a href="Data.html#poor-methods-of-data-collection"><i class="fa fa-check"></i><b>4.2</b> Poor Methods of Data Collection</a></li>
+<li class="chapter" data-level="4.3" data-path="Data.html"><a href="Data.html#preferred-methods-of-sampling"><i class="fa fa-check"></i><b>4.3</b> Preferred Methods of Sampling</a></li>
+<li class="chapter" data-level="4.4" data-path="Data.html"><a href="Data.html#two-types-of-studies"><i class="fa fa-check"></i><b>4.4</b> Two Types of Studies</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Summaries.html"><a href="Summaries.html"><i class="fa fa-check"></i><b>5</b> Presenting the Evidence (Summarizing Data)</a><ul>
+<li class="chapter" data-level="5.1" data-path="Summaries.html"><a href="Summaries.html#characteristics-of-a-distribution-summarizing-a-single-variable"><i class="fa fa-check"></i><b>5.1</b> Characteristics of a Distribution (Summarizing a Single Variable)</a></li>
+<li class="chapter" data-level="5.2" data-path="Summaries.html"><a href="Summaries.html#summarizing-relationships"><i class="fa fa-check"></i><b>5.2</b> Summarizing Relationships</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="SamplingDistns.html"><a href="SamplingDistns.html"><i class="fa fa-check"></i><b>6</b> Assessing the Evidence (Quantifying the Variability in Estimates)</a><ul>
+<li class="chapter" data-level="6.1" data-path="SamplingDistns.html"><a href="SamplingDistns.html#conceptualizing-the-sampling-distribution"><i class="fa fa-check"></i><b>6.1</b> Conceptualizing the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="SamplingDistns.html"><a href="SamplingDistns.html#example-of-a-sampling-distribution"><i class="fa fa-check"></i><b>6.2</b> Example of a Sampling Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="SamplingDistns.html"><a href="SamplingDistns.html#modeling-the-sampling-distribution"><i class="fa fa-check"></i><b>6.3</b> Modeling the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="SamplingDistns.html"><a href="SamplingDistns.html#using-a-model-for-the-sampling-distributions-confidence-intervals"><i class="fa fa-check"></i><b>6.4</b> Using a Model for the Sampling Distributions (Confidence Intervals)</a></li>
+<li class="chapter" data-level="6.5" data-path="SamplingDistns.html"><a href="SamplingDistns.html#bringing-it-all-together"><i class="fa fa-check"></i><b>6.5</b> Bringing it All Together</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="NullDistns.html"><a href="NullDistns.html"><i class="fa fa-check"></i><b>7</b> Quantifying the Evidence (Rejecting Bad Models)</a><ul>
+<li class="chapter" data-level="7.1" data-path="NullDistns.html"><a href="NullDistns.html#some-subtleties"><i class="fa fa-check"></i><b>7.1</b> Some Subtleties</a></li>
+<li class="chapter" data-level="7.2" data-path="NullDistns.html"><a href="NullDistns.html#assuming-the-null-hypothesis"><i class="fa fa-check"></i><b>7.2</b> Assuming the Null Hypothesis</a></li>
+<li class="chapter" data-level="7.3" data-path="NullDistns.html"><a href="NullDistns.html#using-the-null-distribution"><i class="fa fa-check"></i><b>7.3</b> Using the Null Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="NullDistns.html"><a href="NullDistns.html#sampling-distributions-vs.null-distributions"><i class="fa fa-check"></i><b>7.4</b> Sampling Distributions vs. Null Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="RecapLanguage.html"><a href="RecapLanguage.html"><i class="fa fa-check"></i><b>8</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="8.1" data-path="RecapLanguage.html"><a href="RecapLanguage.html#framing-the-question-fundamental-idea-i"><i class="fa fa-check"></i><b>8.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="8.2" data-path="RecapLanguage.html"><a href="RecapLanguage.html#getting-good-data-fundamental-idea-ii"><i class="fa fa-check"></i><b>8.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="8.3" data-path="RecapLanguage.html"><a href="RecapLanguage.html#presenting-the-data-fundamental-idea-iii"><i class="fa fa-check"></i><b>8.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="8.4" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv"><i class="fa fa-check"></i><b>8.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="8.5" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-evidence-fundamental-idea-v"><i class="fa fa-check"></i><b>8.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="8.6" data-path="RecapLanguage.html"><a href="RecapLanguage.html#summary"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>II Unit II: Comparing the Average Response Across Groups</b></span></li>
+<li class="chapter" data-level="9" data-path="CaseOrganic.html"><a href="CaseOrganic.html"><i class="fa fa-check"></i><b>9</b> Case Study: Organic Foods and Superior Morals</a></li>
+<li class="chapter" data-level="10" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html"><i class="fa fa-check"></i><b>10</b> Framing the Question</a><ul>
+<li class="chapter" data-level="10.1" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html#general-setting"><i class="fa fa-check"></i><b>10.1</b> General Setting</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="ANOVAdata.html"><a href="ANOVAdata.html"><i class="fa fa-check"></i><b>11</b> Study Design</a><ul>
+<li class="chapter" data-level="11.1" data-path="ANOVAdata.html"><a href="ANOVAdata.html#aspects-of-a-well-designed-experiment"><i class="fa fa-check"></i><b>11.1</b> Aspects of a Well Designed Experiment</a></li>
+<li class="chapter" data-level="11.2" data-path="ANOVAdata.html"><a href="ANOVAdata.html#collecting-observational-data"><i class="fa fa-check"></i><b>11.2</b> Collecting Observational Data</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="ANOVAsummaries.html"><a href="ANOVAsummaries.html"><i class="fa fa-check"></i><b>12</b> Presenting the Data</a></li>
+<li class="chapter" data-level="13" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html"><i class="fa fa-check"></i><b>13</b> Quantifying the Evidence</a><ul>
+<li class="chapter" data-level="13.1" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="13.2" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#forming-a-standardized-test-statistic"><i class="fa fa-check"></i><b>13.2</b> Forming a Standardized Test Statistic</a></li>
+<li class="chapter" data-level="13.3" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#obtaining-a-p-value"><i class="fa fa-check"></i><b>13.3</b> Obtaining a P-value</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html"><i class="fa fa-check"></i><b>14</b> Building the Statistical Model</a><ul>
+<li class="chapter" data-level="14.1" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#general-formulation"><i class="fa fa-check"></i><b>14.1</b> General Formulation</a></li>
+<li class="chapter" data-level="14.2" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#statistical-model-for-a-quantitative-response-and-a-categorical-predictor"><i class="fa fa-check"></i><b>14.2</b> Statistical Model for A Quantitative Response and a Categorical Predictor</a></li>
+<li class="chapter" data-level="14.3" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#conditions-on-the-error-distribution"><i class="fa fa-check"></i><b>14.3</b> Conditions on the Error Distribution</a></li>
+<li class="chapter" data-level="14.4" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#simulating-the-null-distribution"><i class="fa fa-check"></i><b>14.4</b> Simulating the Null Distribution</a></li>
+<li class="chapter" data-level="14.5" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#recap"><i class="fa fa-check"></i><b>14.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html"><i class="fa fa-check"></i><b>15</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="15.1" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-independence"><i class="fa fa-check"></i><b>15.1</b> Assessing Independence</a></li>
+<li class="chapter" data-level="15.2" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-homoskedasticity"><i class="fa fa-check"></i><b>15.2</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="15.3" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-normality"><i class="fa fa-check"></i><b>15.3</b> Assessing Normality</a></li>
+<li class="chapter" data-level="15.4" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#general-tips-for-assessing-assumptions"><i class="fa fa-check"></i><b>15.4</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Foundations for Engineers and Scientists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="RecapLanguage" class="section level1">
+<h1><span class="header-section-number">8</span> Using the Tools Together</h1>
+<p>In this unit, we have introduced the key components in both the language and logic of statistical inference. In fact, with a firm grasp of the concepts in this unit, you should be able to read and interpret key statistical findings. All statistical analyses make use of the <em>Five Fundamental Ideas of Inference</em> and alternate between the members of the <em>Distributional Quartet</em>. The context of each problem differs, but the logic remains the same. In this chapter, we present another analysis based on the <a href="CaseDeepwater.html#CaseDeepwater">Deepwater Horizon Case Study</a>, annotating it along the way to see how these elements work together fluidly to reach a conclusion. Specifically, we are interested in the following question:</p>
+<blockquote>
+<p>Are volunteers assigned to clean wildlife at higher risk of developing adverse respiratory symptoms compared to those volunteers who do not come into direct contact with oil? If so, estimate the increased risk.</p>
+</blockquote>
+<div id="framing-the-question-fundamental-idea-i" class="section level2">
+<h2><span class="header-section-number">8.1</span> Framing the Question (Fundamental Idea I)</h2>
+<p>We are really interested in whether the rate of respiratory symptoms in one group of volunteers is larger than that in a second group. Therefore, our working assumption is that there is no difference in the rate of respiratory symptoms between these two groups. That is, we have</p>
+<blockquote>
+<p><span class="math inline">\(H_0:\)</span> the rate of adverse respiratory symptoms is similar between volunteers assigned to clean wildlife and those assigned to tasks which do not involve direct exposure to oil.<br />
+<span class="math inline">\(H_1:\)</span> the rate of adverse respiratory symptoms is greater for volunteers assigned to clean wildlife and those assigned to tasks which do not involve direct exposure to oil.</p>
+</blockquote>
+<p>We can also state this more formally with mathematical notation as follows:</p>
+<blockquote>
+<p>Let <span class="math inline">\(\theta_1\)</span> be the rate of developing adverse respiratory symptoms for volunteers assigned to clean wildlife.<br />
+Let <span class="math inline">\(\theta_2\)</span> be the rate of developing adverse respiratory symptoms for volunteers assigned to tasks without direct exposure to oil.<br />
+<span class="math inline">\(H_0: \theta_1/\theta_2 \leq 1\)</span><br />
+<span class="math inline">\(H_1: \theta_1/\theta_2 &gt; 1\)</span></p>
+</blockquote>
+<p>The ratio <span class="math inline">\(\theta_1/\theta_2\)</span> is known as the <em>risk ratio</em> as it captures the increased risk for one group compared to another.</p>
+<p>Notice that this is a well-posed question as it centers on parameters which characterize the population. Therefore, it can be answered with appropriate data.</p>
+<blockquote>
+<p>Distribution of the Population: Our questions of interest are about the population and therefore focus on characterizing this distribution.</p>
+</blockquote>
+</div>
+<div id="getting-good-data-fundamental-idea-ii" class="section level2">
+<h2><span class="header-section-number">8.2</span> Getting Good Data (Fundamental Idea II)</h2>
+<p>As we are working with previously collected data, we are unable to design a good sampling scheme. The only thing we can do at this point is critique the sample we have. The key question to ask ourselves is whether there is any reason that these group of volunteers differs systematically from other volunteers working oil spills. For example, this oil spill occurred in the Gulf of Mexico; the majority of volunteers were then naturally residents of Gulf states. It is possible that these residents are somehow fundamentally different with respect to their risk of developing adverse respiratory symptoms compared to the remainder of the United States. If that is the case, the results of this study would not generalize to oil spills occuring in the Atlantic. However, it is probably reasonable to say that these results would apply to future oil spills in the Gulf.</p>
+<p>Also note that this was not a controlled experiment. Volunteers were not randomly allocated to their assignments that we know of. Therefore, our results could be somewhat limited. The two groups should be compared regarding other attributes (this data is unavailable to us currently) in order to determine if they are similar with respect to other variables which may potentially confound the results.</p>
+</div>
+<div id="presenting-the-data-fundamental-idea-iii" class="section level2">
+<h2><span class="header-section-number">8.3</span> Presenting the Data (Fundamental Idea III)</h2>
+<p>The heart of this question is comparing the rate of adverse events in each group. Figure <a href="RecapLanguage.html#fig:recaplanguage-deepwater-plot">8.1</a> makes this comparison.</p>
+<div class="figure" style="text-align: center"><span id="fig:recaplanguage-deepwater-plot"></span>
+<img src="images/recaplanguage-deepwater-plot-1.png" alt="The risk of developing adverse respiratory symptoms for volunteers assigned to clean wildlife and those volunteers assigned to tasks which do not have direct exposure to oil." width="80%" />
+<p class="caption">
+Figure 8.1: The risk of developing adverse respiratory symptoms for volunteers assigned to clean wildlife and those volunteers assigned to tasks which do not have direct exposure to oil.
+</p>
+</div>
+<p>As seen in the figure, the rate of adverse respiratory symptoms is larger in the group of volunteers assigned to wildlife cleanup. The rate of respiratory symptoms is 1.79 times higher in the volunteers assigned to clean wildlife compared to those assigned to tasks with no direct oil exposure.</p>
+<p>Notice that we reported the relative risk comparing the two groups as it is directly tied to how we specified the hypotheses above.</p>
+<blockquote>
+<p>Distribution of the Sample: graphics and numerical summaries characterize this distribution, informing us about the underlying population. This is possible as long as the sample is representative of the population.</p>
+</blockquote>
+</div>
+<div id="quantifying-the-variability-in-the-estimate-fundamental-idea-iv" class="section level2">
+<h2><span class="header-section-number">8.4</span> Quantifying the Variability in the Estimate (Fundamental Idea IV)</h2>
+<p>While we have an estimate for the increased risk of adverse respiratory symptoms for those volunteers assigned to clean wildlife, the estimate has not taken into account the variability in the sample. In order to quantify this variability, we use a bootstrap procedure to model the sampling distribution of the risk ratio. Observe that we focus on the sampling distribution of the statistic that estimates the parameter of interest.</p>
+<p>Recall that the bootstrap mimics the process for generating a sampling distribution. In this case, “repeating the study” involves collecting data from not one, but two groups. So, we must resample both from the 54 volunteers who were assigned to clean wildlife and the 103 volunteers assigned to tasks not involving direct oil exposure. Each time we resample, we ensure that we select 54 volunteers who clean wildlife and 103 who do not. We need the process of the original study to be maintained. Each time we resample from these groups, we compue the relative risk and retain this value. Figure <a href="RecapLanguage.html#fig:recaplanguage-sampling-distribution">8.2</a> shows the sampling distribution for the relative risk comparing these two groups. Again, it is important to note that we are not generating <em>new</em> data; we are <em>resampling</em>/<em>reusing</em> the original sample.</p>
+<div class="figure" style="text-align: center"><span id="fig:recaplanguage-sampling-distribution"></span>
+<img src="images/recaplanguage-sampling-distribution-1.png" alt="Model of the sampling distribution for the relative risk comparing volunteers assigned to clean wildlife to volunteers assigned to tasks not involving oil exposure.  The model was developed via bootstrapping using 50000 replications." width="80%" />
+<p class="caption">
+Figure 8.2: Model of the sampling distribution for the relative risk comparing volunteers assigned to clean wildlife to volunteers assigned to tasks not involving oil exposure. The model was developed via bootstrapping using 50000 replications.
+</p>
+</div>
+<p>Volunteers assigned to clean wildlife have are 1.79 times (95% CI = (0.92, 3.47)) more likely to experience adverse respiratory symptoms compared to those volunteers assigned to tasks not requiring direct exposure to oil. Our data suggests that our data is consistent with the two groups having a similar risk but tends toward volunteers assigned to clean wildlife being at increased risk..</p>
+<blockquote>
+<p>Sampling Distribution: allows us to quantify the variability in the statistic and provide an interval estimate for the paraemter which incorporates this variability.</p>
+</blockquote>
+</div>
+<div id="quantifying-the-evidence-fundamental-idea-v" class="section level2">
+<h2><span class="header-section-number">8.5</span> Quantifying the Evidence (Fundamental Idea V)</h2>
+<p>In order to quantify the departure of the data from our working assumption that the risk is similar between the two groups, we rely on the null distribution and compute a p-value.</p>
+<div class="figure" style="text-align: center"><span id="fig:recaplanguage-null-distribution"></span>
+<img src="images/recaplanguage-null-distribution-1.png" alt="Null distribution for the relative risk comparing volunteers assigned to clean wildlife to volunteers assigned to tasks not involving oil exposure.  The null hypothesis assumed the two groups of volunteers had a similar risk.  The nul distribution was developed via bootstrapping using 50000 replications." width="80%" />
+<p class="caption">
+Figure 8.3: Null distribution for the relative risk comparing volunteers assigned to clean wildlife to volunteers assigned to tasks not involving oil exposure. The null hypothesis assumed the two groups of volunteers had a similar risk. The nul distribution was developed via bootstrapping using 50000 replications.
+</p>
+</div>
+<p>There is some evidence (p = 0.04) to suggest that volunteers exposed to oil have an increased risk of developing adverse respiratory symptoms. Given the estimated level of this increased risk, we believe this is something health officials should investigate further. It would be worth investigating further what aspects of the oil exposure may have caused the increased risk to determine if it can be avoided in the future.</p>
+<p>Note we are careful to not claim that the assignments have caused an increase in the risk as this data is not from a controlled experiment. This is one of the limitations of this analysis. However, if we are able to assume the two groups are fairly similar with respect to other attributes — that is, there is no reason why people prone to respiratory symptoms would become assigned to wildlife cleaning — then we may have some reason to believe the results are causal. We will wrestle more with these types of conclusions in the next unit.</p>
+<blockquote>
+<p>Null Distribution: allows us to quantify the level of evidence against a particular claim; how strongly do the data disagree with the working assumption.</p>
+</blockquote>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">8.6</span> Summary</h2>
+<p>Notice that our analysis moved through the <em>Five Fundamental Ideas</em>, and in doing so made use or referenced each of the four components of the <em>Distributional Quartet</em>. As we move through the remainder of the text, we will explore how these frameworks are used in various other analysis scanarios. As we do, we reveal additional concepts that underly statistical modeling.</p>
+<p>We admit that there are several other questions that may be raised by the above analysis. This unit is meant to introduce the big concepts of inference. We will concern ourselves more with the details as we progress through the text.</p>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="NullDistns.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="CaseOrganic.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": ["MA223CourseNotes.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
+=======
 <!DOCTYPE html>
 <html >
 
@@ -299,3 +594,4 @@ gitbook.start({
 </body>
 
 </html>
+>>>>>>> 23ee8a8a7c236cbae1c1065815b23eb6aef0fde0

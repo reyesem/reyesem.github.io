@@ -1,3 +1,352 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statistical Foundations for Engineers and Scientists</title>
+  <meta name="description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology.">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Statistical Foundations for Engineers and Scientists" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Statistical Foundations for Engineers and Scientists" />
+  
+  <meta name="twitter:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="ANOVAteststat.html">
+<link rel="next" href="ANOVAassessment.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Modeling</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Unit I: Language and Logic of Inference</b></span></li>
+<li class="chapter" data-level="1" data-path="Basics.html"><a href="Basics.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1.1" data-path="Basics.html"><a href="Basics.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="1.2" data-path="Basics.html"><a href="Basics.html#anatomy-of-a-dataset"><i class="fa fa-check"></i><b>1.2</b> Anatomy of a Dataset</a></li>
+<li class="chapter" data-level="1.3" data-path="Basics.html"><a href="Basics.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.3</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="CaseDeepwater.html"><a href="CaseDeepwater.html"><i class="fa fa-check"></i><b>2</b> Case Study: Health Effects of the Deepwater Horizon Oil Spill</a></li>
+<li class="chapter" data-level="3" data-path="Questions.html"><a href="Questions.html"><i class="fa fa-check"></i><b>3</b> Asking the Right Questions</a><ul>
+<li class="chapter" data-level="3.1" data-path="Questions.html"><a href="Questions.html#characterizing-a-variable"><i class="fa fa-check"></i><b>3.1</b> Characterizing a Variable</a></li>
+<li class="chapter" data-level="3.2" data-path="Questions.html"><a href="Questions.html#framing-the-question"><i class="fa fa-check"></i><b>3.2</b> Framing the Question</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>4</b> Gathering the Evidence (Data Collection)</a><ul>
+<li class="chapter" data-level="4.1" data-path="Data.html"><a href="Data.html#what-makes-a-sample-reliable"><i class="fa fa-check"></i><b>4.1</b> What Makes a Sample Reliable</a></li>
+<li class="chapter" data-level="4.2" data-path="Data.html"><a href="Data.html#poor-methods-of-data-collection"><i class="fa fa-check"></i><b>4.2</b> Poor Methods of Data Collection</a></li>
+<li class="chapter" data-level="4.3" data-path="Data.html"><a href="Data.html#preferred-methods-of-sampling"><i class="fa fa-check"></i><b>4.3</b> Preferred Methods of Sampling</a></li>
+<li class="chapter" data-level="4.4" data-path="Data.html"><a href="Data.html#two-types-of-studies"><i class="fa fa-check"></i><b>4.4</b> Two Types of Studies</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Summaries.html"><a href="Summaries.html"><i class="fa fa-check"></i><b>5</b> Presenting the Evidence (Summarizing Data)</a><ul>
+<li class="chapter" data-level="5.1" data-path="Summaries.html"><a href="Summaries.html#characteristics-of-a-distribution-summarizing-a-single-variable"><i class="fa fa-check"></i><b>5.1</b> Characteristics of a Distribution (Summarizing a Single Variable)</a></li>
+<li class="chapter" data-level="5.2" data-path="Summaries.html"><a href="Summaries.html#summarizing-relationships"><i class="fa fa-check"></i><b>5.2</b> Summarizing Relationships</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="SamplingDistns.html"><a href="SamplingDistns.html"><i class="fa fa-check"></i><b>6</b> Assessing the Evidence (Quantifying the Variability in Estimates)</a><ul>
+<li class="chapter" data-level="6.1" data-path="SamplingDistns.html"><a href="SamplingDistns.html#conceptualizing-the-sampling-distribution"><i class="fa fa-check"></i><b>6.1</b> Conceptualizing the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="SamplingDistns.html"><a href="SamplingDistns.html#example-of-a-sampling-distribution"><i class="fa fa-check"></i><b>6.2</b> Example of a Sampling Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="SamplingDistns.html"><a href="SamplingDistns.html#modeling-the-sampling-distribution"><i class="fa fa-check"></i><b>6.3</b> Modeling the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="SamplingDistns.html"><a href="SamplingDistns.html#using-a-model-for-the-sampling-distributions-confidence-intervals"><i class="fa fa-check"></i><b>6.4</b> Using a Model for the Sampling Distributions (Confidence Intervals)</a></li>
+<li class="chapter" data-level="6.5" data-path="SamplingDistns.html"><a href="SamplingDistns.html#bringing-it-all-together"><i class="fa fa-check"></i><b>6.5</b> Bringing it All Together</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="NullDistns.html"><a href="NullDistns.html"><i class="fa fa-check"></i><b>7</b> Quantifying the Evidence (Rejecting Bad Models)</a><ul>
+<li class="chapter" data-level="7.1" data-path="NullDistns.html"><a href="NullDistns.html#some-subtleties"><i class="fa fa-check"></i><b>7.1</b> Some Subtleties</a></li>
+<li class="chapter" data-level="7.2" data-path="NullDistns.html"><a href="NullDistns.html#assuming-the-null-hypothesis"><i class="fa fa-check"></i><b>7.2</b> Assuming the Null Hypothesis</a></li>
+<li class="chapter" data-level="7.3" data-path="NullDistns.html"><a href="NullDistns.html#using-the-null-distribution"><i class="fa fa-check"></i><b>7.3</b> Using the Null Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="NullDistns.html"><a href="NullDistns.html#sampling-distributions-vs.null-distributions"><i class="fa fa-check"></i><b>7.4</b> Sampling Distributions vs. Null Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="RecapLanguage.html"><a href="RecapLanguage.html"><i class="fa fa-check"></i><b>8</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="8.1" data-path="RecapLanguage.html"><a href="RecapLanguage.html#framing-the-question-fundamental-idea-i"><i class="fa fa-check"></i><b>8.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="8.2" data-path="RecapLanguage.html"><a href="RecapLanguage.html#getting-good-data-fundamental-idea-ii"><i class="fa fa-check"></i><b>8.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="8.3" data-path="RecapLanguage.html"><a href="RecapLanguage.html#presenting-the-data-fundamental-idea-iii"><i class="fa fa-check"></i><b>8.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="8.4" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv"><i class="fa fa-check"></i><b>8.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="8.5" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-evidence-fundamental-idea-v"><i class="fa fa-check"></i><b>8.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="8.6" data-path="RecapLanguage.html"><a href="RecapLanguage.html#summary"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>II Unit II: Comparing the Average Response Across Groups</b></span></li>
+<li class="chapter" data-level="9" data-path="CaseOrganic.html"><a href="CaseOrganic.html"><i class="fa fa-check"></i><b>9</b> Case Study: Organic Foods and Superior Morals</a></li>
+<li class="chapter" data-level="10" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html"><i class="fa fa-check"></i><b>10</b> Framing the Question</a><ul>
+<li class="chapter" data-level="10.1" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html#general-setting"><i class="fa fa-check"></i><b>10.1</b> General Setting</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="ANOVAdata.html"><a href="ANOVAdata.html"><i class="fa fa-check"></i><b>11</b> Study Design</a><ul>
+<li class="chapter" data-level="11.1" data-path="ANOVAdata.html"><a href="ANOVAdata.html#aspects-of-a-well-designed-experiment"><i class="fa fa-check"></i><b>11.1</b> Aspects of a Well Designed Experiment</a></li>
+<li class="chapter" data-level="11.2" data-path="ANOVAdata.html"><a href="ANOVAdata.html#collecting-observational-data"><i class="fa fa-check"></i><b>11.2</b> Collecting Observational Data</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="ANOVAsummaries.html"><a href="ANOVAsummaries.html"><i class="fa fa-check"></i><b>12</b> Presenting the Data</a></li>
+<li class="chapter" data-level="13" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html"><i class="fa fa-check"></i><b>13</b> Quantifying the Evidence</a><ul>
+<li class="chapter" data-level="13.1" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="13.2" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#forming-a-standardized-test-statistic"><i class="fa fa-check"></i><b>13.2</b> Forming a Standardized Test Statistic</a></li>
+<li class="chapter" data-level="13.3" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#obtaining-a-p-value"><i class="fa fa-check"></i><b>13.3</b> Obtaining a P-value</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html"><i class="fa fa-check"></i><b>14</b> Building the Statistical Model</a><ul>
+<li class="chapter" data-level="14.1" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#general-formulation"><i class="fa fa-check"></i><b>14.1</b> General Formulation</a></li>
+<li class="chapter" data-level="14.2" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#statistical-model-for-a-quantitative-response-and-a-categorical-predictor"><i class="fa fa-check"></i><b>14.2</b> Statistical Model for A Quantitative Response and a Categorical Predictor</a></li>
+<li class="chapter" data-level="14.3" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#conditions-on-the-error-distribution"><i class="fa fa-check"></i><b>14.3</b> Conditions on the Error Distribution</a></li>
+<li class="chapter" data-level="14.4" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#simulating-the-null-distribution"><i class="fa fa-check"></i><b>14.4</b> Simulating the Null Distribution</a></li>
+<li class="chapter" data-level="14.5" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#recap"><i class="fa fa-check"></i><b>14.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html"><i class="fa fa-check"></i><b>15</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="15.1" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-independence"><i class="fa fa-check"></i><b>15.1</b> Assessing Independence</a></li>
+<li class="chapter" data-level="15.2" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-homoskedasticity"><i class="fa fa-check"></i><b>15.2</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="15.3" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-normality"><i class="fa fa-check"></i><b>15.3</b> Assessing Normality</a></li>
+<li class="chapter" data-level="15.4" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#general-tips-for-assessing-assumptions"><i class="fa fa-check"></i><b>15.4</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Foundations for Engineers and Scientists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ANOVAmodel" class="section level1">
+<h1><span class="header-section-number">14</span> Building the Statistical Model</h1>
+<p>The numerical summaries of any study are subject to sampling variability. That is, if we were to repeat the study with new subjects, the statistics we compute would almost certainly change to some degree. The key to feeling confident in our results is to quantify the variability in our estimates; this was the argument made in Chapters <a href="SamplingDistns.html#SamplingDistns">6</a> and <a href="NullDistns.html#NullDistns">7</a>. The goal of any statistical analysis is then to develop a model for the sampling (or null) distribution of a statistic. Often times, this requires modeling the data-generating process as a precursor. As in any other discipline, statistical models simplify the process being modeled by making certain assumptions. In this chapter, we develop a model that will help us make inference about the mean of several populations.</p>
+<div id="general-formulation" class="section level2">
+<h2><span class="header-section-number">14.1</span> General Formulation</h2>
+<p>Consider dropping a tennis ball from the top of a 50-meter building and recording the time required before the ball hits the ground. Applying the principles learned in a first course in physics, we would be able to compute the time precisely using the formula <span class="math display">\[\text{time} = \sqrt{\frac{2(\text{distance})}{9.8}}\]</span></p>
+<p>where <span class="math inline">\(9.8 m/s^2\)</span> is the acceleration due to gravity; further, this formula works regardless of the mass of the object. Plugging 50 meters into the equation yields a time of 10.2 seconds. If we were to drop a second tennis ball from the same building, the formula tells us that it will also take 10.2 seconds to hit the ground below. This is known as a <strong>deterministic</strong> system since entering a constant input always results in the same output.</p>
+
+<div class="definition">
+<span id="def:defn-deterministic-process" class="definition"><strong>Definition 14.1  (Deterministic Process)  </strong></span>One which is completely determined by the inputs. That is, entering the same input twice will always result in the same output with certainty.
+</div>
+<p></p>
+<p>This is a model; it simplifies extremely complex processes involving the gravitational pull between objects and works reasonably well. However, it does not always match reality. If we were to repeatedly drop tennis balls from the same 50-meter building and record the time before hitting the ground, we might find that the time differs slightly from one ball to the next. There are several reasons why our observed responses do not line up directly with those predicted by the above equation; for example, our device for measuring time may be subject to some measurement error, a strong gust of wind could alter the results (while the above equation assumes no air resistance), or the person dropping the ball may have inadvertantly increased the initial velocity of the ball. These reasons, and others, contribute to the observations not lining up with the model. That is, there is associated noise in the resulting measurements. A model which incorporates this noise might be written as <span class="math display">\[\text{time} = \sqrt{\frac{2(\text{distance})}{9.8}} + \text{noise}\]</span></p>
+<p>where the noise is not a known quantity. As a result, this is a <strong>stochastic</strong> model as the same value for distance may result in different outputs each time.</p>
+
+<div class="definition">
+<span id="def:defn-stochastic-process" class="definition"><strong>Definition 14.2  (Stochastic Process)  </strong></span>One which has an element of randomness. That is, the resulting output of the system cannot be predicted with certainty.
+</div>
+<p></p>
+<p>This leads us to our general formulation for a statistical model:</p>
+<span class="math display" id="eq:general-model">\[\begin{equation}
+  \text{Response} = f(\text{variables, parameters}) + \text{noise}
+  \tag{14.1}
+\end{equation}\]</span>
+<p>The response we observe is the result of two components:</p>
+<ul>
+<li>A deterministic component which takes the form of a function of variables and unknown parameters. It is often this component on which we would like to make inference.</li>
+<li>A stochastic component which captures the unexplained variability in the data generating process.</li>
+</ul>
+<p>Since the noise is a random element, it has a distribution. We often make additional assumptions on the structure of this distribution to enable inference on the deterministic component of the model. We discuss this later in the chapter.</p>
+<p>This general model adheres to the idea of partitioning the variability in the response. It says that a part of the reason the responses differ between subjects is because they have different variables (remember, parameters are fixed for all subjects in a population); part of the reason is unexplained noise. The overall goal of a statistical model is to give an explanation for why the data is what it is. How did it come to be? What process generated the values I have observed? Our statistical model says that these values have some deterministic component plus some additional noise we cannot explain. We now turn towards employing this model in the case of comparing the mean response for multiple groups.</p>
+</div>
+<div id="statistical-model-for-a-quantitative-response-and-a-categorical-predictor" class="section level2">
+<h2><span class="header-section-number">14.2</span> Statistical Model for A Quantitative Response and a Categorical Predictor</h2>
+<p>For the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a>, we are comparing the moral expectations (quantitative response) for different food exposures (levels of a categorical variable). Our model for the data-generating process is best understood in light of the graphic we used to display the data (see Figure <a href="ANOVAmodel.html#fig:anovamodel-organic-plot">14.1</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:anovamodel-organic-plot"></span>
+<img src="images/anovamodel-organic-plot-1.png" alt="Moral expectation scores for students following exposure to various food types." width="80%" />
+<p class="caption">
+Figure 14.1: Moral expectation scores for students following exposure to various food types.
+</p>
+</div>
+<p>Let’s consider how the value 3.67, highlighted red in Figure <a href="ANOVAmodel.html#fig:anovamodel-organic-plot">14.1</a>, was generated. As discussed previously, there are two sources of variability in the moral expectation scores (two reasons that the values are not all the same). One source is the fact that different subjects had different exposures. That is, one reason the value 3.67 differs from others observed is because this subject belongs to the organic group and not the comfort or control exposure groups. As this is something we can explain, it goes into the deterministic portion of the model; it is a function of known variables (group exposure). Let the function <span class="math inline">\(f(\cdot)\)</span> be such that the input is the group exposure for the <span class="math inline">\(i\)</span>-th subject and the output is the mean moral expectation score for that group; this can be represented as a piecewise function: <span class="math display">\[
+f\left((\text{Food Exposure Group})_i\right) = \begin{cases}
+  \mu_1 &amp; \text{if i-th subject exposed to organic foods} \\
+  \mu_2 &amp; \text{if i-th subject exposed to control foods} \\
+  \mu_3 &amp; \text{if i-th subject exposed to comfort foods} \end{cases}
+\]</span></p>
+<p>Notice that <span class="math inline">\(f(\cdot)\)</span> involves both a variable of interest as well as parameters of interest — the mean response <span class="math inline">\(\mu_1, \mu_2, \mu_3\)</span> for each of the three groups. This function is perfectly acceptable, but it is cumbersome to write in a shortened form. Notice how the function works: it receives an input regarding which group, and it directs you to the appropriate parameter as an output. We can write this in a compact way as <span class="math display">\[
+f\left((\text{Food Exposure Group})_i\right) = \sum_{j=1}^{3} \mu_j \mathbb{I}\left(\text{i-th subject in food exposure group j}\right)
+\]</span></p>
+<p>where <span class="math inline">\(\mathbb{I}(\cdot)\)</span> is the indicator function taking value 1 if the event occurs and 0 otherwise.</p>
+
+<div class="rmdkeyidea">
+The deterministic component of a statistical model incorporates the parameters which govern the question of interest. It is built to explain differences in the response based on differences in group membership or other characteristics of the subjects.
+</div>
+<p></p>
+<p>This is the deterministic part of the model, as inputing the same group always results in the same output — the unknown parameter characterizing the mean response for the group. This, however, only captures one reason we feel the responses differ across subject. This deterministic component says that every single person exposed to the same food group should have the same moral expectations. It does not explain why subjects within the organic group do not all share the average moral expectation score. This source of variability is something we cannot fully explain but attribute to natural variability in this group or measurement error in how we obtained the response. In order to capture this, we add noise to the system, and we allow this noise to be a random variable which is unique to each subject within the population. Letting <span class="math inline">\(\epsilon_i\)</span> represent the noise accompanying the response of the <span class="math inline">\(i\)</span>-th subject, we can now extend the model in Equation <a href="ANOVAmodel.html#eq:general-model">(14.1)</a> to accommodate these two sourses of variability and obtain <span class="math display">\[
+\text{(Moral Expectation Score)}_i = \sum_{j=1}^3 \mu_j \mathbb{I}(\text{i-th subject in food exposure group j}) + \epsilon_i
+\]</span></p>
+<p>This may be written in shorthand (suppressing the parameters and noise) as <span class="math display">\[ \text{Moral Expectation Score} \sim \text{Food Exposure Group}\]</span></p>
+
+<div class="rmdkeyidea">
+The stochastic component of a statistical model captures the unexplained variability due to natural variability in the population or measurement error in the response.
+</div>
+<p></p>
+
+<div class="rmdtip">
+<p>In general, given a quantitative response variable <span class="math inline">\(y\)</span>, our model for the data generating process comparing this variable across several levels of a factor is <span class="math display">\[y_i = \sum_{j=1}^k \mu_j \mathbb{I}(\text{i-th subject in factor level j}) + \epsilon_i\]</span></p>
+</div>
+<p></p>
+<p>In general, students struggle with the fact that we have two different models floating around. Currently, we are modeling the data-generating process. This model is used to develop a secondary model of the sampling distribution (or null distribution) of a statistic of interest. It is this secondary model that is actually necessary in order to conduct inference; the model for the data-generating process is simply a stepping stone to the model of interest.</p>
+</div>
+<div id="conditions-on-the-error-distribution" class="section level2">
+<h2><span class="header-section-number">14.3</span> Conditions on the Error Distribution</h2>
+<p>In our model for the data-generating process we incorporated a component <span class="math inline">\(\epsilon\)</span> to capture the noise within each group. Since the error is a random variable (stochastic element), we know it has a distribution. We typically assume a certain structure to this distribution. The more assumptions we are willing to make, the easier the analysis, but the less likely our model is to be applicable to the actual data-generating process we have observed. The conditions we make dictate how we conduct inference (the computation of a p-value or confidence interval).</p>
+<p>The first condition we consider is that the noise attributed to one observed individual is <strong>independent</strong> of the noise attributed to any other individual observed. That is, the amount of error in any one individual’s response is unrelated to the error in any other response observed. It is easiest to understand this condition by examining a case when the condition would not hold.</p>
+
+<div class="definition">
+<span id="def:defn-independence" class="definition"><strong>Definition 14.3  (Independence)  </strong></span>Two variables are said to be independent when the likelihood that one variable takes on a particular value does not depend on the value of the other variable.
+</div>
+<p></p>
+
+<div class="example">
+<p><span id="ex:ex-programming" class="example"><strong>Example 14.1  (Programming Speed)  </strong></span>Suppose we are conducting a study to compare the speed required to complete a particular programming task in two different languages: Python and R. We obtain a sample of 100 programmers previously exposed to Java but neither Python nor R. We ask each programmer to complete a programming exercise in Python and record the time required to successfully complete the task. Then, we ask each programmer to perform the same task in R and record the time required to successfully complete the task.</p>
+<p>The model for the data generating process would be <span class="math display">\[
+(\text{Time})_i = \mu_1 \mathbb{I}(\text{i-th task programmed in Python}) + \mu_2 mathbb{I}(\text{i-th task programmed in R}) + \epsilon_i
+\]</span></p>
+Given the method in which the data was collected, it would not be reasonable to assume the errors are independent of one another. Some programmers are naturally faster than others. A programmer with a below average (negative <span class="math inline">\(\epsilon\)</span>) time in Python will most likely have a below average (negative <span class="math inline">\(\epsilon\)</span>) time in R on the same task. Therefore, there is a relationship between the errors for some of the observations taken. This violates the independence condition.
+</div>
+<p></p>
+<p>The second condition that is typically placed on the distribution of the errors is that the variability of the responses is similar within each group. This assumption is known as <strong>homoskedasticity</strong>.</p>
+
+<div class="definition">
+<span id="def:defn-homoskedasticity" class="definition"><strong>Definition 14.4  (Homoskedasticity)  </strong></span>Also known as “constant variance,” this assumption states that the variability of error terms for individuals within a group is the same across all groups.
+</div>
+<p></p>
+<p>Practically, this means that the responses in one group are not dramatically more variable than any other group (the width of the box portion of a boxplot should be roughly the same across groups). This condition ensures that the precision of the measurements is roughly similar. In fact, we made use of this assumption in the construction of our standardized test statistic <span class="math display">\[T = \frac{MSTrt}{MSE}\]</span></p>
+<p>since MSE was a pooled estimate of the variability. If we were not willing to assume that the variabilities were similar, we would not construct a pooled estimate. This also highlights that the MSE is an estimate of the variability of observations within any group when this condition is satisfied.</p>
+</div>
+<div id="simulating-the-null-distribution" class="section level2">
+<h2><span class="header-section-number">14.4</span> Simulating the Null Distribution</h2>
+<p>We note that this section is a bit more technical than other sections. We want to give the reader a feel for the computational aspect of simulating the null distribution. However, understanding conceptually that we are repeating the study in a world in which the null hypothesis is true is sufficient for interpreting a p-value.</p>
+<p>Under the above conditions, we can model the null distribution of our standardized test statistic. The key here is to lean on our data generating process. Consider the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a>. <em>If the null hypothesis is true</em>, then we have that <span class="math display">\[\mu_{\text{organic}} = \mu_{\text{comfort}} = \mu_{\text{control}}\]</span></p>
+<p>Let’s define this common mean to be <span class="math inline">\(\mu\)</span>; we do not know what this value is, but it is common to all groups. Therefore, <em>if the null hypothesis is true</em>, we have that the data generating process reduces to</p>
+<span class="math display" id="eq:null-model">\[\begin{equation}
+  \text{(Moral Expectation Score)}_i = \mu + \epsilon_i
+  \tag{14.2}
+\end{equation}\]</span>
+<p>Therefore, we can generate data according to this model. We can replace <span class="math inline">\(\mu\)</span> by our best estimate — the sample mean response across all observations regardless of their group. It simply remains to determine how to approximate a random variable from the noise distribution. In order to do this, we need estimates of the errors, known as <strong>residuals</strong>.</p>
+
+<div class="definition">
+<span id="def:defn-residual" class="definition"><strong>Definition 14.5  (Residual)  </strong></span>The difference between the observed response and the predicted response (estimated deterministic portion of the model). Residuals approximate the noise in the data-generating process.
+</div>
+<p></p>
+<p>The deterministic model gives a way of predicting the response. For example, consider the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a>; the data is reproduced in Figure <a href="#anovamodel-organic-boxplot"><strong>??</strong></a>. Based on the data available, if a subject were to be exposed to organic foods, we would expect their moral expectation score to be NA; this is the average observed among individuals randomized to this treatment within our study.</p>
+<div class="figure" style="text-align: center"><span id="fig:anovamodel-organic-boxplot"></span>
+<img src="images/anovamodel-organic-boxplot-1.png" alt="Comparison of the moral expectations for college students exposed to different types of food." width="80%" />
+<p class="caption">
+Figure 14.2: Comparison of the moral expectations for college students exposed to different types of food.
+</p>
+</div>
+<p>That is, we can define the <strong>predicted value</strong> for <span class="math inline">\(i\)</span>-th observation in our study as <span class="math display">\[
+\widehat{y}_i = \sum_{j=1}^{3} \bar{y}_j \mathbb{I}(\text{i-th subject in food exposure group j})
+\]</span></p>
+<p>and the corresponding residual as <span class="math display">\[
+e_i = y_i - \widehat{y}_i
+\]</span></p>
+<p>Let’s not get lost in the mathematical notation; the residual here is simply the difference between the response of the subject and the average response for their corresponding group.</p>
+<p>The key idea here is that residuals approximate the unseen error. Therefore, if we take this error and perturb it, we can generate new data. A new dataset, generate under the null hypothesis, can then be constructed as <span class="math display">\[
+y_i^* = \bar{y} + e_i^*
+\]</span></p>
+<p>where <span class="math inline">\(y_i^*\)</span> is then a new observation constructed by taking a mean and adding a perturbed version of the residual for that observation. Notice that each newly generated response has the same mean (so that the null is true). We then take this new dataset and compute the standardized test statistic as before and record it. Then, we repeat this process over and over again until we have constructed the null distribution. This gives us a sense of the p-value.</p>
+</div>
+<div id="recap" class="section level2">
+<h2><span class="header-section-number">14.5</span> Recap</h2>
+<p>We have covered a lot of ground in this chapter, and it is worth taking a moment to summarize the big ideas. In order to construct a model for the null distribution of the standardized test statistic, we took a step back and modeled the data generating process. Such a model consists of two components: a deterministic component explaining the differences between groups and a stochastic component capturing the noise in the system.</p>
+<p>Certain conditions are placed on the distribution of the noise in our model. Using these assumptions, we can generate data which adheres to the null hypothesis. Therefore, we can obtain an empirical model that suggests what values of a test statistic we might expect.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ANOVAteststat.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ANOVAassessment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": ["MA223CourseNotes.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
+=======
 <!DOCTYPE html>
 <html >
 
@@ -369,3 +718,4 @@ gitbook.start({
 </body>
 
 </html>
+>>>>>>> 23ee8a8a7c236cbae1c1065815b23eb6aef0fde0
