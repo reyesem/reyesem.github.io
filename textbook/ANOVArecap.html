@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="ANOVAsummaries.html">
-<link rel="next" href="ANOVAmodel.html">
+<link rel="prev" href="ANOVAassessment.html">
+<link rel="next" href="ANOVAblocking.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -173,114 +173,134 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ANOVAteststat" class="section level1">
-<h1><span class="header-section-number">13</span> Quantifying the Evidence</h1>
-<p>Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">13.1</a> displays a numeric response across three groups for two different datasets. Consider the following question:</p>
+<div id="ANOVArecap" class="section level1">
+<h1><span class="header-section-number">17</span> Using the Tools Together</h1>
+<p>This unit introduced a framework for determining if there is an association between a quantitative response and a categorical predictor. We formed a standardized test statistic for measuring the signal, and then we developed a model for the data-generating process which allowed us to model the null distribution of the standardized statistic. In this chapter, we pull these tools together once more to answer a research question.</p>
+<p>The primary question we have been addressing in this unit was whether the moral expectations of students were affected by the type of food to which they were exposed. We saw that there was little evidence of a relationship between these two variables. We now use the data from the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a> to answer a related question:</p>
 <blockquote>
-<p>For which dataset is there <em>stronger</em> evidence that the response is associated with the grouping variable?</p>
+<p>Do the moral expectations of males and females differ?</p>
 </blockquote>
-<div class="figure" style="text-align: center"><span id="fig:anovateststat-boxplots"></span>
-<img src="images/anovateststat-boxplots-1.png" alt="Simulated data illustrating that signal strength is determined by partitioning variability. There is a clear signal (difference in the location across groups) for Dataset A but not for Dataset B." width="80%" />
-<p class="caption">
-Figure 13.1: Simulated data illustrating that signal strength is determined by partitioning variability. There is a clear signal (difference in the location across groups) for Dataset A but not for Dataset B.
-</p>
-</div>
-<p>Nearly everyone will say that Dataset A provides stronger evidence of a relationship between the grouping variable and the response. We generated these data such that the mean for Groups I, II and II are 5, 6 and 7, respectively, <em>for both Datasets A and B</em>. While there is a difference, on average, in the response across the groups in both cases, it is correct that Dataset A provides stronger evidence for that relationship. The real question is “what is it that leads everyone to make the same conclusion when we have not yet discussed how to analyze this data?” When we ask students why they feel Dataset A provides stronger evidence, we typically hear that it is because the “gaps” between the groups “look bigger.” In essence, that is exactly right!</p>
-<div id="partitioning-variability" class="section level2">
-<h2><span class="header-section-number">13.1</span> Partitioning Variability</h2>
-<p>Subconsciously, when we are deciding whether there is a difference between the groups, we are partitioning the variability in the response. We are essentially describing two sources of variability: the variability in the response caused by subjects belonging to different groups and the variability in the response within a group (Figure <a href="ANOVAteststat.html#fig:anovateststat-partition-variability">13.2</a>). In both Datasets A and B from Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">13.1</a>, the <strong>between-group variability</strong> is the same; the difference in the means from one group to another is the same in both cases. However, the <strong>within-group variability</strong> is much smaller for Dataset A compared to Dataset B.</p>
-<div class="figure" style="text-align: center"><span id="fig:anovateststat-partition-variability"></span>
-<img src="images/ANOVATestStat-Partition-Variability.jpg" alt="Illustration of partitioning the variability in the response to assess the strength of a signal." width="80%" />
-<p class="caption">
-Figure 13.2: Illustration of partitioning the variability in the response to assess the strength of a signal.
-</p>
-</div>
-
-<div class="definition">
-<span id="def:defn-between-group-variability" class="definition"><strong>Definition 13.1  (Between Group Variability)  </strong></span>The variability in the average response from one group to another.
-</div>
-<p></p>
-
-<div class="definition">
-<span id="def:defn-within-group-variability" class="definition"><strong>Definition 13.2  (Within Group Variability)  </strong></span>The variability in the response within a particular group.
-</div>
-<p></p>
-<p>Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">13.1</a> then illustrates the larger the variability between groups <em>relative to</em> the variability within groups, the stronger the signal. Quantifying the strength of a signal is then about quantifying the ratio of these two sources of variability. Let this sink in because it is completely counter-intuitive. We are saying that in order to determine if there is a difference in the mean response across groups, we have to examine variability. Further, a signal in data is measured by the variability it produces. For this reason, comparing a quantitative response across a categorical variable is often referred to as Analysis of Variance (ANOVA).</p>
-
-<div class="rmdkeyidea">
-Consider the ratio of the variability between groups to the variability within groups. The larger this ratio, the stronger the evidence of a signal provided by the data.
-</div>
-<p></p>
-</div>
-<div id="forming-a-standardized-test-statistic" class="section level2">
-<h2><span class="header-section-number">13.2</span> Forming a Standardized Test Statistic</h2>
-<p>As we stated above, quantifying the strength of a signal is equivalent to quantifying the ratio of two sources of variability. Such ratios are known as <strong>standardized test statistics</strong>.</p>
-
-<div class="definition">
-<span id="def:defn-standardized-test-statistic" class="definition"><strong>Definition 13.3  (Standardized Test Statistic)  </strong></span>A ratio of two sources of variability, or a signal-to-noise ratio. The larger the test statistic, the stronger the evidence of a signal; said another way, the larger the test statistic, the stronger the evidence against the null hypothesis.
-</div>
-<p></p>
-Based on our observations above, the standardized test statistic for comparing the mean response across multiple groups has the general form
-<span class="math display" id="eq:general-test-stat">\[\begin{equation}
-  T = \frac{(\text{Between Group Variability})}{(\text{Within Group Variability})}
-  \tag{13.1}
-\end{equation}\]</span>
-<p>The question we then have before us is the following: how do we measure these sources of variability? Consider again the hypothesis of interest for the <a href="CaseOrganic.html#CaseOrganic">Oranic Food Case Study</a>:</p>
+<div id="framing-the-question-fundamental-idea-i-1" class="section level2">
+<h2><span class="header-section-number">17.1</span> Framing the Question (Fundamental Idea I)</h2>
+<p>As stated, the above question is ill-posed. We have not identified a variable or parameter of interest. We refine this question to be</p>
 <blockquote>
-<p><span class="math inline">\(H_0: \mu_{\text{comfort}} = \mu_{\text{control}} = \mu_{\text{organic}}\)</span><br />
-<span class="math inline">\(H_1:\)</span> At least one <span class="math inline">\(\mu\)</span> differs from the others</p>
+<p>Does the average moral expectation score of males differ from that of females?</p>
 </blockquote>
-<p>In order to form the standardized test statistic, let’s again think about what constitutes evidence <em>against</em> the null hypothesis. The more the means differ from one another, the stronger the evidence. But, in the previous unit, we had a measure for how different values were from one another — variance. That is, the <em>between-group</em> variability can be measured by the variance of the means; we call this the <strong>Mean Square for Treatment (MSTrt)</strong>.</p>
-
-<div class="definition">
-<span id="def:defn-mstrt" class="definition"><strong>Definition 13.4  (Mean Square for Treatment (MSTrt))  </strong></span>This captures the between-group variability in an Analysis of Variance; it is a weighted variance among the sample means from the various groups. It represents the signal.
+<p>This question could also be stated as the following set of hypotheses:</p>
+<blockquote>
+<p>Let <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> represent the average moral expectation score for males and females, respectively.<br />
+<span class="math inline">\(H_0: \mu_1 = \mu_2\)</span><br />
+<span class="math inline">\(H_1: \mu_1 \neq \mu_2\)</span></p>
+</blockquote>
 </div>
-<p></p>
-<p>Since we do not know the means for each groups (remember, each <span class="math inline">\(\mu\)</span> is a parameter), we assess the between group variability within the sample using the estimates for these parameters — the sample means. This is our signal. The larger this variance, the further apart the means are from one another (agreeing with the alternative hypothesis); the smaller this variance, the closer the means are (agreeing with the null hypothesis).</p>
-<p>While the numerator provides some measure of the size of the signal, we need again need to consider how much noise is within the data. Again, in Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">13.1</a>, the variability between the means is identical for the two datasets; the signal is stronger for Dataset A because this variability is larger <em>with respect to the noise</em>. In order to capture the <em>within-group</em> variability, we pool the variances for each group; this is called the <strong>Mean Square for Error (MSE)</strong>.</p>
-
-<div class="definition">
-<span id="def:defn-mse" class="definition"><strong>Definition 13.5  (Mean Square for Error (MSE))  </strong></span>This captures the within-group variability; it is a pooled estimate of the variance within the groups. It represents the noise.
+<div id="getting-good-data-fundamental-idea-ii-1" class="section level2">
+<h2><span class="header-section-number">17.2</span> Getting Good Data (Fundamental Idea II)</h2>
+<p>As we are working with previously collected data, our goal in this discussion is not how best to collect the data but making note of the limitations of the data as a result of how it was collected. We previously described the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a> as an example of a controlled experiment. This was true…with regard to the primary question of interest (moral expectations and food exposure). However, the subjects were <em>not</em> randomly assigned to gender here; therefore, with regard to this question of interest, the data was an observational study.</p>
+<p>It is common for young researchers to believe that if initially a controlled experiment was performed that the data always permits a causal interpretation. However, we must always examine the data collection with respect to the question of interest. Such “secondary analyses” (using data collected from a study to answer a question for which the data was not initially collected) are generally observational studies. As a result, there may be other factors related to gender and moral expectations that drive any results we may see.</p>
 </div>
-<p></p>
-<p>Our test statistic in Equation <a href="ANOVAteststat.html#eq:general-test-stat">(13.1)</a> is then refined to</p>
-<span class="math display" id="eq:anova-test-stat">\[\begin{equation}
-  T = \frac{MSTrt}{MSE}
-  \tag{13.2}
-\end{equation}\]</span>
-
-<div class="rmdtip">
-<p>Consider testing the hypotheses &gt; <span class="math inline">\(H_0: \mu_1 = \mu_2 = \dotsb = \mu_k\)</span><br />
-&gt; <span class="math inline">\(H_1:\)</span> At least one <span class="math inline">\(\mu\)</span> differs from the others</p>
-<p>The standardized test statistic of interest is</p>
-<p><span class="math display">\[
-  T = \frac{MSTrt}{MSE}
-\]</span></p>
-<p>where</p>
-<p><span class="math display">\[
-\begin{aligned}
-  MSTrt &amp;= \frac{1}{k-1} \sum_{j=1}^{k} n_j \left(\bar{y}_j - \bar{y}\right)^2 \\
-  MSE &amp;= \frac{1}{n-k} \sum_{j=1}^{k} \left(n_j - 1\right) s_j^2
-\end{aligned}
-\]</span></p>
-and <span class="math inline">\(n_j\)</span> represents the sample size for the <span class="math inline">\(j\)</span>-th group, <span class="math inline">\(\bar{y}_j\)</span> represents the sample mean for the <span class="math inline">\(j\)</span>-th group, <span class="math inline">\(\bar{y}\)</span> represents the overall mean response across all groups, and <span class="math inline">\(s_j^2\)</span> represents the sample variance for the <span class="math inline">\(j\)</span>-th group.
-</div>
-<p></p>
-<p>We note that while mathematical formulas have been provided to add some clarity to those who think algebraically, our emphasis is <em>not</em> on the computational formulas as much as the idea that we are comparing two sources of variability.</p>
-</div>
-<div id="obtaining-a-p-value" class="section level2">
-<h2><span class="header-section-number">13.3</span> Obtaining a P-value</h2>
-<p>Standardized test statistics quantify the strength of a signal, but they do not allow for easy interpretation. However, with a standardized test statistic, we are able to compute a p-value to quantify how unlikely our particular sample is. That is, we need to construct the null distribution for the standardized test statistic. We need to know what type of signal we would expect if the null hypothesis were true. Conceptually, this is no different than it was in Unit I. We consider running the study again in a world in which all the groups are the same; for the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a>, this would involve - Obtaining a new sample of students. - Randomizing each student to one of the three groups at random, all showing the same foods. - Having each student answer a questionnaire regarding moral dilemmas. - Summarize the data by computing a standardized test statistic.</p>
-<p>Notice the difference in step 2 above compared to what actually happened in the real study. In the real study, each group had a different set of foods. This was to answer the question about whether there is a difference in the groups. However, in order to construct the <em>null distribution</em>, we need to force all groups to be the same. This could be accomplished by showing every group the same set of foods. The primary difference in this unit is that the strength of the signal is measured through a standardized test statistic. After repeating the above steps over and over again, we determine how often the recorded standardized test statistics exceeded the value we obtained in our actual sample.</p>
-<p>Figure <a href="ANOVAteststat.html#fig:anovateststat-pvalue">13.3</a> represents the null distribution of the standardized test statistic. Again, these are values of the standardized test statistic we would expect if there were no relationship between the food categories to which the students were exposed and their moral score. We are then interested in finding out if the observed dataset is consistent with these expectations.</p>
-<div class="figure" style="text-align: center"><span id="fig:anovateststat-pvalue"></span>
-<img src="images/anovateststat-pvalue-1.png" alt="Computation of the p-value for the Organic Food Case Study by simulating the null distribution.  The null distribution is based on 5000 replications." width="80%" />
+<div id="presenting-the-data-fundamental-idea-iii-1" class="section level2">
+<h2><span class="header-section-number">17.3</span> Presenting the Data (Fundamental Idea III)</h2>
+<p>Our question here is examining the relationship between a quantitative response (moral expectation score) and a categorical predictor (gender). Figure <a href="ANOVArecap.html#fig:anovarecap-boxplot">17.1</a> compares the distribution of the moral expectation score for the two groups. Note that 4 students did not specify their gender; these subjects will be removed from the analysis.</p>
+<div class="figure" style="text-align: center"><span id="fig:anovarecap-boxplot"></span>
+<img src="images/anovarecap-boxplot-1.png" alt="Comparison of the moral expectations of males and females. The average value is added for each group.  Students who did not specify their gender were removed from the analysis." width="80%" />
 <p class="caption">
-Figure 13.3: Computation of the p-value for the Organic Food Case Study by simulating the null distribution. The null distribution is based on 5000 replications.
+Figure 17.1: Comparison of the moral expectations of males and females. The average value is added for each group. Students who did not specify their gender were removed from the analysis.
 </p>
 </div>
-<p>Notice that in our data, we observed a standardized test statistic of 0.41; based on the null distribution, we would expect a signal this strong or stronger about 66.9% of the time <em>when no signal existed at the population</em> (by chance alone). That is, our data is quite consistent with what we would expect under the null hypothesis. There is no evidence of a relationship between the type of food a student is exposed to and their moral expectations, on average.</p>
-<p>Again, conceptually, this is similar to what we saw in the previous unit. We are simply determining how likely our data is under the null hypothesis. However, unlike the previous unit, it may not be clear how we actually model this null distribution. If we cannot physically redo the study, how can we construct this model? In order to understand this, we must consider a different model — that for the data generating process. This is the topic of the next chapter.</p>
+<p>Based on the above graphic, it appears the females tend to have higher moral expectations by about 1 point, compared to males. We also observe that there are many more females in our sample compared to males, which is probably a result of the type of class and the demographic makeup of the university at which the study was conducted.</p>
+</div>
+<div id="quantifying-the-variability-in-the-estimate-fundamental-idea-iv-1" class="section level2">
+<h2><span class="header-section-number">17.4</span> Quantifying the Variability in the Estimate (Fundamental Idea IV)</h2>
+<p>In order to measure the size of the signal, we can compute the standardized test statistic <span class="math display">\[T = \frac{MSTrt}{MSE}\]</span></p>
+<p>which is 6.52 for the sample we have observed. Of course, if we were to collect a new sample, we would expect this value to change. If we want to quantify the variability in this statistic, we need a model for its sampling distribution. More, what we are really interested in is the sampling distribution of this statistic if the average moral expectation score were the same for the two genders; that is, we are interested in the null distribution of this standardized test statistic. With the null distribution, we could ascertain how unlikely (how strong the evidence) our sample is.</p>
+<p>In order to model the null distribution, we consider the following model for the data-generating process: <span class="math display">\[\text{Moral Expectation Score} \sim \text{Gender}\]</span> Formally, we write</p>
+<span class="math display" id="eq:anovarecap-model">\[\begin{equation}
+  \begin{split}
+    (\text{Moral Expectation Score})_i &amp; = \mu_1\mathbb{I}(\text{i-th subject is a male}) \\
+      &amp; \quad + \mu_2\mathbb{I}(\text{i-th subject is a female}) + \epsilon_i
+  \end{split}
+  \tag{17.1}
+\end{equation}\]</span>
+<p>where we make the following assumptions on the error term:</p>
+<ol style="list-style-type: decimal">
+<li>The error in the moral expectation score for one individual is independent of the error in the moral expectation score for any other individual.</li>
+<li>The variance of the error in the moral expectation scores for males is the same as the variance of the error in moral expectation scores for females.</li>
+<li>The error in the moral expectation score for individuals follows a Normal Distribution.</li>
+</ol>
+<p>Under these three assumptions, we are able to construct a model for the null distribution of the standardized test statistic. Figure <a href="ANOVArecap.html#fig:anovarecap-classical-null-model">17.2</a> illustrates the null distribution assuming these conditions are satisfied.</p>
+<div class="figure" style="text-align: center"><span id="fig:anovarecap-classical-null-model"></span>
+<img src="images/anovarecap-classical-null-model-1.png" alt="Model for the standardized test statistic measuring the signal comparing the moral expectation scores for males and females in the Organic Food Case Study.  This model is constructed assuming the classical ANOVA conditions are satisfied." width="80%" />
+<p class="caption">
+Figure 17.2: Model for the standardized test statistic measuring the signal comparing the moral expectation scores for males and females in the Organic Food Case Study. This model is constructed assuming the classical ANOVA conditions are satisfied.
+</p>
+</div>
+<p>Before we can use this model to make any conclusions regarding our question of interest, we need to address the fact that we have assumed certain conditions are satisfied. We need to assess whether the data is consistent with these assumptions. This requires examining the residuals for the model. That is, we must determine how far away the moral expectation score for each individual is from the average moral expectation score for their group.</p>
+<p>First, we discuss the assumption of independence. Since the data was collected at a single point in time, known as a <em>cross-sectional study</em>, constructing a time-series plot of the residuals would not provide any information regarding this assumption. Instead, we rely on the context of the problem to make some statements regarding whether the data is consistent with this condition (whether making this assumption is reasonable). It is reasonable that whether a student has a slightly above (or below) moral expectation score is not related to whether any other student has a slightly above (or below) moral expectation score. That is, it is reasonable that the errors are independent. One case in which this might be violated is if students discussed their answers to the questions as they filled out the survey; then, it is plausible that one student influenced another’s responses. As this is unlikely given the description of the data collection, we feel it is reasonable to assume independence.</p>
+<p>Again, note that there is a condition of independence; we are simply saying whether we are willing to assume the condition is satisfied. There is no way to ensure a condition holds.</p>
+<p>In order to assess the condition of constant variance, let us look back at the box plots given in Figure <a href="ANOVArecap.html#fig:anovarecap-boxplot">17.1</a>. As the spread of the moral expectation score for each of the two genders is roughly the same, it is reasonable to assume the variability of the errors in each group is the same.</p>
+<p>Finally, to assess the condition that the distribution of the errors is Normal, we consider a probability plot of the residuals (Figure <a href="ANOVArecap.html#fig:anovarecap-resids-probplot">17.3</a>). Given that the residuals tend to display a linear relationship, it is reasonable that the residuals represent a sample from a Normal Distribution. That is, it is reasonable that the errors follow a Normal Distribution.</p>
+<div class="figure" style="text-align: center"><span id="fig:anovarecap-resids-probplot"></span>
+<img src="images/anovarecap-resids-probplot-1.png" alt="Probability plot assessing the assumption that the errors for our model comparing the moral expectation score across gender follow a Normal Distribution." width="80%" />
+<p class="caption">
+Figure 17.3: Probability plot assessing the assumption that the errors for our model comparing the moral expectation score across gender follow a Normal Distribution.
+</p>
+</div>
+<p>Given that we are comfortable assuming the conditions on the error term are reasonable, we can make use of the analytical model for the null distribution in Figure <a href="ANOVArecap.html#fig:anovarecap-classical-null-model">17.2</a>.</p>
+</div>
+<div id="quantifying-the-evidence-fundamental-idea-v-1" class="section level2">
+<h2><span class="header-section-number">17.5</span> Quantifying the Evidence (Fundamental Idea V)</h2>
+<p>Now that we have a model for the null distribution, we can determine how extreme our particular sample was by comparing the standardized test statistic for our sample with this null distribution. We can measure this through computation of a p-value, the probability that we would observe a standardized test statistic of this magnitude or higher by chance alone if there were no difference in the mean moral expecation scores of males and females. This is summarized in Table <a href="ANOVArecap.html#tab:anovarecap-anova-table">17.1</a> below.</p>
+<table>
+<caption><span id="tab:anovarecap-anova-table">Table 17.1: </span>ANOVA table summarizing the comparison of the moral expectation score across gender within the Organic Food Case Study.</caption>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="right">DF</th>
+<th align="right">SS</th>
+<th align="right">MS</th>
+<th align="right">F</th>
+<th align="right">P-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Gender</td>
+<td align="right">1</td>
+<td align="right">4.363</td>
+<td align="right">4.363</td>
+<td align="right">6.517</td>
+<td align="right">0.012</td>
+</tr>
+<tr class="even">
+<td align="left">Residuals</td>
+<td align="right">118</td>
+<td align="right">79.008</td>
+<td align="right">0.670</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="right">119</td>
+<td align="right">83.372</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+<p>Based on the plot of the null distribution above, we should have expected a small p-value since hardly any of the standardized statistics exceeded the 6.517 we observed in our sample. From the results, we can conclude that there is evidence (p = 0.012) of a relationship between the moral expectations of a student and their gender. Looking back at Figure <a href="ANOVArecap.html#fig:anovarecap-boxplot">17.1</a>, females tend to have higher moral expectations.</p>
+</div>
+<div id="conclusion" class="section level2">
+<h2><span class="header-section-number">17.6</span> Conclusion</h2>
+<p>Throughout this unit, we have examined a framework for examining the association between a quantitative response and a categorical predictor. This served to introduce a couple of big ideas we will make use of throughout the remainder of this text:</p>
+<ul>
+<li>The key to measuring a signal is to partition the variability in the response.</li>
+<li>A standardized test statistic is a numeric measure of the signal strength in the sample.</li>
+<li>Modeling the data-generating process provides us a way of modeling the sampling distribution and null distribution of a standardized statistic.</li>
+<li>Conditions are often placed on the noise portion of the model for the data-generating process; before assuming these conditions are met, we should graphically assess whether the data is consistent with these conditions.</li>
+</ul>
+<p>Within this unit, we focused on a categorical predictor. In the next unit, we consider the case when we have a quantitative predictor or even a collection of predictors.</p>
 
 </div>
 </div>
@@ -289,8 +309,8 @@ Figure 13.3: Computation of the p-value for the Organic Food Case Study by simul
           </div>
         </div>
       </div>
-<a href="ANOVAsummaries.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ANOVAmodel.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ANOVAassessment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ANOVAblocking.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

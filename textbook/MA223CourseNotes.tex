@@ -82,7 +82,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{Last Updated: 2017-08-31}
+  \date{Last Updated: 2017-09-06}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % File: style.tex
@@ -3174,8 +3174,8 @@ Participant & Food Condition & Response (Avg of Moral Questions)\\
 ``Does exposure to various food types lead to different moral
 expectations?'' The primary question from the
 \protect\hyperlink{CaseOrganic}{Organic Food Case Study} is primarily
-about the relationship between two variables: the response (see
-Definition \ref{def:defn-response}; moral expectations) and the
+about the relationship between two variables: the response (moral
+expectations; see Definition \ref{def:defn-response}) and the
 \textbf{factor} of interest (food type).
 
 \BeginKnitrBlock{definition}[Factor]
@@ -3346,7 +3346,7 @@ similar to what we discuss here.
 
 \chapter{Study Design}\label{ANOVAdata}
 
-Chapter \ref{data} discussed the impact that the design of the study has
+Chapter \ref{Data} discussed the impact that the design of the study has
 on interpreting the results. Recall that the goal of any statistical
 analysis is to use the sample to say something about the underlying
 population. Observational studies are subject to confounding. In order
@@ -3366,7 +3366,7 @@ ways of doing this:
   emphasis of the discussion in the subsequent unit.
 \end{enumerate}
 
-As discussed in Chapter \ref{data}, controlled experiments balance the
+As discussed in Chapter \ref{Data}, controlled experiments balance the
 groups being compared relative to the potential confounders. As a
 result, such studies permit causal conclusions to be drawn.
 
@@ -3568,7 +3568,7 @@ control. The treatment groups are then as similar as possible.
 We do note that blocking, while a powerful aspect of a design, has an
 impact on the type of analysis that can be conducted. Specifically, we
 must account for the blocking when conducting the analysis. We will
-discuss this in Chapter \ref{anovablocking}.
+discuss this in Chapter \ref{ANOVAblocking}.
 
 How did the design of the \protect\hyperlink{CaseOrganic}{Organic Food
 Case Study} incorporate these aspects? First, we notice that random
@@ -3607,7 +3607,13 @@ conclusions drawn from this study would apply to all college students
 within the United States. Having additional information on their
 demographics may help determine this, but in general, this is not
 something that can be definitively answered. It is an assumption we are
-either willing to make or not.
+either willing to make or not. More, notice that the original question
+was not focused on college students; however, the sample consists only
+of college students. This can impact the broader generalization of our
+results. It is quite possible that we observe an effect in college
+students that is not present in the larger population. We should always
+be careful to ensure that the sample we are using adequately represents
+the population.
 
 \section{Collecting Observational
 Data}\label{collecting-observational-data}
@@ -3707,7 +3713,7 @@ option is to construct density plots which are overlayed on one another.
 This works when there are only a small number of groups; if the number
 of groups is large, then placing the distributions side-by-side is much
 more effective. A comparison of these approaches is in Figure
-\ref{anovasummaries-organic-comparison}.
+\ref{fig:anovasummaries-organic-comparison}.
 
 \begin{figure}
 
@@ -4228,7 +4234,7 @@ programmer to perform the same task in R and record the time required to
 successfully complete the task.
 
 The model for the data generating process would be \[
-(\text{Time})_i = \mu_1 \mathbb{I}(\text{i-th task programmed in Python}) + \mu_2 mathbb{I}(\text{i-th task programmed in R}) + \epsilon_i
+(\text{Time})_i = \mu_1 \mathbb{I}(\text{i-th task programmed in Python}) + \mu_2 \mathbb{I}(\text{i-th task programmed in R}) + \epsilon_i
 \]
 
 Given the method in which the data was collected, it would not be
@@ -4303,13 +4309,14 @@ and the predicted response (estimated deterministic portion of the
 model). Residuals approximate the noise in the data-generating process.
 \EndKnitrBlock{definition}
 
-The deterministic model gives a way of predicting the response. For
-example, consider the \protect\hyperlink{CaseOrganic}{Organic Food Case
-Study}; the data is reproduced in Figure
-\ref{anovamodel-organic-boxplot}. Based on the data available, if a
-subject were to be exposed to organic foods, we would expect their moral
-expectation score to be NA; this is the average observed among
-individuals randomized to this treatment within our study.
+The deterministic component of the model gives a way of predicting the
+response. For example, consider the
+\protect\hyperlink{CaseOrganic}{Organic Food Case Study}; the data is
+reproduced in Figure \ref{fig:anovamodel-organic-boxplot}. Based on the
+data available, if a subject were to be exposed to organic foods, we
+would expect their moral expectation score to be 5.66; this is the
+average observed among individuals randomized to this treatment within
+our study.
 
 \begin{figure}
 
@@ -4334,9 +4341,10 @@ simply the difference between the response of the subject and the
 average response for their corresponding group.
 
 The key idea here is that residuals approximate the unseen error.
-Therefore, if we take this error and perturb it, we can generate new
-data. A new dataset, generate under the null hypothesis, can then be
-constructed as \[
+Therefore, if we take this error and perturb it (the details of which
+are beyond the scope of this course), we can generate new data. A new
+dataset, generate under the null hypothesis, can then be constructed as
+\[
 y_i^* = \bar{y} + e_i^*
 \]
 
@@ -4362,6 +4370,325 @@ Certain conditions are placed on the distribution of the noise in our
 model. Using these assumptions, we can generate data which adheres to
 the null hypothesis. Therefore, we can obtain an empirical model that
 suggests what values of a test statistic we might expect.
+
+\chapter{Classical ANOVA Model}\label{ANOVAclassical}
+
+In the previous chapter, we developed a model for a quantitative
+response as a function of a categorical predictor. Specifically, suppose
+we are comparing a quantitative response across \(k\) levels of a factor
+of interest. Our model has the form
+\[(\text{Response})_i = \sum_{j=1}^{k} \mu_j \mathbb{I}\left(\text{i-th subject belongs to group j}\right) + \epsilon_i\]
+
+where \(\epsilon\) is a random variable capturing the noise in the
+data-generating process. In order to perform inference, we made two
+assumptions on this error term:
+
+\begin{itemize}
+\tightlist
+\item
+  The error in one observation is independent of the error in any other
+  observation.
+\item
+  The variability in the error is constant across groups.
+\end{itemize}
+
+This allowed us to empirically model the null distribution of our
+standardized test statistic \[T = \frac{MSTrt}{MSE}\] through
+simulation. This approach is completely valid; however, it has been
+shown that such empirical models can be unstable in small sample sizes.
+When we do not have the resources to obtain a large sample, we can
+improve our model of the sampling distribution (or null distribution) of
+a statistic through additional modeling assumptions. In this unit, we
+discuss an additional modeling assumption that is common in the
+engineering and scientific disciplines.
+
+\section{Modeling the Population}\label{modeling-the-population}
+
+Before we delve into the details, let's set the stage for the bigger
+story being told. Recall that our goal is to say something about the
+population using a sample. We have developed a process to address this
+goal:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Frame our question through a parameter of interest.
+\item
+  Collect data that allows us to estimate the parameter using the
+  analogous statistic within the sample.
+\item
+  Summarize the variability in the data graphically.
+\item
+  Quantify the variability in the statistic through modeling the
+  sampling distribution (or null distribution).
+\item
+  Using the sampling distribution (or null distribution), quantify the
+  evidence in the sample.
+\end{enumerate}
+
+This process is wrapped up in our \emph{Five Fundamental Ideas of
+Inference} and the \emph{Distributional Quartet}. The key step in this
+process is quantifying the variability by modeling the \emph{sampling
+distribution} (or \emph{null distribution}). We have described the
+construction of these models empirically, through repeating the study by
+appropriately resampling the data available.
+
+Our goal is still to model the sampling distribution (or null
+distribution); that is the key inferential step. Instead of building an
+empirical model, we can construct an analytical (exact) model through an
+additional step: modeling the population directly.
+
+\BeginKnitrBlock{rmdkeyidea}
+A model for the sampling distribution of a statistic can often be
+obtained by placing a model on the distribution of the population.
+\EndKnitrBlock{rmdkeyidea}
+
+So, we have two models; the model for the distribution of the population
+is simply a stepping stone to what we really need, a model for the
+sampling distribution of the statistic. It is important to separate
+these steps. We are not interested in directly modeling the population;
+we do it in order to construct a model for the sampling distribution.
+
+There is one other distinction to make: a model for the population is
+\emph{always} an assumption. We hope that the data is consistent with
+this assumption in order to apply the resulting model for the sampling
+distribution.
+
+\section{Adding the Assumption of
+Normality}\label{adding-the-assumption-of-normality}
+
+The sub-field of mathematics known as probability is the discipline of
+modeling randomness. In particular, we make use of probability to model
+a distribution. In order to get a feel for probability models, consider
+the following example.
+
+\BeginKnitrBlock{example}[Iris Characteristics]
+\protect\hypertarget{ex:ex-iris}{}{\label{ex:ex-iris} \iffalse (Iris
+Characteristics) \fi{} }The discipline of statistics began in the early
+1900's primarily within the context of agricultural research. Edgar
+Anderson was a researcher investigating the characteristics of the iris.
+He had collected measurements on over one hundred iris flowers,
+including their petal length and width and their sepal length and width.
+The sepal is the area (typically green) beneath the petal of a flower.
+It offers protection while the flower is budding and then support for
+the petals after the flower blooms.
+\EndKnitrBlock{example}
+
+Figure \ref{fig:anovaclassical-iris-histogram} is a histogram of the
+sepal width for the iris plants observed by Edgar Anderson; overlayed is
+the density estimate for the same dataset which we have described as a
+smoothed histogram. This smoothed histogram is estimated from the data;
+it is an empirical model of the distribution.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/anovaclassical-iris-histogram-1} 
+
+}
+
+\caption{Summary of the distribution of sepal widths for a sample of irises.}\label{fig:anovaclassical-iris-histogram}
+\end{figure}
+
+Probability models are analytical models for the distribution of a
+variable. Instead of constructing a density using data, we probability
+theory posits a functional form for the density (subject to certain
+constraints that are beyond the scope of this course). For example,
+Figure \ref{fig:anovaclassical-iris-normal} overlays the following
+function on top of the the iris data:
+
+\[f(x) = \frac{1}{\sqrt{0.380\pi}} e^{-\frac{1}{0.380}(x - 3.057)^2}\]
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/anovaclassical-iris-normal-1} 
+
+}
+
+\caption{Summary of distribution  the sepal widths for a sample of irises with a probability model overlayed.}\label{fig:anovaclassical-iris-normal}
+\end{figure}
+
+While this model for the density is not perfect, we note that it does
+capture many of the characteristics present in the data. This particular
+model, characterized by the bell-shape density, is known as the
+\textbf{Normal Distribution}.
+
+\BeginKnitrBlock{definition}[Normal Distribution]
+\protect\hypertarget{def:defn-normal-distribution}{}{\label{def:defn-normal-distribution}
+\iffalse (Normal Distribution) \fi{} }Also called the Gaussian
+Distribution, this probability model is popular for modeling noise
+within a data-generating process. It has the following characteristics:
+
+\begin{itemize}
+\tightlist
+\item
+  It is bell-shaped.
+\item
+  It is symmetric, meaning the mean is directly at its center.
+\item
+  Often useful for modeling natural phenomena or sums of measurements.
+\end{itemize}
+
+The functional form of the Normal distribution is
+\[f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{1}{2\sigma^2}(x - \mu)^2}\]
+
+where \(\mu\) is the mean of the distribution and \(\sigma^2\) is the
+variance of the distribution.
+\EndKnitrBlock{definition}
+
+While there are several nice properties of the Normal Distribution, we
+are primarily interested in the fact that if we assume the error in a
+data generating process follows a Normal Distribution, then we have an
+analytical model for the sampling distribution of our standardized test
+statistic. What does this get us? We avoid simulating in order to build
+a model for the sampling distribution; so, computationally it is faster.
+If the errors really are from a Normal Distribution, then we also gain
+power in our study. Finally, such a model does not rely on sufficient
+data to construct; it is valid for any sample size (of course, large
+samples will always decrease variability which is a plus).
+
+So, in addition to the two assumptions we have been willing to make so
+far, if we also include the assumption that the errors follow a Normal
+Distribution, we have the ``Classical ANOVA Model.''
+
+\BeginKnitrBlock{rmdtip}
+``Classical ANOVA Model'': For a quantitative response and categorical
+variable, the classical ANOVA model assumes the following
+data-generating process:
+
+\[(\text{Response})_i = \sum_{j=1}^{k} \mu_j \mathbb{I}(\text{i-th observation belongs to j-th group}) + \epsilon_i\]
+
+where
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The errors are independent of one another.
+\item
+  The errors from one group have the same variability as all other
+  groups.
+\item
+  The errors follow a Normal Distribution.
+\end{enumerate}
+
+It is possible to relax these assumptions; however, this is the default
+``ANOVA'' analysis implemented in the majority of statistical packages.
+\EndKnitrBlock{rmdtip}
+
+\section{Impact of Normality
+Assumption}\label{impact-of-normality-assumption}
+
+If all three of the classical ANOVA conditions on the error hold, then
+we have an analytical model for the distribution of our standardized
+test statistic \[T = \frac{MSTrt}{MSE}\]
+
+under the null hypothesis. That is, we can model the null distribution.
+Figure \ref{fig:anovaclassical-organic-model} compares the empirical
+model for the null distribution of the standardized test statistic using
+the data from the \protect\hyperlink{CaseOrganic}{Organic Food Case
+Study} with that implied by assuming the errors follow a Normal
+Distribution. The two models line up quite nicely; we present this as a
+proof of concept that these assumptions can often be reasonable.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/anovaclassical-organic-model-1} 
+
+}
+
+\caption{Comparison of the empirical model for the null distribution of our standardized test statistic with the probability model under the classical ANOVA model.}\label{fig:anovaclassical-organic-model}
+\end{figure}
+
+Thus, if we are willing to make the assumption that all three conditions
+on the error hold, we could rely on the analytical probability model to
+compute a p-value instead of the empirical model we get from simulation.
+This probability model is called the F-distribution, and as a result,
+the standardized test statistic \(T = MSTrt/MSE\) is often referred to
+as the F-statistic.
+
+Many software packages contain a function for conducting an analysis
+assuming the classicial ANOVA model is valid. When this is the case, the
+output has the form in Figure \ref{fig:anovaclassical-table}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./images/ANOVAclassical-Table} 
+
+}
+
+\caption{Layout of an ANOVA table which summarizes the analysis conducted.  Emphasis is on partitioning the variability.}\label{fig:anovaclassical-table}
+\end{figure}
+
+The table is a way of summarizing the output from the analysis; the
+table itself is not very interesting, but we present it because it has
+the same emphasis we have in this unit --- partitioning variability. The
+key to separating a signal from a noise is to partition the variability
+in the data. The total variability is partitioned into that resulting
+from the groups (the factor), this is the deterministic portion of the
+model that we can explain, and the error, the stochastic portion of the
+model that we cannot explain. By partitioning this variability, we are
+able to compute the standardized test statistic and the corresponding
+p-value. Primarily, the only component we examine in such a table is the
+p-value. However, it is worth noting that the mean square for error
+(MSE) also provides an estimate of the variance of the errors within a
+group, the residual variance. That is, the MSE provides an estimate of
+the variance in the response within a group.
+
+\BeginKnitrBlock{rmdtip}
+The mean square for error (MSE) is an estimate of the variability in the
+response within a particular group.
+\EndKnitrBlock{rmdtip}
+
+\section{Analysis of Organic Food Case
+Study}\label{analysis-of-organic-food-case-study}
+
+Let's consider the \protect\hyperlink{CaseOrganic}{Organic Food Case
+Study} data. We will continue working with the model we have developed
+for the moral expectation score:
+\[\text{Moral Expectation Score} \sim \text{Food Exposure Group}\]
+
+Further, let's suppose that the data is consistent with all three
+classical ANOVA conditions. The results from the corresponding analysis
+comparing the average moral expectation score across the three food
+conditions are given in Table
+\ref{tab:anovaclassical-organic-anova-table}.
+
+\begin{table}
+
+\caption{\label{tab:anovaclassical-organic-anova-table}ANOVA table for the Organic Food Case Study.}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|r}
+\hline
+Source & DF & SS & MS & F & P-value\\
+\hline
+Food Exposure Group & 2 & 0.562 & 0.281 & 0.406 & 0.667\\
+\hline
+Residuals & 120 & 82.951 & 0.691 &  & \\
+\hline
+Total & 122 & 83.513 &  &  & \\
+\hline
+\end{tabular}
+\end{table}
+
+As long as the conditions on the error term are reasonable, then we can
+interpret the above p-value. Based on these results, there is no
+evidence that the moral expectations differ, on average, across the
+various food exposure groups. That is, there is no evidence of a
+relationship between the type of food to which we are exposed and our
+resulting moral expectations, on average.
+
+\section{Recap}\label{recap-1}
+
+By placing an additional condition on the distribution of the error
+term, we are able to construct an analytical model for the null
+distribution of the standardized test statistic, instead of requiring an
+empirical model. Of course, this model for the distribution of the error
+terms is an assumption. In fact, we have made several assumptions in
+order to compute the p-value given above. It is unwise to place
+assumptions on a process without performing some type of assessment to
+ensure those assumptions are reasonable --- that the data is consistent
+with the assumptions. That is the focus of the next chapter.
 
 \chapter{Assessing Modeling Assumptions}\label{ANOVAassessment}
 
@@ -4600,6 +4927,517 @@ evidence that a condition is violated. When that is the case, we should
 be wary of trusting the resulting p-values and confidence intervals.
 This is not unlike hypothesis testing; just as we can never prove the
 null hypothesis is true, we cannot prove that a condition is satisfied.
+
+Finally, any conditions required for a particular analysis should be
+assessed. If your sample is not consistent with the necessary
+conditions, you should choose a different analysis. The inference you
+obtain from an analysis is only reliable of the data is consistent with
+any necessary conditions.
+
+\BeginKnitrBlock{rmdtip}
+The conditions for a model are placed on the error, but the residuals
+are used to assess whether a dataset is consistent with these
+conditions, allowing us to determine if assuming the conditions are
+satisfied is reasonable.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  We can never prove a condition is satisfied.
+\item
+  The assumptions are not on the residuals, but the errors.
+\item
+  A sample should be consistent with any conditions you impose on your
+  model.
+\end{enumerate}
+
+If a sample is not consistent with the conditions you impose, you should
+consider revising your analysis.
+\EndKnitrBlock{rmdtip}
+
+\chapter{Using the Tools Together}\label{ANOVArecap}
+
+This unit introduced a framework for determining if there is an
+association between a quantitative response and a categorical predictor.
+We formed a standardized test statistic for measuring the signal, and
+then we developed a model for the data-generating process which allowed
+us to model the null distribution of the standardized statistic. In this
+chapter, we pull these tools together once more to answer a research
+question.
+
+The primary question we have been addressing in this unit was whether
+the moral expectations of students were affected by the type of food to
+which they were exposed. We saw that there was little evidence of a
+relationship between these two variables. We now use the data from the
+\protect\hyperlink{CaseOrganic}{Organic Food Case Study} to answer a
+related question:
+
+\begin{quote}
+Do the moral expectations of males and females differ?
+\end{quote}
+
+\section{Framing the Question (Fundamental Idea
+I)}\label{framing-the-question-fundamental-idea-i-1}
+
+As stated, the above question is ill-posed. We have not identified a
+variable or parameter of interest. We refine this question to be
+
+\begin{quote}
+Does the average moral expectation score of males differ from that of
+females?
+\end{quote}
+
+This question could also be stated as the following set of hypotheses:
+
+\begin{quote}
+Let \(\mu_1\) and \(\mu_2\) represent the average moral expectation
+score for males and females, respectively.\\
+\(H_0: \mu_1 = \mu_2\)\\
+\(H_1: \mu_1 \neq \mu_2\)
+\end{quote}
+
+\section{Getting Good Data (Fundamental Idea
+II)}\label{getting-good-data-fundamental-idea-ii-1}
+
+As we are working with previously collected data, our goal in this
+discussion is not how best to collect the data but making note of the
+limitations of the data as a result of how it was collected. We
+previously described the \protect\hyperlink{CaseOrganic}{Organic Food
+Case Study} as an example of a controlled experiment. This was
+true\ldots{}with regard to the primary question of interest (moral
+expectations and food exposure). However, the subjects were \emph{not}
+randomly assigned to gender here; therefore, with regard to this
+question of interest, the data was an observational study.
+
+It is common for young researchers to believe that if initially a
+controlled experiment was performed that the data always permits a
+causal interpretation. However, we must always examine the data
+collection with respect to the question of interest. Such ``secondary
+analyses'' (using data collected from a study to answer a question for
+which the data was not initially collected) are generally observational
+studies. As a result, there may be other factors related to gender and
+moral expectations that drive any results we may see.
+
+\section{Presenting the Data (Fundamental Idea
+III)}\label{presenting-the-data-fundamental-idea-iii-1}
+
+Our question here is examining the relationship between a quantitative
+response (moral expectation score) and a categorical predictor (gender).
+Figure \ref{fig:anovarecap-boxplot} compares the distribution of the
+moral expectation score for the two groups. Note that 4 students did not
+specify their gender; these subjects will be removed from the analysis.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/anovarecap-boxplot-1} 
+
+}
+
+\caption{Comparison of the moral expectations of males and females. The average value is added for each group.  Students who did not specify their gender were removed from the analysis.}\label{fig:anovarecap-boxplot}
+\end{figure}
+
+Based on the above graphic, it appears the females tend to have higher
+moral expectations by about 1 point, compared to males. We also observe
+that there are many more females in our sample compared to males, which
+is probably a result of the type of class and the demographic makeup of
+the university at which the study was conducted.
+
+\section{Quantifying the Variability in the Estimate (Fundamental Idea
+IV)}\label{quantifying-the-variability-in-the-estimate-fundamental-idea-iv-1}
+
+In order to measure the size of the signal, we can compute the
+standardized test statistic \[T = \frac{MSTrt}{MSE}\]
+
+which is 6.52 for the sample we have observed. Of course, if we were to
+collect a new sample, we would expect this value to change. If we want
+to quantify the variability in this statistic, we need a model for its
+sampling distribution. More, what we are really interested in is the
+sampling distribution of this statistic if the average moral expectation
+score were the same for the two genders; that is, we are interested in
+the null distribution of this standardized test statistic. With the null
+distribution, we could ascertain how unlikely (how strong the evidence)
+our sample is.
+
+In order to model the null distribution, we consider the following model
+for the data-generating process:
+\[\text{Moral Expectation Score} \sim \text{Gender}\] Formally, we write
+
+\begin{equation}
+  \begin{split}
+    (\text{Moral Expectation Score})_i & = \mu_1\mathbb{I}(\text{i-th subject is a male}) \\
+      & \quad + \mu_2\mathbb{I}(\text{i-th subject is a female}) + \epsilon_i
+  \end{split}
+  \label{eq:anovarecap-model}
+\end{equation}
+
+where we make the following assumptions on the error term:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The error in the moral expectation score for one individual is
+  independent of the error in the moral expectation score for any other
+  individual.
+\item
+  The variance of the error in the moral expectation scores for males is
+  the same as the variance of the error in moral expectation scores for
+  females.
+\item
+  The error in the moral expectation score for individuals follows a
+  Normal Distribution.
+\end{enumerate}
+
+Under these three assumptions, we are able to construct a model for the
+null distribution of the standardized test statistic. Figure
+\ref{fig:anovarecap-classical-null-model} illustrates the null
+distribution assuming these conditions are satisfied.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/anovarecap-classical-null-model-1} 
+
+}
+
+\caption{Model for the standardized test statistic measuring the signal comparing the moral expectation scores for males and females in the Organic Food Case Study.  This model is constructed assuming the classical ANOVA conditions are satisfied.}\label{fig:anovarecap-classical-null-model}
+\end{figure}
+
+Before we can use this model to make any conclusions regarding our
+question of interest, we need to address the fact that we have assumed
+certain conditions are satisfied. We need to assess whether the data is
+consistent with these assumptions. This requires examining the residuals
+for the model. That is, we must determine how far away the moral
+expectation score for each individual is from the average moral
+expectation score for their group.
+
+First, we discuss the assumption of independence. Since the data was
+collected at a single point in time, known as a \emph{cross-sectional
+study}, constructing a time-series plot of the residuals would not
+provide any information regarding this assumption. Instead, we rely on
+the context of the problem to make some statements regarding whether the
+data is consistent with this condition (whether making this assumption
+is reasonable). It is reasonable that whether a student has a slightly
+above (or below) moral expectation score is not related to whether any
+other student has a slightly above (or below) moral expectation score.
+That is, it is reasonable that the errors are independent. One case in
+which this might be violated is if students discussed their answers to
+the questions as they filled out the survey; then, it is plausible that
+one student influenced another's responses. As this is unlikely given
+the description of the data collection, we feel it is reasonable to
+assume independence.
+
+Again, note that there is a condition of independence; we are simply
+saying whether we are willing to assume the condition is satisfied.
+There is no way to ensure a condition holds.
+
+In order to assess the condition of constant variance, let us look back
+at the box plots given in Figure \ref{fig:anovarecap-boxplot}. As the
+spread of the moral expectation score for each of the two genders is
+roughly the same, it is reasonable to assume the variability of the
+errors in each group is the same.
+
+Finally, to assess the condition that the distribution of the errors is
+Normal, we consider a probability plot of the residuals (Figure
+\ref{fig:anovarecap-resids-probplot}). Given that the residuals tend to
+display a linear relationship, it is reasonable that the residuals
+represent a sample from a Normal Distribution. That is, it is reasonable
+that the errors follow a Normal Distribution.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/anovarecap-resids-probplot-1} 
+
+}
+
+\caption{Probability plot assessing the assumption that the errors for our model comparing the moral expectation score across gender follow a Normal Distribution.}\label{fig:anovarecap-resids-probplot}
+\end{figure}
+
+Given that we are comfortable assuming the conditions on the error term
+are reasonable, we can make use of the analytical model for the null
+distribution in Figure \ref{fig:anovarecap-classical-null-model}.
+
+\section{Quantifying the Evidence (Fundamental Idea
+V)}\label{quantifying-the-evidence-fundamental-idea-v-1}
+
+Now that we have a model for the null distribution, we can determine how
+extreme our particular sample was by comparing the standardized test
+statistic for our sample with this null distribution. We can measure
+this through computation of a p-value, the probability that we would
+observe a standardized test statistic of this magnitude or higher by
+chance alone if there were no difference in the mean moral expecation
+scores of males and females. This is summarized in Table
+\ref{tab:anovarecap-anova-table} below.
+
+\begin{table}
+
+\caption{\label{tab:anovarecap-anova-table}ANOVA table summarizing the comparison of the moral expectation score across gender within the Organic Food Case Study.}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|r}
+\hline
+Source & DF & SS & MS & F & P-value\\
+\hline
+Gender & 1 & 4.363 & 4.363 & 6.517 & 0.012\\
+\hline
+Residuals & 118 & 79.008 & 0.670 &  & \\
+\hline
+Total & 119 & 83.372 &  &  & \\
+\hline
+\end{tabular}
+\end{table}
+
+Based on the plot of the null distribution above, we should have
+expected a small p-value since hardly any of the standardized statistics
+exceeded the 6.517 we observed in our sample. From the results, we can
+conclude that there is evidence (p = 0.012) of a relationship between
+the moral expectations of a student and their gender. Looking back at
+Figure \ref{fig:anovarecap-boxplot}, females tend to have higher moral
+expectations.
+
+\section{Conclusion}\label{conclusion}
+
+Throughout this unit, we have examined a framework for examining the
+association between a quantitative response and a categorical predictor.
+This served to introduce a couple of big ideas we will make use of
+throughout the remainder of this text:
+
+\begin{itemize}
+\tightlist
+\item
+  The key to measuring a signal is to partition the variability in the
+  response.
+\item
+  A standardized test statistic is a numeric measure of the signal
+  strength in the sample.
+\item
+  Modeling the data-generating process provides us a way of modeling the
+  sampling distribution and null distribution of a standardized
+  statistic.
+\item
+  Conditions are often placed on the noise portion of the model for the
+  data-generating process; before assuming these conditions are met, we
+  should graphically assess whether the data is consistent with these
+  conditions.
+\end{itemize}
+
+Within this unit, we focused on a categorical predictor. In the next
+unit, we consider the case when we have a quantitative predictor or even
+a collection of predictors.
+
+\chapter{Analyzing a Design that Incorporates
+Blocking}\label{ANOVAblocking}
+
+In Chapter \ref{ANOVAdata} we discussed various characteristics of a
+good study design. Prior to this chapter, the study design has
+influenced the interpretations of the results (can we assume cause and
+effect, for example) but not the analysis itself. That is, whether the
+data is from an observational study or a controlled experiment, we used
+a model of the form \[\text{Response} \sim \text{Factor}\]
+
+where we had a quantitative response and a categorical predictor (or
+factor). However, it is not always the case where the study design and
+the analysis are unrelated. When we incorporate blocking into the study
+design, it has major implications with regard to the study. This chapter
+explores those implications.
+
+\section{What is the Big Deal?}\label{what-is-the-big-deal}
+
+Why does blocking impact our analysis. Consider Example
+\ref{ex:anova-golf} from Chapter \ref{ANOVAdata}; briefly, a study was
+conducted to determine if the type of seed used on a golf green has an
+effect on the distance a ball rolls on the green. This appears to fit
+into the framework we have been discussing in this unit --- we have a
+quantitative response (the distance the ball rolls) and a categorical
+predictor (the type of seed used on the green). Therefore, we might
+suggest the following model:
+\[\text{Rolling Distance} \sim \text{Seed Variety}\]
+
+Formally, we have that
+\[(\text{Rolling Distance})_i = \sum_{j=1}^{5} \mu_j \mathbb{I}(\text{i-th ball rolled on green seeded with variety j}) + \epsilon_i\]
+
+Further, we might assume the following conditions on the distribution of
+the error term:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The error in the distance one ball rolls is independent of the error
+  in the distance of any other ball.
+\item
+  The variance of the error in the distance a ball rolls is similar for
+  all five seed varieties.
+\item
+  The error in the distance a ball rolls follows a Normal Distribution.
+\end{enumerate}
+
+The problem now arises. The errors cannot possibly be independent; in
+fact, we purposely designed a study in which that was not the case!
+Remember the goal of blocking is to group subjects which are alike with
+respect to some inherent characteristic. In our example here, the greens
+with a similar slope were grouped together and the randomization of a
+green to a particular seeding variety occured within each block (group
+of greens with similar slope). That is, we recognized that the way a
+ball rolls within these greens is quite similar. So, if the ball rolls a
+little further on average on a green with a steep slope, then we can
+expect that it will roll a little further on average for most greens
+within that same slope block. This suggests the errors in the rolling
+distance are not independent.
+
+Since the data is not consistent with the conditions we have placed on
+the model, we are unable to conduct the same types of analyses
+(classical or resampling-based) presented in the prior chapters. We need
+a new strategy.
+
+\section{Solution: Partition the
+Variability}\label{solution-partition-the-variability}
+
+We have seen throughout this unit that the key to measuring a signal is
+to partition the sources of variability that contribute to the response.
+Again, this is best explained through a graphic. Figure
+\ref{fig:anovablocking-golf-raw} presents the rolling distance of the
+golf balls on the various greens.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/anovablocking-golf-raw-1} 
+
+}
+
+\caption{Comparison of the rolling distance of golf balls seeded with one of five types of Rye grass.  Greens with similar slopes were grouped prior to randomization.  The slope groups, of which there are 4, are denoted by a common value.}\label{fig:anovablocking-golf-raw}
+\end{figure}
+
+Even the way we present the data must account for the relationship
+present in the observed responses. Greens which belong to a similar
+group are indicated on the graphic. We see that balls rolled on those
+greens in group 3 tended to travel less distance, compared to balls on
+other greens. However, for all groups, the ball tended to roll the
+furthest when seeded with Variety A.
+
+This discussion helps to tease out the sources of variability:
+
+\begin{itemize}
+\tightlist
+\item
+  Type of Rye Seed: the distance the ball rolled is potentially related
+  to the type of Rye grass used on the green. That is, we might expect
+  the distance to be different as we move from one variety to another.
+  This is reflected in our primary question.
+\item
+  Slope of Green: the slope of the green will affect the distance the
+  ball travels. As a result, greens were grouped. Therefore, the group
+  to which the green belongs also contributes to the variability in the
+  distance the ball rolls. While we would like to address this, it is
+  not primarily part of our research question; this is a nuisance
+  variable.
+\item
+  Error in the Process: balls do not always roll the same distance, even
+  on two greens within the same slope group and assigned to the same Rye
+  variety. This is the variability we cannot explain. It is also a
+  nuisance.
+\end{itemize}
+
+The first and third sources of variability mentioned above are what we
+have been discussing throughout this unit. The second source of
+variability is a result of the blocked design. The solution to our
+modeling problem is to simply incorporate this additional component of
+the variability. As we will see in the next unit, this is a general
+modeling strategy --- whenever we have additional information which
+contributes to why there is variability in the response, we incorporate
+that information into our model. What is unique here is that we are not
+particularly interested in the slope of the green; it is a nuisance.
+That is, we are not interested in determining which variety of Rye we
+should place on a green with a particular slope; we actually believe
+there is probably one superior type of seed regardless of the slope.
+Placing the greens into groups was simply to reduce this additional
+variability. The fact that the slope group is a nuisance, similar to the
+overall noise in the data generating process, gives us an idea on how we
+approach this in our model.
+
+Our overall model is still
+\[\text{Rolling Distance} \sim \text{Seed Variety}\]
+
+However, we now need to partition the noise a bit further when we
+formally write the model; this leads to \[
+\begin{aligned}
+  (\text{Rolling Distance})_i &= \sum_{j=1}^{5} \mu_j \mathbb{I}(\text{i-th ball rolled on green seeded with variety j}) \\
+    &\quad + \sum_{k=1}^{4} \alpha_k\mathbb{I}(\text{i-th ball rolled on green belonging to slope group k}) \\
+    &\quad + \epsilon_i
+\end{aligned}
+\]
+
+We have essentially added an additional set of noise terms
+\(\alpha_1, \dotsc, \alpha_4\) which capture the additional ``bump'' we
+should expect to the distance the ball rolls as a result of being in a
+particular slope group. Now, we can place certain conditions on each of
+these error terms; for example,
+
+\begin{itemize}
+\tightlist
+\item
+  The bump to the rolling distance is the same for all balls within the
+  same slope group.
+\item
+  The bump to the rolling distance for a ball in one group is
+  independent of the bump to the rolling distance for a ball in any
+  other group.
+\item
+  The bumps to the rolling distance across groups follows a Normal
+  Distribution.
+\item
+  The error in the rolling distance for one ball within a slope group is
+  independent of the error in the rolling distance for a ball within the
+  same slope group.
+\item
+  The error in the rolling distance for balls within the same slope
+  group is similar across all seeding varieties.
+\item
+  The error in the rolling distance follows a Normal Distribution.
+\item
+  The error in the rolling distance is independent of the bump that
+  occurs to a ball for being from a particular slope group.
+\end{itemize}
+
+Many of these additional conditions (those placed on the ``bumps'')
+cannot be assessed. Instead, we determine based on the context of the
+problem whether we feel these assumptions are reasonable. Further
+investigation of the details of this model and its conditions is beyond
+the scope of this course. We focus on the interpretation of the
+resulting output.
+
+\section{Interpreting the Analysis}\label{interpreting-the-analysis}
+
+The resulting output looks similar to what we have seen previously
+(Table @ref); the only change is that the variability now includes an
+additional component to the partition. As this additional component was
+a nuisance, we refrain from making any interpretations from this
+component. We focus instead on the component of interest: the
+variability due to the factor.
+
+\begin{table}
+
+\caption{\label{tab:anovablocking-anova-table}ANOVA table summarizing the comparison of the ball roll for different seeding varieties while accounting for the slope of the green.}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|r}
+\hline
+Source & DF & SS & MS & F & P-value\\
+\hline
+Rye Seed Variety & 4 & 0.452 & 0.113 & 8.345 & 0.002\\
+\hline
+Slope Group & 3 & 1.051 & 0.350 & 25.867 & 0.000\\
+\hline
+Residuals & 12 & 0.163 & 0.014 &  & \\
+\hline
+Total & 19 & 1.666 &  &  & \\
+\hline
+\end{tabular}
+\end{table}
+
+From the analysis, we have strong evidence (p = 0.002) that the distance
+a ball rolls, on average, is associated with the type of Rye grass used
+on the green. From our initial graphical summary of the data, if you
+would like a course which has fast greens, we would recommend seeding
+with Variety A.
 
 \hypertarget{refs}{}
 \hypertarget{ref-Dudeck1981}{}

@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="ANOVAsummaries.html">
-<link rel="next" href="ANOVAmodel.html">
+<link rel="prev" href="ANOVArecap.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -173,114 +173,111 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ANOVAteststat" class="section level1">
-<h1><span class="header-section-number">13</span> Quantifying the Evidence</h1>
-<p>Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">13.1</a> displays a numeric response across three groups for two different datasets. Consider the following question:</p>
-<blockquote>
-<p>For which dataset is there <em>stronger</em> evidence that the response is associated with the grouping variable?</p>
-</blockquote>
-<div class="figure" style="text-align: center"><span id="fig:anovateststat-boxplots"></span>
-<img src="images/anovateststat-boxplots-1.png" alt="Simulated data illustrating that signal strength is determined by partitioning variability. There is a clear signal (difference in the location across groups) for Dataset A but not for Dataset B." width="80%" />
+<div id="ANOVAblocking" class="section level1">
+<h1><span class="header-section-number">18</span> Analyzing a Design that Incorporates Blocking</h1>
+<p>In Chapter <a href="ANOVAdata.html#ANOVAdata">11</a> we discussed various characteristics of a good study design. Prior to this chapter, the study design has influenced the interpretations of the results (can we assume cause and effect, for example) but not the analysis itself. That is, whether the data is from an observational study or a controlled experiment, we used a model of the form <span class="math display">\[\text{Response} \sim \text{Factor}\]</span></p>
+<p>where we had a quantitative response and a categorical predictor (or factor). However, it is not always the case where the study design and the analysis are unrelated. When we incorporate blocking into the study design, it has major implications with regard to the study. This chapter explores those implications.</p>
+<div id="what-is-the-big-deal" class="section level2">
+<h2><span class="header-section-number">18.1</span> What is the Big Deal?</h2>
+<p>Why does blocking impact our analysis. Consider Example <a href="#ex:anova-golf"><strong>??</strong></a> from Chapter <a href="ANOVAdata.html#ANOVAdata">11</a>; briefly, a study was conducted to determine if the type of seed used on a golf green has an effect on the distance a ball rolls on the green. This appears to fit into the framework we have been discussing in this unit — we have a quantitative response (the distance the ball rolls) and a categorical predictor (the type of seed used on the green). Therefore, we might suggest the following model: <span class="math display">\[\text{Rolling Distance} \sim \text{Seed Variety}\]</span></p>
+<p>Formally, we have that <span class="math display">\[(\text{Rolling Distance})_i = \sum_{j=1}^{5} \mu_j \mathbb{I}(\text{i-th ball rolled on green seeded with variety j}) + \epsilon_i\]</span></p>
+<p>Further, we might assume the following conditions on the distribution of the error term:</p>
+<ol style="list-style-type: decimal">
+<li>The error in the distance one ball rolls is independent of the error in the distance of any other ball.</li>
+<li>The variance of the error in the distance a ball rolls is similar for all five seed varieties.</li>
+<li>The error in the distance a ball rolls follows a Normal Distribution.</li>
+</ol>
+<p>The problem now arises. The errors cannot possibly be independent; in fact, we purposely designed a study in which that was not the case! Remember the goal of blocking is to group subjects which are alike with respect to some inherent characteristic. In our example here, the greens with a similar slope were grouped together and the randomization of a green to a particular seeding variety occured within each block (group of greens with similar slope). That is, we recognized that the way a ball rolls within these greens is quite similar. So, if the ball rolls a little further on average on a green with a steep slope, then we can expect that it will roll a little further on average for most greens within that same slope block. This suggests the errors in the rolling distance are not independent.</p>
+<p>Since the data is not consistent with the conditions we have placed on the model, we are unable to conduct the same types of analyses (classical or resampling-based) presented in the prior chapters. We need a new strategy.</p>
+</div>
+<div id="solution-partition-the-variability" class="section level2">
+<h2><span class="header-section-number">18.2</span> Solution: Partition the Variability</h2>
+<p>We have seen throughout this unit that the key to measuring a signal is to partition the sources of variability that contribute to the response. Again, this is best explained through a graphic. Figure <a href="ANOVAblocking.html#fig:anovablocking-golf-raw">18.1</a> presents the rolling distance of the golf balls on the various greens.</p>
+<div class="figure" style="text-align: center"><span id="fig:anovablocking-golf-raw"></span>
+<img src="images/anovablocking-golf-raw-1.png" alt="Comparison of the rolling distance of golf balls seeded with one of five types of Rye grass.  Greens with similar slopes were grouped prior to randomization.  The slope groups, of which there are 4, are denoted by a common value." width="80%" />
 <p class="caption">
-Figure 13.1: Simulated data illustrating that signal strength is determined by partitioning variability. There is a clear signal (difference in the location across groups) for Dataset A but not for Dataset B.
+Figure 18.1: Comparison of the rolling distance of golf balls seeded with one of five types of Rye grass. Greens with similar slopes were grouped prior to randomization. The slope groups, of which there are 4, are denoted by a common value.
 </p>
 </div>
-<p>Nearly everyone will say that Dataset A provides stronger evidence of a relationship between the grouping variable and the response. We generated these data such that the mean for Groups I, II and II are 5, 6 and 7, respectively, <em>for both Datasets A and B</em>. While there is a difference, on average, in the response across the groups in both cases, it is correct that Dataset A provides stronger evidence for that relationship. The real question is “what is it that leads everyone to make the same conclusion when we have not yet discussed how to analyze this data?” When we ask students why they feel Dataset A provides stronger evidence, we typically hear that it is because the “gaps” between the groups “look bigger.” In essence, that is exactly right!</p>
-<div id="partitioning-variability" class="section level2">
-<h2><span class="header-section-number">13.1</span> Partitioning Variability</h2>
-<p>Subconsciously, when we are deciding whether there is a difference between the groups, we are partitioning the variability in the response. We are essentially describing two sources of variability: the variability in the response caused by subjects belonging to different groups and the variability in the response within a group (Figure <a href="ANOVAteststat.html#fig:anovateststat-partition-variability">13.2</a>). In both Datasets A and B from Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">13.1</a>, the <strong>between-group variability</strong> is the same; the difference in the means from one group to another is the same in both cases. However, the <strong>within-group variability</strong> is much smaller for Dataset A compared to Dataset B.</p>
-<div class="figure" style="text-align: center"><span id="fig:anovateststat-partition-variability"></span>
-<img src="images/ANOVATestStat-Partition-Variability.jpg" alt="Illustration of partitioning the variability in the response to assess the strength of a signal." width="80%" />
-<p class="caption">
-Figure 13.2: Illustration of partitioning the variability in the response to assess the strength of a signal.
-</p>
-</div>
-
-<div class="definition">
-<span id="def:defn-between-group-variability" class="definition"><strong>Definition 13.1  (Between Group Variability)  </strong></span>The variability in the average response from one group to another.
-</div>
-<p></p>
-
-<div class="definition">
-<span id="def:defn-within-group-variability" class="definition"><strong>Definition 13.2  (Within Group Variability)  </strong></span>The variability in the response within a particular group.
-</div>
-<p></p>
-<p>Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">13.1</a> then illustrates the larger the variability between groups <em>relative to</em> the variability within groups, the stronger the signal. Quantifying the strength of a signal is then about quantifying the ratio of these two sources of variability. Let this sink in because it is completely counter-intuitive. We are saying that in order to determine if there is a difference in the mean response across groups, we have to examine variability. Further, a signal in data is measured by the variability it produces. For this reason, comparing a quantitative response across a categorical variable is often referred to as Analysis of Variance (ANOVA).</p>
-
-<div class="rmdkeyidea">
-Consider the ratio of the variability between groups to the variability within groups. The larger this ratio, the stronger the evidence of a signal provided by the data.
-</div>
-<p></p>
-</div>
-<div id="forming-a-standardized-test-statistic" class="section level2">
-<h2><span class="header-section-number">13.2</span> Forming a Standardized Test Statistic</h2>
-<p>As we stated above, quantifying the strength of a signal is equivalent to quantifying the ratio of two sources of variability. Such ratios are known as <strong>standardized test statistics</strong>.</p>
-
-<div class="definition">
-<span id="def:defn-standardized-test-statistic" class="definition"><strong>Definition 13.3  (Standardized Test Statistic)  </strong></span>A ratio of two sources of variability, or a signal-to-noise ratio. The larger the test statistic, the stronger the evidence of a signal; said another way, the larger the test statistic, the stronger the evidence against the null hypothesis.
-</div>
-<p></p>
-Based on our observations above, the standardized test statistic for comparing the mean response across multiple groups has the general form
-<span class="math display" id="eq:general-test-stat">\[\begin{equation}
-  T = \frac{(\text{Between Group Variability})}{(\text{Within Group Variability})}
-  \tag{13.1}
-\end{equation}\]</span>
-<p>The question we then have before us is the following: how do we measure these sources of variability? Consider again the hypothesis of interest for the <a href="CaseOrganic.html#CaseOrganic">Oranic Food Case Study</a>:</p>
-<blockquote>
-<p><span class="math inline">\(H_0: \mu_{\text{comfort}} = \mu_{\text{control}} = \mu_{\text{organic}}\)</span><br />
-<span class="math inline">\(H_1:\)</span> At least one <span class="math inline">\(\mu\)</span> differs from the others</p>
-</blockquote>
-<p>In order to form the standardized test statistic, let’s again think about what constitutes evidence <em>against</em> the null hypothesis. The more the means differ from one another, the stronger the evidence. But, in the previous unit, we had a measure for how different values were from one another — variance. That is, the <em>between-group</em> variability can be measured by the variance of the means; we call this the <strong>Mean Square for Treatment (MSTrt)</strong>.</p>
-
-<div class="definition">
-<span id="def:defn-mstrt" class="definition"><strong>Definition 13.4  (Mean Square for Treatment (MSTrt))  </strong></span>This captures the between-group variability in an Analysis of Variance; it is a weighted variance among the sample means from the various groups. It represents the signal.
-</div>
-<p></p>
-<p>Since we do not know the means for each groups (remember, each <span class="math inline">\(\mu\)</span> is a parameter), we assess the between group variability within the sample using the estimates for these parameters — the sample means. This is our signal. The larger this variance, the further apart the means are from one another (agreeing with the alternative hypothesis); the smaller this variance, the closer the means are (agreeing with the null hypothesis).</p>
-<p>While the numerator provides some measure of the size of the signal, we need again need to consider how much noise is within the data. Again, in Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">13.1</a>, the variability between the means is identical for the two datasets; the signal is stronger for Dataset A because this variability is larger <em>with respect to the noise</em>. In order to capture the <em>within-group</em> variability, we pool the variances for each group; this is called the <strong>Mean Square for Error (MSE)</strong>.</p>
-
-<div class="definition">
-<span id="def:defn-mse" class="definition"><strong>Definition 13.5  (Mean Square for Error (MSE))  </strong></span>This captures the within-group variability; it is a pooled estimate of the variance within the groups. It represents the noise.
-</div>
-<p></p>
-<p>Our test statistic in Equation <a href="ANOVAteststat.html#eq:general-test-stat">(13.1)</a> is then refined to</p>
-<span class="math display" id="eq:anova-test-stat">\[\begin{equation}
-  T = \frac{MSTrt}{MSE}
-  \tag{13.2}
-\end{equation}\]</span>
-
-<div class="rmdtip">
-<p>Consider testing the hypotheses &gt; <span class="math inline">\(H_0: \mu_1 = \mu_2 = \dotsb = \mu_k\)</span><br />
-&gt; <span class="math inline">\(H_1:\)</span> At least one <span class="math inline">\(\mu\)</span> differs from the others</p>
-<p>The standardized test statistic of interest is</p>
-<p><span class="math display">\[
-  T = \frac{MSTrt}{MSE}
-\]</span></p>
-<p>where</p>
-<p><span class="math display">\[
+<p>Even the way we present the data must account for the relationship present in the observed responses. Greens which belong to a similar group are indicated on the graphic. We see that balls rolled on those greens in group 3 tended to travel less distance, compared to balls on other greens. However, for all groups, the ball tended to roll the furthest when seeded with Variety A.</p>
+<p>This discussion helps to tease out the sources of variability:</p>
+<ul>
+<li>Type of Rye Seed: the distance the ball rolled is potentially related to the type of Rye grass used on the green. That is, we might expect the distance to be different as we move from one variety to another. This is reflected in our primary question.</li>
+<li>Slope of Green: the slope of the green will affect the distance the ball travels. As a result, greens were grouped. Therefore, the group to which the green belongs also contributes to the variability in the distance the ball rolls. While we would like to address this, it is not primarily part of our research question; this is a nuisance variable.</li>
+<li>Error in the Process: balls do not always roll the same distance, even on two greens within the same slope group and assigned to the same Rye variety. This is the variability we cannot explain. It is also a nuisance.</li>
+</ul>
+<p>The first and third sources of variability mentioned above are what we have been discussing throughout this unit. The second source of variability is a result of the blocked design. The solution to our modeling problem is to simply incorporate this additional component of the variability. As we will see in the next unit, this is a general modeling strategy — whenever we have additional information which contributes to why there is variability in the response, we incorporate that information into our model. What is unique here is that we are not particularly interested in the slope of the green; it is a nuisance. That is, we are not interested in determining which variety of Rye we should place on a green with a particular slope; we actually believe there is probably one superior type of seed regardless of the slope. Placing the greens into groups was simply to reduce this additional variability. The fact that the slope group is a nuisance, similar to the overall noise in the data generating process, gives us an idea on how we approach this in our model.</p>
+<p>Our overall model is still <span class="math display">\[\text{Rolling Distance} \sim \text{Seed Variety}\]</span></p>
+<p>However, we now need to partition the noise a bit further when we formally write the model; this leads to <span class="math display">\[
 \begin{aligned}
-  MSTrt &amp;= \frac{1}{k-1} \sum_{j=1}^{k} n_j \left(\bar{y}_j - \bar{y}\right)^2 \\
-  MSE &amp;= \frac{1}{n-k} \sum_{j=1}^{k} \left(n_j - 1\right) s_j^2
+  (\text{Rolling Distance})_i &amp;= \sum_{j=1}^{5} \mu_j \mathbb{I}(\text{i-th ball rolled on green seeded with variety j}) \\
+    &amp;\quad + \sum_{k=1}^{4} \alpha_k\mathbb{I}(\text{i-th ball rolled on green belonging to slope group k}) \\
+    &amp;\quad + \epsilon_i
 \end{aligned}
 \]</span></p>
-and <span class="math inline">\(n_j\)</span> represents the sample size for the <span class="math inline">\(j\)</span>-th group, <span class="math inline">\(\bar{y}_j\)</span> represents the sample mean for the <span class="math inline">\(j\)</span>-th group, <span class="math inline">\(\bar{y}\)</span> represents the overall mean response across all groups, and <span class="math inline">\(s_j^2\)</span> represents the sample variance for the <span class="math inline">\(j\)</span>-th group.
+<p>We have essentially added an additional set of noise terms <span class="math inline">\(\alpha_1, \dotsc, \alpha_4\)</span> which capture the additional “bump” we should expect to the distance the ball rolls as a result of being in a particular slope group. Now, we can place certain conditions on each of these error terms; for example,</p>
+<ul>
+<li>The bump to the rolling distance is the same for all balls within the same slope group.</li>
+<li>The bump to the rolling distance for a ball in one group is independent of the bump to the rolling distance for a ball in any other group.</li>
+<li>The bumps to the rolling distance across groups follows a Normal Distribution.</li>
+<li>The error in the rolling distance for one ball within a slope group is independent of the error in the rolling distance for a ball within the same slope group.</li>
+<li>The error in the rolling distance for balls within the same slope group is similar across all seeding varieties.</li>
+<li>The error in the rolling distance follows a Normal Distribution.</li>
+<li>The error in the rolling distance is independent of the bump that occurs to a ball for being from a particular slope group.</li>
+</ul>
+<p>Many of these additional conditions (those placed on the “bumps”) cannot be assessed. Instead, we determine based on the context of the problem whether we feel these assumptions are reasonable. Further investigation of the details of this model and its conditions is beyond the scope of this course. We focus on the interpretation of the resulting output.</p>
 </div>
-<p></p>
-<p>We note that while mathematical formulas have been provided to add some clarity to those who think algebraically, our emphasis is <em>not</em> on the computational formulas as much as the idea that we are comparing two sources of variability.</p>
-</div>
-<div id="obtaining-a-p-value" class="section level2">
-<h2><span class="header-section-number">13.3</span> Obtaining a P-value</h2>
-<p>Standardized test statistics quantify the strength of a signal, but they do not allow for easy interpretation. However, with a standardized test statistic, we are able to compute a p-value to quantify how unlikely our particular sample is. That is, we need to construct the null distribution for the standardized test statistic. We need to know what type of signal we would expect if the null hypothesis were true. Conceptually, this is no different than it was in Unit I. We consider running the study again in a world in which all the groups are the same; for the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a>, this would involve - Obtaining a new sample of students. - Randomizing each student to one of the three groups at random, all showing the same foods. - Having each student answer a questionnaire regarding moral dilemmas. - Summarize the data by computing a standardized test statistic.</p>
-<p>Notice the difference in step 2 above compared to what actually happened in the real study. In the real study, each group had a different set of foods. This was to answer the question about whether there is a difference in the groups. However, in order to construct the <em>null distribution</em>, we need to force all groups to be the same. This could be accomplished by showing every group the same set of foods. The primary difference in this unit is that the strength of the signal is measured through a standardized test statistic. After repeating the above steps over and over again, we determine how often the recorded standardized test statistics exceeded the value we obtained in our actual sample.</p>
-<p>Figure <a href="ANOVAteststat.html#fig:anovateststat-pvalue">13.3</a> represents the null distribution of the standardized test statistic. Again, these are values of the standardized test statistic we would expect if there were no relationship between the food categories to which the students were exposed and their moral score. We are then interested in finding out if the observed dataset is consistent with these expectations.</p>
-<div class="figure" style="text-align: center"><span id="fig:anovateststat-pvalue"></span>
-<img src="images/anovateststat-pvalue-1.png" alt="Computation of the p-value for the Organic Food Case Study by simulating the null distribution.  The null distribution is based on 5000 replications." width="80%" />
-<p class="caption">
-Figure 13.3: Computation of the p-value for the Organic Food Case Study by simulating the null distribution. The null distribution is based on 5000 replications.
-</p>
-</div>
-<p>Notice that in our data, we observed a standardized test statistic of 0.41; based on the null distribution, we would expect a signal this strong or stronger about 66.9% of the time <em>when no signal existed at the population</em> (by chance alone). That is, our data is quite consistent with what we would expect under the null hypothesis. There is no evidence of a relationship between the type of food a student is exposed to and their moral expectations, on average.</p>
-<p>Again, conceptually, this is similar to what we saw in the previous unit. We are simply determining how likely our data is under the null hypothesis. However, unlike the previous unit, it may not be clear how we actually model this null distribution. If we cannot physically redo the study, how can we construct this model? In order to understand this, we must consider a different model — that for the data generating process. This is the topic of the next chapter.</p>
+<div id="interpreting-the-analysis" class="section level2">
+<h2><span class="header-section-number">18.3</span> Interpreting the Analysis</h2>
+<p>The resulting output looks similar to what we have seen previously (Table @ref); the only change is that the variability now includes an additional component to the partition. As this additional component was a nuisance, we refrain from making any interpretations from this component. We focus instead on the component of interest: the variability due to the factor.</p>
+<table>
+<caption><span id="tab:anovablocking-anova-table">Table 18.1: </span>ANOVA table summarizing the comparison of the ball roll for different seeding varieties while accounting for the slope of the green.</caption>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="right">DF</th>
+<th align="right">SS</th>
+<th align="right">MS</th>
+<th align="right">F</th>
+<th align="right">P-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Rye Seed Variety</td>
+<td align="right">4</td>
+<td align="right">0.452</td>
+<td align="right">0.113</td>
+<td align="right">8.345</td>
+<td align="right">0.002</td>
+</tr>
+<tr class="even">
+<td align="left">Slope Group</td>
+<td align="right">3</td>
+<td align="right">1.051</td>
+<td align="right">0.350</td>
+<td align="right">25.867</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="odd">
+<td align="left">Residuals</td>
+<td align="right">12</td>
+<td align="right">0.163</td>
+<td align="right">0.014</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Total</td>
+<td align="right">19</td>
+<td align="right">1.666</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+<p>From the analysis, we have strong evidence (p = 0.002) that the distance a ball rolls, on average, is associated with the type of Rye grass used on the green. From our initial graphical summary of the data, if you would like a course which has fast greens, we would recommend seeding with Variety A.</p>
 
 </div>
 </div>
@@ -289,8 +286,8 @@ Figure 13.3: Computation of the p-value for the Organic Food Case Study by simul
           </div>
         </div>
       </div>
-<a href="ANOVAsummaries.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ANOVAmodel.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ANOVArecap.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
