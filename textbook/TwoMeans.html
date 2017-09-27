@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statistical Foundations for Engineers and Scientists</title>
+  <meta name="description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Statistical Foundations for Engineers and Scientists" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Statistical Foundations for Engineers and Scientists" />
+  
+  <meta name="twitter:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="OneMean.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Modeling</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Unit I: Language and Logic of Inference</b></span></li>
+<li class="chapter" data-level="1" data-path="Basics.html"><a href="Basics.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1.1" data-path="Basics.html"><a href="Basics.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="1.2" data-path="Basics.html"><a href="Basics.html#anatomy-of-a-dataset"><i class="fa fa-check"></i><b>1.2</b> Anatomy of a Dataset</a></li>
+<li class="chapter" data-level="1.3" data-path="Basics.html"><a href="Basics.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.3</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="CaseDeepwater.html"><a href="CaseDeepwater.html"><i class="fa fa-check"></i><b>2</b> Case Study: Health Effects of the Deepwater Horizon Oil Spill</a></li>
+<li class="chapter" data-level="3" data-path="Questions.html"><a href="Questions.html"><i class="fa fa-check"></i><b>3</b> Asking the Right Questions</a><ul>
+<li class="chapter" data-level="3.1" data-path="Questions.html"><a href="Questions.html#characterizing-a-variable"><i class="fa fa-check"></i><b>3.1</b> Characterizing a Variable</a></li>
+<li class="chapter" data-level="3.2" data-path="Questions.html"><a href="Questions.html#framing-the-question"><i class="fa fa-check"></i><b>3.2</b> Framing the Question</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>4</b> Gathering the Evidence (Data Collection)</a><ul>
+<li class="chapter" data-level="4.1" data-path="Data.html"><a href="Data.html#what-makes-a-sample-reliable"><i class="fa fa-check"></i><b>4.1</b> What Makes a Sample Reliable</a></li>
+<li class="chapter" data-level="4.2" data-path="Data.html"><a href="Data.html#poor-methods-of-data-collection"><i class="fa fa-check"></i><b>4.2</b> Poor Methods of Data Collection</a></li>
+<li class="chapter" data-level="4.3" data-path="Data.html"><a href="Data.html#preferred-methods-of-sampling"><i class="fa fa-check"></i><b>4.3</b> Preferred Methods of Sampling</a></li>
+<li class="chapter" data-level="4.4" data-path="Data.html"><a href="Data.html#two-types-of-studies"><i class="fa fa-check"></i><b>4.4</b> Two Types of Studies</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Summaries.html"><a href="Summaries.html"><i class="fa fa-check"></i><b>5</b> Presenting the Evidence (Summarizing Data)</a><ul>
+<li class="chapter" data-level="5.1" data-path="Summaries.html"><a href="Summaries.html#characteristics-of-a-distribution-summarizing-a-single-variable"><i class="fa fa-check"></i><b>5.1</b> Characteristics of a Distribution (Summarizing a Single Variable)</a></li>
+<li class="chapter" data-level="5.2" data-path="Summaries.html"><a href="Summaries.html#summarizing-relationships"><i class="fa fa-check"></i><b>5.2</b> Summarizing Relationships</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="SamplingDistns.html"><a href="SamplingDistns.html"><i class="fa fa-check"></i><b>6</b> Assessing the Evidence (Quantifying the Variability in Estimates)</a><ul>
+<li class="chapter" data-level="6.1" data-path="SamplingDistns.html"><a href="SamplingDistns.html#conceptualizing-the-sampling-distribution"><i class="fa fa-check"></i><b>6.1</b> Conceptualizing the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="SamplingDistns.html"><a href="SamplingDistns.html#example-of-a-sampling-distribution"><i class="fa fa-check"></i><b>6.2</b> Example of a Sampling Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="SamplingDistns.html"><a href="SamplingDistns.html#modeling-the-sampling-distribution"><i class="fa fa-check"></i><b>6.3</b> Modeling the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="SamplingDistns.html"><a href="SamplingDistns.html#using-a-model-for-the-sampling-distributions-confidence-intervals"><i class="fa fa-check"></i><b>6.4</b> Using a Model for the Sampling Distributions (Confidence Intervals)</a></li>
+<li class="chapter" data-level="6.5" data-path="SamplingDistns.html"><a href="SamplingDistns.html#bringing-it-all-together"><i class="fa fa-check"></i><b>6.5</b> Bringing it All Together</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="NullDistns.html"><a href="NullDistns.html"><i class="fa fa-check"></i><b>7</b> Quantifying the Evidence (Rejecting Bad Models)</a><ul>
+<li class="chapter" data-level="7.1" data-path="NullDistns.html"><a href="NullDistns.html#some-subtleties"><i class="fa fa-check"></i><b>7.1</b> Some Subtleties</a></li>
+<li class="chapter" data-level="7.2" data-path="NullDistns.html"><a href="NullDistns.html#assuming-the-null-hypothesis"><i class="fa fa-check"></i><b>7.2</b> Assuming the Null Hypothesis</a></li>
+<li class="chapter" data-level="7.3" data-path="NullDistns.html"><a href="NullDistns.html#using-the-null-distribution"><i class="fa fa-check"></i><b>7.3</b> Using the Null Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="NullDistns.html"><a href="NullDistns.html#sampling-distributions-vs.null-distributions"><i class="fa fa-check"></i><b>7.4</b> Sampling Distributions vs. Null Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="RecapLanguage.html"><a href="RecapLanguage.html"><i class="fa fa-check"></i><b>8</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="8.1" data-path="RecapLanguage.html"><a href="RecapLanguage.html#framing-the-question-fundamental-idea-i"><i class="fa fa-check"></i><b>8.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="8.2" data-path="RecapLanguage.html"><a href="RecapLanguage.html#getting-good-data-fundamental-idea-ii"><i class="fa fa-check"></i><b>8.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="8.3" data-path="RecapLanguage.html"><a href="RecapLanguage.html#presenting-the-data-fundamental-idea-iii"><i class="fa fa-check"></i><b>8.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="8.4" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv"><i class="fa fa-check"></i><b>8.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="8.5" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-evidence-fundamental-idea-v"><i class="fa fa-check"></i><b>8.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="8.6" data-path="RecapLanguage.html"><a href="RecapLanguage.html#summary"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>II Unit II: Comparing the Average Response Across Groups</b></span></li>
+<li class="chapter" data-level="9" data-path="CaseOrganic.html"><a href="CaseOrganic.html"><i class="fa fa-check"></i><b>9</b> Case Study: Organic Foods and Superior Morals</a></li>
+<li class="chapter" data-level="10" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html"><i class="fa fa-check"></i><b>10</b> Framing the Question</a><ul>
+<li class="chapter" data-level="10.1" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html#general-setting"><i class="fa fa-check"></i><b>10.1</b> General Setting</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="ANOVAdata.html"><a href="ANOVAdata.html"><i class="fa fa-check"></i><b>11</b> Study Design</a><ul>
+<li class="chapter" data-level="11.1" data-path="ANOVAdata.html"><a href="ANOVAdata.html#aspects-of-a-well-designed-experiment"><i class="fa fa-check"></i><b>11.1</b> Aspects of a Well Designed Experiment</a></li>
+<li class="chapter" data-level="11.2" data-path="ANOVAdata.html"><a href="ANOVAdata.html#collecting-observational-data"><i class="fa fa-check"></i><b>11.2</b> Collecting Observational Data</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="ANOVAsummaries.html"><a href="ANOVAsummaries.html"><i class="fa fa-check"></i><b>12</b> Presenting the Data</a></li>
+<li class="chapter" data-level="13" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html"><i class="fa fa-check"></i><b>13</b> Quantifying the Evidence</a><ul>
+<li class="chapter" data-level="13.1" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="13.2" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#forming-a-standardized-test-statistic"><i class="fa fa-check"></i><b>13.2</b> Forming a Standardized Test Statistic</a></li>
+<li class="chapter" data-level="13.3" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#obtaining-a-p-value"><i class="fa fa-check"></i><b>13.3</b> Obtaining a P-value</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html"><i class="fa fa-check"></i><b>14</b> Building the Statistical Model</a><ul>
+<li class="chapter" data-level="14.1" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#general-formulation"><i class="fa fa-check"></i><b>14.1</b> General Formulation</a></li>
+<li class="chapter" data-level="14.2" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#statistical-model-for-a-quantitative-response-and-a-categorical-predictor"><i class="fa fa-check"></i><b>14.2</b> Statistical Model for A Quantitative Response and a Categorical Predictor</a></li>
+<li class="chapter" data-level="14.3" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#conditions-on-the-error-distribution"><i class="fa fa-check"></i><b>14.3</b> Conditions on the Error Distribution</a></li>
+<li class="chapter" data-level="14.4" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#simulating-the-null-distribution"><i class="fa fa-check"></i><b>14.4</b> Simulating the Null Distribution</a></li>
+<li class="chapter" data-level="14.5" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#recap"><i class="fa fa-check"></i><b>14.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html"><i class="fa fa-check"></i><b>15</b> Classical ANOVA Model</a><ul>
+<li class="chapter" data-level="15.1" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#modeling-the-population"><i class="fa fa-check"></i><b>15.1</b> Modeling the Population</a></li>
+<li class="chapter" data-level="15.2" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#adding-the-assumption-of-normality"><i class="fa fa-check"></i><b>15.2</b> Adding the Assumption of Normality</a></li>
+<li class="chapter" data-level="15.3" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#impact-of-normality-assumption"><i class="fa fa-check"></i><b>15.3</b> Impact of Normality Assumption</a></li>
+<li class="chapter" data-level="15.4" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#analysis-of-organic-food-case-study"><i class="fa fa-check"></i><b>15.4</b> Analysis of Organic Food Case Study</a></li>
+<li class="chapter" data-level="15.5" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#recap-1"><i class="fa fa-check"></i><b>15.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html"><i class="fa fa-check"></i><b>16</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="16.1" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-independence"><i class="fa fa-check"></i><b>16.1</b> Assessing Independence</a></li>
+<li class="chapter" data-level="16.2" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-homoskedasticity"><i class="fa fa-check"></i><b>16.2</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="16.3" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-normality"><i class="fa fa-check"></i><b>16.3</b> Assessing Normality</a></li>
+<li class="chapter" data-level="16.4" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#general-tips-for-assessing-assumptions"><i class="fa fa-check"></i><b>16.4</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="ANOVArecap.html"><a href="ANOVArecap.html"><i class="fa fa-check"></i><b>17</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="17.1" data-path="ANOVArecap.html"><a href="ANOVArecap.html#framing-the-question-fundamental-idea-i-1"><i class="fa fa-check"></i><b>17.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="17.2" data-path="ANOVArecap.html"><a href="ANOVArecap.html#getting-good-data-fundamental-idea-ii-1"><i class="fa fa-check"></i><b>17.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="17.3" data-path="ANOVArecap.html"><a href="ANOVArecap.html#presenting-the-data-fundamental-idea-iii-1"><i class="fa fa-check"></i><b>17.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="17.4" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv-1"><i class="fa fa-check"></i><b>17.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="17.5" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-evidence-fundamental-idea-v-1"><i class="fa fa-check"></i><b>17.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="17.6" data-path="ANOVArecap.html"><a href="ANOVArecap.html#conclusion"><i class="fa fa-check"></i><b>17.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="ANOVAblocking.html"><a href="ANOVAblocking.html"><i class="fa fa-check"></i><b>18</b> Analyzing a Design that Incorporates Blocking</a><ul>
+<li class="chapter" data-level="18.1" data-path="ANOVAblocking.html"><a href="ANOVAblocking.html#what-is-the-big-deal"><i class="fa fa-check"></i><b>18.1</b> What is the Big Deal?</a></li>
+<li class="chapter" data-level="18.2" data-path="ANOVAblocking.html"><a href="ANOVAblocking.html#solution-partition-the-variability"><i class="fa fa-check"></i><b>18.2</b> Solution: Partition the Variability</a></li>
+<li class="chapter" data-level="18.3" data-path="ANOVAblocking.html"><a href="ANOVAblocking.html#interpreting-the-analysis"><i class="fa fa-check"></i><b>18.3</b> Interpreting the Analysis</a></li>
+</ul></li>
+<li class="part"><span><b>III Unit III: Modeling the Average Response as a Function of Several Predictors</b></span></li>
+<li class="chapter" data-level="19" data-path="CaseGreece.html"><a href="CaseGreece.html"><i class="fa fa-check"></i><b>19</b> Case Study: Seismic Activity in Greece</a></li>
+<li class="chapter" data-level="20" data-path="Regquestions.html"><a href="Regquestions.html"><i class="fa fa-check"></i><b>20</b> Myriad of Potential Questions</a></li>
+<li class="chapter" data-level="21" data-path="Regdata.html"><a href="Regdata.html"><i class="fa fa-check"></i><b>21</b> Nature of Collecting Multivariable Data</a></li>
+<li class="chapter" data-level="22" data-path="Regsummaries.html"><a href="Regsummaries.html"><i class="fa fa-check"></i><b>22</b> Summarizing Multivariable Data</a><ul>
+<li class="chapter" data-level="22.1" data-path="Regsummaries.html"><a href="Regsummaries.html#characterizing-the-marginal-relationship-of-two-quantitative-variables"><i class="fa fa-check"></i><b>22.1</b> Characterizing the Marginal Relationship of Two Quantitative Variables</a></li>
+<li class="chapter" data-level="22.2" data-path="Regsummaries.html"><a href="Regsummaries.html#visualizing-the-impact-of-a-third-variable-on-the-marginal-relationship"><i class="fa fa-check"></i><b>22.2</b> Visualizing the Impact of a Third Variable on the Marginal Relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="Regmodel.html"><a href="Regmodel.html"><i class="fa fa-check"></i><b>23</b> Extending Our Statistical Model</a><ul>
+<li class="chapter" data-level="23.1" data-path="Regmodel.html"><a href="Regmodel.html#statistical-model-for-a-quantitative-response-and-quantitative-predictors"><i class="fa fa-check"></i><b>23.1</b> Statistical Model for A Quantitative Response and Quantitative Predictor(s)</a><ul>
+<li class="chapter" data-level="23.1.1" data-path="Regmodel.html"><a href="Regmodel.html#including-multiple-precitors"><i class="fa fa-check"></i><b>23.1.1</b> Including Multiple Precitors</a></li>
+<li class="chapter" data-level="23.1.2" data-path="Regmodel.html"><a href="Regmodel.html#including-categorical-predictors"><i class="fa fa-check"></i><b>23.1.2</b> Including Categorical Predictors</a></li>
+<li class="chapter" data-level="23.1.3" data-path="Regmodel.html"><a href="Regmodel.html#general-model-formulation"><i class="fa fa-check"></i><b>23.1.3</b> General Model Formulation</a></li>
+</ul></li>
+<li class="chapter" data-level="23.2" data-path="Regmodel.html"><a href="Regmodel.html#estimating-the-parameters"><i class="fa fa-check"></i><b>23.2</b> Estimating the Parameters</a></li>
+<li class="chapter" data-level="23.3" data-path="Regmodel.html"><a href="Regmodel.html#embedding-our-questions-into-a-statistical-framework"><i class="fa fa-check"></i><b>23.3</b> Embedding Our Questions into a Statistical Framework</a></li>
+<li class="chapter" data-level="23.4" data-path="Regmodel.html"><a href="Regmodel.html#recap-2"><i class="fa fa-check"></i><b>23.4</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="Regconditions.html"><a href="Regconditions.html"><i class="fa fa-check"></i><b>24</b> Conditions on the Error Term of a Regression Model</a><ul>
+<li class="chapter" data-level="24.1" data-path="Regconditions.html"><a href="Regconditions.html#classical-regression-model"><i class="fa fa-check"></i><b>24.1</b> Classical Regression Model</a></li>
+<li class="chapter" data-level="24.2" data-path="Regconditions.html"><a href="Regconditions.html#interpretation-of-the-parameters"><i class="fa fa-check"></i><b>24.2</b> Interpretation of the Parameters</a></li>
+<li class="chapter" data-level="24.3" data-path="Regconditions.html"><a href="Regconditions.html#addressing-confounding-through-our-interpretation"><i class="fa fa-check"></i><b>24.3</b> Addressing Confounding through our Interpretation</a></li>
+<li class="chapter" data-level="24.4" data-path="Regconditions.html"><a href="Regconditions.html#empirical-model-for-the-sampling-distribution"><i class="fa fa-check"></i><b>24.4</b> Empirical Model for the Sampling Distribution</a></li>
+<li class="chapter" data-level="24.5" data-path="Regconditions.html"><a href="Regconditions.html#recap-3"><i class="fa fa-check"></i><b>24.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="Regassessment.html"><a href="Regassessment.html"><i class="fa fa-check"></i><b>25</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="25.1" data-path="Regassessment.html"><a href="Regassessment.html#computing-residuals"><i class="fa fa-check"></i><b>25.1</b> Computing Residuals</a></li>
+<li class="chapter" data-level="25.2" data-path="Regassessment.html"><a href="Regassessment.html#assessing-mean-0"><i class="fa fa-check"></i><b>25.2</b> Assessing Mean 0</a></li>
+<li class="chapter" data-level="25.3" data-path="Regassessment.html"><a href="Regassessment.html#assessing-independence-1"><i class="fa fa-check"></i><b>25.3</b> Assessing Independence</a></li>
+<li class="chapter" data-level="25.4" data-path="Regassessment.html"><a href="Regassessment.html#assessing-homoskedasticity-1"><i class="fa fa-check"></i><b>25.4</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="25.5" data-path="Regassessment.html"><a href="Regassessment.html#assessing-normality-1"><i class="fa fa-check"></i><b>25.5</b> Assessing Normality</a></li>
+<li class="chapter" data-level="25.6" data-path="Regassessment.html"><a href="Regassessment.html#general-tips-for-assessing-assumptions-1"><i class="fa fa-check"></i><b>25.6</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="Reginteractions.html"><a href="Reginteractions.html"><i class="fa fa-check"></i><b>26</b> Modifying an Effect</a><ul>
+<li class="chapter" data-level="26.1" data-path="Reginteractions.html"><a href="Reginteractions.html#building-an-effect-modifier-into-the-model"><i class="fa fa-check"></i><b>26.1</b> Building an Effect-Modifier into the Model</a></li>
+<li class="chapter" data-level="26.2" data-path="Reginteractions.html"><a href="Reginteractions.html#inference-for-effect-modifications"><i class="fa fa-check"></i><b>26.2</b> Inference for Effect Modifications</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="Regquality.html"><a href="Regquality.html"><i class="fa fa-check"></i><b>27</b> Quantifying the Quality of a Model Fit</a><ul>
+<li class="chapter" data-level="27.1" data-path="Regquality.html"><a href="Regquality.html#partitioning-variability-1"><i class="fa fa-check"></i><b>27.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="27.2" data-path="Regquality.html"><a href="Regquality.html#r-squared"><i class="fa fa-check"></i><b>27.2</b> R-squared</a></li>
+<li class="chapter" data-level="27.3" data-path="Regquality.html"><a href="Regquality.html#overfitting"><i class="fa fa-check"></i><b>27.3</b> Overfitting</a></li>
+<li class="chapter" data-level="27.4" data-path="Regquality.html"><a href="Regquality.html#goal-of-modeling"><i class="fa fa-check"></i><b>27.4</b> Goal of Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="Regrecap.html"><a href="Regrecap.html"><i class="fa fa-check"></i><b>28</b> Puting it All Together</a><ul>
+<li class="chapter" data-level="28.1" data-path="Regrecap.html"><a href="Regrecap.html#graphical-summary"><i class="fa fa-check"></i><b>28.1</b> Graphical Summary</a></li>
+<li class="chapter" data-level="28.2" data-path="Regrecap.html"><a href="Regrecap.html#development-of-statistical-model"><i class="fa fa-check"></i><b>28.2</b> Development of Statistical Model</a></li>
+<li class="chapter" data-level="28.3" data-path="Regrecap.html"><a href="Regrecap.html#assessment-of-conditions"><i class="fa fa-check"></i><b>28.3</b> Assessment of Conditions</a></li>
+<li class="chapter" data-level="28.4" data-path="Regrecap.html"><a href="Regrecap.html#summary-of-model-fit"><i class="fa fa-check"></i><b>28.4</b> Summary of Model Fit</a></li>
+</ul></li>
+<li class="part"><span><b>IV Unit IV: Special Cases</b></span></li>
+<li class="chapter" data-level="29" data-path="CaseBabies.html"><a href="CaseBabies.html"><i class="fa fa-check"></i><b>29</b> Case Study: Birth Weights of Babies</a></li>
+<li class="chapter" data-level="30" data-path="OneMean.html"><a href="OneMean.html"><i class="fa fa-check"></i><b>30</b> Inference on the Mean of a Single Population (One-Sample t-Tests)</a><ul>
+<li class="chapter" data-level="30.1" data-path="OneMean.html"><a href="OneMean.html#framing-the-question-1"><i class="fa fa-check"></i><b>30.1</b> Framing the Question</a></li>
+<li class="chapter" data-level="30.2" data-path="OneMean.html"><a href="OneMean.html#classical-approach"><i class="fa fa-check"></i><b>30.2</b> Classical Approach</a></li>
+<li class="chapter" data-level="30.3" data-path="OneMean.html"><a href="OneMean.html#connection-to-modeling"><i class="fa fa-check"></i><b>30.3</b> Connection to Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="TwoMeans.html"><a href="TwoMeans.html"><i class="fa fa-check"></i><b>31</b> Comparing the Means of Two Independent Groups (Two-Sample t-Tests)</a><ul>
+<li class="chapter" data-level="31.1" data-path="TwoMeans.html"><a href="TwoMeans.html#framing-the-question-2"><i class="fa fa-check"></i><b>31.1</b> Framing the Question</a></li>
+<li class="chapter" data-level="31.2" data-path="TwoMeans.html"><a href="TwoMeans.html#classical-approach-1"><i class="fa fa-check"></i><b>31.2</b> Classical Approach</a></li>
+<li class="chapter" data-level="31.3" data-path="TwoMeans.html"><a href="TwoMeans.html#connection-to-modeling-1"><i class="fa fa-check"></i><b>31.3</b> Connection to Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Foundations for Engineers and Scientists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="TwoMeans" class="section level1">
+<h1><span class="header-section-number">31</span> Comparing the Means of Two Independent Groups (Two-Sample t-Tests)</h1>
+<p>In the previous chapter, we saw that the one-sample t-test is equivalent to a regression model with an intercept only. In this chapter, we examine the common “two-sample t-test.”</p>
+<div id="framing-the-question-2" class="section level2">
+<h2><span class="header-section-number">31.1</span> Framing the Question</h2>
+<p>Consider the following question:</p>
+<blockquote>
+<p>Does the birthweight, on average, of an infant born in North Carolina different for women who use tobacco during pregnancy compared to those who do not?</p>
+</blockquote>
+<p>Let <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> represent the average birthweight of infants for whom their mother consumed tobacco during pregnancy and those for whom their mother did not, respectively. Then, the hypotheses which capture this question of interest are</p>
+<blockquote>
+<p><span class="math inline">\(H_0: \mu_1 = \mu_2\)</span><br />
+<span class="math inline">\(H_1: \mu_1 \neq \mu_2\)</span></p>
+</blockquote>
+<p>Figure <a href="TwoMeans.html#fig:twomeans-plot">31.1</a> compares the birthweights for infants whose mother consumed tobacco with those whose mother did not. The birthweight of infants tends to be lower (average of 3257 grams vs. 3472 grams).</p>
+<div class="figure" style="text-align: center"><span id="fig:twomeans-plot"></span>
+<img src="images/twomeans-plot-1.png" alt="Examining the effect of tobacco use in pregnancy with the resulting birthweight of the child." width="80%" />
+<p class="caption">
+Figure 31.1: Examining the effect of tobacco use in pregnancy with the resulting birthweight of the child.
+</p>
+</div>
+</div>
+<div id="classical-approach-1" class="section level2">
+<h2><span class="header-section-number">31.2</span> Classical Approach</h2>
+<p>The classical method of addressing this question of interest is to conduct a “two-sample t-test.” This procedure defines a standardized test statistic as</p>
+<p><span class="math display">\[T = \frac{\left(\bar{x}_1 - \bar{x}_2\right)}{\sqrt{s_1^2/n_1 + s_2^2/n_2}}\]</span></p>
+<p>where <span class="math inline">\(\bar{x}_1\)</span> and <span class="math inline">\(\bar{x}_2\)</span> represent the sample mean for each group; <span class="math inline">\(s^2_1\)</span> and <span class="math inline">\(s_2^2\)</span> represent the sample variance for each group; and, <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> represent the number of observations within each group. For our sample, we have that</p>
+<p><span class="math display">\[T = \frac{3257 - 3472}{\sqrt{(2.70898\times 10^{5}/111) + (2.29012\times 10^{5}/898)}}\]</span></p>
+<p>A model for the null distribution of this standardized test statistic is derived under three conditions:</p>
+<ol style="list-style-type: decimal">
+<li>The birthweight of an infant whose mother used tobacco is independent of the birthweight of any infant whose mother did not use tobacco.</li>
+<li>The birthweights of infants within a group are independent of one another.</li>
+<li>The birthweights of infants within a group follow a Normal distribution.</li>
+</ol>
+<p>Under these conditions, we have an analytical model for the null distribution of the standarized test statistic. The probability model which corresponds to the null distribution is called the “t-distribution”, hence the name “two-sample t-test.” Similarly, we can obtain a sampling distribution to estimate the parameter of interest using an analytical model.</p>
+<p>Figure <a href="TwoMeans.html#fig:twomeans-t-test">31.2</a> shows the model for the sampling distribution of the difference in the sample means and the computation of the corresponding confidence interval. From the data, there is evidence that the average birthweight of infants whose mothers used tobacco during pregnancy is lower than that of those whose mothers do not (95% CI = (-317.69, -112.32), difference in grams for mothers who use tobacco and those who do not).</p>
+<div class="figure" style="text-align: center"><span id="fig:twomeans-t-test"></span>
+<img src="images/twomeans-t-test-1.png" alt="Sampling distribution of the difference in two sample means for a two-sample t-test.  The shaded region represents the 95% confidence interval." width="80%" />
+<p class="caption">
+Figure 31.2: Sampling distribution of the difference in two sample means for a two-sample t-test. The shaded region represents the 95% confidence interval.
+</p>
+</div>
+</div>
+<div id="connection-to-modeling-1" class="section level2">
+<h2><span class="header-section-number">31.3</span> Connection to Modeling</h2>
+<p>The classical two-sample t-test is equivalent to a regression model which has a single categorical predictor with only two levels. That is, consider the following model for the data generating process:</p>
+<p><span class="math display">\[(\text{Birthweight})_i = \beta_0 + \beta_1\mathbb{I}(\text{i-th infant&#39;s mother used tobacco during pregnancy}) + \epsilon_i\]</span></p>
+<p>where the following conditions are placed on the error term:</p>
+<ol style="list-style-type: decimal">
+<li>The errors in the birthweight have a mean of 0 for both infants whose mother used tobacco and those whose mother did not.</li>
+<li>The error in the birthweight for one infant is independent of the error in the birthweight for any other infant.</li>
+<li>The variability of the error in the birthweights is the same for both those born to mothers who used tobacco and those whose mother did not.</li>
+<li>The errors in the birthweight follow a Normal Distribution.</li>
+</ol>
+<p>Notice that <span class="math inline">\(\beta_1\)</span> in the above model is the average difference in the birthweight between those infants whose mother used tobacco and those infants whose mother did not. Therefore, <span class="math inline">\(\beta_1 = \mu_1 - \mu_2\)</span>. Therefore, our above hypotheses are equivalent to</p>
+<blockquote>
+<p><span class="math inline">\(H_0: \beta_1 = 0\)</span><br />
+<span class="math inline">\(H_0: \beta_1 \neq 0\)</span></p>
+</blockquote>
+<p>This is a standard question in a regression analysis. Therefore, we can estimate the parameters using least squares. Table <a href="TwoMeans.html#tab:twomeans-fit">31.1</a> summarizes this fit. Notice that <span class="math inline">\(\widehat{\beta}_0\)</span> is equivalent to <span class="math inline">\(\bar{x}_2\)</span> and <span class="math inline">\(\widehat{\beta}_1 = \bar{x}_1 - \bar{x}_2\)</span>. However, the 95% confidence interval does not agree with what we computed above. The reason, we enforced different conditions during our analysis.</p>
+<table>
+<caption><span id="tab:twomeans-fit">Table 31.1: </span>Summary of an a model fit to explain the birthweight of babies depending on the mother’s use of tobacco during pregnancy.</caption>
+<thead>
+<tr class="header">
+<th align="left">Term</th>
+<th align="right">Estimate</th>
+<th align="right">Standard Error</th>
+<th align="right">95% LCL</th>
+<th align="right">95% UCL</th>
+<th align="right">P-Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Intercept</td>
+<td align="right">3471.91</td>
+<td align="right">16.13</td>
+<td align="right">3440.26</td>
+<td align="right">3503.56</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Tobacco Use</td>
+<td align="right">-215.00</td>
+<td align="right">48.63</td>
+<td align="right">-310.42</td>
+<td align="right">-119.58</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p>Remember, if two analyses differ in their results, it is because the two approaches make different assumptions. So, what differed in our approaches. Note that the regression approach assumed the variability in each group was similar. The two-sample t-test did not make this assumption<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a>. However, we can relax this assumption building an empirical model for the sampling distribution.</p>
+<p>While the exact results do not agree, the two approaches are conceptually similar. We also note that the p-value from the regression approach is the same as that given by the classical ANOVA model for this same problem. Again, since the conditions are equivalent between the classical regression model and the classical ANOVA model, we should not be surprised that the results are the same.</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="6">
+<li id="fn6"><p>The version of the two-sample t-test presented here did not assume the variability in each group was the same. There is a version of the two-sample t-test (known as the pooled two-sample t-test) which does make this assumption. In this case, the results agree exactly with both regression and ANOVA. Often in casual conversation, people do not say which conditions they are enforcing, making the term “two-sample t-test” ambiguous.<a href="TwoMeans.html#fnref6">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="OneMean.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": ["MA223CourseNotes.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

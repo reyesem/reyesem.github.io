@@ -82,7 +82,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{Last Updated: 2017-09-06}
+  \date{Last Updated: 2017-09-27}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % File: style.tex
@@ -145,8 +145,11 @@
 \newtheorem{proposition}{Proposition}[chapter]
 \theoremstyle{definition}
 \newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
 \let\BeginKnitrBlock\begin \let\EndKnitrBlock\end
 \begin{document}
 \maketitle
@@ -179,7 +182,7 @@ illustrate with the following example from Tintle et al.
 (\protect\hyperlink{ref-Tintle2015}{2015}).
 
 \BeginKnitrBlock{example}[Organ Donation]
-\protect\hypertarget{ex:basics-organ-donation}{}{\label{ex:basics-organ-donation}
+\protect\hypertarget{exm:basics-organ-donation}{}{\label{exm:basics-organ-donation}
 \iffalse (Organ Donation) \fi{} }Even though organ donations save lives,
 recruiting organ donors is difficult. Interestingly, surveys show that
 about 85\% of Americans approve of organ donation in principle and many
@@ -908,7 +911,7 @@ an artist chooses his depiction based on how he wants to represent the
 object. Let's consider the following example.
 
 \BeginKnitrBlock{example}[School Debt]
-\protect\hypertarget{ex:data-school-debt}{}{\label{ex:data-school-debt}
+\protect\hypertarget{exm:data-school-debt}{}{\label{exm:data-school-debt}
 \iffalse (School Debt) \fi{} }In addition to a degree, college graduates
 also tend to leave with a large amount of debt due to college loans. In
 2012, a graduate with a student loan had an average debt of \$29,400;
@@ -1140,7 +1143,7 @@ In order to illustrate how study design can impact the results, consider
 the following example.
 
 \BeginKnitrBlock{example}[Kangaroo Care]
-\protect\hypertarget{ex:data-kangaroo}{}{\label{ex:data-kangaroo}
+\protect\hypertarget{exm:data-kangaroo}{}{\label{exm:data-kangaroo}
 \iffalse (Kangaroo Care) \fi{} }At birth, infants have low levels of
 Vitamin K, a vitamin needed in order to form blood clots. Though rare,
 without the ability for her blood to clot, an infant could develop a
@@ -1436,7 +1439,7 @@ Summarizing the distribution of a numeric variable requires a bit more
 thought. Consider the following example.
 
 \BeginKnitrBlock{example}[Paper Strength]
-\protect\hypertarget{ex:summaries-paper}{}{\label{ex:summaries-paper}
+\protect\hypertarget{exm:summaries-paper}{}{\label{exm:summaries-paper}
 \iffalse (Paper Strength) \fi{} }While electronic records have become
 the predominant means of storing information, we do not live in a
 paperless society. Paper products are still used in a variety of
@@ -1794,7 +1797,7 @@ into a slightly more formal discussion, consider the following thought
 experiment.
 
 \BeginKnitrBlock{example}[Free Throws]
-\protect\hypertarget{ex:samplingdistns-free-throws}{}{\label{ex:samplingdistns-free-throws}
+\protect\hypertarget{exm:samplingdistns-free-throws}{}{\label{exm:samplingdistns-free-throws}
 \iffalse (Free Throws) \fi{} }Your friends Dave lives for his Wednesday
 ``pick-up'' basketball games at the gym. One afternoon, while waiting
 for a few more players to arrive Dave shoots 10 free throws, of which he
@@ -1811,7 +1814,7 @@ confidence in this estimate. First, we might consider a larger sample
 size (make Dave shoot more free throws).
 
 \BeginKnitrBlock{example}[Free Throws (cont.)]
-\protect\hypertarget{ex:samplingdistns-free-throws2}{}{\label{ex:samplingdistns-free-throws2}
+\protect\hypertarget{exm:samplingdistns-free-throws2}{}{\label{exm:samplingdistns-free-throws2}
 \iffalse (Free Throws (cont.)) \fi{} }Joe has also been waiting for a
 few more players to arrive; however, Joe shoots 100 free throws (clearly
 he has more time on his hands) of which he makes 30.
@@ -1959,7 +1962,7 @@ going to walk through the process of generating a sampling distribution
 for a known data generating process.
 
 \BeginKnitrBlock{example}[Dice Experiment]
-\protect\hypertarget{ex:samplingdistns-dice}{}{\label{ex:samplingdistns-dice}
+\protect\hypertarget{exm:samplingdistns-dice}{}{\label{exm:samplingdistns-dice}
 \iffalse (Dice Experiment) \fi{} }Consider an ordinary six-sided die; we
 are interested in the proportion of times that rolling the die will
 result in a 1. Putting this in the language of the statistics, we have
@@ -2396,6 +2399,19 @@ parameter.
 Confidence intervals specify \emph{reaonable} values of the parameter
 based on the data observed.
 \EndKnitrBlock{rmdkeyidea}
+
+This is a difficult concept to wrap our heads around; it seems natural
+to associate the percentage with the values we have obtained. However,
+our confidence is in the \emph{process}, not the resulting interval
+itself. That is, a 95\% confidence intervals work 95\% of the time;
+however, this statement is about the process of constructing confidence
+intervals. Once we have computed a convidence interval, it either has
+worked or not; the problem is of course, that since we do not know the
+parameter, we will never know if it worked or not. For this reason, we
+prefer the interpretation of a confidence interval which avoids these
+subtleties: a confidence interval specifies the reasonable values of the
+parameter. The percentage (95\% vs 99\% for example) then just specifies
+what we mean by ``reasonable.''
 
 It may seem like a good idea to make a 100\% confidence interval to be
 sure we always capture the parameter. But, such intervals are not
@@ -3468,7 +3484,7 @@ the characteristic are grouped together and random allocation occurs
 \EndKnitrBlock{definition}
 
 \BeginKnitrBlock{example}[Overseeding Golf Greens]
-\protect\hypertarget{ex:anovadata-golf}{}{\label{ex:anovadata-golf}
+\protect\hypertarget{exm:anovadata-golf}{}{\label{exm:anovadata-golf}
 \iffalse (Overseeding Golf Greens) \fi{} }Golf is a major pasttime,
 especially in southern states. Each winter, the putting greens need to
 be overseeded with grasses that will thrive in cooler weather. This can
@@ -4223,7 +4239,7 @@ not depend on the value of the other variable.
 \EndKnitrBlock{definition}
 
 \BeginKnitrBlock{example}[Programming Speed]
-\protect\hypertarget{ex:ex-programming}{}{\label{ex:ex-programming}
+\protect\hypertarget{exm:ex-programming}{}{\label{exm:ex-programming}
 \iffalse (Programming Speed) \fi{} }Suppose we are conducting a study to
 compare the speed required to complete a particular programming task in
 two different languages: Python and R. We obtain a sample of 100
@@ -4464,7 +4480,7 @@ a distribution. In order to get a feel for probability models, consider
 the following example.
 
 \BeginKnitrBlock{example}[Iris Characteristics]
-\protect\hypertarget{ex:ex-iris}{}{\label{ex:ex-iris} \iffalse (Iris
+\protect\hypertarget{exm:ex-iris}{}{\label{exm:ex-iris} \iffalse (Iris
 Characteristics) \fi{} }The discipline of statistics began in the early
 1900's primarily within the context of agricultural research. Edgar
 Anderson was a researcher investigating the characteristics of the iris.
@@ -5439,7 +5455,2840 @@ on the green. From our initial graphical summary of the data, if you
 would like a course which has fast greens, we would recommend seeding
 with Variety A.
 
+\part{Unit III: Modeling the Average Response as a Function
+of Several
+Predictors}\label{part-unit-iii-modeling-the-average-response-as-a-function-of-several-predictors}
+
+\hypertarget{CaseGreece}{\chapter{Case Study: Seismic Activity in
+Greece}\label{CaseGreece}}
+
+At the intersection of the African plate, the Eurasia plate, and the
+smaller Aegean plate, Greece is one of the most earthquake-prone regions
+in the world. Between July 2016 and July 2017, Greece experienced 179
+earthquakes; by contrast, the state of Texas experienced 28 over the
+same span of time. In a region with such seismic activity, careful
+consideration must be given to municipal construction. Further,
+understanding how the motion experienced in a location is related to the
+soil properties in the area or the magnitude and distance of an
+earthquake is important.
+
+An article in the \emph{Journal of Earthquake Engineering} (Koutrakis et
+al. \protect\hyperlink{ref-Koutrakis2002}{2002}) examined seismic events
+in Greece occurring between 1978 and 1997. Of interest for construction
+is characterizing the ``strong ground motion,'' when the earth shakes
+with enough force to cause damage to infrastructure, with respect to the
+properties of a location. The study recorded several measurements from
+121 stations (representing 93 distinct seismic events)\footnote{The
+  original article presented repeated measurements at each location. We
+  present here only the first measurement from each location to simplify
+  any analyses. Repeated measurements are discussed briefly later in the
+  text; for a more thorough treatment of the subject, we recommend a
+  course in Designed Experiments or Biostatistics. The dataset presented
+  here corresponds to that presented in Navidi's ``Statistics for
+  Engineers and Scientists'' (Chapter 8, Supplementary Exercise 22).}.
+The primary variable of interest is the \emph{bracketed duration}, ``the
+time interval {[}in seconds{]} between the first and last excursion of
+the peak ground acceleration beyond a certain predefined level.'' For
+our purposes, we only consider the data corresponding to a threshold of
+2\% of the acceleration due to gravity. In addition, the following
+measurements were available for each observation:
+
+\begin{itemize}
+\tightlist
+\item
+  Moment Magnitude: a measure of the size of the earthquake; larger
+  values indicate more severe earthquakes.
+\item
+  Epicentral Distance: distance (kilometers) from the epicenter of the
+  earthquake to the location at which the measurement was taken.
+\item
+  Soil Condition: indicator of the type of soil present at the
+  measurement site. Soil was categorized as one of three types -
+  alluvium (soft, fine particles of clay, silt, sand, and gravel),
+  intermediate soil conditions, or tertiary or older rock (those older
+  than 2.58 million years).
+\end{itemize}
+
+The first 5 observations in the dataset are shown in Table
+\ref{tab:casegreece-table}. We are interested in characterizing the
+relationship between bracketed duration and the magnitude of the
+earthquake.
+
+\begin{table}
+
+\caption{\label{tab:casegreece-table}Data for first 5 observations from study characterizing seismic activity in Greece.}
+\centering
+\begin{tabular}[t]{r|r|r|l}
+\hline
+Magnitude & Distance from Epicenter (km) & Bracketed Duration (s) & Soil Conditions\\
+\hline
+6.4 & 30 & 8.82 & Soft\\
+\hline
+5.3 & 6 & 4.31 & Intermediate\\
+\hline
+5.6 & 15 & 5.74 & Intermediate\\
+\hline
+5.2 & 7 & 4.08 & Intermediate\\
+\hline
+6.6 & 31 & 28.27 & Soft\\
+\hline
+\end{tabular}
+\end{table}
+
+\chapter{Myriad of Potential Questions}\label{Regquestions}
+
+For the \protect\hyperlink{CaseGreece}{Seismic Activity Case Study}, we
+are primarily interested in characterizing the relationship between
+bracketed duration and the magnitude of the earthquake. First, note that
+this question is about the relationship between a quantitative response
+(bracketed duration; see Definition \ref{def:defn-response}) and a
+quantitative predictor (magnitude). Also note that the question is quite
+broad. We might actually have one of the following more specific ideas
+in mind:
+
+\begin{itemize}
+\tightlist
+\item
+  In general, does the bracketed duration increase as the magnitude
+  increases?
+\item
+  If two earthquakes with different magnitudes occur in the same
+  location, would we expect the same bracketed duration regardless of
+  their magnitudes?
+\item
+  Is the relationship between the bracketed distance and the magnitude
+  different depending on the soil condition of where the measurement is
+  taken?
+\end{itemize}
+
+These questions illustrate an array of potential questions we address in
+this unit. In fact, each represents a different emphasis that we might
+have in a research question:
+
+\begin{itemize}
+\tightlist
+\item
+  Marginal Relationship: overall, do two variables tend to move together
+  (are they correlated)?
+\item
+  Isolation of Effect: does a relationship exist after accounting for
+  the effect of additional variables? Or, what is the effect ``above and
+  beyond'' the effect of additional variables?
+\item
+  Interplay: how does the relationship between two variables change as a
+  result of a third?
+\end{itemize}
+
+There is no right question to ask; each question examines a different
+facet of the relationship between two quantitative variables. Throughout
+this unit, we will introduce a framework which is broad enough for
+addressing each of these types of questions. This may sound daunting,
+but keep in mind that the fundamental ideas we discussed in Units I and
+II will continue to form the foundation of the analyses introduced in
+this unit; namely,
+
+\begin{itemize}
+\tightlist
+\item
+  We are using a sample to say something about the underlying
+  population.
+\item
+  In order to make inference, we will need a model for the sampling (or
+  null) distribution of our statistic.
+\item
+  In order to form a statistic of interest which measures the strength
+  of the signal in the dataset, we think about partitioning variability.
+\end{itemize}
+
+The ideas remain the same; the context has changed. Stating these
+questions mathematically will require us to build a model for the
+data-generating process, which we will examine in an upcoming chapter.
+
+There is one more thing we want to point out before moving on: any
+relationships we observe are overall trends, not guaranteed to hold for
+any single individual. Recall that in Unit II we emphasized that our
+conclusions were about the mean response within each group (the
+parameter of interest). Specifically, even if one treatment is found to
+be superior \emph{on average} within the population, due to variability,
+we do not expect the treatment to necessarily be superior for every
+individual. The effect was an overall trend. This will continue in this
+unit. If we observe, for example, that an increase in the magnitude is
+associated with an increase in the bracketed duration, we are describing
+an overall trend. It is highly likely there is some location for which
+this trend does not hold, simply due to variability.
+
+\chapter{Nature of Collecting Multivariable Data}\label{Regdata}
+
+For the \protect\hyperlink{CaseGreece}{Seismic Activity Case Study}, we
+are primarily interested in characterizing the relationship between
+bracketed duration and the magnitude of the earthquake. As we discussed
+in the previous chapter, this general goal might be refined into one of
+many specific questions:
+
+\begin{itemize}
+\tightlist
+\item
+  In general, does the bracketed duration increase as the magnitude
+  increases?
+\item
+  If two earthquakes with different magnitudes occur in the same
+  location, would we expect the same bracketed duration regardless of
+  their magnitudes?
+\item
+  Is the relationship between the bracketed distance and the magnitude
+  different depending on the soil condition of where the measurement is
+  taken?
+\end{itemize}
+
+Notice that these last two questions actually require knowledge of more
+than just the braketed duration and the magnitude of each seismic event.
+In order to address the second question, we would also need the distance
+from the center of the earthquake; in order to address the third
+question, we also need the soil conditions of where the measurement is
+taken. Often, research questions require knowledge of more than just two
+variables; such questions are \textbf{multivariable}.
+
+\BeginKnitrBlock{definition}[Multivariable]
+\protect\hypertarget{def:defn-multivariable}{}{\label{def:defn-multivariable}
+\iffalse (Multivariable) \fi{} }Refers to questions of interest which
+involve more than a single variable. Often, these questions involve many
+variables.
+\EndKnitrBlock{definition}
+
+Consider going to the doctor because you are feeling ill. The doctor
+does not have you simply enter your most prominent symptom (fever, for
+example) into a computer and then prescribe a medication based solely on
+that single symptom. Instead, a good physician will review all symptoms
+you are experiencing, as well as your medical history, other
+medications, allergies, etc. The physician operates in a multivariable
+world in which there are many contributing factors to a response.
+Therefore, when you arrive for this hypothetical visit, they record
+several variables which may be of interest.
+
+Studies which collect several variables can be observational studies or
+controlled experiments. If an observational study, we ensure the sample
+of subjects is representative of the population. Then, for each
+individual, we simply record several variables. If a controlled
+experiment, we would randomly assign subjects to a particular group;
+afterwards, we would measure the response in addition to other
+variables. Notice that with the latter, subjects are randomly assigned
+to only one of the variables; the remaining variables are simply
+observed. As in Chapter \ref{ANOVArecap}, if our primary predictor of
+interest in a secondary study is not the variable to which the subjects
+were randomly assigned, we must treat the study as observational.
+
+What we want to emphasize here is that how we collect the data has not
+really changed from what we have discussed in previous units. The
+primary difference is that we are very aware that we are collecting
+several measurements on each subject. The critical element is that our
+sample be representative of the population if we want to apply any
+findings to the population.
+
+\chapter{Summarizing Multivariable Data}\label{Regsummaries}
+
+For the \protect\hyperlink{CaseGreece}{Seismic Activity Case Study}, we
+are primarily interested in characterizing the relationship between
+bracketed duration and the magnitude of the earthquake. As we discussed
+in the previous chapters, this broad question could be refined into a
+question falling into one of three categories:
+
+\begin{itemize}
+\tightlist
+\item
+  Marginal Relationship: overall, do two variables tend to move together
+  (are they correlated)?
+\item
+  Isolation of Effect: does a relationship exist after accounting for
+  the effect of additional variables? Or, what is the effect ``above and
+  beyond'' the effect of additional variables?
+\item
+  Interplay: how does the relationship between two variables change as a
+  result of a third?
+\end{itemize}
+
+As always, the key is developing summaries which help to address the
+question of interest.
+
+\section{Characterizing the Marginal Relationship of Two Quantitative
+Variables}\label{characterizing-the-marginal-relationship-of-two-quantitative-variables}
+
+Suppose we are interested in the following question:
+
+\begin{quote}
+In general, does the bracketed duration increase as the magnitude
+increases?
+\end{quote}
+
+This question is about the overall relationship between these two
+quantitative variables. Graphically, we can examine the relationship
+between these two variables using a \emph{scatter plot}. The response is
+placed on the y-axis and the predictor along the x-axis. Figure
+\ref{fig:regsummaries-magnitude} illustrates the relationship between
+the bracketed duration and the magnitude.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regsummaries-magnitude-1} 
+
+}
+
+\caption{Relationship between the bracketed duration and the magnitude of an earthquake for locations Greece.}\label{fig:regsummaries-magnitude}
+\end{figure}
+
+The graphic highlights several components of the relationship. First, we
+note that as the magnitude of the event increases, the bracketed
+duration also tends to increase. This is intuitive --- as the size of
+the earthquake increases, the length of time the ground shakes with
+extreme force increases. Again, this is not universally true; there are
+cases for which the magnitude was high, but the bracketed duration was
+lower. Our goal is to characterize the overall trend. We also notice
+that as the magnitude increases, the variability in the bracketed
+duration also tends to increase. That is, for earthquakes of small
+magnitudes, it seems fairly easy to anticipate the bracketed duration;
+however, the bracketed duration is much more difficult to anticipate for
+larger magnitudes.
+
+A nice visual tool when exploring the relationship between two
+quantitative variables is a \emph{smoothing spline}. The details of its
+construction are beyond the scope of this text, but we can think of it
+as representing the where the response tends to be located for a
+particular value of the predictor and then smoothing that relationship
+out (hence the name). We do want to point out that this is an
+exploratory device; we should be cautious about over-emphasizing
+relationships we observe from the spline. Figure
+\ref{fig:regsummaries-spline} illustrates a spline for the
+\protect\hyperlink{CaseGreece}{Seismic Events Case Study}. The addition
+of the spline confirms what we had previously stated about the
+relationship appearing fairly linear (as the magnitude of the earthquake
+increases so does the bracketed duration at a location). In addition to
+the spline, there is a confidence band around the line in order to
+convey the variability in the estimated smoothing spline.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regsummaries-spline-1} 
+
+}
+
+\caption{Illustrating the use of a smoothing spline to explore the relationship between the bracketed duration and the magnitude of an earthquake for locations Greece.}\label{fig:regsummaries-spline}
+\end{figure}
+
+As we have seen, supplementing graphical summaries with numerical
+summaries can help convey our message. As an example, there is a
+positive linear relationship between the response and predictor in each
+of the cases illustrated in Figure \ref{fig:regsummaries-correlation}.
+However, that relationship is much stronger or more apparent for Dataset
+A compared to Dataset B, for example. It would be nice to have a numeric
+summary which captured this; such a metric is known as the
+\textbf{correlation coefficient}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regsummaries-correlation-1} 
+
+}
+
+\caption{Pairs of hypothetical variables which exhibit different correlations; that is, the relationship between each pair exhibit different strengths.}\label{fig:regsummaries-correlation}
+\end{figure}
+
+\BeginKnitrBlock{definition}[Correlation Coefficient]
+\protect\hypertarget{def:defn-correlation-coefficient}{}{\label{def:defn-correlation-coefficient}
+\iffalse (Correlation Coefficient) \fi{} }A numerical measure of the
+\emph{strength} and \emph{direction} of the \emph{linear} relationship
+between two quantitative variables.
+
+The classical Pearson Correlation Coefficient \(r\) is given by the
+following formula:
+\[r = \frac{\sum_{i=1}^{n} \left(x_i - \bar{x}\right)\left(y_i - \bar{y}\right)}{\sqrt{\sum_{i=1}^n \left(x_i - \bar{x}\right)^2 \sum_{i=1}^n \left(y_i - \bar{y}\right)^2}}\]
+
+where \(\bar{x}\) and \(\bar{y}\) represent the sample means of the
+predictor and response, respectively.
+\EndKnitrBlock{definition}
+
+The correlation between the bracketed duration and the magnitude of an
+earthquake is NA, indicating the two variables are positively linearly
+related, though perhaps the relationship is not strong.
+
+\BeginKnitrBlock{rmdtip}
+Correlation coefficients measure both the strength and direction of
+linear relationships. Here are a few of their key properties:
+
+\begin{itemize}
+\tightlist
+\item
+  Takes a value between -1 and 1.
+\item
+  Negative values mean that the variables tend to move in opposite
+  directions.
+\item
+  Positive values mean that the variables tend to move in the same
+  direction.
+\item
+  Unitless and therefore unaffected by unit changes in the variables.
+\end{itemize}
+
+The biggest thing to remember is that a correlation coefficient measures
+the strength of a \emph{linear} relationship. A correlation of 0 does
+not mean that two variables are unrelated. It simply means they are not
+linearly related.
+\EndKnitrBlock{rmdtip}
+
+\section{Visualizing the Impact of a Third Variable on the Marginal
+Relationship}\label{visualizing-the-impact-of-a-third-variable-on-the-marginal-relationship}
+
+In the previous section, we stated that the bracketed duration tended to
+increase as the magnitude increased. It is reasonable to ask the
+following question:
+
+\begin{quote}
+Is the relationship between the bracketed distance and the magnitude
+different depending on the soil condition of where the measurement is
+taken?
+\end{quote}
+
+That is, we want to determine the impact that a third variable (soil
+condition) has on the relationship we have observed. In order to add
+more depth to our graphical representations, we make use of various
+attributes of the graphic: color, shape, size, facets. Figure
+\ref{fig:regsummaries-color} uses color to distinguish between the three
+types of soil conditions for the measurement locations. Notice the
+graphic allows us to both visualize the relationship for each soil
+condition but also facilitates our comparing these relationships.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regsummaries-color-1} 
+
+}
+
+\caption{Relationship of the bracketed duration and the magnitude of an earthquake with various soil conditions.}\label{fig:regsummaries-color}
+\end{figure}
+
+The figure illustrates that the relationship between magnitude and
+bracketed duration is similar for both locations which have soft or
+intermediate soil conditions. However, for rocky conditions, the
+magnitude of the earthquake has a smaller impact on the resulting
+bracketed duration. This suggests, possibly, that foundations on rocky
+soils are less subject to the effects of an earthquake.
+
+While our focus has been on a different type of graphic, our emphasis
+remains consistent with the message of the overall text --- summaries
+need to be constructed to address the question of interest.
+
+\chapter{Extending Our Statistical Model}\label{Regmodel}
+
+In Chapter @ref(\#ANOVAmodel) we introduced the statistical modeling
+framework. In particular, our general model (see Equation
+\eqref{eq:general-model}) was given as
+
+\[\text{Response} = f(\text{variables, parameters}) + \text{noise}\] As
+before, this model has two components:
+
+\begin{itemize}
+\tightlist
+\item
+  A deterministic component which takes the form of a function of
+  variables and unknown parameters. It is often this component on which
+  we would like to make inference.
+\item
+  A stochastic component which captures the unexplained variability in
+  the data generating process.
+\end{itemize}
+
+In the previous unit, we made use of this model, but we only scratched
+the surface of its potential applications. In this unit, we begin to
+explore the full capabilities of such a model. In particular, we will
+consider a model in which the deterministic component is a smooth
+function (specifically, a line) of potentially several variables. In
+general, this model building process is known as \textbf{regression}.
+
+\BeginKnitrBlock{definition}[Regression]
+\protect\hypertarget{def:defn-regression}{}{\label{def:defn-regression}
+\iffalse (Regression) \fi{} }Used broadly, this refers to the process of
+fitting a statistical model to data. More specifically, it is a process
+of estimating the parameters in a data generating process.
+\EndKnitrBlock{definition}
+
+\section{Statistical Model for A Quantitative Response and Quantitative
+Predictor(s)}\label{statistical-model-for-a-quantitative-response-and-quantitative-predictors}
+
+We believe that models we will talk about are best discussed in the
+context of the graphics used to visualize them. Consider the
+\protect\hyperlink{CaseGreece}{Seismic Activity Case Study}. Let's begin
+with a broad question:
+
+\begin{quote}
+In general, does the bracketed duration increase as the magnitude
+increases?
+\end{quote}
+
+As we are interested in predicting the bracketed duration, we will treat
+it as the response. In order to imagine what an appropriate model might
+look like, consider the graphical summary of this relationship. As we
+have discussed, we can use a scatter plot to visualize the relationship
+between the bracketed duration and the magnitude of the corresponding
+earthquake. Figure \ref{fig:regmodel-slr-plot} gives the scatterplot but
+also overlays a straight line relationship on top of the data.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regmodel-slr-plot-1} 
+
+}
+
+\caption{Relationship between bracketed duration and the magnitude of an earthquake with a line overlayed on the graphic as a potential explanation of the data generating process.}\label{fig:regmodel-slr-plot}
+\end{figure}
+
+Suppose we feel that this line is a good model for the data generating
+process. Before proceeding, consider what this statement says. We are
+not trying to say that the relationship explains every response we
+observe. Instead, the relationship explains the underlying trend ---
+what happens on average. While not perfect, this linear relationship at
+least appears plausible. So, our general relationship
+\[(\text{Bracketed Duration}) \sim \text{Magnitude}\]
+
+can then be redefined in part by a deterministic portion which
+represents a line. We know from algebra that a line can be expressed as
+\[(\text{Bracketed Duration}) = \beta_0 + \beta_1 (\text{Magnitude})\]
+
+where \(\beta_0\) represents the intercept of the line and \(\beta_1\)
+the slope. Now, observe that very few points in Figure
+\ref{fig:regmodel-slr-plot} actually fall on the line, which is to be
+expected. This emphasizes the idea that the deterministic portion of the
+model is not meant to fully capture a data generating process since
+variability is inherent in any process. This is why statistical models
+embed a deterministic component alongside a stochastic component --- to
+capture the variability due to error or noise in the data generating
+process. Therefore, we develop the following model:
+
+\begin{equation}
+  (\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \epsilon_i
+  \label{eq:regmodel-slr}
+\end{equation}
+
+The model suggests that the bracketed duration at a location is
+primarily determined by the magnitude of the correpsonding event;
+however, there is a component we cannot explain. That is, the model does
+not explain why, for example, when an earthquake with a magnitude of 5.5
+hits, not all locations have the same bracketed duration. This noise is
+picked up by the \(\epsilon_i\) term in the model (as illustrated in red
+on Figure \ref{fig:regmodel-slr-plot}). It essentially says that the
+bracketed duration for these locations are simply scattered vertically
+about the line. As we saw in the previous unit, we would generally
+refine this model further by placing additional conditions on the noise
+term.
+
+\subsection{Including Multiple
+Precitors}\label{including-multiple-precitors}
+
+The real power of the model in Equation \eqref{eq:general-model} is our
+ability to generalize it to encompass multiple predictors. That is,
+suppose we refine the our question about the marginal relationship above
+to one isolating the effect of the magnitude on the bracketed duration:
+
+\begin{quote}
+If two earthquakes with different magnitudes occur in the same location,
+would we expect the same bracketed duration regardless of their
+magnitudes?
+\end{quote}
+
+This particular questions begs a model which has multiple predictors.
+What bracketed duration would we expect given the magnitude and
+epicentral distance (to capture earthquakes occurring in the same
+location)? We extend the model in Equation \eqref{eq:regmodel-slr} to
+include an additional predictor:
+
+\begin{equation}
+  (\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \beta_2(\text{Epicentral Distance})_i + \epsilon_i
+  \label{eq:regmodel-mlr}
+\end{equation}
+
+This more complex model is more difficult to visualize, but conceptually
+works similar to the previous model. Given a value for the magnitude and
+epicentral distance, we can predict the bracketed duration; our model
+accounts for the fact that these two variables together will not explain
+the entire data generating process. There will still be unexplained
+variability. One way of envisioning what this model does is to think
+about taking the linear relationship we previously had and observing
+that we are now saying that this model differs for each group of
+observations which have a different epicentral distance. For example,
+consider all locations which were located 10 km away from the center of
+an earthquake, then we would have that Equation \eqref{eq:regmodel-mlr}
+becomes \[
+\begin{aligned}
+(\text{Bracketed Duration})_i &= \beta_0 + \beta_1(\text{Magnitude})_i + \beta_2(10) + \epsilon_i \\
+  &= \left(\beta_0 + 10\beta_2\right) + \beta_1(\text{Magnitude})_i + \epsilon_i
+\end{aligned}
+\]
+
+Similarly, if we only consider locations which were located 32 km away
+from the center of an earthquake, then Equation \eqref{eq:regmodel-mlr}
+becomes
+
+\[
+\begin{aligned}
+(\text{Bracketed Duration})_i &= \beta_0 + \beta_1(\text{Magnitude})_i + \beta_2(32) + \epsilon_i \\
+  &= \left(\beta_0 + 32\beta_2\right) + \beta_1(\text{Magnitude})_i + \epsilon_i
+\end{aligned}
+\]
+
+Figure \ref{fig:regmodel-mlr-plot} represents this graphically for a
+range of potential epicentral distances. Essentially, the relationship
+between the bracketed duration and the magnitude shifts depending on the
+epicentral distances. The overall trend is similar (the lines are
+parallel), but where the line is located is really dependent upon the
+distance of the location from the earthquake.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regmodel-mlr-plot-1} 
+
+}
+
+\caption{Relationship between bracketed duration and the magnitude of an earthquake after also considering the epicentral distance from an earthquake.  Lines for relationship after considering the epicentral distance are overlayed.}\label{fig:regmodel-mlr-plot}
+\end{figure}
+
+This model has what may appear as an obvious requirement; you cannot use
+this model to predict the bracketed duration without specifying
+\emph{both} the magnitude of the earthquake and the epicentral distance
+of the location. However, it also isolates effect of the magnitude above
+and beyond the epicentral distance. We represent the above model as
+\[(\text{Bracketed Duration}) \sim \text{Magnitude} + (\text{Epicentral Distance})\]
+
+\subsection{Including Categorical
+Predictors}\label{including-categorical-predictors}
+
+Equation \eqref{eq:regmodel-mlr} broadens our model to include multiple
+quantitative predictors. It leaves open the issue of how we include
+predictors which are categorical in nature. For example, suppose we
+would like to have a model of the form
+\[(\text{Bracketed Duration}) \sim \text{Magnitude} + (\text{Soil Conditions})\]
+
+How do we handle a variable like soil conditions, which has values such
+as ``Soft,'' ``Intermediate,'' or ``Rocky?'' We actually have already
+seen a way to approach this in the previous unit. We construct what are
+known as \textbf{indicator variables}. Specifically, we consider the
+following model
+
+\begin{equation}
+  \begin{aligned}
+    (\text{Bracketed Duration})_i &= \beta_0 + \beta_1(\text{Magnitude})_i \\
+      &\quad + \beta_2\mathbb{I}(\text{i-th observation has a Rocky soil}) \\
+      &\quad + \beta_3\mathbb{I}(\text{i-th observation has Soft soil}) + \epsilon_i
+  \end{aligned}
+  \label{eq:regmodel-ind}
+\end{equation}
+
+You may at first ask ``where is the indicator for Intermediate soil?''
+This is totally a reasonable question. The idea is that each indicator
+variable acts as a ``light switch.'' A variable turns on when an
+observation falls into a particular group and turns off otherwise. So,
+if you have a location which has ``Intermediate'' soil conditions, then
+that location cannot have ``Soft'' or ``Rocky'' soil, turning those
+indicators off; therefore, it is picked up by the intercept term in the
+model. As a general rule, if there are \(k\) levels in a categorical
+variable, it required \(k-1\) indicator variables.
+
+\BeginKnitrBlock{definition}[Indicator Variables]
+\protect\hypertarget{def:defn-indicator-variable}{}{\label{def:defn-indicator-variable}
+\iffalse (Indicator Variables) \fi{} }A collection of binary variables
+(variables which take on a value of 0 or 1) used to represent the levels
+of a single categorical variable.
+\EndKnitrBlock{definition}
+
+The collection of indicators essentially creates multiple models, just
+as we saw in Figure \ref{fig:regmodel-mlr-plot}, with the exception that
+we know that only \(k\) models are possible (one for each level of the
+categorical predictor). For the model in Equation \eqref{eq:regmodel-ind},
+we have three individual equations that can be generated:
+
+\[
+\begin{aligned}
+  \text{Intermediate Soil:} &\quad (\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \epsilon_i\\
+  \text{Rocky Soil:} &\quad (\text{Bracketed Duration})_i = \beta_0 + \beta_2 + \beta_1(\text{Magnitude})_i + \epsilon_i\\
+  \text{Soft Soil:} &\quad (\text{Bracketed Duration})_i = \beta_0 + \beta_3 + \beta_1(\text{Magnitude})_i + \epsilon_i
+\end{aligned}
+\]
+
+Therefore, what happens is that the intercept of the line is shifted.
+This is illustrated in Figure \ref{fig:regmodel-ind-plot}. The figure
+shows three lines, one for each soil type. The lines are parallel, but
+shifted due to the effect that each soil type has. Note that each line
+is not shifted by the same amount; this suggests that some soil
+conditions behave more similarly than other conditions. In particular,
+the rocky soil tends to result in less bracketed shift for any
+particular magnitude compared to the other two types of soil conditions.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regmodel-ind-plot-1} 
+
+}
+
+\caption{Relationship between bracketed duration and the magnitude of an earthquake after also considering the soil conditions of the measurement location.  Lines for relationship for locations of each soil type are overlayed.}\label{fig:regmodel-ind-plot}
+\end{figure}
+
+\subsection{General Model Formulation}\label{general-model-formulation}
+
+In our discussion thus far, we have considered models which described
+the data generating process as a function of one or two predictors.
+However, there is nothing to limit us here from the inclusion of several
+predictors. Each categorical predictor is turned into a collection of
+indicator variables, and each quantitative predictor is simply added to
+the model. That is, a model which predicts a quantitative response as a
+function of \(p\) predictors, which we can describe as
+\[\text{Response} \sim \text{Predictor}_1 + \text{Predictor}_2 + \dotsb + \text{Predictor}_p\]
+
+has the mathematical form
+\[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor})_{j,i} + \epsilon_i\]
+
+The problem, of course, is that the parameters (the \(\beta\)'s in the
+model) are unknown. While the plots above illustrated how the models
+work conceptually, we have not yet discussed how they are actually
+created since the intercept and slope(s) are actually unknown. This is
+where we now turn our attention.
+
+\section{Estimating the Parameters}\label{estimating-the-parameters}
+
+Recall the goal of statistics --- to use a sample to say something about
+the underlying population. This seemed natural when we were talking
+about estimating the mean of a population; it is intuitive to then
+compute the mean in the sample as an estimate. In this case, however, we
+have this model for the data generating process. Our goal is to somehow
+use the data to make some conclusions about what value that parameter
+takes. That process begins by computing an estimate for those
+parameters.
+
+Think about what we would like to do. We believe there is a linear
+relationship which generated the data, and we want to use the data to
+estimate what that relationship looks like. We want to draw a line
+through the points that gives the ``best fit.'' Figure
+\ref{fig:regmodel-least-squares} illustrates for a hypothetical dataset.
+Something inside us knows that the blue line is preferred to the orange
+line. The orange line does not seem to represent the pattern in the data
+because it leaves the cloud of points. We want a line that goes through
+the points. Trying to formalize this, we are saying we want a line that
+is somehow simultaneously as close to all the data as possible.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./images/RegModel-LeastSquares} 
+
+}
+
+\caption{Illustration of two competing estimates of a line which runs through the data.}\label{fig:regmodel-least-squares}
+\end{figure}
+
+The most widely used method for estimating the parameters is known as
+``the method of least squares.'' For this reason, the estimates are
+often referred to as the \textbf{least squares estimates}. This method
+essentially minimizes the amount of error (as measured by the vertical
+distance a point is from the line) within the dataset.
+
+\BeginKnitrBlock{definition}[Least Squares Estimates]
+\protect\hypertarget{def:defn-least-squares-estimates}{}{\label{def:defn-least-squares-estimates}
+\iffalse (Least Squares Estimates) \fi{} }Often called the ``best fit
+line,'' these are the estimates of the parameters in a regression model
+chosen to minimize the such of squared errors. Formally, they are the
+values of \(\beta_0, \beta_1, \dotsc, \beta_p\) such that
+\[\sum_{i=1}^n \left((\text{Response})_i - \beta_0 - \sum_{j=1}^p \beta_j(\text{Predictor})_{j,i}\right)^2\]
+
+is minimized. These estimates are often denoted
+\(\widehat{\beta}_0, \widehat{\beta}_1, \dotsc, \widehat{\beta}_p\).
+\EndKnitrBlock{definition}
+
+This estimation is carried out using statistical software.
+
+Estimation is often associated with statistics. However, the least
+squares estimates are actually the result of a mathematical minimization
+process. The real statistics comes in when we move back into one of our
+components of the \emph{Distributional Quartet}. In particular, the
+estimates are only useful if we can quantify the variability in those
+estimates. In order to construct a model for the sampling distribution
+of these statistics, we construct place additional conditions on the
+stochastic portion of the model. That is the focus of the next chapter.
+
+\section{Embedding Our Questions into a Statistical
+Framework}\label{embedding-our-questions-into-a-statistical-framework}
+
+Our first fundamental idea centers on the idea that the majority of
+research questions can be framed in terms of a parameter within the
+population. We now take a moment to show that modeling the data
+generating process allows us to frame our research questions in terms of
+the parameters of this model. Consider the following question:
+
+\begin{quote}
+In general, does the bracketed duration increase as the magnitude
+increases?
+\end{quote}
+
+Let's consider how we might write this in terms of a null and
+alternative hypotheses.
+
+\begin{quote}
+\(H_0:\) the bracketed duration does not change, on average, as the
+magnitude increases.\\
+\(H_1:\) the bracketed duration is linearly related with the magnitude;
+that is, as the magnitude increases, the bracketed duration tends to
+increase or decrease.
+\end{quote}
+
+In order to address this question, we considered the following model for
+the data generating process:
+
+\[(\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \epsilon_i\]
+
+If the null hypothesis above is true, then that suggests that the
+bracketed duration is flat, regardless of the value of the magnitude (at
+least, on average). What would be true about the parameters if that were
+true? A flat line is one without a slope; said another way, we need a
+model for which changing the value of the magnitude does not affect the
+resulting bracketed duration. In order to accomplish this, we simply
+drop it out of the model:
+
+\[(\text{Bracketed Duration})_i = \beta_0 + \epsilon_i\]
+
+Without the magnitude in the model, it has no effect on the bracketed
+duration. Therefore, our null and alternative hypotheses above can be
+reframed as
+
+\begin{quote}
+\(H_0: \beta_1 = 0\)\\
+\(H_1: \beta_1 \neq 0\)
+\end{quote}
+
+where \(\beta_1\) is the parameter linearly relating the bracketed
+duration to the magnitude. That is, if the paramter associated with
+magnitude is 0, then it is plays no role in the data generating process;
+if it is anything other than 0, then magnitude has a role within the
+data generating process.
+
+So, we can frame questions about the marginal relationship between two
+variables within a simple model. What about more complex questions, such
+as
+
+\begin{quote}
+If two earthquakes with different magnitudes occur in the same location,
+would we expect the same bracketed duration regardless of their
+magnitudes?
+\end{quote}
+
+This question looks to isolate the effect of the magnitude after taking
+into account the distance the location is from the center of the
+earthquake. That is, for two locations which are a similar distance,
+does the magnitude still play a role. Above, we considered the following
+model for the data generating process:
+
+\[(\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \beta_2(\text{Epicentral Distance})_i + \epsilon_i\]
+
+Within the context of this model, consider the hypotheses
+
+\begin{quote}
+\(H_0: \beta_1 = 0\)\\
+\(H_1: \beta_1 \neq 0\)
+\end{quote}
+
+What does such a hypothesis imply? Well, under the null hypothesis
+(pluggint 0 in for \(\beta_1\)) the model reduces to
+
+\[(\text{Bracketed Duration})_i = \beta_0 + \beta_2(\text{Epicentral Distance})_i + \epsilon_i\]
+
+which still allows the bracketed duration to rely on the distance the
+location is from the earthquake; however, after accounting for this
+predictor, magnitude no longer plays a role. The alternative hypothesis
+then captures the idea that even after you have the distance from the
+center of the earthquake in the model, the magnitude is still required
+for predicting the bracketed duration. That is, our hypotheses have
+become
+
+\begin{quote}
+\(H_0:\) After accounting for the epicentral distance, magnitude has no
+linear relationship with the bracketed duration.\\
+\(H_1:\) After accounting for the epicentral distance, magnitude has a
+linear relationship with the bracketed duration.
+\end{quote}
+
+Again, ``linear relationship'' means that as one variable increases, the
+other tends to increase (or decrease) as well.
+
+\BeginKnitrBlock{rmdkeyidea}
+Setting a parameter to 0 in the model for a data generating process is
+often associated with saying that the corresponding variable is not
+associated with the response in a linear fashion --- that it does not
+belong in the model.
+\EndKnitrBlock{rmdkeyidea}
+
+\section{Recap}\label{recap-2}
+
+Trying to summarize what we have done, it is helpful to think backward.
+If we are to address our questions of interest, we must frame them in
+terms of a parameter which characterizes the population. These
+parameters actually govern the data generating process. Modeling this
+process then allows us to say something about those underlying
+parameters. In order to do that, we must estimate these parameters from
+the data. We now turn to incorporating the variability in these
+estimates through conditions on the stochastic portion of the model.
+
+\chapter{Conditions on the Error Term of a Regression
+Model}\label{Regconditions}
+
+In the previous chapter we developed a general model for generating a
+quantitative response as a linear function of several predictors:
+
+\[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor})_{i,j} + \epsilon_i\]
+
+We also discussed a common method for estimating the parameters of this
+model from a sample --- the least squares method. However, if we are to
+construct a model for the sampling distribution of these estimates we
+must add some structure to the stochastic component \(\epsilon\) in the
+model. Just as in the previous unit, the more assumptions we are willing
+to make, the easier the analysis, but the less likely our model is to be
+applicable to the actual data-generating process we have observed. The
+conditions we make dictate how we conduct inference (the computation of
+a p-value or confidence interval).
+
+\section{Classical Regression Model}\label{classical-regression-model}
+
+In this section, we discuss four potential conditions we might place on
+the stochastic portion of the model. As we will see, the conditions we
+consider are extremely similar to those considered in Chapter
+\ref{ANOVAclassical}.
+
+The first condition we consider is that the noise attributed to one
+observed individual is independent of the noise attributed to any other
+individual observed. That is, the amount of error in any one
+individual's response is unrelated to the error in any other response
+observed.
+
+The second condition that is typically placed on the distribution of the
+errors is that the variability of the responses is similar for every
+value of the predictor variables (homoskedasticity). This generalizes
+the way we characterized the condition in the ANOVA model; the primary
+difference is that in ANOVA, we had a finite number of groups over which
+the variance had to remain constant. Now, we are asking the variability
+about the regression line to be constant for all values of the
+predictors.
+
+The third condition is that errors follow a Normal distribution. Given
+the shape of the Normal distribution, this condition implies that some
+responses will tend to fall above the line (we will underpredict for
+these observations), and some responses will tend to fall below the line
+(we will overpredict for these observations). Assuming this condition
+holds adds a lot of structure to the errors and gets toward modeling the
+distribution of the population, as we did in ANOVA.
+
+The fourth condition, which is the most important, is that for every
+value of the predictor, the average error is 0. This acondition implies
+that the model we have posited for the data generating process is
+accurate. That is, the form of the model is appropriate. The reason we
+say this is the most important condition is that while we have methods
+for conducting an analysis while relaxing the remaining three
+conditions, if this condition is violated, it says that your model is
+wrong and you need to essentially start over in developing the model.
+
+If you assume all four of these conditions, we have what we refer to as
+the ``Classical Regression Model.''
+
+\BeginKnitrBlock{rmdtip}
+``Classical Regression Model'': For a quantitative response and \(p\)
+predictors (which could include indicators to represent a categorical
+variable), the classical regression model assumes the following
+data-generating process:
+
+\[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor})_{j,i} + \epsilon_i\]
+
+where
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The errors have a mean of 0 for all values of the predictors.
+\item
+  The errors are independent of one another.
+\item
+  The errors have the same variability for all values of the predictors.
+\item
+  The errors follow a Normal Distribution.
+\end{enumerate}
+
+It is possible to relax these assumptions; however, this is the default
+``regression'' analysis implemented in the majority of statistical
+packages.
+\EndKnitrBlock{rmdtip}
+
+We have stressed the implications of each condition. Figure
+\ref{fig:regconditions-assumptions} illustrates these conditions for the
+case of a single quantitative predictor. The condition that the errors
+have mean 0 implies that for a given value of the predictor, the average
+response is given by the line (shown as the green dot in the figure).
+The condition of Normality implies that for a given value of the
+predictor, the response is distributed evenly about the regression line,
+with some above and some below. Further, the shape of the Normal
+distribution implies that these responses will cluster about the line.
+The condition of homoskedasticity implies that while the responses vary
+around the line, they do so the same degree, regardless of the value of
+the predictor. Therefore, the model is just as precise for all values of
+the predictor. Finally, any two responses must be unrelated.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./images/RegConditions-Assumptions} 
+
+}
+
+\caption{Illustration of the conditions on the error term for the classical regression model.}\label{fig:regconditions-assumptions}
+\end{figure}
+
+As with ANOVA, these conditions will allow us to easily model the
+sampling distribution of our estimates, which is the critical step in
+developing any type of inference. In the previous chapter, we considered
+the following model for the bracketed duration:
+
+\[(\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \epsilon_i\]
+
+This model was used to assess the marginal relationship between the
+bracketed duration and the magnitude overall. Our hypotheses of interest
+which captures the question of interest was
+
+\begin{quote}
+\(H_0: \beta_1 = 0\)\\
+\(H_0: \beta_1 \neq 0\)
+\end{quote}
+
+Using the method of least squares, we estimated the parameters in the
+model; this leads to the following equation for predicting the bracketed
+duration given the magnitude:
+
+\[(\text{Brackted Duration}) = -19.19 + 4.48(\text{Magnitude})\]
+
+Most statistical software packages will present the fit through a table
+which contains the parameter estimates as well as additional information
+regarding the parameter estimates. Table
+\ref{tab:regconditions-slr-summary} summarizes the fit for the above
+model. The p-values which are included are always testing if the
+corresponding parameter is equal to 0. Based on the results, we have
+strong evidence that the slope coefficient associated with the magnitude
+differs from 0; that is, we have strong evidence (\(p < 0.001\)) of a
+relationship between the bracketed duration and the magnitude of the
+earthquake. Further, our data is consistent with this coefficient being
+in the range of (3.05, 5.917) based on the 95\% confidence interval.
+
+\begin{table}
+
+\caption{\label{tab:regconditions-slr-summary}Summary of the linear model fit relating the bracketed duration at locations in Greece following an earthquake with the magnitude of the event.}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|l}
+\hline
+Term & Estimate & Standard Error & Lower 95\% CI & Upper 95\% CI & P Value\\
+\hline
+(Intercept) & -19.194 & 3.975 & -27.066 & -11.323 & < 0.001\\
+\hline
+Magnitude & 4.484 & 0.724 & 3.050 & 5.917 & < 0.001\\
+\hline
+\end{tabular}
+\end{table}
+
+In addition tot he estimate, a confidence interval and p-value
+associated with testing whether the parameter is equal to 0, the ouptut
+also includes the \textbf{standard error} of the estimate. This is a
+measure of the variability in the estimate; it is standard deviation
+associated with the sampling distribution of the statistic. This is used
+in the analytical formulas for computing the confidence intervals and
+p-values reported in the table.
+
+\BeginKnitrBlock{definition}[Standard Error]
+\protect\hypertarget{def:defn-standard-error}{}{\label{def:defn-standard-error}
+\iffalse (Standard Error) \fi{} }The estimated standard deviation of a
+statistic; it quantifies the variability in the sampling distribution of
+the statistic.
+\EndKnitrBlock{definition}
+
+\section{Interpretation of the
+Parameters}\label{interpretation-of-the-parameters}
+
+Each of the conditions from the classical regression model can be
+relaxed, with the exception of the condition that the errors have an
+average of 0 for all values of the predictors. Not only does this ensure
+that the model is correctly specified, but it also provides an
+interpretation for the parameters. If the errors are not biasing the
+average response (since on average, they have a value of 0), then we are
+able to say that the determinisic portion of our model is giving the
+\emph{average} response.
+
+\BeginKnitrBlock{rmdkeyidea}
+The deterministic portion of a regression model specifies the
+\emph{average} value of the response given the value(s) of the
+predictor(s).
+\EndKnitrBlock{rmdkeyidea}
+
+As an example, consider the \protect\hyperlink{CaseGreece}{Seismic
+Activity Case Study}. Specifically, consider our model which predicted
+the bracketed duration as a function of both the magnitude of the
+earthquake and the distance from the location to the center of the
+earthquake:
+
+\[(\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \beta_2(\text{Epicentral Distance})_i + \epsilon_i\]
+
+Using the method of least squares, we are able to estimate the
+parameters in this model; the deterministic portion of this model is
+then estimated as
+
+\[(\text{Bracketed Duration}) = -30.72 + 6.99 (\text{Magnitude}) + -0.08(\text{Epicentral Distance})\]
+
+The full fit is summarized in Table \ref{tab:regconditions-mlr-summary}.
+
+\begin{table}
+
+\caption{\label{tab:regconditions-mlr-summary}Summary of the linear model fit relating the bracketed duration at locations in Greece following an earthquake with the magnitude of the event as well as the distance the location is from the epicenter of the earthquake.}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|l}
+\hline
+Term & Estimate & Standard Error & Lower 95\% CI & Upper 95\% CI & P Value\\
+\hline
+(Intercept) & -30.715 & 4.887 & -40.395 & -21.036 & < 0.001\\
+\hline
+Magnitude & 6.991 & 0.964 & 5.082 & 8.900 & < 0.001\\
+\hline
+Epicentral\_Distance & -0.077 & 0.021 & -0.118 & -0.036 & < 0.001\\
+\hline
+\end{tabular}
+\end{table}
+
+Using this fit, we are able to estimate the \emph{average} bracketed
+duration at a location given the magnitude of an earthquake and the
+distance it is from the center of the earthquake. Specifically,
+following an earthquake with a magnitude of 5.5, a location which is 2
+kilometers from the epicenter of the earthquake will experience a
+bracketed duration of 7.58 seconds, on average. Remember, the
+deterministic portion is not trying to explain every single response but
+the overall trend; we now see that it is doing so by specifying the
+trend, \emph{on average}. We do not expect every location which is 2
+kilometers away from the epicenter of a 5.5 earthquake to experience
+7.58 seconds of strong motion; however, we expect the bracketed duration
+to vary about this value.
+
+This is huge; it says that when we use a regression model to predict a
+response, we are actually predicting the \emph{average} response. More,
+we can interpret the parameters themselves. Let's begin with the
+intercept term, \(\beta_0\). Notice that in our model above, if we try
+to predict the bracketed duration for a location where an earthquake
+occurs (so the distance from the epicenter is 0 kilometers) which has a
+magnitude of 0, then our least squares estimates predict an average
+bracketed duration of -30.72 seconds. But, this is the value of
+\(\widehat{\beta}_0\), the estimate for the intercept. In fact, for any
+regression model, the intercept \(\beta_0\) is the value of the
+deterministic portion of the model whenever all predictors in the model
+are set to 0.
+
+\BeginKnitrBlock{rmdtip}
+The intercept in a regression model \(\beta_0\) represents the
+\emph{average} response when all predictors in the model are set equal
+to 0. Note that this may often be an unreasonable scenario.
+\EndKnitrBlock{rmdtip}
+
+For our particular example, the estimate of the intercept does not make
+sense --- what does it mean to have a duration of -30.72 seconds? This
+can often be the case when trying to interpret the intercept term due to
+what we call \textbf{extrapolation}. We do not have any data on the
+bracketed duration for locations which are less than a kilometer from
+the epicenter of an earthquake; nor do we have data on the bracketed
+duration when an earthquake has a magnitude of 0 as there is no such
+thing. Therefore, we are using a model to predict for a region over
+which the model was not constructed to operate. This is a lot like using
+a screw driver to hammer a nail --- we are using a tool to accomplish a
+task for which it was not designed. We should not be surprised when it
+fails. The primary reason extrapolation is dangerous is that without
+data in a particular region, we have no support that the model will
+continue to hold in that region. For this reason, unless you have strong
+scientific justification for why a model will hold over all values of
+the predictor, extrapolation should be avoided.
+
+\BeginKnitrBlock{definition}[Extrapolation]
+\protect\hypertarget{def:defn-extrapolation}{}{\label{def:defn-extrapolation}
+\iffalse (Extrapolation) \fi{} }Using a model to predict outside of a
+region for which data is available.
+\EndKnitrBlock{definition}
+
+We have seen that the intercept is the average value of the response
+when the predictors take the value of 0. How then do we interpret the
+coefficients (or slopes) associated with each predictor. We again use an
+example. Let's compare the average bracketed duration for a location
+which is 5 kilometers away from the epicenter of an earthquake which has
+a magnitude of 3 and one which has a magnitude of 4:
+
+\[
+\begin{aligned}
+  \text{Magnitude of 3:} \quad &(\text{Bracketed Duration}) = -30.72 + 6.99 (3) + -0.08(5) = -10.13 \\
+  \text{Magnitude of 4:} \quad &(\text{Bracketed Duration}) = -30.72 + 6.99 (4) + -0.08(5) = -3.14
+\end{aligned}
+\]
+
+Notice the two estimates differ by 6.99 seconds, which is exactly the
+value of \(\widehat{\beta}_1\), the estimate of the coefficient
+associated with magnitude in our model. Notice, however, in order to get
+this difference, we left the epicentral distance the same in both
+scenarios. This leads us to observing that 6.99 seconds is the change in
+the average bracketed duration when the magnitude increased by 1 unit
+while the epicentral distance remained the same.
+
+\BeginKnitrBlock{rmdtip}
+The coefficient (or slope) \(\beta_j\) in a regression model associated
+with the \(j\)-th predictor represents the \emph{average} change in the
+response when the \(j\)-th predictor is \emph{increased} by 1 unit,
+\emph{holding all other predictors constant}.
+\EndKnitrBlock{rmdtip}
+
+In the previous chapter, we saw that our research questions can be
+framed in terms of the parameters from the regression model. The
+interpretation of these parameters allows us to see that our research
+questions are characterizing the relationship between the response and
+the predictor, \emph{on average}.
+
+\section{Addressing Confounding through our
+Interpretation}\label{addressing-confounding-through-our-interpretation}
+
+This phrase ``holding all other predictors constant'' has extreme power.
+It is this understanding of how the parameters are interpreted that we
+are able to take our first steps toward addressing confounding. For
+example, consider the model
+
+\[(\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \beta_2(\text{Epicentral Distance})_i + \epsilon_i\]
+
+From above, we found that for every kilometer further the epicenter of
+the earthquake is, we can expect the brackted duration to decrease by
+-0.08 seconds, on average. Someone might argue as follows: ``This is not
+a controlled experiment; therefore, while there is a relationship here,
+it is possible that what is really happening is that earthquakes which
+were further away were also smaller in magnitude. Therefore, it is not
+the distance that is driving this relationship but the magnitude of the
+earthquake.'' Here, this individual is saying that magnitude is a
+confounder --- related to both the bracketed duration (response) and the
+variable of interest (distance from the epicenter). If we had fit a
+marginal model, this would be a valid concern. However, remember our
+interpretation of \(\beta_2\) (and our estimate of it). Our fit suggests
+that for every kilometer further the epicenter of the earthquake is, we
+can expect the bracketed duration to decrease by -0.08 seconds, on
+average, \emph{holding the magnitude of the earthquake fixed}.
+Therefore, since this estimate is comparing to earthquakes of the same
+magnitude, magnitude cannot be confounding the relationship observed. We
+have isolated the effect of the epicentral distance.
+
+Our solution to confounding is to incorporate the relationship between
+the confounder and the response into our model. Then, any remaining
+variables cannot be affected by the confounder. Of course this has one
+major limitation --- we cannot account for any variables which are not
+recorded.
+
+There are entire texts devoted to this topic. Here, we simply emphasize
+that regression models allow us to control for the confounders we have
+observed. The relationships are ``adjusted for'' these confounders due
+to the interpretation that a coefficient is the effect ``holding all
+other predictors constant.'' Regression models allow us to compare
+similar groups, which are balanced on these confounders, after the fact
+(instead of having incorporated these comparisons through the study
+design).
+
+\section{Empirical Model for the Sampling
+Distribution}\label{empirical-model-for-the-sampling-distribution}
+
+In Table \ref{tab:regconditions-mlr-summary}, we were able to estimate
+the decrease in bracketed duration, on average, for each kilometer
+further that location is from the epicenter of an earthquake while
+holding the magnitude of the earthquake constant; it is reasonable this
+average decrease is between 0.036 and 0.118 seconds (95\% confidence
+interval). However, this estimate is only valid assuming the data is
+consistent with the conditions of the classical regression model. What
+if we are unwilling to make such strong assumptions? In this section, we
+discuss a method for making inference under only two of the above
+conditions:
+
+\begin{itemize}
+\tightlist
+\item
+  The error in the response for one observation is independent of the
+  error in the response for all other observations.
+\item
+  The error in the responses are on average 0 for all values of the
+  predictors.
+\end{itemize}
+
+In order to empirically model the sampling distribution of the estimates
+in our model, we can appeal to bootstrapping as in the first unit.
+Specifically, we can resample (with replacement) from the original
+sample several times. For each resample, we ensure we select all
+variables associated with the selected observation. For this resampled
+dataset, we compute the least squares fit (see Figure
+\ref{fig:regconditions-bootstrap}). Since the observations have changed,
+the least squares fit will also change. By repeating this process over
+and over again, we can obtain a model for how the estimates would change
+in repeated sampling.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./images/RegConditions-Bootstrap} 
+
+}
+
+\caption{Illustration of a single iteration of a bootstrap procedure to construct an empirical estimate of the sampling distribution for the estimates of the coefficients in a regression model.}\label{fig:regconditions-bootstrap}
+\end{figure}
+
+Figure \ref{fig:regconditions-mlr-bootstrap-plot} shows empirical models
+for the sampling distribution of the three estimates from the regression
+model
+
+\[(\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \beta_2(\text{Epicentral Distance})_i + \epsilon_i\]
+
+which was fit and summarized in Table
+\ref{tab:regconditions-mlr-summary}. Overlayed in the figure are the
+analytical models for the sampling distribution of the estimates under
+the classical regression model. We notice that the model assuming the
+classical regression model conditions is not all that accurate in this
+case; we explore the reasoning behind this in Chapter @(Regassessment).
+For now, suffice it to say that we should rely on the results from an
+empirical model instead of the analytical model suggested by the
+classical regression model. Once we have a model for the sampling
+distribution, we can construct confidence intervals and begin performing
+inference.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regconditions-mlr-bootstrap-plot-1} 
+
+}
+
+\caption{Empirical models for the sampling distribution of the estimates from a regression model explaining bracketed duration as a function of the magnitude of the earthquake and its distance from the measuring location.  Overlayed are the analytical models for the sampling distribution assuming all conditions for the classical regression model.}\label{fig:regconditions-mlr-bootstrap-plot}
+\end{figure}
+
+While we do not discuss it thoroughly, if interest is in computing a
+p-value to address he above hypotheses, we can construct a null
+distribution in a similar fashion as that discussed in Chapter
+\ref{ANOVAmodel} in the context of a regression model.
+
+\section{Recap}\label{recap-3}
+
+We have covered a lot of ground in this chapter, and it is worth taking
+a moment to summarize the big ideas. In order to construct a model for
+the sampling distribution for the estimates of the parameters in the
+regression model, we took a step back and modeled the data generating
+process. Such a model consists of two components: a deterministic
+component explaining the differences between groups and a stochastic
+component capturing the noise in the system.
+
+Certain conditions are placed on the distribution of the noise in our
+model. With a full set of conditions (classical regression model), we
+are able to model the sampling distribution analytically. We can also
+construct an empirical model for the sampling distribution assuming the
+data is consistent with fewer conditions.
+
+\chapter{Assessing Modeling Assumptions}\label{Regassessment}
+
+Thus far, we have considered a model of the form
+
+\[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor})_{j,i} + \epsilon_i\]
+
+for the data-generating process of a quantitative response as a function
+of one or more predictors. For example, for the
+\protect\hyperlink{CaseGreece}{Seismic Activity Case Study}, we
+considered a model that explained the bracketed duration at a location
+as a function of the magnitude of the earthquake and the distance the
+earthquake was from the location. This model had the form
+
+\[(\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \beta_2(\text{Epicentral Distance})_i + \epsilon_i\]
+
+Estimates for the unknown parameters in this model were obtained via
+least squares estimation. In order to obtain a model for the sampling
+distribution of these estimates, and thereby conduct inference, we added
+the following conditions to the distribution of the error term under the
+classical regression model:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The error in the bracketed duration has an average of 0 regardless of
+  the magnitude of the earthquake and the distance the location is from
+  the epicenter of the quake.
+\item
+  The error in the bracketed duration for one location is independent of
+  the error in the bracketed duration for any other location.
+\item
+  The variability of the error in the bracketed duration is the same
+  regardless of the magnitude of the earthquake and the distance the
+  location is from the epicenter of the quake.
+\item
+  The errors in the bracketed duration follow a Normal distribution.
+\end{enumerate}
+
+We were also able to develop an empirical model for the sampling
+distribution only enforcing the first two of these conditions on the
+distribution of the error. Unfortunately, regardless of which conditions
+we would like to assume are consistent with th edata, we cannot simply
+state these conditions and hope they hold. In order to rely on the
+p-values and confidence intervals produced from any modeling procedure,
+the data must be consistent with these conditions.
+
+In this section, we discuss how to use residuals to assess these
+conditions qualitatively.
+
+\section{Computing Residuals}\label{computing-residuals}
+
+Recall we defined a residual (Definition \ref{def:defn-residual}) as the
+difference between an observed value and the estimated deterministic
+component of a model. Therefore, in order to first compute a residual,
+we must first estimate the unknown parameters. For a general regression
+model, this has the form
+
+\[(\text{Residual})_i = (\text{Response})_i - \widehat{\beta}_0 - \sum_{j=1}^{p} \widehat{\beta}_j (\text{Predictor})_{j,i}\]
+
+As before, we can use these residuals to qualitatively assess whether
+the data we have obtained is consistent with the assumptions we have
+made.
+
+\section{Assessing Mean 0}\label{assessing-mean-0}
+
+It is tempting to read this condition and believe that a rational way to
+assess this assumption is determine if the average of the residuals is
+0. However, the condition is \emph{not} that the average error is 0;
+though, the difference may be subtle at first glance. The condition is
+that the average error is 0 for all values of the predictors. Therefore,
+in order to assess this assumption, we need to graphically assess how
+the average behaves over a range of predictor values. We capture this by
+looking at the predicted values themselves. Figure
+\ref{fig:regassessment-mean0} shows the relationship between the
+residuals and the associated predicted (or fitted) values for the
+observations in the data set.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regassessment-mean0-1} 
+
+}
+
+\caption{Plot of the residuals vs. the predicted values for a model predicting bracketed duration as a function of both the magnitude and the epicentral distance for a location.}\label{fig:regassessment-mean0}
+\end{figure}
+
+If the data is consistent with the condition, then as you move left to
+right across the plot, the residuals should tend to balance out at 0.
+Imagine a window around the residuals (shown in the figure as green
+rectangles), and imagine moving that window from left to right. If that
+window has to shift up or down to contain the cloud of residuals, that
+signals a problem. The smoother has been added to the plot to help in
+identifying trends. Any trends in the location of this graphic would
+indicate the data is not consistent with the condition.
+
+There is some slight evidence of curvature in this graphic, but it is
+not that extreme. As a general rule of thumb, if the bands on the
+smoother tend to capture the 0 line, then the data is fairly consistent
+with the condition. Overall, it is probably reasonable to say this
+dataset is consistent with these conditions. There are no overwhelming
+trends in the residuals suggesting curvature is present.
+
+\section{Assessing Independence}\label{assessing-independence-1}
+
+Generally, independence is assessed through the context of the data
+collection scheme. By carefully considering the manner in which the data
+was collected, we can typically determine whether it is reasonable that
+the errors in the response are independent of one another. Some key
+things to consider when examining the data collection process: - Are
+there repeated observations made on the same subject? This often
+suggests some type of relationship between the responses and therefore
+would not be consistent with errors being independent. - Is the response
+measured over time (time-series) such as daily temperature over the
+course of a month? Time-series data often exhibits strong
+period-to-period relationships suggesting the errors are not
+independent. For example, if it is hot today, it will probably be hot
+tomorrow as well. - Is there a learning curve in how the data was
+collected? Learning curves again suggest some dependence from one
+observation to the next.
+
+Random sampling and random assignment allow us to confidently state that
+the errors are independent of one another. One additional pitfall to
+watch out for when collecting your own data is whether there is some
+type of systematic error in the measurement device. - Measurement
+devices which are failing over time will introduce a dependence from one
+observation to the next. Imagine a bathroom scale that begins to add an
+additional pound each day. Then, being above average weight one day will
+most likely lead to an above average weight the next, due primarily to
+the measurement device.
+
+This last point illustrates a particular deviation from our condition of
+independence in which two observations collected close together in time
+are related. When we know the order in which the data was collected, we
+can assess whether the data is consistent with independence or tends to
+deviate in this manner. This is done graphically through a time-series
+plot of the residuals. If two errors were unrelated, then the value of
+one residual should tell us nothing about the value of the next
+residual. Therefore, a plot of the residuals over time should look like
+noise (since residuals are supposed to be estimates of noise). If there
+are any trends, then it suggests the data is not consistent with
+independence.
+
+For the \protect\hyperlink{CaseGreece}{Seismic Activity Case Study}, the
+data was actually collected over time as the earthquakes occurred. More,
+as technology has changed over time, it is reasonable to fear that the
+errors in our observations are related over time. In order to assess
+this, consider the plot of the residuals from fitting the above model
+against the order in which they were collected; this is shown in Figure
+\ref{fig:regassessment-independence}. Based on the figure, there is no
+clear trend in either the location or spread of the residuals over time.
+It is reasonable to assume that the data is consistent with this
+condition.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regassessment-independence-1} 
+
+}
+
+\caption{Time series plot of the residuals for a model predicting bracketed duration as a function of both the magnitude and the epicentral distance for a location.}\label{fig:regassessment-independence}
+\end{figure}
+
+\section{Assessing Homoskedasticity}\label{assessing-homoskedasticity-1}
+
+Similar to assessing whether the data is consistent with the condition
+of the errors being 0 on average for all values of the predictors,
+homoskedasticity suggests the variability in the errors is consistent
+for all values of the predictors. Therefore, we rely on the same
+graphical assessment: Figure \ref{fig:regconditions-mean0}. However,
+instead of focusing on a trend in the location of the residuals, we are
+focused on a trend in the variability. Again, imagine a window
+(illustrated as green rectangles) around the residuals. As you move left
+to right, if the size of the window has to change in order to keep the
+residuals inside, then that is an indication that the variability is
+changing. There is a clear ``fan shape'' to the residuals as you move
+left to right. This suggests that the precision of the model decreases
+when making larger predictions. This goes back to something we observed
+in Chapter \ref{Regsummaries} when examining a plot of the raw data.
+Figure \ref{fig:regsummaries-magnitude} illustrates that for large
+earthquakes (high magnitudes), the bracketed duration was much more
+variable than for smaller earthquakes. So, our model is not as precise
+in some regions.
+
+This explains why the analytical models of the sampling distribution did
+not match the empirical models in Figure
+\ref{fig:regconditions-mlr-bootstrap-plot}. Since there is clear
+evidence that the data is not consistent with the condition that the
+variability of the errors is constant for all levels of the predictors,
+then it is not safe to assume the classical regression model. That is,
+the confidence intervals and p-values, as well as the underlying model
+for the sampling distribution that generated them, constructed assuming
+the data is consistent with all four conditions are suspect. As a
+result, we can obtain an improved model for the sampling distribution by
+reducing the number of conditions we place on the stochastic portion of
+the model.
+
+\section{Assessing Normality}\label{assessing-normality-1}
+
+We again emphasize the use of a probability plot to assess whether the
+residuals behave as a sample from a Normal distribution. If the data is
+consistent with this condition, then we would expect that the
+probability plot of the residuals would reveal a linear relationship.
+Trends away from a linear relationship suggest the proposed Normal
+distribution is not a reasonable model for the distribution of the
+errors.
+
+Figure \ref{fig:regassessment-normal} shows the probability plot for the
+residuals for the model fit above.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regassessment-normal-1} 
+
+}
+
+\caption{Probability plot of the residuals for a model predicting bracketed duration as a function of both the magnitude and the epicentral distance for a location.}\label{fig:regassessment-normal}
+\end{figure}
+
+There is some evidence that the residuals are moving away from a linear
+relationship. There is some curvature, particularly toward the top right
+portion of the graphic. The analytic models for the sampling
+distribution are generally fairly robust to this condition. That is,
+those models for the sampling distribution, as well as the confidence
+intervals and p-values they produce, tend to be accurate even if the
+data is not consistent with this condition. This is especially true in
+large samples. However, we can always relax this condition by building
+an empirical model for the sampling distribution. Overall, this graphic
+does not produce a lot to be concerned about; however, given we have
+already established the data is not consistent with the condition of
+homoskedasticity, we should use an emprical model of the sampling
+distribution to perform inference.
+
+\section{General Tips for Assessing
+Assumptions}\label{general-tips-for-assessing-assumptions-1}
+
+As we did earlier in the text, we emphasize that the methods presented
+here are qualitative assessements, which means they are subjective. That
+is okay. As the analyst, it is up to you to determine which assumptions
+you are willing to make. You need to determine whether you feel the data
+is consistent with the assumptions. Here are two overall things to keep
+in mind.
+
+First, do not spend too much time examining residual plots. If you stare
+at a plot too long, you can convince yourself there is pattern in
+anything. We are looking for glaring evidence that the data is not
+consistent with the conditions we have imposed on our model. This is
+especially true when we have only a few observations. In these settings,
+reading plots can be very difficult. Again, it is about what you are
+comfortable assuming; how much faith do you want to place in the
+results?
+
+Second, we have chosen the language carefully throughout this chapter.
+We have never once stated that a condition was satisfied. When we
+perform an analysis, we are making an assumption that the conditions are
+satisfied. We can never prove that they are; we can only show that the
+data is consistent with a particular condition. We can, however, provide
+evidence that a condition is violated. When that is the case, we should
+be wary of trusting the resulting p-values and confidence intervals.
+This is not unlike hypothesis testing; just as we can never prove the
+null hypothesis is true, we cannot prove that a condition is satisfied.
+
+Finally, any conditions required for a particular analysis should be
+assessed. If your sample is not consistent with the necessary
+conditions, you should choose a different analysis. The inference you
+obtain from an analysis is only reliable of the data is consistent with
+any necessary conditions.
+
+\chapter{Modifying an Effect}\label{Reginteractions}
+
+We now have a flexible strategy for modeling a quantitative response:
+\[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor})_{j,i} + \epsilon_i\]
+
+We have seen that we can model the marginal (or overall) relationship
+between two variables by including only a single predictor. However,
+there is one type of question we have not yet addressed --- assessing
+the interplay between two variables on the response.
+
+\section{Building an Effect-Modifier into the
+Model}\label{building-an-effect-modifier-into-the-model}
+
+Consider the following question from the
+\protect\hyperlink{CaseGreece}{Seismic Activity Case Study}:
+
+\begin{quote}
+Is the relationship between the bracketed distance and the magnitude
+different depending on the soil condition of where the measurement is
+taken?
+\end{quote}
+
+We have already examined a model which predicts the bracketed duration
+using both the magnitude and the soil conditions:
+
+\[
+\begin{aligned}
+  (\text{Bracketed Duration})_i &= \beta_0 + \beta_1(\text{Magnitude})_i \\
+    &\quad + \beta_2\mathbb{I}(\text{i-th observation has a Rocky soil}) \\
+    &\quad + \beta_3\mathbb{I}(\text{i-th observation has Soft soil}) + \epsilon_i
+\end{aligned}
+\]
+
+Exploring further, we saw this model suggested there were actually three
+equations in one here, one for each of the soil conditions: \[
+\begin{aligned}
+  \text{Intermediate Soil:} &\quad (\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \epsilon_i\\
+  \text{Rocky Soil:} &\quad (\text{Bracketed Duration})_i = \beta_0 + \beta_2 + \beta_1(\text{Magnitude})_i + \epsilon_i\\
+  \text{Soft Soil:} &\quad (\text{Bracketed Duration})_i = \beta_0 + \beta_3 + \beta_1(\text{Magnitude})_i + \epsilon_i
+\end{aligned}
+\]
+
+Graphically, this was represented by three parallel lines (see Figure
+\ref{fig:regmodel-ind-plot}). The lines are parallel because the
+coefficient associated with Magnitude is the same in each case:
+\(\beta_1\). That is, for each soil type, the change in the bracketed
+duration, on average, for each 1-unit increase in the magnitude of an
+earthquake is the same. Our question of interest is essentially, is
+there evidence that this is not the case? So, the above model actually
+represents the model under the null hypothesis of our current question.
+Under the null hypothesis, the effect of the magnitude on the bracketed
+duration (which captures the relationship between these two variables)
+is the same for all three soil types. The question is, how do we form
+the alternative model, which allows the slope to look differently in
+each soil type.
+
+Consider adding additional terms to our model above, yielding the
+following model: \[
+\begin{aligned}
+  (\text{Bracketed Duration})_i &= \beta_0 + \beta_1(\text{Magnitude})_i \\
+    &\quad + \beta_2\mathbb{I}(\text{i-th observation has a Rocky soil}) \\
+    &\quad + \beta_3\mathbb{I}(\text{i-th observation has Soft soil}) \\
+    &\quad + \beta_4\mathbb{I}(\text{i-th observation has a Rocky soil})(\text{Magnitude})_i \\
+    &\quad + \beta_5\mathbb{I}(\text{i-th observation has Soft soil})(\text{Magnitude})_i + \epsilon_i
+\end{aligned}
+\]
+
+These two additional terms are formed by taking the product of the
+indicator variables with the variable magnitude; these products are
+known as \textbf{interaction terms}.
+
+\BeginKnitrBlock{definition}[Interaction Term]
+\protect\hypertarget{def:defn-interaction-term}{}{\label{def:defn-interaction-term}
+\iffalse (Interaction Term) \fi{} }The product of two variables in a
+regression model. The product allows the effect of one variable on the
+response to depend on another, essentially modifying the effect.
+\EndKnitrBlock{definition}
+
+In order to see the impact of adding these interaction terms, let's
+consider the model for each soil type: \[
+\begin{aligned}
+  \text{Intermediate Soil:} &\quad (\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \epsilon_i\\
+  \text{Rocky Soil:} &\quad (\text{Bracketed Duration})_i = \left(\beta_0 + \beta_2\right) + \left(\beta_1 + \beta_4\right)(\text{Magnitude})_i + \epsilon_i\\
+  \text{Soft Soil:} &\quad (\text{Bracketed Duration})_i = \left(\beta_0 + \beta_3\right) + \left(\beta_1+\beta_5\right)(\text{Magnitude})_i + \epsilon_i
+\end{aligned}
+\]
+
+Notice that in this revised model, not only is the intercept term
+different in each model, the slope term in front of the magnitude
+differs for each soil type. The model with the interaction terms allows
+the effect of the magnitude on the bracketed duration to be modified by
+the soil type. That is, the effect differs across the soil type.
+
+\BeginKnitrBlock{rmdtip}
+It is common to believe that the interaction term measures the effect
+between the two variables in the product. However, this is incorrect.
+The interaction term allows the effect of one variable in the product on
+the response to differ across the levels of the other variable in the
+product.
+\EndKnitrBlock{rmdtip}
+
+Visually, this revised model allows three completely different
+relationships --- one for each soil type. This is shown in Figure
+\ref{fig:reginteractions-plot}. The question of course is which of the
+two models is more appropriate. Is there actually evidence that the more
+complex model, which allows the relationship to differ for locations
+with different soil types, is required? Or, is the more simplistic
+model, which says the relationship is the same across all locations of
+different soil types, sufficient?
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/reginteractions-plot-1} 
+
+}
+
+\caption{Relationship between bracketed duration and the magnitude of an earthquake after also considering the soil conditions of the measurement location.  The relationship between the bracketed duration and the magnitude are allowd to differ within each type of soil condition.}\label{fig:reginteractions-plot}
+\end{figure}
+
+\section{Inference for Effect
+Modifications}\label{inference-for-effect-modifications}
+
+We can capture our question of interest in the following hypotheses:
+
+\begin{quote}
+\(H_0: \beta_3 = \beta_5 = 0\)\\
+\(H_1:\) At least one of \(\beta_3\) or \(\beta_5\) is not equal to 0.
+\end{quote}
+
+Notice that if the null hypothesis were true, then the slope would be
+the same in each of the three soil conditions. However, if either one of
+the \(\beta\)'s is nonzero, then the slope will differ for one of the
+soil conditions. So, under the null hypothesis, the lines are parallel;
+under the alternative hypothesis, at least one of the lines is not
+parallel.
+
+Conceptually, testing this model is just like testing any other. We can
+generate samples under the null hypothesis, using our reduced model. For
+each sample, we can compute the standardized test statistic --- a signal
+to noise ratio --- measuring the signal in the data (in this case, the
+evidence for non-parallel lines). Doing this repeatedly gives us a null
+distribution allowing us to compute a p-value. Just as before, if the
+conditions of the classical regression model hold, then we can model the
+null distribution analytically using a probability model.
+
+This process relies on our ability to partition the variability.
+Consider our model, written here in our compact form:
+\[(\text{Bracketed Duration}) \sim \text{Magnitude} + (\text{Soil Conditions}) + (\text{Magnitude})(\text{Soil Conditions})\]
+
+Remember that a model for the data-generating process simply specifies
+the various sources of variability. In this case, we have partitioned
+the variability into the following four components:
+
+\begin{itemize}
+\tightlist
+\item
+  Magnitude: one reason the bracketed duration differs between two
+  locations is the magnitude of the corresponding earthquake.
+\item
+  Soil Conditions: another reason for a difference in the bracketed
+  duration is due to the soil conditions at the measurement site.
+\item
+  Interplay between Magnitude and Soil Conditions: in addition, we
+  believe that the effect of the magnitude may differ for various soil
+  conditions.
+\item
+  Noise: even for two locations which have the same magnitude and soil
+  conditions, there may be a difference in the bracketed duration. These
+  differences we cannot resolve and attribute them simply to error.
+\end{itemize}
+
+By partitioning the variability, we are able to compute a
+signal-to-noise ratio. For each component, we can essentially determine
+how much variability is explained relative to the noise in the process.
+So, despite talking about ``regression models,'' we are still just
+comparing variabilities; that is, we are still doing an analysis of
+variance. For that reason, the way in which this information is often
+presented is through an ANOVA table.
+
+Specifically, Table \ref{tab:reginteractions-fit} gives the estimates
+associated with each parameter, and Table
+\ref{tab:reginteractions-anova} presents the corresponding ANOVA table.
+The ANOVA table shows how the variability is partitioned.
+
+\begin{table}
+
+\caption{\label{tab:reginteractions-fit}Summary of the model fit explaining the bracketed duration as a function of both magnitude and soil condition at the measurement location.  The effect of the magnitude was allowed to differ across soil conditions.}
+\centering
+\begin{tabular}[t]{l|r|r|l}
+\hline
+Term & Estimate & Standard Error & P-Value\\
+\hline
+(Intercept) & -25.657 & 7.674 & 0.001\\
+\hline
+Magnitude & 5.754 & 1.426 & < 0.001\\
+\hline
+Soil Conditions (Rocky) & 13.616 & 11.122 & 0.223\\
+\hline
+Soil Conditions (Soft) & 2.776 & 9.569 & 0.772\\
+\hline
+Interaction: Magnitude \& Rocky Soil & -2.902 & 2.003 & 0.15\\
+\hline
+Interaction: Magnitude \& Soft Soil & -0.465 & 1.767 & 0.793\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:reginteractions-anova}ANOVA table corresponding to the model fit explaining the bracketed durationa s a function of both magnitude and soil condition at the measurement location.  The effect of the magnitude was allowed to differ across soil conditions.}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|l}
+\hline
+Source & DF & SS & MS & F & P-Value\\
+\hline
+Magnitude & 1 & 980.503 & 980.503 & 39.777 & < 0.001\\
+\hline
+Soil Conditions & 2 & 139.896 & 69.948 & 2.838 & 0.063\\
+\hline
+Interaction: Magnitude \& Soil Conditions & 2 & 63.601 & 31.800 & 1.290 & 0.279\\
+\hline
+Residuals & 113 & 2785.440 & 24.650 &  & \\
+\hline
+\end{tabular}
+\end{table}
+
+In both tables, the p-values are computed assuming the conditions of the
+classical regression model are appropriate. In Table
+\ref{tab:reginteractions-fit}, the p-value corresponds to testing if the
+corresponding parameter is 0, \emph{holding all other parameters fixed}.
+The problem is that this tests each parameter separately. However, we
+would like to know whether there is any evidence of an interaction. This
+cannot be obtained from Table \ref{tab:reginteractions-fit}. Table
+\ref{tab:reginteractions-anova}, however, provides p-values comparing
+whether an entire source is necessary when partitioning the variability.
+Assuming the conditions for the classical regression model are
+appropriate, we have no evidence (p = 0.279) that the effect of the
+magnitude differs across the various soil conditions. That is, it is
+reasonable that the effect of the magnitude is similar for locations
+with each of the three soil types.
+
+\chapter{Quantifying the Quality of a Model Fit}\label{Regquality}
+
+In this unit, we have described a very flexible model for describing the
+data generating process for a quantitative response:
+
+\[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor})_{j,i} + \epsilon_i\]
+
+We can obtain estimates of the unknown parameters in this model using
+least squares. Further, under certain conditions on the error term, we
+are able to perform inference on the parameters. We have not yet
+discussed how we determine if our model is any good. As we have seen
+throughout the text, the idea of partitioning the variability underlies
+the idea of inference. Each time we want to perform inference, we are
+really comparing the variability we have explained to the noise in the
+data. In this section, we explore this concept a bit further and use it
+to derive a measure for the overall performance of our model.
+
+\section{Partitioning Variability}\label{partitioning-variability-1}
+
+Consider modeling the bracketed duration as a function of the magnitude
+and the distance the location is from the center of the earthquake:
+
+\[(\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \beta_2(\text{Epicentral Distance})_i + \epsilon_i\]
+
+We have fit this model previously, and the resulting model fit is
+summarized below in Table \ref{tab:regquality-fit}.
+
+\begin{table}
+
+\caption{\label{tab:regquality-fit}Summary of the model fit explaining the bracketed duration as a result of magnitude and epicentral distance.}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|l}
+\hline
+Term & Estimate & Standard Error & Lower 95\% CI & Upper 95\% CI & P Value\\
+\hline
+(Intercept) & -30.715 & 4.887 & -40.395 & -21.036 & < 0.001\\
+\hline
+Magnitude & 6.991 & 0.964 & 5.082 & 8.900 & < 0.001\\
+\hline
+Epicentral Distance & -0.077 & 0.021 & -0.118 & -0.036 & < 0.001\\
+\hline
+\end{tabular}
+\end{table}
+
+Each component of a data generating process is explaining a portion of
+the variability. That is, this model posits three reasons for why the
+bracketed duration is not the same at each measured location:
+
+\begin{itemize}
+\tightlist
+\item
+  The magnitude of the corresponding earthquakes differs.
+\item
+  The locations are located different distances from the epicenter of
+  each earthquake.
+\item
+  Noise which we cannot explain.
+\end{itemize}
+
+When making inference on a particular component, we compare the
+variability explained by the component to the variability that is not
+explained by the model. As this is a comparison of variabilities, it is
+summarized in an ANOVA table (Table \ref{tab:regquality-anova}). We see
+from the p-value that there is strong evidence that the epicentral
+distance is an important component in the model, even after accounting
+for the effect of the magnitude. We can interpret this in another way
+also. It is saying that the epicentral distance does play a role in
+explaining a portion of the variability in the bracketed duration. The
+same is true for magnitude; there is strong evidence that it plays a
+role in explaining a portion of the variability in the bracketed
+duration.
+
+\begin{table}
+
+\caption{\label{tab:regquality-anova}ANOVA table corresponding to the model fit explaining the bracketed duration as a result of magnitude and epicentral distance.}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|l}
+\hline
+Term & DF & SS & MS & F & P-Value\\
+\hline
+Magnitude & 1 & 980.503 & 980.503 & 42.57 & < 0.001\\
+\hline
+Epicentral Distance & 1 & 317.150 & 317.150 & 13.77 & < 0.001\\
+\hline
+Error & 116 & 2671.787 & 23.033 &  & \\
+\hline
+\end{tabular}
+\end{table}
+
+This begs the question; if we know these variables play a role in
+explaining the variability, can we quantify the degree to which they
+explain the variability? The short answer is yes.
+
+\section{R-squared}\label{r-squared}
+
+The key to quantifying the quality of a model is to understand that a
+partition breaks a whole into smaller, distinct components. This means
+that if you put the components back together, you have the whole. The
+sums of squares are a method of measuring the variability directly with
+respect to our partition. That is, the total variability in the
+bracketed duration is given by
+
+\[
+\begin{aligned}
+  SS_{\text{Total}} &= SS_{\text{Magnitude}} + SS_{\text{Epicentral Distance}} + SS_{\text{Error}} \\
+    &= 980.503 + 317.150 + 2671.787 \\
+    &= 3969.44
+\end{aligned}
+\]
+
+In general this is true, the total variability in the response can be
+measured by a sum of squares, which is computed by adding up the sums of
+squares for each individual source of variability.
+
+\BeginKnitrBlock{rmdtip}
+The total variability in the response, measured by its sums of squares,
+is computed by adding up the sums of squares for each source of
+variability.
+\EndKnitrBlock{rmdtip}
+
+This also means we can collapse the ANOVA table into the portion of the
+variability we can explain (due to the deterministic portion of the
+model) and the portion of the variability we cannot explain (the
+stochastic portion of the model). This reduced table is given by summing
+up the sums of squares corresponding to the variables in the model. The
+mean squares are then derived from the sums of squares, and the
+standardized test statistic from the mean squares.
+
+\begin{table}
+
+\caption{\label{tab:regquality-overall-anova}Compact ANOVA table corresponding to the model fit explaining the bracketed duration as a result of magnitude and epicentral distance.  We have condensed the table to have the model represent all individual sources of variability other than the error.}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|l}
+\hline
+Term & DF & SS & MS & F & P-Value\\
+\hline
+Model & 2 & 1297.653 & 648.827 & 28.17 & < 0.001\\
+\hline
+Error & 116 & 2671.787 & 23.033 &  & \\
+\hline
+\end{tabular}
+\end{table}
+
+The benefit to this arrangement is that it makes clear the breakdown
+between the variability in the response that the model is explaining
+versus the variability in the response that cannot be explained. We are
+now in a position to quantify the amount of variability the model is
+explaining:
+
+\[\text{Proportion of Variability Explained} = \frac{1297.653}{1297.653+2671.787} = 0.3269\]
+
+This is known as the \textbf{R-squared} for the model. The R-squared
+value has a very nice interpretation; in this case, it says that 32.7\%
+of the variability in the bracketed duration at a location is explained
+by the magnitude of the corresponding earthquake and the location's
+distance from the epicenter.
+
+\BeginKnitrBlock{definition}[R Squared]
+\protect\hypertarget{def:defn-r-squared}{}{\label{def:defn-r-squared}
+\iffalse (R Squared) \fi{} }Sometimes reported as a percentage, this
+measures the proportion of the variability in the response explained by
+a model.
+\EndKnitrBlock{definition}
+
+As R-squared is a proportion, it must take a value between 0 and 1. If
+0, that means our model has no predictive ability within our sample.
+Knowing the predictors does not add to our ability to predict the
+response any more than guessing. A value of 1 indicates that our model
+has predicted all the variability in the response; that is, given the
+predictors, we can perfectly predict the value of the response.
+
+\section{Overfitting}\label{overfitting}
+
+It may appear that obtaining an R-squared value of 1 should be our goal.
+And, in one sense, it is. We want a model that has strong predictive
+ability. However, there is a danger in obtaining an R-squared of 1 as
+well. We must remember that variability is inherent in any process.
+Therefore, we should never expect to fully explain all of the
+variability in a response. George Box (a renowned statistician) once
+made the following statement (Box
+\protect\hyperlink{ref-Box1979}{1979}):
+
+\begin{quote}
+``Now it would be very remarkable if any system existing in the real
+world could be exactly represented by any simple model. However,
+cunningly chosen parsimonious models often do provide remarkably useful
+approximations. For example, the law \(PV = RT\) relating pressure
+\(P\), volume \(V\) and temperature \(T\) of an `ideal' gas via a
+constant \(R\) is not exactly true for any real gas, but it frequently
+provides a useful approximation and furthermore its structure is
+informative since it springs from a physical view of the behavior of gas
+molecules.
+
+For such a model there is no need to ask the question `Is the model
+true?'. If `truth' is to be the `whole truth' the answer must be `No.'
+The only question of interest is `Is the model illuminating and
+useful?'.
+\end{quote}
+
+The idea here is that we know the model will not capture the data
+generating process precisely. Therefore, we should be skeptical of
+models which claim to be perfect. For, example, consider the two models
+illustrated in Figure \ref{fig:regquality-overfit}. The black line has a
+perfect fit, but we argue the blue line is better. While the black line
+captures all the variability in the response for this sample, it is
+certainly trying to do too much. In reality, the blue line captures the
+underlying relationship while not overcomplicating that relationship. We
+sacrifice a little quality in the fit for this sample in order to better
+represent the underlying structure. The black line suffers from what is
+known as \emph{overfitting}; the blue line is a more \emph{parsimonious}
+model, balancing complexity with model fit.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regquality-overfit-1} 
+
+}
+
+\caption{Illustration of a parsimonious model compared to one which overfits the data.}\label{fig:regquality-overfit}
+\end{figure}
+
+Students often ask, ``if not 1, how high of an R-squared represents a
+\emph{good} model?'' The answer depends a lot on the discipline. In many
+engineering applications within a lab setting, we can control much of
+the external variability leading to extremely high R-squared values
+(0.95 to 0.99). However, in biological applications, the variability
+among the population can be quite large, leading to much smaller
+R-squared values (0.3 to 0.6). What is considered ``good'' can depend on
+the specific application.
+
+\section{Goal of Modeling}\label{goal-of-modeling}
+
+In addition to the discipline, how you view the R-squared of a model may
+depend on the goal of the model. There are generally two broad reasons
+for developing a statistical model:
+
+\begin{itemize}
+\tightlist
+\item
+  Explain the relationship between a response and one or more
+  predictors. This can involve examining the marginal relationship,
+  isolating the effect, or examining the interplay between predictors.
+\item
+  Predict a future response given a specific value for the predictors.
+\end{itemize}
+
+If all we are interested in doing is explaining the relationship, we may
+not be concerned about the predictive ability of the model. That is,
+since our goal is not to accurately predict a future response, we are
+primary concerned with whether we have evidence of a relationship. But,
+if our goal is prediction, we would like that estimate to be accurate.
+In such cases, a high R-squared is required before really relying on the
+model we have.
+
+Regardless of our goal, conducting inference or predicting a future
+response, partitioning the variability is a key step. If inference is
+our primary aim, this partitioning allows us to determine a predictor
+adds to the model above and beyond the remaining terms. If prediction is
+our primary aim, the partitioning allows us to quantify the quality of
+the model.
+
+\chapter{Puting it All Together}\label{Regrecap}
+
+For the \protect\hyperlink{CaseGreece}{Seismic Activity Case Study},
+consider the following question:
+
+\begin{quote}
+After accounting for the various soil conditions, is there evidence that
+the protective effect of a location being further away from the
+epicenter has on the bracketed duration depends upon the magnitude of
+the earthquake?
+\end{quote}
+
+\section{Graphical Summary}\label{graphical-summary}
+
+Before developing a statistical model to address our question, we
+summarize the data graphically. The question involves three different
+predictors: magnitude, epicentral distance, and soil conditions. As a
+result, we must carefully consider how we visualize the data. The
+primary emphasis in the question is on the impact that the magnitude has
+on the effect of the epicentral distance. That is, is the relationship
+of the epicentral distance and bracketed duration similar regardless of
+the magnitude of the earthquake?
+
+Figure \ref{fig:regrecap-plot} illustrates the relationship between the
+bracketed duration and the epicentral distance. We note that the axis
+for the epicentral distance takes logarithmic steps to better illustrate
+the relationship. That is, moving from 1 to 10 kilometers has roughly
+the same effect as moving from 10 to 100 kilometers from the earthquake.
+Also note that we have displayed the relationship within each of the
+three soil conditions for the measurement location. The pattern within
+each of the soil conditions appears to differ. Finally, the color of the
+point indicates the magnitude of the earthquake. It can be difficult to
+isolate points of a similar color, but there does appear to be some
+evidence that the relationship between the bracketed duration and the
+epicentral distance depends on the magnitude.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regrecap-plot-1} 
+
+}
+
+\caption{Relationship between the bracketed duration and the distance from the epicenter of an earthquake for locations measuring seismic activity in Greece.  The relationship is presented for various soil types.}\label{fig:regrecap-plot}
+\end{figure}
+
+In order to visualize complex multivariable relationships, we need to
+make use of multiple graphical elements.
+
+\section{Development of Statistical
+Model}\label{development-of-statistical-model}
+
+In order to address our primary question of interest, we must develop a
+statistical model which explains the data generating process and embeds
+our question of interest in terms of the parameters of the model. Based
+on the question of interest, our model should incorporate the following
+elements:
+
+\begin{itemize}
+\tightlist
+\item
+  Soil condition of the location should be included to account for this
+  effect.
+\item
+  Magntidue of the earthquake should be included.
+\item
+  Distance the location is from the epicenter of the earthquake should
+  be included.
+\item
+  Interaction of the epicentral distance and magnitude should be
+  included; the associated parameter is the key to address our question
+  of interest.
+\end{itemize}
+
+In addition, based on the graphical exploration of the data in Figure
+\ref{fig:regrecap-plot}, we should also include the following elements:
+
+\begin{itemize}
+\tightlist
+\item
+  The relationship between the bracketed duration and the epicentral
+  distance should account be on a logarithmic scale. This accounts for
+  the ``stretched'' scale in the above graphic.
+\item
+  The relationship between the epicentral distance and bracketed
+  duration appears to differ for eahc of the three soil conditions;
+  therefore, an interaction term between these variables should be
+  included.
+\end{itemize}
+
+Putting these together, we have the following model:
+
+\begin{equation}
+  \begin{aligned}
+    (\text{Bracketed Duration})_i &= \beta_0 + \beta_1\log_{10}(\text{Epicentral Distance})_i + \beta_2(\text{Magnitude})_i \\
+      &\quad + \beta_3\mathbb{I}(\text{i-th location has Rocky soil}) + \beta_4\mathbb{I}(\text{i-th location has Soft soil}) \\
+      &\quad + \beta_5\log_{10}(\text{Epicentral Distance})_i\mathbb{I}(\text{i-th location has Rocky soil}) \\
+      &\quad + \beta_6\log_{10}(\text{Epicentral Distance})_i\mathbb{I}(\text{i-th location has Soft soil}) \\
+      &\quad + \beta_7\log_{10}(\text{Epicentral Distance})_i(\text{Magnitude})_i + \epsilon_i
+  \end{aligned}
+  \label{eq:regrecap-model}
+\end{equation}
+
+This model is complex, but it captures each of the elements that we
+described above. Indicator variables are used to capture the various
+soil conditions; this includes when constructing interaction terms. In
+addition to modeling the deterministic portion of the data generating
+process, we must also place conditions on the stochastic portion in
+order to make inference. We consider the conditions of the classical
+regression model:
+
+\begin{itemize}
+\tightlist
+\item
+  The error in the bracketed duration for one location is independent of
+  the error in the bracketed duration for any other location.
+\item
+  The error in the bracketed duration is 0, on average; that is, the
+  model above is correctly specified.
+\item
+  The variability of the error in the bracketed duration is the same for
+  all locations with a similar epicentral distance and magnitude.
+\item
+  The error in the bracketed duration follows a Normal distribution.
+\end{itemize}
+
+\section{Assessment of Conditions}\label{assessment-of-conditions}
+
+Before making inference regarding our question of interest, we should
+determine if our data is consistent with the conditions on the error
+term we have specified. Figure \ref{fig:regrecap-normality} is a
+probability plot of the residuals used to assess whether the data is
+consistent with the assumption of normality. The plot reveals some
+departure from the linear relationship we would expect if the residuals
+were a sample from a Normal distribution. That is, there is some
+evidence to suggest that the data is not consistent with the condition
+of Normality.
+
+
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regrecap-normality-1} 
+
+}
+
+\caption{(ref:capregrecap-normality)}\label{fig:regrecap-normality}
+\end{figure}
+
+Figure \ref{fig:regrecap-indep} is a plot of the residuals for the
+observations in the order in which they were collected. Since the data
+was collected over time, this plot could reveal potential patterns among
+the residuals which are departures from independence. As there are no
+trends in either the location or spread of the residuals, the data is
+consistent with the condition of independence.
+
+
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regrecap-indep-1} 
+
+}
+
+\caption{(ref:cap-regrecap-indep}\label{fig:regrecap-indep}
+\end{figure}
+
+Figure \ref{fig:regrecap-mean0} is a plot of the residuals against the
+predicted values from the model. While there are some signs of curvature
+in these residuals, we do not feel the deviation is sufficient enough to
+warrant believing the model is misspecified. That is, we are willing to
+assume the data is consistent with the condition that the mean of the
+errors is 0 for each combination of the predictors. However, we cannot
+ignore the change in the spread as the predicted values increase. This
+suggests that for larger bracketed durations, the model is not as
+precise.
+
+
+
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/regrecap-mean0-1} 
+
+}
+
+\caption{Plot of the residuals against the predicted
+values corresponding to a model for the bracketed duration of seismic
+events in Greece. The model is described by Equation
+\eqref{eq:regrecap-model}.}\label{fig:regrecap-mean0}
+\end{figure}
+
+Examining the residuals, we determined that the data is consistent with
+the following two conditions:
+
+\begin{itemize}
+\tightlist
+\item
+  The error in the bracketed duration for one location is independent of
+  the error in the bracketed duration for any other location.
+\item
+  The error in the bracketed duration is 0, on average; that is, the
+  model above is correctly specified.
+\end{itemize}
+
+There is evidence that the data obtained is not consistent with the
+remaining two conditions enforced in a classical regression model. As a
+result, we choose to model the sampling distribution of our estimates
+empirically, via bootstrapping.
+
+\section{Summary of Model Fit}\label{summary-of-model-fit}
+
+The parameters in our model are estimated via least squares. The
+variability in these estimates is quantified using an empirical model of
+the sampling distribution based on 5000 bootstrap replications. Table
+\ref{tab:regrecap-model-fit} summarizes the estimates for the parameters
+in Equation \eqref{eq:regrecap-model}.
+
+
+
+
+
+\begin{table}
+
+\caption{\label{tab:regrecap-model-fit}(ref:cap-regrecap-model-fit}
+\centering
+\begin{tabular}[t]{l|r|r|r|r}
+\hline
+Term & Estimate & Standard Error & 95\% LCL & 95\% UCL\\
+\hline
+Intercept & -44.038 & 12.498 & -69.468 & -20.456\\
+\hline
+Log of Epicentral Distance & 13.642 & 8.452 & -2.281 & 30.964\\
+\hline
+Magnitude & 9.636 & 2.332 & 5.159 & 14.307\\
+\hline
+Indicator: Rocky Soil & -2.065 & 2.829 & -7.530 & 3.361\\
+\hline
+Indicator: Soft Soil & -0.762 & 2.352 & -5.238 & 3.969\\
+\hline
+Interaction: Distance and Rocky Soil & 0.146 & 2.395 & -4.340 & 4.969\\
+\hline
+Interaction: Distance and Soft Soil & 1.211 & 2.003 & -2.729 & 5.026\\
+\hline
+Interaction: Distance and Magnitude & -2.904 & 1.481 & -5.904 & -0.138\\
+\hline
+\end{tabular}
+\end{table}
+
+The results suggests that for each 1-unit increase in the magnitude of
+an earthquake, the reduction in the bracketed duration for each 10-fold
+increase in the number of kilometers a location is from the epicenter of
+an earthquake is reduced a further -2.9 seconds, on average (95\% CI:
+(0.14, 5.90)). That is, we have some evidence (p = 0.075) that the
+reduction in the bracketed duration as a location gets further away from
+the epicenter of an earthquake is magnified as the magnitude of the
+earthquake increases. Practically speaking, this means that for larger
+earthquakes, each kilometer you can distance yourself from the epicenter
+is important.
+
+\part{Unit IV: Special
+Cases}\label{part-unit-iv-special-cases}
+
+\hypertarget{CaseBabies}{\chapter{Case Study: Birth Weights of
+Babies}\label{CaseBabies}}
+
+The Centers for Disease Control and Prevention (CDC), using data
+provided by the U.S. Department of Health and Human Services, National
+Center for Health Statistics, the Division of Vital Statistica and the
+CDC, maintains a database on all babies born in a given year\footnote{\url{http://wonder.cdc.gov/natality-current.html}}.
+This database contains key metrics on each child born, including the
+weight of the infant. Low birthweight can be indicative of poor health
+or illness in children. High birthweight can be indicative of obesity
+later in life. One use of this database is then for researchers to
+examine links between lifestyle choices of the parents (such as whether
+the mother consumed alcohol during pregnancy).
+
+Chihara and Hesterberg (\protect\hyperlink{ref-Chihara2011}{2011})
+describe a random sample from this database; specifically, the sample
+consists of 1009 babies born in North Carolina during 2004. The babies
+each had a gestation period of at least 37 weeks (full term) and were
+single births (no twins, triplets, etc.). For each birth in the sample,
+we have the following information:
+
+\begin{itemize}
+\tightlist
+\item
+  Age: Age of the mother (in years).
+\item
+  Tobacco: An indicator of whether the mother used tobacco during the
+  pregnancy.
+\item
+  Alcohol: An indicator of whether the mother used alcohol during the
+  pregnancy.
+\item
+  Gender: Gender of the child.
+\item
+  Weight: Weight of the child at birth (grams).
+\item
+  Gestation: Gestation time (length of pregnancy, weeks).
+\item
+  Smoker: An indicator of whether the mother is a current smoker.
+\end{itemize}
+
+A subset of the collected data is shown in Table
+\ref{tab:casebabies-table}.
+
+\begin{table}
+
+\caption{\label{tab:casebabies-table}Subset of a sample of 1009 babies born in North Carlina during 2004.}
+\centering
+\begin{tabular}[t]{r|l|l|l|l|r|r|l}
+\hline
+Subject ID & Age Range (years) & Used Tobacco & Used Alcohol & Gender of Baby & Weight of Baby (g) & Gestation (weeks) & Current Smoker\\
+\hline
+1 & 30-34 & No & No & Male & 3827 & 40 & No\\
+\hline
+2 & 30-34 & No & No & Male & 3629 & 38 & No\\
+\hline
+3 & 35-39 & No & No & Female & 3062 & 37 & No\\
+\hline
+4 & 20-24 & No & No & Female & 3430 & 39 & No\\
+\hline
+5 & 25-29 & No & No & Male & 3827 & 38 & No\\
+\hline
+6 & 35-39 & No & No & Female & 3119 & 39 & No\\
+\hline
+7 & 20-24 & No & No & Female & 3260 & 40 & No\\
+\hline
+8 & 20-24 & No & No & Male & 3969 & 40 & No\\
+\hline
+9 & 20-24 & No & No & Male & 3175 & 39 & No\\
+\hline
+10 & 25-29 & No & No & Female & 3005 & 39 & No\\
+\hline
+\end{tabular}
+\end{table}
+
+\chapter{Inference on the Mean of a Single Population (One-Sample
+t-Tests)}\label{OneMean}
+
+Throughout the text, we have focused on inference in two contexts:
+
+\begin{itemize}
+\tightlist
+\item
+  Comparing the mean of a quantitative response across the levels of a
+  factor.
+\item
+  Modeling the mean of a quantitative response as a function of one or
+  several predictors.
+\end{itemize}
+
+We have seen that our modeling approach is quite flexible and can handle
+a myriad of research questions. However, this is not the typical
+approach for introducing inference to scientists and engineers. A more
+common approach is to progress through a series of scenarios, each of
+which grows in complexity:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Inference for the mean of a single variable.
+\item
+  Comparing the mean response for two independent groups.
+\item
+  Comparing the mean response for several groups (ANOVA).
+\item
+  Simple linear regression.
+\end{enumerate}
+
+The third topic in this list was covered in the second unit of this
+text, and the fourth topic was addressed through consideration of the
+``marginal relationship'' between two variables discussed in the third
+unit. It might appear that we have skipped the first two topics;
+however, the reality is that each of these is simply a special case of
+ANOVA or Regression.
+
+In this unit, we address each of these cases in turn and show how they
+connect to the topics we have already addressed. The primary motivation
+for discussing these special cases is to make the reader familiar with
+terminology which is still widely used within industry. It also serves
+as a way of reaffirming the flexibility of the modeling approach we
+considered throughout the text.
+
+\section{Framing the Question}\label{framing-the-question-1}
+
+Consider the \protect\hyperlink{CaseBabies}{Birthweight Case Study}, and
+suppose our primary question of interest was the following:
+
+\begin{quote}
+Is there evidence that the average birthweight of an infant born in
+North Carolina is below 3500 grams?
+\end{quote}
+
+The parameter of interest is the average birthweight of an infant born
+in North Carolina. That is, we are interested in characterizing the mean
+response for a single population (hence the title of the chapter). Our
+hypotheses which capture this question are
+
+\begin{quote}
+\(H_0:\) the average birthweight of an infant born in North Carolina is
+at least 3500 grams.\\
+\(H_1:\) the average birthweight of an infant born in North Carolina is
+less than 3500 grams.
+\end{quote}
+
+Letting \(\mu\) represent the average birthweight (g) of an infant born
+in North Carolina, we can write the hypotheses mathematically as
+
+\begin{quote}
+\(H_0: \mu \geq 3500\)\\
+\(H_1: \mu < 3500\)
+\end{quote}
+
+Figure \ref{fig:onemean-plot} summarizes the birthweights for the
+infants in our sample. The weights tend to hover just below 3500 grams;
+in fact, the average birthweight for infants in our sample is 3448
+grams.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/onemean-plot-1} 
+
+}
+
+\caption{Birthweights for a sample of infants born in North Carolina during 2004.}\label{fig:onemean-plot}
+\end{figure}
+
+\section{Classical Approach}\label{classical-approach}
+
+The classical method of addressing this question of interest is to
+conduct a ``one-sample t-test.'' This procedure defines a standardized
+test statistic as
+
+\[T = \frac{\bar{x} - \mu_0}{s/\sqrt{n}}\]
+
+where \(\bar{x}\) and \(s\) represent the sample mean and standard
+deviation of the sample, respectively; and, \(n\) represents the sample
+size. The parameter \(\mu_0\) represents the mean response if the null
+hypothesis were true. For our sample, we have that
+
+\[T = \frac{3448 - 3500}{488} = -3.37\]
+
+A model for the null distribution of this standardized test statistic is
+derived under two conditions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The birthweight for one infant is independent of the birthweight for
+  any other infant.
+\item
+  The birthweights for infants in the population follows a Normal
+  distribution.
+\end{enumerate}
+
+Under these two conditions, we have an analytical model for the null
+distribution of the standarized test statistic. The probability model
+which corresponds to the null distribution is called the
+``t-distribution'', hence the name ``one-sample t-test.''
+
+Figure \ref{fig:onemean-t-test} shows the model for the null
+distribution and the computation of the corresponding p-value. Based on
+the p-value, there is strong evidence the birthweight for infants born
+in North Carolina is less than 3500 grams. Using a similar analytical
+model for the sampling distribution, we are able to construct a 95\%
+confidence interval for \(\mu\), which is given as (3418, `3478).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/onemean-t-test-1} 
+
+}
+
+\caption{Null distribution for the standardized test statistic of a one-sample t-test.  The shaded region represents the p-value.}\label{fig:onemean-t-test}
+\end{figure}
+
+\section{Connection to Modeling}\label{connection-to-modeling}
+
+The classical one-sample t-test is equivalent to a regression model
+which has no predictors. That is, consider the following model for the
+data generating process:
+
+\[(\text{Birthweight})_i = \mu + \epsilon_i\]
+
+where the following conditions are placed on the error term:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The errors in the birthweight have a mean of 0.
+\item
+  The error in the birthweight for one infant is independent of the
+  error in the birthweight for any other infant.
+\item
+  The errors in the birthweight follow a Normal Distribution.
+\end{enumerate}
+
+We note that we do not need the condition of ``constant variance'' since
+there are no predictors in our model. This is the same as a regression
+model with only an intercept term and no predictors. Therefore, we can
+estimate the mean using least squares, which results in the results
+summarized in Table \ref{tab:onemean-fit}. Notice that the least squares
+estimate corresponds to \(\bar{x}\), the sample mean.
+
+\begin{table}
+
+\caption{\label{tab:onemean-fit}Summary of an intercept only model fit to explain the birthweight of babies in our sample.}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|r}
+\hline
+Term & Estimate & Standard Error & 95\% LCL & 95\% UCL & P-Value\\
+\hline
+Intercept & 3448.26 & 15.355 & 3418.129 & 3478.39 & 0\\
+\hline
+\end{tabular}
+\end{table}
+
+You might notice that the p-value here differs from the one we computed
+above. That is because the hypotheses are different; above, we tested
+whether the mean was less than 3500, but in the above output, recall
+that every test is whether the parameter is 0. If we were to use the
+regression output to test the same hypothesis, we would be led to the
+same conclusion. Further, notice that the confidence interval is the
+same as above. In both cases, we are estimating the same parameter. And,
+since our assumptions were the same in each of the two approaches
+(classical t-test and the model approach), we obtain the same solution.
+
+\BeginKnitrBlock{rmdkeyidea}
+Presented with the same problem, if two analyses result in different
+p-values or confidence intervals, it is because the underlying
+assumptions differ. If two analyses make the same assumptions, the
+results will be identical.
+\EndKnitrBlock{rmdkeyidea}
+
+A one-sample t-test is equivalent to a regression model with an
+intercept only. The standardized test statistic differs, but both are
+quantifying the same thing.
+
+\chapter{Comparing the Means of Two Independent Groups (Two-Sample
+t-Tests)}\label{TwoMeans}
+
+In the previous chapter, we saw that the one-sample t-test is equivalent
+to a regression model with an intercept only. In this chapter, we
+examine the common ``two-sample t-test.''
+
+\section{Framing the Question}\label{framing-the-question-2}
+
+Consider the following question:
+
+\begin{quote}
+Does the birthweight, on average, of an infant born in North Carolina
+different for women who use tobacco during pregnancy compared to those
+who do not?
+\end{quote}
+
+Let \(\mu_1\) and \(\mu_2\) represent the average birthweight of infants
+for whom their mother consumed tobacco during pregnancy and those for
+whom their mother did not, respectively. Then, the hypotheses which
+capture this question of interest are
+
+\begin{quote}
+\(H_0: \mu_1 = \mu_2\)\\
+\(H_1: \mu_1 \neq \mu_2\)
+\end{quote}
+
+Figure \ref{fig:twomeans-plot} compares the birthweights for infants
+whose mother consumed tobacco with those whose mother did not. The
+birthweight of infants tends to be lower (average of 3257 grams vs.~3472
+grams).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{./Images/twomeans-plot-1} 
+
+}
+
+\caption{Examining the effect of tobacco use in pregnancy with the resulting birthweight of the child.}\label{fig:twomeans-plot}
+\end{figure}
+
+\section{Classical Approach}\label{classical-approach-1}
+
+The classical method of addressing this question of interest is to
+conduct a ``two-sample t-test.'' This procedure defines a standardized
+test statistic as
+
+\[T = \frac{\left(\bar{x}_1 - \bar{x}_2\right)}{\sqrt{s_1^2/n_1 + s_2^2/n_2}}\]
+
+where \(\bar{x}_1\) and \(\bar{x}_2\) represent the sample mean for each
+group; \(s^2_1\) and \(s_2^2\) represent the sample variance for each
+group; and, \(n_1\) and \(n_2\) represent the number of observations
+within each group. For our sample, we have that
+
+\[T = \frac{3257 - 3472}{\sqrt{(2.70898\times 10^{5}/111) + (2.29012\times 10^{5}/898)}}\]
+
+A model for the null distribution of this standardized test statistic is
+derived under three conditions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The birthweight of an infant whose mother used tobacco is independent
+  of the birthweight of any infant whose mother did not use tobacco.
+\item
+  The birthweights of infants within a group are independent of one
+  another.
+\item
+  The birthweights of infants within a group follow a Normal
+  distribution.
+\end{enumerate}
+
+Under these conditions, we have an analytical model for the null
+distribution of the standarized test statistic. The probability model
+which corresponds to the null distribution is called the
+``t-distribution'', hence the name ``two-sample t-test.'' Similarly, we
+can obtain a sampling distribution to estimate the parameter of interest
+using an analytical model.
+
+Figure \ref{fig:twomeans-t-test} shows the model for the sampling
+distribution of the difference in the sample means and the computation
+of the corresponding confidence interval. From the data, there is
+evidence that the average birthweight of infants whose mothers used
+tobacco during pregnancy is lower than that of those whose mothers do
+not (95\% CI = (-317.69, -112.32), difference in grams for mothers who
+use tobacco and those who do not).
+
+\textbackslash{}begin\{figure\}
+
+\{\centering \includegraphics[width=0.8\linewidth]{./Images/twomeans-t-test-1}
+
+\}
+
+\textbackslash{}caption\{Sampling distribution of the difference in two
+sample means for a two-sample t-test. The shaded region represents the
+95\% confidence interval.\}\label{fig:twomeans-t-test}
+\textbackslash{}end\{figure\}
+
+\section{Connection to Modeling}\label{connection-to-modeling-1}
+
+The classical two-sample t-test is equivalent to a regression model
+which has a single categorical predictor with only two levels. That is,
+consider the following model for the data generating process:
+
+\[(\text{Birthweight})_i = \beta_0 + \beta_1\mathbb{I}(\text{i-th infant's mother used tobacco during pregnancy}) + \epsilon_i\]
+
+where the following conditions are placed on the error term:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The errors in the birthweight have a mean of 0 for both infants whose
+  mother used tobacco and those whose mother did not.
+\item
+  The error in the birthweight for one infant is independent of the
+  error in the birthweight for any other infant.
+\item
+  The variability of the error in the birthweights is the same for both
+  those born to mothers who used tobacco and those whose mother did not.
+\item
+  The errors in the birthweight follow a Normal Distribution.
+\end{enumerate}
+
+Notice that \(\beta_1\) in the above model is the average difference in
+the birthweight between those infants whose mother used tobacco and
+those infants whose mother did not. Therefore,
+\(\beta_1 = \mu_1 - \mu_2\). Therefore, our above hypotheses are
+equivalent to
+
+\begin{quote}
+\(H_0: \beta_1 = 0\)\\
+\(H_0: \beta_1 \neq 0\)
+\end{quote}
+
+This is a standard question in a regression analysis. Therefore, we can
+estimate the parameters using least squares. Table
+\ref{tab:twomeans-fit} summarizes this fit. Notice that
+\(\widehat{\beta}_0\) is equivalent to \(\bar{x}_2\) and
+\(\widehat{\beta}_1 = \bar{x}_1 - \bar{x}_2\). However, the 95\%
+confidence interval does not agree with what we computed above. The
+reason, we enforced different conditions during our analysis.
+
+\begin{table}
+
+\caption{\label{tab:twomeans-fit}Summary of an a model fit to explain the birthweight of babies depending on the mother's use of tobacco during pregnancy.}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|r}
+\hline
+Term & Estimate & Standard Error & 95\% LCL & 95\% UCL & P-Value\\
+\hline
+Intercept & 3471.91 & 16.13 & 3440.26 & 3503.56 & 0\\
+\hline
+Tobacco Use & -215.00 & 48.63 & -310.42 & -119.58 & 0\\
+\hline
+\end{tabular}
+\end{table}
+
+Remember, if two analyses differ in their results, it is because the two
+approaches make different assumptions. So, what differed in our
+approaches. Note that the regression approach assumed the variability in
+each group was similar. The two-sample t-test did not make this
+assumption\footnote{The version of the two-sample t-test presented here
+  did not assume the variability in each group was the same. There is a
+  version of the two-sample t-test (known as the pooled two-sample
+  t-test) which does make this assumption. In this case, the results
+  agree exactly with both regression and ANOVA. Often in casual
+  conversation, people do not say which conditions they are enforcing,
+  making the term ``two-sample t-test'' ambiguous.}. However, we can
+relax this assumption building an empirical model for the sampling
+distribution.
+
+While the exact results do not agree, the two approaches are
+conceptually similar. We also note that the p-value from the regression
+approach is the same as that given by the classical ANOVA model for this
+same problem. Again, since the conditions are equivalent between the
+classical regression model and the classical ANOVA model, we should not
+be surprised that the results are the same.
+
 \hypertarget{refs}{}
+\hypertarget{ref-Box1979}{}
+Box, George E P. 1979. ``Robustness in the Strategy of Scientific Model
+Building.'' In \emph{Robustness in Statistics}, edited by R L Launer and
+G N Wilkinson, 201--36. Academic Press.
+
+\hypertarget{ref-Chihara2011}{}
+Chihara, Laura, and Tim Hesterberg. 2011. \emph{Mathematical Statistics
+with Resampling and R}. Wiley.
+
 \hypertarget{ref-Dudeck1981}{}
 Dudeck, A E, and C H Peeacock. 1981. ``Effects of Several Overseeded
 Ryegrasses on Turf Quality, Traffic Tolerance and Ball Roll.'' In
@@ -5453,13 +8302,20 @@ Foods Reduce Prosocial Behavior and Harshen Moral Judgments.''
 
 \hypertarget{ref-Goldstein2011}{}
 Goldstein, Bernard D, Howard J Osofsky, and Maureen Y Lichtveld. 2011.
-\emph{The Gulf Oil Spill}. \emph{The New England Journal of Medicine}.
-Vol. 364.
+``The Gulf Oil Spill.'' \emph{The New England Journal of Medicine} 364:
+1334--48.
 doi:\href{https://doi.org/10.1056/NEJMra1007197}{10.1056/NEJMra1007197}.
 
 \hypertarget{ref-Johnson2003}{}
 Johnson, Eric J, and Daniel Goldstein. 2003. ``Do Defaults Save Lives?''
 \emph{Science} 302: 1338--9.
+
+\hypertarget{ref-Koutrakis2002}{}
+Koutrakis, S I, G P Karakaisis, P M Hatzidimitriou, P K Koliopoulos, and
+V N Margaris. 2002. ``Seismic Hazard in Greece Based on Different Strong
+Ground Motion Parameters.'' \emph{Journal of Earthquake Engineering} 6
+(1): 75--109.
+doi:\href{https://doi.org/10.1080/13632460209350411}{10.1080/13632460209350411}.
 
 \hypertarget{ref-Lee1992}{}
 Lee, J. 1992. ``Relationships Between Properties of Pulp-Fibre and
