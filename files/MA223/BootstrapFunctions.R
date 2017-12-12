@@ -110,7 +110,8 @@ boot_pairwise_ci <- function(orig.model, n.boot.reps, conf.level, group.var){
   # Ungrouped Pairwise Bootstrap
   if(is.null(rlang::f_rhs(rlang::enquo(group.var)))){
     # obtain the original dataset from model fit
-    .orig.df <- suppressWarnings(augment(orig.model))
+    .orig.df <- suppressWarnings(augment(orig.model)) %>%
+      select(-matches("\\.rownames"))
     
     # correct names in original dataset
     .orig.names <- names(orig.model$model)
@@ -129,7 +130,8 @@ boot_pairwise_ci <- function(orig.model, n.boot.reps, conf.level, group.var){
   }else{
     
     # obtain original dataset, enquo only works if group_by not piped
-    .orig.df <- suppressWarnings(augment(orig.model))
+    .orig.df <- suppressWarnings(augment(orig.model)) %>%
+      select(-matches("\\.rownames"))
     .orig.df <- group_by(.orig.df, !!rlang::enquo(group.var))
     
     # correct names in original dataset
@@ -167,11 +169,13 @@ boot_pairwise_p <- function(orig.model, null.model, n.boot.reps, group.var){
   # Ungrouped Pairwise Bootstrap
   if(is.null(rlang::f_rhs(rlang::enquo(group.var)))){
     # obtain the fitted values under the null
-    .null.df <- suppressWarnings(augment(null.model))
+    .null.df <- suppressWarnings(augment(null.model)) %>%
+      select(-matches("\\.rownames"))
     
     # obtain the original dataset but replace the fitted values with those
     #  under the null and create new "original responses"
     .orig.df <- suppressWarnings(augment(orig.model)) %>%
+      select(-matches("\\.rownames")) %>%
       mutate(.fitted = .null.df$.fitted,
              .newy = .fitted + .resid)
     
@@ -196,8 +200,10 @@ boot_pairwise_p <- function(orig.model, null.model, n.boot.reps, group.var){
   }else{
     
     # obtain original dataset, enquo only works if group_by not piped
-    .null.df <- suppressWarnings(augment(null.model))
+    .null.df <- suppressWarnings(augment(null.model)) %>%
+      select(-matches("\\.rownames"))
     .orig.df <- suppressWarnings(augment(orig.model)) %>%
+      select(-matches("\\.rownames")) %>%
       mutate(.fitted = .null.df$.fitted,
              .newy = .fitted + .resid)
     .orig.df <- group_by(.orig.df,
@@ -239,7 +245,8 @@ boot_pairwise_p <- function(orig.model, null.model, n.boot.reps, group.var){
 #              implemented for the case of non-constant variance.
 boot_residual_ci <- function(orig.model, n.boot.reps, conf.level, constant.var){
   # Obtain the original residuals
-  .orig.df <- suppressWarnings(augment(orig.model))
+  .orig.df <- suppressWarnings(augment(orig.model)) %>%
+    select(-matches("\\.rownames"))
   .n <- nrow(.orig.df)
   
   # correct names in original dataset
@@ -285,8 +292,10 @@ boot_residual_ci <- function(orig.model, n.boot.reps, conf.level, constant.var){
 #              implemented for the case of non-constant variance.
 boot_residual_p <- function(orig.model, null.model, n.boot.reps, constant.var){
   # Obtain the original residuals
-  .orig.df <- suppressWarnings(augment(orig.model))
-  .null.df <- suppressWarnings(augment(null.model))
+  .orig.df <- suppressWarnings(augment(orig.model)) %>%
+    select(-matches("\\.rownames"))
+  .null.df <- suppressWarnings(augment(null.model)) %>%
+    select(-matches("\\.rownames"))
   .n <- nrow(.orig.df)
   
   # correct names in original dataset
