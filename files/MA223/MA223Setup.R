@@ -31,7 +31,9 @@ augment <- function(x, ...){
 
 ## ---- Change Options ----
 # Suppress status bar in dplyr.
-options(dplyr.show_progress = FALSE)
+# Change handling of ordered factors
+options(dplyr.show_progress = FALSE,
+        contrasts = rep("contr.treatment", 2))
 
 # Change theme for plots
 theme_set(theme_bw(12))
