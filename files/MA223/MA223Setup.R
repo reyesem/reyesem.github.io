@@ -7,17 +7,14 @@
 # Date: Fall 2017
 
 ## ---- Load Packages ----
-pkgs <- c("car",
-          "tidyverse",
+pkgs <- c("tidyverse",
           "broom",
           "stringr",
-          "knitr")
+          "knitr",
+          "IntroAnalysis")
 
 for(pkg in pkgs) library(pkg, character.only = TRUE)
 
-
-## ---- Include Bootstrap Functions ----
-source("https://reyesem.github.io/files/MA223/BootstrapFunctions.R")
 
 
 ## ---- Redefine Functions ----
