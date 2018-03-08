@@ -156,38 +156,23 @@ $(document).ready(function () {
 <h2>Background</h2>
 
 <div class="question" custom-style="question">
-<p>In the United States, interstate travel is quite common, with Americans traveling more than 3.1 trillion miles on the interstate in 2015. The high volume on interstates makes it one of the more dangerous forms of travel with more than 35,000 deaths occuring in 2015 alone according to <a href="https://en.wikipedia.org/wiki/List_of_motor_vehicle_deaths_in_U.S._by_year">Wikipedia</a>.</p>
-<p>A study was conducted in 1973 to assess the relationship between accidents (per million vehicle miles) and design features of the interstates which are under the control of the highway department. Data on several variables was obtained for a total of 39 sections of large highways in the state of Minnesota. The first few records of the data (called <code>Highway1</code>), which is available in RStudio, are shown below.</p>
-<p>A description of a few key variables follows:</p>
+<p>A high body temperature (what we call a fever) is generally the sign of an illness. In order to diagnose someone has having a <em>high</em> body temperature, we must have some notion of a <em>normal</em> temperature. Nearly any elementary student will tell you that 98.6 degrees Fahrenheit is the normal body temperature for a healthy individual. However, it is not really that simple. Due to natural variability within the population, the body temperature for healthy individuals varies quite a bit. Instead, we might define <em>normal</em> body temperature as the average body temperature among healthy individuals.</p>
+<p>With this in mind, a group of physicians have cast doubt on whether 98.6 is really the average body temperature among healthy individuals and have designed a study in order to determine if this is an accurate statement. Specifically, a sample of 148 healthy men and women aged 18 through 40 years from clinics across the United States was obtained. Three characteristics were recorded for each individual:</p>
 <ul>
-<li><code>rate</code> - Accident rate per million vehicle miles.</li>
-<li><code>len</code> - Length of the highway segment in miles.</li>
-<li><code>adt</code> - The daily traffic count (thousands) for this stretch of highway.</li>
-<li><code>trks</code> - Truck volume as a percent of the total volume.</li>
-<li><code>slim</code> - Speed limit on the stretch of highway.</li>
+<li><code>Body Temp</code>: their body temperature in degrees Fahrenheit</li>
+<li><code>Gender</code>: an indicator of their self-reported gender</li>
+<li><code>Heart Rate</code>: their resting heart rate (in beats per minute)</li>
 </ul>
-There are several other variables present in the dataset which we will not consider here.
+The data can be obtained using the following code chunk (no upload is required). The data set is named <code>tempdata</code>.
 </div>
 
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(Highway1)</code></pre></div>
-<pre><code>  rate   len adt trks      sigs1 slim shld lane acpt  itg lwid htype
-1 4.58  4.99  69    8 0.20040080   55   10    8  4.6 1.20   12   FAI
-2 2.86 16.11  73    8 0.06207325   60   10    4  4.4 1.43   12   FAI
-3 3.02  9.75  49   10 0.10256410   60   10    4  4.7 1.54   12   FAI
-4 2.29 10.65  61   13 0.09389671   65   10    6  3.8 0.94   12   FAI
-5 1.61 20.01  28   12 0.04997501   70   10    4  2.2 0.65   12   FAI
-6 6.87  5.97  30    6 2.00750419   55   10    4 24.8 0.34   12    PA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tempdata =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://reyesem.github.io/files/MA223/Analysis-Normtemp.csv&quot;</span>)</code></pre></div>
+</div>
+<div id="parameter" class="section level2">
+<h2>Parameter</h2>
 
 <div class="question" custom-style="question">
-City officials have determined that if, on average, the daily traffic count for highway stretches in Minnesota is below 25000, then less funding will be allocated to the department of transportation for road upkeep. They would like to use the above data to determine if reducing the funding is appropriate.
-</div>
-
-</div>
-<div id="hypotheses" class="section level2">
-<h2>Hypotheses</h2>
-
-<div class="question" custom-style="question">
-State the null and alternative hypotheses that capture the question of interest.
+State the <em>parameter</em> of interest for this study.
 </div>
 
 </div>
@@ -195,7 +180,7 @@ State the null and alternative hypotheses that capture the question of interest.
 <h2>Graphical Summary</h2>
 
 <div class="question" custom-style="question">
-Provide a graphical summary of the data which could be used to help address the question of interest.
+Provide a graphical summary of the observed body temperatures.
 </div>
 
 </div>
@@ -203,7 +188,7 @@ Provide a graphical summary of the data which could be used to help address the 
 <h2>Analysis</h2>
 
 <div class="question" custom-style="question">
-Using a 95% confidence interval, estimate the average daily traffic count for highway stretches in Minnesota.
+Provide a 98% confidence interval as an estimate for the parameter of interest.
 </div>
 
 </div>
@@ -211,7 +196,7 @@ Using a 95% confidence interval, estimate the average daily traffic count for hi
 <h2>Conclusion</h2>
 
 <div class="question" custom-style="question">
-Based on your analysis, is there sufficient evidence to justify reducing funding to the department of transportation. Explain.
+Based on your analysis, is it reasonable to consider 98.6 to be a <em>normal</em> body temperature? Explain.
 </div>
 
 </div>
@@ -219,7 +204,7 @@ Based on your analysis, is there sufficient evidence to justify reducing funding
 <h2>Critique</h2>
 
 <div class="question" custom-style="question">
-A similar rule regarding funding has been issued in Terre Haute, Indiana in which funding is <em>increased</em> to the department of transportation if they can show that it is plausible that the average daily traffic count for city streets exceeds 15000. An administrator with the department of transportation in Terre has obtained the above data and reviews it. Based on the data, he writes that it is absolutely plausible that he has met the standard and requests increased funding. Do you agree with his conclusion? Explain.
+A pediatrician comes across your analysis above and makes the following statement: ``we should use the upper limit of the confidence interval as the threshold for defining a fever because 99% of healthy individuals have a temperature below this value.’’ Is this statement justified? Explain.
 </div>
 
 </div>
