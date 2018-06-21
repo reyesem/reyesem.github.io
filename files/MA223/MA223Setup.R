@@ -4,26 +4,16 @@
 # Description: Additional R functions for creating MA223 styles.
 #
 # Author: Eric Reyes
-# Date: Fall 2017
+# Date: Fall 2018
 
 ## ---- Load Packages ----
-pkgs <- c("tidyverse",
+pkgs <- c("IntroAnalysis",
+          "tidyverse",
           "broom",
           "stringr",
-          "knitr",
-          "IntroAnalysis")
+          "knitr")
 
 for(pkg in pkgs) library(pkg, character.only = TRUE)
-
-
-
-## ---- Redefine Functions ----
-# In 'broom' package, augment() throws warning messages every time it is issued
-# due to the use of outdated code. This updates that code to suppress these
-# errors.
-augment <- function(x, ...){
-  suppressWarnings(broom::augment(x, ...))
-}
 
 
 ## ---- Change Options ----
@@ -33,7 +23,7 @@ options(dplyr.show_progress = FALSE,
         contrasts = rep("contr.treatment", 2))
 
 # Change theme for plots
-theme_set(theme_bw(12))
+theme_set(theme_bw(14))
 theme_update(legend.position = "bottom")
 
 # Specify chunck options
@@ -47,16 +37,16 @@ knitr::opts_chunk$set(
 ## ---- Create Special Blocks ----
 eng_instructor <- function(options) {
   if (identical(options$echo, FALSE)) return()
-  
+
   code = paste(options$code, collapse = '\n'); type = options$type
   if (is.null(type)) return(code)
-  
+
   if(!is.null(type) && type=="solution"){
     code = paste("__SOLUTION__:", code)
   }
-  
+
   if (is.null(opts_knit$get("rmarkdown.pandoc.to"))) stop('The engine "block2" is for R Markdown only')
-  
+
   l1 = options$latex.options
   if (is.null(l1)) l1 = ''
   # protect environment options because Pandoc may escape the characters like
@@ -70,7 +60,7 @@ eng_instructor <- function(options) {
   h4 = ifelse(is.null(options$html.after), '', options$html.after)
   h5 = ifelse(is.null(options$html.before2), '', options$html.before2)
   h6 = ifelse(is.null(options$html.after2), '', options$html.after2)
-  
+
   sprintf(
     '\\BeginKnitrBlock{%s}%s%s<%s class="%s" custom-style="%s">%s%s%s</%s>%s\\EndKnitrBlock{%s}',
     type, l1, h3, h2, type, type, h5, code, h6, h2, h4, type
@@ -78,5 +68,5 @@ eng_instructor <- function(options) {
 }
 
 
-knit_engines$set(c(knit_engines$get(), 
+knit_engines$set(c(knit_engines$get(),
                    "instructor" = eng_instructor))
