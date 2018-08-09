@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Statistical Foundations for Engineers and Scientists</title>
   <meta name="description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Statistical Foundations for Engineers and Scientists" />
   <meta property="og:type" content="book" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="Reginteractions.html">
-<link rel="next" href="Regrecap.html">
+<link rel="prev" href="Regconditions.html">
+<link rel="next" href="Regassessment.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -107,114 +107,145 @@
 <li class="chapter" data-level="8.5" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-evidence-fundamental-idea-v"><i class="fa fa-check"></i><b>8.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
 <li class="chapter" data-level="8.6" data-path="RecapLanguage.html"><a href="RecapLanguage.html#summary"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
 </ul></li>
-<li class="part"><span><b>II Unit II: Comparing the Average Response Across Groups</b></span></li>
-<li class="chapter" data-level="9" data-path="CaseOrganic.html"><a href="CaseOrganic.html"><i class="fa fa-check"></i><b>9</b> Case Study: Organic Foods and Superior Morals</a></li>
-<li class="chapter" data-level="10" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html"><i class="fa fa-check"></i><b>10</b> Framing the Question</a><ul>
-<li class="chapter" data-level="10.1" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html#general-setting"><i class="fa fa-check"></i><b>10.1</b> General Setting</a></li>
+<li class="part"><span><b>II Unit II: Implementing the Logic of Inference for a Single Mean</b></span></li>
+<li class="chapter" data-level="9" data-path="CaseBabies.html"><a href="CaseBabies.html"><i class="fa fa-check"></i><b>9</b> Case Study: Birth Weights of Babies</a></li>
+<li class="chapter" data-level="10" data-path="MeanModels.html"><a href="MeanModels.html"><i class="fa fa-check"></i><b>10</b> Model for the Data Generating Process</a><ul>
+<li class="chapter" data-level="10.1" data-path="MeanModels.html"><a href="MeanModels.html#general-formulation"><i class="fa fa-check"></i><b>10.1</b> General Formulation</a></li>
+<li class="chapter" data-level="10.2" data-path="MeanModels.html"><a href="MeanModels.html#statistical-model-for-a-quantitative-response-with-no-predictors"><i class="fa fa-check"></i><b>10.2</b> Statistical Model for a Quantitative Response with No Predictors</a></li>
+<li class="chapter" data-level="10.3" data-path="MeanModels.html"><a href="MeanModels.html#conditions-on-the-error-distribution"><i class="fa fa-check"></i><b>10.3</b> Conditions on the Error Distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="ANOVAdata.html"><a href="ANOVAdata.html"><i class="fa fa-check"></i><b>11</b> Study Design</a><ul>
-<li class="chapter" data-level="11.1" data-path="ANOVAdata.html"><a href="ANOVAdata.html#aspects-of-a-well-designed-experiment"><i class="fa fa-check"></i><b>11.1</b> Aspects of a Well Designed Experiment</a></li>
-<li class="chapter" data-level="11.2" data-path="ANOVAdata.html"><a href="ANOVAdata.html#collecting-observational-data"><i class="fa fa-check"></i><b>11.2</b> Collecting Observational Data</a></li>
+<li class="chapter" data-level="11" data-path="SingleConfInt.html"><a href="SingleConfInt.html"><i class="fa fa-check"></i><b>11</b> Estimating with Confidence</a></li>
+<li class="chapter" data-level="12" data-path="SingleTeststat.html"><a href="SingleTeststat.html"><i class="fa fa-check"></i><b>12</b> Estimating with Confidence</a><ul>
+<li class="chapter" data-level="12.1" data-path="SingleTeststat.html"><a href="SingleTeststat.html#standardized-statistics"><i class="fa fa-check"></i><b>12.1</b> Standardized Statistics</a></li>
+<li class="chapter" data-level="12.2" data-path="SingleTeststat.html"><a href="SingleTeststat.html#computing-the-p-value"><i class="fa fa-check"></i><b>12.2</b> Computing the P-value</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="ANOVAsummaries.html"><a href="ANOVAsummaries.html"><i class="fa fa-check"></i><b>12</b> Presenting the Data</a></li>
-<li class="chapter" data-level="13" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html"><i class="fa fa-check"></i><b>13</b> Quantifying the Evidence</a><ul>
-<li class="chapter" data-level="13.1" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
-<li class="chapter" data-level="13.2" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#forming-a-standardized-test-statistic"><i class="fa fa-check"></i><b>13.2</b> Forming a Standardized Test Statistic</a></li>
-<li class="chapter" data-level="13.3" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#obtaining-a-p-value"><i class="fa fa-check"></i><b>13.3</b> Obtaining a P-value</a></li>
+<li class="part"><span><b>III Unit III: Modeling the Average Response as a Function of a Continuous Predictor</b></span></li>
+<li class="chapter" data-level="13" data-path="CaseGreece.html"><a href="CaseGreece.html"><i class="fa fa-check"></i><b>13</b> Case Study: Seismic Activity in Greece</a></li>
+<li class="chapter" data-level="14" data-path="Regquestions.html"><a href="Regquestions.html"><i class="fa fa-check"></i><b>14</b> Myriad of Potential Questions</a></li>
+<li class="chapter" data-level="15" data-path="Regdata.html"><a href="Regdata.html"><i class="fa fa-check"></i><b>15</b> Nature of Collecting Multivariable Data</a></li>
+<li class="chapter" data-level="16" data-path="Regsummaries.html"><a href="Regsummaries.html"><i class="fa fa-check"></i><b>16</b> Summarizing Multivariable Data</a><ul>
+<li class="chapter" data-level="16.1" data-path="Regsummaries.html"><a href="Regsummaries.html#characterizing-the-marginal-relationship-of-two-quantitative-variables"><i class="fa fa-check"></i><b>16.1</b> Characterizing the Marginal Relationship of Two Quantitative Variables</a></li>
+<li class="chapter" data-level="16.2" data-path="Regsummaries.html"><a href="Regsummaries.html#visualizing-the-impact-of-a-third-variable-on-the-marginal-relationship"><i class="fa fa-check"></i><b>16.2</b> Visualizing the Impact of a Third Variable on the Marginal Relationship</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html"><i class="fa fa-check"></i><b>14</b> Building the Statistical Model</a><ul>
-<li class="chapter" data-level="14.1" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#general-formulation"><i class="fa fa-check"></i><b>14.1</b> General Formulation</a></li>
-<li class="chapter" data-level="14.2" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#statistical-model-for-a-quantitative-response-and-a-categorical-predictor"><i class="fa fa-check"></i><b>14.2</b> Statistical Model for A Quantitative Response and a Categorical Predictor</a></li>
-<li class="chapter" data-level="14.3" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#conditions-on-the-error-distribution"><i class="fa fa-check"></i><b>14.3</b> Conditions on the Error Distribution</a></li>
-<li class="chapter" data-level="14.4" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#simulating-the-null-distribution"><i class="fa fa-check"></i><b>14.4</b> Simulating the Null Distribution</a></li>
-<li class="chapter" data-level="14.5" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#recap"><i class="fa fa-check"></i><b>14.5</b> Recap</a></li>
+<li class="chapter" data-level="17" data-path="Regmodel.html"><a href="Regmodel.html"><i class="fa fa-check"></i><b>17</b> Building our Statistical Model</a><ul>
+<li class="chapter" data-level="17.1" data-path="Regmodel.html"><a href="Regmodel.html#statistical-model-for-a-quantitative-response-and-quantitative-predictor"><i class="fa fa-check"></i><b>17.1</b> Statistical Model for A Quantitative Response and Quantitative Predictor</a></li>
+<li class="chapter" data-level="17.2" data-path="Regmodel.html"><a href="Regmodel.html#using-a-categorical-predictor"><i class="fa fa-check"></i><b>17.2</b> Using a Categorical Predictor</a></li>
+<li class="chapter" data-level="17.3" data-path="Regmodel.html"><a href="Regmodel.html#estimating-the-parameters"><i class="fa fa-check"></i><b>17.3</b> Estimating the Parameters</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html"><i class="fa fa-check"></i><b>15</b> Classical ANOVA Model</a><ul>
-<li class="chapter" data-level="15.1" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#modeling-the-population"><i class="fa fa-check"></i><b>15.1</b> Modeling the Population</a></li>
-<li class="chapter" data-level="15.2" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#adding-the-assumption-of-normality"><i class="fa fa-check"></i><b>15.2</b> Adding the Assumption of Normality</a></li>
-<li class="chapter" data-level="15.3" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#impact-of-normality-assumption"><i class="fa fa-check"></i><b>15.3</b> Impact of Normality Assumption</a></li>
-<li class="chapter" data-level="15.4" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#analysis-of-organic-food-case-study"><i class="fa fa-check"></i><b>15.4</b> Analysis of Organic Food Case Study</a></li>
-<li class="chapter" data-level="15.5" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#recap-1"><i class="fa fa-check"></i><b>15.5</b> Recap</a></li>
+<li class="chapter" data-level="18" data-path="Regconditions.html"><a href="Regconditions.html"><i class="fa fa-check"></i><b>18</b> Conditions on the Error Term of a Regression Model</a><ul>
+<li class="chapter" data-level="18.1" data-path="Regconditions.html"><a href="Regconditions.html#correctly-specified-model"><i class="fa fa-check"></i><b>18.1</b> Correctly Specified Model</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="Regconditions.html"><a href="Regconditions.html#interpreting-the-parameters"><i class="fa fa-check"></i><b>18.1.1</b> Interpreting the Parameters</a></li>
+<li class="chapter" data-level="18.1.2" data-path="Regconditions.html"><a href="Regconditions.html#embedding-our-question-in-a-statistical-framework"><i class="fa fa-check"></i><b>18.1.2</b> Embedding our Question in a Statistical Framework</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html"><i class="fa fa-check"></i><b>16</b> Assessing Modeling Assumptions</a><ul>
-<li class="chapter" data-level="16.1" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-independence"><i class="fa fa-check"></i><b>16.1</b> Assessing Independence</a></li>
-<li class="chapter" data-level="16.2" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-homoskedasticity"><i class="fa fa-check"></i><b>16.2</b> Assessing Homoskedasticity</a></li>
-<li class="chapter" data-level="16.3" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-normality"><i class="fa fa-check"></i><b>16.3</b> Assessing Normality</a></li>
-<li class="chapter" data-level="16.4" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#general-tips-for-assessing-assumptions"><i class="fa fa-check"></i><b>16.4</b> General Tips for Assessing Assumptions</a></li>
+<li class="chapter" data-level="18.2" data-path="Regconditions.html"><a href="Regconditions.html#additional-conditions"><i class="fa fa-check"></i><b>18.2</b> Additional Conditions</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="Regconditions.html"><a href="Regconditions.html#modeling-the-population"><i class="fa fa-check"></i><b>18.2.1</b> Modeling the Population</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="ANOVArecap.html"><a href="ANOVArecap.html"><i class="fa fa-check"></i><b>17</b> Using the Tools Together</a><ul>
-<li class="chapter" data-level="17.1" data-path="ANOVArecap.html"><a href="ANOVArecap.html#framing-the-question-fundamental-idea-i-1"><i class="fa fa-check"></i><b>17.1</b> Framing the Question (Fundamental Idea I)</a></li>
-<li class="chapter" data-level="17.2" data-path="ANOVArecap.html"><a href="ANOVArecap.html#getting-good-data-fundamental-idea-ii-1"><i class="fa fa-check"></i><b>17.2</b> Getting Good Data (Fundamental Idea II)</a></li>
-<li class="chapter" data-level="17.3" data-path="ANOVArecap.html"><a href="ANOVArecap.html#presenting-the-data-fundamental-idea-iii-1"><i class="fa fa-check"></i><b>17.3</b> Presenting the Data (Fundamental Idea III)</a></li>
-<li class="chapter" data-level="17.4" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv-1"><i class="fa fa-check"></i><b>17.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
-<li class="chapter" data-level="17.5" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-evidence-fundamental-idea-v-1"><i class="fa fa-check"></i><b>17.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
-<li class="chapter" data-level="17.6" data-path="ANOVArecap.html"><a href="ANOVArecap.html#conclusion"><i class="fa fa-check"></i><b>17.6</b> Conclusion</a></li>
+<li class="chapter" data-level="18.3" data-path="Regconditions.html"><a href="Regconditions.html#adding-the-assumption-of-normality"><i class="fa fa-check"></i><b>18.3</b> Adding the Assumption of Normality</a></li>
+<li class="chapter" data-level="18.4" data-path="Regconditions.html"><a href="Regconditions.html#classical-regression-model"><i class="fa fa-check"></i><b>18.4</b> Classical Regression Model</a></li>
+<li class="chapter" data-level="18.5" data-path="Regconditions.html"><a href="Regconditions.html#imposing-the-conditions"><i class="fa fa-check"></i><b>18.5</b> Imposing the Conditions</a></li>
+<li class="chapter" data-level="18.6" data-path="Regconditions.html"><a href="Regconditions.html#recap"><i class="fa fa-check"></i><b>18.6</b> Recap</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="ANOVAblocking.html"><a href="ANOVAblocking.html"><i class="fa fa-check"></i><b>18</b> Analyzing a Design that Incorporates Blocking</a><ul>
-<li class="chapter" data-level="18.1" data-path="ANOVAblocking.html"><a href="ANOVAblocking.html#what-is-the-big-deal"><i class="fa fa-check"></i><b>18.1</b> What is the Big Deal?</a></li>
-<li class="chapter" data-level="18.2" data-path="ANOVAblocking.html"><a href="ANOVAblocking.html#solution-partition-the-variability"><i class="fa fa-check"></i><b>18.2</b> Solution: Partition the Variability</a></li>
-<li class="chapter" data-level="18.3" data-path="ANOVAblocking.html"><a href="ANOVAblocking.html#interpreting-the-analysis"><i class="fa fa-check"></i><b>18.3</b> Interpreting the Analysis</a></li>
+<li class="chapter" data-level="19" data-path="Regquality.html"><a href="Regquality.html"><i class="fa fa-check"></i><b>19</b> Quantifying the Quality of a Model Fit</a><ul>
+<li class="chapter" data-level="19.1" data-path="Regquality.html"><a href="Regquality.html#partitioning-variability"><i class="fa fa-check"></i><b>19.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="19.2" data-path="Regquality.html"><a href="Regquality.html#hypothesis-testing"><i class="fa fa-check"></i><b>19.2</b> Hypothesis Testing</a></li>
+<li class="chapter" data-level="19.3" data-path="Regquality.html"><a href="Regquality.html#r-squared"><i class="fa fa-check"></i><b>19.3</b> R-squared</a></li>
 </ul></li>
-<li class="part"><span><b>III Unit III: Modeling the Average Response as a Function of Several Predictors</b></span></li>
-<li class="chapter" data-level="19" data-path="CaseGreece.html"><a href="CaseGreece.html"><i class="fa fa-check"></i><b>19</b> Case Study: Seismic Activity in Greece</a></li>
-<li class="chapter" data-level="20" data-path="Regquestions.html"><a href="Regquestions.html"><i class="fa fa-check"></i><b>20</b> Myriad of Potential Questions</a></li>
-<li class="chapter" data-level="21" data-path="Regdata.html"><a href="Regdata.html"><i class="fa fa-check"></i><b>21</b> Nature of Collecting Multivariable Data</a></li>
-<li class="chapter" data-level="22" data-path="Regsummaries.html"><a href="Regsummaries.html"><i class="fa fa-check"></i><b>22</b> Summarizing Multivariable Data</a><ul>
-<li class="chapter" data-level="22.1" data-path="Regsummaries.html"><a href="Regsummaries.html#characterizing-the-marginal-relationship-of-two-quantitative-variables"><i class="fa fa-check"></i><b>22.1</b> Characterizing the Marginal Relationship of Two Quantitative Variables</a></li>
-<li class="chapter" data-level="22.2" data-path="Regsummaries.html"><a href="Regsummaries.html#visualizing-the-impact-of-a-third-variable-on-the-marginal-relationship"><i class="fa fa-check"></i><b>22.2</b> Visualizing the Impact of a Third Variable on the Marginal Relationship</a></li>
+<li class="chapter" data-level="20" data-path="Regassessment.html"><a href="Regassessment.html"><i class="fa fa-check"></i><b>20</b> Assessing Modeling Conditions</a><ul>
+<li class="chapter" data-level="20.1" data-path="Regassessment.html"><a href="Regassessment.html#residuals"><i class="fa fa-check"></i><b>20.1</b> Residuals</a></li>
+<li class="chapter" data-level="20.2" data-path="Regassessment.html"><a href="Regassessment.html#assessing-mean-0"><i class="fa fa-check"></i><b>20.2</b> Assessing Mean 0</a></li>
+<li class="chapter" data-level="20.3" data-path="Regassessment.html"><a href="Regassessment.html#assessing-independence"><i class="fa fa-check"></i><b>20.3</b> Assessing Independence</a></li>
+<li class="chapter" data-level="20.4" data-path="Regassessment.html"><a href="Regassessment.html#assessing-homoskedasticity"><i class="fa fa-check"></i><b>20.4</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="20.5" data-path="Regassessment.html"><a href="Regassessment.html#assessing-normality"><i class="fa fa-check"></i><b>20.5</b> Assessing Normality</a></li>
+<li class="chapter" data-level="20.6" data-path="Regassessment.html"><a href="Regassessment.html#general-tips-for-assessing-assumptions"><i class="fa fa-check"></i><b>20.6</b> General Tips for Assessing Assumptions</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="Regmodel.html"><a href="Regmodel.html"><i class="fa fa-check"></i><b>23</b> Extending Our Statistical Model</a><ul>
-<li class="chapter" data-level="23.1" data-path="Regmodel.html"><a href="Regmodel.html#statistical-model-for-a-quantitative-response-and-quantitative-predictors"><i class="fa fa-check"></i><b>23.1</b> Statistical Model for A Quantitative Response and Quantitative Predictor(s)</a><ul>
-<li class="chapter" data-level="23.1.1" data-path="Regmodel.html"><a href="Regmodel.html#including-multiple-precitors"><i class="fa fa-check"></i><b>23.1.1</b> Including Multiple Precitors</a></li>
-<li class="chapter" data-level="23.1.2" data-path="Regmodel.html"><a href="Regmodel.html#including-categorical-predictors"><i class="fa fa-check"></i><b>23.1.2</b> Including Categorical Predictors</a></li>
-<li class="chapter" data-level="23.1.3" data-path="Regmodel.html"><a href="Regmodel.html#general-model-formulation"><i class="fa fa-check"></i><b>23.1.3</b> General Model Formulation</a></li>
+<li class="chapter" data-level="21" data-path="Regextensions.html"><a href="Regextensions.html"><i class="fa fa-check"></i><b>21</b> Extending the Regression Model</a><ul>
+<li class="chapter" data-level="21.1" data-path="Regextensions.html"><a href="Regextensions.html#including-multiple-precitors"><i class="fa fa-check"></i><b>21.1</b> Including Multiple Precitors</a><ul>
+<li class="chapter" data-level="21.1.1" data-path="Regextensions.html"><a href="Regextensions.html#general-model-formulation"><i class="fa fa-check"></i><b>21.1.1</b> General Model Formulation</a></li>
+<li class="chapter" data-level="21.1.2" data-path="Regextensions.html"><a href="Regextensions.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>21.1.2</b> Interpretation of Parameters</a></li>
 </ul></li>
-<li class="chapter" data-level="23.2" data-path="Regmodel.html"><a href="Regmodel.html#estimating-the-parameters"><i class="fa fa-check"></i><b>23.2</b> Estimating the Parameters</a></li>
-<li class="chapter" data-level="23.3" data-path="Regmodel.html"><a href="Regmodel.html#embedding-our-questions-into-a-statistical-framework"><i class="fa fa-check"></i><b>23.3</b> Embedding Our Questions into a Statistical Framework</a></li>
-<li class="chapter" data-level="23.4" data-path="Regmodel.html"><a href="Regmodel.html#recap-2"><i class="fa fa-check"></i><b>23.4</b> Recap</a></li>
+<li class="chapter" data-level="21.2" data-path="Regextensions.html"><a href="Regextensions.html#modifying-an-effect"><i class="fa fa-check"></i><b>21.2</b> Modifying an Effect</a><ul>
+<li class="chapter" data-level="21.2.1" data-path="Regextensions.html"><a href="Regextensions.html#inference-for-effect-modifications"><i class="fa fa-check"></i><b>21.2.1</b> Inference for Effect Modifications</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="Regconditions.html"><a href="Regconditions.html"><i class="fa fa-check"></i><b>24</b> Conditions on the Error Term of a Regression Model</a><ul>
-<li class="chapter" data-level="24.1" data-path="Regconditions.html"><a href="Regconditions.html#classical-regression-model"><i class="fa fa-check"></i><b>24.1</b> Classical Regression Model</a></li>
-<li class="chapter" data-level="24.2" data-path="Regconditions.html"><a href="Regconditions.html#interpretation-of-the-parameters"><i class="fa fa-check"></i><b>24.2</b> Interpretation of the Parameters</a></li>
-<li class="chapter" data-level="24.3" data-path="Regconditions.html"><a href="Regconditions.html#addressing-confounding-through-our-interpretation"><i class="fa fa-check"></i><b>24.3</b> Addressing Confounding through our Interpretation</a></li>
-<li class="chapter" data-level="24.4" data-path="Regconditions.html"><a href="Regconditions.html#empirical-model-for-the-sampling-distribution"><i class="fa fa-check"></i><b>24.4</b> Empirical Model for the Sampling Distribution</a></li>
-<li class="chapter" data-level="24.5" data-path="Regconditions.html"><a href="Regconditions.html#recap-3"><i class="fa fa-check"></i><b>24.5</b> Recap</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="Regassessment.html"><a href="Regassessment.html"><i class="fa fa-check"></i><b>25</b> Assessing Modeling Assumptions</a><ul>
-<li class="chapter" data-level="25.1" data-path="Regassessment.html"><a href="Regassessment.html#computing-residuals"><i class="fa fa-check"></i><b>25.1</b> Computing Residuals</a></li>
-<li class="chapter" data-level="25.2" data-path="Regassessment.html"><a href="Regassessment.html#assessing-mean-0"><i class="fa fa-check"></i><b>25.2</b> Assessing Mean 0</a></li>
-<li class="chapter" data-level="25.3" data-path="Regassessment.html"><a href="Regassessment.html#assessing-independence-1"><i class="fa fa-check"></i><b>25.3</b> Assessing Independence</a></li>
-<li class="chapter" data-level="25.4" data-path="Regassessment.html"><a href="Regassessment.html#assessing-homoskedasticity-1"><i class="fa fa-check"></i><b>25.4</b> Assessing Homoskedasticity</a></li>
-<li class="chapter" data-level="25.5" data-path="Regassessment.html"><a href="Regassessment.html#assessing-normality-1"><i class="fa fa-check"></i><b>25.5</b> Assessing Normality</a></li>
-<li class="chapter" data-level="25.6" data-path="Regassessment.html"><a href="Regassessment.html#general-tips-for-assessing-assumptions-1"><i class="fa fa-check"></i><b>25.6</b> General Tips for Assessing Assumptions</a></li>
+<li class="chapter" data-level="22" data-path="Regrecap.html"><a href="Regrecap.html"><i class="fa fa-check"></i><b>22</b> Puting it All Together</a><ul>
+<li class="chapter" data-level="22.1" data-path="Regrecap.html"><a href="Regrecap.html#graphical-summary"><i class="fa fa-check"></i><b>22.1</b> Graphical Summary</a></li>
+<li class="chapter" data-level="22.2" data-path="Regrecap.html"><a href="Regrecap.html#development-of-statistical-model"><i class="fa fa-check"></i><b>22.2</b> Development of Statistical Model</a></li>
+<li class="chapter" data-level="22.3" data-path="Regrecap.html"><a href="Regrecap.html#assessment-of-conditions"><i class="fa fa-check"></i><b>22.3</b> Assessment of Conditions</a></li>
+<li class="chapter" data-level="22.4" data-path="Regrecap.html"><a href="Regrecap.html#summary-of-model-fit"><i class="fa fa-check"></i><b>22.4</b> Summary of Model Fit</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="Reginteractions.html"><a href="Reginteractions.html"><i class="fa fa-check"></i><b>26</b> Modifying an Effect</a><ul>
-<li class="chapter" data-level="26.1" data-path="Reginteractions.html"><a href="Reginteractions.html#building-an-effect-modifier-into-the-model"><i class="fa fa-check"></i><b>26.1</b> Building an Effect-Modifier into the Model</a></li>
-<li class="chapter" data-level="26.2" data-path="Reginteractions.html"><a href="Reginteractions.html#inference-for-effect-modifications"><i class="fa fa-check"></i><b>26.2</b> Inference for Effect Modifications</a></li>
+<li class="part"><span><b>IV Unit IV: Comparing the Average Response Across Groups</b></span></li>
+<li class="chapter" data-level="23" data-path="CaseOrganic.html"><a href="CaseOrganic.html"><i class="fa fa-check"></i><b>23</b> Case Study: Organic Foods and Superior Morals</a></li>
+<li class="chapter" data-level="24" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html"><i class="fa fa-check"></i><b>24</b> Framing the Question</a><ul>
+<li class="chapter" data-level="24.1" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html#general-setting"><i class="fa fa-check"></i><b>24.1</b> General Setting</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="Regquality.html"><a href="Regquality.html"><i class="fa fa-check"></i><b>27</b> Quantifying the Quality of a Model Fit</a><ul>
-<li class="chapter" data-level="27.1" data-path="Regquality.html"><a href="Regquality.html#partitioning-variability-1"><i class="fa fa-check"></i><b>27.1</b> Partitioning Variability</a></li>
-<li class="chapter" data-level="27.2" data-path="Regquality.html"><a href="Regquality.html#r-squared"><i class="fa fa-check"></i><b>27.2</b> R-squared</a></li>
-<li class="chapter" data-level="27.3" data-path="Regquality.html"><a href="Regquality.html#overfitting"><i class="fa fa-check"></i><b>27.3</b> Overfitting</a></li>
-<li class="chapter" data-level="27.4" data-path="Regquality.html"><a href="Regquality.html#goal-of-modeling"><i class="fa fa-check"></i><b>27.4</b> Goal of Modeling</a></li>
+<li class="chapter" data-level="25" data-path="ANOVAdata.html"><a href="ANOVAdata.html"><i class="fa fa-check"></i><b>25</b> Study Design</a><ul>
+<li class="chapter" data-level="25.1" data-path="ANOVAdata.html"><a href="ANOVAdata.html#aspects-of-a-well-designed-experiment"><i class="fa fa-check"></i><b>25.1</b> Aspects of a Well Designed Experiment</a></li>
+<li class="chapter" data-level="25.2" data-path="ANOVAdata.html"><a href="ANOVAdata.html#collecting-observational-data"><i class="fa fa-check"></i><b>25.2</b> Collecting Observational Data</a></li>
 </ul></li>
-<li class="chapter" data-level="28" data-path="Regrecap.html"><a href="Regrecap.html"><i class="fa fa-check"></i><b>28</b> Puting it All Together</a><ul>
-<li class="chapter" data-level="28.1" data-path="Regrecap.html"><a href="Regrecap.html#graphical-summary"><i class="fa fa-check"></i><b>28.1</b> Graphical Summary</a></li>
-<li class="chapter" data-level="28.2" data-path="Regrecap.html"><a href="Regrecap.html#development-of-statistical-model"><i class="fa fa-check"></i><b>28.2</b> Development of Statistical Model</a></li>
-<li class="chapter" data-level="28.3" data-path="Regrecap.html"><a href="Regrecap.html#assessment-of-conditions"><i class="fa fa-check"></i><b>28.3</b> Assessment of Conditions</a></li>
-<li class="chapter" data-level="28.4" data-path="Regrecap.html"><a href="Regrecap.html#summary-of-model-fit"><i class="fa fa-check"></i><b>28.4</b> Summary of Model Fit</a></li>
+<li class="chapter" data-level="26" data-path="ANOVAsummaries.html"><a href="ANOVAsummaries.html"><i class="fa fa-check"></i><b>26</b> Presenting the Data</a></li>
+<li class="chapter" data-level="27" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html"><i class="fa fa-check"></i><b>27</b> Building the Statistical Model</a><ul>
+<li class="chapter" data-level="27.1" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#statistical-model-for-a-quantitative-response-and-a-categorical-predictor"><i class="fa fa-check"></i><b>27.1</b> Statistical Model for A Quantitative Response and a Categorical Predictor</a></li>
+<li class="chapter" data-level="27.2" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#conditions-on-the-error-distribution-1"><i class="fa fa-check"></i><b>27.2</b> Conditions on the Error Distribution</a></li>
+<li class="chapter" data-level="27.3" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#classical-anova-model"><i class="fa fa-check"></i><b>27.3</b> Classical ANOVA Model</a></li>
+<li class="chapter" data-level="27.4" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#imposing-the-conditions-1"><i class="fa fa-check"></i><b>27.4</b> Imposing the Conditions</a></li>
+<li class="chapter" data-level="27.5" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#recap-1"><i class="fa fa-check"></i><b>27.5</b> Recap</a></li>
 </ul></li>
-<li class="part"><span><b>IV Unit IV: Special Cases</b></span></li>
-<li class="chapter" data-level="29" data-path="CaseBabies.html"><a href="CaseBabies.html"><i class="fa fa-check"></i><b>29</b> Case Study: Birth Weights of Babies</a></li>
-<li class="chapter" data-level="30" data-path="OneMean.html"><a href="OneMean.html"><i class="fa fa-check"></i><b>30</b> Inference on the Mean of a Single Population (One-Sample t-Tests)</a><ul>
-<li class="chapter" data-level="30.1" data-path="OneMean.html"><a href="OneMean.html#framing-the-question-1"><i class="fa fa-check"></i><b>30.1</b> Framing the Question</a></li>
-<li class="chapter" data-level="30.2" data-path="OneMean.html"><a href="OneMean.html#classical-approach"><i class="fa fa-check"></i><b>30.2</b> Classical Approach</a></li>
-<li class="chapter" data-level="30.3" data-path="OneMean.html"><a href="OneMean.html#connection-to-modeling"><i class="fa fa-check"></i><b>30.3</b> Connection to Modeling</a></li>
+<li class="chapter" data-level="28" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html"><i class="fa fa-check"></i><b>28</b> Quantifying the Evidence</a><ul>
+<li class="chapter" data-level="28.1" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#partitioning-variability-1"><i class="fa fa-check"></i><b>28.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="28.2" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#forming-a-standardized-test-statistic"><i class="fa fa-check"></i><b>28.2</b> Forming a Standardized Test Statistic</a></li>
+<li class="chapter" data-level="28.3" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#link-to-regression-analysis"><i class="fa fa-check"></i><b>28.3</b> Link to Regression Analysis</a></li>
+<li class="chapter" data-level="28.4" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#obtaining-a-p-value"><i class="fa fa-check"></i><b>28.4</b> Obtaining a P-value</a></li>
+<li class="chapter" data-level="28.5" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#anova-table"><i class="fa fa-check"></i><b>28.5</b> ANOVA Table</a></li>
+<li class="chapter" data-level="28.6" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#simulating-the-null-distribution"><i class="fa fa-check"></i><b>28.6</b> Simulating the Null Distribution</a></li>
+<li class="chapter" data-level="28.7" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#recap-2"><i class="fa fa-check"></i><b>28.7</b> Recap</a></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="TwoMeans.html"><a href="TwoMeans.html"><i class="fa fa-check"></i><b>31</b> Comparing the Means of Two Independent Groups (Two-Sample t-Tests)</a><ul>
-<li class="chapter" data-level="31.1" data-path="TwoMeans.html"><a href="TwoMeans.html#framing-the-question-2"><i class="fa fa-check"></i><b>31.1</b> Framing the Question</a></li>
-<li class="chapter" data-level="31.2" data-path="TwoMeans.html"><a href="TwoMeans.html#classical-approach-1"><i class="fa fa-check"></i><b>31.2</b> Classical Approach</a></li>
-<li class="chapter" data-level="31.3" data-path="TwoMeans.html"><a href="TwoMeans.html#connection-to-modeling-1"><i class="fa fa-check"></i><b>31.3</b> Connection to Modeling</a></li>
+<li class="chapter" data-level="29" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html"><i class="fa fa-check"></i><b>29</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="29.1" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-independence-1"><i class="fa fa-check"></i><b>29.1</b> Assessing Independence</a></li>
+<li class="chapter" data-level="29.2" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-homoskedasticity-1"><i class="fa fa-check"></i><b>29.2</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="29.3" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-normality-1"><i class="fa fa-check"></i><b>29.3</b> Assessing Normality</a></li>
+<li class="chapter" data-level="29.4" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#general-tips-for-assessing-assumptions-1"><i class="fa fa-check"></i><b>29.4</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="ANOVArecap.html"><a href="ANOVArecap.html"><i class="fa fa-check"></i><b>30</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="30.1" data-path="ANOVArecap.html"><a href="ANOVArecap.html#framing-the-question-fundamental-idea-i-1"><i class="fa fa-check"></i><b>30.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="30.2" data-path="ANOVArecap.html"><a href="ANOVArecap.html#getting-good-data-fundamental-idea-ii-1"><i class="fa fa-check"></i><b>30.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="30.3" data-path="ANOVArecap.html"><a href="ANOVArecap.html#presenting-the-data-fundamental-idea-iii-1"><i class="fa fa-check"></i><b>30.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="30.4" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv-1"><i class="fa fa-check"></i><b>30.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="30.5" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-evidence-fundamental-idea-v-1"><i class="fa fa-check"></i><b>30.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="30.6" data-path="ANOVArecap.html"><a href="ANOVArecap.html#conclusion"><i class="fa fa-check"></i><b>30.6</b> Conclusion</a></li>
+</ul></li>
+<li class="part"><span><b>V Unit V: Comparing the Average Response Across Correlated Groups</b></span></li>
+<li class="chapter" data-level="31" data-path="CaseYogurt.html"><a href="CaseYogurt.html"><i class="fa fa-check"></i><b>31</b> Case Study: Paying a Premium for the Experience</a></li>
+<li class="chapter" data-level="32" data-path="Blockquestions.html"><a href="Blockquestions.html"><i class="fa fa-check"></i><b>32</b> Framing the Question</a><ul>
+<li class="chapter" data-level="32.1" data-path="Blockquestions.html"><a href="Blockquestions.html#general-setting-1"><i class="fa fa-check"></i><b>32.1</b> General Setting</a></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="Blockdata.html"><a href="Blockdata.html"><i class="fa fa-check"></i><b>33</b> Correlated Data</a></li>
+<li class="chapter" data-level="34" data-path="Blocksummaries.html"><a href="Blocksummaries.html"><i class="fa fa-check"></i><b>34</b> Presenting Correlated Data</a></li>
+<li class="chapter" data-level="35" data-path="Blockmodel.html"><a href="Blockmodel.html"><i class="fa fa-check"></i><b>35</b> Analyzing Correlated Responses</a><ul>
+<li class="chapter" data-level="35.1" data-path="Blockmodel.html"><a href="Blockmodel.html#statistical-model-for-correlated-responses"><i class="fa fa-check"></i><b>35.1</b> Statistical Model for Correlated Responses</a></li>
+<li class="chapter" data-level="35.2" data-path="Blockmodel.html"><a href="Blockmodel.html#conditions-on-the-error-distribution-2"><i class="fa fa-check"></i><b>35.2</b> Conditions on the Error Distribution</a></li>
+<li class="chapter" data-level="35.3" data-path="Blockmodel.html"><a href="Blockmodel.html#conditions-on-the-random-effects"><i class="fa fa-check"></i><b>35.3</b> Conditions on the Random Effects</a></li>
+<li class="chapter" data-level="35.4" data-path="Blockmodel.html"><a href="Blockmodel.html#classical-repeated-measures-anova-model"><i class="fa fa-check"></i><b>35.4</b> Classical Repeated Measures ANOVA Model</a></li>
+<li class="chapter" data-level="35.5" data-path="Blockmodel.html"><a href="Blockmodel.html#recap-3"><i class="fa fa-check"></i><b>35.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="36" data-path="Blockteststat.html"><a href="Blockteststat.html"><i class="fa fa-check"></i><b>36</b> Quantifying the Evidence</a><ul>
+<li class="chapter" data-level="36.1" data-path="Blockteststat.html"><a href="Blockteststat.html#partitioning-variability-2"><i class="fa fa-check"></i><b>36.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="36.2" data-path="Blockteststat.html"><a href="Blockteststat.html#forming-a-standardized-test-statistic-1"><i class="fa fa-check"></i><b>36.2</b> Forming a Standardized Test Statistic</a></li>
+<li class="chapter" data-level="36.3" data-path="Blockteststat.html"><a href="Blockteststat.html#anova-table-1"><i class="fa fa-check"></i><b>36.3</b> ANOVA Table</a></li>
+<li class="chapter" data-level="36.4" data-path="Blockteststat.html"><a href="Blockteststat.html#recap-4"><i class="fa fa-check"></i><b>36.4</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="37" data-path="Blockassessment.html"><a href="Blockassessment.html"><i class="fa fa-check"></i><b>37</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="37.1" data-path="Blockassessment.html"><a href="Blockassessment.html#assessing-independence-2"><i class="fa fa-check"></i><b>37.1</b> Assessing Independence</a></li>
+<li class="chapter" data-level="37.2" data-path="Blockassessment.html"><a href="Blockassessment.html#assessing-identical-distribution"><i class="fa fa-check"></i><b>37.2</b> Assessing Identical Distribution</a></li>
+<li class="chapter" data-level="37.3" data-path="Blockassessment.html"><a href="Blockassessment.html#assessing-normality-2"><i class="fa fa-check"></i><b>37.3</b> Assessing Normality</a></li>
+<li class="chapter" data-level="37.4" data-path="Blockassessment.html"><a href="Blockassessment.html#general-tips-for-assessing-assumptions-2"><i class="fa fa-check"></i><b>37.4</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="38" data-path="Blockrecap.html"><a href="Blockrecap.html"><i class="fa fa-check"></i><b>38</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="38.1" data-path="Blockrecap.html"><a href="Blockrecap.html#framing-the-question-fundamental-idea-i-2"><i class="fa fa-check"></i><b>38.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="38.2" data-path="Blockrecap.html"><a href="Blockrecap.html#getting-good-data-fundamental-idea-ii-2"><i class="fa fa-check"></i><b>38.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="38.3" data-path="Blockrecap.html"><a href="Blockrecap.html#presenting-the-data-fundamental-idea-iii-2"><i class="fa fa-check"></i><b>38.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="38.4" data-path="Blockrecap.html"><a href="Blockrecap.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv-2"><i class="fa fa-check"></i><b>38.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="38.5" data-path="Blockrecap.html"><a href="Blockrecap.html#quantifying-the-evidence-fundamental-idea-v-2"><i class="fa fa-check"></i><b>38.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="38.6" data-path="Blockrecap.html"><a href="Blockrecap.html#conclusion-1"><i class="fa fa-check"></i><b>38.6</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -235,17 +266,17 @@
 
             <section class="normal" id="section-">
 <div id="Regquality" class="section level1">
-<h1><span class="header-section-number">27</span> Quantifying the Quality of a Model Fit</h1>
-<p>In this unit, we have described a very flexible model for describing the data generating process for a quantitative response:</p>
-<p><span class="math display">\[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor})_{j,i} + \epsilon_i\]</span></p>
-<p>We can obtain estimates of the unknown parameters in this model using least squares. Further, under certain conditions on the error term, we are able to perform inference on the parameters. We have not yet discussed how we determine if our model is any good. As we have seen throughout the text, the idea of partitioning the variability underlies the idea of inference. Each time we want to perform inference, we are really comparing the variability we have explained to the noise in the data. In this section, we explore this concept a bit further and use it to derive a measure for the overall performance of our model.</p>
-<div id="partitioning-variability-1" class="section level2">
-<h2><span class="header-section-number">27.1</span> Partitioning Variability</h2>
-<p>Consider modeling the bracketed duration as a function of the magnitude and the distance the location is from the center of the earthquake:</p>
-<p><span class="math display">\[(\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \beta_2(\text{Epicentral Distance})_i + \epsilon_i\]</span></p>
-<p>We have fit this model previously, and the resulting model fit is summarized below in Table <a href="Regquality.html#tab:regquality-fit">27.1</a>.</p>
+<h1><span class="header-section-number">19</span> Quantifying the Quality of a Model Fit</h1>
+<p>In the previous two chapters, we described a model for describing the data generating process for a quantitative response as a function of a single quantitative predictor:</p>
+<p><span class="math display">\[(\text{Response})_i = \beta_0 + \beta_1 (\text{Predictor})_i + \epsilon_i\]</span></p>
+<p>We can obtain estimates of the unknown parameters in this model using least squares. Further, under certain conditions on the error term, we are able to construct valid confidence intervals for the parameters. We have not yet discussed how to compute p-values to test hypotheses about the parameters, nor have we discussed how to determine if our model is useful for making predictions. It turns out these two tasks are very much related and are accomplished through partitioning variability. Much of statistics is about accounting for various sources of variability; and, this process allows us to compare models for the data generating process. In this chapter, we will describe what we mean by partitioning variability and how it is used to derive a measure for the overall performance of a model and to develop a standardized statistic for comparing two models.</p>
+<div id="partitioning-variability" class="section level2">
+<h2><span class="header-section-number">19.1</span> Partitioning Variability</h2>
+<p>Consider modeling the bracketed duration as a function of the distance the location is from the center of the earthquake:</p>
+<p><span class="math display">\[(\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Epicentral Distance})_i + \epsilon_i\]</span></p>
+<p>Using least squares to estimate the parameters, and assuming the data is consistent with the conditions for the classical regression model, the resulting model fit is summarized below in Table <a href="Regquality.html#tab:regquality-fit">19.1</a>.</p>
 <table>
-<caption><span id="tab:regquality-fit">Table 27.1: </span>Summary of the model fit explaining the bracketed duration as a result of magnitude and epicentral distance.</caption>
+<caption><span id="tab:regquality-fit">Table 19.1: </span>Summary of the model fit explaining the bracketed duration as a function of epicentral distance.</caption>
 <thead>
 <tr class="header">
 <th align="left">Term</th>
@@ -253,167 +284,237 @@
 <th align="right">Standard Error</th>
 <th align="right">Lower 95% CI</th>
 <th align="right">Upper 95% CI</th>
-<th align="left">P Value</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">(Intercept)</td>
-<td align="right">-30.715</td>
-<td align="right">4.887</td>
-<td align="right">-40.395</td>
-<td align="right">-21.036</td>
-<td align="left">&lt; 0.001</td>
+<td align="right">4.462</td>
+<td align="right">0.726</td>
+<td align="right">3.024</td>
+<td align="right">5.899</td>
 </tr>
 <tr class="even">
-<td align="left">Magnitude</td>
-<td align="right">6.991</td>
-<td align="right">0.964</td>
-<td align="right">5.082</td>
-<td align="right">8.900</td>
-<td align="left">&lt; 0.001</td>
-</tr>
-<tr class="odd">
 <td align="left">Epicentral Distance</td>
-<td align="right">-0.077</td>
-<td align="right">0.021</td>
-<td align="right">-0.118</td>
-<td align="right">-0.036</td>
-<td align="left">&lt; 0.001</td>
+<td align="right">0.029</td>
+<td align="right">0.018</td>
+<td align="right">-0.007</td>
+<td align="right">0.064</td>
 </tr>
 </tbody>
 </table>
-<p>Each component of a data generating process is explaining a portion of the variability. That is, this model posits three reasons for why the bracketed duration is not the same at each measured location:</p>
+<p>Remember, the goal of the model for the data generating process is to explain why the response is the value we see — we are essentially explaining why the values of the response differ from one individual to another (its variability). Consider the model for the data generating process summarized above; it posits two reasons why the bracketed duration is not the same value at each measured location:</p>
 <ul>
-<li>The magnitude of the corresponding earthquakes differs.</li>
 <li>The locations are located different distances from the epicenter of each earthquake.</li>
-<li>Noise which we cannot explain.</li>
+<li>Additional noise due to measurement error in the bracketed duration or additional natural sources we are unable to explain.</li>
 </ul>
-<p>When making inference on a particular component, we compare the variability explained by the component to the variability that is not explained by the model. As this is a comparison of variabilities, it is summarized in an ANOVA table (Table <a href="Regquality.html#tab:regquality-anova">27.2</a>). We see from the p-value that there is strong evidence that the epicentral distance is an important component in the model, even after accounting for the effect of the magnitude. We can interpret this in another way also. It is saying that the epicentral distance does play a role in explaining a portion of the variability in the bracketed duration. The same is true for magnitude; there is strong evidence that it plays a role in explaining a portion of the variability in the bracketed duration.</p>
+<p>Looking at the form of the model for the data generating process, it may seem obvious that there are these two sources of variability — two sources for why the bracketed duration differs from one individual to another. However, it is not yet clear how we quantify the amount of variability in each. We want to quantify the amount of variability in the response that can be attributed to each of these components. That is, we move forward with a goal of trying to say something like</p>
+<p><span class="math display">\[(\text{Total Variability in Bracketed Duration}) = (\text{Variability due to Distance}) + (\text{Variability due to Noise})\]</span></p>
+<p>As we have seen in both Chapters <a href="Summaries.html#Summaries">5</a> and <a href="#SingleTestStat"><strong>??</strong></a>, variability can be quantified through considering the “total” distance (squared) the observations are from a common target (the mean response). That is, the total variability in bracketed duration can be measured by</p>
+<p><span class="math display">\[\sum_{i=1}^{n} \left((\text{Bracketed Duration})_i - (\text{Mean Bracketed Duration})\right)^2\]</span></p>
+<p>Notice this quantity is similar to, but not exactly the sample variance. It measures the distance each response is from the sample mean and then adds these distances up. This is known as the <strong>Total Sum of Squares</strong> since it captures the total variability in the response.</p>
+
+<div class="definition">
+<p><span id="def:defn-sst" class="definition"><strong>Definition 19.1  (Total Sum of Squares)  </strong></span>Let <span class="math inline">\(y_i\)</span> denote the response for the <span class="math inline">\(i\)</span>-th observation and <span class="math inline">\(\bar{y}\)</span> denote the sample mean response. Then, the Total Sum of Squares (abbreviated SST) is given by</p>
+<p><span class="math display">\[SST = \sum_{i=1}^{n} \left(y_i - \bar{y}\right)^2\]</span></p>
+</div>
+
+<p>We now have a way of quantifying the total variability in bracketed duration; we now want to quantify its two components specified by the model (variability due to epicentral distance and variability due to noise). In order to capture the variability due epicentral distance, we consider how epicentral distance plays a role in the model for the data generating process: it forms the line which dictates the mean response. That is, the linear portion in the model <span class="math inline">\(\beta_0 + \beta_1 (\text{Epicentral Distance})\)</span> is the model’s attempt to explain how epicentral distance explains the bracketed duration; further, this explanation comes in the form of the average response. Plugging into this equation then provides a predicted mean response (where we substitute in the least squares estimates for the unknown parameters). Finding the variability in the bracketed duration due to the epicentral distance is then equivalent to finding the variability in these predicted mean responses:</p>
+<p><span class="math display">\[\sum_{i=1}^{n} \left((\text{Predicted Bracketed Duration})_i - (\text{Mean Bracketed Duration})\right)^2\]</span></p>
+<p>This is known as the <strong>Regression Sum of Squares</strong> as it captures the variability explained by the regression line.</p>
+
+<div class="definition">
+<p><span id="def:defn-ssr" class="definition"><strong>Definition 19.2  (Regression Sum of Squares)  </strong></span>Let <span class="math inline">\(\widehat{y}_i\)</span> denote the predicted response for the <span class="math inline">\(i\)</span>-th observation and <span class="math inline">\(\bar{y}\)</span> denote the sample mean response. Then, the Regression Sum of Squares (abbreviated SSR) is given by</p>
+<p><span class="math display">\[SSR = \sum_{i=1}^{n} \left(\widehat{y}_i - \bar{y}\right)^2\]</span></p>
+</div>
+
+<p>Finally, the unexplained noise, <span class="math inline">\(\epsilon\)</span> in our model, is the difference between the response and the regression line. This essentially considers the variability in the bracketed duration where the average is conditional on the epicentral distance (we use the regression model) instead of computing the average of just the bracketed duration values:</p>
+<p><span class="math display">\[\sum_{i=1}^{n} \left((\text{Bracketed Duration})_i - (\text{Predicted Bracketed Duration})_i\right)^2\]</span></p>
+<p>This is known as the <strong>Error Sum of Squares</strong> as it captures the variability not explained by the model but represented by the error term in the model.</p>
+
+<div class="definition">
+<p><span id="def:defn-sse" class="definition"><strong>Definition 19.3  (Error Sum of Squares)  </strong></span>Let <span class="math inline">\(y_i\)</span> denote the response for the <span class="math inline">\(i\)</span>-th observation and <span class="math inline">\(\widehat{y}_i\)</span> denote the predicted response for the <span class="math inline">\(i\)</span>-th observation. Then, the Error Sum of Squares (abbreviated SSE, and sometimes referred to as the Residual Sum of Squares) is given by</p>
+<p><span class="math display">\[SSE = \sum_{i=1}^{n} \left(y_i - \widehat{y}_i\right)^2\]</span></p>
+</div>
+
+<p>With some clever algebra, it can be easily seen that the variability does in fact partition into these two components. This discussion is represented in Figure <a href="Regquality.html#fig:regquality-partition-variability">19.1</a>.</p>
+
+<div class="rmdkeyidea">
+<p>The total variability in a response can be partitioned into two components: the variability explained by the predictor and the unexplained variability captured by the error term. This is represented in the formula</p>
+<p><span class="math display">\[SST = SSR + SSE\]</span></p>
+</div>
+
+<div class="figure" style="text-align: center"><span id="fig:regquality-partition-variability"></span>
+<img src="images/RegQuality-Partitioning-Variability.jpg" alt="Illustration of partitioning the variability of a response using a regression model." width="80%" />
+<p class="caption">
+Figure 19.1: Illustration of partitioning the variability of a response using a regression model.
+</p>
+</div>
+</div>
+<div id="hypothesis-testing" class="section level2">
+<h2><span class="header-section-number">19.2</span> Hypothesis Testing</h2>
+<p>Partitioning the variability in a response into two components allows us to conduct hypothesis tests to compare two models. We will be expanding upon the ideas initially presented in Chapter <a href="#SingleTestStat"><strong>??</strong></a>. Recall that hypothesis testing is really about comparing two models for the data generating process: a more complex model in which the parameters are free to take on any value, and a restricted model in which the parameters are constrained in some way. We “fail to reject” the null hypothesis when there is not enough evidence to suggest that the more complex model is needed to explain the variability in the response. We “reject” the null hypothesis when the data is inconsistent with our expectations under the null hypothesis, suggesting that the more complex model is needed to explain the variability in the response.</p>
+<p>Consider the following research question:</p>
+<blockquote>
+<p>Is there evidence that the average bracketed duration for a location following an earthquake is linearly related to the distance the location is from the center of the earthquake?</p>
+</blockquote>
+<p>If we consider the simple linear model for the data generating process described above, this question can be captured using the following set of hypotheses:</p>
+<p><span class="math display">\[H_0: \beta_1 = 0 \qquad \text{vs.} \qquad H_1: \beta_1 \neq 0\]</span></p>
+<p>Again, these hypotheses are really suggesting two separate models for the data generating process:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \text{Model 1}:&amp; \quad (\text{Bracketed Duration})_i = \beta_0 + \beta_1 (\text{Epicentral Distance})_i + \epsilon_i \\
+  \text{Model 0}:&amp; \quad (\text{Bracketed Duration})_i = \beta_0 + \epsilon_i
+\end{aligned}
+\]</span></p>
+<p>The model under the null hypothesis (Model 0) is simpler because it has less parameters; in fact, while Model 1 says that there are two components (the epicentral distance and noise) contributing to the variability observed in the response, Model 0 says that there is only a single component (noise). So, we can think of our hypotheses as</p>
+<p><span class="math display">\[
+\begin{aligned}
+  H_0: \text{Model 0 is sufficient for explaining the variability in the response.} \\
+  H_1: \text{Model 0 is not sufficient for explaining the variability in the response.}
+\end{aligned}
+\]</span></p>
+<p>Regardless of which model we choose, the total variability in the response remains the same. We are simply asking whether the variability explained by the predictor is sufficiently large for us to say it has an impact. In particular, if the null hypothesis were true, we would expect all the variability in the response to be channeled into the noise (<span class="math inline">\(SST \approx SSE\)</span>). If, however, the alternative hypothesis is true, then some of the variability in the response is explained by the predictor beyond just noise (<span class="math inline">\(SSR &gt; SSE\)</span>). Further, since we have a partition, as we increase the regression sum of squares, the error sum of squares must go down (that variability we are putting into the predictor must come out of the noise). So, the regression sum of squares is equivalent to the shift in the error sum of squares as we move from the null model to the more complex model.</p>
+
+<div class="rmdkeyidea">
+For a particular dataset, the larger the regression sum of squares, the higher the variability in the response being explained by the predictor in the model for the data generating process.
+</div>
+
+<p>The regression sum of squares represents our signal. The larger the value, the more evidence we have that the data is not consistent with the null hypothesis. However, as we saw in Chapter <a href="#SingleTestStat"><strong>??</strong></a>, we should always examine our signal relative to the noise in the data. But, we have quantified the noise in the data through the error sum of squares! It then seems reasonable to consider the standardized statistic</p>
+<p><span class="math display">\[\frac{SSR}{SSE}.\]</span></p>
+<p>While this is a reasonable statistic, it is not standardized. Remember that sums of squares capture variability but are themselves not variances. If we take a sum of squares and divide by an appropriate term, known as the <strong>degrees of freedom</strong>, we get a true variance term, which turns out to be easier to model analytically.</p>
+
+<div class="definition">
+<span id="def:defn-df" class="definition"><strong>Definition 19.4  (Degrees of Freedom)  </strong></span>A measure of the flexibility in a sum of squares term; a variance is computed by taking the sum of squares and dividing by the corresponding degrees of freedom.
+</div>
+
+
+<div class="rmdtip">
+<p>Degrees of freedom are a very difficult concept to grasp, even for those who have been studying statistics for a while. Here is my way of thinking about them — they are the difference of available terms to work with. For example, think about the total sum of squares:</p>
+<p><span class="math display">\[SST = \sum_{i=1}^{n} \left(y_i - \bar{y}\right)^2\]</span></p>
+<p>The first term of the difference has <span class="math inline">\(n\)</span> different values (one response for each observation). However, the sample mean <span class="math inline">\(\bar{y}\)</span> is just one value. Therefore, there are <span class="math inline">\(n - 1\)</span> degrees of freedom associated with the total sum of squares. This is often described as starting out with <span class="math inline">\(n\)</span> estimates (the data), but needing to estimate one parameter (the mean) along the way, leading to <span class="math inline">\(n - 1\)</span>.</p>
+<p>Similarly, consider the regression sum of squares:</p>
+<p><span class="math display">\[SSR = \sum_{i=1}^{n} \left(\widehat{y}_i - \bar{y}\right)^2\]</span></p>
+<p>While there are <span class="math inline">\(n\)</span> predicted values, they are all generated from the same least squares fit <span class="math inline">\(\widehat{\beta}_0 + \widehat{\beta}_1 (\text{Predictor})_i\)</span> which can be computed from two estimates (that for the intercept and slope). Therefore, we begin with only 2 unique values. Again, the sample mean has just one value, leading to <span class="math inline">\(2 - 1 = 1\)</span> degree of freedom associated with the regression sum of squares.</p>
+<p>Finally, consider the error sum of squares:</p>
+<p><span class="math display">\[SSE = \sum_{i=1}^{n} \left(y_i - \widehat{y}_i\right)^2\]</span></p>
+<p>We have <span class="math inline">\(n\)</span> initial values (one for each observation). However, as described above, we only need 2 terms to estimate the predicted values. So, we have <span class="math inline">\(n - 2\)</span> degrees of freedom associated with the error sum of squares.</p>
+Note that <span class="math inline">\((n - 1) = (2 - 1) + (n - 2)\)</span> in the same way that <span class="math inline">\(SST = SSR + SSE\)</span>.
+</div>
+
+<p>The measure of variability determined by taking the ratio of a sum of squares and its associated degrees of freedom is known as a <strong>mean square</strong>.</p>
+
+<div class="definition">
+<p><span id="def:defn-ms" class="definition"><strong>Definition 19.5  (Mean Square)  </strong></span>The ratio of a sum of squares and its corresponding degrees of freedom. Specifically:</p>
+<ul>
+<li><strong>Mean Square Total (MST)</strong>: estimated variance of the responses; this is the same as the sample variance of the response.</li>
+<li><strong>Mean Square for Regression (MSR)</strong>: estimated variance of the predicted responses.</li>
+<li><strong>Mean Square Error (MSE)</strong>: estimated variance of the responses about the regression line; this is the same as the estimate of the variability of the errors.</li>
+</ul>
+</div>
+
+<p>Since mean squares are proportional to their corresponding sum of squares, an increase in one is associated with an increase in the other. We are now ready to define our standardized statistic as the ratio of the mean square for regression with the mean square error.</p>
+
+<div class="rmdkeyidea">
+<p>Consider the simple linear model</p>
+<p><span class="math display">\[(\text{Response})_i = \beta_0 + \beta_1(\text{Predictor})_i + \epsilon_i\]</span></p>
+<p>A standardized statistic for testing the hypotheses</p>
+<p><span class="math display">\[H_0: \beta_1 = 0 \qquad \text{vs.} \qquad H_1: \beta_1 \neq 0\]</span></p>
+<p>is given by</p>
+<span class="math display">\[T^* = \frac{MSR}{MSE} = \frac{SSR}{SSE/(n-2)}\]</span>
+</div>
+
+<p>We should not lose sight of the fact that our standardized statistic is really a result of partitioning the variability and considering the variability explained by the predictor relative to the noise in the response. Our analysis of these sources of variability is often summarized in a table similar to that represented in Figure <a href="Regquality.html#fig:regquality-ANOVA-Table">19.2</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:regquality-ANOVA-Table"></span>
+<img src="images/RegQuality-ANOVA-Table.jpg" alt="Table for summarizing the partitioning of variability in a regression model." width="80%" />
+<p class="caption">
+Figure 19.2: Table for summarizing the partitioning of variability in a regression model.
+</p>
+</div>
+<p>The last entry in the table is the p-value. As with any p-value, it is computed by finding the likelihood of getting a standardized statistic as extreme or more than that observed when the null hypothesis is true. “More extreme” values of the statistic would be larger values; so, the area to the right in the null distribution is needed. The key step is modeling that null distribution. This is where the conditions we place on the error term come into play. Under the classical regression conditions, we can model the null distribution analytically; otherwise, we can rely on bootstrapping to model the null distribution.</p>
+<p>Let’s return to our question of whether the bracketed duration, on average, is linearly related to the distance a location is from the corresponding earthquake. From Table <a href="Regquality.html#tab:regquality-anova">19.2</a>, we have a larger p-value (computed assuming the data is consistent with the classical regression model). That is, we have no evidence to suggest that locations further from the center of the earthquake experience bracketed durations which differ from those closer to the center of the earthquake, on average.</p>
 <table>
-<caption><span id="tab:regquality-anova">Table 27.2: </span>ANOVA table corresponding to the model fit explaining the bracketed duration as a result of magnitude and epicentral distance.</caption>
+<caption><span id="tab:regquality-anova">Table 19.2: </span>Analysis of the sources of variability in the bracketed duration as a function of epicentral distance.</caption>
 <thead>
 <tr class="header">
 <th align="left">Term</th>
 <th align="right">DF</th>
-<th align="right">SS</th>
-<th align="right">MS</th>
-<th align="right">F</th>
-<th align="left">P-Value</th>
+<th align="right">Sum of Squares</th>
+<th align="right">Mean Square</th>
+<th align="right">Standardized Statistic</th>
+<th align="right">P-Value</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Magnitude</td>
-<td align="right">1</td>
-<td align="right">980.503</td>
-<td align="right">980.503</td>
-<td align="right">42.57</td>
-<td align="left">&lt; 0.001</td>
-</tr>
-<tr class="even">
 <td align="left">Epicentral Distance</td>
 <td align="right">1</td>
-<td align="right">317.150</td>
-<td align="right">317.150</td>
-<td align="right">13.77</td>
-<td align="left">&lt; 0.001</td>
+<td align="right">85.733</td>
+<td align="right">85.733</td>
+<td align="right">2.583</td>
+<td align="right">0.111</td>
 </tr>
-<tr class="odd">
-<td align="left">Error</td>
-<td align="right">116</td>
-<td align="right">2671.787</td>
-<td align="right">23.033</td>
+<tr class="even">
+<td align="left">Residuals</td>
+<td align="right">117</td>
+<td align="right">3883.708</td>
+<td align="right">33.194</td>
 <td align="right"></td>
-<td align="left"></td>
+<td align="right"></td>
 </tr>
 </tbody>
 </table>
-<p>This begs the question; if we know these variables play a role in explaining the variability, can we quantify the degree to which they explain the variability? The short answer is yes.</p>
+
+<div class="rmdkeyidea">
+Determining if a response is linearly related to a predictor is done by determining if the predictor explains a significant portion of the variability in the response.
+</div>
+
+<p>In this section, we partitioned variability as a way of evaluating the strength of evidence the predictor plays in determining the response. This begs the question; can we quantify the predictive ability of the model for the data generating process using this same partition?</p>
 </div>
 <div id="r-squared" class="section level2">
-<h2><span class="header-section-number">27.2</span> R-squared</h2>
-<p>The key to quantifying the quality of a model is to understand that a partition breaks a whole into smaller, distinct components. This means that if you put the components back together, you have the whole. The sums of squares are a method of measuring the variability directly with respect to our partition. That is, the total variability in the bracketed duration is given by</p>
+<h2><span class="header-section-number">19.3</span> R-squared</h2>
+<p>The key to quantifying the quality of a model for the data generating process is to understand that a partition breaks a whole into smaller, distinct components. This means that if you put the components back together, you have the whole. The sums of squares are a method of measuring the variability directly with respect to our partition. That is, the total variability in the bracketed duration is given by</p>
 <p><span class="math display">\[
 \begin{aligned}
-  SS_{\text{Total}} &amp;= SS_{\text{Magnitude}} + SS_{\text{Epicentral Distance}} + SS_{\text{Error}} \\
-    &amp;= 980.503 + 317.150 + 2671.787 \\
+  SST &amp;= SSR + SSE \\
+    &amp;= 85.733 + 3883.708 \\
     &amp;= 3969.44
 \end{aligned}
 \]</span></p>
-<p>In general this is true, the total variability in the response can be measured by a sum of squares, which is computed by adding up the sums of squares for each individual source of variability.</p>
-
-<div class="rmdtip">
-The total variability in the response, measured by its sums of squares, is computed by adding up the sums of squares for each source of variability.
-</div>
-<p></p>
-<p>This also means we can collapse the ANOVA table into the portion of the variability we can explain (due to the deterministic portion of the model) and the portion of the variability we cannot explain (the stochastic portion of the model). This reduced table is given by summing up the sums of squares corresponding to the variables in the model. The mean squares are then derived from the sums of squares, and the standardized test statistic from the mean squares.</p>
-<table>
-<caption><span id="tab:regquality-overall-anova">Table 27.3: </span>Compact ANOVA table corresponding to the model fit explaining the bracketed duration as a result of magnitude and epicentral distance. We have condensed the table to have the model represent all individual sources of variability other than the error.</caption>
-<thead>
-<tr class="header">
-<th align="left">Term</th>
-<th align="right">DF</th>
-<th align="right">SS</th>
-<th align="right">MS</th>
-<th align="right">F</th>
-<th align="left">P-Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Model</td>
-<td align="right">2</td>
-<td align="right">1297.653</td>
-<td align="right">648.827</td>
-<td align="right">28.17</td>
-<td align="left">&lt; 0.001</td>
-</tr>
-<tr class="even">
-<td align="left">Error</td>
-<td align="right">116</td>
-<td align="right">2671.787</td>
-<td align="right">23.033</td>
-<td align="right"></td>
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<p>The benefit to this arrangement is that it makes clear the breakdown between the variability in the response that the model is explaining versus the variability in the response that cannot be explained. We are now in a position to quantify the amount of variability the model is explaining:</p>
-<p><span class="math display">\[\text{Proportion of Variability Explained} = \frac{1297.653}{1297.653+2671.787} = 0.3269\]</span></p>
-<p>This is known as the <strong>R-squared</strong> for the model. The R-squared value has a very nice interpretation; in this case, it says that 32.7% of the variability in the bracketed duration at a location is explained by the magnitude of the corresponding earthquake and the location’s distance from the epicenter.</p>
+<p>The benefit partitioning variability is that it makes clear the breakdown between the variability in the response that the model is explaining (SSR) versus the variability in the response that cannot be explained (SSE). We are now in a position to quantify the amount of variability the model is explaining:</p>
+<p><span class="math display">\[\text{Proportion of Variability Explained} = \frac{85.733}{85.733 + 3883.708} = 0.0216\]</span></p>
+<p>This is known as the <strong>R-squared</strong> for the model. The R-squared value has a very nice interpretation; in this case, it says that only 2.16% of the variability in the bracketed duration at a location is explained by its distance from the center of the corresponding earthquake.</p>
 
 <div class="definition">
-<span id="def:defn-r-squared" class="definition"><strong>Definition 27.1  (R Squared)  </strong></span>Sometimes reported as a percentage, this measures the proportion of the variability in the response explained by a model.
+<span id="def:defn-r-squared" class="definition"><strong>Definition 19.6  (R Squared)  </strong></span>Sometimes reported as a percentage, this measures the proportion of the variability in the response explained by a model.
 </div>
-<p></p>
-<p>As R-squared is a proportion, it must take a value between 0 and 1. If 0, that means our model has no predictive ability within our sample. Knowing the predictors does not add to our ability to predict the response any more than guessing. A value of 1 indicates that our model has predicted all the variability in the response; that is, given the predictors, we can perfectly predict the value of the response.</p>
-</div>
-<div id="overfitting" class="section level2">
-<h2><span class="header-section-number">27.3</span> Overfitting</h2>
+
+<p>As R-squared is a proportion, it must take a value between 0 and 1. If 0, that means our model has no predictive ability within our sample. That is, knowing the predictor does not add to our ability to predict the response any more than guessing. A value of 1 indicates that our model has predicted all the variability in the response; that is, given the predictor, we can perfectly predict the value of the response.</p>
 <p>It may appear that obtaining an R-squared value of 1 should be our goal. And, in one sense, it is. We want a model that has strong predictive ability. However, there is a danger in obtaining an R-squared of 1 as well. We must remember that variability is inherent in any process. Therefore, we should never expect to fully explain all of the variability in a response. George Box (a renowned statistician) once made the following statement <span class="citation">(Box <a href="#ref-Box1979">1979</a>)</span>:</p>
 <blockquote>
 <p>“Now it would be very remarkable if any system existing in the real world could be exactly represented by any simple model. However, cunningly chosen parsimonious models often do provide remarkably useful approximations. For example, the law <span class="math inline">\(PV = RT\)</span> relating pressure <span class="math inline">\(P\)</span>, volume <span class="math inline">\(V\)</span> and temperature <span class="math inline">\(T\)</span> of an ‘ideal’ gas via a constant <span class="math inline">\(R\)</span> is not exactly true for any real gas, but it frequently provides a useful approximation and furthermore its structure is informative since it springs from a physical view of the behavior of gas molecules.</p>
 <p>For such a model there is no need to ask the question ‘Is the model true?’. If ‘truth’ is to be the ‘whole truth’ the answer must be ‘No.’ The only question of interest is ‘Is the model illuminating and useful?’.</p>
 </blockquote>
-<p>The idea here is that we know the model will not capture the data generating process precisely. Therefore, we should be skeptical of models which claim to be perfect. For, example, consider the two models illustrated in Figure <a href="Regquality.html#fig:regquality-overfit">27.1</a>. The black line has a perfect fit, but we argue the blue line is better. While the black line captures all the variability in the response for this sample, it is certainly trying to do too much. In reality, the blue line captures the underlying relationship while not overcomplicating that relationship. We sacrifice a little quality in the fit for this sample in order to better represent the underlying structure. The black line suffers from what is known as <em>overfitting</em>; the blue line is a more <em>parsimonious</em> model, balancing complexity with model fit.</p>
+<p>The idea here is that we know the model will not capture the data generating process precisely. Therefore, we should be skeptical of models which claim to be perfect. For example, consider the two models illustrated in Figure <a href="Regquality.html#fig:regquality-overfit">19.3</a>. The black line has a perfect fit, but we argue the blue line is better. While the black line captures all the variability in the response for this sample, it is certainly trying to do too much. In reality, the blue line captures the underlying relationship while not overcomplicating that relationship. We sacrifice a little quality in the fit for this sample in order to better represent the underlying structure. The black line suffers from what is known as <em>overfitting</em>; the blue line is a more <em>parsimonious</em> model, balancing complexity with model fit.</p>
 <div class="figure" style="text-align: center"><span id="fig:regquality-overfit"></span>
 <img src="images/regquality-overfit-1.png" alt="Illustration of a parsimonious model compared to one which overfits the data." width="80%" />
 <p class="caption">
-Figure 27.1: Illustration of a parsimonious model compared to one which overfits the data.
+Figure 19.3: Illustration of a parsimonious model compared to one which overfits the data.
 </p>
 </div>
 <p>Students often ask, “if not 1, how high of an R-squared represents a <em>good</em> model?” The answer depends a lot on the discipline. In many engineering applications within a lab setting, we can control much of the external variability leading to extremely high R-squared values (0.95 to 0.99). However, in biological applications, the variability among the population can be quite large, leading to much smaller R-squared values (0.3 to 0.6). What is considered “good” can depend on the specific application.</p>
+
+<div class="rmdtip">
+While R-squared is useful for quantifying the quality of a model on a set of data, it should not be used to compare two different models as R-squared always favors more complex models. There are better methods which adjust for the complexity of the model fit.
 </div>
-<div id="goal-of-modeling" class="section level2">
-<h2><span class="header-section-number">27.4</span> Goal of Modeling</h2>
+
 <p>In addition to the discipline, how you view the R-squared of a model may depend on the goal of the model. There are generally two broad reasons for developing a statistical model:</p>
 <ul>
 <li>Explain the relationship between a response and one or more predictors. This can involve examining the marginal relationship, isolating the effect, or examining the interplay between predictors.</li>
 <li>Predict a future response given a specific value for the predictors.</li>
 </ul>
-<p>If all we are interested in doing is explaining the relationship, we may not be concerned about the predictive ability of the model. That is, since our goal is not to accurately predict a future response, we are primary concerned with whether we have evidence of a relationship. But, if our goal is prediction, we would like that estimate to be accurate. In such cases, a high R-squared is required before really relying on the model we have.</p>
-<p>Regardless of our goal, conducting inference or predicting a future response, partitioning the variability is a key step. If inference is our primary aim, this partitioning allows us to determine a predictor adds to the model above and beyond the remaining terms. If prediction is our primary aim, the partitioning allows us to quantify the quality of the model.</p>
+<p>If all we are interested in doing is explaining the relationship, we may not be concerned about the predictive ability of the model. That is, since our goal is not to accurately predict a future response, we are primary concerned with whether we have evidence of a relationship. But, if our goal is prediction, we would like that estimate to be precise. In such cases, a high R-squared is required before really relying on the model we have.</p>
+<p>Regardless of our goal, conducting inference or predicting a future response, partitioning the variability is a key step. If inference is our primary aim, this partitioning allows us to determine if a predictor adds to the model above and beyond the error alone. If prediction is our primary aim, the partitioning allows us to quantify the quality of the model.</p>
 
 </div>
 </div>
@@ -428,8 +529,8 @@ Figure 27.1: Illustration of a parsimonious model compared to one which overfits
           </div>
         </div>
       </div>
-<a href="Reginteractions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="Regrecap.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Regconditions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Regassessment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -466,9 +567,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

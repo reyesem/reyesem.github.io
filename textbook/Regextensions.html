@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statistical Foundations for Engineers and Scientists</title>
+  <meta name="description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Statistical Foundations for Engineers and Scientists" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Statistical Foundations for Engineers and Scientists" />
+  
+  <meta name="twitter:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="Regassessment.html">
+<link rel="next" href="Regrecap.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Modeling</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Unit I: Language and Logic of Inference</b></span></li>
+<li class="chapter" data-level="1" data-path="Basics.html"><a href="Basics.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1.1" data-path="Basics.html"><a href="Basics.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="1.2" data-path="Basics.html"><a href="Basics.html#anatomy-of-a-dataset"><i class="fa fa-check"></i><b>1.2</b> Anatomy of a Dataset</a></li>
+<li class="chapter" data-level="1.3" data-path="Basics.html"><a href="Basics.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.3</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="CaseDeepwater.html"><a href="CaseDeepwater.html"><i class="fa fa-check"></i><b>2</b> Case Study: Health Effects of the Deepwater Horizon Oil Spill</a></li>
+<li class="chapter" data-level="3" data-path="Questions.html"><a href="Questions.html"><i class="fa fa-check"></i><b>3</b> Asking the Right Questions</a><ul>
+<li class="chapter" data-level="3.1" data-path="Questions.html"><a href="Questions.html#characterizing-a-variable"><i class="fa fa-check"></i><b>3.1</b> Characterizing a Variable</a></li>
+<li class="chapter" data-level="3.2" data-path="Questions.html"><a href="Questions.html#framing-the-question"><i class="fa fa-check"></i><b>3.2</b> Framing the Question</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>4</b> Gathering the Evidence (Data Collection)</a><ul>
+<li class="chapter" data-level="4.1" data-path="Data.html"><a href="Data.html#what-makes-a-sample-reliable"><i class="fa fa-check"></i><b>4.1</b> What Makes a Sample Reliable</a></li>
+<li class="chapter" data-level="4.2" data-path="Data.html"><a href="Data.html#poor-methods-of-data-collection"><i class="fa fa-check"></i><b>4.2</b> Poor Methods of Data Collection</a></li>
+<li class="chapter" data-level="4.3" data-path="Data.html"><a href="Data.html#preferred-methods-of-sampling"><i class="fa fa-check"></i><b>4.3</b> Preferred Methods of Sampling</a></li>
+<li class="chapter" data-level="4.4" data-path="Data.html"><a href="Data.html#two-types-of-studies"><i class="fa fa-check"></i><b>4.4</b> Two Types of Studies</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Summaries.html"><a href="Summaries.html"><i class="fa fa-check"></i><b>5</b> Presenting the Evidence (Summarizing Data)</a><ul>
+<li class="chapter" data-level="5.1" data-path="Summaries.html"><a href="Summaries.html#characteristics-of-a-distribution-summarizing-a-single-variable"><i class="fa fa-check"></i><b>5.1</b> Characteristics of a Distribution (Summarizing a Single Variable)</a></li>
+<li class="chapter" data-level="5.2" data-path="Summaries.html"><a href="Summaries.html#summarizing-relationships"><i class="fa fa-check"></i><b>5.2</b> Summarizing Relationships</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="SamplingDistns.html"><a href="SamplingDistns.html"><i class="fa fa-check"></i><b>6</b> Assessing the Evidence (Quantifying the Variability in Estimates)</a><ul>
+<li class="chapter" data-level="6.1" data-path="SamplingDistns.html"><a href="SamplingDistns.html#conceptualizing-the-sampling-distribution"><i class="fa fa-check"></i><b>6.1</b> Conceptualizing the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="SamplingDistns.html"><a href="SamplingDistns.html#example-of-a-sampling-distribution"><i class="fa fa-check"></i><b>6.2</b> Example of a Sampling Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="SamplingDistns.html"><a href="SamplingDistns.html#modeling-the-sampling-distribution"><i class="fa fa-check"></i><b>6.3</b> Modeling the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="SamplingDistns.html"><a href="SamplingDistns.html#using-a-model-for-the-sampling-distributions-confidence-intervals"><i class="fa fa-check"></i><b>6.4</b> Using a Model for the Sampling Distributions (Confidence Intervals)</a></li>
+<li class="chapter" data-level="6.5" data-path="SamplingDistns.html"><a href="SamplingDistns.html#bringing-it-all-together"><i class="fa fa-check"></i><b>6.5</b> Bringing it All Together</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="NullDistns.html"><a href="NullDistns.html"><i class="fa fa-check"></i><b>7</b> Quantifying the Evidence (Rejecting Bad Models)</a><ul>
+<li class="chapter" data-level="7.1" data-path="NullDistns.html"><a href="NullDistns.html#some-subtleties"><i class="fa fa-check"></i><b>7.1</b> Some Subtleties</a></li>
+<li class="chapter" data-level="7.2" data-path="NullDistns.html"><a href="NullDistns.html#assuming-the-null-hypothesis"><i class="fa fa-check"></i><b>7.2</b> Assuming the Null Hypothesis</a></li>
+<li class="chapter" data-level="7.3" data-path="NullDistns.html"><a href="NullDistns.html#using-the-null-distribution"><i class="fa fa-check"></i><b>7.3</b> Using the Null Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="NullDistns.html"><a href="NullDistns.html#sampling-distributions-vs.null-distributions"><i class="fa fa-check"></i><b>7.4</b> Sampling Distributions vs. Null Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="RecapLanguage.html"><a href="RecapLanguage.html"><i class="fa fa-check"></i><b>8</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="8.1" data-path="RecapLanguage.html"><a href="RecapLanguage.html#framing-the-question-fundamental-idea-i"><i class="fa fa-check"></i><b>8.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="8.2" data-path="RecapLanguage.html"><a href="RecapLanguage.html#getting-good-data-fundamental-idea-ii"><i class="fa fa-check"></i><b>8.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="8.3" data-path="RecapLanguage.html"><a href="RecapLanguage.html#presenting-the-data-fundamental-idea-iii"><i class="fa fa-check"></i><b>8.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="8.4" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv"><i class="fa fa-check"></i><b>8.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="8.5" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-evidence-fundamental-idea-v"><i class="fa fa-check"></i><b>8.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="8.6" data-path="RecapLanguage.html"><a href="RecapLanguage.html#summary"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>II Unit II: Implementing the Logic of Inference for a Single Mean</b></span></li>
+<li class="chapter" data-level="9" data-path="CaseBabies.html"><a href="CaseBabies.html"><i class="fa fa-check"></i><b>9</b> Case Study: Birth Weights of Babies</a></li>
+<li class="chapter" data-level="10" data-path="MeanModels.html"><a href="MeanModels.html"><i class="fa fa-check"></i><b>10</b> Model for the Data Generating Process</a><ul>
+<li class="chapter" data-level="10.1" data-path="MeanModels.html"><a href="MeanModels.html#general-formulation"><i class="fa fa-check"></i><b>10.1</b> General Formulation</a></li>
+<li class="chapter" data-level="10.2" data-path="MeanModels.html"><a href="MeanModels.html#statistical-model-for-a-quantitative-response-with-no-predictors"><i class="fa fa-check"></i><b>10.2</b> Statistical Model for a Quantitative Response with No Predictors</a></li>
+<li class="chapter" data-level="10.3" data-path="MeanModels.html"><a href="MeanModels.html#conditions-on-the-error-distribution"><i class="fa fa-check"></i><b>10.3</b> Conditions on the Error Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="SingleConfInt.html"><a href="SingleConfInt.html"><i class="fa fa-check"></i><b>11</b> Estimating with Confidence</a></li>
+<li class="chapter" data-level="12" data-path="SingleTeststat.html"><a href="SingleTeststat.html"><i class="fa fa-check"></i><b>12</b> Estimating with Confidence</a><ul>
+<li class="chapter" data-level="12.1" data-path="SingleTeststat.html"><a href="SingleTeststat.html#standardized-statistics"><i class="fa fa-check"></i><b>12.1</b> Standardized Statistics</a></li>
+<li class="chapter" data-level="12.2" data-path="SingleTeststat.html"><a href="SingleTeststat.html#computing-the-p-value"><i class="fa fa-check"></i><b>12.2</b> Computing the P-value</a></li>
+</ul></li>
+<li class="part"><span><b>III Unit III: Modeling the Average Response as a Function of a Continuous Predictor</b></span></li>
+<li class="chapter" data-level="13" data-path="CaseGreece.html"><a href="CaseGreece.html"><i class="fa fa-check"></i><b>13</b> Case Study: Seismic Activity in Greece</a></li>
+<li class="chapter" data-level="14" data-path="Regquestions.html"><a href="Regquestions.html"><i class="fa fa-check"></i><b>14</b> Myriad of Potential Questions</a></li>
+<li class="chapter" data-level="15" data-path="Regdata.html"><a href="Regdata.html"><i class="fa fa-check"></i><b>15</b> Nature of Collecting Multivariable Data</a></li>
+<li class="chapter" data-level="16" data-path="Regsummaries.html"><a href="Regsummaries.html"><i class="fa fa-check"></i><b>16</b> Summarizing Multivariable Data</a><ul>
+<li class="chapter" data-level="16.1" data-path="Regsummaries.html"><a href="Regsummaries.html#characterizing-the-marginal-relationship-of-two-quantitative-variables"><i class="fa fa-check"></i><b>16.1</b> Characterizing the Marginal Relationship of Two Quantitative Variables</a></li>
+<li class="chapter" data-level="16.2" data-path="Regsummaries.html"><a href="Regsummaries.html#visualizing-the-impact-of-a-third-variable-on-the-marginal-relationship"><i class="fa fa-check"></i><b>16.2</b> Visualizing the Impact of a Third Variable on the Marginal Relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="Regmodel.html"><a href="Regmodel.html"><i class="fa fa-check"></i><b>17</b> Building our Statistical Model</a><ul>
+<li class="chapter" data-level="17.1" data-path="Regmodel.html"><a href="Regmodel.html#statistical-model-for-a-quantitative-response-and-quantitative-predictor"><i class="fa fa-check"></i><b>17.1</b> Statistical Model for A Quantitative Response and Quantitative Predictor</a></li>
+<li class="chapter" data-level="17.2" data-path="Regmodel.html"><a href="Regmodel.html#using-a-categorical-predictor"><i class="fa fa-check"></i><b>17.2</b> Using a Categorical Predictor</a></li>
+<li class="chapter" data-level="17.3" data-path="Regmodel.html"><a href="Regmodel.html#estimating-the-parameters"><i class="fa fa-check"></i><b>17.3</b> Estimating the Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="Regconditions.html"><a href="Regconditions.html"><i class="fa fa-check"></i><b>18</b> Conditions on the Error Term of a Regression Model</a><ul>
+<li class="chapter" data-level="18.1" data-path="Regconditions.html"><a href="Regconditions.html#correctly-specified-model"><i class="fa fa-check"></i><b>18.1</b> Correctly Specified Model</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="Regconditions.html"><a href="Regconditions.html#interpreting-the-parameters"><i class="fa fa-check"></i><b>18.1.1</b> Interpreting the Parameters</a></li>
+<li class="chapter" data-level="18.1.2" data-path="Regconditions.html"><a href="Regconditions.html#embedding-our-question-in-a-statistical-framework"><i class="fa fa-check"></i><b>18.1.2</b> Embedding our Question in a Statistical Framework</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="Regconditions.html"><a href="Regconditions.html#additional-conditions"><i class="fa fa-check"></i><b>18.2</b> Additional Conditions</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="Regconditions.html"><a href="Regconditions.html#modeling-the-population"><i class="fa fa-check"></i><b>18.2.1</b> Modeling the Population</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="Regconditions.html"><a href="Regconditions.html#adding-the-assumption-of-normality"><i class="fa fa-check"></i><b>18.3</b> Adding the Assumption of Normality</a></li>
+<li class="chapter" data-level="18.4" data-path="Regconditions.html"><a href="Regconditions.html#classical-regression-model"><i class="fa fa-check"></i><b>18.4</b> Classical Regression Model</a></li>
+<li class="chapter" data-level="18.5" data-path="Regconditions.html"><a href="Regconditions.html#imposing-the-conditions"><i class="fa fa-check"></i><b>18.5</b> Imposing the Conditions</a></li>
+<li class="chapter" data-level="18.6" data-path="Regconditions.html"><a href="Regconditions.html#recap"><i class="fa fa-check"></i><b>18.6</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="Regquality.html"><a href="Regquality.html"><i class="fa fa-check"></i><b>19</b> Quantifying the Quality of a Model Fit</a><ul>
+<li class="chapter" data-level="19.1" data-path="Regquality.html"><a href="Regquality.html#partitioning-variability"><i class="fa fa-check"></i><b>19.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="19.2" data-path="Regquality.html"><a href="Regquality.html#hypothesis-testing"><i class="fa fa-check"></i><b>19.2</b> Hypothesis Testing</a></li>
+<li class="chapter" data-level="19.3" data-path="Regquality.html"><a href="Regquality.html#r-squared"><i class="fa fa-check"></i><b>19.3</b> R-squared</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="Regassessment.html"><a href="Regassessment.html"><i class="fa fa-check"></i><b>20</b> Assessing Modeling Conditions</a><ul>
+<li class="chapter" data-level="20.1" data-path="Regassessment.html"><a href="Regassessment.html#residuals"><i class="fa fa-check"></i><b>20.1</b> Residuals</a></li>
+<li class="chapter" data-level="20.2" data-path="Regassessment.html"><a href="Regassessment.html#assessing-mean-0"><i class="fa fa-check"></i><b>20.2</b> Assessing Mean 0</a></li>
+<li class="chapter" data-level="20.3" data-path="Regassessment.html"><a href="Regassessment.html#assessing-independence"><i class="fa fa-check"></i><b>20.3</b> Assessing Independence</a></li>
+<li class="chapter" data-level="20.4" data-path="Regassessment.html"><a href="Regassessment.html#assessing-homoskedasticity"><i class="fa fa-check"></i><b>20.4</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="20.5" data-path="Regassessment.html"><a href="Regassessment.html#assessing-normality"><i class="fa fa-check"></i><b>20.5</b> Assessing Normality</a></li>
+<li class="chapter" data-level="20.6" data-path="Regassessment.html"><a href="Regassessment.html#general-tips-for-assessing-assumptions"><i class="fa fa-check"></i><b>20.6</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="Regextensions.html"><a href="Regextensions.html"><i class="fa fa-check"></i><b>21</b> Extending the Regression Model</a><ul>
+<li class="chapter" data-level="21.1" data-path="Regextensions.html"><a href="Regextensions.html#including-multiple-precitors"><i class="fa fa-check"></i><b>21.1</b> Including Multiple Precitors</a><ul>
+<li class="chapter" data-level="21.1.1" data-path="Regextensions.html"><a href="Regextensions.html#general-model-formulation"><i class="fa fa-check"></i><b>21.1.1</b> General Model Formulation</a></li>
+<li class="chapter" data-level="21.1.2" data-path="Regextensions.html"><a href="Regextensions.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>21.1.2</b> Interpretation of Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="Regextensions.html"><a href="Regextensions.html#modifying-an-effect"><i class="fa fa-check"></i><b>21.2</b> Modifying an Effect</a><ul>
+<li class="chapter" data-level="21.2.1" data-path="Regextensions.html"><a href="Regextensions.html#inference-for-effect-modifications"><i class="fa fa-check"></i><b>21.2.1</b> Inference for Effect Modifications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="Regrecap.html"><a href="Regrecap.html"><i class="fa fa-check"></i><b>22</b> Puting it All Together</a><ul>
+<li class="chapter" data-level="22.1" data-path="Regrecap.html"><a href="Regrecap.html#graphical-summary"><i class="fa fa-check"></i><b>22.1</b> Graphical Summary</a></li>
+<li class="chapter" data-level="22.2" data-path="Regrecap.html"><a href="Regrecap.html#development-of-statistical-model"><i class="fa fa-check"></i><b>22.2</b> Development of Statistical Model</a></li>
+<li class="chapter" data-level="22.3" data-path="Regrecap.html"><a href="Regrecap.html#assessment-of-conditions"><i class="fa fa-check"></i><b>22.3</b> Assessment of Conditions</a></li>
+<li class="chapter" data-level="22.4" data-path="Regrecap.html"><a href="Regrecap.html#summary-of-model-fit"><i class="fa fa-check"></i><b>22.4</b> Summary of Model Fit</a></li>
+</ul></li>
+<li class="part"><span><b>IV Unit IV: Comparing the Average Response Across Groups</b></span></li>
+<li class="chapter" data-level="23" data-path="CaseOrganic.html"><a href="CaseOrganic.html"><i class="fa fa-check"></i><b>23</b> Case Study: Organic Foods and Superior Morals</a></li>
+<li class="chapter" data-level="24" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html"><i class="fa fa-check"></i><b>24</b> Framing the Question</a><ul>
+<li class="chapter" data-level="24.1" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html#general-setting"><i class="fa fa-check"></i><b>24.1</b> General Setting</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="ANOVAdata.html"><a href="ANOVAdata.html"><i class="fa fa-check"></i><b>25</b> Study Design</a><ul>
+<li class="chapter" data-level="25.1" data-path="ANOVAdata.html"><a href="ANOVAdata.html#aspects-of-a-well-designed-experiment"><i class="fa fa-check"></i><b>25.1</b> Aspects of a Well Designed Experiment</a></li>
+<li class="chapter" data-level="25.2" data-path="ANOVAdata.html"><a href="ANOVAdata.html#collecting-observational-data"><i class="fa fa-check"></i><b>25.2</b> Collecting Observational Data</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="ANOVAsummaries.html"><a href="ANOVAsummaries.html"><i class="fa fa-check"></i><b>26</b> Presenting the Data</a></li>
+<li class="chapter" data-level="27" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html"><i class="fa fa-check"></i><b>27</b> Building the Statistical Model</a><ul>
+<li class="chapter" data-level="27.1" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#statistical-model-for-a-quantitative-response-and-a-categorical-predictor"><i class="fa fa-check"></i><b>27.1</b> Statistical Model for A Quantitative Response and a Categorical Predictor</a></li>
+<li class="chapter" data-level="27.2" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#conditions-on-the-error-distribution-1"><i class="fa fa-check"></i><b>27.2</b> Conditions on the Error Distribution</a></li>
+<li class="chapter" data-level="27.3" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#classical-anova-model"><i class="fa fa-check"></i><b>27.3</b> Classical ANOVA Model</a></li>
+<li class="chapter" data-level="27.4" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#imposing-the-conditions-1"><i class="fa fa-check"></i><b>27.4</b> Imposing the Conditions</a></li>
+<li class="chapter" data-level="27.5" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#recap-1"><i class="fa fa-check"></i><b>27.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html"><i class="fa fa-check"></i><b>28</b> Quantifying the Evidence</a><ul>
+<li class="chapter" data-level="28.1" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#partitioning-variability-1"><i class="fa fa-check"></i><b>28.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="28.2" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#forming-a-standardized-test-statistic"><i class="fa fa-check"></i><b>28.2</b> Forming a Standardized Test Statistic</a></li>
+<li class="chapter" data-level="28.3" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#link-to-regression-analysis"><i class="fa fa-check"></i><b>28.3</b> Link to Regression Analysis</a></li>
+<li class="chapter" data-level="28.4" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#obtaining-a-p-value"><i class="fa fa-check"></i><b>28.4</b> Obtaining a P-value</a></li>
+<li class="chapter" data-level="28.5" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#anova-table"><i class="fa fa-check"></i><b>28.5</b> ANOVA Table</a></li>
+<li class="chapter" data-level="28.6" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#simulating-the-null-distribution"><i class="fa fa-check"></i><b>28.6</b> Simulating the Null Distribution</a></li>
+<li class="chapter" data-level="28.7" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#recap-2"><i class="fa fa-check"></i><b>28.7</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html"><i class="fa fa-check"></i><b>29</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="29.1" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-independence-1"><i class="fa fa-check"></i><b>29.1</b> Assessing Independence</a></li>
+<li class="chapter" data-level="29.2" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-homoskedasticity-1"><i class="fa fa-check"></i><b>29.2</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="29.3" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-normality-1"><i class="fa fa-check"></i><b>29.3</b> Assessing Normality</a></li>
+<li class="chapter" data-level="29.4" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#general-tips-for-assessing-assumptions-1"><i class="fa fa-check"></i><b>29.4</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="ANOVArecap.html"><a href="ANOVArecap.html"><i class="fa fa-check"></i><b>30</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="30.1" data-path="ANOVArecap.html"><a href="ANOVArecap.html#framing-the-question-fundamental-idea-i-1"><i class="fa fa-check"></i><b>30.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="30.2" data-path="ANOVArecap.html"><a href="ANOVArecap.html#getting-good-data-fundamental-idea-ii-1"><i class="fa fa-check"></i><b>30.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="30.3" data-path="ANOVArecap.html"><a href="ANOVArecap.html#presenting-the-data-fundamental-idea-iii-1"><i class="fa fa-check"></i><b>30.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="30.4" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv-1"><i class="fa fa-check"></i><b>30.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="30.5" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-evidence-fundamental-idea-v-1"><i class="fa fa-check"></i><b>30.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="30.6" data-path="ANOVArecap.html"><a href="ANOVArecap.html#conclusion"><i class="fa fa-check"></i><b>30.6</b> Conclusion</a></li>
+</ul></li>
+<li class="part"><span><b>V Unit V: Comparing the Average Response Across Correlated Groups</b></span></li>
+<li class="chapter" data-level="31" data-path="CaseYogurt.html"><a href="CaseYogurt.html"><i class="fa fa-check"></i><b>31</b> Case Study: Paying a Premium for the Experience</a></li>
+<li class="chapter" data-level="32" data-path="Blockquestions.html"><a href="Blockquestions.html"><i class="fa fa-check"></i><b>32</b> Framing the Question</a><ul>
+<li class="chapter" data-level="32.1" data-path="Blockquestions.html"><a href="Blockquestions.html#general-setting-1"><i class="fa fa-check"></i><b>32.1</b> General Setting</a></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="Blockdata.html"><a href="Blockdata.html"><i class="fa fa-check"></i><b>33</b> Correlated Data</a></li>
+<li class="chapter" data-level="34" data-path="Blocksummaries.html"><a href="Blocksummaries.html"><i class="fa fa-check"></i><b>34</b> Presenting Correlated Data</a></li>
+<li class="chapter" data-level="35" data-path="Blockmodel.html"><a href="Blockmodel.html"><i class="fa fa-check"></i><b>35</b> Analyzing Correlated Responses</a><ul>
+<li class="chapter" data-level="35.1" data-path="Blockmodel.html"><a href="Blockmodel.html#statistical-model-for-correlated-responses"><i class="fa fa-check"></i><b>35.1</b> Statistical Model for Correlated Responses</a></li>
+<li class="chapter" data-level="35.2" data-path="Blockmodel.html"><a href="Blockmodel.html#conditions-on-the-error-distribution-2"><i class="fa fa-check"></i><b>35.2</b> Conditions on the Error Distribution</a></li>
+<li class="chapter" data-level="35.3" data-path="Blockmodel.html"><a href="Blockmodel.html#conditions-on-the-random-effects"><i class="fa fa-check"></i><b>35.3</b> Conditions on the Random Effects</a></li>
+<li class="chapter" data-level="35.4" data-path="Blockmodel.html"><a href="Blockmodel.html#classical-repeated-measures-anova-model"><i class="fa fa-check"></i><b>35.4</b> Classical Repeated Measures ANOVA Model</a></li>
+<li class="chapter" data-level="35.5" data-path="Blockmodel.html"><a href="Blockmodel.html#recap-3"><i class="fa fa-check"></i><b>35.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="36" data-path="Blockteststat.html"><a href="Blockteststat.html"><i class="fa fa-check"></i><b>36</b> Quantifying the Evidence</a><ul>
+<li class="chapter" data-level="36.1" data-path="Blockteststat.html"><a href="Blockteststat.html#partitioning-variability-2"><i class="fa fa-check"></i><b>36.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="36.2" data-path="Blockteststat.html"><a href="Blockteststat.html#forming-a-standardized-test-statistic-1"><i class="fa fa-check"></i><b>36.2</b> Forming a Standardized Test Statistic</a></li>
+<li class="chapter" data-level="36.3" data-path="Blockteststat.html"><a href="Blockteststat.html#anova-table-1"><i class="fa fa-check"></i><b>36.3</b> ANOVA Table</a></li>
+<li class="chapter" data-level="36.4" data-path="Blockteststat.html"><a href="Blockteststat.html#recap-4"><i class="fa fa-check"></i><b>36.4</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="37" data-path="Blockassessment.html"><a href="Blockassessment.html"><i class="fa fa-check"></i><b>37</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="37.1" data-path="Blockassessment.html"><a href="Blockassessment.html#assessing-independence-2"><i class="fa fa-check"></i><b>37.1</b> Assessing Independence</a></li>
+<li class="chapter" data-level="37.2" data-path="Blockassessment.html"><a href="Blockassessment.html#assessing-identical-distribution"><i class="fa fa-check"></i><b>37.2</b> Assessing Identical Distribution</a></li>
+<li class="chapter" data-level="37.3" data-path="Blockassessment.html"><a href="Blockassessment.html#assessing-normality-2"><i class="fa fa-check"></i><b>37.3</b> Assessing Normality</a></li>
+<li class="chapter" data-level="37.4" data-path="Blockassessment.html"><a href="Blockassessment.html#general-tips-for-assessing-assumptions-2"><i class="fa fa-check"></i><b>37.4</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="38" data-path="Blockrecap.html"><a href="Blockrecap.html"><i class="fa fa-check"></i><b>38</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="38.1" data-path="Blockrecap.html"><a href="Blockrecap.html#framing-the-question-fundamental-idea-i-2"><i class="fa fa-check"></i><b>38.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="38.2" data-path="Blockrecap.html"><a href="Blockrecap.html#getting-good-data-fundamental-idea-ii-2"><i class="fa fa-check"></i><b>38.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="38.3" data-path="Blockrecap.html"><a href="Blockrecap.html#presenting-the-data-fundamental-idea-iii-2"><i class="fa fa-check"></i><b>38.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="38.4" data-path="Blockrecap.html"><a href="Blockrecap.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv-2"><i class="fa fa-check"></i><b>38.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="38.5" data-path="Blockrecap.html"><a href="Blockrecap.html#quantifying-the-evidence-fundamental-idea-v-2"><i class="fa fa-check"></i><b>38.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="38.6" data-path="Blockrecap.html"><a href="Blockrecap.html#conclusion-1"><i class="fa fa-check"></i><b>38.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Foundations for Engineers and Scientists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Regextensions" class="section level1">
+<h1><span class="header-section-number">21</span> Extending the Regression Model</h1>
+<p>The last several chapters have developed an approach for modeling a quantitative response as a function of a single quantitative predictor:</p>
+<p><span class="math display">\[(\text{Response})_i = \beta_0 + \beta_1 (\text{Predictor})_i + \epsilon_i\]</span></p>
+<p>This model is well suited for addressing questions about the marginal relationship between two variables. However, as we saw in Chapter <a href="Regquestions.html#Regquestions">14</a>, not all our questions are about the marginal relationship. The real power of the model in Equation <a href="MeanModels.html#eq:general-model">(10.1)</a> is our ability to generalize it to encompass multiple predictors and various types of relationships. In this chapter, we briefly describe how to extend the regression model to address some additional questions of interest.</p>
+<div id="including-multiple-precitors" class="section level2">
+<h2><span class="header-section-number">21.1</span> Including Multiple Precitors</h2>
+<p>The real power of the model in Equation <a href="MeanModels.html#eq:general-model">(10.1)</a> is our ability to generalize it to encompass multiple predictors and various types of relationships. That is, suppose we consider not the marginal relationship between the bracketed duration and the magnitude of the corresponding earthquake but to one <em>isolating</em> the effect of the magnitude on the bracketed duration:</p>
+<blockquote>
+<p>If two earthquakes with different magnitudes occur in the same location, would we expect the same bracketed duration regardless of their magnitudes?</p>
+</blockquote>
+<p>This particular question requires a model which has multiple predictors. What bracketed duration would we expect given the magnitude and epicentral distance (to capture earthquakes occurring in the same location)? We extend the simple linear model to include an additional predictor:</p>
+<span class="math display" id="eq:regextensions-mlr">\[\begin{equation}
+  (\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \beta_2(\text{Epicentral Distance})_i + \epsilon_i
+  \tag{21.1}
+\end{equation}\]</span>
+<p>This more complex model is more difficult to visualize, but conceptually is similar to the simple linear model. Given a value for the magnitude and epicentral distance, we can predict the bracketed duration; our model accounts for the fact that these two variables together will not explain the entire data generating process. There will still be unexplained variability. One way of envisioning what this model does is to think about taking the linear relationship we previously had and observing that we are now saying that the <em>model</em> differs for each group of observations which have a different epicentral distance. For example, consider all locations which were located 10 km away from the center of an earthquake; we would have that Equation <a href="Regextensions.html#eq:regextensions-mlr">(21.1)</a> becomes <span class="math display">\[
+\begin{aligned}
+(\text{Bracketed Duration})_i &amp;= \beta_0 + \beta_1(\text{Magnitude})_i + \beta_2(10) + \epsilon_i \\
+  &amp;= \left(\beta_0 + 10\beta_2\right) + \beta_1(\text{Magnitude})_i + \epsilon_i
+\end{aligned}
+\]</span></p>
+<p>Similarly, if we only consider locations which were located 32 km away from the center of an earthquake, then Equation <a href="Regextensions.html#eq:regextensions-mlr">(21.1)</a> becomes</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\text{Bracketed Duration})_i &amp;= \beta_0 + \beta_1(\text{Magnitude})_i + \beta_2(32) + \epsilon_i \\
+  &amp;= \left(\beta_0 + 32\beta_2\right) + \beta_1(\text{Magnitude})_i + \epsilon_i
+\end{aligned}
+\]</span></p>
+<p>Figure <a href="Regextensions.html#fig:regextensions-mlr-plot">21.1</a> represents this graphically for a range of potential epicentral distances. Essentially, the relationship between the bracketed duration and the magnitude shifts depending on the epicentral distance. The overall trend is similar (the lines are parallel), but where the line is located is really dependent upon the distance of the location from the earthquake.</p>
+<div class="figure" style="text-align: center"><span id="fig:regextensions-mlr-plot"></span>
+<img src="images/regextensions-mlr-plot-1.png" alt="Relationship between bracketed duration and the magnitude of an earthquake after also considering the epicentral distance from an earthquake. Lines estimating this relationship for various values of the epicentral distance are overlayed." width="80%" />
+<p class="caption">
+Figure 21.1: Relationship between bracketed duration and the magnitude of an earthquake after also considering the epicentral distance from an earthquake. Lines estimating this relationship for various values of the epicentral distance are overlayed.
+</p>
+</div>
+<p>This model has what may appear as an obvious requirement; you cannot use this model to predict the bracketed duration without specifying <em>both</em> the magnitude of the earthquake and the epicentral distance of the location. However, it also isolates the effect of the magnitude above and beyond the epicentral distance.</p>
+<div id="general-model-formulation" class="section level3">
+<h3><span class="header-section-number">21.1.1</span> General Model Formulation</h3>
+<p>Nothing limits us from the inclusion of several predictors. Each predictor is simply added to the model. That is, a model which predicts a quantitative response as a function of <span class="math inline">\(p\)</span> predictors has the mathematical form</p>
+<p><span class="math display">\[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor})_{j,i} + \epsilon_i\]</span></p>
+<p>where some of the predictors may be indicator variables used to capture a categorical variable. The problem, of course, is that the parameters (the <span class="math inline">\(\beta\)</span>’s in the model) are unknown. However, we can use the method of leasst squares to estimate each of the parameters simultaneously.</p>
+
+<div class="definition">
+<p><span id="def:defn-mlr-least-squares-estimates" class="definition"><strong>Definition 21.1  (General Least Squares Estimates)  </strong></span>The least squares estimates for a general linear model are the values of <span class="math inline">\(\beta_0, \beta_1, \beta_2, \dotsc, \beta_p\)</span> which minimize the quantity</p>
+<p><span class="math display">\[\sum_{i=1}^n \left((\text{Response})_i - \beta_0 - \sum_{j=1}^{p} \beta_j(\text{Predictor})_{j,i}\right)^2\]</span></p>
+<p>where the residual variance is estimated by</p>
+<span class="math display">\[\frac{1}{n-p} \sum_{i=1}^n \left((\text{Response})_i - \widehat{\beta}_0 - \sum_{j=1}^{p} \widehat{\beta}_j(\text{Predictor})_{j,i}\right)^2\]</span>
+</div>
+
+</div>
+<div id="interpretation-of-parameters" class="section level3">
+<h3><span class="header-section-number">21.1.2</span> Interpretation of Parameters</h3>
+<p>The same conditions described in Chapter <a href="Regconditions.html#Regconditions">18</a> can be placed on the stochastic portion of the model. Just as with the simple linear model, assuming the model is correctly specified provides us with an interpretation of each of the parameters.</p>
+<p>Consider the model defined in Equation <a href="Regextensions.html#eq:regextensions-mlr">(21.1)</a>. If we assume that the error in the bracketed duration has an average of 0 regardless of the magnitude of the corresponding earthquake and distance of the location to the center of the earthquake, then notice that we are saying that the formula</p>
+<p><span class="math display">\[\beta_0 + \beta_1(\text{Magnitude}) + \beta_2(\text{Epicentral Distance})\]</span></p>
+<p>defines the average bracketed duration (given the magnitude of the earthquake and epicentral distance of the location). Therefore, we can interpet the value of <span class="math inline">\(\beta_2\)</span> as the change in the average bracketed duration given a 1-kilometer increase in the distance a location is from the center of the earthquake <em>for all locations which experience an earthquake of the same magnitude</em>. This last part is important. In order to interpret one coefficient, we must hold the value of all other predictors fixed.</p>
+
+<div class="rmdtip">
+For the general linear model, the intercept <span class="math inline">\(\beta_0\)</span> is the average response when <em>all</em> predictors are set equal to 0. The <span class="math inline">\(j\)</span>-th slope <span class="math inline">\(\beta_j\)</span> represents the average change in the response associated with a 1-unit increase in the <span class="math inline">\(j\)</span>-th predictor holding the value of all other predictors constant.
+</div>
+
+<p>This phrase “holding the value of all other predictors constant” has extreme power. It is this understanding of how the parameters are interpreted that we are able to take our first steps toward addressing confounding. For example, consider the model in Equation <a href="Regextensions.html#eq:regextensions-mlr">(21.1)</a>.</p>
+<p>Using least squares, we estimate that for every kilometer further the epicenter of the earthquake is, we can expect the brackted duration to decrease by 0.08 seconds, on average. Someone might argue as follows: “This is not a controlled experiment; therefore, while there is a relationship here, it is possible that what is really happening is that earthquakes which were further away tended to also be smaller in magnitude. Therefore, it is not the distance that is driving this relationship but the magnitude of the earthquake.” Here, this individual is saying that magnitude is a confounder — related to both the bracketed duration (response) and the variable of interest (distance from the epicenter). If we had fit a marginal model, this would be a valid concern. However, remember our interpretation of <span class="math inline">\(\beta_2\)</span> (and our estimate of it). Our fit suggests that for every kilometer further the epicenter of the earthquake is, we can expect the bracketed duration to decrease by 0.08 seconds, on average, <em>holding the magnitude of the earthquake constant</em>. Therefore, since this estimate is comparing two earthquakes of the same magnitude, magnitude cannot be confounding the relationship observed. We have isolated the effect of the epicentral distance.</p>
+<p>Our solution to confounding is to incorporate the relationship between the confounder and the response into our model. Then, any remaining variables cannot be affected by the confounder. Of course this has one major limitation — we cannot account for any variables which are not recorded.</p>
+<p>There are entire texts devoted to this topic. Here, we simply emphasize that regression models allow us to control for the confounders we have observed. The relationships are “adjusted for” these confounders due to the interpretation that a coefficient is the effect “holding all other predictors constant.” Regression models allow us to compare similar groups, which are balanced on these confounders, after the fact (instead of having addressed confounding through the design of the study).</p>
+</div>
+</div>
+<div id="modifying-an-effect" class="section level2">
+<h2><span class="header-section-number">21.2</span> Modifying an Effect</h2>
+<p>We now have a flexible strategy for modeling a quantitative response: <span class="math display">\[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor})_{j,i} + \epsilon_i\]</span></p>
+<p>However, there is one type of question we have not yet addressed — assessing the interplay between two variables on the response.</p>
+<p>Consider the following question from the <a href="CaseGreece.html#CaseGreece">Seismic Activity Case Study</a>:</p>
+<blockquote>
+<p>Is the relationship between the bracketed distance and the magnitude different depending on whether the soil is rocky where the measurement is taken?</p>
+</blockquote>
+<p>This question explains the bracketed duration in terms of both the magnitude as well as whether the soil is rocky. A first pass at such a model might be</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\text{Bracketed Duration})_i &amp;= \beta_0 + \beta_1(\text{Magnitude})_i \\
+    &amp;\quad + \beta_2\mathbb{I}(\text{i-th observation has a Rocky soil}) + \epsilon_i
+\end{aligned}
+\]</span></p>
+<p>where we use an indicator variable to capture whether the soil is rocky. Exploring this model further, it suggests there are actually two equations combined into a single formula, depending on the soil type:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \text{Rocky Soil:} &amp;\quad (\text{Bracketed Duration})_i = \beta_0 + \beta_2 + \beta_1(\text{Magnitude})_i + \epsilon_i\\
+  \text{Other Soil:} &amp;\quad (\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \epsilon_i
+\end{aligned}
+\]</span></p>
+<p>Graphically, this is represented by two parallel lines (see Figure <a href="Regextensions.html#fig:regextensions-ind-plot">21.2</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:regextensions-ind-plot"></span>
+<img src="images/regextensions-ind-plot-1.png" alt="Relationship between the bracketed duration and magnitude for locations with rocky soil and those with other soil types." width="80%" />
+<p class="caption">
+Figure 21.2: Relationship between the bracketed duration and magnitude for locations with rocky soil and those with other soil types.
+</p>
+</div>
+<p>The lines are parallel because the coefficient associated with Magnitude is the same in each case: <span class="math inline">\(\beta_1\)</span>. That is, regardless of whether the soil is rocky, the change in the bracketed duration, on average, for each 1-unit increase in the magnitude of an earthquake is the same. Our question of interest is essentially, is there evidence that this is not the case? So, the above model actually represents the model under the null hypothesis of our current question. Under the null hypothesis, the effect of the magnitude on the bracketed duration (which captures the relationship between these two variables) is the same for regardless of soil condition. The question is, how do we form the alternative model, which allows the slope to look differently depending on soil type?</p>
+<p>Consider adding an additional term to our model above, yielding the following model: <span class="math display">\[
+\begin{aligned}
+  (\text{Bracketed Duration})_i &amp;= \beta_0 + \beta_1(\text{Magnitude})_i \\
+    &amp;\quad + \beta_2\mathbb{I}(\text{i-th observation has a Rocky soil}) \\
+    &amp;\quad + \beta_3\mathbb{I}(\text{i-th observation has a Rocky soil})(\text{Magnitude})_i + \epsilon_i
+\end{aligned}
+\]</span></p>
+<p>This additional term is formed by taking the product of the indicator variable with the variable magnitude; such a product is known as an <strong>interaction term</strong>.</p>
+
+<div class="definition">
+<span id="def:defn-interaction-term" class="definition"><strong>Definition 21.2  (Interaction Term)  </strong></span>The product of two variables in a regression model. The product allows the effect of one variable on the response to depend on another, essentially modifying the effect.
+</div>
+
+<p>In order to see the impact of adding the interaction term, let’s consider the model for each soil type: <span class="math display">\[
+\begin{aligned}
+  \text{Rocky Soil:} &amp;\quad (\text{Bracketed Duration})_i = \left(\beta_0 + \beta_2\right) + \left(\beta_1 + \beta_3\right)(\text{Magnitude})_i + \epsilon_i\\
+  \text{Other Soil:} &amp;\quad (\text{Bracketed Duration})_i = \beta_0 + \beta_1(\text{Magnitude})_i + \epsilon_i
+\end{aligned}
+\]</span></p>
+<p>Notice that in this revised model, not only is the intercept term different in each case, the slope term in front of the magnitude differs also. The model with the interaction term allows the effect of the magnitude on the bracketed duration to be modified by the soil type. That is, the effect differs across the soil type.</p>
+
+<div class="rmdtip">
+It is common to believe that the interaction term measures the effect between the two variables in the product. However, this is incorrect. The interaction term allows the effect of one variable in the product on the response to differ across the levels of the other variable in the product.
+</div>
+
+<p>Visually, this revised model allows two completely different relationships — depending on the soil type. This is shown in Figure <a href="Regextensions.html#fig:regextensions-int-plot">21.3</a>. The question of course is which of the two models is more appropriate. Is there actually evidence that the more complex model, which allows the relationship to differ for locations with different soil types, is required? Or, is the more simplistic model, which says the relationship is the same across all locations of different soil types, sufficient?</p>
+<div class="figure" style="text-align: center"><span id="fig:regextensions-int-plot"></span>
+<img src="images/regextensions-int-plot-1.png" alt="Relationship between bracketed duration and the magnitude of an earthquake after also considering the soil conditions of the measurement location.  The relationship between the bracketed duration and the magnitude is allowed to differ within each type of soil condition." width="80%" />
+<p class="caption">
+Figure 21.3: Relationship between bracketed duration and the magnitude of an earthquake after also considering the soil conditions of the measurement location. The relationship between the bracketed duration and the magnitude is allowed to differ within each type of soil condition.
+</p>
+</div>
+<div id="inference-for-effect-modifications" class="section level3">
+<h3><span class="header-section-number">21.2.1</span> Inference for Effect Modifications</h3>
+<p>We can capture our question of interest in the following hypotheses:</p>
+<blockquote>
+<p><span class="math inline">\(H_0: \beta_3 = 0\)</span><br />
+<span class="math inline">\(H_1: \beta_3 \neq 0\)</span></p>
+</blockquote>
+<p>Notice that if the null hypothesis were true, then the slope would be the same regardless of whether the soil was rocky because we resort to the earlier model which only allows the intercept to vary. However, if <span class="math inline">\(\beta_3\)</span> is nonzero, then the slope will differ for the rocky soil. So, under the null hypothesis, the lines are parallel; under the alternative hypothesis, the lines are not parallel.</p>
+<p>Conceptually, testing this model is just like testing any other. We can generate samples under the null hypothesis using our reduced model. For each sample, we can compute the standardized test statistic — a signal to noise ratio — measuring the signal in the data (in this case, the evidence for non-parallel lines). Doing this repeatedly gives us a null distribution allowing us to compute a p-value. Just as before, if the conditions of the classical regression model hold, then we can model the null distribution analytically using a probability model.</p>
+<p>This process relies on our ability to partition the variability. Remember that a model for the data-generating process simply specifies the various sources of variability. In this case, we have partitioned the variability into the following components:</p>
+<ul>
+<li>Magnitude: one reason the bracketed duration differs between two locations is the magnitude of the corresponding earthquake.</li>
+<li>Soil Conditions: another reason for a difference in the bracketed duration is due to the soil conditions at the measurement site.</li>
+<li>Interplay between Magnitude and Soil Conditions: in addition, we believe that the effect of the magnitude may differ for various soil conditions.</li>
+<li>Noise: even for two locations which have the same magnitude and soil conditions, there may be a difference in the bracketed duration. These differences we cannot resolve and attribute them simply to error.</li>
+</ul>
+<p>By partitioning the variability, we are able to compute a signal-to-noise ratio. For each component, we can essentially determine how much variability is explained relative to the noise in the process. So, despite talking about “regression models,” we are still just comparing variabilities; that is, we are still doing an analysis of variance.</p>
+<p>Specifically, Table <a href="Regextensions.html#tab:regextensions-fit">21.1</a> gives the estimates associated with each parameter, and Table <a href="Regextensions.html#tab:regextensions-anova">21.2</a> presents the corresponding ANOVA table. The ANOVA table shows how the variability is partitioned.</p>
+<table>
+<caption><span id="tab:regextensions-fit">Table 21.1: </span>Summary of the model fit explaining the bracketed duration as a function of both magnitude and soil condition at the measurement location. The effect of the magnitude was allowed to differ across soil conditions.</caption>
+<thead>
+<tr class="header">
+<th align="left">Term</th>
+<th align="right">Estimate</th>
+<th align="right">Standard Error</th>
+<th align="left">P-Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">-23.966</td>
+<td align="right">4.531</td>
+<td align="left">&lt; 0.001</td>
+</tr>
+<tr class="even">
+<td align="left">Magnitude</td>
+<td align="right">5.466</td>
+<td align="right">0.834</td>
+<td align="left">&lt; 0.001</td>
+</tr>
+<tr class="odd">
+<td align="left">Soil Conditions (Rocky)</td>
+<td align="right">11.925</td>
+<td align="right">9.181</td>
+<td align="left">0.197</td>
+</tr>
+<tr class="even">
+<td align="left">Interaction: Magnitude &amp; Rocky Soil</td>
+<td align="right">-2.614</td>
+<td align="right">1.626</td>
+<td align="left">0.111</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:regextensions-anova">Table 21.2: </span>ANOVA table corresponding to the model fit explaining the bracketed durationa s a function of both magnitude and soil condition at the measurement location. The effect of the magnitude was allowed to differ across soil conditions.</caption>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="right">DF</th>
+<th align="right">SS</th>
+<th align="right">MS</th>
+<th align="right">F</th>
+<th align="left">P-Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">1</td>
+<td align="right">678.562</td>
+<td align="right">678.562</td>
+<td align="right">27.980</td>
+<td align="left">&lt; 0.001</td>
+</tr>
+<tr class="even">
+<td align="left">Magnitude</td>
+<td align="right">1</td>
+<td align="right">1041.776</td>
+<td align="right">1041.776</td>
+<td align="right">42.957</td>
+<td align="left">&lt; 0.001</td>
+</tr>
+<tr class="odd">
+<td align="left">Soil Conditions</td>
+<td align="right">1</td>
+<td align="right">40.913</td>
+<td align="right">40.913</td>
+<td align="right">1.687</td>
+<td align="left">0.197</td>
+</tr>
+<tr class="even">
+<td align="left">Interaction: Magnitude &amp; Soil Conditions</td>
+<td align="right">1</td>
+<td align="right">62.663</td>
+<td align="right">62.663</td>
+<td align="right">2.584</td>
+<td align="left">0.111</td>
+</tr>
+<tr class="odd">
+<td align="left">Residuals</td>
+<td align="right">115</td>
+<td align="right">2788.908</td>
+<td align="right">24.251</td>
+<td align="right"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>In both tables, the p-values are computed assuming the conditions of the classical regression model are appropriate. In Table <a href="Regextensions.html#tab:regextensions-fit">21.1</a>, the p-value corresponds to testing if the corresponding parameter is 0, <em>holding all other parameters fixed</em>. Assuming the conditions for the classical regression model are appropriate, we have no evidence (p = 0.111) that the effect of the magnitude differs across the various soil conditions. That is, it is reasonable that the effect of the magnitude is similar for locations with and without rocky soil.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Regassessment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Regrecap.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": ["MA223CourseNotes.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

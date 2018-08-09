@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Statistical Foundations for Engineers and Scientists</title>
+  <meta name="description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Statistical Foundations for Engineers and Scientists" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Statistical Foundations for Engineers and Scientists" />
+  
+  <meta name="twitter:description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="Blocksummaries.html">
+<link rel="next" href="Blockteststat.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Modeling</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Unit I: Language and Logic of Inference</b></span></li>
+<li class="chapter" data-level="1" data-path="Basics.html"><a href="Basics.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1.1" data-path="Basics.html"><a href="Basics.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="1.2" data-path="Basics.html"><a href="Basics.html#anatomy-of-a-dataset"><i class="fa fa-check"></i><b>1.2</b> Anatomy of a Dataset</a></li>
+<li class="chapter" data-level="1.3" data-path="Basics.html"><a href="Basics.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.3</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="CaseDeepwater.html"><a href="CaseDeepwater.html"><i class="fa fa-check"></i><b>2</b> Case Study: Health Effects of the Deepwater Horizon Oil Spill</a></li>
+<li class="chapter" data-level="3" data-path="Questions.html"><a href="Questions.html"><i class="fa fa-check"></i><b>3</b> Asking the Right Questions</a><ul>
+<li class="chapter" data-level="3.1" data-path="Questions.html"><a href="Questions.html#characterizing-a-variable"><i class="fa fa-check"></i><b>3.1</b> Characterizing a Variable</a></li>
+<li class="chapter" data-level="3.2" data-path="Questions.html"><a href="Questions.html#framing-the-question"><i class="fa fa-check"></i><b>3.2</b> Framing the Question</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>4</b> Gathering the Evidence (Data Collection)</a><ul>
+<li class="chapter" data-level="4.1" data-path="Data.html"><a href="Data.html#what-makes-a-sample-reliable"><i class="fa fa-check"></i><b>4.1</b> What Makes a Sample Reliable</a></li>
+<li class="chapter" data-level="4.2" data-path="Data.html"><a href="Data.html#poor-methods-of-data-collection"><i class="fa fa-check"></i><b>4.2</b> Poor Methods of Data Collection</a></li>
+<li class="chapter" data-level="4.3" data-path="Data.html"><a href="Data.html#preferred-methods-of-sampling"><i class="fa fa-check"></i><b>4.3</b> Preferred Methods of Sampling</a></li>
+<li class="chapter" data-level="4.4" data-path="Data.html"><a href="Data.html#two-types-of-studies"><i class="fa fa-check"></i><b>4.4</b> Two Types of Studies</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Summaries.html"><a href="Summaries.html"><i class="fa fa-check"></i><b>5</b> Presenting the Evidence (Summarizing Data)</a><ul>
+<li class="chapter" data-level="5.1" data-path="Summaries.html"><a href="Summaries.html#characteristics-of-a-distribution-summarizing-a-single-variable"><i class="fa fa-check"></i><b>5.1</b> Characteristics of a Distribution (Summarizing a Single Variable)</a></li>
+<li class="chapter" data-level="5.2" data-path="Summaries.html"><a href="Summaries.html#summarizing-relationships"><i class="fa fa-check"></i><b>5.2</b> Summarizing Relationships</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="SamplingDistns.html"><a href="SamplingDistns.html"><i class="fa fa-check"></i><b>6</b> Assessing the Evidence (Quantifying the Variability in Estimates)</a><ul>
+<li class="chapter" data-level="6.1" data-path="SamplingDistns.html"><a href="SamplingDistns.html#conceptualizing-the-sampling-distribution"><i class="fa fa-check"></i><b>6.1</b> Conceptualizing the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="SamplingDistns.html"><a href="SamplingDistns.html#example-of-a-sampling-distribution"><i class="fa fa-check"></i><b>6.2</b> Example of a Sampling Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="SamplingDistns.html"><a href="SamplingDistns.html#modeling-the-sampling-distribution"><i class="fa fa-check"></i><b>6.3</b> Modeling the Sampling Distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="SamplingDistns.html"><a href="SamplingDistns.html#using-a-model-for-the-sampling-distributions-confidence-intervals"><i class="fa fa-check"></i><b>6.4</b> Using a Model for the Sampling Distributions (Confidence Intervals)</a></li>
+<li class="chapter" data-level="6.5" data-path="SamplingDistns.html"><a href="SamplingDistns.html#bringing-it-all-together"><i class="fa fa-check"></i><b>6.5</b> Bringing it All Together</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="NullDistns.html"><a href="NullDistns.html"><i class="fa fa-check"></i><b>7</b> Quantifying the Evidence (Rejecting Bad Models)</a><ul>
+<li class="chapter" data-level="7.1" data-path="NullDistns.html"><a href="NullDistns.html#some-subtleties"><i class="fa fa-check"></i><b>7.1</b> Some Subtleties</a></li>
+<li class="chapter" data-level="7.2" data-path="NullDistns.html"><a href="NullDistns.html#assuming-the-null-hypothesis"><i class="fa fa-check"></i><b>7.2</b> Assuming the Null Hypothesis</a></li>
+<li class="chapter" data-level="7.3" data-path="NullDistns.html"><a href="NullDistns.html#using-the-null-distribution"><i class="fa fa-check"></i><b>7.3</b> Using the Null Distribution</a></li>
+<li class="chapter" data-level="7.4" data-path="NullDistns.html"><a href="NullDistns.html#sampling-distributions-vs.null-distributions"><i class="fa fa-check"></i><b>7.4</b> Sampling Distributions vs. Null Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="RecapLanguage.html"><a href="RecapLanguage.html"><i class="fa fa-check"></i><b>8</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="8.1" data-path="RecapLanguage.html"><a href="RecapLanguage.html#framing-the-question-fundamental-idea-i"><i class="fa fa-check"></i><b>8.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="8.2" data-path="RecapLanguage.html"><a href="RecapLanguage.html#getting-good-data-fundamental-idea-ii"><i class="fa fa-check"></i><b>8.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="8.3" data-path="RecapLanguage.html"><a href="RecapLanguage.html#presenting-the-data-fundamental-idea-iii"><i class="fa fa-check"></i><b>8.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="8.4" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv"><i class="fa fa-check"></i><b>8.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="8.5" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-evidence-fundamental-idea-v"><i class="fa fa-check"></i><b>8.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="8.6" data-path="RecapLanguage.html"><a href="RecapLanguage.html#summary"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>II Unit II: Implementing the Logic of Inference for a Single Mean</b></span></li>
+<li class="chapter" data-level="9" data-path="CaseBabies.html"><a href="CaseBabies.html"><i class="fa fa-check"></i><b>9</b> Case Study: Birth Weights of Babies</a></li>
+<li class="chapter" data-level="10" data-path="MeanModels.html"><a href="MeanModels.html"><i class="fa fa-check"></i><b>10</b> Model for the Data Generating Process</a><ul>
+<li class="chapter" data-level="10.1" data-path="MeanModels.html"><a href="MeanModels.html#general-formulation"><i class="fa fa-check"></i><b>10.1</b> General Formulation</a></li>
+<li class="chapter" data-level="10.2" data-path="MeanModels.html"><a href="MeanModels.html#statistical-model-for-a-quantitative-response-with-no-predictors"><i class="fa fa-check"></i><b>10.2</b> Statistical Model for a Quantitative Response with No Predictors</a></li>
+<li class="chapter" data-level="10.3" data-path="MeanModels.html"><a href="MeanModels.html#conditions-on-the-error-distribution"><i class="fa fa-check"></i><b>10.3</b> Conditions on the Error Distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="SingleConfInt.html"><a href="SingleConfInt.html"><i class="fa fa-check"></i><b>11</b> Estimating with Confidence</a></li>
+<li class="chapter" data-level="12" data-path="SingleTeststat.html"><a href="SingleTeststat.html"><i class="fa fa-check"></i><b>12</b> Estimating with Confidence</a><ul>
+<li class="chapter" data-level="12.1" data-path="SingleTeststat.html"><a href="SingleTeststat.html#standardized-statistics"><i class="fa fa-check"></i><b>12.1</b> Standardized Statistics</a></li>
+<li class="chapter" data-level="12.2" data-path="SingleTeststat.html"><a href="SingleTeststat.html#computing-the-p-value"><i class="fa fa-check"></i><b>12.2</b> Computing the P-value</a></li>
+</ul></li>
+<li class="part"><span><b>III Unit III: Modeling the Average Response as a Function of a Continuous Predictor</b></span></li>
+<li class="chapter" data-level="13" data-path="CaseGreece.html"><a href="CaseGreece.html"><i class="fa fa-check"></i><b>13</b> Case Study: Seismic Activity in Greece</a></li>
+<li class="chapter" data-level="14" data-path="Regquestions.html"><a href="Regquestions.html"><i class="fa fa-check"></i><b>14</b> Myriad of Potential Questions</a></li>
+<li class="chapter" data-level="15" data-path="Regdata.html"><a href="Regdata.html"><i class="fa fa-check"></i><b>15</b> Nature of Collecting Multivariable Data</a></li>
+<li class="chapter" data-level="16" data-path="Regsummaries.html"><a href="Regsummaries.html"><i class="fa fa-check"></i><b>16</b> Summarizing Multivariable Data</a><ul>
+<li class="chapter" data-level="16.1" data-path="Regsummaries.html"><a href="Regsummaries.html#characterizing-the-marginal-relationship-of-two-quantitative-variables"><i class="fa fa-check"></i><b>16.1</b> Characterizing the Marginal Relationship of Two Quantitative Variables</a></li>
+<li class="chapter" data-level="16.2" data-path="Regsummaries.html"><a href="Regsummaries.html#visualizing-the-impact-of-a-third-variable-on-the-marginal-relationship"><i class="fa fa-check"></i><b>16.2</b> Visualizing the Impact of a Third Variable on the Marginal Relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="Regmodel.html"><a href="Regmodel.html"><i class="fa fa-check"></i><b>17</b> Building our Statistical Model</a><ul>
+<li class="chapter" data-level="17.1" data-path="Regmodel.html"><a href="Regmodel.html#statistical-model-for-a-quantitative-response-and-quantitative-predictor"><i class="fa fa-check"></i><b>17.1</b> Statistical Model for A Quantitative Response and Quantitative Predictor</a></li>
+<li class="chapter" data-level="17.2" data-path="Regmodel.html"><a href="Regmodel.html#using-a-categorical-predictor"><i class="fa fa-check"></i><b>17.2</b> Using a Categorical Predictor</a></li>
+<li class="chapter" data-level="17.3" data-path="Regmodel.html"><a href="Regmodel.html#estimating-the-parameters"><i class="fa fa-check"></i><b>17.3</b> Estimating the Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="Regconditions.html"><a href="Regconditions.html"><i class="fa fa-check"></i><b>18</b> Conditions on the Error Term of a Regression Model</a><ul>
+<li class="chapter" data-level="18.1" data-path="Regconditions.html"><a href="Regconditions.html#correctly-specified-model"><i class="fa fa-check"></i><b>18.1</b> Correctly Specified Model</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="Regconditions.html"><a href="Regconditions.html#interpreting-the-parameters"><i class="fa fa-check"></i><b>18.1.1</b> Interpreting the Parameters</a></li>
+<li class="chapter" data-level="18.1.2" data-path="Regconditions.html"><a href="Regconditions.html#embedding-our-question-in-a-statistical-framework"><i class="fa fa-check"></i><b>18.1.2</b> Embedding our Question in a Statistical Framework</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="Regconditions.html"><a href="Regconditions.html#additional-conditions"><i class="fa fa-check"></i><b>18.2</b> Additional Conditions</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="Regconditions.html"><a href="Regconditions.html#modeling-the-population"><i class="fa fa-check"></i><b>18.2.1</b> Modeling the Population</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="Regconditions.html"><a href="Regconditions.html#adding-the-assumption-of-normality"><i class="fa fa-check"></i><b>18.3</b> Adding the Assumption of Normality</a></li>
+<li class="chapter" data-level="18.4" data-path="Regconditions.html"><a href="Regconditions.html#classical-regression-model"><i class="fa fa-check"></i><b>18.4</b> Classical Regression Model</a></li>
+<li class="chapter" data-level="18.5" data-path="Regconditions.html"><a href="Regconditions.html#imposing-the-conditions"><i class="fa fa-check"></i><b>18.5</b> Imposing the Conditions</a></li>
+<li class="chapter" data-level="18.6" data-path="Regconditions.html"><a href="Regconditions.html#recap"><i class="fa fa-check"></i><b>18.6</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="Regquality.html"><a href="Regquality.html"><i class="fa fa-check"></i><b>19</b> Quantifying the Quality of a Model Fit</a><ul>
+<li class="chapter" data-level="19.1" data-path="Regquality.html"><a href="Regquality.html#partitioning-variability"><i class="fa fa-check"></i><b>19.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="19.2" data-path="Regquality.html"><a href="Regquality.html#hypothesis-testing"><i class="fa fa-check"></i><b>19.2</b> Hypothesis Testing</a></li>
+<li class="chapter" data-level="19.3" data-path="Regquality.html"><a href="Regquality.html#r-squared"><i class="fa fa-check"></i><b>19.3</b> R-squared</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="Regassessment.html"><a href="Regassessment.html"><i class="fa fa-check"></i><b>20</b> Assessing Modeling Conditions</a><ul>
+<li class="chapter" data-level="20.1" data-path="Regassessment.html"><a href="Regassessment.html#residuals"><i class="fa fa-check"></i><b>20.1</b> Residuals</a></li>
+<li class="chapter" data-level="20.2" data-path="Regassessment.html"><a href="Regassessment.html#assessing-mean-0"><i class="fa fa-check"></i><b>20.2</b> Assessing Mean 0</a></li>
+<li class="chapter" data-level="20.3" data-path="Regassessment.html"><a href="Regassessment.html#assessing-independence"><i class="fa fa-check"></i><b>20.3</b> Assessing Independence</a></li>
+<li class="chapter" data-level="20.4" data-path="Regassessment.html"><a href="Regassessment.html#assessing-homoskedasticity"><i class="fa fa-check"></i><b>20.4</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="20.5" data-path="Regassessment.html"><a href="Regassessment.html#assessing-normality"><i class="fa fa-check"></i><b>20.5</b> Assessing Normality</a></li>
+<li class="chapter" data-level="20.6" data-path="Regassessment.html"><a href="Regassessment.html#general-tips-for-assessing-assumptions"><i class="fa fa-check"></i><b>20.6</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="Regextensions.html"><a href="Regextensions.html"><i class="fa fa-check"></i><b>21</b> Extending the Regression Model</a><ul>
+<li class="chapter" data-level="21.1" data-path="Regextensions.html"><a href="Regextensions.html#including-multiple-precitors"><i class="fa fa-check"></i><b>21.1</b> Including Multiple Precitors</a><ul>
+<li class="chapter" data-level="21.1.1" data-path="Regextensions.html"><a href="Regextensions.html#general-model-formulation"><i class="fa fa-check"></i><b>21.1.1</b> General Model Formulation</a></li>
+<li class="chapter" data-level="21.1.2" data-path="Regextensions.html"><a href="Regextensions.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>21.1.2</b> Interpretation of Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="Regextensions.html"><a href="Regextensions.html#modifying-an-effect"><i class="fa fa-check"></i><b>21.2</b> Modifying an Effect</a><ul>
+<li class="chapter" data-level="21.2.1" data-path="Regextensions.html"><a href="Regextensions.html#inference-for-effect-modifications"><i class="fa fa-check"></i><b>21.2.1</b> Inference for Effect Modifications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="Regrecap.html"><a href="Regrecap.html"><i class="fa fa-check"></i><b>22</b> Puting it All Together</a><ul>
+<li class="chapter" data-level="22.1" data-path="Regrecap.html"><a href="Regrecap.html#graphical-summary"><i class="fa fa-check"></i><b>22.1</b> Graphical Summary</a></li>
+<li class="chapter" data-level="22.2" data-path="Regrecap.html"><a href="Regrecap.html#development-of-statistical-model"><i class="fa fa-check"></i><b>22.2</b> Development of Statistical Model</a></li>
+<li class="chapter" data-level="22.3" data-path="Regrecap.html"><a href="Regrecap.html#assessment-of-conditions"><i class="fa fa-check"></i><b>22.3</b> Assessment of Conditions</a></li>
+<li class="chapter" data-level="22.4" data-path="Regrecap.html"><a href="Regrecap.html#summary-of-model-fit"><i class="fa fa-check"></i><b>22.4</b> Summary of Model Fit</a></li>
+</ul></li>
+<li class="part"><span><b>IV Unit IV: Comparing the Average Response Across Groups</b></span></li>
+<li class="chapter" data-level="23" data-path="CaseOrganic.html"><a href="CaseOrganic.html"><i class="fa fa-check"></i><b>23</b> Case Study: Organic Foods and Superior Morals</a></li>
+<li class="chapter" data-level="24" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html"><i class="fa fa-check"></i><b>24</b> Framing the Question</a><ul>
+<li class="chapter" data-level="24.1" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html#general-setting"><i class="fa fa-check"></i><b>24.1</b> General Setting</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="ANOVAdata.html"><a href="ANOVAdata.html"><i class="fa fa-check"></i><b>25</b> Study Design</a><ul>
+<li class="chapter" data-level="25.1" data-path="ANOVAdata.html"><a href="ANOVAdata.html#aspects-of-a-well-designed-experiment"><i class="fa fa-check"></i><b>25.1</b> Aspects of a Well Designed Experiment</a></li>
+<li class="chapter" data-level="25.2" data-path="ANOVAdata.html"><a href="ANOVAdata.html#collecting-observational-data"><i class="fa fa-check"></i><b>25.2</b> Collecting Observational Data</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="ANOVAsummaries.html"><a href="ANOVAsummaries.html"><i class="fa fa-check"></i><b>26</b> Presenting the Data</a></li>
+<li class="chapter" data-level="27" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html"><i class="fa fa-check"></i><b>27</b> Building the Statistical Model</a><ul>
+<li class="chapter" data-level="27.1" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#statistical-model-for-a-quantitative-response-and-a-categorical-predictor"><i class="fa fa-check"></i><b>27.1</b> Statistical Model for A Quantitative Response and a Categorical Predictor</a></li>
+<li class="chapter" data-level="27.2" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#conditions-on-the-error-distribution-1"><i class="fa fa-check"></i><b>27.2</b> Conditions on the Error Distribution</a></li>
+<li class="chapter" data-level="27.3" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#classical-anova-model"><i class="fa fa-check"></i><b>27.3</b> Classical ANOVA Model</a></li>
+<li class="chapter" data-level="27.4" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#imposing-the-conditions-1"><i class="fa fa-check"></i><b>27.4</b> Imposing the Conditions</a></li>
+<li class="chapter" data-level="27.5" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#recap-1"><i class="fa fa-check"></i><b>27.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html"><i class="fa fa-check"></i><b>28</b> Quantifying the Evidence</a><ul>
+<li class="chapter" data-level="28.1" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#partitioning-variability-1"><i class="fa fa-check"></i><b>28.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="28.2" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#forming-a-standardized-test-statistic"><i class="fa fa-check"></i><b>28.2</b> Forming a Standardized Test Statistic</a></li>
+<li class="chapter" data-level="28.3" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#link-to-regression-analysis"><i class="fa fa-check"></i><b>28.3</b> Link to Regression Analysis</a></li>
+<li class="chapter" data-level="28.4" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#obtaining-a-p-value"><i class="fa fa-check"></i><b>28.4</b> Obtaining a P-value</a></li>
+<li class="chapter" data-level="28.5" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#anova-table"><i class="fa fa-check"></i><b>28.5</b> ANOVA Table</a></li>
+<li class="chapter" data-level="28.6" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#simulating-the-null-distribution"><i class="fa fa-check"></i><b>28.6</b> Simulating the Null Distribution</a></li>
+<li class="chapter" data-level="28.7" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#recap-2"><i class="fa fa-check"></i><b>28.7</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html"><i class="fa fa-check"></i><b>29</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="29.1" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-independence-1"><i class="fa fa-check"></i><b>29.1</b> Assessing Independence</a></li>
+<li class="chapter" data-level="29.2" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-homoskedasticity-1"><i class="fa fa-check"></i><b>29.2</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="29.3" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-normality-1"><i class="fa fa-check"></i><b>29.3</b> Assessing Normality</a></li>
+<li class="chapter" data-level="29.4" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#general-tips-for-assessing-assumptions-1"><i class="fa fa-check"></i><b>29.4</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="ANOVArecap.html"><a href="ANOVArecap.html"><i class="fa fa-check"></i><b>30</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="30.1" data-path="ANOVArecap.html"><a href="ANOVArecap.html#framing-the-question-fundamental-idea-i-1"><i class="fa fa-check"></i><b>30.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="30.2" data-path="ANOVArecap.html"><a href="ANOVArecap.html#getting-good-data-fundamental-idea-ii-1"><i class="fa fa-check"></i><b>30.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="30.3" data-path="ANOVArecap.html"><a href="ANOVArecap.html#presenting-the-data-fundamental-idea-iii-1"><i class="fa fa-check"></i><b>30.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="30.4" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv-1"><i class="fa fa-check"></i><b>30.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="30.5" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-evidence-fundamental-idea-v-1"><i class="fa fa-check"></i><b>30.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="30.6" data-path="ANOVArecap.html"><a href="ANOVArecap.html#conclusion"><i class="fa fa-check"></i><b>30.6</b> Conclusion</a></li>
+</ul></li>
+<li class="part"><span><b>V Unit V: Comparing the Average Response Across Correlated Groups</b></span></li>
+<li class="chapter" data-level="31" data-path="CaseYogurt.html"><a href="CaseYogurt.html"><i class="fa fa-check"></i><b>31</b> Case Study: Paying a Premium for the Experience</a></li>
+<li class="chapter" data-level="32" data-path="Blockquestions.html"><a href="Blockquestions.html"><i class="fa fa-check"></i><b>32</b> Framing the Question</a><ul>
+<li class="chapter" data-level="32.1" data-path="Blockquestions.html"><a href="Blockquestions.html#general-setting-1"><i class="fa fa-check"></i><b>32.1</b> General Setting</a></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="Blockdata.html"><a href="Blockdata.html"><i class="fa fa-check"></i><b>33</b> Correlated Data</a></li>
+<li class="chapter" data-level="34" data-path="Blocksummaries.html"><a href="Blocksummaries.html"><i class="fa fa-check"></i><b>34</b> Presenting Correlated Data</a></li>
+<li class="chapter" data-level="35" data-path="Blockmodel.html"><a href="Blockmodel.html"><i class="fa fa-check"></i><b>35</b> Analyzing Correlated Responses</a><ul>
+<li class="chapter" data-level="35.1" data-path="Blockmodel.html"><a href="Blockmodel.html#statistical-model-for-correlated-responses"><i class="fa fa-check"></i><b>35.1</b> Statistical Model for Correlated Responses</a></li>
+<li class="chapter" data-level="35.2" data-path="Blockmodel.html"><a href="Blockmodel.html#conditions-on-the-error-distribution-2"><i class="fa fa-check"></i><b>35.2</b> Conditions on the Error Distribution</a></li>
+<li class="chapter" data-level="35.3" data-path="Blockmodel.html"><a href="Blockmodel.html#conditions-on-the-random-effects"><i class="fa fa-check"></i><b>35.3</b> Conditions on the Random Effects</a></li>
+<li class="chapter" data-level="35.4" data-path="Blockmodel.html"><a href="Blockmodel.html#classical-repeated-measures-anova-model"><i class="fa fa-check"></i><b>35.4</b> Classical Repeated Measures ANOVA Model</a></li>
+<li class="chapter" data-level="35.5" data-path="Blockmodel.html"><a href="Blockmodel.html#recap-3"><i class="fa fa-check"></i><b>35.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="36" data-path="Blockteststat.html"><a href="Blockteststat.html"><i class="fa fa-check"></i><b>36</b> Quantifying the Evidence</a><ul>
+<li class="chapter" data-level="36.1" data-path="Blockteststat.html"><a href="Blockteststat.html#partitioning-variability-2"><i class="fa fa-check"></i><b>36.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="36.2" data-path="Blockteststat.html"><a href="Blockteststat.html#forming-a-standardized-test-statistic-1"><i class="fa fa-check"></i><b>36.2</b> Forming a Standardized Test Statistic</a></li>
+<li class="chapter" data-level="36.3" data-path="Blockteststat.html"><a href="Blockteststat.html#anova-table-1"><i class="fa fa-check"></i><b>36.3</b> ANOVA Table</a></li>
+<li class="chapter" data-level="36.4" data-path="Blockteststat.html"><a href="Blockteststat.html#recap-4"><i class="fa fa-check"></i><b>36.4</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="37" data-path="Blockassessment.html"><a href="Blockassessment.html"><i class="fa fa-check"></i><b>37</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="37.1" data-path="Blockassessment.html"><a href="Blockassessment.html#assessing-independence-2"><i class="fa fa-check"></i><b>37.1</b> Assessing Independence</a></li>
+<li class="chapter" data-level="37.2" data-path="Blockassessment.html"><a href="Blockassessment.html#assessing-identical-distribution"><i class="fa fa-check"></i><b>37.2</b> Assessing Identical Distribution</a></li>
+<li class="chapter" data-level="37.3" data-path="Blockassessment.html"><a href="Blockassessment.html#assessing-normality-2"><i class="fa fa-check"></i><b>37.3</b> Assessing Normality</a></li>
+<li class="chapter" data-level="37.4" data-path="Blockassessment.html"><a href="Blockassessment.html#general-tips-for-assessing-assumptions-2"><i class="fa fa-check"></i><b>37.4</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="38" data-path="Blockrecap.html"><a href="Blockrecap.html"><i class="fa fa-check"></i><b>38</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="38.1" data-path="Blockrecap.html"><a href="Blockrecap.html#framing-the-question-fundamental-idea-i-2"><i class="fa fa-check"></i><b>38.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="38.2" data-path="Blockrecap.html"><a href="Blockrecap.html#getting-good-data-fundamental-idea-ii-2"><i class="fa fa-check"></i><b>38.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="38.3" data-path="Blockrecap.html"><a href="Blockrecap.html#presenting-the-data-fundamental-idea-iii-2"><i class="fa fa-check"></i><b>38.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="38.4" data-path="Blockrecap.html"><a href="Blockrecap.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv-2"><i class="fa fa-check"></i><b>38.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="38.5" data-path="Blockrecap.html"><a href="Blockrecap.html#quantifying-the-evidence-fundamental-idea-v-2"><i class="fa fa-check"></i><b>38.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="38.6" data-path="Blockrecap.html"><a href="Blockrecap.html#conclusion-1"><i class="fa fa-check"></i><b>38.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Foundations for Engineers and Scientists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Blockmodel" class="section level1">
+<h1><span class="header-section-number">35</span> Analyzing Correlated Responses</h1>
+<p>Our question of interest in this unit is the same as that in our previous unit:</p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2 = \dotsb = \mu_k \qquad \text{vs.} \qquad H_1: \text{At least one } \mu_j \text{ differs}\]</span></p>
+<p>It seems reasonable to begin with the model for describing a quantitative response as a function of a categorical predictor described in Chapter <a href="ANOVAmodel.html#ANOVAmodel">27</a>. In this chapter, we extend this model to account for the correlation between responses.</p>
+<div id="statistical-model-for-correlated-responses" class="section level2">
+<h2><span class="header-section-number">35.1</span> Statistical Model for Correlated Responses</h2>
+<p>For the <a href="CaseYogurt.html#CaseYogurt">Frozen Yogurt Case Study</a>, we are comparing the average taste rating for different vendors. In the previous unit, we would have constructed the following model for the data generating process:</p>
+<p><span class="math display">\[(\text{Taste Rating})_i = \mu_1 (\text{East Side})_i + \mu_2 (\text{South Side})_i + \mu_3 (\text{Name Brand})_i + \epsilon_i\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\text{East Side})_i &amp;= \begin{cases}
+    1 &amp; \text{if i-th rating associated with east side yogurt vendor} \\
+    0 &amp; \text{if i-th rating not associated with east side yogurt vendor}
+    \end{cases} \\
+  (\text{South Side})_i &amp;= \begin{cases}
+    1 &amp; \text{if i-th rating associated with south side yogurt vendor} \\
+    0 &amp; \text{if i-th rating not associated with south side yogurt vendor}
+    \end{cases} \\
+  (\text{Name Brand})_i &amp;= \begin{cases}
+    1 &amp; \text{if i-th rating associated with name brand yogurt vendor} \\
+    0 &amp; \text{if i-th rating not associated with name brand yogurt vendor}
+    \end{cases}
+\end{aligned}
+\]</span></p>
+<p>are indicator variables to capture the various factor levels. In order to use this model, the first condition we imposed on the error term was that the error in the rating for one observation is independent of the error in the rating for all other observations. However, for the <a href="CaseYogurt.html#CaseYogurt">Frozen Yogurt Case Study</a>, we know this condition is violated. If the errors were independent of one another, it would imply the responses are independent of one another. But, since each subject rated each of the three vendors, the ratings from the same subject are related.</p>
+<p>It should not come as a surprise that the way to address this complication is to <em>partition the variability</em> in the response further. Essentially, we know of another reason that the responses vary in the way that they do: observations from the same subject should be related. We want to tease this apart, and that is done by adding additional terms into the model for the data generating process.</p>
+<p>Consider the following model:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\text{Taste Rating})_i &amp;= \mu_1 (\text{East Side})_i + \mu_2 (\text{South Side})_i + \mu_3 (\text{Name Brand})_i \\
+    &amp;\qquad + \beta_2 (\text{Subject 2})_i + \beta_3 (\text{Subject 3})_i + \beta_4 (\text{Subject 4})_i \\
+    &amp;\qquad + \beta_5 (\text{Subject 5})_i + \beta_6 (\text{Subject 6})_i + \beta_7 (\text{Subject 7})_i \\
+    &amp;\qquad + \beta_8 (\text{Subject 8})_i + \beta_9 (\text{Subject 9})_i + \epsilon_i
+\end{aligned}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[(\text{Subject j})_i = \begin{cases}
+  1 &amp; \text{i-th observation taken from Subject j} \\
+  0 &amp; \text{i-th observation not taken from subject j}
+  \end{cases}\]</span></p>
+<p>is an indicator of whether the observation comes from a particular subject. It may at first appear as if we forgot the indicator for Subject 1; it is not needed. Just as with any model, it is often easiest to see what is happening by thinking about the form of the model under specific cases. How do we describe observations (remember there is more than one) for Subject 2? Subject 2 adheres to the following model:</p>
+<p><span class="math display">\[(\text{Taste Rating})_i = \mu_1 (\text{East Side})_i + \mu_2 (\text{South Side})_i + \mu_3 (\text{Name Brand})_i + \beta_2 + \epsilon_i\]</span></p>
+<p>We could do something similar for each of Subjects 3 through 9. What about Subject 1? Well, Subject 1 would not be Subject 2 or 3, etc. So, the indicator variable <span class="math display">\[(\text{Subject 2})_i\]</span> for observations corresponding to Subject 1 would be 0; as would the indicators <span class="math display">\[(\text{Subject 3})_i\]</span>, <span class="math display">\[(\text{Subject 4})_i\]</span>, etc. That is, Subject 1 adheres to the following model:</p>
+<p><span class="math display">\[(\text{Taste Rating})_i = \mu_1 (\text{East Side})_i + \mu_2 (\text{South Side})_i + \mu_3 (\text{Name Brand})_i + \epsilon_i\]</span></p>
+<p>This affects how we interpret our parameters. In our model <span class="math inline">\(\mu_1\)</span> is no longer the average rating given to East Side Yogurt; it is the average rating given to East Side Yogurt <em>by Subject 1</em>. It is the same concept as the “reference group” (see Definition <a href="Regmodel.html#def:defn-reference-group">17.3</a>) discussed in the regression unit.</p>
+
+<div class="rmdtip">
+If there are <span class="math inline">\(b\)</span> blocks, we need only include <span class="math inline">\(b-1\)</span> indicator variables and corresponding parameters to capture all the blocks. The remaining block is the “refernece group” and is captured by the parameters comparing the factor levels under study.
+</div>
+
+<p>This may seem like it affects our questions of interest. After all, the hypothesis</p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2 = \mu_3\]</span></p>
+<p>says that the “average taste rating for Subject 1 is the same for all vendors” instead of the “average taste rating across all subjects is the same for all vendors.” The latter is the hypothesis we want to test, but we have the parameters specified in terms of the first subject only. Notice, however, that subjects differ only by a constant (the <span class="math inline">\(\beta\)</span>’s). Therefore, if the mean response for one subject is the same for all vendors, then it must be that the mean response across vendors is the same for all subjects, addressing our question of interest.</p>
+
+<div class="rmdtip">
+<p>To formalize this mathematically, consider a case in which there are two groups and two blocks. Then, we have a model of the form</p>
+<p><span class="math display">\[(\text{Response})_i = \mu_1 (\text{Group 1})_i + \mu_2 (\text{Group 2})_i + \beta_2 (\text{Block 2})_i + \epsilon_i\]</span></p>
+<p>Suppose we want the mean response across all blocks. Then, that would be</p>
+<p><span class="math display">\[(1/2)(\text{Mean from Block 1}) + (1/2)(\text{Mean from Block 2})\]</span></p>
+<p>But, we can write this in terms of the parameters above.</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\text{Mean for Group 1}) &amp;= (1/2)\left(\mu_1\right) + (1/2)\left(\mu_1 + \beta_2\right) \\
+  (\text{Mean for Group 2}) &amp;= (1/2)\left(\mu_2\right) + (1/2)\left(\mu_2 + \beta_2\right) 
+\end{aligned}
+\]</span></p>
+<p>If the mean response for each group is the same, then</p>
+<p><span class="math display">\[\mu_1 + (1/2)\beta_2 = \mu_2 + (1/2)\beta_2\]</span></p>
+But, this is only true if <span class="math inline">\(\mu_1 = \mu_2\)</span>. So, testing that the mean response is the same in the first block is equivalent to testing if the mean response is the same for all blocks.
+</div>
+
+<p>This model essentially says there are three reasons that the taste ratings differ from one observation to another:</p>
+<ul>
+<li>Ratings applied to different vendors differ.</li>
+<li>Ratings from different subjects differ.</li>
+<li>Unexplained differences due to inherent variability.</li>
+</ul>
+<p>In general, this type of model, often described as a “Repeated Measures ANOVA” model, partitions the variability in the response into three general categories: differences between groups, differences between blocks, differences within blocks.</p>
+
+<div class="rmdtip">
+<p>In general, given a quantitative response variable, our model for the data generating process comparing this variable across <span class="math inline">\(k\)</span> levels of a factor in the presence of <span class="math inline">\(b\)</span> blocks is</p>
+<p><span class="math display">\[(\text{Response})_i = \sum_{j=1}^{k} \mu_j (\text{Group})_{j, i} + \sum_{m=2}^{b} \beta_m (\text{Block})_{m, i} + \epsilon_i\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\text{Group})_{j,i} &amp;= \begin{cases}
+    1 &amp; \text{if i-th observation belongs to group j} \\
+    0 &amp; \text{if i-th observation does not belong to group j}
+    \end{cases} \\
+  (\text{Block})_{m,i} &amp;= \begin{cases}
+    1 &amp; \text{if i-th observation belongs to block m} \\
+    0 &amp; \text{if i-th observation does not belong to block m}
+    \end{cases}
+\end{aligned}
+\]</span></p>
+are indicators capturing the factor grouping and blocks. This is often referred to as a “Repeated Measures ANOVA” model.
+</div>
+
+<p>In the past, the stochastic portion of the model <span class="math inline">\(\epsilon_i\)</span> captured the subject-to-subject variability. It no longer has the same role in this case. It now captures the variability in repeated measures on the same subject. That is, it captures the fact that if we repeatedly taste the same yogurt, we might rate it differently each time because of our mood or some other external factor that we have not captured. The subject-to-subject variability is captured by the <span class="math inline">\(\beta\)</span> parameters in the model.</p>
+
+<div class="rmdkeyidea">
+In a model without repeated measures (blocks), the error term captures the subject-to-subject variability. In a model with repeated measures, the error term captures the variability between observations on the same subject.
+</div>
+
+<p>There is something else that is unique about the repeated measures ANOVA model. We do not really care about all the parameters in the model. Our question of interest is based on the parameters <span class="math inline">\(\mu_1, \mu_2, \mu_3\)</span>. We would never be interested in testing something of the form</p>
+<p><span class="math display">\[H_0: \beta_2 = \beta_3 \qquad \text{vs.} \qquad H_1: \beta_2 \neq \beta_3\]</span></p>
+<p>as this would be comparing Subject 2 to Subject 3. Such a comparison would not be useful because it does not help researchers to know that two different subjects have different preferences for yogurt taste. Said another way, we did not put the parameters <span class="math inline">\(\beta_2, \dotsc, \beta_9\)</span> into the model because they helped us address a particular question. Instead, we put them in the model because they captured the observed relationship in the responses. This is the difference between <strong>fixed effects</strong> and <strong>random effects</strong>.</p>
+
+<div class="definition">
+<span id="def:defn-fixed-effect" class="definition"><strong>Definition 35.1  (Fixed Effect)  </strong></span>A predictor in the model for which we are interested in specific values observed and the relationship it has with the response. It is generally part of our question of interest.
+</div>
+
+
+<div class="definition">
+<span id="def:defn-random-effect" class="definition"><strong>Definition 35.2  (Random Effect)  </strong></span>A predictor in the model used to capture the correlation induced due to an inherit characteristic that varies across the population. We are generally not interested in specific values observed but see these as a random sample from some underlying population of possibilities.
+</div>
+
+<p>While the theory underlying the analysis of such models makes use of more technical definitions of these terms, these are sufficient for our purposes in the text and understanding the role of these two types of terms. Notice that if we were to repeat the study, we would use the same three vendors, since they are a fundamental part of the question. However, we would not need to use the same subjects in the sample; we would be satisfied with any random sample from the population. So, the values “East Side Yogurt,” “South Side Yogurt,” and “Name Brand” (at least, the three vendors these represent) are of specific interest. However, we do not care about “Subject 2” and “Subject 3.” These can be any two individuals from the population. Therefore, for the <a href="CaseYogurt.html#CaseYogurt">Frozen Yogurt Case Study</a>, the vendor is the fixed effect, while subject is the random effect.</p>
+
+<div class="rmdtip">
+We are rarely interested in comparing one block to another. The effect for the block is placed in the model in order to account for the correlation between responses; the block effect is then generally a random effect.
+</div>
+
+<p>Just as before, we need to distinguish between the model for the data generating process and the model for the sampling distribution of the parameter estimates or the null distribution for a standarized statistic. While we need the latter for inference, the model for the data generating process is a necessary stepping stone along the way.</p>
+<p>The parameters in this model are of course unknown. They can be estimated using the method of least squares. However, these estimates, as with any estimate, have variability associated with them. In order to make inference, we must determine a suitable model for the sampling distribution (or null distribution if appropriate). This is done by placing conditions on the stochastic portion of the model.</p>
+</div>
+<div id="conditions-on-the-error-distribution-2" class="section level2">
+<h2><span class="header-section-number">35.2</span> Conditions on the Error Distribution</h2>
+<p>In our model for the data-generating process we incorporated a component <span class="math inline">\(\epsilon\)</span> to capture the noise within each block. Since the error is a random variable (stochastic element), we know it has a distribution. We typically assume a certain structure to this distribution. The more assumptions we are willing to make, the easier the analysis, but the less likely our model is to be applicable to the actual data-generating process we have observed. The conditions we make dictate how we conduct inference (the computation of a p-value or confidence interval).</p>
+<p>The first condition we consider is that the noise attributed to one observed response for an individual is independent of the noise attributed to the observed response for any other individual. This may seem counter-intuitive; this entire unit exists because we felt there was a correlation among the responses. However, this condition is stating that once we account for the correlation induced by the blocks by incorporating the random effect into the model, the remaining noise is now independent. We essentially partitioned out the correlated component, and what remains is now just independent noise.</p>
+<p>The second condition that is typically placed on the distribution of the errors is that the errors are identically distributed. Again, we introduced this condition in Chapters <a href="MeanModels.html#MeanModels">10</a> and <a href="Regconditions.html#Regconditions">18</a>. In particular, if the errors are not identically distributed, it is typically because the variability of the error differs for one value of the predictors compared to another. Practically, this reveals itself as our response being more precise for some collection of the predictors. As a result of focusing on the variability of the response for each predictor, this condition is often referred to as <em>homoskedasticity</em> instead of the errors being identically distributed.</p>
+<p>The third condition we might consider imposing is that the errors in the response follow a Normal distribution, as discussed in Chapter <a href="Regconditions.html#Regconditions">18</a>. If this condition holds, it implies that within block, the distribution of the response for a particular group is itself is Normally distributed. While this was a bit easier to visualize in the ANOVA model, it becomes difficult to visualize here. That is because we are talking about the taste ratings for the Name Brand yogurt made by Subject 1 following a Normal distribution; however, we only observed a single response from Subject 1 related to the Name Brand. This is similar to when we placed conditions on the general regression model.</p>
+<p>As in regression modeling, we are not required to impose all three conditions in order to obtain a model for the sampling distribution. Historically, however, all three conditions are imposed.</p>
+</div>
+<div id="conditions-on-the-random-effects" class="section level2">
+<h2><span class="header-section-number">35.3</span> Conditions on the Random Effects</h2>
+<p>The random effects we placed in the model partitioned the original error term further; the random effects capture the correlation while the remaining portion captures the noise in the block. This means that in addition to conditions on the error term, we must also place conditions on the random effects, since they represent a random sample from a population. That is, the random effects also have a distribution which must be constrained.</p>
+<p>The easiest way to think about the random effects is the “bump” attributed to that block. Again, think about a person who just is not a fan of frozen yogurt. Then, regardless of which vendor their yogurt comes from, their taste rating will tend to “bump” down compared to others. The first condition we impose is that this “bump” is the same for all observations from this individual. That is, their taste for frozen yogurt does not shift during the study. More generally, we are saying that the random effect associated with a particular block is always the same.</p>
+<p>The second condition we consider is that the bump for one subject has nothing to do with the bump for any other subject. Practically, my taste for frozen yogurt is unaffected by anyone else’s taste for frozen yogurt. This can be accomplished in the study by ensuring that each person is alone when they do their taste ratings so that they are not influenced by others’ reactions. More generally, the random effect for one block is independent of the random effect for any other block.</p>
+<p>It is generally assumed the random effects follow a Normal distribution and that they are also independent of the error.</p>
+</div>
+<div id="classical-repeated-measures-anova-model" class="section level2">
+<h2><span class="header-section-number">35.4</span> Classical Repeated Measures ANOVA Model</h2>
+<p>In the preceeding sections, we discussed conditions we could place on the stocastic portions of the data generating process. Placing all conditions on the error term and random effects is what we refer to as the “Classical Repeated Measures ANOVA Model.”</p>
+
+<div class="definition">
+<p><span id="def:defn-classical-repeated-measures" class="definition"><strong>Definition 35.3  (Classical Repeated Measures ANOVA Model)  </strong></span>For a quantitative response and categorical variable with <span class="math inline">\(k\)</span> groups observed each in <span class="math inline">\(b\)</span> blocks, the classical Repeated Measures ANOVA model assumes the following data-generating process:</p>
+<p><span class="math display">\[(\text{Response})_i = \sum_{j=1}^{k} \mu_j (\text{Group})_{j, i} + \sum_{m=2}^{b} \beta_m (\text{Block})_{m, i} + \epsilon_i\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\text{Group})_{j,i} &amp;= \begin{cases}
+    1 &amp; \text{if i-th observation belongs to group j} \\
+    0 &amp; \text{if i-th observation does not belong to group j}
+    \end{cases} \\
+  (\text{Block})_{m,i} &amp;= \begin{cases}
+    1 &amp; \text{if i-th observation belongs to block m} \\
+    0 &amp; \text{if i-th observation does not belong to block m}
+    \end{cases}
+\end{aligned}
+\]</span></p>
+<p>are indicators capturing the factor grouping and blocks, and</p>
+<ol style="list-style-type: decimal">
+<li>The errors are independent of one another.</li>
+<li>The errors are identically distributed.</li>
+<li>The errors follow a Normal Distribution.</li>
+<li>The random effects are identical for all observations within a block.</li>
+<li>The random effects are independent of one another.</li>
+<li>The random effects are independent of the errors.</li>
+<li>The random effects follow a Normal Distribution.</li>
+</ol>
+It is possible to relax these assumptions; however, this is what is commonly implemented in practice.
+</div>
+
+</div>
+<div id="recap-3" class="section level2">
+<h2><span class="header-section-number">35.5</span> Recap</h2>
+<p>We have covered a lot of ground in this chapter, and it is worth taking a moment to summarize the big ideas. In order compare the mean response in each group, needed to account for the correlation induced by the blocks when developing the model for the data generating process. Such a model further partitions the error term in the model into a random effect which captures the variability across the blocks and the remaining noise captures the variability within a block.</p>
+<p>Certain conditions are placed on the distributions of these stochastic portions. Depending on the set of conditions we impose will determine whether we develop an analytical model or an empirical model for the parameters in the model. We still need to discuss how we compare the mean response of the groups based on this model.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Blocksummaries.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Blockteststat.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": ["MA223CourseNotes.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

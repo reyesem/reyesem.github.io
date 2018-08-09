@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Statistical Foundations for Engineers and Scientists</title>
   <meta name="description" content="Course notes for MA223 (Engineering Statistics I) at Rose-Hulman Institute of Technology.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Statistical Foundations for Engineers and Scientists" />
   <meta property="og:type" content="book" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="ANOVAsummaries.html">
-<link rel="next" href="ANOVAmodel.html">
+<link rel="prev" href="ANOVAmodel.html">
+<link rel="next" href="ANOVAassessment.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -107,114 +107,145 @@
 <li class="chapter" data-level="8.5" data-path="RecapLanguage.html"><a href="RecapLanguage.html#quantifying-the-evidence-fundamental-idea-v"><i class="fa fa-check"></i><b>8.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
 <li class="chapter" data-level="8.6" data-path="RecapLanguage.html"><a href="RecapLanguage.html#summary"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
 </ul></li>
-<li class="part"><span><b>II Unit II: Comparing the Average Response Across Groups</b></span></li>
-<li class="chapter" data-level="9" data-path="CaseOrganic.html"><a href="CaseOrganic.html"><i class="fa fa-check"></i><b>9</b> Case Study: Organic Foods and Superior Morals</a></li>
-<li class="chapter" data-level="10" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html"><i class="fa fa-check"></i><b>10</b> Framing the Question</a><ul>
-<li class="chapter" data-level="10.1" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html#general-setting"><i class="fa fa-check"></i><b>10.1</b> General Setting</a></li>
+<li class="part"><span><b>II Unit II: Implementing the Logic of Inference for a Single Mean</b></span></li>
+<li class="chapter" data-level="9" data-path="CaseBabies.html"><a href="CaseBabies.html"><i class="fa fa-check"></i><b>9</b> Case Study: Birth Weights of Babies</a></li>
+<li class="chapter" data-level="10" data-path="MeanModels.html"><a href="MeanModels.html"><i class="fa fa-check"></i><b>10</b> Model for the Data Generating Process</a><ul>
+<li class="chapter" data-level="10.1" data-path="MeanModels.html"><a href="MeanModels.html#general-formulation"><i class="fa fa-check"></i><b>10.1</b> General Formulation</a></li>
+<li class="chapter" data-level="10.2" data-path="MeanModels.html"><a href="MeanModels.html#statistical-model-for-a-quantitative-response-with-no-predictors"><i class="fa fa-check"></i><b>10.2</b> Statistical Model for a Quantitative Response with No Predictors</a></li>
+<li class="chapter" data-level="10.3" data-path="MeanModels.html"><a href="MeanModels.html#conditions-on-the-error-distribution"><i class="fa fa-check"></i><b>10.3</b> Conditions on the Error Distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="ANOVAdata.html"><a href="ANOVAdata.html"><i class="fa fa-check"></i><b>11</b> Study Design</a><ul>
-<li class="chapter" data-level="11.1" data-path="ANOVAdata.html"><a href="ANOVAdata.html#aspects-of-a-well-designed-experiment"><i class="fa fa-check"></i><b>11.1</b> Aspects of a Well Designed Experiment</a></li>
-<li class="chapter" data-level="11.2" data-path="ANOVAdata.html"><a href="ANOVAdata.html#collecting-observational-data"><i class="fa fa-check"></i><b>11.2</b> Collecting Observational Data</a></li>
+<li class="chapter" data-level="11" data-path="SingleConfInt.html"><a href="SingleConfInt.html"><i class="fa fa-check"></i><b>11</b> Estimating with Confidence</a></li>
+<li class="chapter" data-level="12" data-path="SingleTeststat.html"><a href="SingleTeststat.html"><i class="fa fa-check"></i><b>12</b> Estimating with Confidence</a><ul>
+<li class="chapter" data-level="12.1" data-path="SingleTeststat.html"><a href="SingleTeststat.html#standardized-statistics"><i class="fa fa-check"></i><b>12.1</b> Standardized Statistics</a></li>
+<li class="chapter" data-level="12.2" data-path="SingleTeststat.html"><a href="SingleTeststat.html#computing-the-p-value"><i class="fa fa-check"></i><b>12.2</b> Computing the P-value</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="ANOVAsummaries.html"><a href="ANOVAsummaries.html"><i class="fa fa-check"></i><b>12</b> Presenting the Data</a></li>
-<li class="chapter" data-level="13" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html"><i class="fa fa-check"></i><b>13</b> Quantifying the Evidence</a><ul>
-<li class="chapter" data-level="13.1" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
-<li class="chapter" data-level="13.2" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#forming-a-standardized-test-statistic"><i class="fa fa-check"></i><b>13.2</b> Forming a Standardized Test Statistic</a></li>
-<li class="chapter" data-level="13.3" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#obtaining-a-p-value"><i class="fa fa-check"></i><b>13.3</b> Obtaining a P-value</a></li>
+<li class="part"><span><b>III Unit III: Modeling the Average Response as a Function of a Continuous Predictor</b></span></li>
+<li class="chapter" data-level="13" data-path="CaseGreece.html"><a href="CaseGreece.html"><i class="fa fa-check"></i><b>13</b> Case Study: Seismic Activity in Greece</a></li>
+<li class="chapter" data-level="14" data-path="Regquestions.html"><a href="Regquestions.html"><i class="fa fa-check"></i><b>14</b> Myriad of Potential Questions</a></li>
+<li class="chapter" data-level="15" data-path="Regdata.html"><a href="Regdata.html"><i class="fa fa-check"></i><b>15</b> Nature of Collecting Multivariable Data</a></li>
+<li class="chapter" data-level="16" data-path="Regsummaries.html"><a href="Regsummaries.html"><i class="fa fa-check"></i><b>16</b> Summarizing Multivariable Data</a><ul>
+<li class="chapter" data-level="16.1" data-path="Regsummaries.html"><a href="Regsummaries.html#characterizing-the-marginal-relationship-of-two-quantitative-variables"><i class="fa fa-check"></i><b>16.1</b> Characterizing the Marginal Relationship of Two Quantitative Variables</a></li>
+<li class="chapter" data-level="16.2" data-path="Regsummaries.html"><a href="Regsummaries.html#visualizing-the-impact-of-a-third-variable-on-the-marginal-relationship"><i class="fa fa-check"></i><b>16.2</b> Visualizing the Impact of a Third Variable on the Marginal Relationship</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html"><i class="fa fa-check"></i><b>14</b> Building the Statistical Model</a><ul>
-<li class="chapter" data-level="14.1" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#general-formulation"><i class="fa fa-check"></i><b>14.1</b> General Formulation</a></li>
-<li class="chapter" data-level="14.2" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#statistical-model-for-a-quantitative-response-and-a-categorical-predictor"><i class="fa fa-check"></i><b>14.2</b> Statistical Model for A Quantitative Response and a Categorical Predictor</a></li>
-<li class="chapter" data-level="14.3" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#conditions-on-the-error-distribution"><i class="fa fa-check"></i><b>14.3</b> Conditions on the Error Distribution</a></li>
-<li class="chapter" data-level="14.4" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#simulating-the-null-distribution"><i class="fa fa-check"></i><b>14.4</b> Simulating the Null Distribution</a></li>
-<li class="chapter" data-level="14.5" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#recap"><i class="fa fa-check"></i><b>14.5</b> Recap</a></li>
+<li class="chapter" data-level="17" data-path="Regmodel.html"><a href="Regmodel.html"><i class="fa fa-check"></i><b>17</b> Building our Statistical Model</a><ul>
+<li class="chapter" data-level="17.1" data-path="Regmodel.html"><a href="Regmodel.html#statistical-model-for-a-quantitative-response-and-quantitative-predictor"><i class="fa fa-check"></i><b>17.1</b> Statistical Model for A Quantitative Response and Quantitative Predictor</a></li>
+<li class="chapter" data-level="17.2" data-path="Regmodel.html"><a href="Regmodel.html#using-a-categorical-predictor"><i class="fa fa-check"></i><b>17.2</b> Using a Categorical Predictor</a></li>
+<li class="chapter" data-level="17.3" data-path="Regmodel.html"><a href="Regmodel.html#estimating-the-parameters"><i class="fa fa-check"></i><b>17.3</b> Estimating the Parameters</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html"><i class="fa fa-check"></i><b>15</b> Classical ANOVA Model</a><ul>
-<li class="chapter" data-level="15.1" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#modeling-the-population"><i class="fa fa-check"></i><b>15.1</b> Modeling the Population</a></li>
-<li class="chapter" data-level="15.2" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#adding-the-assumption-of-normality"><i class="fa fa-check"></i><b>15.2</b> Adding the Assumption of Normality</a></li>
-<li class="chapter" data-level="15.3" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#impact-of-normality-assumption"><i class="fa fa-check"></i><b>15.3</b> Impact of Normality Assumption</a></li>
-<li class="chapter" data-level="15.4" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#analysis-of-organic-food-case-study"><i class="fa fa-check"></i><b>15.4</b> Analysis of Organic Food Case Study</a></li>
-<li class="chapter" data-level="15.5" data-path="ANOVAclassical.html"><a href="ANOVAclassical.html#recap-1"><i class="fa fa-check"></i><b>15.5</b> Recap</a></li>
+<li class="chapter" data-level="18" data-path="Regconditions.html"><a href="Regconditions.html"><i class="fa fa-check"></i><b>18</b> Conditions on the Error Term of a Regression Model</a><ul>
+<li class="chapter" data-level="18.1" data-path="Regconditions.html"><a href="Regconditions.html#correctly-specified-model"><i class="fa fa-check"></i><b>18.1</b> Correctly Specified Model</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="Regconditions.html"><a href="Regconditions.html#interpreting-the-parameters"><i class="fa fa-check"></i><b>18.1.1</b> Interpreting the Parameters</a></li>
+<li class="chapter" data-level="18.1.2" data-path="Regconditions.html"><a href="Regconditions.html#embedding-our-question-in-a-statistical-framework"><i class="fa fa-check"></i><b>18.1.2</b> Embedding our Question in a Statistical Framework</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html"><i class="fa fa-check"></i><b>16</b> Assessing Modeling Assumptions</a><ul>
-<li class="chapter" data-level="16.1" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-independence"><i class="fa fa-check"></i><b>16.1</b> Assessing Independence</a></li>
-<li class="chapter" data-level="16.2" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-homoskedasticity"><i class="fa fa-check"></i><b>16.2</b> Assessing Homoskedasticity</a></li>
-<li class="chapter" data-level="16.3" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-normality"><i class="fa fa-check"></i><b>16.3</b> Assessing Normality</a></li>
-<li class="chapter" data-level="16.4" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#general-tips-for-assessing-assumptions"><i class="fa fa-check"></i><b>16.4</b> General Tips for Assessing Assumptions</a></li>
+<li class="chapter" data-level="18.2" data-path="Regconditions.html"><a href="Regconditions.html#additional-conditions"><i class="fa fa-check"></i><b>18.2</b> Additional Conditions</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="Regconditions.html"><a href="Regconditions.html#modeling-the-population"><i class="fa fa-check"></i><b>18.2.1</b> Modeling the Population</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="ANOVArecap.html"><a href="ANOVArecap.html"><i class="fa fa-check"></i><b>17</b> Using the Tools Together</a><ul>
-<li class="chapter" data-level="17.1" data-path="ANOVArecap.html"><a href="ANOVArecap.html#framing-the-question-fundamental-idea-i-1"><i class="fa fa-check"></i><b>17.1</b> Framing the Question (Fundamental Idea I)</a></li>
-<li class="chapter" data-level="17.2" data-path="ANOVArecap.html"><a href="ANOVArecap.html#getting-good-data-fundamental-idea-ii-1"><i class="fa fa-check"></i><b>17.2</b> Getting Good Data (Fundamental Idea II)</a></li>
-<li class="chapter" data-level="17.3" data-path="ANOVArecap.html"><a href="ANOVArecap.html#presenting-the-data-fundamental-idea-iii-1"><i class="fa fa-check"></i><b>17.3</b> Presenting the Data (Fundamental Idea III)</a></li>
-<li class="chapter" data-level="17.4" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv-1"><i class="fa fa-check"></i><b>17.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
-<li class="chapter" data-level="17.5" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-evidence-fundamental-idea-v-1"><i class="fa fa-check"></i><b>17.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
-<li class="chapter" data-level="17.6" data-path="ANOVArecap.html"><a href="ANOVArecap.html#conclusion"><i class="fa fa-check"></i><b>17.6</b> Conclusion</a></li>
+<li class="chapter" data-level="18.3" data-path="Regconditions.html"><a href="Regconditions.html#adding-the-assumption-of-normality"><i class="fa fa-check"></i><b>18.3</b> Adding the Assumption of Normality</a></li>
+<li class="chapter" data-level="18.4" data-path="Regconditions.html"><a href="Regconditions.html#classical-regression-model"><i class="fa fa-check"></i><b>18.4</b> Classical Regression Model</a></li>
+<li class="chapter" data-level="18.5" data-path="Regconditions.html"><a href="Regconditions.html#imposing-the-conditions"><i class="fa fa-check"></i><b>18.5</b> Imposing the Conditions</a></li>
+<li class="chapter" data-level="18.6" data-path="Regconditions.html"><a href="Regconditions.html#recap"><i class="fa fa-check"></i><b>18.6</b> Recap</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="ANOVAblocking.html"><a href="ANOVAblocking.html"><i class="fa fa-check"></i><b>18</b> Analyzing a Design that Incorporates Blocking</a><ul>
-<li class="chapter" data-level="18.1" data-path="ANOVAblocking.html"><a href="ANOVAblocking.html#what-is-the-big-deal"><i class="fa fa-check"></i><b>18.1</b> What is the Big Deal?</a></li>
-<li class="chapter" data-level="18.2" data-path="ANOVAblocking.html"><a href="ANOVAblocking.html#solution-partition-the-variability"><i class="fa fa-check"></i><b>18.2</b> Solution: Partition the Variability</a></li>
-<li class="chapter" data-level="18.3" data-path="ANOVAblocking.html"><a href="ANOVAblocking.html#interpreting-the-analysis"><i class="fa fa-check"></i><b>18.3</b> Interpreting the Analysis</a></li>
+<li class="chapter" data-level="19" data-path="Regquality.html"><a href="Regquality.html"><i class="fa fa-check"></i><b>19</b> Quantifying the Quality of a Model Fit</a><ul>
+<li class="chapter" data-level="19.1" data-path="Regquality.html"><a href="Regquality.html#partitioning-variability"><i class="fa fa-check"></i><b>19.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="19.2" data-path="Regquality.html"><a href="Regquality.html#hypothesis-testing"><i class="fa fa-check"></i><b>19.2</b> Hypothesis Testing</a></li>
+<li class="chapter" data-level="19.3" data-path="Regquality.html"><a href="Regquality.html#r-squared"><i class="fa fa-check"></i><b>19.3</b> R-squared</a></li>
 </ul></li>
-<li class="part"><span><b>III Unit III: Modeling the Average Response as a Function of Several Predictors</b></span></li>
-<li class="chapter" data-level="19" data-path="CaseGreece.html"><a href="CaseGreece.html"><i class="fa fa-check"></i><b>19</b> Case Study: Seismic Activity in Greece</a></li>
-<li class="chapter" data-level="20" data-path="Regquestions.html"><a href="Regquestions.html"><i class="fa fa-check"></i><b>20</b> Myriad of Potential Questions</a></li>
-<li class="chapter" data-level="21" data-path="Regdata.html"><a href="Regdata.html"><i class="fa fa-check"></i><b>21</b> Nature of Collecting Multivariable Data</a></li>
-<li class="chapter" data-level="22" data-path="Regsummaries.html"><a href="Regsummaries.html"><i class="fa fa-check"></i><b>22</b> Summarizing Multivariable Data</a><ul>
-<li class="chapter" data-level="22.1" data-path="Regsummaries.html"><a href="Regsummaries.html#characterizing-the-marginal-relationship-of-two-quantitative-variables"><i class="fa fa-check"></i><b>22.1</b> Characterizing the Marginal Relationship of Two Quantitative Variables</a></li>
-<li class="chapter" data-level="22.2" data-path="Regsummaries.html"><a href="Regsummaries.html#visualizing-the-impact-of-a-third-variable-on-the-marginal-relationship"><i class="fa fa-check"></i><b>22.2</b> Visualizing the Impact of a Third Variable on the Marginal Relationship</a></li>
+<li class="chapter" data-level="20" data-path="Regassessment.html"><a href="Regassessment.html"><i class="fa fa-check"></i><b>20</b> Assessing Modeling Conditions</a><ul>
+<li class="chapter" data-level="20.1" data-path="Regassessment.html"><a href="Regassessment.html#residuals"><i class="fa fa-check"></i><b>20.1</b> Residuals</a></li>
+<li class="chapter" data-level="20.2" data-path="Regassessment.html"><a href="Regassessment.html#assessing-mean-0"><i class="fa fa-check"></i><b>20.2</b> Assessing Mean 0</a></li>
+<li class="chapter" data-level="20.3" data-path="Regassessment.html"><a href="Regassessment.html#assessing-independence"><i class="fa fa-check"></i><b>20.3</b> Assessing Independence</a></li>
+<li class="chapter" data-level="20.4" data-path="Regassessment.html"><a href="Regassessment.html#assessing-homoskedasticity"><i class="fa fa-check"></i><b>20.4</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="20.5" data-path="Regassessment.html"><a href="Regassessment.html#assessing-normality"><i class="fa fa-check"></i><b>20.5</b> Assessing Normality</a></li>
+<li class="chapter" data-level="20.6" data-path="Regassessment.html"><a href="Regassessment.html#general-tips-for-assessing-assumptions"><i class="fa fa-check"></i><b>20.6</b> General Tips for Assessing Assumptions</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="Regmodel.html"><a href="Regmodel.html"><i class="fa fa-check"></i><b>23</b> Extending Our Statistical Model</a><ul>
-<li class="chapter" data-level="23.1" data-path="Regmodel.html"><a href="Regmodel.html#statistical-model-for-a-quantitative-response-and-quantitative-predictors"><i class="fa fa-check"></i><b>23.1</b> Statistical Model for A Quantitative Response and Quantitative Predictor(s)</a><ul>
-<li class="chapter" data-level="23.1.1" data-path="Regmodel.html"><a href="Regmodel.html#including-multiple-precitors"><i class="fa fa-check"></i><b>23.1.1</b> Including Multiple Precitors</a></li>
-<li class="chapter" data-level="23.1.2" data-path="Regmodel.html"><a href="Regmodel.html#including-categorical-predictors"><i class="fa fa-check"></i><b>23.1.2</b> Including Categorical Predictors</a></li>
-<li class="chapter" data-level="23.1.3" data-path="Regmodel.html"><a href="Regmodel.html#general-model-formulation"><i class="fa fa-check"></i><b>23.1.3</b> General Model Formulation</a></li>
+<li class="chapter" data-level="21" data-path="Regextensions.html"><a href="Regextensions.html"><i class="fa fa-check"></i><b>21</b> Extending the Regression Model</a><ul>
+<li class="chapter" data-level="21.1" data-path="Regextensions.html"><a href="Regextensions.html#including-multiple-precitors"><i class="fa fa-check"></i><b>21.1</b> Including Multiple Precitors</a><ul>
+<li class="chapter" data-level="21.1.1" data-path="Regextensions.html"><a href="Regextensions.html#general-model-formulation"><i class="fa fa-check"></i><b>21.1.1</b> General Model Formulation</a></li>
+<li class="chapter" data-level="21.1.2" data-path="Regextensions.html"><a href="Regextensions.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>21.1.2</b> Interpretation of Parameters</a></li>
 </ul></li>
-<li class="chapter" data-level="23.2" data-path="Regmodel.html"><a href="Regmodel.html#estimating-the-parameters"><i class="fa fa-check"></i><b>23.2</b> Estimating the Parameters</a></li>
-<li class="chapter" data-level="23.3" data-path="Regmodel.html"><a href="Regmodel.html#embedding-our-questions-into-a-statistical-framework"><i class="fa fa-check"></i><b>23.3</b> Embedding Our Questions into a Statistical Framework</a></li>
-<li class="chapter" data-level="23.4" data-path="Regmodel.html"><a href="Regmodel.html#recap-2"><i class="fa fa-check"></i><b>23.4</b> Recap</a></li>
+<li class="chapter" data-level="21.2" data-path="Regextensions.html"><a href="Regextensions.html#modifying-an-effect"><i class="fa fa-check"></i><b>21.2</b> Modifying an Effect</a><ul>
+<li class="chapter" data-level="21.2.1" data-path="Regextensions.html"><a href="Regextensions.html#inference-for-effect-modifications"><i class="fa fa-check"></i><b>21.2.1</b> Inference for Effect Modifications</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="Regconditions.html"><a href="Regconditions.html"><i class="fa fa-check"></i><b>24</b> Conditions on the Error Term of a Regression Model</a><ul>
-<li class="chapter" data-level="24.1" data-path="Regconditions.html"><a href="Regconditions.html#classical-regression-model"><i class="fa fa-check"></i><b>24.1</b> Classical Regression Model</a></li>
-<li class="chapter" data-level="24.2" data-path="Regconditions.html"><a href="Regconditions.html#interpretation-of-the-parameters"><i class="fa fa-check"></i><b>24.2</b> Interpretation of the Parameters</a></li>
-<li class="chapter" data-level="24.3" data-path="Regconditions.html"><a href="Regconditions.html#addressing-confounding-through-our-interpretation"><i class="fa fa-check"></i><b>24.3</b> Addressing Confounding through our Interpretation</a></li>
-<li class="chapter" data-level="24.4" data-path="Regconditions.html"><a href="Regconditions.html#empirical-model-for-the-sampling-distribution"><i class="fa fa-check"></i><b>24.4</b> Empirical Model for the Sampling Distribution</a></li>
-<li class="chapter" data-level="24.5" data-path="Regconditions.html"><a href="Regconditions.html#recap-3"><i class="fa fa-check"></i><b>24.5</b> Recap</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="Regassessment.html"><a href="Regassessment.html"><i class="fa fa-check"></i><b>25</b> Assessing Modeling Assumptions</a><ul>
-<li class="chapter" data-level="25.1" data-path="Regassessment.html"><a href="Regassessment.html#computing-residuals"><i class="fa fa-check"></i><b>25.1</b> Computing Residuals</a></li>
-<li class="chapter" data-level="25.2" data-path="Regassessment.html"><a href="Regassessment.html#assessing-mean-0"><i class="fa fa-check"></i><b>25.2</b> Assessing Mean 0</a></li>
-<li class="chapter" data-level="25.3" data-path="Regassessment.html"><a href="Regassessment.html#assessing-independence-1"><i class="fa fa-check"></i><b>25.3</b> Assessing Independence</a></li>
-<li class="chapter" data-level="25.4" data-path="Regassessment.html"><a href="Regassessment.html#assessing-homoskedasticity-1"><i class="fa fa-check"></i><b>25.4</b> Assessing Homoskedasticity</a></li>
-<li class="chapter" data-level="25.5" data-path="Regassessment.html"><a href="Regassessment.html#assessing-normality-1"><i class="fa fa-check"></i><b>25.5</b> Assessing Normality</a></li>
-<li class="chapter" data-level="25.6" data-path="Regassessment.html"><a href="Regassessment.html#general-tips-for-assessing-assumptions-1"><i class="fa fa-check"></i><b>25.6</b> General Tips for Assessing Assumptions</a></li>
+<li class="chapter" data-level="22" data-path="Regrecap.html"><a href="Regrecap.html"><i class="fa fa-check"></i><b>22</b> Puting it All Together</a><ul>
+<li class="chapter" data-level="22.1" data-path="Regrecap.html"><a href="Regrecap.html#graphical-summary"><i class="fa fa-check"></i><b>22.1</b> Graphical Summary</a></li>
+<li class="chapter" data-level="22.2" data-path="Regrecap.html"><a href="Regrecap.html#development-of-statistical-model"><i class="fa fa-check"></i><b>22.2</b> Development of Statistical Model</a></li>
+<li class="chapter" data-level="22.3" data-path="Regrecap.html"><a href="Regrecap.html#assessment-of-conditions"><i class="fa fa-check"></i><b>22.3</b> Assessment of Conditions</a></li>
+<li class="chapter" data-level="22.4" data-path="Regrecap.html"><a href="Regrecap.html#summary-of-model-fit"><i class="fa fa-check"></i><b>22.4</b> Summary of Model Fit</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="Reginteractions.html"><a href="Reginteractions.html"><i class="fa fa-check"></i><b>26</b> Modifying an Effect</a><ul>
-<li class="chapter" data-level="26.1" data-path="Reginteractions.html"><a href="Reginteractions.html#building-an-effect-modifier-into-the-model"><i class="fa fa-check"></i><b>26.1</b> Building an Effect-Modifier into the Model</a></li>
-<li class="chapter" data-level="26.2" data-path="Reginteractions.html"><a href="Reginteractions.html#inference-for-effect-modifications"><i class="fa fa-check"></i><b>26.2</b> Inference for Effect Modifications</a></li>
+<li class="part"><span><b>IV Unit IV: Comparing the Average Response Across Groups</b></span></li>
+<li class="chapter" data-level="23" data-path="CaseOrganic.html"><a href="CaseOrganic.html"><i class="fa fa-check"></i><b>23</b> Case Study: Organic Foods and Superior Morals</a></li>
+<li class="chapter" data-level="24" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html"><i class="fa fa-check"></i><b>24</b> Framing the Question</a><ul>
+<li class="chapter" data-level="24.1" data-path="ANOVAquestions.html"><a href="ANOVAquestions.html#general-setting"><i class="fa fa-check"></i><b>24.1</b> General Setting</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="Regquality.html"><a href="Regquality.html"><i class="fa fa-check"></i><b>27</b> Quantifying the Quality of a Model Fit</a><ul>
-<li class="chapter" data-level="27.1" data-path="Regquality.html"><a href="Regquality.html#partitioning-variability-1"><i class="fa fa-check"></i><b>27.1</b> Partitioning Variability</a></li>
-<li class="chapter" data-level="27.2" data-path="Regquality.html"><a href="Regquality.html#r-squared"><i class="fa fa-check"></i><b>27.2</b> R-squared</a></li>
-<li class="chapter" data-level="27.3" data-path="Regquality.html"><a href="Regquality.html#overfitting"><i class="fa fa-check"></i><b>27.3</b> Overfitting</a></li>
-<li class="chapter" data-level="27.4" data-path="Regquality.html"><a href="Regquality.html#goal-of-modeling"><i class="fa fa-check"></i><b>27.4</b> Goal of Modeling</a></li>
+<li class="chapter" data-level="25" data-path="ANOVAdata.html"><a href="ANOVAdata.html"><i class="fa fa-check"></i><b>25</b> Study Design</a><ul>
+<li class="chapter" data-level="25.1" data-path="ANOVAdata.html"><a href="ANOVAdata.html#aspects-of-a-well-designed-experiment"><i class="fa fa-check"></i><b>25.1</b> Aspects of a Well Designed Experiment</a></li>
+<li class="chapter" data-level="25.2" data-path="ANOVAdata.html"><a href="ANOVAdata.html#collecting-observational-data"><i class="fa fa-check"></i><b>25.2</b> Collecting Observational Data</a></li>
 </ul></li>
-<li class="chapter" data-level="28" data-path="Regrecap.html"><a href="Regrecap.html"><i class="fa fa-check"></i><b>28</b> Puting it All Together</a><ul>
-<li class="chapter" data-level="28.1" data-path="Regrecap.html"><a href="Regrecap.html#graphical-summary"><i class="fa fa-check"></i><b>28.1</b> Graphical Summary</a></li>
-<li class="chapter" data-level="28.2" data-path="Regrecap.html"><a href="Regrecap.html#development-of-statistical-model"><i class="fa fa-check"></i><b>28.2</b> Development of Statistical Model</a></li>
-<li class="chapter" data-level="28.3" data-path="Regrecap.html"><a href="Regrecap.html#assessment-of-conditions"><i class="fa fa-check"></i><b>28.3</b> Assessment of Conditions</a></li>
-<li class="chapter" data-level="28.4" data-path="Regrecap.html"><a href="Regrecap.html#summary-of-model-fit"><i class="fa fa-check"></i><b>28.4</b> Summary of Model Fit</a></li>
+<li class="chapter" data-level="26" data-path="ANOVAsummaries.html"><a href="ANOVAsummaries.html"><i class="fa fa-check"></i><b>26</b> Presenting the Data</a></li>
+<li class="chapter" data-level="27" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html"><i class="fa fa-check"></i><b>27</b> Building the Statistical Model</a><ul>
+<li class="chapter" data-level="27.1" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#statistical-model-for-a-quantitative-response-and-a-categorical-predictor"><i class="fa fa-check"></i><b>27.1</b> Statistical Model for A Quantitative Response and a Categorical Predictor</a></li>
+<li class="chapter" data-level="27.2" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#conditions-on-the-error-distribution-1"><i class="fa fa-check"></i><b>27.2</b> Conditions on the Error Distribution</a></li>
+<li class="chapter" data-level="27.3" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#classical-anova-model"><i class="fa fa-check"></i><b>27.3</b> Classical ANOVA Model</a></li>
+<li class="chapter" data-level="27.4" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#imposing-the-conditions-1"><i class="fa fa-check"></i><b>27.4</b> Imposing the Conditions</a></li>
+<li class="chapter" data-level="27.5" data-path="ANOVAmodel.html"><a href="ANOVAmodel.html#recap-1"><i class="fa fa-check"></i><b>27.5</b> Recap</a></li>
 </ul></li>
-<li class="part"><span><b>IV Unit IV: Special Cases</b></span></li>
-<li class="chapter" data-level="29" data-path="CaseBabies.html"><a href="CaseBabies.html"><i class="fa fa-check"></i><b>29</b> Case Study: Birth Weights of Babies</a></li>
-<li class="chapter" data-level="30" data-path="OneMean.html"><a href="OneMean.html"><i class="fa fa-check"></i><b>30</b> Inference on the Mean of a Single Population (One-Sample t-Tests)</a><ul>
-<li class="chapter" data-level="30.1" data-path="OneMean.html"><a href="OneMean.html#framing-the-question-1"><i class="fa fa-check"></i><b>30.1</b> Framing the Question</a></li>
-<li class="chapter" data-level="30.2" data-path="OneMean.html"><a href="OneMean.html#classical-approach"><i class="fa fa-check"></i><b>30.2</b> Classical Approach</a></li>
-<li class="chapter" data-level="30.3" data-path="OneMean.html"><a href="OneMean.html#connection-to-modeling"><i class="fa fa-check"></i><b>30.3</b> Connection to Modeling</a></li>
+<li class="chapter" data-level="28" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html"><i class="fa fa-check"></i><b>28</b> Quantifying the Evidence</a><ul>
+<li class="chapter" data-level="28.1" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#partitioning-variability-1"><i class="fa fa-check"></i><b>28.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="28.2" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#forming-a-standardized-test-statistic"><i class="fa fa-check"></i><b>28.2</b> Forming a Standardized Test Statistic</a></li>
+<li class="chapter" data-level="28.3" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#link-to-regression-analysis"><i class="fa fa-check"></i><b>28.3</b> Link to Regression Analysis</a></li>
+<li class="chapter" data-level="28.4" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#obtaining-a-p-value"><i class="fa fa-check"></i><b>28.4</b> Obtaining a P-value</a></li>
+<li class="chapter" data-level="28.5" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#anova-table"><i class="fa fa-check"></i><b>28.5</b> ANOVA Table</a></li>
+<li class="chapter" data-level="28.6" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#simulating-the-null-distribution"><i class="fa fa-check"></i><b>28.6</b> Simulating the Null Distribution</a></li>
+<li class="chapter" data-level="28.7" data-path="ANOVAteststat.html"><a href="ANOVAteststat.html#recap-2"><i class="fa fa-check"></i><b>28.7</b> Recap</a></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="TwoMeans.html"><a href="TwoMeans.html"><i class="fa fa-check"></i><b>31</b> Comparing the Means of Two Independent Groups (Two-Sample t-Tests)</a><ul>
-<li class="chapter" data-level="31.1" data-path="TwoMeans.html"><a href="TwoMeans.html#framing-the-question-2"><i class="fa fa-check"></i><b>31.1</b> Framing the Question</a></li>
-<li class="chapter" data-level="31.2" data-path="TwoMeans.html"><a href="TwoMeans.html#classical-approach-1"><i class="fa fa-check"></i><b>31.2</b> Classical Approach</a></li>
-<li class="chapter" data-level="31.3" data-path="TwoMeans.html"><a href="TwoMeans.html#connection-to-modeling-1"><i class="fa fa-check"></i><b>31.3</b> Connection to Modeling</a></li>
+<li class="chapter" data-level="29" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html"><i class="fa fa-check"></i><b>29</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="29.1" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-independence-1"><i class="fa fa-check"></i><b>29.1</b> Assessing Independence</a></li>
+<li class="chapter" data-level="29.2" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-homoskedasticity-1"><i class="fa fa-check"></i><b>29.2</b> Assessing Homoskedasticity</a></li>
+<li class="chapter" data-level="29.3" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#assessing-normality-1"><i class="fa fa-check"></i><b>29.3</b> Assessing Normality</a></li>
+<li class="chapter" data-level="29.4" data-path="ANOVAassessment.html"><a href="ANOVAassessment.html#general-tips-for-assessing-assumptions-1"><i class="fa fa-check"></i><b>29.4</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="ANOVArecap.html"><a href="ANOVArecap.html"><i class="fa fa-check"></i><b>30</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="30.1" data-path="ANOVArecap.html"><a href="ANOVArecap.html#framing-the-question-fundamental-idea-i-1"><i class="fa fa-check"></i><b>30.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="30.2" data-path="ANOVArecap.html"><a href="ANOVArecap.html#getting-good-data-fundamental-idea-ii-1"><i class="fa fa-check"></i><b>30.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="30.3" data-path="ANOVArecap.html"><a href="ANOVArecap.html#presenting-the-data-fundamental-idea-iii-1"><i class="fa fa-check"></i><b>30.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="30.4" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv-1"><i class="fa fa-check"></i><b>30.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="30.5" data-path="ANOVArecap.html"><a href="ANOVArecap.html#quantifying-the-evidence-fundamental-idea-v-1"><i class="fa fa-check"></i><b>30.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="30.6" data-path="ANOVArecap.html"><a href="ANOVArecap.html#conclusion"><i class="fa fa-check"></i><b>30.6</b> Conclusion</a></li>
+</ul></li>
+<li class="part"><span><b>V Unit V: Comparing the Average Response Across Correlated Groups</b></span></li>
+<li class="chapter" data-level="31" data-path="CaseYogurt.html"><a href="CaseYogurt.html"><i class="fa fa-check"></i><b>31</b> Case Study: Paying a Premium for the Experience</a></li>
+<li class="chapter" data-level="32" data-path="Blockquestions.html"><a href="Blockquestions.html"><i class="fa fa-check"></i><b>32</b> Framing the Question</a><ul>
+<li class="chapter" data-level="32.1" data-path="Blockquestions.html"><a href="Blockquestions.html#general-setting-1"><i class="fa fa-check"></i><b>32.1</b> General Setting</a></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="Blockdata.html"><a href="Blockdata.html"><i class="fa fa-check"></i><b>33</b> Correlated Data</a></li>
+<li class="chapter" data-level="34" data-path="Blocksummaries.html"><a href="Blocksummaries.html"><i class="fa fa-check"></i><b>34</b> Presenting Correlated Data</a></li>
+<li class="chapter" data-level="35" data-path="Blockmodel.html"><a href="Blockmodel.html"><i class="fa fa-check"></i><b>35</b> Analyzing Correlated Responses</a><ul>
+<li class="chapter" data-level="35.1" data-path="Blockmodel.html"><a href="Blockmodel.html#statistical-model-for-correlated-responses"><i class="fa fa-check"></i><b>35.1</b> Statistical Model for Correlated Responses</a></li>
+<li class="chapter" data-level="35.2" data-path="Blockmodel.html"><a href="Blockmodel.html#conditions-on-the-error-distribution-2"><i class="fa fa-check"></i><b>35.2</b> Conditions on the Error Distribution</a></li>
+<li class="chapter" data-level="35.3" data-path="Blockmodel.html"><a href="Blockmodel.html#conditions-on-the-random-effects"><i class="fa fa-check"></i><b>35.3</b> Conditions on the Random Effects</a></li>
+<li class="chapter" data-level="35.4" data-path="Blockmodel.html"><a href="Blockmodel.html#classical-repeated-measures-anova-model"><i class="fa fa-check"></i><b>35.4</b> Classical Repeated Measures ANOVA Model</a></li>
+<li class="chapter" data-level="35.5" data-path="Blockmodel.html"><a href="Blockmodel.html#recap-3"><i class="fa fa-check"></i><b>35.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="36" data-path="Blockteststat.html"><a href="Blockteststat.html"><i class="fa fa-check"></i><b>36</b> Quantifying the Evidence</a><ul>
+<li class="chapter" data-level="36.1" data-path="Blockteststat.html"><a href="Blockteststat.html#partitioning-variability-2"><i class="fa fa-check"></i><b>36.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="36.2" data-path="Blockteststat.html"><a href="Blockteststat.html#forming-a-standardized-test-statistic-1"><i class="fa fa-check"></i><b>36.2</b> Forming a Standardized Test Statistic</a></li>
+<li class="chapter" data-level="36.3" data-path="Blockteststat.html"><a href="Blockteststat.html#anova-table-1"><i class="fa fa-check"></i><b>36.3</b> ANOVA Table</a></li>
+<li class="chapter" data-level="36.4" data-path="Blockteststat.html"><a href="Blockteststat.html#recap-4"><i class="fa fa-check"></i><b>36.4</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="37" data-path="Blockassessment.html"><a href="Blockassessment.html"><i class="fa fa-check"></i><b>37</b> Assessing Modeling Assumptions</a><ul>
+<li class="chapter" data-level="37.1" data-path="Blockassessment.html"><a href="Blockassessment.html#assessing-independence-2"><i class="fa fa-check"></i><b>37.1</b> Assessing Independence</a></li>
+<li class="chapter" data-level="37.2" data-path="Blockassessment.html"><a href="Blockassessment.html#assessing-identical-distribution"><i class="fa fa-check"></i><b>37.2</b> Assessing Identical Distribution</a></li>
+<li class="chapter" data-level="37.3" data-path="Blockassessment.html"><a href="Blockassessment.html#assessing-normality-2"><i class="fa fa-check"></i><b>37.3</b> Assessing Normality</a></li>
+<li class="chapter" data-level="37.4" data-path="Blockassessment.html"><a href="Blockassessment.html#general-tips-for-assessing-assumptions-2"><i class="fa fa-check"></i><b>37.4</b> General Tips for Assessing Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="38" data-path="Blockrecap.html"><a href="Blockrecap.html"><i class="fa fa-check"></i><b>38</b> Using the Tools Together</a><ul>
+<li class="chapter" data-level="38.1" data-path="Blockrecap.html"><a href="Blockrecap.html#framing-the-question-fundamental-idea-i-2"><i class="fa fa-check"></i><b>38.1</b> Framing the Question (Fundamental Idea I)</a></li>
+<li class="chapter" data-level="38.2" data-path="Blockrecap.html"><a href="Blockrecap.html#getting-good-data-fundamental-idea-ii-2"><i class="fa fa-check"></i><b>38.2</b> Getting Good Data (Fundamental Idea II)</a></li>
+<li class="chapter" data-level="38.3" data-path="Blockrecap.html"><a href="Blockrecap.html#presenting-the-data-fundamental-idea-iii-2"><i class="fa fa-check"></i><b>38.3</b> Presenting the Data (Fundamental Idea III)</a></li>
+<li class="chapter" data-level="38.4" data-path="Blockrecap.html"><a href="Blockrecap.html#quantifying-the-variability-in-the-estimate-fundamental-idea-iv-2"><i class="fa fa-check"></i><b>38.4</b> Quantifying the Variability in the Estimate (Fundamental Idea IV)</a></li>
+<li class="chapter" data-level="38.5" data-path="Blockrecap.html"><a href="Blockrecap.html#quantifying-the-evidence-fundamental-idea-v-2"><i class="fa fa-check"></i><b>38.5</b> Quantifying the Evidence (Fundamental Idea V)</a></li>
+<li class="chapter" data-level="38.6" data-path="Blockrecap.html"><a href="Blockrecap.html#conclusion-1"><i class="fa fa-check"></i><b>38.6</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -235,79 +266,75 @@
 
             <section class="normal" id="section-">
 <div id="ANOVAteststat" class="section level1">
-<h1><span class="header-section-number">13</span> Quantifying the Evidence</h1>
-<p>Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">13.1</a> displays a numeric response across three groups for two different datasets. Consider the following question:</p>
+<h1><span class="header-section-number">28</span> Quantifying the Evidence</h1>
+<p>Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">28.1</a> displays a numeric response across three groups for two different datasets. Consider the following question:</p>
 <blockquote>
 <p>For which dataset is there <em>stronger</em> evidence that the response is associated with the grouping variable?</p>
 </blockquote>
 <div class="figure" style="text-align: center"><span id="fig:anovateststat-boxplots"></span>
 <img src="images/anovateststat-boxplots-1.png" alt="Simulated data illustrating that signal strength is determined by partitioning variability. There is a clear signal (difference in the location across groups) for Dataset A but not for Dataset B." width="80%" />
 <p class="caption">
-Figure 13.1: Simulated data illustrating that signal strength is determined by partitioning variability. There is a clear signal (difference in the location across groups) for Dataset A but not for Dataset B.
+Figure 28.1: Simulated data illustrating that signal strength is determined by partitioning variability. There is a clear signal (difference in the location across groups) for Dataset A but not for Dataset B.
 </p>
 </div>
-<p>Nearly everyone will say that Dataset A provides stronger evidence of a relationship between the grouping variable and the response. We generated these data such that the mean for Groups I, II and II are 5, 6 and 7, respectively, <em>for both Datasets A and B</em>. While there is a difference, on average, in the response across the groups in both cases, it is correct that Dataset A provides stronger evidence for that relationship. The real question is “what is it that leads everyone to make the same conclusion when we have not yet discussed how to analyze this data?” When we ask students why they feel Dataset A provides stronger evidence, we typically hear that it is because the “gaps” between the groups “look bigger.” In essence, that is exactly right!</p>
-<div id="partitioning-variability" class="section level2">
-<h2><span class="header-section-number">13.1</span> Partitioning Variability</h2>
-<p>Subconsciously, when we are deciding whether there is a difference between the groups, we are partitioning the variability in the response. We are essentially describing two sources of variability: the variability in the response caused by subjects belonging to different groups and the variability in the response within a group (Figure <a href="ANOVAteststat.html#fig:anovateststat-partition-variability">13.2</a>). In both Datasets A and B from Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">13.1</a>, the <strong>between-group variability</strong> is the same; the difference in the means from one group to another is the same in both cases. However, the <strong>within-group variability</strong> is much smaller for Dataset A compared to Dataset B.</p>
+<p>Nearly everyone will say that Dataset A provides stronger evidence of a relationship between the grouping variable and the response. We generated these data such that the mean for Groups I, II and III are 5, 6 and 7, respectively, <em>for both Datasets A and B</em>. While there is a difference, on average, in the response across the groups in both cases, it is correct that Dataset A provides stronger evidence for that relationship. The real question is “what is it that leads everyone to make the same conclusion when we have not yet discussed how to analyze this data?” When we ask students why they feel Dataset A provides stronger evidence, we typically hear that it is because the “gaps” between the groups “look bigger.” In essence, that is exactly right!</p>
+<div id="partitioning-variability-1" class="section level2">
+<h2><span class="header-section-number">28.1</span> Partitioning Variability</h2>
+<p>Subconsciously, when we are deciding whether there is a difference between the groups, we are partitioning the variability in the response. We are essentially describing two sources of variability: the variability in the response caused by subjects belonging to different groups and the variability in the response within a group (Figure <a href="ANOVAteststat.html#fig:anovateststat-partition-variability">28.2</a>). In both Datasets A and B from Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">28.1</a>, the <strong>between-group variability</strong> is the same; the difference in the means from one group to another is the same in both cases. However, the <strong>within-group variability</strong> is much smaller for Dataset A compared to Dataset B.</p>
 <div class="figure" style="text-align: center"><span id="fig:anovateststat-partition-variability"></span>
 <img src="images/ANOVATestStat-Partition-Variability.jpg" alt="Illustration of partitioning the variability in the response to assess the strength of a signal." width="80%" />
 <p class="caption">
-Figure 13.2: Illustration of partitioning the variability in the response to assess the strength of a signal.
+Figure 28.2: Illustration of partitioning the variability in the response to assess the strength of a signal.
 </p>
 </div>
 
 <div class="definition">
-<span id="def:defn-between-group-variability" class="definition"><strong>Definition 13.1  (Between Group Variability)  </strong></span>The variability in the average response from one group to another.
+<span id="def:defn-between-group-variability" class="definition"><strong>Definition 28.1  (Between Group Variability)  </strong></span>The variability in the average response from one group to another.
 </div>
-<p></p>
+
 
 <div class="definition">
-<span id="def:defn-within-group-variability" class="definition"><strong>Definition 13.2  (Within Group Variability)  </strong></span>The variability in the response within a particular group.
+<span id="def:defn-within-group-variability" class="definition"><strong>Definition 28.2  (Within Group Variability)  </strong></span>The variability in the response within a particular group.
 </div>
-<p></p>
-<p>Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">13.1</a> then illustrates the larger the variability between groups <em>relative to</em> the variability within groups, the stronger the signal. Quantifying the strength of a signal is then about quantifying the ratio of these two sources of variability. Let this sink in because it is completely counter-intuitive. We are saying that in order to determine if there is a difference in the mean response across groups, we have to examine variability. Further, a signal in data is measured by the variability it produces. For this reason, comparing a quantitative response across a categorical variable is often referred to as Analysis of Variance (ANOVA).</p>
+
+<p>Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">28.1</a> then illustrates the larger the variability between groups <em>relative to</em> the variability within groups, the stronger the signal. Quantifying the strength of a signal is then about quantifying the ratio of these two sources of variability. Let this sink in because it is completely counter-intuitive. We are saying that in order to determine if there is a difference in the mean response across groups, we have to examine variability. Further, a signal in data is measured by the variability it produces. For this reason, comparing a quantitative response across a categorical variable is often referred to as Analysis of Variance (ANOVA).</p>
 
 <div class="rmdkeyidea">
 Consider the ratio of the variability between groups to the variability within groups. The larger this ratio, the stronger the evidence of a signal provided by the data.
 </div>
-<p></p>
+
+<p>This partitioning is a bit easier to visualize here than it was for the simple linear model, but the process is actually exactly the same.</p>
 </div>
 <div id="forming-a-standardized-test-statistic" class="section level2">
-<h2><span class="header-section-number">13.2</span> Forming a Standardized Test Statistic</h2>
-<p>As we stated above, quantifying the strength of a signal is equivalent to quantifying the ratio of two sources of variability. Such ratios are known as <strong>standardized test statistics</strong>.</p>
-
-<div class="definition">
-<span id="def:defn-standardized-test-statistic" class="definition"><strong>Definition 13.3  (Standardized Test Statistic)  </strong></span>A ratio of two sources of variability, or a signal-to-noise ratio. The larger the test statistic, the stronger the evidence of a signal; said another way, the larger the test statistic, the stronger the evidence against the null hypothesis.
-</div>
-<p></p>
+<h2><span class="header-section-number">28.2</span> Forming a Standardized Test Statistic</h2>
+<p>As we stated above, quantifying the strength of a signal is equivalent to quantifying the ratio of two sources of variability. This ratio forms our standardized statistic.</p>
 Based on our observations above, the standardized test statistic for comparing the mean response across multiple groups has the general form
 <span class="math display" id="eq:general-test-stat">\[\begin{equation}
   T = \frac{(\text{Between Group Variability})}{(\text{Within Group Variability})}
-  \tag{13.1}
+  \tag{28.1}
 \end{equation}\]</span>
 <p>The question we then have before us is the following: how do we measure these sources of variability? Consider again the hypothesis of interest for the <a href="CaseOrganic.html#CaseOrganic">Oranic Food Case Study</a>:</p>
 <blockquote>
 <p><span class="math inline">\(H_0: \mu_{\text{comfort}} = \mu_{\text{control}} = \mu_{\text{organic}}\)</span><br />
 <span class="math inline">\(H_1:\)</span> At least one <span class="math inline">\(\mu\)</span> differs from the others</p>
 </blockquote>
-<p>In order to form the standardized test statistic, let’s again think about what constitutes evidence <em>against</em> the null hypothesis. The more the means differ from one another, the stronger the evidence. But, in the previous unit, we had a measure for how different values were from one another — variance. That is, the <em>between-group</em> variability can be measured by the variance of the means; we call this the <strong>Mean Square for Treatment (MSTrt)</strong>.</p>
+<p>In order to form the standardized test statistic, let’s again think about what constitutes evidence <em>against</em> the null hypothesis. The more the means differ from one another, the stronger the evidence. The <em>between-group</em> variability can be measured by the variance of the means; we call this the <strong>Mean Square for Treatment (MSTrt)</strong>.</p>
 
 <div class="definition">
-<span id="def:defn-mstrt" class="definition"><strong>Definition 13.4  (Mean Square for Treatment (MSTrt))  </strong></span>This captures the between-group variability in an Analysis of Variance; it is a weighted variance among the sample means from the various groups. It represents the signal.
+<span id="def:defn-mstrt" class="definition"><strong>Definition 28.3  (Mean Square for Treatment (MSTrt))  </strong></span>This captures the between-group variability in an Analysis of Variance; it is a weighted variance among the sample means from the various groups. It represents the signal.
 </div>
-<p></p>
-<p>Since we do not know the means for each groups (remember, each <span class="math inline">\(\mu\)</span> is a parameter), we assess the between group variability within the sample using the estimates for these parameters — the sample means. This is our signal. The larger this variance, the further apart the means are from one another (agreeing with the alternative hypothesis); the smaller this variance, the closer the means are (agreeing with the null hypothesis).</p>
-<p>While the numerator provides some measure of the size of the signal, we need again need to consider how much noise is within the data. Again, in Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">13.1</a>, the variability between the means is identical for the two datasets; the signal is stronger for Dataset A because this variability is larger <em>with respect to the noise</em>. In order to capture the <em>within-group</em> variability, we pool the variances for each group; this is called the <strong>Mean Square for Error (MSE)</strong>.</p>
+
+<p>Since we do not know the mean response for each group (remember, each <span class="math inline">\(\mu\)</span> is a parameter), we assess the between group variability within the sample using the estimates for these parameters — the sample means. This is our signal. The larger this variance, the further apart the means are from one another (providing evidence for the alternative hypothesis); the smaller this variance, the closer the means are (consistent with the null hypothesis).</p>
+<p>While the numerator provides some measure of the size of the signal, we need again need to consider how much noise is within the data. Again, in Figure <a href="ANOVAteststat.html#fig:anovateststat-boxplots">28.1</a>, the variability between the means is identical for the two datasets; the signal is stronger for Dataset A because this variability is larger <em>with respect to the noise</em>. In order to capture the <em>within-group</em> variability, we pool the variances for each group; this is called the <strong>Mean Square Error (MSE)</strong>.</p>
 
 <div class="definition">
-<span id="def:defn-mse" class="definition"><strong>Definition 13.5  (Mean Square for Error (MSE))  </strong></span>This captures the within-group variability; it is a pooled estimate of the variance within the groups. It represents the noise.
+<span id="def:defn-mse-alt" class="definition"><strong>Definition 28.4  (Mean Square Error (MSE))  </strong></span>This captures the within-group variability; it is a pooled estimate of the variance within the groups. It represents the noise.
 </div>
-<p></p>
-<p>Our test statistic in Equation <a href="ANOVAteststat.html#eq:general-test-stat">(13.1)</a> is then refined to</p>
+
+<p>Our test statistic in Equation <a href="ANOVAteststat.html#eq:general-test-stat">(28.1)</a> is then refined to</p>
 <span class="math display" id="eq:anova-test-stat">\[\begin{equation}
   T = \frac{MSTrt}{MSE}
-  \tag{13.2}
+  \tag{28.2}
 \end{equation}\]</span>
 
 <div class="rmdtip">
@@ -320,28 +347,182 @@ Based on our observations above, the standardized test statistic for comparing t
 <p>where</p>
 <p><span class="math display">\[
 \begin{aligned}
-  MSTrt &amp;= \frac{1}{k-1} \sum_{j=1}^{k} n_j \left(\bar{y}_j - \bar{y}\right)^2 \\
-  MSE &amp;= \frac{1}{n-k} \sum_{j=1}^{k} \left(n_j - 1\right) s_j^2
+  MSTrt &amp;= \frac{1}{k-1} \sum_{j=1}^{k} n_j \left((\text{Average response for j-th group}) - (\text{Overall average response})\right)^2 \\
+  MSE &amp;= \frac{1}{n-k} \sum_{j=1}^{k} \left(n_j - 1\right) (\text{Variance for j-th group})^2
 \end{aligned}
 \]</span></p>
-and <span class="math inline">\(n_j\)</span> represents the sample size for the <span class="math inline">\(j\)</span>-th group, <span class="math inline">\(\bar{y}_j\)</span> represents the sample mean for the <span class="math inline">\(j\)</span>-th group, <span class="math inline">\(\bar{y}\)</span> represents the overall mean response across all groups, and <span class="math inline">\(s_j^2\)</span> represents the sample variance for the <span class="math inline">\(j\)</span>-th group.
+and <span class="math inline">\(n_j\)</span> represents the sample size for the <span class="math inline">\(j\)</span>-th group and <span class="math inline">\(n\)</span> the overall sample size.
 </div>
-<p></p>
+
 <p>We note that while mathematical formulas have been provided to add some clarity to those who think algebraically, our emphasis is <em>not</em> on the computational formulas as much as the idea that we are comparing two sources of variability.</p>
 </div>
+<div id="link-to-regression-analysis" class="section level2">
+<h2><span class="header-section-number">28.3</span> Link to Regression Analysis</h2>
+<p>The standardized statistic described in the previous section should look very familiar. That is because the ANOVA model is just a special case of a general regression model. While we developed the statistic intuitively above, we now describe how we reach the same conclusion following the development from a regression perspective.</p>
+<p>As discussed in Chapter <a href="Regquality.html#Regquality">19</a>, we can partition the variability using the sums of squares. This is true in general, and we can apply it here.</p>
+<p><span class="math display">\[
+\begin{aligned}
+  SST &amp;= SSR + SSE \\
+  \sum_{i=1}^{n} \left((\text{Response})_i - (\text{Average Response})\right)^2 &amp;=
+    \sum_{i=1}^{n} \left((\text{Predicted Response})_i - (\text{Average Response})\right)^2 \\
+    &amp;\qquad + \sum_{i=1}^{n} \left((\text{Response})_i - (\text{Predicted Response})_i\right)^2
+\end{aligned}
+\]</span></p>
+<p>Now, keeping in mind that the least squares estimates are the sample means for each group, we can say that the “Predicted Response” is actually the sample mean for the group to which the corresponding observation belongs. Of course, our standardized statistic is constructed using mean squares (actual variances) instead of sums of squares. In order to compute those mean squares, we must compute the corresponding degrees of freedom, which again partition just as the variability does.</p>
+<p>Using the tip described in Chapter <a href="Regquality.html#Regquality">19</a> regarding degrees of freedom, we have that the degrees of freedom for the total sum of squares (SST) is <span class="math inline">\(n - 1\)</span> (<span class="math inline">\(n\)</span> unique observations minus a single estimated mean). The degrees of freedom associated with the regression sum of squares (sometimes called the “Treatment Sum of Squares”, abbreviated SSTrt in ANOVA) is <span class="math inline">\(k - 1\)</span> (<span class="math inline">\(k\)</span> averages estimated, one for each group, minus a single overall estimated mean). Finally, the degrees of freedom associated with the error sum of squares is <span class="math inline">\(n - k\)</span> (<span class="math inline">\(n\)</span> unique observations minus <span class="math inline">\(k\)</span> estimated group means).</p>
+<p>We can then form the Mean Square Total <span class="math inline">\(MST = SST/(n-1)\)</span>, the Mean Square for Regression (sometimes called the “Mean Square for Treatment,” abbreviated MSTrt, as we did in the previous section) as <span class="math inline">\(MSR = SSR/(k-1)\)</span> and the Mean Square for Error as <span class="math inline">\(MSE = SSE/(n-k)\)</span>. We then have the following standardized statistic</p>
+<p><span class="math display">\[T^* = \frac{MSR}{MSE} = \frac{SSR/(k-1)}{SSE/(n-k)}\]</span></p>
+<p>which is equivalent to the standardized statistic defined in the previous section. The key here is that regardless of how we approach the problem, we consider partitioning the variability in order to determine our signal to noise ratio.</p>
+<p>Let’s not forget that at its heart, when we partition the variability to perform a hypothesis test, we are really comparing two models. Consider the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a>. The primary question of interest is captured by the following hypotheses:</p>
+<blockquote>
+<p><span class="math inline">\(H_0:\)</span> there is no association between the type of food an individual is exposed to and their moral expectations, on average.<br />
+<span class="math inline">\(H_1:\)</span> there is is an association between the type of food an individual is exposed to and their moral expectations, on average.</p>
+</blockquote>
+<p>which we represented mathematically as</p>
+<blockquote>
+<p><span class="math inline">\(H_0: \mu_{\text{comfort}} = \mu_{\text{control}} = \mu_{\text{organic}}\)</span><br />
+<span class="math inline">\(H_1:\)</span> At least one <span class="math inline">\(\mu\)</span> differs from the others</p>
+</blockquote>
+<p>Under the alternative hypothesis, where we place no restrictions on the parameters, we developed the following model for the data-generating process:</p>
+<p><span class="math display">\[(\text{Moral Expectation Score})_i = \mu_1 (\text{Group})_{1,i} + \mu_2 (\text{Group})_{2,i} + \mu_3 (\text{Group})_{3,i} + \epsilon_i\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\text{Group})_{1,i} &amp;= \begin{cases}
+    1 &amp; \text{if i-th subject exposed to organic foods} \\
+    0 &amp; \text{if i-th subject not exposed to organic foods} 
+    \end{cases} \\
+  (\text{Group})_{2,i} &amp;= \begin{cases}
+    1 &amp; \text{if i-th subject exposed to comfort foods} \\
+    0 &amp; \text{if i-th subject not exposed to comfort foods} 
+    \end{cases} \\
+  (\text{Group})_{3,i} &amp;= \begin{cases}
+    1 &amp; \text{if i-th subject exposed to control foods} \\
+    0 &amp; \text{if i-th subject not exposed to control foods}
+    \end{cases}
+\end{aligned}
+\]</span></p>
+<p>The null hypothesis imposes a restriction on the parameters (they must all be the same), which reduces the model for the data generating process to</p>
+<p><span class="math display">\[(\text{Moral Expectation Score})_i = \mu + \epsilon_i\]</span></p>
+<p>where <span class="math inline">\(\mu\)</span> is the common value of mean response for each food exposure group (<span class="math inline">\(\mu \equiv \mu_1 = \mu_2 = \mu_3\)</span>). By partitioning the variability, we are really determining if the variability in the moral expectation scores explained by the different groups is a significant portion of all the variability in the moral expectation scores.</p>
+</div>
 <div id="obtaining-a-p-value" class="section level2">
-<h2><span class="header-section-number">13.3</span> Obtaining a P-value</h2>
-<p>Standardized test statistics quantify the strength of a signal, but they do not allow for easy interpretation. However, with a standardized test statistic, we are able to compute a p-value to quantify how unlikely our particular sample is. That is, we need to construct the null distribution for the standardized test statistic. We need to know what type of signal we would expect if the null hypothesis were true. Conceptually, this is no different than it was in Unit I. We consider running the study again in a world in which all the groups are the same; for the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a>, this would involve - Obtaining a new sample of students. - Randomizing each student to one of the three groups at random, all showing the same foods. - Having each student answer a questionnaire regarding moral dilemmas. - Summarize the data by computing a standardized test statistic.</p>
-<p>Notice the difference in step 2 above compared to what actually happened in the real study. In the real study, each group had a different set of foods. This was to answer the question about whether there is a difference in the groups. However, in order to construct the <em>null distribution</em>, we need to force all groups to be the same. This could be accomplished by showing every group the same set of foods. The primary difference in this unit is that the strength of the signal is measured through a standardized test statistic. After repeating the above steps over and over again, we determine how often the recorded standardized test statistics exceeded the value we obtained in our actual sample.</p>
-<p>Figure <a href="ANOVAteststat.html#fig:anovateststat-pvalue">13.3</a> represents the null distribution of the standardized test statistic. Again, these are values of the standardized test statistic we would expect if there were no relationship between the food categories to which the students were exposed and their moral score. We are then interested in finding out if the observed dataset is consistent with these expectations.</p>
+<h2><span class="header-section-number">28.4</span> Obtaining a P-value</h2>
+<p>Standardized statistics quantify the strength of a signal, but they do not allow for easy interpretation. However, with a standardized statistic, we are able to compute a p-value to quantify how unlikely our particular sample is assuming the null hypothesis were true. That is, we need to construct a model for the null distribution of the standardized statistic. We need to know what type of signal we would expect if the null hypothesis were true. Conceptually, this is no different than it was in Unit I. We consider running the study again in a world in which all the groups are the same; for the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a>, this would involve</p>
+<ol style="list-style-type: decimal">
+<li>Obtaining a new sample of students.<br />
+</li>
+<li>Randomizing each student to one of the three groups at random, all showing the same foods.<br />
+</li>
+<li>Having each student answer a questionnaire regarding moral dilemmas.</li>
+<li>Summarize the data by computing a standardized statistic.</li>
+</ol>
+<p>Notice the difference in step 2 above compared to what actually happened in the real study. In the real study, each group had a different set of foods. This was to answer the question about whether there is a difference in the groups. However, in order to construct the <em>null distribution</em>, we need to force all groups to be the same. This could be accomplished by showing every group the same set of foods. After repeating the above steps over and over again, we determine how often the recorded standardized statistics exceeded the value of the standardized statistic we obtained in our actual sample. How this null distribution is modeled depends on the conditions we are willing to place on the error term in our model.</p>
+<p>Assuming the data is consistent with the conditions for the classical ANOVA model, we are able to construct an analytical model for the null distribution. Figure <a href="ANOVAteststat.html#fig:anovateststat-pvalue">28.3</a> represents this analytical null distribution of the standardized statistic. Again, these are values of the standardized statistic we would expect if there were no relationship between the food categories to which the students were exposed and their moral score. We are then interested in finding out if the observed dataset is consistent with these expectations.</p>
 <div class="figure" style="text-align: center"><span id="fig:anovateststat-pvalue"></span>
-<img src="images/anovateststat-pvalue-1.png" alt="Computation of the p-value for the Organic Food Case Study by simulating the null distribution.  The null distribution is based on 5000 replications." width="80%" />
+<img src="images/anovateststat-pvalue-1.png" alt="Computation of the p-value for the Organic Food Case Study under the classical ANOVA model." width="80%" />
 <p class="caption">
-Figure 13.3: Computation of the p-value for the Organic Food Case Study by simulating the null distribution. The null distribution is based on 5000 replications.
+Figure 28.3: Computation of the p-value for the Organic Food Case Study under the classical ANOVA model.
 </p>
 </div>
-<p>Notice that in our data, we observed a standardized test statistic of 0.41; based on the null distribution, we would expect a signal this strong or stronger about 66.9% of the time <em>when no signal existed at the population</em> (by chance alone). That is, our data is quite consistent with what we would expect under the null hypothesis. There is no evidence of a relationship between the type of food a student is exposed to and their moral expectations, on average.</p>
-<p>Again, conceptually, this is similar to what we saw in the previous unit. We are simply determining how likely our data is under the null hypothesis. However, unlike the previous unit, it may not be clear how we actually model this null distribution. If we cannot physically redo the study, how can we construct this model? In order to understand this, we must consider a different model — that for the data generating process. This is the topic of the next chapter.</p>
+<p>Notice that in our data, we observed a standardized test statistic of 0.41; based on the null distribution, we would expect a signal this strong or stronger about 66.7% of the time <em>when no signal existed at the population</em> (by chance alone). Our data is very consistent with what we would expect under the null hypothesis. There is no evidence of a relationship between the type of food a student is exposed to and their moral expectations, on average.</p>
+<p>Of course, this p-value was based on assuming the classical ANOVA model. We could have modeled the null distribution using an empirical model assuming only that the errors were independent of one another (not imposing the conditions of homoskedasticity or normality). While the model for the null distribution would change under these revised conditions, it changes only slightly (Figure <a href="ANOVAteststat.html#fig:anovateststat-compare-nulls">28.4</a>) and the final conclusion remains the same. How do we determine which p-value to report? We must assess the conditions, which is the topic of the next chapter.</p>
+<div class="figure" style="text-align: center"><span id="fig:anovateststat-compare-nulls"></span>
+<img src="images/anovateststat-compare-nulls-1.png" alt="Comparison of two models for the null distribution of the standardized statistic.  The empirical model for the null distribution is based on 5000 replications." width="80%" />
+<p class="caption">
+Figure 28.4: Comparison of two models for the null distribution of the standardized statistic. The empirical model for the null distribution is based on 5000 replications.
+</p>
+</div>
+</div>
+<div id="anova-table" class="section level2">
+<h2><span class="header-section-number">28.5</span> ANOVA Table</h2>
+<p>We should not lose sight of the fact that our standardized statistic is really a result of partitioning the variability and considering the variability explained by the predictor relative to the noise in the response. Our analysis of these sources of variability is often summarized in a table similar to that represented in Figure <a href="ANOVAteststat.html#fig:anovateststat-ANOVA-Table">28.5</a>, known as an ANOVA table.</p>
+<div class="figure" style="text-align: center"><span id="fig:anovateststat-ANOVA-Table"></span>
+<img src="images/ANOVAteststat-Table.jpg" alt="Layout of an ANOVA table which summarizes the analysis conducted.  Emphasis is on partitioning the variability." width="80%" />
+<p class="caption">
+Figure 28.5: Layout of an ANOVA table which summarizes the analysis conducted. Emphasis is on partitioning the variability.
+</p>
+</div>
+<p>This table is extremely familiar as we encountered it in Chapter <a href="Regquality.html#Regquality">19</a>. Just as before, the last entry in the table is the p-value. As with any p-value, it is computed by finding the likelihood of getting a standardized statistic as extreme or more than that observed when the null hypothesis is true. “More extreme” values of the statistic would be larger values; so, the area to the right in the null distribution is needed as highlighted in the previous section.</p>
+<p>Let’s consider the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a> data. Further, let’s suppose that the data is consistent with all three classical ANOVA conditions. The results from the analysis (assuming the classical ANOVA model) comparing the average moral expectation score across the three food conditions are given in Table <a href="ANOVAteststat.html#tab:anovateststat-organic-anova-table">28.1</a>.</p>
+<table>
+<caption><span id="tab:anovateststat-organic-anova-table">Table 28.1: </span>ANOVA table for the Organic Food Case Study assuming the classical ANOVA model.</caption>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="right">DF</th>
+<th align="right">SS</th>
+<th align="right">MS</th>
+<th align="right">F</th>
+<th align="right">P-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Food Exposure Group</td>
+<td align="right">2</td>
+<td align="right">0.562</td>
+<td align="right">0.281</td>
+<td align="right">0.406</td>
+<td align="right">0.667</td>
+</tr>
+<tr class="even">
+<td align="left">Residuals</td>
+<td align="right">120</td>
+<td align="right">82.951</td>
+<td align="right">0.691</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="right">122</td>
+<td align="right">83.513</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+<p>As long as the conditions on the error term are reasonable, then we can interpret the above p-value. Based on these results, there is no evidence that the moral expectations differ, on average, across the various food exposure groups. That is, there is no evidence of a relationship between the type of food to which we are exposed and our resulting moral expectations, on average.</p>
+<p>The table is a way of summarizing the output from the analysis; the table itself is not very interesting, but we present it because it has the same emphasis we have in this unit — partitioning variability. The key to separating a signal from a noise is to partition the variability in the data. The total variability is partitioned into that resulting from the groups (the factor), this is the deterministic portion of the model that we can explain, and the error, the stochastic portion of the model that we cannot explain. By partitioning this variability, we are able to compute the standardized test statistic and the corresponding p-value. Practically, the only component we examine in such a table is the p-value. However, it is worth noting that the mean square error (MSE) also provides an estimate of the variance of the errors within a group, the residual variance. That is, the MSE provides an estimate of the variance in the response within a group (if we are willing to assume the variability of the errors is the same in each group).</p>
+
+<div class="rmdtip">
+The mean square for error (MSE) is a pooled estimate of the variability in the response within a particular group.
+</div>
+
+</div>
+<div id="simulating-the-null-distribution" class="section level2">
+<h2><span class="header-section-number">28.6</span> Simulating the Null Distribution</h2>
+<p>We note that this section is a bit more technical than other sections. This section seeks to give the reader a feel for the computational aspect of empirically modeling the null distribution. However, understanding conceptually that we are repeating the study in a world in which the null hypothesis is true is sufficient for interpreting a p-value.</p>
+<p>Suppose we are willing to assume the data is consistent with the following two conditions:</p>
+<ul>
+<li>The error in the response for one observation is independent of the error in the resposne for all other observations.<br />
+</li>
+<li>The errors in the response are identically distributed; specifically, the variability in the error of the response is the same within each group defined by the predictor.</li>
+</ul>
+<p>Under these, we can empirically model the null distribution of our standardized statistic. The key here is to lean on our data generating process. Consider the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a>. <em>If the null hypothesis is true</em>, then we have that</p>
+<p><span class="math display">\[\mu_{\text{organic}} = \mu_{\text{comfort}} = \mu_{\text{control}}\]</span></p>
+<p>Let’s define this common mean to be <span class="math inline">\(\mu\)</span>; we do not know what this value is, but it is common to all groups. Therefore, <em>if the null hypothesis is true</em>, we have that the data generating process reduces to</p>
+<span class="math display" id="eq:null-model">\[\begin{equation}
+  \text{(Moral Expectation Score)}_i = \mu + \epsilon_i
+  \tag{28.3}
+\end{equation}\]</span>
+<p>We can generate data according to this model. We can replace <span class="math inline">\(\mu\)</span> by our best estimate — the sample mean response across all observations regardless of their group. It simply remains to determine how to approximate a random variable from the noise distribution. In order to do this, we need estimates of the errors — residuals. The key is to use the residuals obtained when we fit the <em>more complex model</em>:</p>
+<p><span class="math display">\[(\text{Moral Expectation Score})_i = \mu_1 (\text{Group})_{1,i} + \mu_2 (\text{Group})_{2,i} + \mu_3 (\text{Group})_{3,i} + \epsilon_i\]</span></p>
+<p>Recall that a residual is the difference between the observed response and the predicted response. So, in this case, we have that the residual is given by</p>
+<p><span class="math display">\[(\text{Residual})_i = (\text{Observed Moral Expectation Score})_i - (\text{Average moral expectation score for group to which i-th observation belongs})\]</span></p>
+<p>That is, the residual is the difference between the observed response and the sample mean response for the corresponding group to which the observation belongs. For example, consider the <a href="CaseOrganic.html#CaseOrganic">Organic Food Case Study</a>; the data is reproduced in Figure <a href="#fig:anovateststat-organic-boxplot"><strong>??</strong></a>. Based on the data available, if a subject were to be exposed to organic foods, we would expect their moral expectation score to be 5.66; this is the average observed among individuals randomized to this treatment within our study.</p>
+<p>The key idea here is that residuals approximate the unseen error. If we randomly sample the residuals (with replacement), we are constructing a bootstrap sample of “errors” which can be used to form new responses. Specifically, a new dataset, generated under the null hypothesis, can then be constructed as</p>
+<p><span class="math display">\[
+(\text{Bootstrap Response})_i^* = (\text{Overall Average Response}) + (\text{Sampled Residual})_i^*
+\]</span></p>
+<p>Notice that each newly generated “bootstrap” response has the same mean (so that the null is true). We then take this new dataset and compute the standardized test statistic as before by fitting the complex model and partitioning the variability (due to the groups and the noise) and record it. Even though we know there should not be a difference among the groups (since we generated the data), we construct the analysis as if we were searching for such a difference. We repeat this process over and over again until we have constructed the null distribution. This gives us a sense of the p-value.</p>
+</div>
+<div id="recap-2" class="section level2">
+<h2><span class="header-section-number">28.7</span> Recap</h2>
+<p>By partitioning the variability in the response, we are able to construct a standardized statistic for testing the hypothesis of interest. The model for the null distribution of this statistic depends upon the conditions we are willing to impose on the stochastic portion of the data generating process. Regardless of the conditions we impose, we can interpret the resulting p-value similarly. It provides an indication of whether the data suggests that the average response differs for at least one of the groups.</p>
+<p>Of course, the interpretation of the p-value depends on the conditions we impose. We should not choose such conditions without performing some type of assessment to ensure those conditions are reasonable — that the data is consistent with the conditions. That is the focus of the next chapter.</p>
 
 </div>
 </div>
@@ -350,8 +531,8 @@ Figure 13.3: Computation of the p-value for the Organic Food Case Study by simul
           </div>
         </div>
       </div>
-<a href="ANOVAsummaries.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ANOVAmodel.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ANOVAmodel.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ANOVAassessment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -388,9 +569,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
