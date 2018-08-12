@@ -82,7 +82,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{Last Updated: 2018-08-08}
+  \date{Last Updated: 2018-08-11}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % File: style.tex
@@ -295,7 +295,6 @@ to address questions by converting that data into valuable information.
 \BeginKnitrBlock{rmdkeyidea}
 Statistics is the discipline of converting data into information.
 \EndKnitrBlock{rmdkeyidea}
-
 
 It might be natural at this point to ask ``do I really need an entire
 class about answering questions with data? Isn't this simple?''
@@ -2618,17 +2617,15 @@ level}.
 If we were to capture the middle 95\% of statistics in our model of the
 sampling distribution, a 95\% confidence interval, we would obtain an
 interval of (0.167, 0.407), as shown in Figure
-\ref{fig:samplingdistns-deepwater-95ci}.
+\ref{fig:samplingdistns-deepwater-ci}.
 
 \begin{figure}
 
-\centering \includegraphics[width=0.8\linewidth]{./Images/samplingdistns-deepwater-95ci-1}
+{\centering \includegraphics[width=0.8\linewidth]{./Images/samplingdistns-deepwater-ci-1} 
 
+}
 
-\caption{Construction of a 95\% confidence interval via
-bootstrapping for the proportion of volunteers assigned to wildlife who
-will develop adverse symptoms based on a sample of 54
-volunteers.}\label{fig:samplingdistns-deepwater-95ci}
+\caption{Construction of a confidence interval via bootstrapping for the proportion of volunteers assigned to wildlife who will develop adverse symptoms based on a sample of 54 volunteers.}\label{fig:samplingdistns-deepwater-ci}
 \end{figure}
 
 \BeginKnitrBlock{rmdtip}
@@ -3513,29 +3510,29 @@ A subset of the collected data is shown in Table
 
 \caption{\label{tab:casebabies-table}Subset of a sample of 1009 babies born in North Carlina during 2004.}
 \centering
-\begin{tabular}[t]{r|l|l|l|l|r|r|l}
+\begin{tabular}[t]{r|l|l|r|r}
 \hline
-Subject ID & Age Range (years) & Used Tobacco & Used Alcohol & Sex of Baby & Weight of Baby (g) & Gestation (weeks) & Current Smoker\\
+Subject ID & Age Range (years) & Sex of Baby & Weight of Baby (g) & Gestation (weeks)\\
 \hline
-1 & 30-34 & No & No & Male & 3827 & 40 & No\\
+1 & 30-34 & Male & 3827 & 40\\
 \hline
-2 & 30-34 & No & No & Male & 3629 & 38 & No\\
+2 & 30-34 & Male & 3629 & 38\\
 \hline
-3 & 35-39 & No & No & Female & 3062 & 37 & No\\
+3 & 35-39 & Female & 3062 & 37\\
 \hline
-4 & 20-24 & No & No & Female & 3430 & 39 & No\\
+4 & 20-24 & Female & 3430 & 39\\
 \hline
-5 & 25-29 & No & No & Male & 3827 & 38 & No\\
+5 & 25-29 & Male & 3827 & 38\\
 \hline
-6 & 35-39 & No & No & Female & 3119 & 39 & No\\
+6 & 35-39 & Female & 3119 & 39\\
 \hline
-7 & 20-24 & No & No & Female & 3260 & 40 & No\\
+7 & 20-24 & Female & 3260 & 40\\
 \hline
-8 & 20-24 & No & No & Male & 3969 & 40 & No\\
+8 & 20-24 & Male & 3969 & 40\\
 \hline
-9 & 20-24 & No & No & Male & 3175 & 39 & No\\
+9 & 20-24 & Male & 3175 & 39\\
 \hline
-10 & 25-29 & No & No & Female & 3005 & 39 & No\\
+10 & 25-29 & Female & 3005 & 39\\
 \hline
 \end{tabular}
 \end{table}
@@ -3965,7 +3962,7 @@ within a certain range --- the variability is not comparable because a
 sampling distribution has a different x-axis than the distribution of
 the population or sample.
 
-\chapter{Estimating with Confidence}\label{SingleTeststat}
+\chapter{Quantifying the Evidence}\label{SingleTeststat}
 
 In the previous chapter, we estimated the mean response for a single
 quantitative variable. In this chapter, we consider hypothesis testing
@@ -7102,7 +7099,7 @@ magnitude differs across the various soil conditions. That is, it is
 reasonable that the effect of the magnitude is similar for locations
 with and without rocky soil.
 
-\chapter{Puting it All Together}\label{Regrecap}
+\chapter{Putting it All Together}\label{Regrecap}
 
 For the \protect\hyperlink{CaseGreece}{Seismic Activity Case Study},
 consider the following question:
@@ -8949,11 +8946,7 @@ Recall that a residual is the difference between the observed response
 and the predicted response. So, in this case, we have that the residual
 is given by
 
-\[
-\begin{aligned}
- (\text{Residual})_i &= (\text{Observed Moral Expectation Score})_i \\
-  & \quad - (\text{Average moral expectation score for group to which i-th observation belongs})
-\end{aligned}\]
+\[(\text{Residual})_i = (\text{Observed Moral Expectation Score})_i - (\text{Average moral expectation score for group to which i-th observation belongs})\]
 
 That is, the residual is the difference between the observed response
 and the sample mean response for the corresponding group to which the
@@ -9002,7 +8995,7 @@ type of assessment to ensure those conditions are reasonable --- that
 the data is consistent with the conditions. That is the focus of the
 next chapter.
 
-\chapter{Assessing Modeling Assumptions}\label{ANOVAassessment}
+\chapter{Assessing Modeling Conditions}\label{ANOVAassessment}
 
 In this unit we have discussed a model relating a quantitative response
 to a categorical predictor. For the
@@ -9483,7 +9476,6 @@ This reinforces a couple of big ideas we have seen throughout this text:
   should graphically assess whether the data is consistent with these
   conditions.
 \end{itemize}
-
 
 \part{Unit V: Comparing the Average Response Across
 Correlated
