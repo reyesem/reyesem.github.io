@@ -6,6 +6,11 @@
 # Author: Eric Reyes
 # Date: Fall 2018
 
+## ---- Clean Slate ----
+# Remove anything previously existing and start with clean slate
+rm(list = ls())
+gc()
+
 ## ---- Load Packages ----
 pkgs <- c("IntroAnalysis",
           "tidyverse",
