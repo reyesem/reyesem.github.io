@@ -8,7 +8,7 @@
 
 ## ---- Clean Slate ----
 # Remove anything previously existing and start with clean slate
-rm(list = ls())
+rm(list = ls(sorted=FALSE)[ls(sorted=FALSE)!="params"])
 gc()
 
 ## ---- Load Packages ----
