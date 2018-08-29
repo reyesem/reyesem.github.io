@@ -8,8 +8,8 @@
 
 ## ---- Clean Slate ----
 # Remove anything previously existing and start with clean slate
-rm(list = ls(sorted=FALSE)[ls(sorted=FALSE)!="params"])
-gc()
+# rm(list = ls(sorted=FALSE)[ls(sorted=FALSE)!="params"])
+# gc()
 
 ## ---- Load Packages ----
 pkgs <- c("IntroAnalysis",
@@ -43,11 +43,11 @@ knitr::opts_chunk$set(
 eng_instructor <- function(options) {
   if (identical(options$echo, FALSE)) return()
 
-  code = paste(options$code, collapse = '\n'); type = options$type
+  code = paste(options$code, '\n', collapse = '\n'); type = options$type
   if (is.null(type)) return(code)
 
   if(!is.null(type) && type=="solution"){
-    code = paste("__SOLUTION__:", code)
+    code = paste("__SOLUTION__:  ", code, sep="\n")
   }
 
   if (is.null(opts_knit$get("rmarkdown.pandoc.to"))) stop('The engine "block2" is for R Markdown only')
