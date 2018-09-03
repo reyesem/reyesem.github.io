@@ -8,10 +8,16 @@
 #
 # Notes:
 
+# ---- Update Packages ----
+update.packages(lib.loc = .libPaths()[2],
+                checkBuilt = TRUE,
+                ask = FALSE,
+                instlib = .libPaths()[1],
+                quiet = TRUE)
+
 # ---- Package Installation ----
-install.packages("stringi")
-install.packages("knitr")
-install.packages("googlesheets")
+install.packages("knitr", quiet = TRUE)
+install.packages("googlesheets", quiet = TRUE)
 install.packages("https://reyesem.github.io/files/MA223/IntroAnalysis_0.1.0.tar.gz", repos = NULL)
 
 
