@@ -8,8 +8,28 @@
 
 ## ---- Clean Slate ----
 # Remove anything previously existing and start with clean slate
-# rm(list = ls(sorted=FALSE)[ls(sorted=FALSE)!="params"])
-# gc()
+rm(list = ls(sorted=FALSE)[ls(sorted=FALSE)!="params"])
+gc()
+
+# temp adjustment until next year
+obtain_diagnostics <- function(mean.model,
+                               data = stats::model.frame(mean.model)){
+  .out <- broom::augment(mean.model, data = data,
+                         type.predict = "response",
+                         type.residuals = "deviance")
+  
+  .out <- subset(.out, select =  which(!is.element(colnames(.out),
+                                                   c(".hat",
+                                                     ".sigma",
+                                                     ".cooksd",
+                                                     ".se.fit",
+                                                     ".std.resid"))))
+  
+  # adjust column names to undo what broom does
+  colnames(.out)[1:ncol(data)] <- colnames(data)
+  
+  .out
+}
 
 ## ---- Load Packages ----
 pkgs <- c("IntroAnalysis",
