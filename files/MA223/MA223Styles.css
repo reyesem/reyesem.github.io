@@ -54,3 +54,35 @@ h3{
 h4{
   color: #696969;
 }
+
+.ReyesTable {
+  width:100%;
+  max-width:100%;
+  margin-bottom:22px;
+}
+
+.ReyesTable>thead>tr>th,.ReyesTable>tbody>tr>th,.ReyesTable>tfoot>tr>th,
+.ReyesTable>thead>tr>td,.ReyesTable>tbody>tr>td,.ReyesTable>tfoot>tr>td{
+  padding:8px;
+  line-height:1.42857143;
+  vertical-align:top;
+  border-top:1px solid #dddddd
+}
+
+.ReyesTable>thead>tr>th{
+  vertical-align:bottom;
+  border-bottom:2px solid #dddddd
+}
+
+.ReyesTable>caption+thead>tr:first-child>th,
+.ReyesTable>colgroup+thead>tr:first-child>th,
+.ReyesTable>thead:first-child>tr:first-child>th,
+.ReyesTable>caption+thead>tr:first-child>td,
+.ReyesTable>colgroup+thead>tr:first-child>td,
+.ReyesTable>thead:first-child>tr:first-child>td{
+  border-top:0
+}
+
+.ReyesTable>tbody>tr:first-child>td{
+  border-top:0px solid #dddddd
+}
