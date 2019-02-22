@@ -16,12 +16,14 @@ update.packages(lib.loc = .libPaths()[2],
                 quiet = TRUE)
 
 # ---- Package Installation ----
-install.packages("knitr", quiet = TRUE)
-install.packages("googlesheets", quiet = TRUE)
-install.packages("https://reyesem.github.io/files/MA223/IntroAnalysis_0.1.0.tar.gz", repos = NULL)
+install.packages("knitr", lib = .libPaths()[1], quiet = TRUE)
+install.packages("googlesheets", lib = .libPaths()[1], quiet = TRUE)
+install.packages("https://reyesem.github.io/files/MA223/IntroAnalysis_0.1.0.tar.gz",
+                 lib = .libPaths()[1], repos = NULL)
 
 
 # ---- Create Directory ----
+dir.create("Analysis-Tasks")
 dir.create("Homework")
 dir.create("Labs")
 dir.create("In-Class-Demos")

@@ -11,12 +11,9 @@
 rm(list = ls(sorted=FALSE)[ls(sorted=FALSE)!="params"])
 gc()
 
-
 ## ---- Load Packages ----
 pkgs <- c("IntroAnalysis",
           "tidyverse",
-          "broom",
-          "stringr",
           "knitr")
 
 for(pkg in pkgs) library(pkg, character.only = TRUE)
@@ -32,7 +29,7 @@ options(dplyr.show_progress = FALSE,
 theme_set(theme_bw(14))
 theme_update(legend.position = "bottom")
 
-# Specify chunck options
+# Specify chunk options
 knitr::opts_chunk$set(
   prompt = FALSE,
   comment = "",
