@@ -1,5 +1,5 @@
 ################################################################################
-# File: MA223Styles
+# File: MA223Setup
 # Course: MA223 Engineering Statistics I
 # Description: Additional R functions for creating MA223 styles.
 #
