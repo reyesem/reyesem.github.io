@@ -30,7 +30,8 @@ skim_with(numeric = list(hist = NULL),
 
 # Change theme for plots
 theme_set(theme_bw(12))
-theme_update(legend.position = "bottom")
+theme_update(legend.position = "bottom",
+             legend.box = "vertical")
 
 # Specify chunck options
 knitr::opts_chunk$set(
@@ -96,6 +97,31 @@ knit_engines$set(c(knit_engines$get(),
 
 
 ## ---- Special Functions ----
+
+################################################################################
+# function: confint.matrix
+# description: method for confint that takes in a K-matrix to produce 
+#              confidence intervals for linear combinations of the parameters.
+confint.matrix <- function(object, parm, level = 0.95, coef., vcov., ...){
+  Kb <- drop(object %*% coef.)
+  KSK <- object %*% vcov. %*% t(object)
+  
+  parm <- seq_along(Kb)
+  
+  a <- (1 - level)/2
+  a <- c(a, 1 - a)
+  
+  pct <- paste(format(100 * a, trim = TRUE, scientific = FALSE, digits = 3))
+  
+  fac <- qnorm(a)
+  
+  ci <- array(NA, dim = c(length(parm), 2L), dimnames = list(parm, pct))
+  ses <- sqrt(diag(KSK))[parm]
+  ci[] <- Kb[parm] + ses %o% fac
+  
+  ci 
+}
+
 
 
 ################################################################################
