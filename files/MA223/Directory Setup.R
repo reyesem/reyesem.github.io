@@ -16,11 +16,11 @@ update.packages(lib.loc = .libPaths()[2],
                 quiet = TRUE)
 
 # ---- Package Installation ----
-install.packages("rlang", lib = .libPaths()[1], quiet = TRUE)
 install.packages("knitr", lib = .libPaths()[1], quiet = TRUE)
 install.packages("googlesheets", lib = .libPaths()[1], quiet = TRUE)
 install.packages("https://reyesem.github.io/files/MA223/IntroAnalysis_0.1.0.tar.gz",
                  lib = .libPaths()[1], repos = NULL)
+install.packages("rlang", lib = .libPaths()[1], quiet = TRUE)
 
 
 # ---- Create Directory ----
