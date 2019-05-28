@@ -13,7 +13,16 @@ gc()
 
 ## ---- Load Packages ----
 pkgs <- c("IntroAnalysis",
-          "tidyverse",
+          "rlang",
+          "magrittr",
+          "ggplot2",
+          "dplyr",
+          "tidyr",
+          "readr",
+          "purrr",
+          "tibble",
+          "stringr",
+          "forcats",
           "knitr")
 
 for(pkg in pkgs) library(pkg, character.only = TRUE)
@@ -40,16 +49,16 @@ knitr::opts_chunk$set(
 ## ---- Create Special Blocks ----
 eng_instructor <- function(options) {
   if (identical(options$echo, FALSE)) return()
-
+  
   code = paste0(paste(options$code, collapse = '\n'), "\n"); type = options$type
   if (is.null(type)) return(code)
-
+  
   if(!is.null(type) && type=="solution"){
     code = paste("__SOLUTION__:  ", code, sep="\n")
   }
-
+  
   if (is.null(opts_knit$get("rmarkdown.pandoc.to"))) stop('The engine "instructor" is for R Markdown only')
-
+  
   l1 = options$latex.options
   if (is.null(l1)) l1 = ''
   # protect environment options because Pandoc may escape the characters like
@@ -63,7 +72,7 @@ eng_instructor <- function(options) {
   h4 = ifelse(is.null(options$html.after), '', options$html.after)
   h5 = ifelse(is.null(options$html.before2), '', options$html.before2)
   h6 = ifelse(is.null(options$html.after2), '', options$html.after2)
-
+  
   sprintf(
     '\\BeginKnitrBlock{%s}%s%s<%s class="%s" custom-style="%s">%s%s%s</%s>%s\\EndKnitrBlock{%s}',
     type, l1, h3, h2, type, type, h5, code, h6, h2, h4, type
