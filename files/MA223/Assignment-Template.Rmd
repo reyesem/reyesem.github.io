@@ -1,0 +1,33 @@
+---
+title: "Name of Assignment"
+subtitle: "Engineering Statistics I (MA223)"
+author: "Author 1 Name, Author 2 Name, etc."
+date: "Completed `r Sys.Date()`"
+output:
+  pdf_document:
+    fig_caption: true
+    fig_width: 3.5
+    highlight: "tango"
+    number_section: false
+    keep_tex: false
+---
+
+```{r setup, include=FALSE}
+# Note to Students:
+#  Do not alter this block of code.
+source("https://raw.githubusercontent.com/reyesem/reyesem.github.io/master/files/MA223/MA223Setup.R")
+```
+
+
+## Problem 1 (use 2 hashtags for problem delimiters)
+
+### Part (a) (use 3 hashtags for part delimiters)
+There is no need to copy the problem description.  Just type your answers in the white space.
+
+Insert a code chunk using the "Insert" button at the top of the script window.  Place code inside of the resulting block, and you can test the code by hitting the green "play" button at the top-right corner of the code block.  Below is an example.  See the Coding Cookbook on the course site for details on the R code to use.
+
+```{r}
+summarize_variable(speed ~ 1, data = cars, mean)
+```
+
+Make sure there is always a blank line between plain text and a code block.  When your assignment is complete, click the "knit" button at the top of the script window.

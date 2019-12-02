@@ -1,10 +1,10 @@
 ################################################################################
 # File: MA223Setup
 # Course: MA223 Engineering Statistics I
-# Description: Additional R functions for creating MA223 styles.
+# Description: Loads all proper packages.
 #
 # Author: Eric Reyes
-# Date: Fall 2018
+# Date: Fall 2019
 
 ## ---- Clean Slate ----
 # Remove anything previously existing and start with clean slate
