@@ -45,3 +45,6 @@ download.file("https://reyesem.github.io/files/MA223/Assignment-Template.Rmd",
 
 download.file("https://reyesem.github.io/files/MA223/Assignment-Template.Rmd",
               "Analysis-Tasks/Assignment-Template.Rmd")
+
+download.file("https://reyesem.github.io/files/MA223/Assignment-Template.Rmd",
+              "In-Class-Demos/Assignment-Template.Rmd")
