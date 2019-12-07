@@ -40,11 +40,11 @@ dir.create("Final-Exam")
 # ---- Add Files to Directory ----
 # Note: this needs to be updated. add the tex style file. also, include other
 # templates and documents for use???
-download.file("https://reyesem.github.io/files/MA223/Assignment-Template.Rmd",
+download.file("https://raw.githubusercontent.com/reyesem/reyesem.github.io/master/files/MA223/Assignment-Template.Rmd",
               "Homework/Assignment-Template.Rmd")
 
-download.file("https://reyesem.github.io/files/MA223/Assignment-Template.Rmd",
+download.file("https://raw.githubusercontent.com/reyesem/reyesem.github.io/master/files/MA223/Assignment-Template.Rmd",
               "Analysis-Tasks/Assignment-Template.Rmd")
 
-download.file("https://reyesem.github.io/files/MA223/Assignment-Template.Rmd",
+download.file("https://raw.githubusercontent.com/reyesem/reyesem.github.io/master/files/MA223/Assignment-Template.Rmd",
               "In-Class-Demos/Assignment-Template.Rmd")
