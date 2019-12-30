@@ -47,6 +47,21 @@ theme_set(theme_bw(12))
 theme_update(legend.position = "bottom",
              legend.box = "vertical")
 
+rstan_ggtheme_options(legend.position = "bottom",
+                      legend.box = "vertical",
+                      panel.background = element_rect(fill = "white",
+                                                      color = NA),
+                      panel.border = element_rect(fill = NA,
+                                                  color = "grey20"),
+                      panel.grid = element_line(color = "grey92"),
+                      panel.grid.minor = element_line(size = rel(0.5)),
+                      strip.background = element_rect(fill = "grey85",
+                                                      color = "grey20"),
+                      legend.key = element_rect(fill = "white",
+                                                color = NA),
+                      complete = TRUE)
+
+
 # Specify chunck options
 knitr::opts_chunk$set(
   prompt = FALSE,
@@ -122,58 +137,41 @@ knitr::knit_engines$set(c(knitr::knit_engines$get(),
 #
 # parameters:
 #  object      stanfit object (see stan::extract()).
-#  ...         Additional parameters to pass to stan::extract().
-stan_to_df <- function(object, ...){
-  params <- rstan::extract(object, ...)
+#
+# importFrom rlang .data
+stan_to_df <- function(object, include_warmup = FALSE){
+  params <- rstan::extract(object, 
+                           permuted = FALSE,
+                           inc_warmup = TRUE)
   
-  if (is.element("list", class(params))){
-    if (any(sapply(lapply(params, dim), length) > 1)){
-      dims <- 
-        sapply(params, function(u) ifelse(length(dim(u)) > 1, dim(u)[2], 1))
-      
-      col.names <-
-        unlist(sapply(names(dims), function(u){
-          if (dims[u] > 1){
-            paste0(u, seq(dims[u]))
-          } else {
-            u
-          }
-        }))
-      
-      params <-
-        do.call(lapply(params, tibble::as_tibble), what = "cbind")
-      
-      colnames(params) <- col.names
-      
-      tibble::as_tibble(params)
-    } else {
-      params <- tibble::as_tibble(params)
-      
-      dplyr::mutate(params,
-                    `.iteration` = seq(nrow(params)))
-    }
-  } else if (is.element("array", class(params))){
-    col.names <- dimnames(params)$parameters
-    
-    params <
-      do.call(apply(params, 3, function(u){
-        tibble::tibble(
-          `_Value` = c(u),
-          `_Chain` = rep(seq_along(dimnames(u)[[2]]),
-                         each = nrow(u)),
-          `_Iteration` = rep(seq(nrow(u)),
-                             times = length(dimnames(u)[[2]])))}),
-        what = "cbind")
-    
-    params <- 
-      cbind(dplyr::select(params, tidyselect::contains("_Value")),
-            factor(params[, ncol(params) - 1]),
-            params[, ncol(params)])
-    
-    colnames(params) <-
-      gsub(pattern = "\\[|\\]", replacement = "",
-           x = c(col.names, ".chain", ".iteration"))
-    
-    tibble::as_tibble(params)
+  col.names <- dimnames(params)$parameters
+  
+  params <-
+    do.call(apply(params, 3, function(u){
+      tibble::tibble(
+        `_Value` = c(u),
+        `_Chain` = rep(seq_along(dimnames(u)[[2]]),
+                       each = nrow(u)),
+        `_Iteration` = rep(seq(nrow(u)),
+                           times = length(dimnames(u)[[2]])))}),
+      what = "cbind")
+  
+  params <- 
+    cbind(dplyr::select(params, tidyselect::contains("_Value")),
+          paste0("chain:", params[, ncol(params) - 1]),
+          params[, ncol(params)]) %>%
+    tibble::as_tibble()
+  
+  colnames(params) <- c(col.names, ".chain", ".iteration")
+  
+  params <- params %>%
+    dplyr::mutate(`.warmup` = .iteration <= object@sim$warmup)
+  
+  if (!include_warmup){
+    params <- params %>%
+      dplyr::filter(!(.data$`.warmup`)) %>%
+      dplyr::select(-(.data$`.warmup`))
   }
+  
+  params
 }
