@@ -43,7 +43,9 @@ knitr::opts_chunk$set(
   prompt = FALSE,
   comment = "",
   message = FALSE,
-  warning = FALSE)
+  warning = FALSE,
+  out.width = ifelse(is_latex_output(), "0.8\\textwidth", "80%"),
+  fig.align = "center")
 
 
 ## ---- Create Special Blocks ----
