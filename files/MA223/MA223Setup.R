@@ -8,7 +8,7 @@
 
 ## ---- Clean Slate ----
 # Remove anything previously existing and start with clean slate
-rm(list = ls(sorted=FALSE)[ls(sorted=FALSE)!="params"])
+rm(list = ls(sorted=FALSE)[ls(sorted=FALSE) != "params"])
 gc()
 
 ## ---- Load Packages ----
@@ -45,7 +45,39 @@ knitr::opts_chunk$set(
   message = FALSE,
   warning = FALSE,
   out.width = ifelse(is_latex_output(), "0.8\\textwidth", "80%"),
-  fig.align = "center")
+  fig.align = "center",
+  linewidth = 80)
+
+
+## ---- Ensure Source Code Wraps ----
+.hook_source = knitr::knit_hooks$get("source")
+
+knitr::knit_hooks$set(
+  source = function(x, options){
+    # this hook is used only when linewidth option is not NULL
+    if (!is.null(n <- options$linewidth)){
+      x = knitr:::split_lines(x)
+      x.length <- nchar(x)
+      spaces <- stringr::str_extract(x, "^[[:space:]]+")
+      spaces[is.na(spaces)] <- ""
+      spaces.length <- nchar(spaces)
+      
+      # if all lines fine, skip
+      if (any(x.length > n)){
+        # wrap lines which are longer than n characters
+        x <- mapply(function(u, v, w, y){
+          if (v > n){
+            u = paste(w, stringr::str_wrap(u, width = n - y))
+          } else {
+            u
+          }}, x, x.length, spaces, spaces.length)
+        
+        x <- paste(x, collapse = "\n")
+      }
+    }
+    
+    .hook_source(x, options)
+  })
 
 
 ## ---- Create Special Blocks ----
