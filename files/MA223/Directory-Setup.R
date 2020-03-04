@@ -30,21 +30,19 @@ tinytex::install_tinytex()
 
 
 # ---- Create Directory ----
-dir.create("Analysis-Tasks")
-dir.create("Homework")
-dir.create("Labs")
+dir.create("Individual-Assignments")
+dir.create("Group-Work")
 dir.create("In-Class-Demos")
-dir.create("Final-Exam")
 
 
 # ---- Add Files to Directory ----
 # Note: this needs to be updated. add the tex style file. also, include other
-# templates and documents for use???
+# templates and documents for use
 download.file("https://raw.githubusercontent.com/reyesem/reyesem.github.io/master/files/MA223/Assignment-Template.Rmd",
-              "Homework/Assignment-Template.Rmd")
+              "Individual-Assignments/Assignment-Template.Rmd")
 
 download.file("https://raw.githubusercontent.com/reyesem/reyesem.github.io/master/files/MA223/Assignment-Template.Rmd",
-              "Analysis-Tasks/Assignment-Template.Rmd")
+              "Group-Work/Assignment-Template.Rmd")
 
 download.file("https://raw.githubusercontent.com/reyesem/reyesem.github.io/master/files/MA223/Assignment-Template.Rmd",
               "In-Class-Demos/Assignment-Template.Rmd")

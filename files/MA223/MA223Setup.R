@@ -56,24 +56,39 @@ knitr::knit_hooks$set(
   source = function(x, options){
     # this hook is used only when linewidth option is not NULL
     if (!is.null(n <- options$linewidth)){
-      x = knitr:::split_lines(x)
-      x.length <- nchar(x)
-      spaces <- stringr::str_extract(x, "^[[:space:]]+")
-      spaces[is.na(spaces)] <- ""
-      spaces.length <- nchar(spaces)
+      # # only split on real line breaks
+      # breakinstr <- '(\"([^\"]*\n)+[^\"]+\")|(\'([^\']*\n)+[^\']+\')'
+      # if (stringr::str_detect(x, breakinstr)){
+      #   t1 <- unlist(stringr::str_extract_all(x, breakinstr))
+      #   t2 <- stringr::str_replace_all(t1, "\n", " ")
+      #   
+      #   for (i in 1:length(t1)){
+      #     x <- stringr::str_replace(x, t1[i], t2[i])
+      #   }
+      # }
+      # 
+      # x = knitr:::split_lines(x)
+      # x.length <- nchar(x)
+      # spaces <- stringr::str_extract(x, "^[[:space:]]+")
+      # spaces[is.na(spaces)] <- ""
+      # spaces.length <- nchar(spaces)
+      # 
+      # # if all lines fine, skip
+      # if (any(x.length > n)){
+      #   # wrap lines which are longer than n characters
+      #   x <- mapply(function(u, v, w, y){
+      #     if (v > n){
+      #       u = paste(w, stringr::str_wrap(u, width = n - y))
+      #     } else {
+      #       u
+      #     }}, x, x.length, spaces, spaces.length)
+      #   
+      #   x <- paste(x, collapse = "\n")
+      # }
       
-      # if all lines fine, skip
-      if (any(x.length > n)){
-        # wrap lines which are longer than n characters
-        x <- mapply(function(u, v, w, y){
-          if (v > n){
-            u = paste(w, stringr::str_wrap(u, width = n - y))
-          } else {
-            u
-          }}, x, x.length, spaces, spaces.length)
-        
-        x <- paste(x, collapse = "\n")
-      }
+      x = knitr:::split_lines(x)
+      
+      x = ifelse(nchar(x) > n, stringr::str_wrap(x, width = n, exdent = 2), x)
     }
     
     .hook_source(x, options)
