@@ -46,3 +46,5 @@ download.file("https://raw.githubusercontent.com/reyesem/reyesem.github.io/maste
 
 download.file("https://raw.githubusercontent.com/reyesem/reyesem.github.io/master/files/MA223/Assignment-Template.Rmd",
               "In-Class-Demos/Assignment-Template.Rmd")
+
+message("Set-up was successful!")
