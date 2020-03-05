@@ -4,13 +4,12 @@
 # Description: Automate the package installation process.
 #
 # Author: Eric Reyes
-# Date: Spring 2018-2019
 # Modified:
 #
 # Notes:
 
 
-# Load Additional Packages First
+# ---- Load Additional Packages First ----
 install.packages(c("car",
                    "skimr",
                    "splines",
@@ -19,5 +18,11 @@ install.packages(c("car",
                    "lme4",
                    "tidyverse",
                    "broom",
-                   "knitr"), dependencies = TRUE)
+                   "broom.mixed",
+                   "knitr"), 
+                 repos = "https://cloud.r-project.org",
+                 dependencies = TRUE,
+                 quiet = TRUE)
 
+
+message("Set-up was successful!")

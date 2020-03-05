@@ -16,14 +16,16 @@ pkgs <- c("boot",
           "lme4",
           "tidyverse",
           "broom",
+          "broom.mixed",
           "knitr")
 
-for(pkg in pkgs) library(pkg, character.only = TRUE)
+for(pkg in pkgs) library(pkg, character.only = TRUE, quietly = TRUE)
 
 
 ## ---- Change Options ----
 # Suppress status bar in dplyr.
-options(dplyr.show_progress = FALSE)
+options(dplyr.show_progress = FALSE,
+        contrasts = rep("contr.treatment", 2))
 skim_with(numeric = list(hist = NULL), 
           ts = list(line_graph = NULL),
           character = get_skimmers()$factor)
@@ -33,10 +35,65 @@ theme_set(theme_bw(12))
 theme_update(legend.position = "bottom",
              legend.box = "vertical")
 
-# Specify chunck options
+
+# Specify chunk options
 knitr::opts_chunk$set(
   prompt = FALSE,
-  comment = "")
+  comment = "",
+  out.width = case_when(is_latex_output() ~ "0.8\\textwidth",
+                        is_html_output() ~ "80%",
+                        TRUE ~ NULL),
+  fig.align = case_when(is_latex_output() ~ "center",
+                        is_html_output() ~ "center",
+                        TRUE ~ NULL),
+  linewidth = 80)
+
+
+## ---- Ensure Source Code Wraps ----
+.hook_source = knitr::knit_hooks$get("source")
+
+knitr::knit_hooks$set(
+  source = function(x, options){
+    # this hook is used only when linewidth option is not NULL
+    if (!is.null(n <- options$linewidth)){
+      # # only split on real line breaks
+      # breakinstr <- '(\"([^\"]*\n)+[^\"]+\")|(\'([^\']*\n)+[^\']+\')'
+      # if (stringr::str_detect(x, breakinstr)){
+      #   t1 <- unlist(stringr::str_extract_all(x, breakinstr))
+      #   t2 <- stringr::str_replace_all(t1, "\n", " ")
+      #   
+      #   for (i in 1:length(t1)){
+      #     x <- stringr::str_replace(x, t1[i], t2[i])
+      #   }
+      # }
+      # 
+      # x = knitr:::split_lines(x)
+      # x.length <- nchar(x)
+      # spaces <- stringr::str_extract(x, "^[[:space:]]+")
+      # spaces[is.na(spaces)] <- ""
+      # spaces.length <- nchar(spaces)
+      # 
+      # # if all lines fine, skip
+      # if (any(x.length > n)){
+      #   # wrap lines which are longer than n characters
+      #   x <- mapply(function(u, v, w, y){
+      #     if (v > n){
+      #       u = paste(w, stringr::str_wrap(u, width = n - y))
+      #     } else {
+      #       u
+      #     }}, x, x.length, spaces, spaces.length)
+      #   
+      #   x <- paste(x, collapse = "\n")
+      # }
+      
+      x = knitr:::split_lines(x)
+      
+      x = ifelse(nchar(x) > n, stringr::str_wrap(x, width = n, exdent = 2), x)
+    }
+    
+    .hook_source(x, options)
+  })
+
 
 
 ## ---- Create Special Blocks ----
