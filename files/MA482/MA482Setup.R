@@ -26,9 +26,9 @@ for(pkg in pkgs) library(pkg, character.only = TRUE, quietly = TRUE)
 # Suppress status bar in dplyr.
 options(dplyr.show_progress = FALSE,
         contrasts = rep("contr.treatment", 2))
-skim_with(numeric = list(hist = NULL), 
-          ts = list(line_graph = NULL),
-          character = get_skimmers()$factor)
+skim <- skim_with(numeric = sfl(hist = NULL), 
+                  ts = sfl(line_graph = NULL),
+                  character = get_skimmers()$factor)
 
 # Change theme for plots
 theme_set(theme_bw(12))
