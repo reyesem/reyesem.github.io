@@ -37,16 +37,20 @@ theme_update(legend.position = "bottom",
 
 
 # Specify chunk options
+
+
 knitr::opts_chunk$set(
   prompt = FALSE,
   comment = "",
-  out.width = case_when(is_latex_output() ~ "0.8\\textwidth",
-                        is_html_output() ~ "80%",
-                        TRUE ~ NULL),
-  fig.align = case_when(is_latex_output() ~ "center",
-                        is_html_output() ~ "center",
-                        TRUE ~ NULL),
   linewidth = 80)
+
+if (is_latex_output()){
+  knitr::opts_chunk$set(out.width = "0.8\\textwidth",
+                        fig.align = "center")
+} else if (is_html_output()){
+  knitr::opts_chunk$set(out.width = "80%",
+                        fig.align = "center")
+}
 
 
 ## ---- Ensure Source Code Wraps ----
