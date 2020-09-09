@@ -7,6 +7,8 @@
 # Date: Fall 2020
 
 # ---- Install CRAN Packages ----
+options(install.packages.check.source = "no")
+
 install.packages(c("tidyverse",
                    "rvest",
                    "jsonlite",
@@ -14,7 +16,8 @@ install.packages(c("tidyverse",
                    "tidygeocoder",
                    "plotly",
                    "learnr",
-                   "knitr"), dependencies = TRUE)
+                   "knitr"), 
+                 dependencies = TRUE)
 
 
 
