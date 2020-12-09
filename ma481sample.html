@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MA481 Sample - Reyes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="site-style-sheet.css">
+  <script src="site-scripts.js"></script>
+</head>
+
+
+<body> 
+  <!-- Primary Header -->
+  <header class="header-box">  
+   <!-- Navigation for Small Screens -->
+    <section class="navbar-small">
+      <div class="long-grid">
+        <div id="menu-icon" class="menu-box" onclick="toggleNavigation()">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+      </div>
+      
+      <nav id="small-menu" class="navbar-hidden">
+        <a href="index.html" class="navbar-button">Home</a>
+        <a href="teaching.html" class="navbar-button">Teaching</a>
+        <a href="research.html" class="navbar-button">Research</a>
+        <a href="consulting.html" class="navbar-button">Consulting</a>
+        <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+      </nav>
+    </section>
+    
+    
+    <!-- Banner -->
+    <section id="banner" class="top-banner">
+      <img src="./images/icon-teaching.png" alt="Teaching Icon" class="icon">
+      
+      <h1 class="banner-title">Mathematical Statistics</h1>
+    </section>
+        
+    
+    <!-- Navigation for Large Screens -->
+    <nav class="navbar-large">
+      <a href="index.html" class="navbar-button">Home</a>
+      <a href="teaching.html" class="navbar-button">Teaching</a>
+      <a href="research.html" class="navbar-button">Research</a>
+      <a href="consulting.html" class="navbar-button">Consulting</a>
+      <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+    </nav>
+  </header>
+  
+  
+  <!-- Main Content -->
+  <main class="main-box tri-grid">
+    
+    <!-- Overview -->
+    <article id="overview" class="primary-article">  
+      <img src="./images/ma481-banner.jpg" alt="Statistics Banner" class="banner">
+        
+      <p>This course introduces students to the analytical tools needed to establish the properties of common statistical
+      methods.  Why do sampling distributions of many statistics become bell-shaped with large sample sizes?  When is the
+      sample mean the best estimator for the population mean?  What do we mean by "best" estimator?</p>
+      
+      <p>This course takes a likelihood-based perspective to provide a unified framework to estimation and hypothesis 
+      testing.  Building a proper foundation for inference, we emphasize the <em>application of theory</em> throughout 
+      the course.  In additional to classical theory, the course makes use of computing as a bridge between that 
+      classical theory and the modern approaches used characterize statistical methods.</p>
+      
+      <p>The class builds towards preparing students to engage in the statistics literature at an introductory level.
+      This class is particularly suited for those students considering graduate level work in statistics.  It does 
+      require a firm grasp of probability.</p>
+    </article>  
+    
+    
+    
+    <!-- Tabbed Content -->
+    <article id="tabs" class="primary-article tab-border">
+      <nav class="tab-bar">
+        <a class="tab-button" onclick="displayTab(event, 'Learning Objectives')">Learning Objectives</a>
+        <a class="tab-button" onclick="displayTab(event, 'Course Structure')">Course Structure</a>
+        <a class="tab-button" onclick="displayTab(event, 'Course Materials')">Course Materials</a>
+      </nav>
+      
+      
+      <!-- Learning Objectives -->
+      <section id="Learning Objectives" class="tab">
+        <h3>Learning Objectives</h3>
+        
+        <p>As in any statistics course, we emphasize statistical literacy and reasoning.  This class also emphasizes
+        the underlying theory of statistical methodology.  Specifically, after taking this course, students will be 
+        able to accomplish the following tasks:</p>
+        
+        <ol type="A">
+          <li><strong>Describe</strong> the role of probability theory when making inference on a population.</li>
+          
+          <li><strong>Compare</strong> and <strong>contrast</strong> modes of convergence and <strong>describe</strong> 
+          their role in sampling distributions.</li>
+          
+          <li><strong>Construct</strong> a proof to establish a property of an estimator or sequence of random 
+          variables.</li>
+          
+          <li>Given an analysis situation, <strong>formulate</strong> research questions as measurable statements 
+          about parameters in the population.</li>
+          
+          <li><strong>Associate</strong> a given statistical method with various statistical properties such as 
+          consistency, unbiasedness, and asymptotic normality.</li>
+          
+          <li>Clearly <strong>communicate</strong> statistical theory and its applications through both written and 
+          oral presentations.</li>
+          
+          <li><strong>Appreciate</strong> the use of mathematics in statistical theory and <strong>compare</strong> 
+          and <strong>contrast</strong> mathematical and statistical thinking.</li>
+          
+          <li>Using fundamental ideas of convergence, likelihood, and probability, <strong>research</strong> a topic 
+          in statistical theory not discussed in the course and <strong>educate</strong> your peers on the topic.</li>
+        </ol>
+      </section>
+      
+      
+      <!-- Course Structure -->
+      <section id="Course Structure" class="tab">
+        <h3>Course Structure</h3>
+        
+        <p>This course is currently taught as a traditional lecture.  The course is divided into 10 modules. Each
+        module has associated assignments.  For each module, students can expect three lectures which illustrate
+        foundational concepts in the course.  One class period is reserved within each module for a group activity
+        in which students work together to fill out a theoretical result associated with the material.  The modules
+        covered include:</p>
+        
+        <ol type="1">
+          <li>Essential Probability for Random Vectors</li>
+          <li>Expectations</li>
+          <li>Multivariate Normality and Linear Models</li>
+          <li>Point Estimation</li>
+          <li>Sampling Distributions</li>
+          <li>Inference from a Likelihood Perspective</li>
+          <li>Introduction to Nonparametric Estimation</li>
+          <li>Introduction to Bootstrap Theory</li>
+          <li>Introduction to Bayesian Inference</li>
+          <li>Capstone Project</li>
+        </ol>
+        
+        <p>The best part of the class is the <em>Capstone Project</em>.  Over the course of the term, we cover
+        quite a bit of material regarding the theory underlying many statistical methods.  However, there are
+        countless fascinating topics we will leave untouched.  The capstone project invites students to
+        explore an additional area in foundational statistics and present a lecture to their peers on the
+        topic.  This is often a great celebration of the knowledge gained during the term.</p>
+      </section>
+      
+      
+      <!-- Course Materials -->
+      <section id="Course Materials" class="tab">
+        <h3>Course Materials</h3>
+        
+        <p>I have not settled on a text for this course and have tried out several.  I do supplement the text used 
+        with note packets used during lecture and in-class activities.</p>
+        
+        <p>Statistical computation is a big part of the course; while R is demonstrated and supported, students are
+        free to use any computational software they like (Python, Julia, Matlab).</p>
+        
+        <p>Some students think of this class as "real analysis for statistics," but that is not quite accurate.  
+        However, there is quite a bit of theory and proofs in the class.  The best resource in a class like this are
+        your peers.  I will provide additional tips and tools throughout, but it is highly recommended to enter the
+        class thinking about who you might work with throughout the course.</p>
+      </section>
+    </article>
+  </main>
+    
+    
+  <!-- Footer -->
+  <footer class="footer-box">
+    <a class="header-footer-link" href="mailto:reyesem@rose-hulman.edu">
+      Contact
+    </a> | 
+    <a class="header-footer-link" href="https://www.rose-hulman.edu">
+      Rose-Hulman Institute of Technology
+    </a>
+  </footer>
+  
+  
+  <!-- Script to Initialize First Tab -->
+  <script>
+    var firstbtn = document.getElementsByClassName("tab-button")[0];
+    firstbtn.click();
+  </script>
+</body>
+</html>

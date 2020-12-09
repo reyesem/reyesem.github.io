@@ -4,5 +4,5 @@ My professional website is now hosted on [GitHub Pages](https://pages.github.com
 
   - Teaching: including samples of my courses.
   - Research: both personal and with students.
-  - Consulting: coming soon...
+  - Consulting: summary of my professional activities.
   - Misc: additional aspects of the professoriate.

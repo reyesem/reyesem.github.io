@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Consulting - Reyes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="site-style-sheet.css">
+  <script src="site-scripts.js"></script>
+</head>
+
+
+<body> 
+  <!-- Primary Header -->
+  <header class="header-box">  
+    <!-- Navigation for Small Screens -->
+    <section class="navbar-small">
+      <div class="long-grid">
+        <div id="menu-icon" class="menu-box" onclick="toggleNavigation()">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+      </div>
+      
+      <nav id="small-menu" class="navbar-hidden">
+        <a href="index.html" class="navbar-button">Home</a>
+        <a href="teaching.html" class="navbar-button">Teaching</a>
+        <a href="research.html" class="navbar-button">Research</a>
+        <a href="consulting.html" class="navbar-button">Consulting</a>
+        <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+      </nav>
+    </section>
+    
+    
+    <!-- Banner -->
+    <section id="banner" class="top-banner">
+      <img src="./images/icon-professional.png" alt="Consulting Icon" class="icon">
+      
+      <h1 class="banner-title">Consulting</h1>
+    </section>
+        
+    
+    <!-- Navigation for Large Screens -->
+    <nav class="navbar-large">
+      <a href="index.html" class="navbar-button">Home</a>
+      <a href="teaching.html" class="navbar-button">Teaching</a>
+      <a href="research.html" class="navbar-button">Research</a>
+      <a href="consulting.html" class="navbar-button">Consulting</a>
+      <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+    </nav>
+  </header>
+  
+  
+  <!-- Main Content -->
+  <main class="main-box tri-grid">
+    
+    <!-- Overview -->
+    <article id="research-overview" class="primary-article">      
+      <p>My area of expertise is Biostatistics; specifically, I am interested in the application of statistics to the biomedical field.  
+      My primary interest is collaborating with colleagues on campus and at the Indiana University School of Medicine.  As a collaborating
+      statistician, it is often difficult to distinguish my "research" from my "professional consulting" activities; they are all part of
+      my professional development.  Below are more of the professional activities I engage in as part of this development that I would 
+      not classify as my personal research area.</p>
+    </article>
+    
+    
+    <!-- IUSM -->
+    <article id="consulting-IU" class="primary-article">
+      <h2>Indiana University School of Medicine in Terre Haute</h2>
+      
+      <p>For the past several years, I have been working with the Indiana University School of Medicine in Terre Haute.  This campus hosts
+      students pursuing an interest in rural medicine.  As part of their curriculum, students participate in a community health project or
+      conduct research of their own with the aim of a paper at a conference.  These research projects are conducted under the direction of 
+      Robin Danek and Ellen Ireland; I serve as the statistical support on the projects.  This gives the medical students a view of true
+      collaboration as I am involved from the early part of the research and designing the survey through to analyzing and presenting the 
+      data.  Below is a selected list of these projects, which nearly all have a focus on rural medicine.</p>
+      
+      <ul>
+        <li><strong>Mental Health and Economic Changes Amidst the Coronavirus Pandemic</strong><br>
+        Aaron Becker (2020)</li>
+        
+        <li><strong>Knowledge about COVID-19 and changes to patient's health-related behaviors 
+        experienced during the COVID-19 pandemic in rural vs. urban communities</strong><br>
+        Reese Miller, Sarah Swiezy, Shan Antony (2020)</li>
+        
+        <li><strong>Motivations of Utilizing Midwifery and Birthing Centers over Hospital Based
+        Obstetrics Care in Rural Indiana</strong><br>
+        Emma Eckrote (2020)</li>
+        
+        <li><strong>Rural and Urban EMS comfort level with overdose treatment</strong><br>
+        Brycen Ratcliffe (2020)</li>
+        
+        <li><strong>Rural vs. Urban Perceptions on and utilization of tele-medicine directed
+        Opiate Abuse Disorder Treatment</strong><br>
+        Quinton Thompson (2020)</li>
+        
+        <li><strong>HPV and the HPV Vaccine: Rural Perspectives and Sources of Information</strong><br>
+        Vyvian Borse (2019)</li>
+        
+        <li><strong>Missed appointments are lost opportunities to provide and connect patients to
+        care at Mollie Wheat Memorial Clinic</strong><br>
+        Sarah Swiezy, Emma Eckrote, Brycen Ratcliffe (2019)</li>
+        
+        <li><strong>Patient's Perception of Barriers to Quality Depression Treatment in Rural 
+        Environments</strong><br>
+        Austin Deets (2018)</li>
+        
+        <li><strong>Patient Decision Making Process in Choosing an Emergency Department</strong><br>
+        Drew Frey (2018)</li>
+        
+        <li><strong>Rural-Nonrural Barriers to Maternal Care</strong><br>
+        Michael Keller (2018)</li>
+        
+        <li><strong>Equal in Worth, Unequal in Treatment: the Variability of Medical Care
+        Among Patients with Disabilities</strong><br>
+        Debbie Myers (2018)</li>
+        
+        <li><strong>How access and availability of healthy foods correlates with the Body Mass
+        Index (BMI) of children in Terre Haute, Indiana</strong><br>
+        Evan Rush (2018)</li>
+        
+        <li><strong>Vaccination Intent Among Expectant Mothers in Indiana</strong><br>
+        Ara Scott (2018)</li>
+      <ul>
+    </article>
+    
+    
+    <!-- InterVarsity -->
+    <article id="consulting-IVCF" class="primary-article">
+      <h2>InterVarsity Christian Fellowship</h2>
+      
+      <p>I spent the Fall of the 19-20 academic year consulting with InterVarsity. Reporting to the
+      Director of Ministry Intelligence, I was tasked with identifying characteristics of chapters (and
+      their host university) which are associated with higher likelihood of chapter closure.  Using some
+      proprietary data combined with publicly available data, I constructed several statistical models to 
+      identify these characteristics.  My work resulted in a detailed report summarizing my conclusions and
+      recommendations.</p>
+    </article>
+    
+    
+    <!-- R Packages -->
+    <article id="IntroAnalysis" class="primary-article">
+      <h2>R Package: <code>IntroAnalysis</code></h2>
+      
+      <p>I have taught Engineering Statistics I (an introductory course) nearly every term since joining 
+      the faculty at Rose-Hulman.  Over time, I began to teach the course from a modeling-based perspective.
+      My course notes eventually were compiled into an <a href="./textbook/Basics.html">online text</a> for
+      students.  While the text is not dependent on a particular software package, I use <code>R</code>
+      exclusively in class.  While there are some great packages for introducing <code>R</code> to 
+      non-statisticians, none (at the time) fully captured the modeling-based perspective while allowing a fluid 
+      transition between classical approaches and randomization-based approaches.</p>
+      
+      <p>In response, I wrote the <a href="https://github.com/reyesem/IntroAnalysis"><code>IntroAnalysis</code>
+      R package</a> for my students.  It is built on taking the following approach in an introductory course:</p>
+      
+      <ol>
+        <li>Specify the model for the data generating process.</li>
+        <li>Estimate the parameters for the model</li>
+        <ul>
+          <li>Specify the conditions you are willing to assume about the error terms</li>
+          <li>Use an appropriate method for constructing a confidence interval based on the conditions
+          (classical theory, residual bootstrap, parametric bootstrap, wild bootstrap)</li>
+        </ul>
+        <li>Compare models for hypothesis testing</li>
+        <ul>
+          <li>Specify the model for the data generating process under the null hypothesis</li>
+          <li>Specify the conditions you are willing to assume about the error terms</li>
+          <li>Use an appropriate method for computing a p-value which compares the models based on the
+          conditions</li>
+        </ul>
+      </ol>
+      
+      The package uses a formula-based notation (similar to the <code>mosaic</code> package) and has a similar
+      framework as the <code>infer</code> package; it is somewhere between these two.  It works well with the
+      text and my teaching as the function names are consistent for all operations in the class.
+    </article>  
+  </main>
+    
+    
+  <!-- Footer -->
+  <footer class="footer-box">
+    <a class="header-footer-link" href="mailto:reyesem@rose-hulman.edu">
+      Contact
+    </a> | 
+    <a class="header-footer-link" href="https://www.rose-hulman.edu">
+      Rose-Hulman Institute of Technology
+    </a>
+  </footer>
+</body>
+</html>

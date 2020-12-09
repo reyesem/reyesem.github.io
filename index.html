@@ -1,187 +1,130 @@
 <!DOCTYPE html>
 <html>
-<title>Reyes, Eric M.</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./w3css/w3.css" type="text/css">
-<link rel="stylesheet" href="./w3css/rhit.css" type="text/css">
-<link rel="stylesheet" href="./w3css/w3-theme-black.css" type="text/css">
-<link rel="stylesheet" href="./font-awesome-4.6.3/css/font-awesome.min.css">
-<body>
+<head>
+	<title>Reyes, Eric M.</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="site-style-sheet.css">
+  <script src="site-scripts.js"></script>
+</head>
 
 
-<!-- Side Navigation -->
-<nav class="w3-sidenav w3-white w3-card-2 w3-animate-left" style="display:none" id="mySidenav">
-  <h1 class="w3-xxxlarge w3-text-teal">Menu</h1>
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-xxxlarge w3-text-theme"><i class="fa fa-remove"></i> Close</a>
-  <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-  <a href="./teaching.html"><i class="fa fa-university"></i> Teaching</a>
-  <a href="./research.html"><i class="fa fa-book"></i> Research</a>
-  <a href="./misc.html"><i class="fa fa-bar-chart"></i> Miscellaneous</a>
-  <a href="./files/ReyesCV.pdf"><i class="fa fa-file-text-o"></i> Curriculum Vitae</a>
-</nav>
-
-
-<!-- Header -->
-<header class="w3-container w3-theme w3-padding" id="myHeader">
-  <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-opennav"></i>
-  <div class="w3-center">
-  <h2>Eric M. Reyes</h2>
-  </div>
-
-  <div class="w3-row-padding">
-    <div class="w3-third">
-      <div class="w3-card-4">
-        <img src="./images/eric_reyes.jpg" alt="portrait" style="width:50%">
+<body> 
+  <!-- Primary Header -->
+  <header class="header-box">  
+    <!-- Navigation for Small Screens -->
+    <section class="navbar-small">
+      <div class="long-grid">
+        <div id="menu-icon" class="menu-box" onclick="toggleNavigation()">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
       </div>
-    </div>
+      
+      <nav id="small-menu" class="navbar-hidden">
+        <a href="index.html" class="navbar-button">Home</a>
+        <a href="teaching.html" class="navbar-button">Teaching</a>
+        <a href="research.html" class="navbar-button">Research</a>
+        <a href="consulting.html" class="navbar-button">Consulting</a>
+        <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+      </nav>
+    </section>
+    
+    
+    <!-- Contact Information -->
+    <section id="contact-info" class="flex-grid">
+      <img class="headshot" src="./images/img-reyes.jpg" alt="Reyes Photo">
+    
+      <address>
+        <ul class="address">
+          <li id="name"><h1>Eric M. Reyes</h1></li>
+          <li id="title">Associate Professor | Statistician</li>
+          <li>Department of Mathematics</li>
+          <li>Rose-Hulman Institute of Technology</li>
+          <li>5500 Wabash Ave.</li>
+          <li>Terre Haute, IN 47803</li>
+        </ul>
+      
+        <ul class="address">
+          <li><strong>Phone:</strong> 812.877.8287</li>
+          <li><strong>Fax:</strong> 812.877.8883</li>
+          <li><strong>Email:</strong> 
+            <a class="header-footer-link" href="mailto:reyesem@rose-hulman.edu">
+              Eric.Reyes [at] rose-hulman [dot] edu
+            </a>
+          </li>
+        </ul>
+      </address>   
+    </section>
+        
+    
+    <!-- Navigation for Large Screens -->
+    <nav class="navbar-large">
+      <a href="index.html" class="navbar-button">Home</a>
+      <a href="teaching.html" class="navbar-button">Teaching</a>
+      <a href="research.html" class="navbar-button">Research</a>
+      <a href="consulting.html" class="navbar-button">Consulting</a>
+      <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+    </nav>
+  </header>
+  
+  
+  <!-- Main Content -->
+  <main class="main-box tri-grid">
+    
+    <!-- About Me -->
+    <article id="about-me" class="primary-article">
+      <h2>About Me</h2>
+    
+      <p>Since joining the faculty in 2012, I have been primarily responsible for contributing to the statistics curriculum within the department.</p>
 
-    <div class="w3-third">
-      <div class="w3-card-4">
-        <h3 style="color: #800000; font-weight: bold">Contact Info</h3>
-        <p style="color: #808080; font-weight: bold">Department of Mathematics<br>
-        Rose-Hulman Institute of Technology<br>
-        5500 Wabash Ave.<br>
-        Terre Haute, IN 47803<br>
-        <br>
-        Phone: 812.877.8287<br>
-        Fax: 812.877.8883<br>
-        Email: <a href="mailto:reyesem@rose-hulman.edu">reyesem [at] rose-hulman [dot] edu</a></p>
-      </div>
-    </div>
-</div>
-</header>
+      <p>I received my Ph.D. in Statistics from <a href="https://www.stat.ncsu.edu/">North Carolina State University</a> in 2012 under the direction of <a href="https://statistics.sciences.ncsu.edu/people/boos">Dennis Boos</a> and <a href="https://statistics.sciences.ncsu.edu/people/stefansk">Len Stefanski</a>.  My primary interest is biostatistics -- the application of statistical methodology to medical research.  As a former <a href="https://statistics.sciences.ncsu.edu/graduate/support/nhlbi/">NHLBI Integrated Biostatistical Training Program for CVD Research</a> trainee, I spent five years as a graduate student intern at the <a href="https://www.dcri.org/">Duke Clinical Research Institute</a> (DCRI), under the direction of Karen Pieper, serving as a statistical collaborator alongside clinicians in cardiovascular research.</p>
 
-
-<!-- About Me -->
-<div id="aboutme" class="w3-container">
-  <hr>
-  <div class="w3-center">
-    <h2 style="color: #800000; font-weight: bold">About Me</h2>
-  </div>
-
-  <p>I am an Assistant Professor in the Department of Mathematics. Since joining the faculty in 2012, I have been primarily responsible for contributing to the statistics curriculum within the department.</p>
-
-  <p>I received my Ph.D. in Statistics from <a href="http://www.stat.ncsu.edu/"><span style="color: #808080">North Carolina State University</span></a> in 2012 under the direction of <a href="http://www.stat.ncsu.edu/people/boos/"><span style="color: #808080">Dennis Boos</span></a> and <a href="http://www.stat.ncsu.edu/people/stefanski/"><span style="color: #808080">Len Stefanski</span></a>.  My primary interest is biostatistics - the application of statistical methodology to medical research.  As a former <a href="http://www.stat.ncsu.edu/programs/nhlbi/"><span style="color: #808080">NHLBI Integrated Biostatistical Training Program for CVD Research</span></a> trainee, I spent five years as a graduate student intern at the <a href="http://www.dcri.org/"><span style="color: #808080">Duke Clinical Research Institute</span></a> (DCRI), under the direction of Karen Pieper, serving as a statistical collaborator alongside clinicians in cardiovascular research.</p>
-
-  <p>My research includes methods for variable selection (the process of discerning which variables are useful for prediction in a particular model) and screening (a precursor to variable selection in high-dimensional settings), especially in the presence of missing data.  However, consulting with medical research is where I spend the bulk of my professional time.  While at Rose-Hulman, I have worked with the engineers in the <a href="http://www.rose-hulman.edu/offices-and-services/jrsi.aspx"><span style="color: #808080">JRSI lab</span></a> on campus and served on several Master's theses for students in the Biomedical Engineering graduate program.</p>
-</div>
-
-
-<!-- Primary Links -->
-<div id="primarylinks" class="w3-row-padding w3-center w3-margin-top">
-  <div class="w3-third">
-    <div class="w3-card-2 w3-padding-top" style="min-height:460px">
-      <h4 style="color: #800000">Teaching</h4><br>
-      <a href="./teaching.html"><i class="fa fa-university w3-margin-bottom w3-text-theme" style="font-size:120px"></i></a>
-      <p>List of Courses Taught</p>
-      <p>Sample Lesson Plans / Activities</p>
-    </div>
-  </div>
-
-  <div class="w3-third">
-    <div class="w3-card-2 w3-padding-top" style="min-height:460px">
-      <h4 style="color: #800000">Research</h4><br>
-      <a href="./research.html"><i class="fa fa-book w3-margin-bottom w3-text-theme" style="font-size:120px"></i></a>
-      <p>Selected Publications &amp; Presentations</p>
-      <p>Undergraduate Students Directed</p>
-    </div>
-  </div>
-
-  <div class="w3-third">
-    <div class="w3-card-2 w3-padding-top" style="min-height:460px">
-      <h4 style="color: #800000">Miscellaneous</h4><br>
-      <a href="./misc.html"><i class="fa fa-bar-chart w3-margin-bottom w3-text-theme" style="font-size:120px"></i></a>
-      <p>Additional Professional Projects</p>
-      <p>The Interesting and Fun</p>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- Script for Sidenav, Tabs, Accordions, Progress bars and slideshows -->
-<script>
-// Side navigation
-function w3_open() {
-    var x = document.getElementById("mySidenav");
-    x.style.width = "100%";
-    x.style.textAlign = "center";
-    x.style.fontSize = "50px";
-    x.style.paddingTop = "10%";
-    x.style.display = "block";
-}
-function w3_close() {
-    document.getElementById("mySidenav").style.display = "none";
-}
-
-// Tabs
-function openCity(evt, cityName) {
-  var i;
-  var x = document.getElementsByClassName("city");
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
-  }
-  var activebtn = document.getElementsByClassName("testbtn");
-  for (i = 0; i < x.length; i++) {
-      activebtn[i].className = activebtn[i].className.replace(" w3-dark-grey", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " w3-dark-grey";
-}
-
-var mybtn = document.getElementsByClassName("testbtn")[0];
-mybtn.click();
-
-// Accordions
-function myAccFunc(id) {
-    var x = document.getElementById(id);
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-        x.previousElementSibling.className += " w3-dark-grey";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-        x.previousElementSibling.className =
-        x.previousElementSibling.className.replace(" w3-dark-grey", "");
-    }
-}
-
-// Slideshows
-var slideIndex = 1;
-
-function plusDivs(n) {
-slideIndex = slideIndex + n;
-showDivs(slideIndex);
-}
-
-function showDivs(n) {
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length} ;
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
-  }
-  x[slideIndex-1].style.display = "block";
-}
-
-showDivs(1);
-
-// Progress Bars
-function move() {
-  var elem = document.getElementById("myBar");
-  var width = 1;
-  var id = setInterval(frame, 10);
-  function frame() {
-    if (width == 100) {
-      clearInterval(id);
-    } else {
-      width++;
-      elem.style.width = width + '%';
-      document.getElementById("demoprgr").innerHTML = width * 1  + '%';
-    }
-  }
-}
-</script>
-
+      <p>While I maintain an interest researching methods for variable selection (the process of discerning which variables are useful for prediction in a particular model), especially in the presence of missing data, consulting with medical research is where I spend the bulk of my professional time.  At Rose-Hulman I have worked with the engineers in the <a href="https://www.rose-hulman.edu/academics/learning-and-research-facilities/JRSI/our-team.html">JRSI lab</a> on campus, served on several Master's theses for students in the Biomedical Engineering graduate program, and lended my services to Biology students completing their senior thesis.  I also consult with medical students completing the <a href="https://medicine.iu.edu/md/curriculum/scholarly-concentrations/rural-health">Community Health Project</a> within the Indiana University School of Medicine Rural Health track in Terre Haute.</p>
+    </article>
+    
+    
+    <!-- Primary Cards for Other Pages -->
+    <section id="home-cards" class="card-box flex-grid primary-article">
+      <a href="teaching.html" class="card">
+        <h4>Teaching</h4>
+        <img src="./images/img-teaching.png" alt="Teaching Icon">
+        <p>List of Courses Taught</p>
+        <p>Sample Lesson Plans / Activities</p>
+      </a>
+      
+      <a href="research.html" class="card">
+        <h4>Research</h4>
+        <img src="./images/img-research.png" alt="Research Icon">
+        <p>Selected Publications & Presentations</p>
+        <p>Undergraduate Students Directed</p>
+      </a>
+      
+      <a href="consulting.html" class="card">
+        <h4>Consulting</h4>
+        <img src="./images/img-professional.png" alt="Consulting Icon">
+        <p>Summary of Professional Projects</p>
+      </a>
+      
+      <a href="miscellaneous.html" class="card">
+        <h4>Miscellaneous</h4>
+        <img src="./images/img-misc.png" alt="Miscellaneous Icon">
+        <p>The Interesting and Fun</p>
+      </a>
+    </section>
+    
+  </main>
+    
+    
+  <!-- Footer -->
+  <footer class="footer-box">
+    <a class="header-footer-link" href="mailto:reyesem@rose-hulman.edu">
+      Contact
+    </a> | 
+    <a class="header-footer-link" href="https://www.rose-hulman.edu">
+      Rose-Hulman Institute of Technology
+    </a>
+  </footer>
 </body>
 </html>
-

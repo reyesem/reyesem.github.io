@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MA223 Sample - Reyes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="site-style-sheet.css">
+  <script src="site-scripts.js"></script>
+</head>
+
+
+<body> 
+  <!-- Primary Header -->
+  <header class="header-box">  
+   <!-- Navigation for Small Screens -->
+    <section class="navbar-small">
+      <div class="long-grid">
+        <div id="menu-icon" class="menu-box" onclick="toggleNavigation()">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+      </div>
+      
+      <nav id="small-menu" class="navbar-hidden">
+        <a href="index.html" class="navbar-button">Home</a>
+        <a href="teaching.html" class="navbar-button">Teaching</a>
+        <a href="research.html" class="navbar-button">Research</a>
+        <a href="consulting.html" class="navbar-button">Consulting</a>
+        <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+      </nav>
+    </section>
+    
+    
+    <!-- Banner -->
+    <section id="banner" class="top-banner">
+      <img src="./images/icon-teaching.png" alt="Teaching Icon" class="icon">
+      
+      <h1 class="banner-title">Engineering Statistics I</h1>
+    </section>
+        
+    
+    <!-- Navigation for Large Screens -->
+    <nav class="navbar-large">
+      <a href="index.html" class="navbar-button">Home</a>
+      <a href="teaching.html" class="navbar-button">Teaching</a>
+      <a href="research.html" class="navbar-button">Research</a>
+      <a href="consulting.html" class="navbar-button">Consulting</a>
+      <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+    </nav>
+  </header>
+  
+  
+  <!-- Main Content -->
+  <main class="main-box tri-grid">
+    
+    <!-- Overview -->
+    <article id="overview" class="primary-article">  
+      <img src="./images/ma223-banner.jpg" alt="Statistics Banner" class="banner">
+        
+      <p>Scientists and engineers are asked to make decisions on a regular basis, and often times, those decisions
+      need to be supported by data.  This course introduces statistical concepts in the context of engineering and
+      the sciences.  The course emphasizes statistical <em>literacy</em> (speaking the language of statistics and
+      interpreting statistical methods and results), <em>reasoning</em> (defining the need for data to address 
+      questions, understanding the role and impact of variability, and understanding foundational concepts), 
+      <em>design</em> (approaches to data collection and the impact of the study design on the conclusions), and 
+      <em>analysis</em> (choosing an appropriate methodology and using a statistical computing environment to 
+      carry out an analysis).  The following topics are included in the course:</p>
+      
+      <ul>
+        <li>Study design, including random sampling schemes as well as a comparison of observational studies and 
+        controlled experiments.</li>
+        
+        <li>Graphical and numerical summaries for a single quantitative variable, the relationship between a 
+        quantitative response and a categorical factor, and the relationship between two quantitative variables.</li>
+        
+        <li>Compare and contrast the distribution of the population, the sample, the sampling distribution, and the
+        null distribution for a statistic of interest.</li>
+        
+        <li>Models for describing the sampling distribution of a statistic, including bootstrapping and 
+        parametric models.</li>
+        
+        <li>Confidence intervals for a single mean and parameters of a simple linear regression model.</li>
+        
+        <li>Hypothesis testing for a single mean, comparing multiple means across two or more groups, and the
+        parameters of a simple linear regression model.</li>
+      </ul>
+            
+      <p>The above list includes common methods encountered in engineering and the sciences including linear
+      regression, ANOVA, and repeated measures ANOVA.  The class is taught from a model-based perspective.  
+      Therefore, we describe approaches to collecting data, summarizing the information contained 
+      within the data, building a model to address a question of interest, using data to estimate the unknowns
+      in the model, assessing the model, and interpreting the results based on the model.</p>
+      
+      <p>Decisions need to be made in industry and science.  The course discusses the collection and use of
+      data for the purpose of decision making in the presence of variability.  The course is built on five 
+      fundamental idea:</p>
+      
+      <ol type="I">
+        <li>A reseearch question can often be framed in terms of a parameter which characterizes the population.
+        Framing the question should then guide our analysis.</li>
+        
+        <li>If data is to be useful for making conclusions about the population, a process referred to as drawing
+        inference, proper data collection is crucial.  Randomization can play an important role ensuring a sample 
+        is representative and that inferential conclusions are appropriate.</li>
+        
+        <li>The use of data for decision making requires the data be summarized and presented in ways that address
+        the question of interest.</li>
+        
+        <li>Variability is inherent in any process, and as a result, our estimates are subject to sampling 
+        variability.  However, these estimates often vary across samples in a predictable way; that is, they have
+        a distribution that can be modeled.</li>
+        
+        <li>With a model for the distribution of a statistic under a proposed model for the data generating process,
+        we can quantify the likelihood of an observed sample under that proposed model.  This allows us to draw
+        conclusions about the corresponding parameter, and therefore the population, of interest.</li>
+      </ol>
+    </article>  
+    
+    
+    
+    <!-- Tabbed Content -->
+    <article id="tabs" class="primary-article tab-border">
+      <nav class="tab-bar">
+        <a class="tab-button" onclick="displayTab(event, 'Learning Objectives')">Learning Objectives</a>
+        <a class="tab-button" onclick="displayTab(event, 'Course Structure')">Course Structure</a>
+        <a class="tab-button" onclick="displayTab(event, 'Course Materials')">Course Materials</a>
+      </nav>
+      
+      
+      <!-- Learning Objectives -->
+      <section id="Learning Objectives" class="tab">
+        <h3>Learning Objectives</h3>
+        
+        <p>At the end of this course, students should be able to perform the following tasks:</p>
+        
+        <ol type="A">
+          <li>Given a problem description, <strong>identify</strong> the population and parameter(s) of interest 
+          as well as the statistic(s) from the sample appropriate for estimating the parameter(s).  If appropriate, 
+          <strong>formulate</strong> an appropriate set of statistical hypotheses that address the research goal.</li>
+          
+          <li><strong>Describe</strong> the importance of considering the data collection scheme when interpreting the 
+          results of a study, including potential confounding, replicability, and generalizability.  Given a problem 
+          description, <strong>identify</strong> potential reasons for variability in the observed response and the 
+          limitations of the data collection scheme.</li>
+          
+          <li><strong>Construct</strong> and <strong>interpret</strong> graphical and numerical summaries of data to 
+          address a given question of interest.</li>
+          
+          <li><strong>Describe</strong> general techniques for modeling the sampling distribution of a statistic, and 
+          <strong>discuss</strong> the role of a sampling distribution in inference.</li>
+          
+          <li>Given a question of interest, <strong>conduct</strong> an appropriate statistical analysis (using either 
+          confidence intervals or p-values) in order to aid in decision making, and given a statistical analysis, 
+          <strong>interpret</strong> the results of the analysis in the context of the problem.</li>
+          
+          <li><strong>Comment</strong> on the adequacy of a statistical method for addressing a given question of 
+          interest by <strong>assessing</strong> the conditions underlying the method.</li>
+          
+          <li><strong>Develop</strong> a question of interest; then, <strong>design</strong> and 
+          <strong>implement</strong> a study to address the question.</li>
+          
+          <li><strong>Identify</strong> the value of statistical methodology in the advancement of science as well 
+          as <strong>recognize</strong> its limitations.</li>
+          
+          <li><strong>Collaborate</strong> with others to <strong>conduct</strong> data collection and a statistical 
+          analysis and <strong>communicate</strong> the results appropriately.</li>
+          
+          <li><strong>Support</strong> a decision using graphical and/or numerical data.</li>
+        </ol>
+        
+        <p>As students progress through the course, objectives specific to each module will be given; accomplishing
+        these module-level objectives will help students succeed in accomplishing the course-level objectives.</p>
+      </section>
+      
+      
+      <!-- Course Structure -->
+      <section id="Course Structure" class="tab">
+        <h3>Course Structure</h3>
+        
+        <p>I run the class as a flipped course.  That is, the primary content is delivered remotely through course
+        readings and videos which are accompanied by a note packet.  Class meetings are reserved for activities
+        and discussions surrounding key concepts, group work on homework, and answering questions on assignments.</p>
+        
+        <p>I also offer an online version of the course which is delivered asynchronously.  Self-paced activities
+        replace the classroom discussions.  I am available to answer questions remotely via Microsoft Teams to answer
+        questions on assignments.</p>
+        
+        <p>The course material is broken into nine modules (one covered each week during the term, leaving a week for
+        reviewing for the final exam and getting into the course).  The first three modules form a unit on
+        inference for a single population, the second three modules form a unit on the simple linear regresison 
+        model (including comparing two groups), and the last three modules form a unit on comparing multiple
+        group means (including repeated measures).</p>
+        
+        <ol type="1">
+          <li><strong>Statistical Process</strong>: 
+          The discipline of statistics is about turning data into usable information.  
+          More, we would like that information to apply on a broader scale than just the observed subjects.  In this 
+          section, we introduce some of the language necessary for describing this process, known as statistical 
+          inference.  We also discuss how we construct well-posed questions that can be addressed using data and 
+          appropriately frame questions using statistical language.  Finally, we discuss data presentation.</li>
+          
+          <li><strong>Sampling Distributions</strong>: 
+          Doing the same study twice will result in different data, and different data 
+          will result in different estimates and inference.  How then can we have confidence in our estimates?  This 
+          unit develops a notion of confidence which acknowledges the variability in an estimate that results from 
+          the variability in the sampling process.  We then use this notion to conduct inference on the unknown 
+          parameter of interest.</li>
+          
+          <li><strong>Null Distribution</strong>: 
+          Determining whether the data is consistent with the null hypothesis requires 
+          determining what our expectations are if the null hypothesis were true.  This unit develops a notion of 
+          how we can quantify our expectations.  We then use this notion to conduct inference on the unknown parameter 
+          of interest.</li>
+          
+          <li><strong>Simple Linear Regression</strong>: 
+          Most questions of interest are about the relationship between two variables.  
+          In this unit, we consider a model for the data generating process which relates a quantitative response to 
+          a quantitative predictor linearly.</li>
+          
+          <li><strong>Partitioning Variability</strong>: 
+          In order to compare two models for the how the response is generated, we must 
+          ask the question: why isn't the response the same for each subject?  This process allows us to determine 
+          the amount the predictor contributes to the response.</li>
+          
+          <li><strong>Assessing Conditions in Regression</strong>: 
+          Once we have a model for the data generating process, we can develop 
+          a model for the sampling distribution of our parameter estimates or the null distribution of the standardized 
+          statistic.  However, their construction relies on the conditions we place on the stochastic portion of the 
+          model.  We should always assess whether the data is consistent with these conditions before employing 
+          the model.</li>
+          
+          <li><strong>ANOVA</strong>: 
+          When we want to compare the mean of a quantitative response across several groups, we must extend 
+          our model for the data generating process.  While at first glance it appears very disconnected from what we 
+          have been studying, the key idea is simply to partition the variability.</li>
+          
+          <li><strong>Assessing Conditions in ANOVA</strong>: 
+          The p-value we obtain in an ANOVA table is only reliable if the data is 
+          consistent with the conditions on which the corresponding model for the null distribution was constructed.  
+          We describe ways of assessing these conditions graphically.</li>
+          
+          <li><strong>Block Designs</strong>: 
+          It is beneficial to account for additional sources of variability in the response; it is 
+          crucial when those sources result in the responses being correlated with one another.  In this unit, we 
+          discuss analytical methods for generalizing our ANOVA model to account for correlated responses, and how to 
+          capitalize on this in the study design.</li>
+        </ol>
+        
+        <p>Statistics is a unique discipline in that it exists solely to aid decision-makers in other fields.  This 
+        course seeks to improve your statistical literacy and reasoning such that you could successfully collaborate 
+        on a small research study.  This course can also serve to launch you into further statistics coursework to 
+        eventually contribute to the analysis of a study.  In order to assess your progress toward the course goals, 
+        several types of assignments are given throughout the course.  Each type of assignment assesses a different 
+        aspect of the course; some things are best learned in groups while others should be mastered at the individual 
+        level.  As a result, the grading scheme uses a mix of components as well.  In order to help you achieve the 
+        objectives of the course, I will be implementing a variation on "specifications grading."  That is, instead of 
+        taking a weighted average of points earned on a series of assignments throughout the term, grades are earned 
+        based on establishing competency (across the course) in four areas (Statistical Literacy, Statistical 
+        Reasoning, Statistical Design, and Statistical Analysis).  While no partial credit is awarded, very clear
+        expectations are provided to help students demonstrate competency.</p>
+      </section>
+      
+      
+      <!-- Course Materials -->
+      <section id="Course Materials" class="tab">
+        <h3>Course Materials</h3>
+        
+        <p>Teaching this course regularly for years, I drifted into teaching this course from a model-based 
+        perspective.  However, I have not found a lot of texts which support this perspective with the coverage
+        needed for this course (Kaplan's 
+        <a href="https://dtkaplan.github.io/SM2-bookdown/preface-to-this-electronic-version.html">
+        <em>Statistical Modeling: A Fresh Approach</em></a> is close).  So, I compiled my course notes into an
+        online text (<a href="textbook/Basics.html"><em>Statistical Foundations for Engineers and Scientists</em></a>)
+        that I use for the course.  Course note packets are given to students each week to help direct their reading.</p>
+        
+        <p>I have also created some "concept clips" (videos explaining key concepts from the course) and "example videos" 
+        (walking through examples with the course software); these go along with the note packets as well.  If interested,
+        these videos can be accessed on 
+        <a href="https://rose-hulman.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=237b774e-57a2-424f-8551-a922012f7149">Panopto</a>.</p>
+        
+        <p>I teach the class in RStudio; while this is a free program, our IT department has set up a server so students
+        have access to RStudio via the web browser.  I have created an R package 
+        (<a href="https://github.com/reyesem/IntroAnalysis"><code>IntroAnalysis</code></a>) to accompany the course.  In 
+        addition to custom functions for conducting analysis from a model-based perspective, the package contains
+        tutorials which can be accessed using the <code>learnr</code> package.</p>
+      </section>
+    </article>
+  </main>
+    
+    
+  <!-- Footer -->
+  <footer class="footer-box">
+    <a class="header-footer-link" href="mailto:reyesem@rose-hulman.edu">
+      Contact
+    </a> | 
+    <a class="header-footer-link" href="https://www.rose-hulman.edu">
+      Rose-Hulman Institute of Technology
+    </a>
+  </footer>
+  
+  
+  <!-- Script to Initialize First Tab -->
+  <script>
+    var firstbtn = document.getElementsByClassName("tab-button")[0];
+    firstbtn.click();
+  </script>
+</body>
+</html>

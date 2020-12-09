@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MA482 Sample - Reyes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="site-style-sheet.css">
+  <script src="site-scripts.js"></script>
+</head>
+
+
+<body> 
+  <!-- Primary Header -->
+  <header class="header-box">  
+   <!-- Navigation for Small Screens -->
+    <section class="navbar-small">
+      <div class="long-grid">
+        <div id="menu-icon" class="menu-box" onclick="toggleNavigation()">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+      </div>
+      
+      <nav id="small-menu" class="navbar-hidden">
+        <a href="index.html" class="navbar-button">Home</a>
+        <a href="teaching.html" class="navbar-button">Teaching</a>
+        <a href="research.html" class="navbar-button">Research</a>
+        <a href="consulting.html" class="navbar-button">Consulting</a>
+        <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+      </nav>
+    </section>
+    
+    
+    <!-- Banner -->
+    <section id="banner" class="top-banner">
+      <img src="./images/icon-teaching.png" alt="Teaching Icon" class="icon">
+      
+      <h1 class="banner-title">Biostatistics</h1>
+    </section>
+        
+    
+    <!-- Navigation for Large Screens -->
+    <nav class="navbar-large">
+      <a href="index.html" class="navbar-button">Home</a>
+      <a href="teaching.html" class="navbar-button">Teaching</a>
+      <a href="research.html" class="navbar-button">Research</a>
+      <a href="consulting.html" class="navbar-button">Consulting</a>
+      <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+    </nav>
+  </header>
+  
+  
+  <!-- Main Content -->
+  <main class="main-box tri-grid">
+    
+    <!-- Overview -->
+    <article id="overview" class="primary-article">  
+      <img src="./images/ma482-banner.jpg" alt="Statistics Banner" class="banner">
+        
+      <p>The biological sciences often yield datasets which present unique challenges to data analysis.  This course 
+      introduces these challenges and the statistical methods employed to overcome them.  We begin with an introduction 
+      to the use of statistical regression models and then explore how such models can be extended to account for 
+      various features of the data collection process and question of interest.  This could include non-linear 
+      relationships, categorical response variables, censored survival (or reliability) data, and repeated measurements 
+      on the same subject.  Other topics discussed as time permits include pooling results from multiple studies, 
+      handling missing data, study design and power, and drawing causal conclusions from observational data.</p>
+      
+      <p>The course is not meant to provide an in-depth statistical treatment of these topics, but instead aims to 
+      enable students to evaluate the strength of evidence presented in the literature within their field of study.  
+      Largely driven by small projects analyzing real data, the course focuses on identifying when the application of 
+      these techniques is warranted and interpreting the results produces by these methods (such as those found in the 
+      medical literature).</p>
+      
+      <p>A unique feature of the course is critiquing literature from the biological sciences.  We discuss the various
+      standards for presenting statistical analysis in discipline-specific literature.  We also explore many common
+      misconceptions.  This class is ideal for students further developing their statistical background (as it is truly
+      a course in statistical modeling) and students in the biological sciences (Biology, Biomedical Engineering, and
+      Biochemistry) wanting to broaden their statistical toolkit and improve their ability to critique the literature.</p>
+    </article>  
+    
+    
+    
+    <!-- Tabbed Content -->
+    <article id="tabs" class="primary-article tab-border">
+      <nav class="tab-bar">
+        <a class="tab-button" onclick="displayTab(event, 'Learning Objectives')">Learning Objectives</a>
+        <a class="tab-button" onclick="displayTab(event, 'Course Structure')">Course Structure</a>
+        <a class="tab-button" onclick="displayTab(event, 'Course Materials')">Course Materials</a>
+      </nav>
+      
+      
+      <!-- Learning Objectives -->
+      <section id="Learning Objectives" class="tab">
+        <h3>Learning Objectives</h3>
+        
+        <p>More than many other courses, this course focuses on communication.  Many of the activities and 
+        assessments in the course are designed to practice interpreting analyses and communicating rich concepts
+        underlying them.  Specifically, after taking this course, students will be able to accomplish the following
+        tasks:</p>
+        
+        <ol type="A">
+          <li><strong>Describe</strong> situations for which mulit-predictor regression models are needed to address 
+          the research question of interest.  Specifically, <strong>describe</strong> the role multi-predictor regression 
+          models play in isolating the effect of a variable and investigating the interplay between multiple variables.</li>
+          
+          <li>Given an analysis situation, <strong>state</strong> the appropriate regression modeling technique (linear, 
+          non-linear, survival, or repeated measures) and <strong>justify</strong> your choice.</li>
+          
+          <li><strong>Formulate</strong> research questions as measurable statements about parameters in a regression 
+          model.</li>
+          
+          <li>Given a research question from the biological sciences, use appropriate software to 
+          <strong>conduct</strong> inference on the corresponding parameters and <strong>interpret</strong> the resulting 
+          output in context of the research question.</li>
+          
+          <li><strong>Compare</strong> and <strong>contrast</strong> the four primary regression modeling techniques 
+          discussed: linear, non-linear, survival, repeated measures.</li>
+          
+          <li>Clearly <strong>communicate</strong> an analysis and its implications using a variety of media: written paper, 
+          scientific poster, scientific abstract, and oral presentation.</li>
+          
+          <li><strong>Collaborate</strong> with others to formulate a statistical analysis plan for addressing a research 
+          question.</li>
+          
+          <li><strong>Appreciate</strong> the value and limitations of regression modeling for addressing research questions 
+          in the biological sciences.</li>
+          
+          <li><strong>Express</strong> a desire for researchers in the biological sciences to be trained in statistical 
+          thinking and literacy.</li>
+          
+          <li><strong>Assess</strong> the strength of evidence presented by a scientific publication in addressing a
+          research question and <strong>provide</strong> constructive feedback for improving a study.</li>
+        </ol>
+      </section>
+      
+      
+      <!-- Course Structure -->
+      <section id="Course Structure" class="tab">
+        <h3>Course Structure</h3>
+        
+        <p>This class is offered as a hybrid course, meaning that much of the content is delivered remotely through 
+        readings and video lectures.  Class time will be used to host discussions which illuminate the concepts in the 
+        course, discussions on the literature, and to work additional examples in a group setting.</p>
+        
+        <p>The course is a modeling course; beginning with foundational modeling, we see how most common questions can
+        be embedded into a statistical model for study.  The course has the following four modules:</p>
+        
+        <ol type="1">
+          <li><strong>General Linear Model</strong>: The general linear model, also referred to as multiple linear 
+          regression, provides a framework appropriate for modeling a continuous outcome (response) as a function of 
+          several predictors (covariates).  This module serves as a unifying framework to the topics discussed in an 
+          introductory statistics course.  It also provides a platform for introducing several flexible modeling 
+          strategies.</li>
+          
+          <li><strong>Repeated Measures</strong>: When the response is measured at multiple times on the same subject, 
+          we refer to this as repeated measures.  This induces a correlation structure among the responses that violates
+          the assumption of independence often made during an analysis.  This correlation structure must be addressed in 
+          the modelling stage if the standard errors produced are to be relied upon.  Further, careful consideration of 
+          the study design and use of such analyses can improve the power of a study to address a particular question of 
+          interest.</li>
+          
+          <li><strong>Nonlinear Models</strong>: Models which are nonlinear in the parameters have applications to cellular 
+          biology, ecology, chemical engineering, and more broadly when modeling categorical data (such as when the response 
+          is binary).  Embedding nonlinear models into a statistical framework allows us to make inference on the underlying 
+          parameters.  In this unit, we examine such models and discuss logistic regression in particular.  We also discuss 
+          extensions to repeated measures data and touch on model selection for nonlinear regression models.</li>
+          
+          <li><strong>Survival Analysis</strong>: Many studies involve studying the time until an event occurs.  Unfortunately, 
+          in biological settings, the event is often not observed for all subjects, a phenomena referred to as censoring.  In 
+          this module, we examine methods for addressing censored data.  In particular, we look at nonparametric approaches 
+          leading up to the Cox Proportional Hazards model, an extension of regression which accounts for the censoring.</li>
+        </ol>
+        
+        <p>The last few days of the course are reserved for activities to tie the units together as well as cover topics
+        of specific student interest.  The class thrives on discussion more than most that I teach.</p>
+      </section>
+      
+      
+      <!-- Course Materials -->
+      <section id="Course Materials" class="tab">
+        <h3>Course Materials</h3>
+        
+        <p>The course makes use primarily of a course note packet, but I also refer to <em>Regression Methods in 
+        Biostatistics: Linear, Logistic, Survival, and Repeated Measures Models</em> (Vittinghoff et. al.) 
+        throughout the course.  The course is interesting in that many biostatistics courses are introductory courses
+        in statistics or are specialized topics courses.  This course is a secondary course in statistics focusing
+        on modeling within a biological setting.</p>
+        
+        <p>The course makes use of R as the statistical computing environment.  This is necessary for some additional
+        functionality used throughout the term.  Example code is given to students throughout the term; the goal is not
+        to make students "programmers" but to introduce you to a tool for statistical analysis and communication.</p>
+      </section>
+    </article>
+  </main>
+    
+    
+  <!-- Footer -->
+  <footer class="footer-box">
+    <a class="header-footer-link" href="mailto:reyesem@rose-hulman.edu">
+      Contact
+    </a> | 
+    <a class="header-footer-link" href="https://www.rose-hulman.edu">
+      Rose-Hulman Institute of Technology
+    </a>
+  </footer>
+  
+  
+  <!-- Script to Initialize First Tab -->
+  <script>
+    var firstbtn = document.getElementsByClassName("tab-button")[0];
+    firstbtn.click();
+  </script>
+</body>
+</html>

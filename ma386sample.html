@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MA386 Sample - Reyes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="site-style-sheet.css">
+  <script src="site-scripts.js"></script>
+</head>
+
+
+<body> 
+  <!-- Primary Header -->
+  <header class="header-box">  
+   <!-- Navigation for Small Screens -->
+    <section class="navbar-small">
+      <div class="long-grid">
+        <div id="menu-icon" class="menu-box" onclick="toggleNavigation()">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+      </div>
+      
+      <nav id="small-menu" class="navbar-hidden">
+        <a href="index.html" class="navbar-button">Home</a>
+        <a href="teaching.html" class="navbar-button">Teaching</a>
+        <a href="research.html" class="navbar-button">Research</a>
+        <a href="consulting.html" class="navbar-button">Consulting</a>
+        <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+      </nav>
+    </section>
+    
+    
+    <!-- Banner -->
+    <section id="banner" class="top-banner">
+      <img src="./images/icon-teaching.png" alt="Teaching Icon" class="icon">
+      
+      <h1 class="banner-title">Statistical Programming</h1>
+    </section>
+        
+    
+    <!-- Navigation for Large Screens -->
+    <nav class="navbar-large">
+      <a href="index.html" class="navbar-button">Home</a>
+      <a href="teaching.html" class="navbar-button">Teaching</a>
+      <a href="research.html" class="navbar-button">Research</a>
+      <a href="consulting.html" class="navbar-button">Consulting</a>
+      <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+    </nav>
+  </header>
+  
+  
+  <!-- Main Content -->
+  <main class="main-box tri-grid">
+    
+    <!-- Overview -->
+    <article id="overview" class="primary-article">  
+      <img src="./images/ma386-banner.jpg" alt="Programming Banner" class="banner">
+        
+      <p>Computational data analysis is an essential part of modern statistics.  This course introduces tools and 
+      strategies for data management, manipulation and analysis that are common in statistics and data science.  
+      These skills are developed primarily in the R computing language.  Topics include:</p> 
+      
+      <ul>
+        <li>Programming concepts (data structures, writing functions, control statements)</li>
+        <li>Applications to randomization-based inference (numerical simulation and bootstrapping)</li>
+        <li>Data visualization (static and interactive graphics)</li>
+        <li>Processing unstructured data and web scraping</li>
+      </ul>
+      
+      <p>The class is very applied, emphasizing a "learn by trying" approach.  There are some short computational
+      checks each week, but the majority of the class is spent in working on projects corresponding to each of the
+      topics in the course.  When students leave the course, they should have developed an excellent portfolio of
+      work to showcase their skills.  The class stresses <em>communication</em> of your approach to addressing the
+      problem as well as the programming implementation.</p>
+      
+      <p>Students should have a background in statistics (introductory statistics course) <em>and</em> prior
+      experience in programming (any language).</p>
+    </article>  
+    
+    
+    
+    <!-- Tabbed Content -->
+    <article id="tabs" class="primary-article tab-border">
+      <nav class="tab-bar">
+        <a class="tab-button" onclick="displayTab(event, 'Learning Objectives')">Learning Objectives</a>
+        <a class="tab-button" onclick="displayTab(event, 'Course Structure')">Course Structure</a>
+        <a class="tab-button" onclick="displayTab(event, 'Course Materials')">Course Materials</a>
+      </nav>
+      
+      
+      <!-- Learning Objectives -->
+      <section id="Learning Objectives" class="tab">
+        <h3>Learning Objectives</h3>
+        
+        <p>Data is everywhere, and tools are needed to turn data into information.  This course discusses the
+        use of scripting in a statistical computing language to aid in this process.  At the end of this course,
+        students will be able to perform the following tasks:</p>
+        
+        <ol type="A">
+          <li><strong>Associate</strong> a computational task with the appropriate function(s) or package(s) 
+          (suites of related functions) in a statistical computing language.</li>
+          
+          <li>Given a script, <strong>describe</strong> the computational task being performed.</li>
+          
+          <li>Given a computational task from the workflow of a statistical project, <strong>construct</strong> 
+          a script to complete the task.</li>
+          
+          <li>Given a research objective, <strong>integrate</strong> multiple computational tasks to provide a 
+          data-driven conclusion.</li>
+          
+          <li><strong>Communicate</strong> the solution to a computational task, identifying and describing key 
+          steps/chunks within the solution.</li>
+          
+          <li><strong>Express the value</strong> of scripting a solution to a computational task.</li>
+          
+          <li><strong>Identify resources</strong> that generalize the material covered in class in order to learn 
+          new tools for solving a novel computational task.</li>
+        </ol>
+      </section>
+      
+      
+      <!-- Course Structure -->
+      <section id="Course Structure" class="tab">
+        <h3>Course Structure</h3>
+        
+        <p>This course is delivered as a flipped hybrid course.  That is, the content is primarily delivered 
+        remotely via readings, videos, and tutorials.  One class period is reserved for an activity to gain 
+        more exposure to the tools and methods discussed in that module.  A second class period is reserved as a
+        <em>workshop</em> where students can get immediate feedback on their module projects.</p>
+        
+        <p>The course is divided into 10 modules (one per week):</p>
+        
+        <ol type="1">
+          <li><strong>Reproducible Research</strong>: We introduce the concept of reproducible research - 
+          being able to trace the conclusions from a study to the data and analysis which resulted in those 
+          conclusions.  As an example, should we update the data, any computed summaries should update as well.  
+          R and Rmarkdown documents will be introduced as tools for easily facilitating reproducible research 
+          and collaboration among members.  We will also introduce basic functionality in R, such as reading in 
+          a CSV file containing a dataset and performing basic computations.</li>
+          
+          <li><strong>Tidy Data</strong>: When we think of data, we often envision a spreadsheet.  However, not 
+          all spreadsheets are created equal.  We introduce principles (known as "tidy data") for storing data 
+          that make it easy to work with.  We also introduce the "tidyverse" as a suite of packages and tools for 
+          working with tidy data and the corresponding key verbs.</li>
+          
+          <li><strong>Static Graphics</strong>: A good graphical summary is often more valuable than an expertly 
+          constructed model.  We will introduce the grammar of graphics as the foundation for creating a graphical 
+          summary.  We then introduce the ggplot package as a tool that implements this grammar.</li>
+          
+          <li><strong>Programming</strong>: Data is rarely in the format needed for analysis.  The process of 
+          manipulating data (wrangling) necessarily involves programming.  This involves writing custom functions 
+          and applying functions efficiently within various data structures.  We will introduce the benefit of 
+          vectorizing operations and tools for implementing vectorized code.</li>
+          
+          <li><strong>String Manipulation</strong>: Character data brings with it challenges that numeric data 
+          does not.  We will introduce some of these challenges as well as common base operations with strings.  
+          In addition, we will touch on the use of regular expressions for manipulating character data.</li>
+          
+          <li><strong>Data Input/Output</strong>: While we often think of datasets as tabular; data does not 
+          always begin in this format.  We introduce a method of reading in unstructured data.  Primarily, we 
+          discuss web-scraping, obtaining data from html/xml sources through CSS selectors.</li>
+          
+          <li><strong>Dynamic Graphics</strong>: Some graphical summaries are improved by dynamic or interactive 
+          elements.  This includes maps, time-laps motion, and interactivity (hovering, etc.).  We will discuss 
+          some common functionality and introduce plotly as a tool for implementation.</li>
+          
+          <li><strong>Simulations</strong>: Numerical simulations can be used to investigate complex processes 
+          as well as evaluate the performance of various statistical methods.  These are particularly useful when 
+          we have a firm model for the underlying components of the process and how these components fit together.  
+          We introduce the steps in conducting a simulation study and tools for generating random variates.</li>
+          
+          <li><strong>Randomization-Based Inference</strong>: We have seen the use of numerical simulation for 
+          investigating a process or examining the properties of a statistical method.  In this module, we discuss 
+          the applications of simulations to inference.  We discuss bootstrapping and randomization-based hypothesis 
+          testing.</li>
+          
+          <li><strong>Choose Your Own Adventure</strong>: The course only scratches the surface on the topics 
+          introduced, and it excludes a vast number of beautiful topics that are part of the statistical analysis 
+          pipeline.  We provide space for each student to investigate a topic of their choice related to the 
+          statistical analysis pipeline.  This could include a topic tangential to one discussed, an extension of 
+          methods discussed, or a brand new topic.</li>
+        </ol>
+      </section>
+      
+      
+      <!-- Course Materials -->
+      <section id="Course Materials" class="tab">
+        <h3>Course Materials</h3>
+        
+        <p>The course makes use of <a href="https://r4ds.had.co.nz/">R for Data Science</a> by Grolemund and
+        Wickham for the first half of the course.  This acts as the foundation of the course.  The last half of 
+        the course will depend on vignettes, original articles, and course notes to cover more advanced topics
+        in statistical computing.</p>
+        
+        <p>Lectures focus on broad concepts common to all statistical computing languages, and while the text
+        and instructor primarily support R, students are free to choose other languages (Python, Julia, SAS, 
+        etc.).  In practice, analysts commonly move between multiple tools to address a problem; however, for 
+        the course, it is advised that you stick with a single language in order to focus on the concepts.</p>
+        
+        <p>Course tutorials are delivered via the <code>learnr</code> package.</p>
+      </section>
+    </article>
+  </main>
+    
+    
+  <!-- Footer -->
+  <footer class="footer-box">
+    <a class="header-footer-link" href="mailto:reyesem@rose-hulman.edu">
+      Contact
+    </a> | 
+    <a class="header-footer-link" href="https://www.rose-hulman.edu">
+      Rose-Hulman Institute of Technology
+    </a>
+  </footer>
+  
+  
+  <!-- Script to Initialize First Tab -->
+  <script>
+    var firstbtn = document.getElementsByClassName("tab-button")[0];
+    firstbtn.click();
+  </script>
+</body>
+</html>

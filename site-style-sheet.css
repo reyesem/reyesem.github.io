@@ -1,0 +1,427 @@
+/* ---- Custom Colors */
+:root {
+  --color-rhit-red: #800000;
+  --color-rhit-red-fade: rgba(128, 0, 0, 0.6);
+  --color-rhit-grey: #54585a;
+  --color-rhit-beige: #dfd1a7;
+  --color-rhit-blue: #4f758b;
+  --color-rhit-washout: #cdcdcd;
+}
+
+
+
+/* ---- Styling Base Elements */
+code {
+  font-size: larger;
+}
+
+html {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+li {
+  padding-bottom: 1.5ex;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+  color: inherit;
+}
+
+a:link {
+  color: var(--color-rhit-blue);
+}
+
+a:visited {
+  color: var(--color-rhit-grey);
+}
+
+a:focus, 
+a:hover {
+  border-bottom: 1px solid;
+}
+
+a:active {
+  color: white;
+  background: var(--color-rhit-grey);
+}
+
+
+/* ---- Site-wide Styles */
+.banner {
+  display: block;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  padding: 1em;
+  
+  display: block;
+  text-align: center;
+  
+  border-radius: 0.5em;
+  box-shadow: 2px 2px 2px 2px var(--color-rhit-washout);
+}
+
+
+a.card:link {
+  color: inherit;
+}
+
+
+a.card:visited {
+  color: inherit;
+}
+
+
+a.card:focus, 
+a.card:hover {
+  background: var(--color-rhit-washout);
+  border-bottom: none;
+}
+
+a.card:active {
+  background: var(--color-rhit-grey);
+}
+
+
+a.card:active h1,
+a.card:active h2,
+a.card:active h3,
+a.card:active h4,
+a.card:active p {
+  color: white;
+}
+
+
+.flex-grid {
+  display: grid;
+  grid-gap: 1em;
+  
+  /* some mobile browsers do not support min() */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+}
+
+
+.footer-box {
+  padding: 1em;
+  margin-top: 1em;
+  
+  background-color: var(--color-rhit-red);
+  color: white;
+}
+
+
+.header-box {
+  padding: 1em;
+  margin-bottom: 1em;
+  
+  background-color: var(--color-rhit-red);
+  color: white;
+}
+
+
+a.header-footer-link:link {
+  color: inherit;
+}
+
+
+a.header-footer-link:visited {
+  color: var(--color-rhit-washout);
+}
+
+
+a.header-footer-link:focus,
+a.header-footer-link:hover {
+  border-bottom: 1px solid;
+}
+
+
+a.header-footer-link:active {
+  background: var(--color-rhit-washout);
+  color: var(--color-rhit-red);
+}
+
+
+.long-grid {
+  display: grid;
+  grid-gap: 0;
+}
+
+
+.primary-article {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+
+.tri-grid {
+  display: grid;
+  grid-gap: 0;
+  
+  /* some mobile browsers do not support min() */
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 3fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(min(300px, 100%), 3fr) minmax(0, 1fr);
+}
+
+
+
+
+
+
+
+/* ---- Menu */
+
+/* Flip which menu we use (small drop down icon or large navigation
+    bar depending on the size of the screen (see bottom). */
+.navbar-small {  
+  display: none;
+  
+  padding: 0.5em;
+  
+  text-align: center;
+}
+
+
+.navbar-large {
+  display: block;
+  padding: 0.5em;
+  
+  background-color: var(--color-rhit-red);
+  
+  text-align: center;
+}
+
+
+.navbar-hidden {
+  display: none;
+}
+
+
+.navbar-visible {
+  display: none;
+}
+
+
+.navbar-button {
+  display: inline-block;
+  
+  margin-top: 0.25em;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0.25em;
+  
+  border-radius: 0.5em;
+  font-weight: bold;
+  width: 160px;
+  text-align: center;
+  
+  background-color: rgba(255, 255, 255, 1);
+}
+
+
+a.navbar-button:link {
+  color: var(--color-rhit-red);
+}
+
+a.navbar-button:visited {
+  color: var(--color-rhit-red);
+}
+
+a.navbar-button:focus, 
+a.navbar-button:hover {
+  background: var(--color-rhit-washout);
+  border-bottom: none;
+}
+
+a.navbar-button:active {
+  color: white;
+  background: var(--color-rhit-grey);
+}
+
+
+
+/* Creates the menu 'icon' and animates it (w3schools) */
+.bar1, .bar2, .bar3 {
+  width: 21px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+
+.change .bar1 {
+  -webkit-transform: translate(0px, 7px) rotate(-45deg);
+  transform: translate(0px, 7px)  rotate(-45deg);
+}
+
+
+.change .bar2 {
+  opacity: 0;
+}
+
+
+.change .bar3 {
+  -webkit-transform: translate(0px, -7px) rotate(45deg);
+  transform: translate(0px, -7px) rotate(45deg);
+}
+
+
+.menu-box {
+  display: inline-block;
+  grid-column-start: 12;
+  justify-self: right;
+  cursor: pointer;
+}
+
+
+
+
+/* ---- Home */
+.address {
+  list-style: none;
+}
+
+
+.headshot {
+  align-self: center;
+  justify-self: center;
+  border-radius: 50%;
+}
+
+
+.main-box {
+  padding: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+
+.main-box h1, 
+.main-box h2, 
+.main-box h3,
+.main-box h4 {
+  color: var(--color-rhit-red);
+}
+
+/*
+.main-box div {
+  padding: 0;
+}
+*/
+
+#title {
+  font-weight: bold;
+}
+
+
+
+/* ---- Secondary Pages */
+.banner-title {
+  font-size: 2.25em;
+  
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon {
+  max-width: min(100px, 100%);
+  
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+.top-banner {  
+  text-align: center;
+}
+
+
+
+/* ---- Tabs on Sample Pages */
+.tab {
+  padding: 0 1em;
+}
+
+.tab-bar {
+  display: block;
+  overflow: hidden;
+  
+  background: var(--color-rhit-red-fade);
+}
+
+.tab-border {
+  border: solid 1px;
+  border-color: var(--color-rhit-grey);
+}
+
+.tab-button {
+  display: inline-block;
+  float: left;
+  
+  margin: 0;
+  padding: 0.25em 1em;
+  
+  text-align: center;
+  
+  color: white;
+  background: var(--color-rhit-red);
+}
+
+.tab-button-active {
+  background: var(--color-rhit-grey);
+}
+
+a.tab-button:focus,
+a.tab-button:hover {
+  color: var(--color-rhit-red);
+  background: var(--color-rhit-washout);
+  border-bottom: none;
+}
+
+a.navbar-button:active {
+  color: white;
+  background: var(--color-rhit-grey);
+}
+
+
+
+
+/* ---- Adjustments for Small Screens */
+@media screen and (max-width: 44em) {
+  /* banner changes */
+  .banner {
+    width: 90%;
+  }
+  
+  /* menu changes */
+  .navbar-large {
+    display: none;
+  }
+  
+  .navbar-small {
+    display: block;
+  }
+  
+  .navbar-visible {
+    display: block;
+  }
+  
+  
+  /* tab changes */  
+  .tab-button {
+    float: none;
+    width: 100%;
+    padding: 0.25em 0;
+  }
+}

@@ -1,162 +1,171 @@
 <!DOCTYPE html>
 <html>
-<title>Teaching - Reyes, Eric M.</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./w3css/w3.css" type="text/css">
-<link rel="stylesheet" href="./w3css/rhit.css" type="text/css">
-<link rel="stylesheet" href="./w3css/w3-theme-black.css" type="text/css">
-<link rel="stylesheet" href="./font-awesome-4.6.3/css/font-awesome.min.css">
-<body>
+<head>
+	<title>Teaching - Reyes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="site-style-sheet.css">
+  <script src="site-scripts.js"></script>
+</head>
 
 
-<!-- Side Navigation -->
-<nav class="w3-sidenav w3-white w3-card-2 w3-animate-left" style="display:none" id="mySidenav">
-  <h1 class="w3-xxxlarge w3-text-teal">Menu</h1>
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-xxxlarge w3-text-theme"><i class="fa fa-remove"></i> Close</a>
-  <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-  <a href="./teaching.html"><i class="fa fa-university"></i> Teaching</a>
-  <a href="./research.html"><i class="fa fa-book"></i> Research</a>
-  <a href="./misc.html"><i class="fa fa-bar-chart"></i> Miscellaneous</a>
-  <a href="./files/ReyesCV.pdf"><i class="fa fa-file-text-o"></i> Curriculum Vitae</a>
-</nav>
+<body> 
+  <!-- Primary Header -->
+  <header class="header-box">  
+   <!-- Navigation for Small Screens -->
+    <section class="navbar-small">
+      <div class="long-grid">
+        <div id="menu-icon" class="menu-box" onclick="toggleNavigation()">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+      </div>
+      
+      <nav id="small-menu" class="navbar-hidden">
+        <a href="index.html" class="navbar-button">Home</a>
+        <a href="teaching.html" class="navbar-button">Teaching</a>
+        <a href="research.html" class="navbar-button">Research</a>
+        <a href="consulting.html" class="navbar-button">Consulting</a>
+        <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+      </nav>
+    </section>
+    
+    
+    <!-- Banner -->
+    <section id="banner" class="top-banner">
+      <img src="./images/icon-teaching.png" alt="Teaching Icon" class="icon">
+      
+      <h1 class="banner-title">Teaching</h1>
+    </section>
+        
+    
+    <!-- Navigation for Large Screens -->
+    <nav class="navbar-large">
+      <a href="index.html" class="navbar-button">Home</a>
+      <a href="teaching.html" class="navbar-button">Teaching</a>
+      <a href="research.html" class="navbar-button">Research</a>
+      <a href="consulting.html" class="navbar-button">Consulting</a>
+      <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+    </nav>
+  </header>
+  
+  
+  <!-- Main Content -->
+  <main class="main-box tri-grid">
+    
+    <!-- Overview -->
+    <article id="teaching-overview" class="primary-article">      
+      <p>Rose-Hulman operates on a quarter system. Each statistics course meets for four 50-minute periods per week 
+      over the course of a 10-week term. While the content for each of my courses is hosted on Moodle (our course 
+      management system), a brief summary of each course I teach is provided below.  When available, additional 
+      information on each course can be obtained by clicking on the title of the course.</p>
+      
+      <p>I use <a href="specsgrading.html">Specifications Grading</a> in each of my courses.</p>
+    </article> 
+    
+    
+    <!-- Senior Projects -->
+    <article id="senior-projects" class="primary-article">
+      <h2>Senior Projects and Theses</h2>
+      
+      <p>The senior capstone experience can fall into one of the following categories:</p>
+      
+      <ul>
+        <li><strong>Statistical Collaboration</strong>: This consists of an analysis of data to advance another
+        scientific discipline; this is generally provided by a client. This is generally viewed as a 
+        <em>Senior Project</em>.</li>
+        
+        <li><strong>Numerical Investigation of Existing Method</strong>: This consists of characterizing the 
+        behavior of an existing method in a previously unexplored setting using numerical simulations.</li>
+        
+        <li><strong>Development of New Statistical Theory</strong>: After researching an open problem in the 
+        field, a novel approach is proposed and characterized using theory and/or numerical simulations.</li>
+        
+        <li><strong>State of the Art</strong>: An in-depth summary of methodological developments for a 
+        topic in the field.  This extensive literature review should represent a novel contribuion to the field.</li>
+      </ul>
+      
+      <p>Students interested in completing a senior capstone experience in statistics with me should 
+      <a href="./files/specs/CapstoneSyllabus.pdf">review my Capstone Syllabus</a>; if you would like to proceed after
+      reviewing that document, contact me via email.</p>
+      
+      <p>A list of past projects/theses I have supervised can be found 
+      <a href="research.html#students-directed">on my research page</a>.</p>
+    </article> 
+    
+    
+    <!-- Regular Courses -->
+    <article id="regular-courses" class="primary-article">
+      <h2>Courses Taught Regularly</h2>
+            
+      <ul>
+        <li><strong><a href="ma223sample.html">Engineering Statistics I (MA223)</a></strong><br>
+        Technically calculus-based, this introductory course is designed to capitalize on the strong mathematical 
+        background of Rose-Hulman students while emphasizing statistical concepts over mathematical computations.  
+        The statistical process is highlighted: formulating a question of interest in terms of parameters that 
+        characterize the population, collecting data appropriately for addressing the question of interest, 
+        summarizing the information available within the sample, characterizing the variability in our statistics, 
+        and performing inference about the parameters using the available sample.  We introduce students to 
+        sampling methods, confidence intervals, hypothesis testing, simple linear regression analysis, ANOVA, and
+        repeated measures ANOVA.</li>
+        
+        <li><strong><a href="ma386sample.html">Statistical Programming (MA386)</a></strong><br>
+        This course introduces tools and strategies for data management, manipulation and analysis that are common 
+        in statistics and data science.  These skills are developed primarily in the R computing language.  This 
+        class encourages students to build their portfolio in applied work.</li>
+        
+        <li><strong><a href="ma482sample.html">Bioengineering Statistics (MA482/BE482)</a></strong><br>
+        This course introduces the analytical tools commonly used in the biological sciences.  Emphasizing modeling,
+        this course covers repeated measures, categorical response variables, censored survival (or reliability), and
+        nonlinear relationships.  Other topics discussed as time permits include pooling results from multiple studies, 
+        handling missing data, study design and power, and drawing causal conclusions from observational data.  The course 
+        is not meant to provide an in-depth statistical treatment of these topics, but instead aims to enable students 
+        to evaluate the strength of evidence presented in the literature within their field of study.  Largely driven 
+        by small projects analyzing real data, the course focuses on identifying when the application of these techniques 
+        is warranted and interpreting the results produces by these methods (such as those found in the medical literature).</li>
+      </ul>
+    </article>
+    
+    
+    <!-- Additional Courses -->
+    <article id="additional-courses" class="primary-article">
+      <h2>Additional Courses Taught</h2>
+      
+      <ul>
+ 	      <li><strong><a href="ma481sample.html">Mathematical Statistics (MA481)</a></strong><br>
+        This course introduces students to the analytical tools needed to establish the properties of common statistical 
+        methods.  Beginning with a discussion of random vectors, including the generation of random variates for use in a 
+        simulation study, we explore the properties of a random sample.  This includes convergence concepts such as the 
+        consistency of a statistic and its limiting distribution (including a proof of the central limit theorem).  Maximum 
+        likelihood methods for estimation and inference are the climax of the course.  We end the course with a short 
+        introduction to nonparametric methods for density estimation and the bootstrap.  The course combines theory, 
+        application and simulation throughout in order to motivate the statistical results we rely on in practice.</li>
+        
+        <li><strong><a href="ma483sample.html">Bayesian Data Analysis (MA483)</a></strong><br>
+        This course offers an introduction to inference under the Bayesian framework.  This includes inference about a 
+        single sample through generalized linear models.  The course also introduces computational tools for Bayesian
+        inference, including Markov Chain Monte Carlo (MCMC) methods.</li>
 
-
-<!-- Header -->
-<header class="w3-container w3-theme w3-padding">
-  <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-opennav"></i>
-  <h1 class="w3-xxxlarge">Teaching</h1>
-</header>
-
-<div class="w3-padding w3-white">
-  <p>Rose-Hulman operates on a quarter system. Each statistics course meets for four 50-minute periods per week over the course of a 10-week term. While the content for each of my courses is hosted on Moodle (our course management system), a summary of each course I teach is provided below.</p>
-
-  <p>I hope to add detailed learning objectives and sample activities as time permits; these additional resources, when available, can be obtained by clicking on the course titles below.</p>
-</div>
-
-
-<!-- Regular Courses -->
-<header class="w3-container w3-rhitred">
-  <h3>Courses Taught Regularly</h3>
-</header>
-
-<div class="w3-padding w3-white">
-  <ul>
- 	<li><strong><a href="./ma223sampler.html">Engineering Statistics I (MA223)</a></strong><br>
- 	Technically calculus-based, this introductory course is designed to capitalize on the strong mathematical background of Rose-Hulman students while emphasizing statistical concepts over mathematical computations.  The statistical process is highlighted: formulating a question of interest in terms of parameters that characterize the population, collecting data appropriately for addressing the question of interest, summarizing the information available within the sample, characterizing the variability in our statistics, and performing inference about the parameters using the available sample.  We introduce students to sampling methods, probability theory, confidence intervals, hypothesis testing, simple linear regression analysis, and ANOVA.  Both analytical and resampling methods are discussed in the course.  I have designed a flipped version of the course, in which the material is delivered through a set of videos I have constructed, and class time is used for activities which illustrate difficult concepts as well as examples for implementing the methodology.  This course serves as a foundation for future statistical courses offered.</li><br>
-
- 	<li><strong><a href="./ma386sampler.html">Statistical Programming (MA386)</a></strong><br>
- 	Computational data analysis is an essential part of modern statistics.  This course introduces tools and strategies for data management, manipulation and analysis that are common in statistics and data science.  These skills are developed primarily in the R computing language.  Topics include traditional programming concepts (data structures, writing functions, control statements), applications to randomization-based inference (numerical simulation and bootstrapping), and data science concepts (data visualization, interactive graphics, web-scraping, data cleaning, processing unstructured data).  Students have an opportunity to develop a portfolio of their work as the course progresses.  This portfolio requires both the use of their programming skills to solve a series of problems as well as their communication skills when presenting their solution.</li><br>
-
- 	<li><strong><a href="./ma482sampler.html">Bioengineering Statistics (MA482/BE482)</a></strong><br>
- 	The biological sciences often yield datasets which present unique challenges to data analysis.  This course introduces these challenges and the statistical methods employed to overcome them.  We begin with an introduction to the use of statistical regression models and then explore how such models can be extended to account for various features of the data collection process and question of interest.  This could include non-linear relationships, categorical response variables, censored survival (or reliability) data, repeated measurements on the same subject, and missing data.  Other topics discussed as time permits include pooling results from multiple studies, study design and power, drawing causal conclusions from observational data, and general modeling techniques.  The course is not meant to provide an in-depth statistical treatment of these topics, but instead aims to enable students to evaluate the strength of evidence presented in the literature within their field of study.  Largely driven by small projects analyzing real data, the course focuses on identifying when the application of these techniques is warranted and interpreting the results produces by these methods (such as those found in the medical literature).</li><br>
-  </ul>
-</div>
-
-
-<!-- Other Courses -->
-<header class="w3-container w3-rhitred">
-  <h3>Other Courses Taught</h3>
-</header>
-
-<div class="w3-padding w3-white">
-  <ul>
- 	<li><strong><a href="./ma480sampler.html">Introduction to Bayesian Inference (MA480)</a></strong><br>
- 	This course offers an introduction to inference (making statements about a population of interest using a sample from the population) under the Bayesian framework.  Building from Bayes' Rule for probability computations, we develop a framework of estimation and hypothesis testing.  We examine inference in several scenarios, including regression analysis.  Modern applications will be covered, time permitting.  We discuss the construction of prior distributions given prior information about a parameter and give an introduction to computational tools for Bayesian inference, including Markov Chain Monte Carlo (MCMC) methods.</li><br>
-
- 	<li><strong><a href="./ma481sampler.html">Mathematical Statistics (MA481)</a></strong><br>
- 	This course introduces students to the analytical tools needed to establish the properties of common statistical methods.  Beginning with a discussion of random vectors, including the generation of random variates for use in a simulation study, we explore the properties of a random sample.  This includes convergence concepts such as the consistency of a statistic and its limiting distribution (including a proof of the central limit theorem).  Maximum likelihood methods for estimation and inference are the climax of the course.  We end the course with a short introduction to nonparametric methods for density estimation and the bootstrap.  Throughout the course, students construct a portfolio of several projects that blend the theory being developed in the course with an applied problem.  This portfolio is meant to prepare students for presenting their own research both in academia and industry.  The course combines theory, application and simulation throughout in order to motivate the statistical results we rely on in practice.  This course is offered every other winter.</li><br>
-
- 	<li><strong>Applied Regression and Time-Series Analysis (MA485)</strong><br>
- 	This course explores linear regression modeling, which provides a unifying framework for many standard statistical methods.  Regression modeling also provides a foundation for many advanced procedures.  We examine questions that can be addressed through regression modeling such as isolating the effect of a predictor, modeling nonlinear relationships, and allowing for effect modifications.  We also examine the theory (probability and linear algebra primarily) underlying the model.</li><br>
-  </ul>
-</div>
-
-
-
-
-
-<!-- Script for Sidenav, Tabs, Accordions, Progress bars and slideshows -->
-<script>
-// Side navigation
-function w3_open() {
-    var x = document.getElementById("mySidenav");
-    x.style.width = "100%";
-    x.style.textAlign = "center";
-    x.style.fontSize = "50px";
-    x.style.paddingTop = "10%";
-    x.style.display = "block";
-}
-function w3_close() {
-    document.getElementById("mySidenav").style.display = "none";
-}
-
-// Tabs
-function openCity(evt, cityName) {
-  var i;
-  var x = document.getElementsByClassName("city");
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
-  }
-  var activebtn = document.getElementsByClassName("testbtn");
-  for (i = 0; i < x.length; i++) {
-      activebtn[i].className = activebtn[i].className.replace(" w3-dark-grey", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " w3-dark-grey";
-}
-
-var mybtn = document.getElementsByClassName("testbtn")[0];
-mybtn.click();
-
-// Accordions
-function myAccFunc(id) {
-    var x = document.getElementById(id);
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-        x.previousElementSibling.className += " w3-dark-grey";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-        x.previousElementSibling.className =
-        x.previousElementSibling.className.replace(" w3-dark-grey", "");
-    }
-}
-
-// Slideshows
-var slideIndex = 1;
-
-function plusDivs(n) {
-slideIndex = slideIndex + n;
-showDivs(slideIndex);
-}
-
-function showDivs(n) {
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length} ;
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
-  }
-  x[slideIndex-1].style.display = "block";
-}
-
-showDivs(1);
-
-// Progress Bars
-function move() {
-  var elem = document.getElementById("myBar");
-  var width = 1;
-  var id = setInterval(frame, 10);
-  function frame() {
-    if (width == 100) {
-      clearInterval(id);
-    } else {
-      width++;
-      elem.style.width = width + '%';
-      document.getElementById("demoprgr").innerHTML = width * 1  + '%';
-    }
-  }
-}
-</script>
+ 	      <li><strong>Applied Regression and Time-Series Analysis (MA485)</strong><br>
+        This course explores linear regression modeling, which provides a unifying framework for many standard statistical 
+        methods.  Regression modeling also provides a foundation for many advanced procedures.  We examine questions that 
+        can be addressed through regression modeling such as isolating the effect of a predictor, modeling nonlinear 
+        relationships, and allowing for effect modifications.  We also examine the theory (probability and linear algebra 
+        primarily) underlying the model.</li>
+      </ul>
+    </article>
+  </main>
+    
+    
+  <!-- Footer -->
+  <footer class="footer-box">
+    <a class="header-footer-link" href="mailto:reyesem@rose-hulman.edu">
+      Contact
+    </a> | 
+    <a class="header-footer-link" href="https://www.rose-hulman.edu">
+      Rose-Hulman Institute of Technology
+    </a>
+  </footer>
 </body>
 </html>
-

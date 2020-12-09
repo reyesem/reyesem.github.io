@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MA483 Sample - Reyes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="site-style-sheet.css">
+  <script src="site-scripts.js"></script>
+</head>
+
+
+<body> 
+  <!-- Primary Header -->
+  <header class="header-box">  
+   <!-- Navigation for Small Screens -->
+    <section class="navbar-small">
+      <div class="long-grid">
+        <div id="menu-icon" class="menu-box" onclick="toggleNavigation()">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+      </div>
+      
+      <nav id="small-menu" class="navbar-hidden">
+        <a href="index.html" class="navbar-button">Home</a>
+        <a href="teaching.html" class="navbar-button">Teaching</a>
+        <a href="research.html" class="navbar-button">Research</a>
+        <a href="consulting.html" class="navbar-button">Consulting</a>
+        <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+      </nav>
+    </section>
+    
+    
+    <!-- Banner -->
+    <section id="banner" class="top-banner">
+      <img src="./images/icon-teaching.png" alt="Teaching Icon" class="icon">
+      
+      <h1 class="banner-title">Bayesian Data Analysis</h1>
+    </section>
+        
+    
+    <!-- Navigation for Large Screens -->
+    <nav class="navbar-large">
+      <a href="index.html" class="navbar-button">Home</a>
+      <a href="teaching.html" class="navbar-button">Teaching</a>
+      <a href="research.html" class="navbar-button">Research</a>
+      <a href="consulting.html" class="navbar-button">Consulting</a>
+      <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+    </nav>
+  </header>
+  
+  
+  <!-- Main Content -->
+  <main class="main-box tri-grid">
+    
+    <!-- Overview -->
+    <article id="overview" class="primary-article">  
+      <img src="./images/ma483-banner.jpg" alt="Bayesian Banner" class="banner">
+        
+      <p>One author has referred to Bayesian Inference as "probability in action."  Probability is all about looking 
+      forward in time - computing the likelihood of an event occurring given that you know everything about the model. In
+      practice, we are often working backward; we have data generated from some process, but we are not fully aware of the
+      model that governs this process.  The Bayesian framework is one approach to statistical inference that quantifies
+      the prior knowledge available about a process through probability distributions.</p>
+      
+      <p>This course offers an introduction to inference under the Bayesian framework.  Building from Bayes' Rule for 
+      probability computations, we develop a framework of estimation and hypothesis testing.  We examine inference in 
+      several scenarios, including regression analysis.  Modern applications will be covered, time permitting.  We discuss 
+      the construction of prior distributions given prior information about a parameter and give an introduction to 
+      computational tools for Bayesian inference, including Markov Chain Monte Carlo (MCMC) methods.</p>
+      
+      <p>This course is particularly useful for students considering an analytical career, those interested in 
+      computational psychology, and those interested in traffic engineering at Rose-Hulman.  This course is unique at
+      Rose-Hulman in that our other statistics courses consider inference from a Frequentist perspective.  This course,
+      therefore, assumes no prior knowledge of statistics but does assume knowledge of probability.</p>
+    </article>  
+    
+    
+    
+    <!-- Tabbed Content -->
+    <article id="tabs" class="primary-article tab-border">
+      <nav class="tab-bar">
+        <a class="tab-button" onclick="displayTab(event, 'Learning Objectives')">Learning Objectives</a>
+        <a class="tab-button" onclick="displayTab(event, 'Course Structure')">Course Structure</a>
+        <a class="tab-button" onclick="displayTab(event, 'Course Materials')">Course Materials</a>
+      </nav>
+      
+      
+      <!-- Learning Objectives -->
+      <section id="Learning Objectives" class="tab">
+        <h3>Learning Objectives</h3>
+        
+        <p>After completing this course, students will be able to accomplish the following tasks:</p>
+        
+        <ol type="A">
+          <li>Given a research goal, <strong>identify</strong> the parameter(s) of interest and, if applicable, 
+          <strong>formulate</strong> the goal as measurable statements about the parameter(s) of interest.</li>
+          
+          <li><strong>Describe</strong> the importance of considering data collection when interpreting the results 
+          of a study.  Specifically, <strong>determine</strong> whether it is reasonable that a sample is 
+          representative of the underlying population and <strong>justify</strong> your rationale.</li>
+          
+          <li><strong>Construct</strong> and <strong>interpret</strong> graphical and numerical summaries of 
+          data to address a research goal.</li>
+          
+          <li>Given a description of the data generating process, <strong>construct</strong> a probability model 
+          that represents that process as a function of unknown parameters.</li>
+          
+          <li>Given a question of interest, <strong>construct</strong> a probability distribution that captures the 
+          information on the parameter prior to conducting the study, and use the data to <strong>update</strong> 
+          the information on the parameter.</li>
+          
+          <li><strong>Comment</strong> on the adequacy of a statistical method for addressing a given question of 
+          interest by <strong>assessing</strong> the assumptions underlying the method.</li>
+          
+          <li>Given a posterior distribution, <strong>summarize</strong> the uncertainty in the parameter of interest 
+          and <strong>interpret</strong> the resulting output in context of the research question.</li>
+          
+          <li><strong>Identify</strong> the value of statistical methodology in the advancement of science as well as 
+          <strong>recognize</strong> its limitations.</li>
+          
+          <li>Clearly <strong>communicate</strong> an analysis and its implications in written format.</li>
+          
+          <li><strong>Describe</strong> the role of probability theory in the Bayesian framework for making inference 
+          on a population and <strong>appreciate</strong> the use of probability for capturing uncertainty about a 
+          parameter and the use of data to inform that uncertainty.</li>
+        </ol>
+      </section>
+      
+      
+      <!-- Course Structure -->
+      <section id="Course Structure" class="tab">
+        <h3>Course Structure</h3>
+        
+        <p>This course is given as a traditional lecture class.  The course is divided into the following modules:</p>
+        
+        <ol type="1">
+          <li>Statistical Process</li>
+          <li>Bayesian Fundamentals</li>
+          <li>Bayesian Computations</li>
+          <li>Comparing Groups</li>
+          <li>Regression</li>
+        </ol>
+        
+        <p>Instead of exams, each module is accompanied by a lengthy homework assignment and applied analysis task.
+        These tasks pose a problem in a specific context and ask you to use the available data to address the problem.
+        These focus on both the implementation as well as communication of the solution.</p>
+      </section>
+      
+      
+      <!-- Course Materials -->
+      <section id="Course Materials" class="tab">
+        <h3>Course Materials</h3>
+        
+        <p>The course is mostly delivered with course notes.  However, as an introduction for those who have not
+        had prior exposure to statistics, I recommend 
+        <a href="https://sites.google.com/site/doingbayesiandataanalysis/purchase">Doing Bayesian Data Analysis: A Tutorial with R, JAGS, and Stan</a>.</p>
+        
+        <p>Beyond a handful of classic examples, the Bayesian framework requires specialized computing tools.  The
+        class makes use of Stan through the <code>rstan</code> package in R.  While R is supported, students have had 
+        success implenting Stan in Python.</p>
+      </section>
+    </article>
+  </main>
+    
+    
+  <!-- Footer -->
+  <footer class="footer-box">
+    <a class="header-footer-link" href="mailto:reyesem@rose-hulman.edu">
+      Contact
+    </a> | 
+    <a class="header-footer-link" href="https://www.rose-hulman.edu">
+      Rose-Hulman Institute of Technology
+    </a>
+  </footer>
+  
+  
+  <!-- Script to Initialize First Tab -->
+  <script>
+    var firstbtn = document.getElementsByClassName("tab-button")[0];
+    firstbtn.click();
+  </script>
+</body>
+</html>

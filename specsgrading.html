@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Specifications Grading - Reyes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="site-style-sheet.css">
+  <script src="site-scripts.js"></script>
+</head>
+
+
+<body> 
+  <!-- Primary Header -->
+  <header class="header-box">  
+    <!-- Navigation for Small Screens -->
+    <section class="navbar-small">
+      <div class="long-grid">
+        <div id="menu-icon" class="menu-box" onclick="toggleNavigation()">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+      </div>
+      
+      <nav id="small-menu" class="navbar-hidden">
+        <a href="index.html" class="navbar-button">Home</a>
+        <a href="teaching.html" class="navbar-button">Teaching</a>
+        <a href="research.html" class="navbar-button">Research</a>
+        <a href="consulting.html" class="navbar-button">Consulting</a>
+        <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+      </nav>
+    </section>
+    
+    
+    <!-- Banner -->
+    <section id="banner" class="top-banner">
+      <img src="./images/icon-research.png" alt="Research Icon" class="icon">
+      
+      <h1 class="banner-title">Specifications Grading</h1>
+    </section>
+        
+    
+    <!-- Navigation for Large Screens -->
+    <nav class="navbar-large">
+      <a href="index.html" class="navbar-button">Home</a>
+      <a href="teaching.html" class="navbar-button">Teaching</a>
+      <a href="research.html" class="navbar-button">Research</a>
+      <a href="consulting.html" class="navbar-button">Consulting</a>
+      <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+    </nav>
+  </header>
+  
+  
+  <!-- Main Content -->
+  <main class="main-box tri-grid">
+    
+    <!-- Overview -->
+    <article id="specs-overview" class="primary-article"> 
+           
+      <p><em>The passion I had for teaching was being killed by the dread I continuously faced with grading and worse, handing back the graded assignments.  
+      I found the after-grade encounters often antagonistic and more often related to winning back points than understanding the lessons to be learned from the experience.</em>  
+      That is a quote from Linda Nilson's book <em><a href="https://www.amazon.com/Specifications-Grading-Restoring-Motivating-Students/dp/1620362422">Specifications Grading: Restoring Rigor, Motivating Students, and Saving Faculty Time</a></em>.  
+      Along with several colleagues at Rose-Hulman, I read through the book and decided to implement Nilson's method for student assessment.  Given the increase in the quality 
+      of work my students have produced, I will never go back!  Since adopting Specifications Grading in my courses, I have been taking opportunities to let others know
+      of my experience.  This page contains various resources related to those discussions.  As with any endeavor, I continue to learn and refine my approaches, and I do not
+      claim to have all the answers!</p>
+    </article>
+    
+    
+    <!-- Presentations -->
+    <article id="specs-publications" class="primary-article">
+      <h2>Presentations/Publications</h2>
+      
+      <ul>
+        <li><strong>Specifications Grading: An Overview and Example</strong><br>
+        I was invited to write two posts for the <a href="https://stattlc.com/">Statistics Teaching and Learning Corner</a>.  
+        The first post provides an <a href="#">introduction to the framework</a> of Specs Grading; the second post is a high-level
+        <a href="#">overview of an implementation of Specs Grading</a> in one of my upper level courses.  These articles provide a good starting
+        point for those deciding whether they want to consider Specs Grading for their courses.</li>
+        
+        <li><strong>Specifications Grading in a Statistics Classroom</strong><br>
+        I led a half-day workshop in 2017 at USCOTS introducing the topic and providing tips for getting started.  The <a href="./files/specs/USCOTS2017.pdf">workbook</a>
+        for participants, based largely on Nilson's text, could help those interested in designing a course with Specs Grading.  While it might be helpful to a 
+        general audience, it is specifically written with statistics educators in mind.</li>
+        
+        <li><strong>Specifications Grading at Rose-Hulman</strong><br>
+        Dr. Sylvia Carlisle and I led a workshop for faculty at Rose-Hulman introducing specifications grading.  A copy of our
+        <a href="./files/specs/RHITSpecsGrading.pdf">slides</a> and the accompanying <a href="./files/specs/RHITSpecsGradingWorkbook.pdf">workbook</a> may help
+        those at Rose-Hulman get started with designing a course with Specs Grading. </li>
+      </ul>
+    </article>
+    
+    
+    <!-- Course Materials -->
+    <article id="specs-materials" class="primary-article">
+      <h2>Course Materials</h2>
+      
+      <ul>
+        <li><strong>Engineering Statistics (Introductory Course)</strong><br>
+        This is an introductory statistics course aimed at engineers and scientists; while it has a calculus pre-requisite, my version of the course
+        does not have computations which rely on that material.  To get a feel for the level of the course, you can review the 
+        <a href="./textbook/Basics.html">course text</a>, which is a culmination of previous course notes for the class.  While I tinker with this
+        course every term, the basic structure remains the same.  This is hybrid-specs system as it relies on points.  It is a class which is 
+        coordinated, but not all instructors use specs grading; so, we give a common final exam.
+        
+        <ul>
+          <li><a href="./files/specs/MA223Specs-CourseSyllabus.pdf">Course Syllabus</a>: provides the course-level objectives of the course, as well as
+          my introduction of specs grading for students.  This gives you a high-level view of the course structure.</li>
+          
+          <li><a href="./files/specs/MA223Specs-Rubric.pdf">Rubric for Class Questions</a>: provides the specifications for each type of open-ended 
+          question asked in the class.  While I have moved to providing specs for each question on an exam, I still find it helpful to have a
+          single document that provides the specs for various types of questions for consistency across the course.</li>
+          
+          <li><a href="./files/specs/MA223Specs-Objectives.pdf">Module-Level Objectives</a>: this is a complete list of my module-level objectives which 
+          support the course objectives listed in the Course Syllabus.  This also illustrates the module-structure of the course.  It is helpful to 
+          note that the class is divided into three units of three modules (1-sample inference, regression, comparing groups).</li> 
+        </ul></li>
+        
+        <li><strong>Statistical Programming (Intro to Data Science Type Course)</strong><br>
+        This course requires an introductory exposure to statistics, including randomization-based inference.  This course is aimed at students
+        understanding the pipeline of an applied project - from data collection (scraping) through presentation of results in a reproducible fashion.
+        By far, this is the class that I think I have felt most successful with specs grading. Students have little trouble adapting to the framework
+        in this class.
+        
+        <ul>
+          <li><a href="./files/specs/MA386Specs-CourseSyllabus.pdf">Course Syllabus</a>: provides the course-level objectives of the course, as well as
+          my introduction of specs grading for students. This gives you a high-level view of the course structure.</li>
+          
+          <li><a href="./files/specs/MA386Specs-CoursePlan.pdf">Planning Sheet</a>: when you are first designing a course, it is a good idea to layout how
+          the activities align with the objectives of the course.  I admit that I have not always done this well, but this class is an exception. In 
+          addition to laying things out, I tried to document the process, which is presented here.  It was meant for my personal records, but it might
+          help you think about how to document a course build yourself.  I liked doing this in OneNote as it is an infinitely large workspace; for those
+          who have never done something like this, it is important to remember that this is a living document.  I created it with just the objectives first,
+          but I updated it regularly as the course took shape.</li>
+        </ul></li>
+        
+        <li><strong>Biostatistics (Intermediate Course)</strong><br>
+        This second course in statistics focuses on statistical modeling, particularly models common in the biological sciences, including the 
+        linear model, repeated measures, nonlinear models (including logistic regression), and survival analysis. This course is at the top with 
+        regard to my satisfaction with the structure.
+        
+        <ul>
+          <li><a href="./files/specs/MA482Specs-CourseSyllabus.pdf">Course Syllabus</a>: provides the course-level objectives of the course, as well as
+          my introduction of specs grading for students. This gives you a high-level view of the course structure. Note: this syllabus was from the 
+          Spring of 2020; in response to the pandemic, changes were made to the syllabus, which are shown in this document.</li>
+          
+          <li><a href="./files/specs/MA482Specs-Homework.pdf">Specs for a Homework Assignment</a>: used as group practice toward the computational and literacy
+          with course concepts.</li>
+          
+          <li><a href="./files/specs/MA482Specs-ArticleReview.pdf">Specs for an Article Review</a>: used to ensure article is read prior to class discussion,
+          which is where the real learning occurs.</li>
+          
+          <li><a href="./files/specs/MA482Specs-ModuleQuiz.pdf">Specs for a Module Quiz</a>: this is an automated assessment of computational skills and 
+          literacy with concepts.</li>
+          
+          <li><a href="./files/specs/MA482Specs-ConceptCheck.pdf">Specs for a Concept Check</a>: this is to assess mastery of explaining key concepts from
+          a module in a multi-disciplinary team.</li>
+          
+          <li><a href="./files/specs/MA482Specs-AnalysisTask.pdf">Specs for an Analysis Task</a>: assess mastery of computational solutions and communication
+          in a setting in which the components of the analysis are explicitly asked for. This is similar to an exam; so, this illustrates how specs might be
+          combined with "points" in order to determine a satisfactory assignment.</li>
+          
+          <li><a href="./files/specs/MA482Specs-CaseStudy.pdf">Specs for a Case Study</a>: a capstone type experience at the individual level, students must
+          replicate a study and write a report. This is a very detailed set of specifications as it pertains to a multi-page report.  Therefore, examples of
+          this type of successful report are not easy to demonstrate on the page but are still given to students (note, these examples are from general reports
+          but they do not replicate an existing work).  Each assignment is annotated to help students understand the examples.
+          <ul>
+            <li><a href="./files/specs/MA482Specs-SuccessfulExample.pdf">Successful Example</a>: a really high quality submission that would have received a
+            passing score.</li>
+            
+            <li><a href="./files/specs/MA482Specs-BorderlineExample.pdf">Successful Example, but not Perfect</a>: a submission that would have received a
+            passing score but has areas of improvement (did not meet all specifications).</li>
+            
+            <li><a href="./files/specs/MA482Specs-UnsuccessfulExample.pdf">Unsuccessful Example</a>: a low quality submission that would not have received a
+            passing score.</li>
+          </ul></li>
+        </ul></li>
+        
+        <li><strong>Mathematical Statistics (Advanced Course)</strong><br>
+        A course for those considering graduate school, this course has both introductory statistics and probability as pre-requisites.  In addition,
+        I can assume students have seen multivariable calculus and had some exposure to computing.  This course is generally taken by seniors and is
+        a good mix of theory and computation.  I have only taught this class with specs grading once, but I was happy with this iteration.  
+         I am very grateful to Dr. Sylvia Carlilse's work with turning a "Real Analysis" course into a specs graded course; that was the inspriration 
+         behind many of the components of this class.
+        
+        <ul>
+          <li><a href="./files/specs/MA481Specs-CourseSyllabus.pdf">Course Syllabus</a>: provides the course-level objectives of the course, as well as
+          my introduction of specs grading for students. This gives you a high-level view of the course structure.</li>
+          
+          <li><a href="./files/specs/MA481Specs-Rubric.pdf">Course Rubric</a>: this provides a rubric for various types of questions given in the class.
+          This is somewhat of a hybrid class as the questions are not graded individually pass/fail.  Thesese rubrics give a sense of how students can 
+          improve on their work. Thanks to Dr. Sylvia Carlisle for the inspiration of these requirements.</li>
+          
+          <li><a href="./files/specs/MA481Specs-Guidelines.pdf">Guidelines for Collaboration</a>: in theoretical courses like this, I want students to 
+          work together, but I also want them to understand the difference between collaboration and academic misconduct. These are the guidelines I give
+          my students.  Thanks to Dr. Sylvia Carlisle for these suggestions.</li>
+        </ul></li>
+        
+        <li><strong>Capstone Experience</strong><br>
+        The senior capstone experience could take the form of a project or thesis.  I am grateful to Dr. Ella Ingram for her template on a contract
+        for senior research that was the basis for the following syllabus.
+        
+        <ul>
+          <li><a href="./files/specs/CapstoneSyllabus.pdf">Course Syllabus</a>: this is a contract for students choosing to work on a seniore 
+          capstone experience with me.  This also outlines the specifications for various grades; note that some components reflect 
+          department-wide requirements.</li>
+          
+          <li><a href="./files/specs/CapstoneCommitteeAgreement.pdf">Capstone Committee Agreement</a>: this document is for students to give to
+          prospective committee members.</li>
+        </ul></li>
+      <ul>
+    </article>
+  </main>
+    
+    
+  <!-- Footer -->
+  <footer class="footer-box">
+    <a class="header-footer-link" href="mailto:reyesem@rose-hulman.edu">
+      Contact
+    </a> | 
+    <a class="header-footer-link" href="https://www.rose-hulman.edu">
+      Rose-Hulman Institute of Technology
+    </a>
+  </footer>
+</body>
+</html>
