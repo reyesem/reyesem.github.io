@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Large Sample Theory | Statistical Modeling for the Biological Sciences</title>
+  <meta name="description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Large Sample Theory | Statistical Modeling for the Biological Sciences" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Large Sample Theory | Statistical Modeling for the Biological Sciences" />
+  
+  <meta name="twitter:description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="glm-linear-hypotheses.html"/>
+<link rel="next" href="glm-splines.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Modeling</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Review of the Inferential Process</b></span></li>
+<li class="chapter" data-level="1" data-path="statistical-process.html"><a href="statistical-process.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1.1" data-path="statistical-process.html"><a href="statistical-process.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="1.2" data-path="statistical-process.html"><a href="statistical-process.html#data-storage"><i class="fa fa-check"></i><b>1.2</b> Data Storage</a></li>
+<li class="chapter" data-level="1.3" data-path="statistical-process.html"><a href="statistical-process.html#tabular-data-presentation"><i class="fa fa-check"></i><b>1.3</b> Tabular Data Presentation</a></li>
+<li class="chapter" data-level="1.4" data-path="statistical-process.html"><a href="statistical-process.html#graphical-data-presentation"><i class="fa fa-check"></i><b>1.4</b> Graphical Data Presentation</a></li>
+<li class="chapter" data-level="1.5" data-path="statistical-process.html"><a href="statistical-process.html#basic-terminology-for-statistical-tests"><i class="fa fa-check"></i><b>1.5</b> Basic Terminology for Statistical Tests</a></li>
+<li class="chapter" data-level="1.6" data-path="statistical-process.html"><a href="statistical-process.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.6</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="distributional-quartet.html"><a href="distributional-quartet.html"><i class="fa fa-check"></i><b>2</b> Distributional Quartet</a></li>
+<li class="chapter" data-level="3" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>3</b> Essential Probability</a><ul>
+<li class="chapter" data-level="3.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>3.1</b> Density Functions as Models</a></li>
+<li class="chapter" data-level="3.2" data-path="essential-probability.html"><a href="essential-probability.html#summarizing-distributions-parameters"><i class="fa fa-check"></i><b>3.2</b> Summarizing Distributions (Parameters)</a></li>
+<li class="chapter" data-level="3.3" data-path="essential-probability.html"><a href="essential-probability.html#specific-models-for-populations"><i class="fa fa-check"></i><b>3.3</b> Specific Models for Populations</a></li>
+<li class="chapter" data-level="3.4" data-path="essential-probability.html"><a href="essential-probability.html#models-for-sampling-distributions-and-null-distributions"><i class="fa fa-check"></i><b>3.4</b> Models for Sampling Distributions and Null Distributions</a></li>
+</ul></li>
+<li class="part"><span><b>II General Linear Model and Modeling Strategies</b></span></li>
+<li class="chapter" data-level="4" data-path="glm-framework.html"><a href="glm-framework.html"><i class="fa fa-check"></i><b>4</b> General Linear Model Framework</a><ul>
+<li class="chapter" data-level="4.1" data-path="glm-framework.html"><a href="glm-framework.html#parameter-estimation"><i class="fa fa-check"></i><b>4.1</b> Parameter Estimation</a></li>
+<li class="chapter" data-level="4.2" data-path="glm-framework.html"><a href="glm-framework.html#conditions-on-the-model"><i class="fa fa-check"></i><b>4.2</b> Conditions on the Model</a></li>
+<li class="chapter" data-level="4.3" data-path="glm-framework.html"><a href="glm-framework.html#alternate-characterization-of-the-model"><i class="fa fa-check"></i><b>4.3</b> Alternate Characterization of the Model</a></li>
+<li class="chapter" data-level="4.4" data-path="glm-framework.html"><a href="glm-framework.html#interpretations-of-parameters"><i class="fa fa-check"></i><b>4.4</b> Interpretations of Parameters</a></li>
+<li class="chapter" data-level="4.5" data-path="glm-framework.html"><a href="glm-framework.html#inference-about-the-mean-parameters"><i class="fa fa-check"></i><b>4.5</b> Inference About the Mean Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="glm-assessing-conditions.html"><a href="glm-assessing-conditions.html"><i class="fa fa-check"></i><b>5</b> Assessing Conditions</a></li>
+<li class="part"><span><b>III General Modeling Techniques</b></span></li>
+<li class="chapter" data-level="6" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html"><i class="fa fa-check"></i><b>6</b> Side Effects of Isolating Effects</a><ul>
+<li class="chapter" data-level="6.1" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#toward-causal-inference"><i class="fa fa-check"></i><b>6.1</b> Toward Causal Inference</a></li>
+<li class="chapter" data-level="6.2" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#multicollinearity"><i class="fa fa-check"></i><b>6.2</b> Multicollinearity</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="glm-categorical-predictors.html"><a href="glm-categorical-predictors.html"><i class="fa fa-check"></i><b>7</b> Incorporating Categorical Predictors</a></li>
+<li class="chapter" data-level="8" data-path="glm-interactions.html"><a href="glm-interactions.html"><i class="fa fa-check"></i><b>8</b> Interaction Terms (Effect Modification)</a></li>
+<li class="chapter" data-level="9" data-path="glm-linear-hypotheses.html"><a href="glm-linear-hypotheses.html"><i class="fa fa-check"></i><b>9</b> General Linear Hypothesis Test</a></li>
+<li class="chapter" data-level="10" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html"><i class="fa fa-check"></i><b>10</b> Large Sample Theory</a><ul>
+<li class="chapter" data-level="10.1" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#two-types-of-models"><i class="fa fa-check"></i><b>10.1</b> Two Types of Models</a></li>
+<li class="chapter" data-level="10.2" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#large-sample-results"><i class="fa fa-check"></i><b>10.2</b> Large Sample Results</a></li>
+<li class="chapter" data-level="10.3" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#residual-bootstrap"><i class="fa fa-check"></i><b>10.3</b> Residual Bootstrap</a></li>
+<li class="chapter" data-level="10.4" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#big-picture"><i class="fa fa-check"></i><b>10.4</b> Big Picture</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="glm-splines.html"><a href="glm-splines.html"><i class="fa fa-check"></i><b>11</b> Modeling Curvature</a></li>
+<li class="part"><span><b>IV Models for Repeated Measures</b></span></li>
+<li class="chapter" data-level="12" data-path="rm-terminology.html"><a href="rm-terminology.html"><i class="fa fa-check"></i><b>12</b> Terminology</a><ul>
+<li class="chapter" data-level="12.1" data-path="rm-terminology.html"><a href="rm-terminology.html#importance-of-study-design"><i class="fa fa-check"></i><b>12.1</b> Importance of Study Design</a></li>
+<li class="chapter" data-level="12.2" data-path="rm-terminology.html"><a href="rm-terminology.html#studies-with-repeated-measures"><i class="fa fa-check"></i><b>12.2</b> Studies with Repeated Measures</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html"><i class="fa fa-check"></i><b>13</b> Mixed Effects Models</a><ul>
+<li class="chapter" data-level="13.1" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="13.2" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#model-formulation"><i class="fa fa-check"></i><b>13.2</b> Model Formulation</a></li>
+<li class="chapter" data-level="13.3" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#considerations-when-building-a-mixed-effects-model"><i class="fa fa-check"></i><b>13.3</b> Considerations when Building a Mixed-Effects Model</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="rm-gee.html"><a href="rm-gee.html"><i class="fa fa-check"></i><b>14</b> Generalized Estimating Equations</a><ul>
+<li class="chapter" data-level="14.1" data-path="rm-gee.html"><a href="rm-gee.html#correlation-structrues"><i class="fa fa-check"></i><b>14.1</b> Correlation Structrues</a></li>
+<li class="chapter" data-level="14.2" data-path="rm-gee.html"><a href="rm-gee.html#the-key-to-success-of-generalized-estimating-equations"><i class="fa fa-check"></i><b>14.2</b> The Key to Success of Generalized Estimating Equations</a></li>
+<li class="chapter" data-level="14.3" data-path="rm-gee.html"><a href="rm-gee.html#comparison-of-gee-and-mixed-effects-approaches"><i class="fa fa-check"></i><b>14.3</b> Comparison of GEE and Mixed Effects Approaches</a></li>
+</ul></li>
+<li class="part"><span><b>V Nonlinear Models</b></span></li>
+<li class="chapter" data-level="15" data-path="nlm-framework.html"><a href="nlm-framework.html"><i class="fa fa-check"></i><b>15</b> Nonlinear Model Framework</a><ul>
+<li class="chapter" data-level="15.1" data-path="nlm-framework.html"><a href="nlm-framework.html#scientific-model-for-theophylline"><i class="fa fa-check"></i><b>15.1</b> Scientific Model for Theophylline</a></li>
+<li class="chapter" data-level="15.2" data-path="nlm-framework.html"><a href="nlm-framework.html#nonlinear-regression-model"><i class="fa fa-check"></i><b>15.2</b> Nonlinear Regression Model</a></li>
+<li class="chapter" data-level="15.3" data-path="nlm-framework.html"><a href="nlm-framework.html#estimation"><i class="fa fa-check"></i><b>15.3</b> Estimation</a></li>
+<li class="chapter" data-level="15.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>15.4</b> Inference on the Parameters</a></li>
+<li class="chapter" data-level="15.5" data-path="nlm-framework.html"><a href="nlm-framework.html#allowing-relationships-to-vary-across-groups"><i class="fa fa-check"></i><b>15.5</b> Allowing Relationships to Vary Across Groups</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html"><i class="fa fa-check"></i><b>16</b> Relaxing the Constant Variance Condition</a><ul>
+<li class="chapter" data-level="16.1" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-assumptions"><i class="fa fa-check"></i><b>16.1</b> Modeling Assumptions</a></li>
+<li class="chapter" data-level="16.2" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-the-variance"><i class="fa fa-check"></i><b>16.2</b> Modeling the Variance</a></li>
+<li class="chapter" data-level="16.3" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#wild-bootstrap"><i class="fa fa-check"></i><b>16.3</b> Wild Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="nlm-logistic.html"><a href="nlm-logistic.html"><i class="fa fa-check"></i><b>17</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="17.1" data-path="nlm-logistic.html"><a href="nlm-logistic.html#considerations-for-a-binary-response"><i class="fa fa-check"></i><b>17.1</b> Considerations for a Binary Response</a></li>
+<li class="chapter" data-level="17.2" data-path="nlm-logistic.html"><a href="nlm-logistic.html#the-logistic-regression-model"><i class="fa fa-check"></i><b>17.2</b> The Logistic Regression Model</a></li>
+<li class="chapter" data-level="17.3" data-path="nlm-logistic.html"><a href="nlm-logistic.html#estimation-of-the-parameters"><i class="fa fa-check"></i><b>17.3</b> Estimation of the Parameters</a></li>
+<li class="chapter" data-level="17.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>17.4</b> Inference on the Parameters</a></li>
+<li class="chapter" data-level="17.5" data-path="nlm-logistic.html"><a href="nlm-logistic.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>17.5</b> Interpretation of Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="nlm-selection.html"><a href="nlm-selection.html"><i class="fa fa-check"></i><b>18</b> Model Selection</a></li>
+<li class="chapter" data-level="19" data-path="nlm-estimation.html"><a href="nlm-estimation.html"><i class="fa fa-check"></i><b>19</b> Estimation Details</a></li>
+<li class="chapter" data-level="20" data-path="nlm-rm.html"><a href="nlm-rm.html"><i class="fa fa-check"></i><b>20</b> Nonlinear Models with Repeated Measures</a></li>
+<li class="part"><span><b>VI Survival Analysis</b></span></li>
+<li class="chapter" data-level="21" data-path="surv-terminology.html"><a href="surv-terminology.html"><i class="fa fa-check"></i><b>21</b> Key Terminolgy</a></li>
+<li class="chapter" data-level="22" data-path="surv-censoring.html"><a href="surv-censoring.html"><i class="fa fa-check"></i><b>22</b> Censoring</a></li>
+<li class="chapter" data-level="23" data-path="surv-basic.html"><a href="surv-basic.html"><i class="fa fa-check"></i><b>23</b> Basic Estimation and Inference</a><ul>
+<li class="chapter" data-level="23.1" data-path="surv-basic.html"><a href="surv-basic.html#life-table-methods"><i class="fa fa-check"></i><b>23.1</b> Life-Table Methods</a></li>
+<li class="chapter" data-level="23.2" data-path="surv-basic.html"><a href="surv-basic.html#kaplan-meier-estimation"><i class="fa fa-check"></i><b>23.2</b> Kaplan-Meier Estimation</a></li>
+<li class="chapter" data-level="23.3" data-path="surv-basic.html"><a href="surv-basic.html#log-rank-test"><i class="fa fa-check"></i><b>23.3</b> Log-Rank Test</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="surv-cph.html"><a href="surv-cph.html"><i class="fa fa-check"></i><b>24</b> Cox Proportional Hazards Model</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Modeling for the Biological Sciences</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="glm-large-sample-theory" class="section level1">
+<h1><span class="header-section-number">10</span> Large Sample Theory</h1>
+<p>The classical regression model (Definition <a href="glm-framework.html#def:defn-classical-regression">4.3</a>) imposes several conditions on the distribution of the error term. These conditions define the model for the sampling distributions needed to make inference on the parameters. However, these conditions are not always reasonable. Fortunately, many of the conditions can be relaxed. In this chapter, we consider relaxing Normality condition.</p>
+<div id="two-types-of-models" class="section level2">
+<h2><span class="header-section-number">10.1</span> Two Types of Models</h2>
+<p>In general, there are two general types of models for a data generating process: parametric and semiparametric models.</p>
+
+<div class="definition">
+<span id="def:defn-parametric-model" class="definition"><strong>Definition 10.1  (Parametric Model)  </strong></span>A parametric model assumes we can <em>fully</em> characterize the distribution of the response given the predictors.
+</div>
+
+
+<div class="definition">
+<span id="def:defn-semiparametric-model" class="definition"><strong>Definition 10.2  (Semiparametric Model)  </strong></span>A semiparametric model specifies some components of the underlying distribution (e.g., mean and variance) of the response, but does not fully characterize it.
+</div>
+
+
+<div class="rmdtip">
+Technically, semiparametric models are a subset nonparametric models — those which do not fully characterize the distribution of the response. However, semiparametric models are often considered a distinct type of model because they have elements of both parametric models (there are some parameters to be estimated) and nonparametric models (completely data-driven).
+</div>
+
+<p>Parametric models make strong assumptions, but often make the analysis straight-forward as we are able to make use of a large class of results from statistical theory. This is very useful when we have a small sample size in particular. Nonparametric models extremely flexible, but they require substantially large sample sizes. Semiparametric models, in turn, often find a the “sweet spot.” They require larger samples than a parametric model, but not as large as a nonparametric model. Further, the scientific question of interest is still represented through statements about parameters in the model, linking the interpretations more directly with practical application.</p>
+<p>The alternate characterization of the classical regression model (Definition <a href="glm-framework.html#def:defn-alternate-characterization">4.5</a>) reveals that the classical regression model is a parametric model. It completely characterizes the distribution of the response:</p>
+<p><span class="math display">\[(\text{Response})_i \mid (\text{Predictors 1 through } p)_i \ind N\left(\beta_0 + \sum\limits_{j=1}^{p} \beta_j (\text{Predictor } j)_i, \sigma^2\right).\]</span></p>
+<p>This is a very strong assumption. Further, often the questions posed by the researchers do not concern the form of the distribution of the response but only some aspect of the distribution. For example, the hypotheses we have considered thus far in the text surround the parameters of the mean model; that is, we have concerned ourselves only with questions regarding the <em>mean</em> response. Since most scientific questions focus on the mean response, we are led to positing a semiparametric linear model.</p>
+
+<div class="definition">
+<p><span id="def:defn-semiparametric-linear-model" class="definition"><strong>Definition 10.3  (Semiparametric Linear Model)  </strong></span>Suppose we no longer require that the error terms follow a Normal distribution; however, we do continue to impose the remaining conditions of the classical regression model. Then, our model could be written as</p>
+<p><span class="math display">\[
+\begin{aligned}
+  E\left[(\text{Response})_i \mid (\text{Predictors 1 through } p)_i\right]
+    &amp;= \beta_0 + \sum\limits_{j=1}^{p} \beta_j (\text{Predictor } j)_i \\
+  Var\left[(\text{Response})_i \mid (\text{Predictors 1 through } p)_i\right]
+    &amp;= \sigma^2
+\end{aligned}
+\]</span></p>
+where the responses are independent of one another given the predictors.
+</div>
+
+<p>Notice that this version of the model only specifies aspects of the response distribution; it specifies that the mean is a linear combination of the predictors, and it specifies that the variance is constant. However, it does not specify the functional form of the distribution.</p>
+</div>
+<div id="large-sample-results" class="section level2">
+<h2><span class="header-section-number">10.2</span> Large Sample Results</h2>
+<p>The primary benefit of a parametric model is that often the distributional assumption trickles through the analysis and allows us to exactly specify the model for the sampling distribution. When we move to a semi-parametric model, we need additional tools to allow us to model the sampling distribution. One such tool is large-sample theory.</p>
+
+<div class="definition">
+<span id="def:defn-large-sample-theory" class="definition"><strong>Definition 10.4  (Large Sample Theory)  </strong></span>When a model for the sampling distribution (or null distribution) of an estimate (or standardized statistic) is known as the sample size becomes infinitely large. That is, as the sample size approaches infinity, the sampling distribution (or null distribution) can be easily modeled using a known probability distribution.
+</div>
+
+<p>Perhaps the most well-known example of large-sample theory is the Central Limit Theorem encountered in introductory statistics.</p>
+
+<div class="definition">
+<p><span id="def:defn-clt" class="definition"><strong>Definition 10.5  (Central Limit Theorem)  </strong></span>Let <span class="math inline">\(Y_1, Y_2, \dotsc, Y_n\)</span> be independent and identically distributed random variables with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Then, as <span class="math inline">\(n\)</span> approaches infinity</p>
+<span class="math display">\[\frac{\sqrt{n}\left(\bar{Y} - \mu\right)}{\sigma} \sim N(0, 1).\]</span>
+</div>
+
+<p>Putting this in the language of this text, this states that as the sample size gets large, the standardized distance between the average response observed and the true average response can be modeled using a Normal distribution with mean 0 and variance 1. Notice that the theorem does not specify the distribution of the response <span class="math inline">\(Y\)</span>; it only specifies the mean and variance. That is, we began with a semiparametric model and obtained a model for the sampling distribution. We exchanged the condition that the response follow a Normal distribution for the condition that “the sample size be sufficiently large” that the model is reasonable.</p>
+<p>It turns out that similar results can be derived for the semiparametric linear model. That is, in large samples, we can approximate the sampling distribution of our estimates and the null distribution of our standardized statistics.</p>
+
+<div class="definition">
+<p><span id="def:defn-ls-sampling-distribution-large-samples" class="definition"><strong>Definition 10.6  (Large Sample Model for the Sampling Distribution of Least Squares Estimates)  </strong></span>Suppose the classical regression conditions hold, with the exception of the errors following a Normal distribution. As the sample size gets large, we have that</p>
+<p><span class="math display">\[\frac{\widehat{\beta}_j - \beta_j}{\sqrt{Var\left(\widehat{\beta}_j\right)}} \sim N(0, 1)\]</span></p>
+<p>for all <span class="math inline">\(j = 0, 1, \dotsc, p\)</span>. Further, under the null hypothesis</p>
+<p><span class="math display">\[H_0: \bm{K}\bs{\beta} = \bm{m}\]</span></p>
+<p>we have</p>
+<span class="math display">\[\left(\bm{K}\widehat{\bbeta} - \bm{m}\right)^\top \left(\bm{K}\widehat{\bs{\Sigma}}\bm{K}^\top\right)^{-1} \left(\bm{K}\widehat{\bbeta} - \bm{m}\right) \sim \chi^2_r.\]</span>
+</div>
+
+<p>Notice that our statistics and standardized statistic have a similar form as before; the difference is the probability model being used. In place of a t-distribution, we have a Normal distribution. In place of the F-distribution, we have a Chi-Square distribution. This result allows us to perform inference even if we are unwilling to assume the errors follow a Normal distribution.</p>
+<p>It is natural to ask how large of a sample size is required for these models to be reasonable; there is no simple answer. Empirical studies suggest that in practice, if we have at least 30 degrees of freedom for estimating the error term, these results are often reasonable.</p>
+
+<div class="rmdtip">
+Not all software implements methods for relying on these large-sample results. However, as the sample size gets large, it turns out that classical inference and the large-sample results coincide. That is, the confidence intervals and p-values we would compute using the large-sample models and those obtained assuming the classical regression model are nearly identical. Therefore, in practice, when the sample size is large, we can rely on the default output even if we are unwilling to assume the errors follow a Normal distribution.
+</div>
+
+</div>
+<div id="residual-bootstrap" class="section level2">
+<h2><span class="header-section-number">10.3</span> Residual Bootstrap</h2>
+<p>An alternative to large-sample theory is building an empirical model for the sampling distribution (or null distribution) when working with a semiparametric model known as bootstrapping.</p>
+
+<div class="definition">
+<span id="def:defn-bootstrapping" class="definition"><strong>Definition 10.7  (Bootstrapping)  </strong></span>A process of resampling the data and estimating the parameters of interest in each resample to construct an empirical model of the sampling distribution.
+</div>
+
+<p>There are several bootstrapping algorithms; the most foundational for regression modeling is the residual bootstrap.</p>
+
+<div class="definition">
+<p><span id="def:defn-residual-bootstrap" class="definition"><strong>Definition 10.8  (Residual Bootstrap)  </strong></span>Suppose we observe a sample of size <span class="math inline">\(n\)</span> and use it to fit the linear model</p>
+<p><span class="math display">\[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i + \varepsilon_i\]</span></p>
+<p>and obtain the least squares estimates <span class="math inline">\(\widehat{\bbeta}\)</span>. The residual bootstrap proceeds along the following algorithm:</p>
+<ol style="list-style-type: decimal">
+<li>Compute the residuals
+<span class="math display">\[(\text{Residuals})_i = (\text{Response})_i - (\text{Predicted Response})_i\]</span></li>
+<li>Take a random sample of size <span class="math inline">\(n\)</span> (with replacement) of the residuals; call the values <span class="math inline">\(e_1^*, \dotsc, e_n^*\)</span>.</li>
+<li>Form “new” responses <span class="math inline">\(y_1^*, \dotsc, y_n^*\)</span> according to
+<span class="math display">\[y_i^* = \widehat{\beta}_0 + \sum_{j=1}^{p} \widehat{\beta}_j (\text{Predictor } j)_i + e_i^*.\]</span></li>
+<li>Obtain the least squares estimates <span class="math inline">\(\widehat{\bs{\alpha}}\)</span> by finding the values of <span class="math inline">\(\bs{\alpha}\)</span> which minimize
+<span class="math display">\[\sum_{i=1}^{n} \left(y_i^* - \alpha_0 - \sum_{j=1}^{p} \alpha_j (\text{Predictor } j)_i\right)^2.\]</span></li>
+<li>Repeat steps 2-4 <span class="math inline">\(m\)</span> times.</li>
+</ol>
+We often take <span class="math inline">\(m\)</span> to be large (at least 1000). After each pass through the algorithm, we retain the least squares estimates from the resample. The distribution of the estimates across these resamples is a good empirical model for the sampling distribution of the original least squares estimates.
+</div>
+
+<p>While the residual bootstrap is the foundation of many similar algorithms, it is perhaps not as easy to understand as the case-resampling bootstrap.</p>
+
+<div class="definition">
+<p><span id="def:defn-case-resampling-bootstrap" class="definition"><strong>Definition 10.9  (Case Resampling Bootstrap)  </strong></span>Suppose we observe a sample of size <span class="math inline">\(n\)</span> and use it to fit the linear model</p>
+<p><span class="math display">\[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i + \varepsilon_i\]</span></p>
+<p>and obtain the least squares estimates <span class="math inline">\(\widehat{\bbeta}\)</span>. The residual bootstrap proceeds along the following algorithm:</p>
+<ol style="list-style-type: decimal">
+<li>Take a random sample of size <span class="math inline">\(n\)</span> (with replacement) of the raw data (keeping all variables from the same observation together).</li>
+<li>Obtain the least squares estimates <span class="math inline">\(\widehat{\bs{\alpha}}\)</span> by finding the values of <span class="math inline">\(\bs{\alpha}\)</span> which minimize
+<span class="math display">\[\sum_{i=1}^{n} \left((\text{Response})_i^* - \alpha_0 - \sum_{j=1}^{p} \alpha_j (\text{Predictor } j)_i^*\right)^2.\]</span></li>
+<li>Repeat steps 1-2 <span class="math inline">\(m\)</span> times.</li>
+</ol>
+We often take <span class="math inline">\(m\)</span> to be large (at least 1000). After each pass through the algorithm, we retain the least squares estimates from the resample. The distribution of the estimates across these resamples is a good empirical model for the sampling distribution of the original least squares estimates.
+</div>
+
+<p>The case-resampling bootstrap procedure is easier to visualize as we are resampling the data observed. The residual bootstrap resamples the residuals; this mimics generating new observations by “jittering” points away from the estimated regression line. In both algorithms, the same model is refit on the resample producing new estimates. The collection of these estimates across the <span class="math inline">\(m\)</span> resamples is our model for the sampling distribution (which could be visualized using a histogram, for example).</p>
+<p>The theoretical underpinnings of bootstrapping (and how it is implemented efficiently in software) is beyond the scope of this text. What we emphasize is that through this process, we construct a model for the sampling distribution of the estimates, which allows us to compute confidence intervals. Further, the residual bootstrap requires the same conditions as the classical regression model, with the exception of requiring the errors to follow a Normal distribution. That is, it has the same conditions as we stated for our semiparametric regression model above.</p>
+
+<div class="rmdtip">
+Technically, the case-resampling bootstrap and the residual bootstrap require different conditions, with the case-resampling bootstrap being less restrictive. However, at this point, we do not make a distinction between which bootstrap algorithm is utilized.
+</div>
+
+<p>Bootstrapping is more computationally burdensome than large-sample theory, but it allows us to build valid confidence intervals even in smaller sample sizes.</p>
+
+<div class="rmdtip">
+While theoretically, bootstrapping can be used with any sample size, it has been shown to yield more reliable results in large samples.
+</div>
+
+</div>
+<div id="big-picture" class="section level2">
+<h2><span class="header-section-number">10.4</span> Big Picture</h2>
+<p>We have discussed two alternatives to using inference results from the classical regression model when we are unwilling to assume the errors follow a Normal distribution. Again, these results were discussed in the context of the linear model, but they illustrate a concept that holds across many types of regression models — there are essentially three ways to build a model for the sampling distribution. In order to perform inference on a set of parameters, we need a model for the sampling distribution (or null distribution).</p>
+
+<div class="rmdkeyidea">
+<p>There are three options for modeling the sampling distribution:</p>
+<ol style="list-style-type: decimal">
+<li>Exact Probability Theory: often the result of assuming a parametric model, the sampling distribution of the resulting parameter estimates is known.</li>
+<li>Large-Sample Theory: often employed in semiparametric models, the sampling distribution of the resulting parameter estimates can be approximated as the sample size gets large.</li>
+<li>Empirical: often employed in semiparametric models, the sampling distribution of the resulting parameter estimates is modeled through resampling.</li>
+</ol>
+</div>
+
+<p>We will see as we move throughout the text that we often move between these various approaches. However, which approach we take is governed by the conditions we are willing to impose on the data generating process.</p>
+<p>We end with a common question: if we are able to model the sampling distribution without fewer conditions, why would we not always take that approach? The closer the conditions are to the true data generating process, the more powerful our analysis; that is, if the errors are truly Normally distributed, then imposing that condition will make it more likely for us to find a signal that really exists. So, we battle the tension of a more powerful analysis with one which is more flexible. We adhere to the belief that we should choose the approach which is most consistent with the available data.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="glm-linear-hypotheses.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="glm-splines.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MA482CourseNotes.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

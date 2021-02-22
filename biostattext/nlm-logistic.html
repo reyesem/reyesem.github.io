@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>17 Logistic Regression | Statistical Modeling for the Biological Sciences</title>
+  <meta name="description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="17 Logistic Regression | Statistical Modeling for the Biological Sciences" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="17 Logistic Regression | Statistical Modeling for the Biological Sciences" />
+  
+  <meta name="twitter:description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="nlm-heteroskedasticity.html"/>
+<link rel="next" href="nlm-selection.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Modeling</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Review of the Inferential Process</b></span></li>
+<li class="chapter" data-level="1" data-path="statistical-process.html"><a href="statistical-process.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1.1" data-path="statistical-process.html"><a href="statistical-process.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="1.2" data-path="statistical-process.html"><a href="statistical-process.html#data-storage"><i class="fa fa-check"></i><b>1.2</b> Data Storage</a></li>
+<li class="chapter" data-level="1.3" data-path="statistical-process.html"><a href="statistical-process.html#tabular-data-presentation"><i class="fa fa-check"></i><b>1.3</b> Tabular Data Presentation</a></li>
+<li class="chapter" data-level="1.4" data-path="statistical-process.html"><a href="statistical-process.html#graphical-data-presentation"><i class="fa fa-check"></i><b>1.4</b> Graphical Data Presentation</a></li>
+<li class="chapter" data-level="1.5" data-path="statistical-process.html"><a href="statistical-process.html#basic-terminology-for-statistical-tests"><i class="fa fa-check"></i><b>1.5</b> Basic Terminology for Statistical Tests</a></li>
+<li class="chapter" data-level="1.6" data-path="statistical-process.html"><a href="statistical-process.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.6</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="distributional-quartet.html"><a href="distributional-quartet.html"><i class="fa fa-check"></i><b>2</b> Distributional Quartet</a></li>
+<li class="chapter" data-level="3" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>3</b> Essential Probability</a><ul>
+<li class="chapter" data-level="3.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>3.1</b> Density Functions as Models</a></li>
+<li class="chapter" data-level="3.2" data-path="essential-probability.html"><a href="essential-probability.html#summarizing-distributions-parameters"><i class="fa fa-check"></i><b>3.2</b> Summarizing Distributions (Parameters)</a></li>
+<li class="chapter" data-level="3.3" data-path="essential-probability.html"><a href="essential-probability.html#specific-models-for-populations"><i class="fa fa-check"></i><b>3.3</b> Specific Models for Populations</a></li>
+<li class="chapter" data-level="3.4" data-path="essential-probability.html"><a href="essential-probability.html#models-for-sampling-distributions-and-null-distributions"><i class="fa fa-check"></i><b>3.4</b> Models for Sampling Distributions and Null Distributions</a></li>
+</ul></li>
+<li class="part"><span><b>II General Linear Model and Modeling Strategies</b></span></li>
+<li class="chapter" data-level="4" data-path="glm-framework.html"><a href="glm-framework.html"><i class="fa fa-check"></i><b>4</b> General Linear Model Framework</a><ul>
+<li class="chapter" data-level="4.1" data-path="glm-framework.html"><a href="glm-framework.html#parameter-estimation"><i class="fa fa-check"></i><b>4.1</b> Parameter Estimation</a></li>
+<li class="chapter" data-level="4.2" data-path="glm-framework.html"><a href="glm-framework.html#conditions-on-the-model"><i class="fa fa-check"></i><b>4.2</b> Conditions on the Model</a></li>
+<li class="chapter" data-level="4.3" data-path="glm-framework.html"><a href="glm-framework.html#alternate-characterization-of-the-model"><i class="fa fa-check"></i><b>4.3</b> Alternate Characterization of the Model</a></li>
+<li class="chapter" data-level="4.4" data-path="glm-framework.html"><a href="glm-framework.html#interpretations-of-parameters"><i class="fa fa-check"></i><b>4.4</b> Interpretations of Parameters</a></li>
+<li class="chapter" data-level="4.5" data-path="glm-framework.html"><a href="glm-framework.html#inference-about-the-mean-parameters"><i class="fa fa-check"></i><b>4.5</b> Inference About the Mean Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="glm-assessing-conditions.html"><a href="glm-assessing-conditions.html"><i class="fa fa-check"></i><b>5</b> Assessing Conditions</a></li>
+<li class="part"><span><b>III General Modeling Techniques</b></span></li>
+<li class="chapter" data-level="6" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html"><i class="fa fa-check"></i><b>6</b> Side Effects of Isolating Effects</a><ul>
+<li class="chapter" data-level="6.1" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#toward-causal-inference"><i class="fa fa-check"></i><b>6.1</b> Toward Causal Inference</a></li>
+<li class="chapter" data-level="6.2" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#multicollinearity"><i class="fa fa-check"></i><b>6.2</b> Multicollinearity</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="glm-categorical-predictors.html"><a href="glm-categorical-predictors.html"><i class="fa fa-check"></i><b>7</b> Incorporating Categorical Predictors</a></li>
+<li class="chapter" data-level="8" data-path="glm-interactions.html"><a href="glm-interactions.html"><i class="fa fa-check"></i><b>8</b> Interaction Terms (Effect Modification)</a></li>
+<li class="chapter" data-level="9" data-path="glm-linear-hypotheses.html"><a href="glm-linear-hypotheses.html"><i class="fa fa-check"></i><b>9</b> General Linear Hypothesis Test</a></li>
+<li class="chapter" data-level="10" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html"><i class="fa fa-check"></i><b>10</b> Large Sample Theory</a><ul>
+<li class="chapter" data-level="10.1" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#two-types-of-models"><i class="fa fa-check"></i><b>10.1</b> Two Types of Models</a></li>
+<li class="chapter" data-level="10.2" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#large-sample-results"><i class="fa fa-check"></i><b>10.2</b> Large Sample Results</a></li>
+<li class="chapter" data-level="10.3" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#residual-bootstrap"><i class="fa fa-check"></i><b>10.3</b> Residual Bootstrap</a></li>
+<li class="chapter" data-level="10.4" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#big-picture"><i class="fa fa-check"></i><b>10.4</b> Big Picture</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="glm-splines.html"><a href="glm-splines.html"><i class="fa fa-check"></i><b>11</b> Modeling Curvature</a></li>
+<li class="part"><span><b>IV Models for Repeated Measures</b></span></li>
+<li class="chapter" data-level="12" data-path="rm-terminology.html"><a href="rm-terminology.html"><i class="fa fa-check"></i><b>12</b> Terminology</a><ul>
+<li class="chapter" data-level="12.1" data-path="rm-terminology.html"><a href="rm-terminology.html#importance-of-study-design"><i class="fa fa-check"></i><b>12.1</b> Importance of Study Design</a></li>
+<li class="chapter" data-level="12.2" data-path="rm-terminology.html"><a href="rm-terminology.html#studies-with-repeated-measures"><i class="fa fa-check"></i><b>12.2</b> Studies with Repeated Measures</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html"><i class="fa fa-check"></i><b>13</b> Mixed Effects Models</a><ul>
+<li class="chapter" data-level="13.1" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="13.2" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#model-formulation"><i class="fa fa-check"></i><b>13.2</b> Model Formulation</a></li>
+<li class="chapter" data-level="13.3" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#considerations-when-building-a-mixed-effects-model"><i class="fa fa-check"></i><b>13.3</b> Considerations when Building a Mixed-Effects Model</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="rm-gee.html"><a href="rm-gee.html"><i class="fa fa-check"></i><b>14</b> Generalized Estimating Equations</a><ul>
+<li class="chapter" data-level="14.1" data-path="rm-gee.html"><a href="rm-gee.html#correlation-structrues"><i class="fa fa-check"></i><b>14.1</b> Correlation Structrues</a></li>
+<li class="chapter" data-level="14.2" data-path="rm-gee.html"><a href="rm-gee.html#the-key-to-success-of-generalized-estimating-equations"><i class="fa fa-check"></i><b>14.2</b> The Key to Success of Generalized Estimating Equations</a></li>
+<li class="chapter" data-level="14.3" data-path="rm-gee.html"><a href="rm-gee.html#comparison-of-gee-and-mixed-effects-approaches"><i class="fa fa-check"></i><b>14.3</b> Comparison of GEE and Mixed Effects Approaches</a></li>
+</ul></li>
+<li class="part"><span><b>V Nonlinear Models</b></span></li>
+<li class="chapter" data-level="15" data-path="nlm-framework.html"><a href="nlm-framework.html"><i class="fa fa-check"></i><b>15</b> Nonlinear Model Framework</a><ul>
+<li class="chapter" data-level="15.1" data-path="nlm-framework.html"><a href="nlm-framework.html#scientific-model-for-theophylline"><i class="fa fa-check"></i><b>15.1</b> Scientific Model for Theophylline</a></li>
+<li class="chapter" data-level="15.2" data-path="nlm-framework.html"><a href="nlm-framework.html#nonlinear-regression-model"><i class="fa fa-check"></i><b>15.2</b> Nonlinear Regression Model</a></li>
+<li class="chapter" data-level="15.3" data-path="nlm-framework.html"><a href="nlm-framework.html#estimation"><i class="fa fa-check"></i><b>15.3</b> Estimation</a></li>
+<li class="chapter" data-level="15.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>15.4</b> Inference on the Parameters</a></li>
+<li class="chapter" data-level="15.5" data-path="nlm-framework.html"><a href="nlm-framework.html#allowing-relationships-to-vary-across-groups"><i class="fa fa-check"></i><b>15.5</b> Allowing Relationships to Vary Across Groups</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html"><i class="fa fa-check"></i><b>16</b> Relaxing the Constant Variance Condition</a><ul>
+<li class="chapter" data-level="16.1" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-assumptions"><i class="fa fa-check"></i><b>16.1</b> Modeling Assumptions</a></li>
+<li class="chapter" data-level="16.2" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-the-variance"><i class="fa fa-check"></i><b>16.2</b> Modeling the Variance</a></li>
+<li class="chapter" data-level="16.3" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#wild-bootstrap"><i class="fa fa-check"></i><b>16.3</b> Wild Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="nlm-logistic.html"><a href="nlm-logistic.html"><i class="fa fa-check"></i><b>17</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="17.1" data-path="nlm-logistic.html"><a href="nlm-logistic.html#considerations-for-a-binary-response"><i class="fa fa-check"></i><b>17.1</b> Considerations for a Binary Response</a></li>
+<li class="chapter" data-level="17.2" data-path="nlm-logistic.html"><a href="nlm-logistic.html#the-logistic-regression-model"><i class="fa fa-check"></i><b>17.2</b> The Logistic Regression Model</a></li>
+<li class="chapter" data-level="17.3" data-path="nlm-logistic.html"><a href="nlm-logistic.html#estimation-of-the-parameters"><i class="fa fa-check"></i><b>17.3</b> Estimation of the Parameters</a></li>
+<li class="chapter" data-level="17.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>17.4</b> Inference on the Parameters</a></li>
+<li class="chapter" data-level="17.5" data-path="nlm-logistic.html"><a href="nlm-logistic.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>17.5</b> Interpretation of Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="nlm-selection.html"><a href="nlm-selection.html"><i class="fa fa-check"></i><b>18</b> Model Selection</a></li>
+<li class="chapter" data-level="19" data-path="nlm-estimation.html"><a href="nlm-estimation.html"><i class="fa fa-check"></i><b>19</b> Estimation Details</a></li>
+<li class="chapter" data-level="20" data-path="nlm-rm.html"><a href="nlm-rm.html"><i class="fa fa-check"></i><b>20</b> Nonlinear Models with Repeated Measures</a></li>
+<li class="part"><span><b>VI Survival Analysis</b></span></li>
+<li class="chapter" data-level="21" data-path="surv-terminology.html"><a href="surv-terminology.html"><i class="fa fa-check"></i><b>21</b> Key Terminolgy</a></li>
+<li class="chapter" data-level="22" data-path="surv-censoring.html"><a href="surv-censoring.html"><i class="fa fa-check"></i><b>22</b> Censoring</a></li>
+<li class="chapter" data-level="23" data-path="surv-basic.html"><a href="surv-basic.html"><i class="fa fa-check"></i><b>23</b> Basic Estimation and Inference</a><ul>
+<li class="chapter" data-level="23.1" data-path="surv-basic.html"><a href="surv-basic.html#life-table-methods"><i class="fa fa-check"></i><b>23.1</b> Life-Table Methods</a></li>
+<li class="chapter" data-level="23.2" data-path="surv-basic.html"><a href="surv-basic.html#kaplan-meier-estimation"><i class="fa fa-check"></i><b>23.2</b> Kaplan-Meier Estimation</a></li>
+<li class="chapter" data-level="23.3" data-path="surv-basic.html"><a href="surv-basic.html#log-rank-test"><i class="fa fa-check"></i><b>23.3</b> Log-Rank Test</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="surv-cph.html"><a href="surv-cph.html"><i class="fa fa-check"></i><b>24</b> Cox Proportional Hazards Model</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Modeling for the Biological Sciences</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="nlm-logistic" class="section level1">
+<h1><span class="header-section-number">17</span> Logistic Regression</h1>
+<p>When the response is binary (taking one of only two values), the models we have discussed so far in this text are inappropriate. To see some of the complications, consider trying to characterize the impact of lifestyle choices on whether an individual is diagnosed with cancer. The response (is a person diagnosed with cancer, yes/no) does not readily fit into a framework such as</p>
+<p><span class="math display">\[(\text{Response})_i = f\left((\text{Predictors})_i, \bbeta\right) + \varepsilon_i.\]</span></p>
+<p>To begin with, the left-hand side is not a number, but a categorical variable. We could potentially address this using an indicator variable:</p>
+<p><span class="math display">\[(\text{Cancer Diagnosis})_i = \begin{cases} 1 &amp; \text{if i-th subject diagnosed with cancer} \\ 0 &amp; \text{otherwise} \end{cases};\]</span></p>
+<p>we could use this indicator variable as the response. However, we now have another issue; the right-hand side of the model would need to only return either a 0 or a 1. The response will <em>never</em> be 0.96; as a result, the idea of <span class="math inline">\(\varepsilon_i\)</span> being errors that “jitter” the observed response from some overall mean response is no longer reasonable.</p>
+<p>The nonlinear model framework is general enough to permit binary responses. Specifically, when the response is binary, the most common technique is logistic regression, which is the focus of this chapter. Many other texts consider logistic regression to be a separate topic; however, as the structure is nonlinear in the parameters, we present it in this unit as a way of bringing together many of the ideas we have discussed within the context of nonlinear models.</p>
+<div id="considerations-for-a-binary-response" class="section level2">
+<h2><span class="header-section-number">17.1</span> Considerations for a Binary Response</h2>
+<p>The benefit of the nonlinear model framework we outlined in Chapter <a href="nlm-framework.html#nlm-framework">15</a> is that it emphasizes that regression models simply characterize aspects of the distribution of the response. When the response is binary, we know quite a bit about the distribution.</p>
+<p>Chapter <a href="essential-probability.html#essential-probability">3</a> introduced common models for the distribution of a random variable. When the random variable is quantitative, there are many potential distributional models. However, when the response is binary, there is only a single model for characterizing the distribution: the Bernoulli distribution (Definition <a href="essential-probability.html#def:defn-bernoulli-distribution">3.6</a>). Therefore, we can leverage that in developing a model for a binary response.</p>
+<p>In particular, the Bernoulli distribution states that the mean response <span class="math inline">\(p\)</span> is a value between 0 and 1 representing the probability the response takes the value 1 (representing a “success”). Further, the variance of the response is determined by the mean response <span class="math inline">\((p (1 - p))\)</span>. Of course, the definition of the Bernoulli distribution considers the parameter <span class="math inline">\(p\)</span> to be a single value. As we have seen, regression models allow the distribution to depend on additional predictors.</p>
+<p>Placing this in the nonlinear model framework, we would say</p>
+<p><span class="math display">\[
+\begin{aligned}
+  E\left[(\text{Response})_i \mid (\text{Predictors})_i\right] 
+    &amp;= f\left((\text{Predictors})_i, \bbeta\right) \\
+  Var\left[(\text{Response})_i \mid (\text{Predictors})_i\right]
+    &amp;= f\left((\text{Predictors})_i, \bbeta\right) \left(1 - f\left((\text{Predictors})_i, \bbeta\right)\right).
+\end{aligned}
+\]</span></p>
+<p>The mean response function <span class="math inline">\(f(\cdot)\)</span> is allowing the mean response (<span class="math inline">\(p\)</span> in the Bernoulli distribution) to depend upon predictors. And, once the mean response function is specified, the variance is known (through the relationship <span class="math inline">\(p (1 - p)\)</span>). However, since we know that the response is binary, we can go further and say not only is this an appropriate mean and variance function, but we know the distribution as well:</p>
+<p><span class="math display">\[(\text{Response})_i \mid (\text{Predictors})_i \ind Ber\left[f\left((\text{Predictors})_i, \bbeta\right)\right]\]</span></p>
+<p>where we are assuming that each response is independent of all others. Remember, nothing about the nonlinear modeling framework prohibited making distributional assumptions; we just often were unwilling to. Here, we know the distribution; so, we include it as part of the model.</p>
+<p>Of course, the nature of the binary response impacts our choice of the mean response function <span class="math inline">\(f(\cdot)\)</span>. In particular, the Bernoulli distributional model tells us that the mean response represents the probability the response takes the value 1. In our working example, this would be the probability of a subject receiving a cancer diagnosis given the values of the predictors. And, we know that probabilities must be between 0 and 1. Therefore, we must choose a mean response function <span class="math inline">\(f(\cdot)\)</span> which has a range of 0 to 1.</p>
+<p>This last point is what prohibits using linear regression with a binary response. The mean response function should represent a probability, but it is entirely likely that linear regression will result in probabilities less than 0 or larger than 1. Therefore, any reasonable choice of <span class="math inline">\(f(\cdot)\)</span> will be nonlinear in the parameters.</p>
+<p>While technically any function <span class="math inline">\(f(\cdot)\)</span> which has a range on 0 to 1 is possible, one choice has dominated the literature in applied sciences for many years.</p>
+</div>
+<div id="the-logistic-regression-model" class="section level2">
+<h2><span class="header-section-number">17.2</span> The Logistic Regression Model</h2>
+<p>If we want a large class of functions <span class="math inline">\(f(\cdot)\)</span> which have a range on 0 to 1, we need only look to any cumulative distribution function (Definition <a href="essential-probability.html#def:defn-cdf">3.3</a>). The most popular choice is the cumulative distribution function of the Logistic distribution:</p>
+<p><span class="math display">\[f(x) = \frac{e^x}{1 + e^x}.\]</span></p>
+<p>This leads to the logistic regression model.</p>
+
+<div class="definition">
+<p><span id="def:defn-logistic-regression" class="definition"><strong>Definition 17.1  (Logistic Regression Model)  </strong></span>A model for binary responses where the response, given the predictors, has a Bernoulli distribution such that</p>
+<p><span class="math display">\[Pr\left((\text{Response})_i = 1 \mid (\text{Predictors})_i\right) = 
+    \frac{e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}{1 + e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}\]</span></p>
+and all responses are independent of one another.
+</div>
+
+<p>While it is common in practice to consider the exponents to be linear combinations of the parameters, this is not technically a requirement. However, given our ability to capture curvature through flexible modeling techniques like splines, it is rare to see the exponent not be linear in the parameters.</p>
+
+<div class="rmdwarning">
+Do not be fooled by the linear combination of the parameters in the exponent. The logistic regression model is nonlinear in the parameters since they occur in the exponent.
+</div>
+
+<p>As stated above, by specifying the above mean response function, we have also specified the variance of the response. It will have the form</p>
+<p><span class="math display">\[\left(\frac{e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}{1 + e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}\right)\left(1 - \frac{e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}{1 + e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}\right).\]</span></p>
+<p>We point this out to emphasize that the variance is not constant! Instead of addressing the non-constant variance through the wild bootstrap, we instead are modeling the structure of the variance directly.</p>
+
+<div class="rmdtip">
+While not presented this way, it is possible to envision a binary response as the result of a latent quantitative response. For example, whether a student “graduates with honors” is a binary response (they either do or do not); but, it is the result of discretizing a quantitative measure (the student’s GPA). Thinking of the observed binary response as a discretation of some <em>unobserved</em> quantitative measure, with proper assumptions on the error term, will result in the above logistic regression model.
+</div>
+
+</div>
+<div id="estimation-of-the-parameters" class="section level2">
+<h2><span class="header-section-number">17.3</span> Estimation of the Parameters</h2>
+<p>The logistic regression model not only specifies the form of the mean and variance of the response; it also specifies the distributional model. As a result, we could specify the density function of the response given the predictors. Proceeding by estimating the parameters using least squares (as advocated in Chapter <a href="nlm-framework.html#nlm-framework">15</a>) would actually ignore this additional information. When a parametric model is specified, we should take advantage of the additional structure (knowing the form of the density function) when estimating the parameters. This is accomplished through likelihood-theory.</p>
+<p>While a full development of likelihood theory is beyond the scope of this text, we motivate its use. In a probability course, the density function of a random variable is fully known, and we use it to compute the probability of the random variable taking on specific values. In a statistics course, we work in reverse. We have already observed specific outcomes; but, the density function is not fully known (as the parameters are unknown). We want to choose values of the unknown parameters that would result in a density function making the observed data as likely as possible.</p>
+<p>Consider a specific example. Suppose we <em>spin</em> a penny 100 times and observe it landing “tails-side up” in 82 of those trials. If you had to guess at the true probability of a penny landing “tails-side up” when spun, what would you guess based on this data? Putting it into our logistic model framework, consider the indicator</p>
+<p><span class="math display">\[
+(\text{Tails})_i = \begin{cases} 1 &amp; \text{if i-th spin lands tails-side up} \\ 0 &amp; \text{otherwise} \end{cases};
+\]</span></p>
+<p>then, our logistic model (with no predictors) has the form</p>
+<p><span class="math display">\[Pr\left((\text{Tails})_i = 1\right) = \frac{e^{\beta_0}}{1 + e^{\beta_0}}.\]</span></p>
+<p>We want to choose a value of <span class="math inline">\(\beta_0\)</span> which makes it as likely as possible (maximizes the probability) that in a new sample of 100 spun pennies, 82 would land tails-side up. Why do we make this as likely as possible? Because that is the data that we observed and is the only information we have on this process. Therefore, we want a model that aligns with this data as closely as possible, or more accurately, we want the data to align with the model as closely as possible. Hopefully, it is intuitive that if <em>in reality</em>, a penny lands “tails-side up” 82% of the time, that makes this observed data much more likely than if <em>in reality</em>, it lands “tails-side up” only 50% of the time. Therefore, we would want the above probability to be equal to 0.82, leading to an estimate of <span class="math inline">\(\beta_0\)</span>.</p>
+<p>To help with visualizing this process, Figure <a href="nlm-logistic.html#fig:nlm-coins-likelihood">17.1</a> gives the probability of observing 82 coins (out of a sample of 100) land “tails-side up” as the value of <span class="math inline">\(\beta_0\)</span> changes. The likelihood is maximized when we set the true value of a “tails-side up” at being 0.82 (corresponding to <span class="math inline">\(\beta_0 = 1.516\)</span>). Other values can make the data likely, but not as likely as that value.</p>
+<div class="figure" style="text-align: center"><span id="fig:nlm-coins-likelihood"></span>
+<img src="images/nlm-coins-likelihood-1.png" alt="Likelihood of observing 82 coins land tails-side up when spinning 100 independent pennies. The likelihood is over possible values of the parameter governing an intercept-only logistic regression model." width="80%" />
+<p class="caption">
+Figure 17.1: Likelihood of observing 82 coins land tails-side up when spinning 100 independent pennies. The likelihood is over possible values of the parameter governing an intercept-only logistic regression model.
+</p>
+</div>
+<p>We generalize this to saying that for a fully parametric nonlinear model (such as logistic regression), it is best to choose the values of the parameters that maximize the likelihood function.</p>
+
+<div class="definition">
+<span id="def:defn-likelihood" class="definition"><strong>Definition 17.2  (Likelihood Function)  </strong></span>For a fully parametric model, the likelihood function <span class="math inline">\(\Ell(\bbeta, \text{Observed Data})\)</span> captures how likely the observed data is to be realized in a future study under a specific set of parameters. This is directly related to the density function of the parametric model assumed.
+</div>
+
+
+<div class="definition">
+<span id="def:defn-mle" class="definition"><strong>Definition 17.3  (Maximum Likelihood Estimation)  </strong></span>Choosing parameter estimates to maximize the likelihood function under an assumed parametric model. The resulting estimates are known as maximum likelihood estimates.
+</div>
+
+<p>While the actual form is not critical to our exposition, for completeness, we provide the likelihood function corresponding to logistic regression:</p>
+<p><span class="math display">\[\prod_{i=1}^{n} \left(\frac{e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}{1 + e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}\right)^{(\text{Response})_i}\left(1 - \frac{e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}{1 + e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}\right)^{1 - (\text{Response})_i}\]</span></p>
+<p>where <span class="math inline">\((\text{Response})_i\)</span> is an indicator value taking the value 1 or 0. Maximizing this likelihood is done numerically. While the details of this process are beyond the scope of this text, the procedure is similar to the least-squares procedure discussed in Chapter <a href="nlm-estimation.html#nlm-estimation">19</a>.</p>
+</div>
+<div id="inference-on-the-parameters" class="section level2">
+<h2><span class="header-section-number">17.4</span> Inference on the Parameters</h2>
+<p>In order to make inference about the parameters, we need a model for the sampling distribution of the parameter estimates. Likelihood-theory provides results for modeling the sampling distribution of maximum likelihood estimates. Generally, these results rely on large-sample theory (though empirical models could be developed).</p>
+
+<div class="definition">
+<p><span id="def:nlm-logistic-samp-distns" class="definition"><strong>Definition 17.4  (Large Sample Sampling Distribution of Parameter Estimates in Logistic Regression Models)  </strong></span>Assuming the form of the model is correctly specified with parameter vector <span class="math inline">\(\bbeta\)</span>, as the sample size gets large, we have that</p>
+<p><span class="math display">\[\frac{\widehat{\beta}_j - \beta_j}{\sqrt{Var\left(\widehat{\beta}_j\right)}} \sim N(0, 1)\]</span></p>
+<p>for all <span class="math inline">\(j = 1, \dotsc, p\)</span>. Further, under the null hypothesis</p>
+<p><span class="math display">\[H_0: \bm{K}\bs{\beta} = \bm{m}\]</span></p>
+<p>we have</p>
+<p><span class="math display">\[\left(\bm{K}\widehat{\bbeta} - \bm{m}\right)^\top \left(\bm{K}\widehat{\bs{\Sigma}}\bm{K}^\top\right)^{-1} \left(\bm{K}\widehat{\bbeta} - \bm{m}\right) \sim \chi^2_r\]</span></p>
+where <span class="math inline">\(r\)</span> is the rank (number of rows) of <span class="math inline">\(\bm{K}\)</span>.
+</div>
+
+
+<div class="rmdtip">
+Though the above results require large sample sizes, generally fitting a logistic regression model itself requires a relatively large sample size (the less variability in the response, the harder it is to fit a model). As a result, being able to estimate the parameters often means the sample size is large enough to rely on the default inference.
+</div>
+
+<p>As stated in Chapter <a href="nlm-framework.html#nlm-framework">15</a>, adding distributional assumptions does not avoid the need for large-sample inference. The difference is primarily in the estimation process (least squares compared to maximum likelihood). When we do know the distributional model (as in the case of logistic regression), it turns out maximum likelihood estimation is optimal.</p>
+
+<div class="rmdwarning">
+When we have a binary response, we <em>know</em> it has a Bernoulli distribution. As a result, we do not need to posit a model for the distribution. However, that does not guarantee our model is specified correctly in logistic regression because we may have misspecified the mean response function.
+</div>
+
+<p>The above results allow us to not only construct confidence intervals, but we can also make use of the general linear hypothesis testing framework for testing specific hypotheses. That is, our inference is not all that different than under the linear model framework once we have estimates for the parameters and estimates for their standard errors.</p>
+</div>
+<div id="interpretation-of-parameters" class="section level2">
+<h2><span class="header-section-number">17.5</span> Interpretation of Parameters</h2>
+<p>The parameters in a logistic model have a nice interpretation; however, that interpretation is not a natural scale for most individuals. In order to understand what is happening, we need to think in terms of odds instead of probabilities.</p>
+
+<div class="definition">
+<p><span id="def:defn-odds" class="definition"><strong>Definition 17.5  (Odds)  </strong></span>The odds of an event with probability <span class="math inline">\(p\)</span> is defined as</p>
+<span class="math display">\[\frac{p}{1-p}\]</span>
+</div>
+
+<p>We often hear odds presented in terms of integers. Such as, “there are 3-to-1 odds the event will occur.” This would mean that out of four trials, we would expect the event to happen 3 times; this corresponds to <span class="math inline">\(p = 0.25\)</span> and therefore <span class="math inline">\(1 - p = 0.75\)</span> given an odds of 3. While many of us think in terms of probabilities, clinicians tend to think in terms of the odds of an event. As a result, it is natural to clinicians to compare the odds of an event under two scenarios instead of comparing the probability of an event under two scenarios.</p>
+
+<div class="definition">
+<p><span id="def:defn-or" class="definition"><strong>Definition 17.6  (Odds Ratio)  </strong></span>The odds ratio is a method of comparing two events; typically, it is formed by the ratio of the odds of the same event under two different scenarios. Let <span class="math inline">\(p_1\)</span> be the probability of the event under scenario 1 and let <span class="math inline">\(p_2\)</span> be the probability of an event under scenario 2; then, the odds of the event under scenario 1 are</p>
+<p><span class="math display">\[\gamma_1 = \frac{p_1}{1 - p_1}\]</span></p>
+<p>and the odds of the event under scenario 2 are</p>
+<p><span class="math display">\[\gamma_2 = \frac{p_2}{1 - p_2}\]</span></p>
+<p>and the odds ratio comparing scenario 1 to scenario 2 is</p>
+<span class="math display">\[OR = \frac{\gamma_1}{\gamma_2} = \left(\frac{p_1}{1 - p_1}\right) \left(\frac{1 - p_2}{p_2}\right).\]</span>
+</div>
+
+<p>If the odds of the event are the same under both scenarios, we obtain an odds ratio of 1. Odds ratios larger than 1 indicate that the event is more likely to occur (has greater odds) under scenario 1. Odds ratios less than 1 indicate that the event is less likely to occur (has lower odds) under scenario 1.</p>
+<p>Now, let’s return to our logistic regression model. Consider a model with two predictors:</p>
+<p><span class="math display">\[Pr\left((\text{Response})_i = 1 \mid (\text{Predictors})_i \right) = \frac{\exp\left\{\beta_0 + \beta_1 (\text{Predictor 1})_i + \beta_2 (\text{Predictor 2})_i\right\}}{1 + \exp\left\{\beta_0 + \beta_1 (\text{Predictor 1})_i + \beta_2 (\text{Predictor 2})_i\right\}}.\]</span></p>
+<p>Consider the group of subjects where Predictor 1 takes the value <span class="math inline">\(a\)</span> and Predictor 2 takes the value <span class="math inline">\(b\)</span>. Then, the probability the response takes the value 1 in this group is</p>
+<p><span class="math display">\[p_a = \frac{e^{\beta_0 + \beta_1 a + \beta_2 b}}{1 + e^{\beta_0 + \beta_1 a + \beta_2 b}}\]</span></p>
+<p>and the odds of the response taking the value 1 are</p>
+<p><span class="math display">\[\frac{p_a}{1 - p_a} = e^{\beta_0 + \beta_1 a + \beta_2 b}.\]</span></p>
+<p>Now, consider the group of subjects where Predictor 1 takes the value <span class="math inline">\(a + 1\)</span> and Predictor 2 takes the value <span class="math inline">\(b\)</span>. Then, following the above process, we have that the probability the response takes the value 1 in this group is</p>
+<p><span class="math display">\[p_{a+1} = \frac{e^{\beta_0 + \beta_1 (a + 1) + \beta_2 b}}{1 + e^{\beta_0 + \beta_1 (a + 1)+ \beta_2 b}}\]</span></p>
+<p>and the odds of the response taking the value 1 are</p>
+<p><span class="math display">\[\frac{p_{a+1}}{1 - p_{a+1}} = e^{\beta_0 + \beta_1 (a + 1) + \beta_2 b}.\]</span></p>
+<p>Now, the odds ratio for the group with an increase in Predictor 1 relative to the other group is</p>
+<p><span class="math display">\[\left(\frac{p_{a+1}}{1 - p_{a+1}}\right) \left(\frac{1 - p_a}{p_a}\right) = e^{\beta_1}.\]</span></p>
+<p>That is, the parameters in the logistic regression model are directly related to the odds ratio.</p>
+
+<div class="definition">
+<span id="def:defn-logistic-interpretation" class="definition"><strong>Definition 17.7  (Interpretation of Parameters in Logistic Regression Model)  </strong></span>Let <span class="math inline">\(\beta_j\)</span> be the parameter associated with the <span class="math inline">\(j\)</span>-th predictor in the logistic regression model. Then, <span class="math inline">\(\beta_j\)</span> represents the log-OR (“log odds ratio”) associated with a one-unit increase in the <span class="math inline">\(j\)</span>-th predictor holding all other predictors fixed.
+</div>
+
+<p>That is, exponentiating the <span class="math inline">\(j\)</span>-th coefficient gives the odds ratio comparing the odds of the event under two scenarios: when the <span class="math inline">\(j\)</span>-th predictor is increased by 1 unit relative to leaving it alone. Notice that unlike the linear model, increasing the <span class="math inline">\(j\)</span>-th predictor by 1 unit does not result in an additive effect on the mean response (the probability of the response occurring in this case). Instead, it has an additive effect on the log odds.</p>
+
+<div class="rmdtip">
+When we use the word “log” throughout, we are referring to the natural logarithm.
+</div>
+
+<p>As a result, if a parameter in our model is 0, it will result in an odds ratio of 1, indicating no association between the response and predictor. A parameter larger than 0 results in an odds ratio larger than 1, indicating that the likelihood of the response increases as the predictor increases. A parameter smaller than 0 results in an odds ratio less than 1, indicating the likelihood of the response decreases as the predictor increases.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="nlm-heteroskedasticity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="nlm-selection.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MA482CourseNotes.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

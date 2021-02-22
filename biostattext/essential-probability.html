@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Essential Probability | Statistical Modeling for the Biological Sciences</title>
+  <meta name="description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Essential Probability | Statistical Modeling for the Biological Sciences" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Essential Probability | Statistical Modeling for the Biological Sciences" />
+  
+  <meta name="twitter:description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="distributional-quartet.html"/>
+<link rel="next" href="glm-framework.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Modeling</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Review of the Inferential Process</b></span></li>
+<li class="chapter" data-level="1" data-path="statistical-process.html"><a href="statistical-process.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1.1" data-path="statistical-process.html"><a href="statistical-process.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="1.2" data-path="statistical-process.html"><a href="statistical-process.html#data-storage"><i class="fa fa-check"></i><b>1.2</b> Data Storage</a></li>
+<li class="chapter" data-level="1.3" data-path="statistical-process.html"><a href="statistical-process.html#tabular-data-presentation"><i class="fa fa-check"></i><b>1.3</b> Tabular Data Presentation</a></li>
+<li class="chapter" data-level="1.4" data-path="statistical-process.html"><a href="statistical-process.html#graphical-data-presentation"><i class="fa fa-check"></i><b>1.4</b> Graphical Data Presentation</a></li>
+<li class="chapter" data-level="1.5" data-path="statistical-process.html"><a href="statistical-process.html#basic-terminology-for-statistical-tests"><i class="fa fa-check"></i><b>1.5</b> Basic Terminology for Statistical Tests</a></li>
+<li class="chapter" data-level="1.6" data-path="statistical-process.html"><a href="statistical-process.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.6</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="distributional-quartet.html"><a href="distributional-quartet.html"><i class="fa fa-check"></i><b>2</b> Distributional Quartet</a></li>
+<li class="chapter" data-level="3" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>3</b> Essential Probability</a><ul>
+<li class="chapter" data-level="3.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>3.1</b> Density Functions as Models</a></li>
+<li class="chapter" data-level="3.2" data-path="essential-probability.html"><a href="essential-probability.html#summarizing-distributions-parameters"><i class="fa fa-check"></i><b>3.2</b> Summarizing Distributions (Parameters)</a></li>
+<li class="chapter" data-level="3.3" data-path="essential-probability.html"><a href="essential-probability.html#specific-models-for-populations"><i class="fa fa-check"></i><b>3.3</b> Specific Models for Populations</a></li>
+<li class="chapter" data-level="3.4" data-path="essential-probability.html"><a href="essential-probability.html#models-for-sampling-distributions-and-null-distributions"><i class="fa fa-check"></i><b>3.4</b> Models for Sampling Distributions and Null Distributions</a></li>
+</ul></li>
+<li class="part"><span><b>II General Linear Model and Modeling Strategies</b></span></li>
+<li class="chapter" data-level="4" data-path="glm-framework.html"><a href="glm-framework.html"><i class="fa fa-check"></i><b>4</b> General Linear Model Framework</a><ul>
+<li class="chapter" data-level="4.1" data-path="glm-framework.html"><a href="glm-framework.html#parameter-estimation"><i class="fa fa-check"></i><b>4.1</b> Parameter Estimation</a></li>
+<li class="chapter" data-level="4.2" data-path="glm-framework.html"><a href="glm-framework.html#conditions-on-the-model"><i class="fa fa-check"></i><b>4.2</b> Conditions on the Model</a></li>
+<li class="chapter" data-level="4.3" data-path="glm-framework.html"><a href="glm-framework.html#alternate-characterization-of-the-model"><i class="fa fa-check"></i><b>4.3</b> Alternate Characterization of the Model</a></li>
+<li class="chapter" data-level="4.4" data-path="glm-framework.html"><a href="glm-framework.html#interpretations-of-parameters"><i class="fa fa-check"></i><b>4.4</b> Interpretations of Parameters</a></li>
+<li class="chapter" data-level="4.5" data-path="glm-framework.html"><a href="glm-framework.html#inference-about-the-mean-parameters"><i class="fa fa-check"></i><b>4.5</b> Inference About the Mean Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="glm-assessing-conditions.html"><a href="glm-assessing-conditions.html"><i class="fa fa-check"></i><b>5</b> Assessing Conditions</a></li>
+<li class="part"><span><b>III General Modeling Techniques</b></span></li>
+<li class="chapter" data-level="6" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html"><i class="fa fa-check"></i><b>6</b> Side Effects of Isolating Effects</a><ul>
+<li class="chapter" data-level="6.1" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#toward-causal-inference"><i class="fa fa-check"></i><b>6.1</b> Toward Causal Inference</a></li>
+<li class="chapter" data-level="6.2" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#multicollinearity"><i class="fa fa-check"></i><b>6.2</b> Multicollinearity</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="glm-categorical-predictors.html"><a href="glm-categorical-predictors.html"><i class="fa fa-check"></i><b>7</b> Incorporating Categorical Predictors</a></li>
+<li class="chapter" data-level="8" data-path="glm-interactions.html"><a href="glm-interactions.html"><i class="fa fa-check"></i><b>8</b> Interaction Terms (Effect Modification)</a></li>
+<li class="chapter" data-level="9" data-path="glm-linear-hypotheses.html"><a href="glm-linear-hypotheses.html"><i class="fa fa-check"></i><b>9</b> General Linear Hypothesis Test</a></li>
+<li class="chapter" data-level="10" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html"><i class="fa fa-check"></i><b>10</b> Large Sample Theory</a><ul>
+<li class="chapter" data-level="10.1" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#two-types-of-models"><i class="fa fa-check"></i><b>10.1</b> Two Types of Models</a></li>
+<li class="chapter" data-level="10.2" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#large-sample-results"><i class="fa fa-check"></i><b>10.2</b> Large Sample Results</a></li>
+<li class="chapter" data-level="10.3" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#residual-bootstrap"><i class="fa fa-check"></i><b>10.3</b> Residual Bootstrap</a></li>
+<li class="chapter" data-level="10.4" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#big-picture"><i class="fa fa-check"></i><b>10.4</b> Big Picture</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="glm-splines.html"><a href="glm-splines.html"><i class="fa fa-check"></i><b>11</b> Modeling Curvature</a></li>
+<li class="part"><span><b>IV Models for Repeated Measures</b></span></li>
+<li class="chapter" data-level="12" data-path="rm-terminology.html"><a href="rm-terminology.html"><i class="fa fa-check"></i><b>12</b> Terminology</a><ul>
+<li class="chapter" data-level="12.1" data-path="rm-terminology.html"><a href="rm-terminology.html#importance-of-study-design"><i class="fa fa-check"></i><b>12.1</b> Importance of Study Design</a></li>
+<li class="chapter" data-level="12.2" data-path="rm-terminology.html"><a href="rm-terminology.html#studies-with-repeated-measures"><i class="fa fa-check"></i><b>12.2</b> Studies with Repeated Measures</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html"><i class="fa fa-check"></i><b>13</b> Mixed Effects Models</a><ul>
+<li class="chapter" data-level="13.1" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="13.2" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#model-formulation"><i class="fa fa-check"></i><b>13.2</b> Model Formulation</a></li>
+<li class="chapter" data-level="13.3" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#considerations-when-building-a-mixed-effects-model"><i class="fa fa-check"></i><b>13.3</b> Considerations when Building a Mixed-Effects Model</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="rm-gee.html"><a href="rm-gee.html"><i class="fa fa-check"></i><b>14</b> Generalized Estimating Equations</a><ul>
+<li class="chapter" data-level="14.1" data-path="rm-gee.html"><a href="rm-gee.html#correlation-structrues"><i class="fa fa-check"></i><b>14.1</b> Correlation Structrues</a></li>
+<li class="chapter" data-level="14.2" data-path="rm-gee.html"><a href="rm-gee.html#the-key-to-success-of-generalized-estimating-equations"><i class="fa fa-check"></i><b>14.2</b> The Key to Success of Generalized Estimating Equations</a></li>
+<li class="chapter" data-level="14.3" data-path="rm-gee.html"><a href="rm-gee.html#comparison-of-gee-and-mixed-effects-approaches"><i class="fa fa-check"></i><b>14.3</b> Comparison of GEE and Mixed Effects Approaches</a></li>
+</ul></li>
+<li class="part"><span><b>V Nonlinear Models</b></span></li>
+<li class="chapter" data-level="15" data-path="nlm-framework.html"><a href="nlm-framework.html"><i class="fa fa-check"></i><b>15</b> Nonlinear Model Framework</a><ul>
+<li class="chapter" data-level="15.1" data-path="nlm-framework.html"><a href="nlm-framework.html#scientific-model-for-theophylline"><i class="fa fa-check"></i><b>15.1</b> Scientific Model for Theophylline</a></li>
+<li class="chapter" data-level="15.2" data-path="nlm-framework.html"><a href="nlm-framework.html#nonlinear-regression-model"><i class="fa fa-check"></i><b>15.2</b> Nonlinear Regression Model</a></li>
+<li class="chapter" data-level="15.3" data-path="nlm-framework.html"><a href="nlm-framework.html#estimation"><i class="fa fa-check"></i><b>15.3</b> Estimation</a></li>
+<li class="chapter" data-level="15.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>15.4</b> Inference on the Parameters</a></li>
+<li class="chapter" data-level="15.5" data-path="nlm-framework.html"><a href="nlm-framework.html#allowing-relationships-to-vary-across-groups"><i class="fa fa-check"></i><b>15.5</b> Allowing Relationships to Vary Across Groups</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html"><i class="fa fa-check"></i><b>16</b> Relaxing the Constant Variance Condition</a><ul>
+<li class="chapter" data-level="16.1" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-assumptions"><i class="fa fa-check"></i><b>16.1</b> Modeling Assumptions</a></li>
+<li class="chapter" data-level="16.2" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-the-variance"><i class="fa fa-check"></i><b>16.2</b> Modeling the Variance</a></li>
+<li class="chapter" data-level="16.3" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#wild-bootstrap"><i class="fa fa-check"></i><b>16.3</b> Wild Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="nlm-logistic.html"><a href="nlm-logistic.html"><i class="fa fa-check"></i><b>17</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="17.1" data-path="nlm-logistic.html"><a href="nlm-logistic.html#considerations-for-a-binary-response"><i class="fa fa-check"></i><b>17.1</b> Considerations for a Binary Response</a></li>
+<li class="chapter" data-level="17.2" data-path="nlm-logistic.html"><a href="nlm-logistic.html#the-logistic-regression-model"><i class="fa fa-check"></i><b>17.2</b> The Logistic Regression Model</a></li>
+<li class="chapter" data-level="17.3" data-path="nlm-logistic.html"><a href="nlm-logistic.html#estimation-of-the-parameters"><i class="fa fa-check"></i><b>17.3</b> Estimation of the Parameters</a></li>
+<li class="chapter" data-level="17.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>17.4</b> Inference on the Parameters</a></li>
+<li class="chapter" data-level="17.5" data-path="nlm-logistic.html"><a href="nlm-logistic.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>17.5</b> Interpretation of Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="nlm-selection.html"><a href="nlm-selection.html"><i class="fa fa-check"></i><b>18</b> Model Selection</a></li>
+<li class="chapter" data-level="19" data-path="nlm-estimation.html"><a href="nlm-estimation.html"><i class="fa fa-check"></i><b>19</b> Estimation Details</a></li>
+<li class="chapter" data-level="20" data-path="nlm-rm.html"><a href="nlm-rm.html"><i class="fa fa-check"></i><b>20</b> Nonlinear Models with Repeated Measures</a></li>
+<li class="part"><span><b>VI Survival Analysis</b></span></li>
+<li class="chapter" data-level="21" data-path="surv-terminology.html"><a href="surv-terminology.html"><i class="fa fa-check"></i><b>21</b> Key Terminolgy</a></li>
+<li class="chapter" data-level="22" data-path="surv-censoring.html"><a href="surv-censoring.html"><i class="fa fa-check"></i><b>22</b> Censoring</a></li>
+<li class="chapter" data-level="23" data-path="surv-basic.html"><a href="surv-basic.html"><i class="fa fa-check"></i><b>23</b> Basic Estimation and Inference</a><ul>
+<li class="chapter" data-level="23.1" data-path="surv-basic.html"><a href="surv-basic.html#life-table-methods"><i class="fa fa-check"></i><b>23.1</b> Life-Table Methods</a></li>
+<li class="chapter" data-level="23.2" data-path="surv-basic.html"><a href="surv-basic.html#kaplan-meier-estimation"><i class="fa fa-check"></i><b>23.2</b> Kaplan-Meier Estimation</a></li>
+<li class="chapter" data-level="23.3" data-path="surv-basic.html"><a href="surv-basic.html#log-rank-test"><i class="fa fa-check"></i><b>23.3</b> Log-Rank Test</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="surv-cph.html"><a href="surv-cph.html"><i class="fa fa-check"></i><b>24</b> Cox Proportional Hazards Model</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Modeling for the Biological Sciences</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="essential-probability" class="section level1">
+<h1><span class="header-section-number">3</span> Essential Probability</h1>
+<p>Statistics uses data to make inference on a population. In turn, statistical theory is built on probability — the discipline of mathematics which studies and models random processes. While we do not need a thorough mastery of probability to be practitioners of statistical methodology, a foundation in probability models is helpful for seeing common threads in statistical modeling. This chapter provides a brief introduction to the most relevant aspects of probability theory necessary for engaging with the remainder of the text.</p>
+<div id="density-functions-as-models" class="section level2">
+<h2><span class="header-section-number">3.1</span> Density Functions as Models</h2>
+<p>Any process for which the outcome cannot be predicted with certainty is a random process. Typically, probability is taught from a mathematical perspective, with a goal of constructing a coherent and complete framework for characterizing such processes. Here, our goal is to introduce key probability concepts by relating them to their data-centric analogues. That is, we want to think of probability in light of how we will use it in statistical analysis.</p>
+<p>Each time we collect data, we can think of each observation as the result of a random process. These observations are recorded as variables in our dataset. In probability, a random variable is used to represent a measurement that results from a random process. Just as we have both <em>quantitative</em> and <em>qualitative</em> variables, there are <em>continuous</em> and <em>discrete</em> random variables.</p>
+
+<div class="definition">
+<span id="def:defn-random-variable" class="definition"><strong>Definition 3.1  (Random Variable)  </strong></span>Represents a measurement that will be collected and for which the value cannot be predicted with certainty. Generally represented with a capital letter. Continuous random variables represent quantitative measurements while discrete random variables represent qualitative measurements.
+</div>
+
+<p>Consider measuring a single variable on a sample of <span class="math inline">\(n\)</span> subjects. Then, we might represent the measurements we will obtain as <span class="math inline">\(X_1, X_2, \dots, X_n\)</span>.</p>
+
+<div class="rmdtip">
+There are many ways to interpret probability. In classical (“frequentist”) statistics, we think of probability as the likelihood of an event in repeated experimentation. Therefore, probability does not describe events that have already occured; we can only describe future events.
+</div>
+
+<p>Each of our random variables <span class="math inline">\(X_1, X_2, \dotsc, X_n\)</span> will be observations from some underlying population. As we described in previous chapters, the population is unknown. However, we might posit a model for its distribution. This is our primary use of probability theory in statistics — to model distributions. The most common way to represent a probability model is through its density function.</p>
+
+<div class="definition">
+<p><span id="def:defn-density" class="definition"><strong>Definition 3.2  (Density Function)  </strong></span>A density function <span class="math inline">\(f\)</span> relates the potential values of a random variable <span class="math inline">\(X\)</span> with the probability those values occur. For a <em>continuous</em> random variable, the probability the random variable <span class="math inline">\(X\)</span> falls within an interval <span class="math inline">\((a, b)\)</span> is given by</p>
+<p><span class="math display">\[Pr(a \leq X \leq b) = \int_{a}^{b} f(x) dx.\]</span></p>
+<p>For a <em>discrete</em> random variable, the probability the random variable <span class="math inline">\(X\)</span> is equal to the value <span class="math inline">\(u\)</span> is given by</p>
+<span class="math display">\[Pr(X = u) = f(u).\]</span>
+</div>
+
+
+<div class="rmdtip">
+In a probability course, there is often a distinction made between probability density functions (continuous random variables) and probability mass functions (discrete random variables). We do not make this distinction and instead rely on the context to determine whether we are dealing with a continuous or discrete random variable.
+</div>
+
+<p>With few exceptions, we will be working with continuous random variables. As a result, the density function is a smooth function over some region, and the actual value of the function is not interpretable; instead, we get at a probability by considering the area under the curve. Again, drawing connections to data analysis, we can think of a density function as a mathematical formula representing a smooth histogram. The area under the curve for any region gives the proportion of the population which has a value in that region. That is, we get the probability that a random variable will be in an interval by integrating the density function over that interval. Figure <a href="essential-probability.html#fig:essential-probability-density">3.1</a> illustrates this idea; we have a hypothetical dataset which has been summarized using a histogram; we overlay a density function (with the corresponding mathematical model that describes this density function). The figure shows how the sample (summarized in the histogram) is approximating the population (the density function).</p>
+<div class="figure" style="text-align: center"><span id="fig:essential-probability-density"></span>
+<img src="images/essential-probability-density-1.png" alt="Illustration of a density function representing the distribution of the population and a histogram from a representative sample." width="80%" />
+<p class="caption">
+Figure 3.1: Illustration of a density function representing the distribution of the population and a histogram from a representative sample.
+</p>
+</div>
+<p>Especially for visualization, the density function is the most common way of characterizing a probability model. However, computing the probability using the density is problematic due to the integration required. Many software address this by working with the cumulative distribution function (CDF).</p>
+
+<div class="definition">
+<p><span id="def:defn-cdf" class="definition"><strong>Definition 3.3  (Cumulative Distribution Function (CDF))  </strong></span>Let <span class="math inline">\(X\)</span> be a random variable; the cumulative distribution function (CDF) is defined as</p>
+<p><span class="math display">\[F(u) = Pr(X \leq u).\]</span></p>
+<p>For a continuous random variable, we have that</p>
+<p><span class="math display">\[F(u) = \int_{-\infty}^{u} f(x) dx\]</span></p>
+<p>implying that the density function is the derivative of the CDF. For a discrete random variable</p>
+<span class="math display">\[F(u) = \sum_{x \leq u} f(x).\]</span>
+</div>
+
+<p>Working with the CDF improves computation because it avoids the need to integrate each time; instead, the integral is computed once (and stored internally in the computer) and we use the result to compute probabilities directly.</p>
+
+<div class="rmdkeyidea">
+Density functions are the mathematical models for distributions; they link values of the variable with the likelihood of occurence. However, for computational reasons, we often work with the cumulative distribution function which provides the probability of being less than or equal to a value.
+</div>
+
+</div>
+<div id="summarizing-distributions-parameters" class="section level2">
+<h2><span class="header-section-number">3.2</span> Summarizing Distributions (Parameters)</h2>
+<p>Most scientific questions are focused on the location or spread of a distribution. For example, we are interested in estimating the average yield of a crop, or the variance in the amount of sleep among college students. Introductory statistics introduces summaries of location and spread within the sample (e.g., sample mean for location and sample variance for spread). Analogous summaries exist for density functions.</p>
+<p>In particular, the mean of a random variable (denoted by <span class="math inline">\(E(X)\)</span>) and the variance of a random variable (denoted by <span class="math inline">\(Var(X)\)</span>) are measures of the location and spread, respectively, of the distribution represented by its corresponding density function. When the density function is a model for the population, these represent the parameters of the population — the same parameters we estimate and make inference on using our data analysis. For completeness, we present the computational formulas for the mean and variance of a random variable, but we do not make use of these formulas moving forward. Instead, we simply note that these formulas are similar to their sample counterparts.</p>
+
+<div class="definition">
+<p><span id="def:defn-rv-mean-variance" class="definition"><strong>Definition 3.4  (Mean and Variance of a Random Variable)  </strong></span>Suppose <span class="math inline">\(X\)</span> is a random variable with density function <span class="math inline">\(f\)</span>. If <span class="math inline">\(X\)</span> is a continuous random variable, then the mean and variance are given by</p>
+<p><span class="math display">\[
+\begin{aligned}
+  E(X) &amp;= \int x f(x) dx \\
+  Var(X) &amp;= \int \left(x - E(X)\right)^2 f(x) dx.
+\end{aligned}
+\]</span></p>
+<p>If <span class="math inline">\(X\)</span> is a discrete random variable, then the mean and variance are given by</p>
+<span class="math display">\[
+\begin{aligned}
+  E(X) &amp;= \sum x f(x) \\
+  Var(X) &amp;= \sum \left(x - E(X)\right)^2 f(x).
+\end{aligned}
+\]</span>
+</div>
+
+<p>As we have stated, the distribution of the population is generally unknown. If we were able to specify the density function for the population, then there would be no need for statistical analysis. Instead, the model is generally posited up to some unknown values (parameters). For example, a researcher might posit that within the population, the time until a medical device fails could be modeled using the density</p>
+<p><span class="math display">\[f(x) = \frac{1}{\mu} e^{-\frac{x}{\mu}} \qquad x &gt; 0.\]</span></p>
+<p>Here, the researcher has really posited a form of the model, but not the exact model. The value <span class="math inline">\(\mu\)</span> is the average (which could be confirmed using the formulas in the above definition). In such cases, making inference on the parameters allows us to really characterize the entire distribution of the population.</p>
+
+<div class="rmdkeyidea">
+When a probability model is specified for a population, it is generally specified up to some unknown parameter(s). Making inference on the unknown parameter(s) therefore characterizes the entire distribution.
+</div>
+
+</div>
+<div id="specific-models-for-populations" class="section level2">
+<h2><span class="header-section-number">3.3</span> Specific Models for Populations</h2>
+<p>While we could posit any non-negative function as a model for a density function, there are some models that are very common. The most common model for the population of a continuous random variable is the Normal distribution.</p>
+
+<div class="definition">
+<p><span id="def:defn-normal-distribution" class="definition"><strong>Definition 3.5  (Normal (Guassian) Distribution)  </strong></span>Let <span class="math inline">\(X\)</span> be a continuous random variable. <span class="math inline">\(X\)</span> is said to have a Normal (or Guassian) distribution if the density is given by</p>
+<p><span class="math display">\[f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{1}{2\sigma^2} (x - \mu)^2} \qquad -\infty &lt; x &lt; \infty,\]</span></p>
+<p>where <span class="math inline">\(\mu\)</span> is any real number and <span class="math inline">\(\sigma^2 &gt; 0\)</span>.</p>
+<ul>
+<li><span class="math inline">\(E(X) = \mu\)</span></li>
+<li><span class="math inline">\(Var(X) = \sigma^2\)</span></li>
+</ul>
+We write <span class="math inline">\(X \sim N\left(\mu, \sigma^2\right)\)</span>, which is read “X has a Normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>.” This short-hand implies the density above.
+</div>
+
+<p>This model is a bell-shaped distribution centered at the mean <span class="math inline">\(\mu\)</span>. While this is a common model, it should not be assumed by default. In future chapters, we will consider methods for assessing whether assuming a Normal distribution is reasonable.</p>
+<p>When a response is binary (assumes one of two values), it is a Bernoulli distribution. In order to make use of this distribution, we typically define one of the two possible outcomes as a “success” and the other as a “failure.” For example,</p>
+<p><span class="math display">\[X = \begin{cases} 1 &amp; \text{if a success is observed} \\ 0 &amp; \text{if a success is not observed} \end{cases}.\]</span></p>
+
+<div class="definition">
+<p><span id="def:defn-bernoulli-distribution" class="definition"><strong>Definition 3.6  (Bernoulli Distribution)  </strong></span>Let <span class="math inline">\(X\)</span> be a discrete random variable taking the value 0 or 1. <span class="math inline">\(X\)</span> is said to have a Bernoulli distribution with density</p>
+<p><span class="math display">\[f(x) = \theta^x (1 - \theta)^(1 - x) \qquad x \in \{0, 1\},\]</span></p>
+<p>where <span class="math inline">\(0 &lt; \theta &lt; 1\)</span> is the probability that <span class="math inline">\(X\)</span> takes the value 1.</p>
+<ul>
+<li><span class="math inline">\(E(X) = \theta\)</span></li>
+<li><span class="math inline">\(Var(X) = \theta(1 - \theta)\)</span></li>
+</ul>
+We write <span class="math inline">\(X \sim Ber(\theta)\)</span>, which is read “X has a Bernoulli distribution with probability <span class="math inline">\(\theta\)</span>.”
+</div>
+
+
+<div class="rmdtip">
+A generalization of the Bernoulli distribution is the Binomial distribution. So, we sometimes hear people refer to a Bernoulli distribution as “a Binomial distribution with a single event.”
+</div>
+
+</div>
+<div id="models-for-sampling-distributions-and-null-distributions" class="section level2">
+<h2><span class="header-section-number">3.4</span> Models for Sampling Distributions and Null Distributions</h2>
+<p>A statistical analysis does not exist in a vacuum. Instead, based on the context of the study, we make assumptions about the process which generated the data. The conditions we are willing to assume govern how we model the sampling distribution or null distribution. Occasionally, we can lean on statistical theory to say how the sampling distribution or null distribution will behave. That is, under certain conditions, statistical theory tells us what the appropriate model is. In these situations, there are some common models.</p>
+<p>The t-distribution is a bell-shaped distribution, similar to the Normal distribution but with wider tails. It has a single parameter, known as the degrees of freedom. Note that unlike many other distributions, this parameter (the degrees of freedom) are not associated with the location of the distribution. Instead, they govern the spread (but are not the variance).</p>
+
+<div class="definition">
+<p><span id="def:defn-t-distribution" class="definition"><strong>Definition 3.7  (t-Distribution)  </strong></span>Let <span class="math inline">\(X\)</span> be a continuous random variable. <span class="math inline">\(X\)</span> is said to have a t-distribution if the density is given by</p>
+<p><span class="math display">\[f(x) = \frac{\Gamma \left(\frac{\nu+1}{2} \right)} {\sqrt{\nu\pi}\,\Gamma \left(\frac{\nu}{2} \right)} \left(1+\frac{x^2}{\nu} \right)^{-\frac{\nu+1}{2}} \qquad x &gt; 0\]</span></p>
+<p>where <span class="math inline">\(\nu &gt; 0\)</span> is the degrees of freedom.</p>
+We write <span class="math inline">\(X \sim t_{\nu}\)</span>, which is read “X has a t-distribution with <span class="math inline">\(\nu\)</span> degrees of freedom.”
+</div>
+
+<p>The Chi-Square distribution is a skewed distribution (looks like a giant slide). It has a single parameter, known as the degrees of freedom. The degrees of freedom for this distribution characterize both the location and spread simultaneously.</p>
+
+<div class="definition">
+<p><span id="def:defn-chi-square-distribution" class="definition"><strong>Definition 3.8  (Chi-Square Distribution)  </strong></span>Let <span class="math inline">\(X\)</span> be a continuous random variable. <span class="math inline">\(X\)</span> is said to have a Chi-Square distribution if the density is given by</p>
+<p><span class="math display">\[f(x) = \frac{1}{2^{\nu/2}\Gamma (\nu/2)}\;x^{\nu/2-1}e^{-x/2} \qquad x &gt; 0,\]</span></p>
+<p>where <span class="math inline">\(\nu &gt; 0\)</span> is the degrees of freedom.</p>
+We write <span class="math inline">\(X \sim \chi^2_{\nu}\)</span>, which is read “X has a Chi-Square distribution with <span class="math inline">\(\nu\)</span> degrees of freedom.”
+</div>
+
+<p>The F-distribution is a skewed distribution. It has two parameters, known as the numerator and denominator degrees of freedom. While neither variable is directly the mean and variance, together these two parameters characterize both the location and the spread.</p>
+
+<div class="definition">
+<p><span id="def:defn-f-distribution" class="definition"><strong>Definition 3.9  (F-Distribution)  </strong></span>Let <span class="math inline">\(X\)</span> be a continuous random variable. <span class="math inline">\(X\)</span> is said to have an F-distribution if the density is given by</p>
+<p><span class="math display">\[f(x) = \frac{\Gamma((r + s)/2)}{(\Gamma(r/2) \Gamma(s/2))} (r/s)^{(r/2)} x^{(r/2 - 1)} (1 + (r/s) x)^{-(r + s)/2} \qquad x &gt; 0,\]</span></p>
+<p>where <span class="math inline">\(r,s &gt; 0\)</span> are the numerator and denominator degrees of freedom, respectively.</p>
+We write <span class="math inline">\(X \sim F_{r, s}\)</span>, which is read “X has an F-distribution with r numerator degrees of freedom and s denominator degrees of freedom.”
+</div>
+
+<div class="figure" style="text-align: center"><span id="fig:essential-probability-comparisons"></span>
+<img src="images/essential-probability-comparisons-1.png" alt="Comparison of various common distributions." width="80%" />
+<p class="caption">
+Figure 3.2: Comparison of various common distributions.
+</p>
+</div>
+<p>The formulas above are ugly, but we will not be working with them directly. Instead, statistical software have these distributions embedded. The key idea here is that when we know the model for a sampling distribution, we are able to rely on that model in order to obtain confidence intervals. And, when we have a model for the null distribution, we are able to rely on that model to obtain p-values. These models are what underlies many default implementations of statistical methods in software.</p>
+
+<div class="rmdkeyidea">
+Some probability models occur so frequently that we give them names for easy reference. Some models are common for modeling the population, in which case they are defined in terms of unknown parameters to be estimated. Some models are common for modeling sampling distributions or null distributions, in which case their form will be explicitly determined according to statistical theory.
+</div>
+
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="distributional-quartet.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="glm-framework.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MA482CourseNotes.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

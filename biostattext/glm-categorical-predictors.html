@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Incorporating Categorical Predictors | Statistical Modeling for the Biological Sciences</title>
+  <meta name="description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Incorporating Categorical Predictors | Statistical Modeling for the Biological Sciences" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Incorporating Categorical Predictors | Statistical Modeling for the Biological Sciences" />
+  
+  <meta name="twitter:description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="glm-related-predictors.html"/>
+<link rel="next" href="glm-interactions.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistical Modeling</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Review of the Inferential Process</b></span></li>
+<li class="chapter" data-level="1" data-path="statistical-process.html"><a href="statistical-process.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1.1" data-path="statistical-process.html"><a href="statistical-process.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="1.2" data-path="statistical-process.html"><a href="statistical-process.html#data-storage"><i class="fa fa-check"></i><b>1.2</b> Data Storage</a></li>
+<li class="chapter" data-level="1.3" data-path="statistical-process.html"><a href="statistical-process.html#tabular-data-presentation"><i class="fa fa-check"></i><b>1.3</b> Tabular Data Presentation</a></li>
+<li class="chapter" data-level="1.4" data-path="statistical-process.html"><a href="statistical-process.html#graphical-data-presentation"><i class="fa fa-check"></i><b>1.4</b> Graphical Data Presentation</a></li>
+<li class="chapter" data-level="1.5" data-path="statistical-process.html"><a href="statistical-process.html#basic-terminology-for-statistical-tests"><i class="fa fa-check"></i><b>1.5</b> Basic Terminology for Statistical Tests</a></li>
+<li class="chapter" data-level="1.6" data-path="statistical-process.html"><a href="statistical-process.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.6</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="distributional-quartet.html"><a href="distributional-quartet.html"><i class="fa fa-check"></i><b>2</b> Distributional Quartet</a></li>
+<li class="chapter" data-level="3" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>3</b> Essential Probability</a><ul>
+<li class="chapter" data-level="3.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>3.1</b> Density Functions as Models</a></li>
+<li class="chapter" data-level="3.2" data-path="essential-probability.html"><a href="essential-probability.html#summarizing-distributions-parameters"><i class="fa fa-check"></i><b>3.2</b> Summarizing Distributions (Parameters)</a></li>
+<li class="chapter" data-level="3.3" data-path="essential-probability.html"><a href="essential-probability.html#specific-models-for-populations"><i class="fa fa-check"></i><b>3.3</b> Specific Models for Populations</a></li>
+<li class="chapter" data-level="3.4" data-path="essential-probability.html"><a href="essential-probability.html#models-for-sampling-distributions-and-null-distributions"><i class="fa fa-check"></i><b>3.4</b> Models for Sampling Distributions and Null Distributions</a></li>
+</ul></li>
+<li class="part"><span><b>II General Linear Model and Modeling Strategies</b></span></li>
+<li class="chapter" data-level="4" data-path="glm-framework.html"><a href="glm-framework.html"><i class="fa fa-check"></i><b>4</b> General Linear Model Framework</a><ul>
+<li class="chapter" data-level="4.1" data-path="glm-framework.html"><a href="glm-framework.html#parameter-estimation"><i class="fa fa-check"></i><b>4.1</b> Parameter Estimation</a></li>
+<li class="chapter" data-level="4.2" data-path="glm-framework.html"><a href="glm-framework.html#conditions-on-the-model"><i class="fa fa-check"></i><b>4.2</b> Conditions on the Model</a></li>
+<li class="chapter" data-level="4.3" data-path="glm-framework.html"><a href="glm-framework.html#alternate-characterization-of-the-model"><i class="fa fa-check"></i><b>4.3</b> Alternate Characterization of the Model</a></li>
+<li class="chapter" data-level="4.4" data-path="glm-framework.html"><a href="glm-framework.html#interpretations-of-parameters"><i class="fa fa-check"></i><b>4.4</b> Interpretations of Parameters</a></li>
+<li class="chapter" data-level="4.5" data-path="glm-framework.html"><a href="glm-framework.html#inference-about-the-mean-parameters"><i class="fa fa-check"></i><b>4.5</b> Inference About the Mean Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="glm-assessing-conditions.html"><a href="glm-assessing-conditions.html"><i class="fa fa-check"></i><b>5</b> Assessing Conditions</a></li>
+<li class="part"><span><b>III General Modeling Techniques</b></span></li>
+<li class="chapter" data-level="6" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html"><i class="fa fa-check"></i><b>6</b> Side Effects of Isolating Effects</a><ul>
+<li class="chapter" data-level="6.1" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#toward-causal-inference"><i class="fa fa-check"></i><b>6.1</b> Toward Causal Inference</a></li>
+<li class="chapter" data-level="6.2" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#multicollinearity"><i class="fa fa-check"></i><b>6.2</b> Multicollinearity</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="glm-categorical-predictors.html"><a href="glm-categorical-predictors.html"><i class="fa fa-check"></i><b>7</b> Incorporating Categorical Predictors</a></li>
+<li class="chapter" data-level="8" data-path="glm-interactions.html"><a href="glm-interactions.html"><i class="fa fa-check"></i><b>8</b> Interaction Terms (Effect Modification)</a></li>
+<li class="chapter" data-level="9" data-path="glm-linear-hypotheses.html"><a href="glm-linear-hypotheses.html"><i class="fa fa-check"></i><b>9</b> General Linear Hypothesis Test</a></li>
+<li class="chapter" data-level="10" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html"><i class="fa fa-check"></i><b>10</b> Large Sample Theory</a><ul>
+<li class="chapter" data-level="10.1" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#two-types-of-models"><i class="fa fa-check"></i><b>10.1</b> Two Types of Models</a></li>
+<li class="chapter" data-level="10.2" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#large-sample-results"><i class="fa fa-check"></i><b>10.2</b> Large Sample Results</a></li>
+<li class="chapter" data-level="10.3" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#residual-bootstrap"><i class="fa fa-check"></i><b>10.3</b> Residual Bootstrap</a></li>
+<li class="chapter" data-level="10.4" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#big-picture"><i class="fa fa-check"></i><b>10.4</b> Big Picture</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="glm-splines.html"><a href="glm-splines.html"><i class="fa fa-check"></i><b>11</b> Modeling Curvature</a></li>
+<li class="part"><span><b>IV Models for Repeated Measures</b></span></li>
+<li class="chapter" data-level="12" data-path="rm-terminology.html"><a href="rm-terminology.html"><i class="fa fa-check"></i><b>12</b> Terminology</a><ul>
+<li class="chapter" data-level="12.1" data-path="rm-terminology.html"><a href="rm-terminology.html#importance-of-study-design"><i class="fa fa-check"></i><b>12.1</b> Importance of Study Design</a></li>
+<li class="chapter" data-level="12.2" data-path="rm-terminology.html"><a href="rm-terminology.html#studies-with-repeated-measures"><i class="fa fa-check"></i><b>12.2</b> Studies with Repeated Measures</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html"><i class="fa fa-check"></i><b>13</b> Mixed Effects Models</a><ul>
+<li class="chapter" data-level="13.1" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
+<li class="chapter" data-level="13.2" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#model-formulation"><i class="fa fa-check"></i><b>13.2</b> Model Formulation</a></li>
+<li class="chapter" data-level="13.3" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#considerations-when-building-a-mixed-effects-model"><i class="fa fa-check"></i><b>13.3</b> Considerations when Building a Mixed-Effects Model</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="rm-gee.html"><a href="rm-gee.html"><i class="fa fa-check"></i><b>14</b> Generalized Estimating Equations</a><ul>
+<li class="chapter" data-level="14.1" data-path="rm-gee.html"><a href="rm-gee.html#correlation-structrues"><i class="fa fa-check"></i><b>14.1</b> Correlation Structrues</a></li>
+<li class="chapter" data-level="14.2" data-path="rm-gee.html"><a href="rm-gee.html#the-key-to-success-of-generalized-estimating-equations"><i class="fa fa-check"></i><b>14.2</b> The Key to Success of Generalized Estimating Equations</a></li>
+<li class="chapter" data-level="14.3" data-path="rm-gee.html"><a href="rm-gee.html#comparison-of-gee-and-mixed-effects-approaches"><i class="fa fa-check"></i><b>14.3</b> Comparison of GEE and Mixed Effects Approaches</a></li>
+</ul></li>
+<li class="part"><span><b>V Nonlinear Models</b></span></li>
+<li class="chapter" data-level="15" data-path="nlm-framework.html"><a href="nlm-framework.html"><i class="fa fa-check"></i><b>15</b> Nonlinear Model Framework</a><ul>
+<li class="chapter" data-level="15.1" data-path="nlm-framework.html"><a href="nlm-framework.html#scientific-model-for-theophylline"><i class="fa fa-check"></i><b>15.1</b> Scientific Model for Theophylline</a></li>
+<li class="chapter" data-level="15.2" data-path="nlm-framework.html"><a href="nlm-framework.html#nonlinear-regression-model"><i class="fa fa-check"></i><b>15.2</b> Nonlinear Regression Model</a></li>
+<li class="chapter" data-level="15.3" data-path="nlm-framework.html"><a href="nlm-framework.html#estimation"><i class="fa fa-check"></i><b>15.3</b> Estimation</a></li>
+<li class="chapter" data-level="15.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>15.4</b> Inference on the Parameters</a></li>
+<li class="chapter" data-level="15.5" data-path="nlm-framework.html"><a href="nlm-framework.html#allowing-relationships-to-vary-across-groups"><i class="fa fa-check"></i><b>15.5</b> Allowing Relationships to Vary Across Groups</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html"><i class="fa fa-check"></i><b>16</b> Relaxing the Constant Variance Condition</a><ul>
+<li class="chapter" data-level="16.1" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-assumptions"><i class="fa fa-check"></i><b>16.1</b> Modeling Assumptions</a></li>
+<li class="chapter" data-level="16.2" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-the-variance"><i class="fa fa-check"></i><b>16.2</b> Modeling the Variance</a></li>
+<li class="chapter" data-level="16.3" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#wild-bootstrap"><i class="fa fa-check"></i><b>16.3</b> Wild Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="nlm-logistic.html"><a href="nlm-logistic.html"><i class="fa fa-check"></i><b>17</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="17.1" data-path="nlm-logistic.html"><a href="nlm-logistic.html#considerations-for-a-binary-response"><i class="fa fa-check"></i><b>17.1</b> Considerations for a Binary Response</a></li>
+<li class="chapter" data-level="17.2" data-path="nlm-logistic.html"><a href="nlm-logistic.html#the-logistic-regression-model"><i class="fa fa-check"></i><b>17.2</b> The Logistic Regression Model</a></li>
+<li class="chapter" data-level="17.3" data-path="nlm-logistic.html"><a href="nlm-logistic.html#estimation-of-the-parameters"><i class="fa fa-check"></i><b>17.3</b> Estimation of the Parameters</a></li>
+<li class="chapter" data-level="17.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>17.4</b> Inference on the Parameters</a></li>
+<li class="chapter" data-level="17.5" data-path="nlm-logistic.html"><a href="nlm-logistic.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>17.5</b> Interpretation of Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="nlm-selection.html"><a href="nlm-selection.html"><i class="fa fa-check"></i><b>18</b> Model Selection</a></li>
+<li class="chapter" data-level="19" data-path="nlm-estimation.html"><a href="nlm-estimation.html"><i class="fa fa-check"></i><b>19</b> Estimation Details</a></li>
+<li class="chapter" data-level="20" data-path="nlm-rm.html"><a href="nlm-rm.html"><i class="fa fa-check"></i><b>20</b> Nonlinear Models with Repeated Measures</a></li>
+<li class="part"><span><b>VI Survival Analysis</b></span></li>
+<li class="chapter" data-level="21" data-path="surv-terminology.html"><a href="surv-terminology.html"><i class="fa fa-check"></i><b>21</b> Key Terminolgy</a></li>
+<li class="chapter" data-level="22" data-path="surv-censoring.html"><a href="surv-censoring.html"><i class="fa fa-check"></i><b>22</b> Censoring</a></li>
+<li class="chapter" data-level="23" data-path="surv-basic.html"><a href="surv-basic.html"><i class="fa fa-check"></i><b>23</b> Basic Estimation and Inference</a><ul>
+<li class="chapter" data-level="23.1" data-path="surv-basic.html"><a href="surv-basic.html#life-table-methods"><i class="fa fa-check"></i><b>23.1</b> Life-Table Methods</a></li>
+<li class="chapter" data-level="23.2" data-path="surv-basic.html"><a href="surv-basic.html#kaplan-meier-estimation"><i class="fa fa-check"></i><b>23.2</b> Kaplan-Meier Estimation</a></li>
+<li class="chapter" data-level="23.3" data-path="surv-basic.html"><a href="surv-basic.html#log-rank-test"><i class="fa fa-check"></i><b>23.3</b> Log-Rank Test</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="surv-cph.html"><a href="surv-cph.html"><i class="fa fa-check"></i><b>24</b> Cox Proportional Hazards Model</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistical Modeling for the Biological Sciences</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="glm-categorical-predictors" class="section level1">
+<h1><span class="header-section-number">7</span> Incorporating Categorical Predictors</h1>
+<p>This linear model framework is quite general; in particular, it allows us to consider not only quantitative predictors, but also categorical (qualitative) predictors. When considering how the response differs across various groups, our approach is to include additional predictors to capture group membership.</p>
+<p>The <em>Perceived Stress Scale (PSS)</em> is a most widely used psychological instrument for measuring the perception of
+stress. Subjects answer ten short questions regarding the degree to which situations in one’s life are viewed as stressful, and the responses are codified into a score between 0 and 40 (higher values indicate higher stress). Suppose we were interested in modeling the PSS score among college students as a function of their class standing (Freshman, Sophomore, Junior, Senior) and the number of hours of sleep the student reports getting on a typical night. The first few records in our data might hypothetically look like that illustrated in Table <a href="glm-categorical-predictors.html#tab:glm-categorical-predictors-stress-data">7.1</a>.</p>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:glm-categorical-predictors-stress-data">Table 7.1: </span>Hypothetical data on stress in college students.
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+Subject ID
+</th>
+<th style="text-align:right;">
+PSS
+</th>
+<th style="text-align:right;">
+Hours Sleep
+</th>
+<th style="text-align:left;">
+Class Standing
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1415
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+7.5
+</td>
+<td style="text-align:left;">
+Freshman
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1463
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+8.5
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1179
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+7.0
+</td>
+<td style="text-align:left;">
+Junior
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1526
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+8.5
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1195
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:left;">
+Sophomore
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1938
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:left;">
+Freshman
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1818
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+5.5
+</td>
+<td style="text-align:left;">
+Junior
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1118
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:left;">
+Freshman
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1299
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+9.0
+</td>
+<td style="text-align:left;">
+Freshman
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1229
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+7.0
+</td>
+<td style="text-align:left;">
+Sophomore
+</td>
+</tr>
+</tbody>
+</table>
+<p>It does not take long to recognize that forming a model like</p>
+<p><span class="math display">\[(\text{PSS Score})_i = \beta_0 + \beta_1 (\text{Hours Sleep})_i + \beta_2 (\text{Class Standing})_i + \varepsilon_i\]</span></p>
+<p>does not work. Since class standing is a categorical variable, plugging in does not make sense; that is, what does it mean to multiply <span class="math inline">\(\beta_2\)</span> by “Freshman.” We need a way of somehow bringing the categorical predictor into the linear model. Before stating our approach, let’s first consider two common naive approaches:</p>
+<ul>
+<li>Replace each level of the categorical predictor with a number: convert Freshman to 1, Sophomore to 2, Junior to 3, and Senior to 4.</li>
+<li>Construct different data sets for each level of the categorical predictor: four data sets in this case with one for Freshman, one for Sophomore, one for Junior, and one for Senior.</li>
+</ul>
+<p>The first approach solves the “number times word” problem. We could certainly fit such a model. However, this approach is limiting. It assumes a linear trend across the levels of the categorical predictor. Are we sure that the stress either increases or decreases as the class standing increases? More problematic are categorical predictors which have no natural ordering (e.g., eye color); how do we determine the mapping from text to numbers?</p>
+<p>The second approach sounds reasonable at first glance. It would yield four different models:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \text{Model 1}:&amp; (\text{PSS Score})_i = \gamma_{\text{FR}} + 
+    \alpha_{\text{FR}} (\text{Hours Sleep})_i + \varepsilon_{1,i} \\
+  \text{Model 2}:&amp; (\text{PSS Score})_i = \gamma_{\text{SO}} + 
+    \alpha_{\text{SO}} (\text{Hours Sleep})_i + \varepsilon_{2,i} \\
+  \text{Model 3}:&amp; (\text{PSS Score})_i = \gamma_{\text{JR}} + 
+    \alpha_{\text{JR}} (\text{Hours Sleep})_i + \varepsilon_{3,i} \\
+  \text{Model 4}:&amp; (\text{PSS Score})_i = \gamma_{\text{SR}} + 
+    \alpha_{\text{SR}} (\text{Hours Sleep})_i + \varepsilon_{4,i} \\.
+\end{aligned}
+\]</span></p>
+<p>In these models, we have a different parameters for each group. The problem is that we no longer have a single estimate for the impact of the number of hours of sleep; we have a different estimate for each group. Further, we would have a different estimate of the residual variance for each model, which would not align with the condition of assuming the variance is constant for all values of the predictors. This approach diminishes the power of the study, and it does not make it easy to address some questions of interest (such as, do freshman and sophomores differ in their PSS score?).</p>
+<p>Our solution is to create multiple new variables which capture the qualitative grouping. Consider defining new variables as follows</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\text{Sophomore})_i &amp;= \begin{cases}
+    1 &amp; \text{if i-th subject is a sophomore} \\
+    0 &amp; \text{otherwise}
+    \end{cases} \\
+  (\text{Junior})_i &amp;= \begin{cases}
+    1 &amp; \text{if i-th subject is a junior} \\
+    0 &amp; \text{otherwise}
+    \end{cases} \\
+  (\text{Senior})_i &amp;= \begin{cases}
+    1 &amp; \text{if i-th subject is a senior} \\
+    0 &amp; \text{otherwise}
+    \end{cases}.
+\end{aligned}
+\]</span></p>
+<p>Augmenting our original data set with these new predictors would result in the data set illustrated in Table <a href="glm-categorical-predictors.html#tab:glm-categorical-predictors-stress-data-aug">7.2</a>.</p>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:glm-categorical-predictors-stress-data-aug">Table 7.2: </span>Hypothetical data on stress in college students augmented to include additional variables capturing the class standing.
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+Subject ID
+</th>
+<th style="text-align:right;">
+PSS
+</th>
+<th style="text-align:right;">
+Hours Sleep
+</th>
+<th style="text-align:left;">
+Class Standing
+</th>
+<th style="text-align:right;">
+Sophomore
+</th>
+<th style="text-align:right;">
+Junior
+</th>
+<th style="text-align:right;">
+Senior
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1415
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+7.5
+</td>
+<td style="text-align:left;">
+Freshman
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1463
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+8.5
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1179
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+7.0
+</td>
+<td style="text-align:left;">
+Junior
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1526
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+8.5
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1195
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:left;">
+Sophomore
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1938
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:left;">
+Freshman
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1818
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+5.5
+</td>
+<td style="text-align:left;">
+Junior
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1118
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:left;">
+Freshman
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1299
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+9.0
+</td>
+<td style="text-align:left;">
+Freshman
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1229
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+7.0
+</td>
+<td style="text-align:left;">
+Sophomore
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p>Using these additional variables, we consider the model</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\text{PSS Score})_i &amp;= \beta_0 + \beta_1 (\text{Hours Sleep})_i + \beta_2 (\text{Sophomore})_i \\
+    &amp;\qquad + \beta_3 (\text{Junior})_i + \beta_4 (\text{Senior})_i + \varepsilon_i.
+\end{aligned}
+\]</span></p>
+<p>This model embeds the grouping structure while only having one parameter for the effect of sleep on the PSS score and one parameter for the residual variance. You might at first think “what happened to freshman?” To see what is really happening with this model, think about what the structure provides us. Suppose we are considering freshman students who get <span class="math inline">\(x\)</span> hours of sleep; for this group of students, the value of the variables <code>Sophomore</code>, <code>Junior</code>, and <code>Senior</code> are all zero. Plugging into the deterministic portion of the model, we find that the average PSS score for this group is</p>
+<p><span class="math display">\[\beta_0 + \beta_1 x + \beta_2 (0) + \beta_3 (0) + \beta_4 (0) = \beta_0 + \beta_1 x.\]</span></p>
+<p>The fact that each of the variables <code>Sophomore</code>, <code>Junior</code>, and <code>Senior</code> take either the value 0 or 1 makes the arithmetic work out nicely. We can easily write down the average PSS score for each group for a specific number of hours of sleep:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  E\left[\text{PSS Score} \mid \text{Hours Sleep, Freshman}\right]
+    &amp;= \beta_0 + \beta_1 (\text{Hours Sleep}) \\
+  E\left[\text{PSS Score} \mid \text{Hours Sleep, Sophomore}\right]
+    &amp;= \left(\beta_0 + \beta_2\right) + \beta_1 (\text{Hours Sleep})\\
+  E\left[\text{PSS Score} \mid \text{Hours Sleep, Junior}\right]
+    &amp;= \left(\beta_0 + \beta_3\right) + \beta_1 (\text{Hours Sleep}) \\
+  E\left[\text{PSS Score} \mid \text{Hours Sleep, Senior}\right]
+    &amp;= \left(\beta_0 + \beta_4\right) + \beta_1 (\text{Hours Sleep}). \\
+\end{aligned}
+\]</span></p>
+<p>So, freshman did not disappear from the model; they were there all along in the intercept. This strategy relied on capturing the grouping structure through a series of binary (0 or 1) variables, known as indicator variables.</p>
+
+<div class="definition">
+<span id="def:defn-indicator-variables" class="definition"><strong>Definition 7.1  (Indicator Variables)  </strong></span>Also called “dummy variables,” these are a set of binary variables that capture the grouping defined by a categorical variable for regression modeling.
+</div>
+
+<p>Indicator variables are like light switches that click on or off in order to specify that a particular subject (or population of subjects) with the corresponding characteristic is being considered. The way in which we have defined these variables ensures that no two light switches are on at the same time; each subject is a member of exactly one group (a student must have a class standing and cannot be classified as both a freshman and a sophomore simultaneously).</p>
+
+<div class="rmdtip">
+A categorical predictor with <span class="math inline">\(k\)</span> groups/levels requires <span class="math inline">\(k-1\)</span> indicator variables to fully capture the grouping structure.
+</div>
+
+<p>One group (known as the reference group) will always be captured by the intercept term; the choice of this group is arbitrary and is often chosen by the software package (perhaps alphabetically, for example). Note that if the only difference between two models is the choice of the reference group, the models result in equivalent inference (though the interpretation of the parameters differs).</p>
+
+<div class="definition">
+<span id="def:defn-reference-group" class="definition"><strong>Definition 7.2  (Reference Group)  </strong></span>The group defined by having all indicator variables for a particular categorical variable set to zero.
+</div>
+
+<p>Recall that provided the “mean 0” condition on the error holds, we have an interpretation of the coefficients in the model (Definition <a href="glm-framework.html#def:defn-slope">4.7</a>). This yields a nice interpretation of the coefficients for indicator variables.</p>
+
+<div class="rmdkeyidea">
+Let <span class="math inline">\(\beta\)</span> be the parameter corresponding to an indicator variable in a linear model; then, <span class="math inline">\(\beta\)</span> is the difference in the <em>average</em> response between the group defined by that indicator taking the value 1 and the reference group <em>holding all other predictors fixed</em>.
+</div>
+
+<p>This does create a situation we not yet encountered. Suppose we are interested in determining if the PSS score is associated with class standing after accounting for the hours of sleep the student gets on a typical night. The hypothesis is no longer of the form</p>
+<p><span class="math display">\[H_0: \beta_j = 0 \qquad \text{vs.} \qquad H_1: \beta_j \neq 0\]</span></p>
+<p>for some <span class="math inline">\(j\)</span>. Instead, there are several predictors in the model which capture class standing. We need to instead consider a simultaneous test.</p>
+
+<div class="rmdkeyidea">
+The statistical significance of a categorical predictor is assessed by testing if <em>all</em> corresponding indicator variables are simultaneously 0.
+</div>
+
+<p>In our case, we would be testing a hypothesis of the form</p>
+<p><span class="math display">\[H_0: \beta_2 = \beta_3 = \beta_4 = 0 \qquad \text{vs.} \qquad H_1: \text{at least one of these } \beta_j \text{ not equal to 0}.\]</span></p>
+<p>We will address hypotheses of this form in Chapter <a href="glm-linear-hypotheses.html#glm-linear-hypotheses">9</a>.</p>
+<p>We end this section by stating that while our discussion centered on the inclusion of categorical predictors in the linear model, this is a general modeling technique. Regardless of the type of regression model, categorical predictors can be included through the use of indicator variables.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="glm-related-predictors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="glm-interactions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MA482CourseNotes.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
