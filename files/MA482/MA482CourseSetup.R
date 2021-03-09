@@ -8,6 +8,11 @@
 #
 # Notes:
 
+# ---- Update Old Packages ----
+update.packages(ask = FALSE, 
+                checkBuilt = TRUE,
+                quiet = TRUE)
+
 
 # ---- Load Additional Packages First ----
 install.packages("devtools",
@@ -19,6 +24,7 @@ install.packages("devtools",
 # ---- Install Biostat Functionality ----
 devtools::install_github("reyesem/reyes482", 
                          dependencies = TRUE, 
-                         quite = TRUE)
+                         quite = TRUE,
+                         build = FALSE)
 
 message("Set-up was successful!")
