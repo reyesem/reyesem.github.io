@@ -24,7 +24,7 @@ install.packages("devtools",
 # ---- Install Biostat Functionality ----
 devtools::install_github("reyesem/reyes482", 
                          dependencies = TRUE, 
-                         quite = TRUE,
+                         quiet = TRUE,
                          build = FALSE)
 
 message("Set-up was successful!")
