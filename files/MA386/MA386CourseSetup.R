@@ -9,6 +9,10 @@
 # ---- Install CRAN Packages ----
 options(install.packages.check.source = "no")
 
+update.packages(ask = FALSE, 
+                checkBuilt = TRUE,
+                quiet = TRUE)
+
 install.packages(c("tidyverse",
                    "rvest",
                    "jsonlite",
@@ -17,13 +21,15 @@ install.packages(c("tidyverse",
                    "plotly",
                    "learnr",
                    "knitr"), 
-                 dependencies = TRUE)
+                 dependencies = TRUE,
+                 quiet = TRUE)
 
 
 
 # ---- Install Guided Notes ----
 install.packages("https://reyesem.github.io/files/MA386/reyes386_0.1.0.tar.gz",
-                 repos = NULL)
+                 repos = NULL,
+                 quiet = TRUE)
 
 
 
