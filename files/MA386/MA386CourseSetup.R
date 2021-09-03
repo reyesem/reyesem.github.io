@@ -33,4 +33,8 @@ install.packages("https://reyesem.github.io/files/MA386/reyes386_0.1.0.tar.gz",
 
 
 
-message("\n\nSetup Complete!\n")
+if (testr <- require("reyes386")) {
+  message("Set-up was successful!")
+} else {
+  warning("Set-up unsuccessful; reach out to instructor.")
+}

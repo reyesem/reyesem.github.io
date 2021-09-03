@@ -15,16 +15,33 @@ update.packages(ask = FALSE,
 
 
 # ---- Load Additional Packages First ----
-install.packages("devtools",
-                 "curl",
+# ---- Load Additional Packages First ----
+install.packages(c("devtools",
+                   "curl",
+                   "tidyverse",
+                   "broom",
+                   "broom.mixed",
+                   "car",
+                   "geepack",
+                   "import",
+                   "knitr",
+                   "lme4",
+                   "rms",
+                   "rmarkdown",
+                   "skimr",
+                   "splines"),
                  dependencies = TRUE,
                  quiet = TRUE)
 
 
 # ---- Install Biostat Functionality ----
-devtools::install_github("reyesem/reyes482", 
-                         dependencies = TRUE, 
-                         quiet = TRUE,
-                         build = FALSE)
+install.packages("https://github.com/reyesem/reyesem.github.io/raw/master/files/MA482/reyes482_0.1.0.tar.gz",
+                 repos = NULL,
+                 quiet = TRUE)
 
-message("Set-up was successful!")
+
+if (testr <- require("reyes482")) {
+  message("Set-up was successful!")
+} else {
+  warning("Set-up unsuccessful; reach out to instructor.")
+}

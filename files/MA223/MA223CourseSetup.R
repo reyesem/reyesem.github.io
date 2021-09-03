@@ -20,4 +20,8 @@ dir.create("Individual-Assignments")
 dir.create("Group-Work")
 dir.create("In-Class-Demos")
 
-message("Set-up was successful!")
+if (testr <- require("IntroAnalysis")) {
+  message("Set-up was successful!")
+} else {
+  warning("Set-up unsuccessful; reach out to instructor.")
+}

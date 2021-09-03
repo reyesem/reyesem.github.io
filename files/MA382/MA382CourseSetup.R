@@ -40,4 +40,8 @@ install.packages("https://github.com/reyesem/reyesem.github.io/raw/master/files/
                  repos = NULL,
                  quiet = TRUE)
 
-message("Set-up was successful!")
+if (testr <- require("reyes382")) {
+  message("Set-up was successful!")
+} else {
+  warning("Set-up unsuccessful; reach out to instructor.")
+}
