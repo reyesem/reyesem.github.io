@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MA490 Sample - Reyes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="site-style-sheet.css">
+  <script src="site-scripts.js"></script>
+</head>
+
+
+<body> 
+  <!-- Primary Header -->
+  <header class="header-box">  
+   <!-- Navigation for Small Screens -->
+    <section class="navbar-small">
+      <div class="long-grid">
+        <div id="menu-icon" class="menu-box" onclick="toggleNavigation()">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+      </div>
+      
+      <nav id="small-menu" class="navbar-hidden">
+        <a href="index.html" class="navbar-button">Home</a>
+        <a href="teaching.html" class="navbar-button">Teaching</a>
+        <a href="research.html" class="navbar-button">Research</a>
+        <a href="consulting.html" class="navbar-button">Consulting</a>
+        <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+      </nav>
+    </section>
+    
+    
+    <!-- Banner -->
+    <section id="banner" class="top-banner">
+      <img src="./images/icon-teaching.png" alt="Teaching Icon" class="icon">
+      
+      <h1 class="banner-title">Social Justice and Statistical Concepts</h1>
+    </section>
+        
+    
+    <!-- Navigation for Large Screens -->
+    <nav class="navbar-large">
+      <a href="index.html" class="navbar-button">Home</a>
+      <a href="teaching.html" class="navbar-button">Teaching</a>
+      <a href="research.html" class="navbar-button">Research</a>
+      <a href="consulting.html" class="navbar-button">Consulting</a>
+      <a href="miscellaneous.html" class="navbar-button">Miscellaneous</a>
+    </nav>
+  </header>
+  
+  
+  <!-- Main Content -->
+  <main class="main-box tri-grid">
+    
+    <!-- Overview -->
+    <article id="overview" class="primary-article">  
+      <img src="./images/ma490-banner.jpg" alt="Bayesian Banner" class="banner">
+      
+      <p>"Where there is an injustice, there is a need for social justice."  Unfortunately, we live in a world which
+      is broken, and that brokenness results in people being marginalized, overlooked, and/or oppressed.  Data can be
+      a weapon wielded to reinforce these patterns of injustice; or, it can tool for breaking them down and 
+      building a future which benefits everyone.  A blend of <em>both</em> a statistical and humanities perspective, 
+      the course will discuss disparities within our society using a lens that incorporates data as well as the stories 
+      of the people that data represents.</p>
+    </article>  
+    
+    
+    
+    <!-- Tabbed Content -->
+    <article id="tabs" class="primary-article tab-border">
+      <nav class="tab-bar">
+        <a class="tab-button" onclick="displayTab(event, 'Learning Objectives')">Learning Objectives</a>
+        <a class="tab-button" onclick="displayTab(event, 'Course Structure')">Course Structure</a>
+      </nav>
+      
+      
+      <!-- Learning Objectives -->
+      <section id="Learning Objectives" class="tab">
+        <h3>Learning Objectives</h3>
+        
+        <p>After completing this course, students will be able to accomplish the following tasks:</p>
+        
+        <ol type="A">
+          <li><strong>Describe</strong> the importance of multivariable thinking in social contexts and 
+          <strong>apply</strong> a multivariable model to address a research question regarding social injustice.</li>
+          
+          <li><strong>Identify</strong> the roles of data, history, culture, and other systems in creating and 
+          reinforcing inequity and injustice.</li>
+          
+          <li><strong>Critique</strong> data collection and statistical analyses used to support arguments 
+          focused on equity and representation.</li>
+          
+          <li><strong>Communicate</strong> clearly (verbally, textually, and visually) social justice concerns,
+          statistical concepts, and their relationship to one another.</li>
+          
+          <li><strong>Articulate</strong> the value and limitations of statistical thinking in discussions 
+          involving equity and representation.</li>
+        </ol>
+      </section>
+      
+      
+      <!-- Course Structure -->
+      <section id="Course Structure" class="tab">
+        <h3>Course Structure</h3>
+        
+        <p>This is a "seminar."  Instead of weekly lectures, students will perform weekly readings; class time will be
+        used to host discussions.  Students entering the course should be prepared to engage with the readings and 
+        discussions each week.</p>
+        
+        <p>The course will introduce statistical concepts as necessary to engage in the literature; however, a working 
+        knowledge of statistics at the introductory level is expected.</p>
+      </section>
+    </article>
+  </main>
+    
+    
+  <!-- Footer -->
+  <footer class="footer-box">
+    <a class="header-footer-link" href="mailto:reyesem@rose-hulman.edu">
+      Contact
+    </a> | 
+    <a class="header-footer-link" href="https://www.rose-hulman.edu">
+      Rose-Hulman Institute of Technology
+    </a>
+  </footer>
+  
+  
+  <!-- Script to Initialize First Tab -->
+  <script>
+    var firstbtn = document.getElementsByClassName("tab-button")[0];
+    firstbtn.click();
+  </script>
+</body>
+</html>
