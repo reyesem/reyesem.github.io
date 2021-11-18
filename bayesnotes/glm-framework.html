@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 General Linear Model Framework | Course Notes for Bayesian Data Analysis</title>
+  <meta name="description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 General Linear Model Framework | Course Notes for Bayesian Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 General Linear Model Framework | Course Notes for Bayesian Data Analysis" />
+  
+  <meta name="twitter:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Summaries.html"/>
+<link rel="next" href="additional-study-design.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Data Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Language and Logic of Inference</b></span></li>
+<li class="chapter" data-level="1" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>1</b> Essential Probability</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>1.1</b> Density Functions as Models</a></li>
+<li class="chapter" data-level="1.2" data-path="essential-probability.html"><a href="essential-probability.html#summarizing-distributions-parameters"><i class="fa fa-check"></i><b>1.2</b> Summarizing Distributions (Parameters)</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="essential-probability.html"><a href="essential-probability.html#kernels"><i class="fa fa-check"></i><b>1.2.1</b> Kernels</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="essential-probability.html"><a href="essential-probability.html#transformations-of-random-variables"><i class="fa fa-check"></i><b>1.3</b> Transformations of Random Variables</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="essential-probability.html"><a href="essential-probability.html#expectations-of-functions"><i class="fa fa-check"></i><b>1.3.1</b> Expectations of Functions</a></li>
+<li class="chapter" data-level="1.3.2" data-path="essential-probability.html"><a href="essential-probability.html#moment-generating-functions"><i class="fa fa-check"></i><b>1.3.2</b> Moment Generating Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="essential-probability.html"><a href="essential-probability.html#independent-random-variables"><i class="fa fa-check"></i><b>1.4</b> Independent Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="CaseDeepwater.html"><a href="CaseDeepwater.html"><i class="fa fa-check"></i><b>2</b> Case Study: Health Effects of the Deepwater Horizon Oil Spill</a></li>
+<li class="chapter" data-level="3" data-path="Basics.html"><a href="Basics.html"><i class="fa fa-check"></i><b>3</b> The Statistical Process</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Basics.html"><a href="Basics.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>3.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="3.2" data-path="Basics.html"><a href="Basics.html#anatomy-of-a-dataset"><i class="fa fa-check"></i><b>3.2</b> Anatomy of a Dataset</a></li>
+<li class="chapter" data-level="3.3" data-path="Basics.html"><a href="Basics.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>3.3</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Questions.html"><a href="Questions.html"><i class="fa fa-check"></i><b>4</b> Asking the Right Questions</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Questions.html"><a href="Questions.html#characterizing-a-variable"><i class="fa fa-check"></i><b>4.1</b> Characterizing a Variable</a></li>
+<li class="chapter" data-level="4.2" data-path="Questions.html"><a href="Questions.html#framing-the-question"><i class="fa fa-check"></i><b>4.2</b> Framing the Question</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>5</b> Gathering the Evidence (Data Collection)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Data.html"><a href="Data.html#what-makes-a-sample-reliable"><i class="fa fa-check"></i><b>5.1</b> What Makes a Sample Reliable</a></li>
+<li class="chapter" data-level="5.2" data-path="Data.html"><a href="Data.html#poor-methods-of-data-collection"><i class="fa fa-check"></i><b>5.2</b> Poor Methods of Data Collection</a></li>
+<li class="chapter" data-level="5.3" data-path="Data.html"><a href="Data.html#preferred-methods-of-sampling"><i class="fa fa-check"></i><b>5.3</b> Preferred Methods of Sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Summaries.html"><a href="Summaries.html"><i class="fa fa-check"></i><b>6</b> Presenting the Evidence (Summarizing Data)</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Summaries.html"><a href="Summaries.html#characteristics-of-a-distribution-summarizing-a-single-variable"><i class="fa fa-check"></i><b>6.1</b> Characteristics of a Distribution (Summarizing a Single Variable)</a></li>
+<li class="chapter" data-level="6.2" data-path="Summaries.html"><a href="Summaries.html#summarizing-relationships"><i class="fa fa-check"></i><b>6.2</b> Summarizing Relationships</a></li>
+</ul></li>
+<li class="part"><span><b>II General Linear Model and Modeling Strategies</b></span></li>
+<li class="chapter" data-level="7" data-path="glm-framework.html"><a href="glm-framework.html"><i class="fa fa-check"></i><b>7</b> General Linear Model Framework</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="glm-framework.html"><a href="glm-framework.html#parameter-estimation"><i class="fa fa-check"></i><b>7.1</b> Parameter Estimation</a></li>
+<li class="chapter" data-level="7.2" data-path="glm-framework.html"><a href="glm-framework.html#conditions-on-the-model"><i class="fa fa-check"></i><b>7.2</b> Conditions on the Model</a></li>
+<li class="chapter" data-level="7.3" data-path="glm-framework.html"><a href="glm-framework.html#alternate-characterization-of-the-model"><i class="fa fa-check"></i><b>7.3</b> Alternate Characterization of the Model</a></li>
+<li class="chapter" data-level="7.4" data-path="glm-framework.html"><a href="glm-framework.html#interpretations-of-parameters"><i class="fa fa-check"></i><b>7.4</b> Interpretations of Parameters</a></li>
+<li class="chapter" data-level="7.5" data-path="glm-framework.html"><a href="glm-framework.html#inference-about-the-mean-parameters"><i class="fa fa-check"></i><b>7.5</b> Inference About the Mean Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="additional-study-design.html"><a href="additional-study-design.html"><i class="fa fa-check"></i><b>8</b> Additional Study Design</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="additional-study-design.html"><a href="additional-study-design.html#two-types-of-studies"><i class="fa fa-check"></i><b>8.1</b> Two Types of Studies</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Course Notes for Bayesian Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="glm-framework" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> General Linear Model Framework</h1>
+<p>The general linear model, also known as multiple linear regression, provides a framework appropriate for modeling a continuous outcome (response) as a function of several predictors. This framework unifies the methods discussed in a typical introductory course. After introducing the framework, we use this platform to introduce several flexible modeling strategies helpful when addressing common scientific questions.</p>
+<p>The development of a model should not be divorced from its intended use, and in general, there are three uses for multivariable models. That is, the majority of scientific questions can be categorized into one of three groups: prediction, isolating an effect, or studying the interplay between variables.</p>
+
+<div class="rmdkeyidea">
+<p>There are primarily three uses for a multivariable model</p>
+<ul>
+<li><strong>Prediction</strong>: modeling a relationship for the purpose of estimating a future occurence given new data.</li>
+<li><strong>Isolating an Effect</strong>: describing the relationship between a response and predictor after accounting for the influence of other predictors measured.</li>
+<li><strong>Studying the Interplay</strong>: examining how the relationship of two variables is impacted by the value of a third variable.</li>
+</ul>
+</div>
+<p>While we introduce these elements in the context of the general linear model, note that these uses carry over into other regression models we will examine.</p>
+<p>Consider a gardener studying two common organic fertilizers. She could have the following questions in mind:</p>
+<p>A. What do I anticipate the yield of tomatoes to be next summer when using cow manure?
+B. Does bat guano tend to result in higher tomato yields compared with cow manure after accounting for any differences in yield due to the amount of water the plants receive?
+C. Does the efficacy of bat guano (compared with cow manure) depend on the amount of sunlight the plants receive?</p>
+<p>The first question is an example of predicting; given the fertilizer being considered (as well as potentially other characteristics of the garden), what does she expect the results to be in the future? The second question examines the impact (or effect) of the fertilizer <em>above and beyond</em> any impact of watering; she is interested in <em>isolating</em> the effect of fertilizer from the effect of watering. In the last question, she is not only interested in the effect of the fertilizer on the yield, but she wants to acknowledge that this impact could depend on a third variable - sunlight; this is an example of the interplay between the fertilizer and the sunlight.</p>
+<p>In each of these objectives, there are multiple things at play, requiring modeling techniques that account for multiple predictors simultaneously. The general linear model views the response as a being the results of a linear combination of several variables and error. Specifically, the framework generalizes the simple linear regression model studied in introductory statistics to characterize the average response as a function of several variables simultaneously.</p>
+ffalse{-91-71-101-110-101-114-97-108-32-76-105-110-101-97-114-32-77-111-100-101-108-93-}
+<div class="definition">
+<p><span id="def:defn-general-linear-model" class="definition"><strong>Definition 7.1  \iffalse (General Linear Model)  </strong></span>The general linear model views the response (outcome) as a linear combination of several predictors:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  (\text{Response})_i 
+    &amp;= \beta_0 + \beta_1 (\text{Predictor 1})_{i} + \beta_2 (\text{Predictor 2})_{i} + \dotsb + 
+      \beta_p (\text{Predictor } p)_{i} + \varepsilon_i \\
+    &amp;= \beta_0 + \sum\limits_{j=1}^{p} \beta_j (\text{Predictor } j)_{i} + \varepsilon_i
+\end{aligned}
+\]</span></p>
+where <span class="math inline">\(n\)</span> is the number of subjects in the sample, <span class="math inline">\(p &lt; n\)</span> is the number of predictors in the model, and <span class="math inline">\(\varepsilon_i\)</span> is a random variable that captures the error in the response.
+</div>
+<p>We often use <span class="math inline">\(y_i\)</span> to denote the response of the <span class="math inline">\(i\)</span>-th subject in a general setting and <span class="math inline">\(x_{j,i}\)</span> to denote the value of the <span class="math inline">\(j\)</span>-th predictor for the <span class="math inline">\(i\)</span>-th subject, resulting in the general linear model having the form</p>
+<p><span class="math display">\[y_i = \beta_0 + \sum\limits_{j=1}^{p} \beta_j x_{j, i} + \varepsilon_i.\]</span></p>
+
+<div class="rmdtip">
+Some disciplines refer to the dependent variable (response/outcome) and the independent variables (predictors) of a model. We use the terms “predictor” and “covariate” interchangeably, while some disciplines distinguish between continuous predictors (covariates) and categorical predictors (factors).
+</div>
+
+<div class="rmdtip">
+While not a theoretical requirement, we will only consider the case where <span class="math inline">\(p &lt; n\)</span>, which is common in many disciplines. One discipline in which this is often not valid is genetics. In such “high dimensional” settings, special methods are required that are beyond the scope of this text.
+</div>
+<p>The general linear model has two distinct components — a deterministic component (the linear combination of the predictors) and a stochastic component (the error term). We can think of the error term as the “junk drawer” for the model, capturing anything not explained by the deterministic portion of the model. The error could include systematic error in measuring the response, biological error contributing to the fact that two subjects with the same values of the predictors have different responses, etc.</p>
+<p>The key feature of this model is that it relates the response to several predictors <em>simultaneously</em>. However, this model (and we stress that it is a model) is currently comprised of unknown parameters (the coefficients <span class="math inline">\(\beta_1, \beta_2, \dotsc, \beta_p\)</span>). For it to be useful in practice, we need estimates of these parameters.</p>
+<div id="parameter-estimation" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Parameter Estimation</h2>
+<p>The coefficients in front of each predictor act as parameters in the model as they are unknown and characterize the distribution of the response in some way. Our goal is to construct estimates of these unknown quantities. The most common method of estimation is the method of least squares.</p>
+ffalse{-91-76-101-97-115-116-32-83-113-117-97-114-101-115-32-69-115-116-105-109-97-116-105-111-110-93-}
+<div class="definition">
+<p><span id="def:defn-least-squares" class="definition"><strong>Definition 7.2  \iffalse (Least Squares Estimation)  </strong></span>The method of least squares may be used to estimate the coefficients (parameters) of a linear model. In particular, we choose the values of the coefficients that minimize</p>
+<p><span class="math display">\[\sum\limits_{i=1}^{n} \left((\text{Response})_i - \beta_0 - \sum\limits_{j=1}^{p} \beta_j (\text{Predictor } j)_{i}\right)^2.\]</span></p>
+The resulting estimates are denoted <span class="math inline">\(\widehat{\beta}_0, \widehat{\beta}_1, \dotsc, \widehat{\beta}_p\)</span>.
+</div>
+<p>It is important to remember that the method of least squares results in <em>estimates</em> of the parameters. We are not “solving” for the parameters; the parameters will always remain unknown quantities. We are using data to estimate the parameters. There is really nothing statistical about least squares. It is simply an optimization problem — choosing coefficients to minimize some criteria. Of course, we do not determine these estimates by hand; instead, we rely on statistical software.</p>
+<p>We cannot stress enough that the act of obtaining these estimates is simply an optimization exercise. While a computer can provide these estimates, we cannot yet even interpret these estimates without further assumptions on the model. This is where it becomes a <em>statistical</em> problem — specifying the conditions required for the purpose of making inference on the unknown parameters.</p>
+</div>
+<div id="conditions-on-the-model" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Conditions on the Model</h2>
+<p>The act of estimation alone is really a mathematical problem. Being able to describe the properties of those estimates, quantify the variability in those estimates, and use those estimates to make inference on the population parameters is where we enter statistics. Whenever a random variable is present in a model, inference requires us to make assumptions about its underlying distribution. As analysts, we balance making inference easy mathematically by making more assumptions (adding more structure to the model) and making the model more flexible (not making the model too restrictive).</p>
+<p>Most software, by default, places four conditions on the distribution of the error term in the model. We refer to this collection of conditions as the “classical regression model.”</p>
+ffalse{-91-67-108-97-115-115-105-99-97-108-32-82-101-103-114-101-115-115-105-111-110-32-77-111-100-101-108-93-}
+<div class="definition">
+<p><span id="def:defn-classical-regression" class="definition"><strong>Definition 7.3  \iffalse (Classical Regression Model)  </strong></span>In the “classical regression model,” we place the following four conditions on the distribution of the error <span class="math inline">\(\varepsilon_i\)</span>:</p>
+<ol style="list-style-type: decimal">
+<li>The average error across all levels of the predictors is 0; mathematically, we write <span class="math inline">\(E\left(\varepsilon_i \mid (\text{Predictors 1 - }p)_i\right) = 0\)</span>.</li>
+<li>The variance of the errors is constant across all levels of the predictors; mathematically, we write <span class="math inline">\(Var\left(\varepsilon_i \mid (\text{Predictors 1 - }p)_i\right) = \sigma^2\)</span> for some unknown constant <span class="math inline">\(\sigma^2 &gt; 0\)</span>. This is sometimes referred to as homoskedasticity.</li>
+<li>The error terms are independent; in particular, the magnitude of the error for one observation does not influence the magnitude of the error for any other observation.</li>
+<li>The distribution of the errors follows a Normal distribution with the above mean and variance.</li>
+</ol>
+</div>
+<p>It would be a mistake to consider the above conditions only from a probabilistic perspective; wrestling with what these mean in practice critical for understanding the model.</p>
+<p>The first condition basically says that the structure of the model is correct; that is, no variables were omitted and the functional form of the response is really determined by a linear combination of the predictors. Violations of this assumption are very serious and indicate a different model structure is needed. Essentially, if we believe this condition is not met, it means we should revisit the science and rationale behind the proposed model because it is likely invalid.</p>
+<p>The second condition considers the precision with which the response is measured. The condition asserts that this precision is consistent across all possible values for the predictors. For example, consider the academic performance of two classes; this condition prohibits cases in which the grades for one class have a wider range than the grades for the other.</p>
+<p>The third condition eliminates data for which measurements are related beyond sharing common values of the predictors in the model. For example, suppose we are modeling the height of a tree as a function of its age. All trees of a similar age may be “related” in the sense that we expect them to have similar heights; the model allows this. However, it does not allow for trees being “related” in the sense that trees in a similar region will share a similar height due to differences in resources among regions; this is prohibited because “region” is not captured by the model. In the biological sciences, this condition is often called into question when we take repeatd measurements on subjects or when observations are measured close together in time. This type of data will be addressed later in the text (Chapter <a href="#rm-terminology"><strong>??</strong></a>).</p>
+<p>The last condition is a strong one; it states that we are able to fully characterize the distribution of the error terms. While the others describe certain characteristics of the distribution, this says we know the exact form of the distribution. Historically, this condition was imposed to ensure the error terms were well behaved (and because the probability theory worked out nicely).</p>
+<p>Statistics courses (especially the introductory course) focuses on these four conditions on the error. However, additional conditions are often imposed on the predictors of the model as well in the classical framework.</p>
+ffalse{-91-67-108-97-115-115-105-99-97-108-32-82-101-103-114-101-115-115-105-111-110-32-67-111-110-100-105-116-105-111-110-115-32-111-110-32-80-114-101-100-105-99-116-111-114-115-93-}
+<div class="definition">
+<p><span id="def:defn-classical-regression-cont" class="definition"><strong>Definition 7.4  \iffalse (Classical Regression Conditions on Predictors)  </strong></span>The classical regression model places the following conditions on the predictors:</p>
+<ol style="list-style-type: decimal">
+<li>Each predictor is measured without error.</li>
+<li>Each predictor has an additive linear effect on the response.</li>
+</ol>
+</div>
+<p>This first additional condition states that there cannot be any noise present in the measurement of the <em>predictors</em>. For example, imagine modeling the length (or height) of infants as a function of their age. When the doctor asks for the age of the child, we are assuming that this age can be computed without error. This seems reasonable in this case. However, consider using the temperature of the infant as a predictor in the model; if the thermometer is only accurate to within 2 tenths of a degree, than we may believe that the body temperature is measured with error. Addressing measurement error in models is beyond the scope of this text, and it is in general a difficult problem. Typically, even if a predictor is potentially measured with error, we are able to assume the error is negligible compared to the amount of error in the response. Throughout the text, we will assume all predictors are measured without error.</p>
+<p>The second condition on the predictors is very closely related to the condition on the errors that the mean of the errors is 0. If we are empirically building a model and find evidence that the model has been mis-specified, it is generally a result of the predictors not having a linear relationship with the response.</p>
+</div>
+<div id="alternate-characterization-of-the-model" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Alternate Characterization of the Model</h2>
+<p>Recall that a distribution is just the pattern of variability among the values of a variable; that is, a distribution describes how values differ from one another. Chapter <a href="essential-probability.html#essential-probability">1</a> presented probability tools that can be used to model these distributions. We saw that it is possible to specify these models up to some unknown parameters; for example, we may write <span class="math inline">\(X \sim N\left(\mu, \sigma^2\right)\)</span> in order to say that the distribution of the random variable <span class="math inline">\(X\)</span> can be modeled using the following mathematical formula:</p>
+<p><span class="math display">\[\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{1}{2\sigma^2}\left(x - \mu\right)^2}.\]</span></p>
+<p>We often think about these parameters as being a single value, but nothing prohibits that value from being described by a function of variables. That is, we could let <span class="math inline">\(\mu = g(\text{Predictors})\)</span> for some function <span class="math inline">\(g\)</span>. In fact, the conditions on the error term specified in the previous section lead us to an alternate characterization of the general linear model.</p>
+ffalse{-91-65-108-116-101-114-110-97-116-101-32-67-104-97-114-97-99-116-101-114-105-122-97-116-105-111-110-32-111-102-32-116-104-101-32-67-108-97-115-115-105-99-97-108-32-82-101-103-114-101-115-115-105-111-110-32-77-111-100-101-108-93-}
+<div class="definition">
+<p><span id="def:defn-alternate-characterization" class="definition"><strong>Definition 7.5  \iffalse (Alternate Characterization of the Classical Regression Model)  </strong></span>Under the classical regression conditions on the error term, we can characterize the classical regression model as</p>
+<p><span class="math display">\[(\text{Response})_i \mid (\text{Predictors 1 through } p)_i \stackrel{\text{Ind}}{\sim}N\left(\beta_0 + \sum\limits_{j=1}^{p} \beta_j (\text{Predictor } j)_i, \sigma^2\right).\]</span></p>
+Here, the symbol <span class="math inline">\(\mid\)</span> is read “given” and means that the distribution of the response is specified after knowing the values of the predictors. That is, the distribution of the response depends on these variables.
+</div>
+<p>This form of the regression model is particularly useful in statistical theory, but that is not why we mention it here. We mention this form because it sheds light on the true nature of regression models (beyond just the classical regression model) — they characterize the distribution of the response.</p>
+
+<div class="rmdkeyidea">
+Regression models describe the variability in the response by characterizing the distribution of the response through specifying the underlying parameters as a function of the predictors.
+</div>
+<p>In this case, we see that the deterministic portion of the general linear model is actually characterizing the <em>mean</em> of the response (for specified values of the predictors). In fact, this realization is actually the direct result of the first (“mean 0”) condition we placed on the error terms. This is what allows us to begin interpreting the parameters in the model.</p>
+</div>
+<div id="interpretations-of-parameters" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Interpretations of Parameters</h2>
+<p>When we assume that the error in the response, on average, is 0 for all values of the predictor, we are really saying that the deterministic portion of the model defines the mean response. We see this in the alternate characterization of the regression model above where <span class="math inline">\(\mu\)</span> in the Normal model is replaced by</p>
+<p><span class="math display">\[\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i.\]</span></p>
+<p>Notice what happens if we plug zero in for <em>every</em> predictor:</p>
+<p><span class="math display">\[\beta_0 + \sum_{j=1}^{p} \beta_j (0) = \beta_0.\]</span></p>
+<p>Since this deterministic portion specifies the average response, then we see that the average response is <span class="math inline">\(\beta_0\)</span> when all predictors have the value zero.</p>
+ffalse{-91-73-110-116-101-114-99-101-112-116-93-}
+<div class="definition">
+<span id="def:defn-intercept" class="definition"><strong>Definition 7.6  \iffalse (Intercept)  </strong></span>The population intercept, denoted <span class="math inline">\(\beta_0\)</span>, is the <em>mean</em> response when all predictors take the value zero.
+</div>
+<p>We should point out that while this is the valid interpretation, it may not always make sense in context. For example, if we are modeling the heart rate of patients as a function of their body temperature and weight; the model would have the form</p>
+<p><span class="math display">\[(\text{Heart Rate})_i = \beta_0 + \beta_1 (\text{Body Temperature})_i + \beta_2 (\text{Weight})_i + \varepsilon_i.\]</span></p>
+<p>It does not make sense to consider individuals whose body temperature is zero degrees or whose weight is zero pounds.</p>
+<p>We now turn to considering an interpretation for the slope. Consider two groups of individuals</p>
+<ul>
+<li>Group 1 has the value <span class="math inline">\(a\)</span> for the first predictor and value <span class="math inline">\(x_j\)</span> for Predictor <span class="math inline">\(j\)</span> (for <span class="math inline">\(j = 2, \dotsc, p\)</span>).</li>
+<li>Group 2 has the value <span class="math inline">\(a + 1\)</span> for the first predictor and value <span class="math inline">\(x_j\)</span> for Predictor <span class="math inline">\(j\)</span> for <span class="math inline">\(j = 2, \dotsc, p\)</span>.</li>
+</ul>
+<p>That is, the only way the two groups differ is that Group 2 has increased the value of the first predictor by 1. From our model, we have that the average response for Group 1 is</p>
+<p><span class="math display">\[\beta_0 + \beta_1 a + \sum_{j=2}^{p} \beta_j x_j.\]</span></p>
+<p>The average response for Group 2 is</p>
+<p><span class="math display">\[\beta_0 + \beta_1 (a + 1) \sum_{j=2}^{p} \beta_j x_j.\]</span></p>
+<p>Consider taking the difference in these two mean responses (Group 2 minus Group 1):</p>
+<p><span class="math display">\[\beta_0 + \beta_1 (a + 1) \sum_{j=2}^{p} \beta_j x_j - \left(\beta_0 + \beta_1 a + \sum_{j=2}^{p} \beta_j x_j\right) = \beta_1.\]</span></p>
+<p>The slope is the difference.</p>
+ffalse{-91-83-108-111-112-101-93-}
+<div class="definition">
+<span id="def:defn-slope" class="definition"><strong>Definition 7.7  \iffalse (Slope)  </strong></span>The coefficient for the <span class="math inline">\(j\)</span>-th predictor, denoted <span class="math inline">\(\beta_j\)</span>, is the change in the mean response associated with a one unit increase in Predictor <span class="math inline">\(j\)</span>, <em>holding all other predictors fixed</em>.
+</div>
+<p>The last part of this definition is critical to our understanding and the full utility of regression models. Again, while holding all other predictors fixed may not be practically feasible (could we really increase an individual’s height without also increasing their weight?), it allows us to investigate the impact of a predictor separate from other variables.</p>
+<p>Interpretation of the parameters is a large from simply estimating the parameters. However, we still have not developed the tools to do much beyond estimation. We now turn our attention to inference.</p>
+</div>
+<div id="inference-about-the-mean-parameters" class="section level2" number="7.5">
+<h2><span class="header-section-number">7.5</span> Inference About the Mean Parameters</h2>
+<p>As we have stated, the distribution of the sample and point estimates alone, do not allow us to make formal inference on the parameters of the population. We need a model for the sampling distribution (or null distribution). Under the classical regression conditions, we are able to form an exact model for the sampling distribution.</p>
+<p>While beyond the scope of this course, it can be shown that the least squares estimates of the parameters are linear combinations of the observed responses. This, combined with the modeling assumptions, allow us to construct a model for the sampling distribution of the estimates under the classical modeling.</p>
+ffalse{-91-83-97-109-112-108-105-110-103-32-68-105-115-116-114-105-98-117-116-105-111-110-32-111-102-32-76-101-97-115-116-32-83-113-117-97-114-101-115-32-69-115-116-105-109-97-116-101-115-93-}
+<div class="definition">
+<p><span id="def:defn-ls-sampling-distribution" class="definition"><strong>Definition 7.8  \iffalse (Sampling Distribution of Least Squares Estimates)  </strong></span>Under the classical regression conditions, we have that</p>
+<p><span class="math display">\[\frac{\widehat{\beta}_j - \beta_j}{\sqrt{Var\left(\widehat{\beta}_j\right)}} \sim t_{n - p - 1}.\]</span></p>
+The denominator <span class="math inline">\(\sqrt{Var\left(\widehat{\beta}_j\right)}\)</span> is known as the <em>standard error</em> of the estimate <span class="math inline">\(\widehat{\beta}_j\)</span>. This formula holds for all <span class="math inline">\(j = 0, 1, \dotsc, p\)</span>.
+</div>
+<p>That is, the standardized difference between our estimate and the parameter follows a t-distribution, where the degrees of freedom depend on the sample size and the number of parameters in the model. The specific model is not as important as knowing that under the classical regression conditions, an exact model is known. Nearly every software package that implements regression does so under the classical regression conditions, and the inference is based on the above model for the sampling distribution.</p>
+<p>The detail-oriented reader will note that we did not include a formula for the standard error of an estimate. The formula is beyond the scope of this course, but it is a function of the values of the predictor as well as the variability in the error term. You see, the moment we specified the second condition (“constant variance”), we introduced another parameter. The parameter <span class="math inline">\(\sigma^2\)</span> does not govern the mean response; so, it tends to be of less direct interest for our purposes. It does characterizes the variability in the response (for a given set of predictors), and it plays a role in inference (as we see in the above model for the sampling distribution of the least squares estimates of the parameters in the mean model). It will therefore play a role in computing confidence intervals. Since it is unknown, it must also be estimated.</p>
+ffalse{-91-69-115-116-105-109-97-116-101-32-111-102-32-86-97-114-105-97-110-99-101-93-}
+<div class="definition">
+<p><span id="def:defn-estimate-sigma2" class="definition"><strong>Definition 7.9  \iffalse (Estimate of Variance)  </strong></span>The unknown variance in the linear model, which captures the variability in the response for any set of predictors (also called the residual variance), is estimated by</p>
+<span class="math display">\[\widehat{\sigma}^2 = \frac{1}{n-p-1} \sum\limits_{i=1}^{n} \left((\text{Response})_i - \widehat{\beta}_0 - \sum\limits_{j=1}^{p} \widehat{\beta}_j (\text{Predictor } j)_{i}\right)^2.\]</span>
+</div>
+<p>Note that the estimate of the variance depends upon the least squares estimates. Of more interest is that the scaling factor <span class="math inline">\((n - p - 1)\)</span> is the same as the degrees of freedom for the sampling distribution; that is not an accident.</p>
+<p>A model for the sampling distribution is the holy grail of statistical inference. It can be updated to determine the model for the null distribution. And, once you have a model for the sampling distribution in hand, you can wield it to construct a confidence interval (and null distributions to yield p-values).</p>
+ffalse{-91-67-108-97-115-115-105-99-97-108-32-67-111-110-102-105-100-101-110-99-101-32-73-110-116-101-114-118-97-108-93-}
+<div class="definition">
+<p><span id="def:defn-classical-ci" class="definition"><strong>Definition 7.10  \iffalse (Classical Confidence Interval)  </strong></span>Under the classical regression conditions, a <span class="math inline">\(100c\)</span>% confidence interval for the parameter <span class="math inline">\(\beta_j\)</span> is given by</p>
+<p><span class="math display">\[\widehat{\beta}_j \pm t_{n-p-1, 0.5(1+c)} \sqrt{Var\left(\widehat{\beta}_j\right)}.\]</span></p>
+where <span class="math inline">\(t_{n-p-1, 0.5(1+c)}\)</span> is the <span class="math inline">\(0.5(1+c)\)</span> quantile from the <span class="math inline">\(t_{n-p-1}\)</span> distribution, known as the critical value for the confidence interval.
+</div>
+<p>Like many confidence intervals, the idea is that we are grabbing the middle portion of the model for the sampling distribution. The confidence interval represents the values of the parameter for which the data is consistent. Also note that this confidence interval is specified for each parameter individually.</p>
+<p>For large values of <span class="math inline">\(n\)</span> relative to <span class="math inline">\(p\)</span>, this critical value for a 95% confidence interval is approximately 1.96. Hence, a rough confidence interval is therefore 2 standard errors in either direction of the point estimate.</p>
+ffalse{-91-67-108-97-115-115-105-99-97-108-32-80-45-86-97-108-117-101-93-}
+<div class="definition">
+<p><span id="def:defn-classical-p" class="definition"><strong>Definition 7.11  \iffalse (Classical P-Value)  </strong></span>Under the classical regression conditions, the p-value for testing the hypotheses</p>
+<p><span class="math display">\[H_0: \beta_j = 0 \qquad \text{vs.} \qquad H_1: \beta_j \neq 0\]</span></p>
+<p>is given by</p>
+<p><span class="math display">\[Pr\left(\lvert T\rvert &gt; \lvert\frac{\widehat{\beta}_j}{\sqrt{Var\left(\widehat{\beta}_j\right)}}\rvert\right)\]</span></p>
+where <span class="math inline">\(T \sim t_{n-p-1}\)</span>.
+</div>
+<p>As always, these computational details are handled in the software. Essentially, what we are able to see is that updating the sampling distribution by enforcing the null hypothesis <span class="math inline">\(\left(\beta_j = 0\right)\)</span>, we obtain a model for the null distribution. Using this null distribution, our p-value then summarizes how likely it is we would obtain a value of the standardized statistic at least as large of that observed by chance alone when the null hypothesis is true.</p>
+<p>The interpretation of the confidence interval and p-value follows the interpretation of the confidence intervals and p-values computed in an introductory course. This section just establishes that the conditions we placed on the error term yield explicit formulas for their computation (even if these formulas are implemented in the background of the software).</p>
+<p>This framework provides the basics for making inference using a statistical model. As we consider more flexible modeling strategies, these key concepts do not leave us. We need a model for the sampling distribution or null distribution in order to make inference. And, the model for that distribution depends on the conditions we are willing to make.</p>
+
+<div class="rmdkeyidea">
+The model for the sampling distribution (and null distribution) is needed for making inference, and that model depends on the conditions we are willing to impose.
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Summaries.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="additional-study-design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

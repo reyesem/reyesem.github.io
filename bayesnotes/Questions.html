@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Asking the Right Questions | Course Notes for Bayesian Data Analysis</title>
+  <meta name="description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Asking the Right Questions | Course Notes for Bayesian Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Asking the Right Questions | Course Notes for Bayesian Data Analysis" />
+  
+  <meta name="twitter:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Basics.html"/>
+<link rel="next" href="Data.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Data Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Language and Logic of Inference</b></span></li>
+<li class="chapter" data-level="1" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>1</b> Essential Probability</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>1.1</b> Density Functions as Models</a></li>
+<li class="chapter" data-level="1.2" data-path="essential-probability.html"><a href="essential-probability.html#summarizing-distributions-parameters"><i class="fa fa-check"></i><b>1.2</b> Summarizing Distributions (Parameters)</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="essential-probability.html"><a href="essential-probability.html#kernels"><i class="fa fa-check"></i><b>1.2.1</b> Kernels</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="essential-probability.html"><a href="essential-probability.html#transformations-of-random-variables"><i class="fa fa-check"></i><b>1.3</b> Transformations of Random Variables</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="essential-probability.html"><a href="essential-probability.html#expectations-of-functions"><i class="fa fa-check"></i><b>1.3.1</b> Expectations of Functions</a></li>
+<li class="chapter" data-level="1.3.2" data-path="essential-probability.html"><a href="essential-probability.html#moment-generating-functions"><i class="fa fa-check"></i><b>1.3.2</b> Moment Generating Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="essential-probability.html"><a href="essential-probability.html#independent-random-variables"><i class="fa fa-check"></i><b>1.4</b> Independent Random Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="CaseDeepwater.html"><a href="CaseDeepwater.html"><i class="fa fa-check"></i><b>2</b> Case Study: Health Effects of the Deepwater Horizon Oil Spill</a></li>
+<li class="chapter" data-level="3" data-path="Basics.html"><a href="Basics.html"><i class="fa fa-check"></i><b>3</b> The Statistical Process</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Basics.html"><a href="Basics.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>3.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="3.2" data-path="Basics.html"><a href="Basics.html#anatomy-of-a-dataset"><i class="fa fa-check"></i><b>3.2</b> Anatomy of a Dataset</a></li>
+<li class="chapter" data-level="3.3" data-path="Basics.html"><a href="Basics.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>3.3</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Questions.html"><a href="Questions.html"><i class="fa fa-check"></i><b>4</b> Asking the Right Questions</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Questions.html"><a href="Questions.html#characterizing-a-variable"><i class="fa fa-check"></i><b>4.1</b> Characterizing a Variable</a></li>
+<li class="chapter" data-level="4.2" data-path="Questions.html"><a href="Questions.html#framing-the-question"><i class="fa fa-check"></i><b>4.2</b> Framing the Question</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>5</b> Gathering the Evidence (Data Collection)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Data.html"><a href="Data.html#what-makes-a-sample-reliable"><i class="fa fa-check"></i><b>5.1</b> What Makes a Sample Reliable</a></li>
+<li class="chapter" data-level="5.2" data-path="Data.html"><a href="Data.html#poor-methods-of-data-collection"><i class="fa fa-check"></i><b>5.2</b> Poor Methods of Data Collection</a></li>
+<li class="chapter" data-level="5.3" data-path="Data.html"><a href="Data.html#preferred-methods-of-sampling"><i class="fa fa-check"></i><b>5.3</b> Preferred Methods of Sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Summaries.html"><a href="Summaries.html"><i class="fa fa-check"></i><b>6</b> Presenting the Evidence (Summarizing Data)</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Summaries.html"><a href="Summaries.html#characteristics-of-a-distribution-summarizing-a-single-variable"><i class="fa fa-check"></i><b>6.1</b> Characteristics of a Distribution (Summarizing a Single Variable)</a></li>
+<li class="chapter" data-level="6.2" data-path="Summaries.html"><a href="Summaries.html#summarizing-relationships"><i class="fa fa-check"></i><b>6.2</b> Summarizing Relationships</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="additional-study-design.html"><a href="additional-study-design.html"><i class="fa fa-check"></i><b>7</b> Additional Study Design</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="additional-study-design.html"><a href="additional-study-design.html#two-types-of-studies"><i class="fa fa-check"></i><b>7.1</b> Two Types of Studies</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Course Notes for Bayesian Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Questions" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Asking the Right Questions</h1>
+<p>The discipline of statistics is about turning data into information in order to address some question. While there may be no such thing as a stupid question, there are ill-posed questions — those which cannot be answered as stated. Consider the <a href="CaseDeepwater.html#CaseDeepwater">Deepwater Horizon Case Study</a>. It might seem natural to ask “if a volunteer cleans wildlife, will she develop adverse respiratory symptoms?” Let’s consider the data. Of the 54 volunteers assigned to wildlife cleaning and rehabilitation, 15 reported experiencing adverse respiratory symptoms (“nose irritation, sinus problems, or sore throat”); while some volunteers developed symptoms, others did not. It seems the answer to our question is then “it depends” or “maybe.” This is an example of an <em>ill-posed question</em>. Such questions exist because of <em>variability</em>, the fact that every subject in the population does not behave in exactly the same way. In our example not every volunteer had the same reaction when directly exposed to oil.</p>
+<p>It is variability that creates a need for statistics; in fact, you could think of statistics as the study and characterization of variability. We must therefore learn to ask the <em>right</em> questions — those which can be answered in the presence of variability.</p>
+<div class="definition">
+<p><span id="def:defn-variability" class="definition"><strong>Definition 4.1  (Variability) </strong></span>The notion that measurements differ from one observation to another.</p>
+</div>
+
+<div class="rmdkeyidea">
+The presence of variability makes some questions ill-posed; statistics concerns itself with how to address questions in the presence of variability.
+</div>
+<div id="characterizing-a-variable" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Characterizing a Variable</h2>
+<p>Recall that the goal of statistical inference is to say something about the population; as a result, any question we ask should then be centered on this larger group. The first step to constructing a well-posed question is then to identify the population of interest for the study. For the <a href="CaseDeepwater.html#CaseDeepwater">Deepwater Horizon Case Study</a>, it is unlikely that we are only interested in these 54 observed volunteers assigned to wildlife cleaning. In reality, we probably want to say something about volunteers for any oil spill. The 54 volunteers in our dataset form the sample, a subset from all volunteers who clean wildlife following an oil spill. Our population of interest is comprised of all volunteers who clean wildlife following an oil spill.</p>
+
+<div class="rmdtip">
+When identifying the population of interest, be specific! Suppose you are trying to estimate the average height of trees. Are you really interested in <em>all</em> trees? Or, are you interested in Maple trees within the city limits of Terre Haute, Indiana?
+</div>
+<p>Since we expect that the reaction to oil exposure — the primary variable of interest for this study, sometimes called the <strong>response</strong> — to vary from one individual to another, we cannot ask a question about the <em>value</em> of the reaction (whether they experienced symptoms or not). Instead, we want to characterize the <strong>distribution</strong> of the response.</p>
+<div class="definition">
+<p><span id="def:defn-response" class="definition"><strong>Definition 4.2  (Response) </strong></span>The primary variable of interest within a study. This is the variable you would either like to explain or estimate.</p>
+</div>
+
+<div class="rmdkeyidea">
+We will use random variables to represent the observations we will observe when we collect data; for example, <span class="math inline">\(X_3\)</span> would refer to the value we expect to see for the third observation in our sample.
+</div>
+<div class="definition">
+<p><span id="def:defn-distribution" class="definition"><strong>Definition 4.3  (Distribution) </strong></span>The pattern of variability corresponding to a set of values.</p>
+</div>
+
+<div class="rmdkeyidea">
+We will use probability theory to model the distribution of a response across the population.
+</div>
+<p>Notice that in this case, the response is a categorical variable; describing the distribution of such a variable is equivalent to describing how individuals are divided among the possible groups. With a finite number of observations, we could present the number of observations (<strong>frequeny</strong>) within each group. For example, of the 54 volunteers, 15 experienced adverse symptoms and 39 did not. This works well within the sample; however, as our population is infinitely large (all volunteers cleaning wildlife following an oil spill), reporting the frequencies is not appropriate. In this case, we report the fraction of observations (<strong>relative frequency</strong>) falling within each group; this helps convey information about the distribution of this variable.</p>
+<div class="definition">
+<p><span id="def:defn-frequency" class="definition"><strong>Definition 4.4  (Frequency) </strong></span>The number of observations falling into a particular level of a categorical variable.</p>
+</div>
+<div class="definition">
+<p><span id="def:defn-relative-frequency" class="definition"><strong>Definition 4.5  (Relative Frequency) </strong></span>Also called the “proportion,” the fraction of observations falling into a particular level of a categorical variable.</p>
+</div>
+<p>Numeric quantities, like the proportion, which summarize the distribution of a variable within the population are known as <strong>parameters</strong>.</p>
+<div class="definition">
+<p><span id="def:defn-parameter" class="definition"><strong>Definition 4.6  (Parameter) </strong></span>Numeric quantity which summarizes the distribution of a variable within the <em>population</em> of interest. Generally denoted by Greek letters in statistical formulas.</p>
+</div>
+<p>While the <em>value</em> of a variable may vary across the population, the <em>parameter</em> is a single fixed constant which summarizes the variable for that population. For example, the grade received on an exam varies from one student to another in a class; but, the <em>average exam grade</em> is a fixed number which summarizes the class as a whole. Well-posed questions can be constructed if we limit ourselves to questions about the parameter. The second step in constructing well-posed questions is then to identify the parameter of interest.</p>
+<p>The questions we ask generally fall into one of three categories:</p>
+<ul>
+<li>Estimation: what <em>proportion</em> of volunteers who clean wildlife following an oil spill will experience adverse respiratory symptoms?</li>
+<li>Hypothesis Testing: is it reasonable to expect that no more than 1 in 5 volunteers who clean wildlife following an oil spill will experience adverse respiratory symptoms?</li>
+<li>Prediction: how likely is a volunteer who cleans wildlife following an oil spill to experience adverse respiratory symptoms?</li>
+</ul>
+<div class="definition">
+<p><span id="def:defn-estimation" class="definition"><strong>Definition 4.7  (Estimation) </strong></span>Using the sample to approximate the value of a parameter from the underlying population.</p>
+</div>
+<div class="definition">
+<p><span id="def:defn-hypothesis-testing" class="definition"><strong>Definition 4.8  (Hypothesis Testing) </strong></span>Using a sample to determine if the data is consistent with a working theory or if there is evidence to suggest the data is not consistent with the theory.</p>
+</div>
+<div class="definition">
+<p><span id="def:defn-prediction" class="definition"><strong>Definition 4.9  (Prediction) </strong></span>Using a sample to predict the value for an individual <em>future</em> observation.</p>
+</div>
+<p>Since we do not get to observe the population (we only see the sample), we cannot observe the value of the parameter. That is, we will never know the true proportion of volunteers who experience symptoms. However, we can determine what the data suggests about the population (that is what inference is all about).</p>
+
+<div class="rmdkeyidea">
+Parameters are unknown values and can, in general, never be known.
+</div>
+
+<div class="rmdkeyidea">
+Parameters within the population correspond to the <em>unknown</em> parameters which define the mathematical probability model which describes the distribution of the response.
+</div>
+<p>It turns out, the vast majority of research questions can be framed in terms of a parameter. This is a fundamental ideas of inference.</p>
+
+<div class="rmdfivefund">
+A research question can often be framed in terms of a parameter which characterizes the population. Framing the question should then guide our analysis.
+</div>
+<p>We now have a way of describing a well-posed question, a question which can be addressed using data. Well posed questions are about the population and can be framed in terms of a parameter which summarizes that population. We now describe how these questions are typically framed.</p>
+</div>
+<div id="framing-the-question" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Framing the Question</h2>
+<p>In engineering and scientific applications, many questions fall under the second category of model consistency. Examining such questions is known as <strong>hypothesis testing</strong>, which is a form of model comparison in which data is collected to help the researcher choose between two competing theories for the parameter of interest. In this section, we consider the terminology surrounding specifying such questions.</p>
+<p>For the <a href="CaseDeepwater.html#CaseDeepwater">Deepwater Horizon Case Study</a> suppose we are interested in addressing the following question:</p>
+<blockquote>
+<p>Is there evidence that more than 1 in 5 volunteers who clean wildlife following an oil spill will develop adverse respiratory symptoms?</p>
+</blockquote>
+<p>The question itself is about the population (all volunteers assigned to clean wildlife following an oil spill) and is centered on a parameter (the proportion who develop adverse respiratory symptoms). That is, this is a well-posed question that can be answered with appropriate data. The overall process for addressing these types of questions is to form opposing statements defining reality, and then quantifying how likely each of those statements are based on the data we have observed.</p>
+<p>Consider the above question for the <a href="CaseDeepwater.html#CaseDeepwater">Deepwater Horizon Case Study</a>. We are interested in finding evidence that the proportion experiencing adverse symptoms exceeds 0.20 (1 in 5). Therefore, we are interested in determining how likely this is to be true given the data we have observed. More, we might want to compare it against the likelihood that the proportion experiencing adverse symptoms does not exceed 0.20 (the opposite statement) given the data we have observed. There are therefore two opposing statements which could each define reality: the proportion experiencing adverse symptoms exceeds 0.20, or the proportion experiencing adverse symptoms does not exceed 0.20. Notice that both statements cannot be simultaneously true; each is a different statement about the parameter. We call these <em>hypotheses</em>.</p>
+<div class="definition">
+<p><span id="def:defn-hypothesis" class="definition"><strong>Definition 4.10  (Hypothesis) </strong></span>A statement (or theory) regarding a region for the parameter(s) of interest. Hypotheses are generally mutually exclusive. If there are only two competing hypotheses, the one we are more interested in establishing is typically called the <em>alternative</em> hypothesis (written <span class="math inline">\(H_1\)</span> and read “H-one”), and its opposite is known as the <em>null</em> hypothesis (written <span class="math inline">\(H_0\)</span> and read “H-naught”).</p>
+</div>
+<p>For the <a href="CaseDeepwater.html#CaseDeepwater">Deepwater Horizon Case Study</a>, we write:</p>
+<blockquote>
+<p><span class="math inline">\(H_0:\)</span> The proportion of volunteers assigned to clean wildlife following an oil spill who experience adverse respiratory symptoms is no more than 0.20.<br />
+<span class="math inline">\(H_1:\)</span> The proportion of volunteers assigned to clean wildlife following an oil spill who experience adverse respiratory symptoms exceeds 0.20.</p>
+</blockquote>
+<p>Each hypothesis is a well-posed statement (about a parameter characterizing the entire population), and the two statements are exactly opposite of one another meaning only one can be a true statement.</p>
+
+<div class="rmdtip">
+For those who have prior exposure to statistical inference, notice that this framework <strong>vastly</strong> differs from the classical frequentist perspective. We are actually interested in the probability the hypothesis is true given the data observed!
+</div>
+<p>After writing down our hypotheses, we can collect data to determine which hypothesis is more likely given what we observe.</p>
+<p>Often these statements are written in a bit more of a mathematical structure in which a Greek letter is used to represent the parameter of interest. For example, we might write</p>
+<blockquote>
+<p>Let <span class="math inline">\(\theta\)</span> be the proportion of volunteers (assigned to clean wildlife following an oil spill) who experience adverse respiratory symptoms.<br />
+<span class="math inline">\(H_0: \theta \leq 0.20\)</span><br />
+<span class="math inline">\(H_1: \theta &gt; 0.20\)</span></p>
+</blockquote>
+<p>In the above statements, <span class="math inline">\(\theta\)</span> represents the parameter of interest; the value 0.20 is known as the <strong>null value</strong>. Writing the hypotheses in this way connects them to probabilistic models underlying the distribution.</p>
+<div class="definition">
+<p><span id="def:defn-null-value" class="definition"><strong>Definition 4.11  (Null Value) </strong></span>The value associated with the equality component of the null hypothesis; it forms the threshold or boundary between the two hypothesis. Note: not all questions of interest require a null value be specified.</p>
+</div>
+<p>This section has focused on developing the null and alternative hypothesis when our question of interest is best characterized as one of comparing models or evaluating a particular statement. If our goal is estimation, a null and alternative hypothesis are not applicable. For example, we might have the following goal:</p>
+<blockquote>
+<p>Estimate the proportion of volunteers (assigned to clean wildlife following an oil spill) who experience adverse respiratory symptoms.</p>
+</blockquote>
+<p>In this version of our research “question” there is no statement which needs to be evaluated. We are interested in estimation, not hypothesis testing and thus there is no corresponding null and alternative hypothesis.</p>
+
+<div class="rmdtip">
+<p><strong>Process for Framing a Question</strong> In order to frame a research question, consider the following steps:</p>
+<ol style="list-style-type: decimal">
+<li>Identify the population of interest.</li>
+<li>Identify the parameter(s) of interest.</li>
+<li>Determine if you are interested in estimating the parameter(s) or quantifying the evidence against some working theory.</li>
+<li>If you are interested in testing a working theory, make the null hypothesis the working theory and the alternative the exact opposite statement (what you want to provide evidence for).</li>
+</ol>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Basics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
