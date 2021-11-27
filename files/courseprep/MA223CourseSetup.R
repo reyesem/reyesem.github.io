@@ -9,10 +9,17 @@
 # Notes:
 
 # ---- Package Installation ----
+install.packages("digest", quiet = TRUE)
+install.packages("htmltools", quiet = TRUE)
+install.packages("jquerylib", quiet = TRUE)
+install.packages("xfun", quiet = TRUE)
+install.packages("rmarkdown", quiet = TRUE)
 install.packages("googlesheets", quiet = TRUE)
 install.packages("learnr", quiet = TRUE)
-install.packages("https://reyesem.github.io/files/MA223/IntroAnalysis_0.1.0.tar.gz", 
-                 repos = NULL, quiet = TRUE)
+install.packages(
+  "https://github.com/reyesem/reyesem.github.io/raw/master/files/courseprep/IntroAnalysis_0.1.0.tar.gz",
+  repos = NULL,
+  quiet = TRUE)
 
 
 # ---- Create Directory ----

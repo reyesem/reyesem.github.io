@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="Data.html"/>
-<link rel="next" href="additional-study-design.html"/>
+<link rel="next" href="bayes-rule.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -52,6 +52,8 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 
@@ -95,7 +97,6 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="part"><span><b>I Language and Logic of Inference</b></span></li>
 <li class="chapter" data-level="1" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>1</b> Essential Probability</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>1.1</b> Density Functions as Models</a></li>
@@ -110,6 +111,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="essential-probability.html"><a href="essential-probability.html#independent-random-variables"><i class="fa fa-check"></i><b>1.4</b> Independent Random Variables</a></li>
 </ul></li>
+<li class="part"><span><b>I Language and Logic of Inference</b></span></li>
 <li class="chapter" data-level="2" data-path="CaseDeepwater.html"><a href="CaseDeepwater.html"><i class="fa fa-check"></i><b>2</b> Case Study: Health Effects of the Deepwater Horizon Oil Spill</a></li>
 <li class="chapter" data-level="3" data-path="Basics.html"><a href="Basics.html"><i class="fa fa-check"></i><b>3</b> The Statistical Process</a>
 <ul>
@@ -133,9 +135,39 @@ div.csl-indent {
 <li class="chapter" data-level="6.1" data-path="Summaries.html"><a href="Summaries.html#characteristics-of-a-distribution-summarizing-a-single-variable"><i class="fa fa-check"></i><b>6.1</b> Characteristics of a Distribution (Summarizing a Single Variable)</a></li>
 <li class="chapter" data-level="6.2" data-path="Summaries.html"><a href="Summaries.html#summarizing-relationships"><i class="fa fa-check"></i><b>6.2</b> Summarizing Relationships</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="additional-study-design.html"><a href="additional-study-design.html"><i class="fa fa-check"></i><b>7</b> Additional Study Design</a>
+<li class="part"><span><b>II Fundamentals of Bayesian Inference</b></span></li>
+<li class="chapter" data-level="7" data-path="bayes-rule.html"><a href="bayes-rule.html"><i class="fa fa-check"></i><b>7</b> Bayes Rule</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="additional-study-design.html"><a href="additional-study-design.html#two-types-of-studies"><i class="fa fa-check"></i><b>7.1</b> Two Types of Studies</a></li>
+<li class="chapter" data-level="7.1" data-path="bayes-rule.html"><a href="bayes-rule.html#tenants-of-the-bayesian-approach-to-inference"><i class="fa fa-check"></i><b>7.1</b> Tenants of the Bayesian Approach to Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="modeling-samples.html"><a href="modeling-samples.html"><i class="fa fa-check"></i><b>8</b> Modeling Samples</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="modeling-samples.html"><a href="modeling-samples.html#independence"><i class="fa fa-check"></i><b>8.1</b> Independence</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="quantifying-prior-information.html"><a href="quantifying-prior-information.html"><i class="fa fa-check"></i><b>9</b> Quantifying Prior Information</a></li>
+<li class="chapter" data-level="10" data-path="posterior-distributions.html"><a href="posterior-distributions.html"><i class="fa fa-check"></i><b>10</b> Updating Prior Beliefs (Posterior Distributions)</a></li>
+<li class="chapter" data-level="11" data-path="point-estimation.html"><a href="point-estimation.html"><i class="fa fa-check"></i><b>11</b> Point Estimation</a></li>
+<li class="chapter" data-level="12" data-path="interval-estimation.html"><a href="interval-estimation.html"><i class="fa fa-check"></i><b>12</b> Interval Estimation</a></li>
+<li class="chapter" data-level="13" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>13</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="prediction.html"><a href="prediction.html#derivation-of-the-posterior-predictive"><i class="fa fa-check"></i><b>13.1</b> Derivation of the Posterior Predictive</a></li>
+<li class="chapter" data-level="13.2" data-path="prediction.html"><a href="prediction.html#summary"><i class="fa fa-check"></i><b>13.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>14</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#point-null-hypotheses"><i class="fa fa-check"></i><b>14.1</b> Point-Null Hypotheses</a></li>
+<li class="chapter" data-level="14.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#model-comparison"><i class="fa fa-check"></i><b>14.2</b> Model Comparison</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="constructing-priors.html"><a href="constructing-priors.html"><i class="fa fa-check"></i><b>15</b> Constructing Prior Distributions</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="constructing-priors.html"><a href="constructing-priors.html#elicitation-from-experts"><i class="fa fa-check"></i><b>15.1</b> Elicitation from Experts</a></li>
+<li class="chapter" data-level="15.2" data-path="constructing-priors.html"><a href="constructing-priors.html#mixtures"><i class="fa fa-check"></i><b>15.2</b> Mixtures</a></li>
+<li class="chapter" data-level="15.3" data-path="constructing-priors.html"><a href="constructing-priors.html#chains"><i class="fa fa-check"></i><b>15.3</b> Chains</a></li>
+<li class="chapter" data-level="15.4" data-path="constructing-priors.html"><a href="constructing-priors.html#non-informative-priors"><i class="fa fa-check"></i><b>15.4</b> Non-Informative Priors</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="additional-study-design.html"><a href="additional-study-design.html"><i class="fa fa-check"></i><b>16</b> Additional Study Design</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="additional-study-design.html"><a href="additional-study-design.html#two-types-of-studies"><i class="fa fa-check"></i><b>16.1</b> Two Types of Studies</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -356,6 +388,9 @@ Figure 6.6: Comparison of the rate of adverse respiratory symptoms among volunte
 
 </div>
 </div>
+
+
+
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Lee1992" class="csl-entry">
@@ -368,7 +403,7 @@ Lee, J. 1992. <span>“Relationships Between Properties of Pulp-Fibre and Paper.
         </div>
       </div>
 <a href="Data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="additional-study-design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bayes-rule.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>14 Hypothesis Testing | Course Notes for Bayesian Data Analysis</title>
+  <meta name="description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="14 Hypothesis Testing | Course Notes for Bayesian Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="14 Hypothesis Testing | Course Notes for Bayesian Data Analysis" />
+  
+  <meta name="twitter:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="prediction.html"/>
+<link rel="next" href="constructing-priors.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Data Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>1</b> Essential Probability</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>1.1</b> Density Functions as Models</a></li>
+<li class="chapter" data-level="1.2" data-path="essential-probability.html"><a href="essential-probability.html#summarizing-distributions-parameters"><i class="fa fa-check"></i><b>1.2</b> Summarizing Distributions (Parameters)</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="essential-probability.html"><a href="essential-probability.html#kernels"><i class="fa fa-check"></i><b>1.2.1</b> Kernels</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="essential-probability.html"><a href="essential-probability.html#transformations-of-random-variables"><i class="fa fa-check"></i><b>1.3</b> Transformations of Random Variables</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="essential-probability.html"><a href="essential-probability.html#expectations-of-functions"><i class="fa fa-check"></i><b>1.3.1</b> Expectations of Functions</a></li>
+<li class="chapter" data-level="1.3.2" data-path="essential-probability.html"><a href="essential-probability.html#moment-generating-functions"><i class="fa fa-check"></i><b>1.3.2</b> Moment Generating Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="essential-probability.html"><a href="essential-probability.html#independent-random-variables"><i class="fa fa-check"></i><b>1.4</b> Independent Random Variables</a></li>
+</ul></li>
+<li class="part"><span><b>I Language and Logic of Inference</b></span></li>
+<li class="chapter" data-level="2" data-path="CaseDeepwater.html"><a href="CaseDeepwater.html"><i class="fa fa-check"></i><b>2</b> Case Study: Health Effects of the Deepwater Horizon Oil Spill</a></li>
+<li class="chapter" data-level="3" data-path="Basics.html"><a href="Basics.html"><i class="fa fa-check"></i><b>3</b> The Statistical Process</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Basics.html"><a href="Basics.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>3.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="3.2" data-path="Basics.html"><a href="Basics.html#anatomy-of-a-dataset"><i class="fa fa-check"></i><b>3.2</b> Anatomy of a Dataset</a></li>
+<li class="chapter" data-level="3.3" data-path="Basics.html"><a href="Basics.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>3.3</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Questions.html"><a href="Questions.html"><i class="fa fa-check"></i><b>4</b> Asking the Right Questions</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Questions.html"><a href="Questions.html#characterizing-a-variable"><i class="fa fa-check"></i><b>4.1</b> Characterizing a Variable</a></li>
+<li class="chapter" data-level="4.2" data-path="Questions.html"><a href="Questions.html#framing-the-question"><i class="fa fa-check"></i><b>4.2</b> Framing the Question</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>5</b> Gathering the Evidence (Data Collection)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Data.html"><a href="Data.html#what-makes-a-sample-reliable"><i class="fa fa-check"></i><b>5.1</b> What Makes a Sample Reliable</a></li>
+<li class="chapter" data-level="5.2" data-path="Data.html"><a href="Data.html#poor-methods-of-data-collection"><i class="fa fa-check"></i><b>5.2</b> Poor Methods of Data Collection</a></li>
+<li class="chapter" data-level="5.3" data-path="Data.html"><a href="Data.html#preferred-methods-of-sampling"><i class="fa fa-check"></i><b>5.3</b> Preferred Methods of Sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Summaries.html"><a href="Summaries.html"><i class="fa fa-check"></i><b>6</b> Presenting the Evidence (Summarizing Data)</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Summaries.html"><a href="Summaries.html#characteristics-of-a-distribution-summarizing-a-single-variable"><i class="fa fa-check"></i><b>6.1</b> Characteristics of a Distribution (Summarizing a Single Variable)</a></li>
+<li class="chapter" data-level="6.2" data-path="Summaries.html"><a href="Summaries.html#summarizing-relationships"><i class="fa fa-check"></i><b>6.2</b> Summarizing Relationships</a></li>
+</ul></li>
+<li class="part"><span><b>II Fundamentals of Bayesian Inference</b></span></li>
+<li class="chapter" data-level="7" data-path="bayes-rule.html"><a href="bayes-rule.html"><i class="fa fa-check"></i><b>7</b> Bayes Rule</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="bayes-rule.html"><a href="bayes-rule.html#tenants-of-the-bayesian-approach-to-inference"><i class="fa fa-check"></i><b>7.1</b> Tenants of the Bayesian Approach to Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="modeling-samples.html"><a href="modeling-samples.html"><i class="fa fa-check"></i><b>8</b> Modeling Samples</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="modeling-samples.html"><a href="modeling-samples.html#independence"><i class="fa fa-check"></i><b>8.1</b> Independence</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="quantifying-prior-information.html"><a href="quantifying-prior-information.html"><i class="fa fa-check"></i><b>9</b> Quantifying Prior Information</a></li>
+<li class="chapter" data-level="10" data-path="posterior-distributions.html"><a href="posterior-distributions.html"><i class="fa fa-check"></i><b>10</b> Updating Prior Beliefs (Posterior Distributions)</a></li>
+<li class="chapter" data-level="11" data-path="point-estimation.html"><a href="point-estimation.html"><i class="fa fa-check"></i><b>11</b> Point Estimation</a></li>
+<li class="chapter" data-level="12" data-path="interval-estimation.html"><a href="interval-estimation.html"><i class="fa fa-check"></i><b>12</b> Interval Estimation</a></li>
+<li class="chapter" data-level="13" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>13</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="prediction.html"><a href="prediction.html#derivation-of-the-posterior-predictive"><i class="fa fa-check"></i><b>13.1</b> Derivation of the Posterior Predictive</a></li>
+<li class="chapter" data-level="13.2" data-path="prediction.html"><a href="prediction.html#summary"><i class="fa fa-check"></i><b>13.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>14</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#point-null-hypotheses"><i class="fa fa-check"></i><b>14.1</b> Point-Null Hypotheses</a></li>
+<li class="chapter" data-level="14.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#model-comparison"><i class="fa fa-check"></i><b>14.2</b> Model Comparison</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="constructing-priors.html"><a href="constructing-priors.html"><i class="fa fa-check"></i><b>15</b> Constructing Prior Distributions</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="constructing-priors.html"><a href="constructing-priors.html#elicitation-from-experts"><i class="fa fa-check"></i><b>15.1</b> Elicitation from Experts</a></li>
+<li class="chapter" data-level="15.2" data-path="constructing-priors.html"><a href="constructing-priors.html#mixtures"><i class="fa fa-check"></i><b>15.2</b> Mixtures</a></li>
+<li class="chapter" data-level="15.3" data-path="constructing-priors.html"><a href="constructing-priors.html#chains"><i class="fa fa-check"></i><b>15.3</b> Chains</a></li>
+<li class="chapter" data-level="15.4" data-path="constructing-priors.html"><a href="constructing-priors.html#non-informative-priors"><i class="fa fa-check"></i><b>15.4</b> Non-Informative Priors</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="additional-study-design.html"><a href="additional-study-design.html"><i class="fa fa-check"></i><b>16</b> Additional Study Design</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="additional-study-design.html"><a href="additional-study-design.html#two-types-of-studies"><i class="fa fa-check"></i><b>16.1</b> Two Types of Studies</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Course Notes for Bayesian Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hypothesis-testing" class="section level1" number="14">
+<h1><span class="header-section-number">14</span> Hypothesis Testing</h1>
+<p>We have considered both estimation and prediction at this point. The third type of question often asked by researchers is which model (out of some pre-defined set) is most supported by the data. As with previous estimation and prediction, the Bayesian framework seeks to characterize the evidence for each model, given the data.</p>
+<p>Recall that for the M&amp;M’s Example (<a href="quantifying-prior-information.html#exm:ex-mms">9.1</a>), we derived the following posterior distribution:</p>
+<p><span class="math display">\[\pi(\theta \mid y) = (0.2359)\delta(\theta - 1/6) + (0.7641)\delta(\theta - 1/2)\]</span></p>
+<p>after observing 10 green candies out of a bag of 30 with prior beliefs consistent with</p>
+<p><span class="math display">\[\pi(\theta) = (0.4)\delta(\theta - 1/6) + (0.6)\delta(\theta - 1/2).\]</span></p>
+<p>This example is nice for illustrating hypothesis testing because baked into the problem were essentially two hypotheses:</p>
+<p><span class="math display">\[H_0: \theta = 1/6 \qquad \text{vs.} \qquad H_1: \theta = 1/2\]</span></p>
+<p>Here, the hypotheses are specific points the parameter could assume; in general, they represent regions. That is, we are generally interested in testing</p>
+<p><span class="math display">\[H_0: \theta \in \Theta_0 \qquad \text{vs.} \qquad H_1: \theta \in \Theta_1.\]</span></p>
+<p>While not a requirement, in practice <span class="math inline">\(\Theta_0\)</span> and <span class="math inline">\(\Theta_1\)</span> are typically mutually exclusive sets which form a partition of the parameter space.</p>
+<div class="rmdtip">
+<p>Nothing prohibits us from having more than two hypotheses in this framework.</p>
+</div>
+<p>Under the Bayesian framework, it is straightforward to compute probabilities of the form “the probability <span class="math inline">\(H_j\)</span> is true given the data observed.”</p>
+<div class="rmdtip">
+<p>Under the Frequentist approach, the probability a hypothesis is true is nonsensical; however, under the Bayesian approach, we are using probability simply to characterize our uncertainty about the statement.</p>
+</div>
+<p>For the M&amp;M’s Example, the posterior readily provides that</p>
+<p><span class="math display">\[
+\begin{aligned}
+  Pr\left(H_0 \mid y\right) &amp;= Pr(\theta = 1/6 \mid y) = 0.2359 \\
+  Pr\left(H_1 \mid y\right) &amp;= Pr(\theta = 1/2 \mid y) = 0.7641.
+\end{aligned}
+\]</span></p>
+<p>That is, after observing the data, we believe it is much more likely the that the bag represents a holiday pack than a typical pack. In fact, we can readily compute how much more likely we are:</p>
+<p><span class="math display">\[\frac{Pr\left(H_1 \mid y\right)}{Pr\left(H_0 \mid y\right)} = 3.24;\]</span></p>
+<p>that is, we believe it is 3.24 times more likely to be a holiday pack than a typical pack. This is known as the posterior odds.</p>
+<div class="definition">
+<p><span id="def:defn-posterior-odds" class="definition"><strong>Definition 14.1  (Posterior Odds) </strong></span>The posterior odds of <span class="math inline">\(H_1\)</span> relative to <span class="math inline">\(H_0\)</span> are given by</p>
+<p><span class="math display">\[\frac{Pr\left(\theta \in \Theta_1 \mid \mathbf{y}\right)}{Pr\left(\theta \in \Theta_0 \mid \mathbf{y}\right)}\]</span></p>
+<p>where <span class="math inline">\(\Theta_j\)</span> represents the range of values under <span class="math inline">\(H_j\)</span>.</p>
+</div>
+<p>Since the hypotheses are arbitrarily chosen, it is acceptable to compute the posterior odds of any hypothesis relative to any other.</p>
+<p>The posterior odds captures how strongly we favor one hypothesis over another given the observed data. We may be more interested in how much the data impacted our prior beliefs. For example, if the data simply confirmed our beliefs, that is not nearly as extraordinary as it completely reversing our beliefs. The Bayes Factor captures this impact.</p>
+<div class="definition">
+<p><span id="def:bayes-factor" class="definition"><strong>Definition 14.2  (Bayes Factor) </strong></span>A measure of how the observed data <em>alters</em> your prior beliefs about a hypothesis. The Bayes Factor “in favor of the alternative” hypothesis is the ratio of the posterior odds for the alternative to the prior odds for the alternative:</p>
+<p><span class="math display">\[BF_{10} = \left(\frac{Pr\left(\theta \in \Theta_1 \mid \mathbf{y}\right)}{Pr\left(\theta \in \Theta_0 \mid \mathbf{y}\right)}\right)\left(\frac{Pr\left(\theta \in \Theta_0\right)}{Pr\left(\theta \in \Theta_1\right)}\right)\]</span></p>
+</div>
+<div class="rmdtip">
+<p>When doing theoretical derivations, it is often more convenient to work with the logarithm of the Bayes Factor.</p>
+</div>
+<p>The Bayesian framework is about quantifying our uncertainty. The Bayes Factor measures how that uncertainty has been impacted by the observed data. Two independent papers made recommendations for how to interpret a Bayes Factor; these are simply “rules of thumb.”</p>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-23">Table 14.1: </span>Rules of thumb for interpreting the Bayes Factor.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Strength of Evidence
+</th>
+<th style="text-align:left;">
+Jeffreys’ Scale
+</th>
+<th style="text-align:left;">
+Kass and Raftery Scale
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Weak
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(0 \leq \log_{10}(BF) \lt 0.5\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(0 \leq \log(BF) \lt 1\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Substantial
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(0.5 \leq \log_{10}(BF) \lt 1\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(2 \leq \log(BF) \lt 3\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Strong
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(1 \leq \log_{10}(BF) \lt 2\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(3 \leq \log(BF) \lt 5\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Decisive
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(2 \leq \log_{10}(BF)\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(5 \leq \log(BF)\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="rmdwarning">
+<p>Take caution when interpreting a Bayes Factor; it quantifies the degree to which the data altered your prior beliefs. It is possible to have a really small Bayes Factor in favor of a hypothesis and yet believe overwhelmingly in that hypothesis given the data; the small Bayes Factor simply implies that you believed in that hypothesis before collecting the data as well. Conversely, it is possible to have a really large Bayes Factor in favor of a hypothesis and yet not distinguish between that hypothesis and another given the data; the large Bayes Factor simply implies that your beliefs about that hypothesis have dramatically changed.</p>
+</div>
+<p>For the M&amp;M’s example, our Bayes Factor, in favor of having a holiday pack, is given by</p>
+<p><span class="math display">\[BF_{10} = \left(\frac{0.7641}{0.2359}\right)\left(\frac{0.4}{0.6}\right) = 2.159.\]</span></p>
+<p>The log-Bayes Factor is then 0.770, which is weak evidence under the Kass and Raftery scale. This is because prior to collecting data, we already believed that a holiday pack was more likely. As the data have added weight to that hypothesis, the data have not shifted our beliefs overwhelmingly.</p>
+<div id="point-null-hypotheses" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> Point-Null Hypotheses</h2>
+<p>Technically speaking, hypothesis testing in the Bayesian framework requires little since we are already established to discuss our uncertainty about a statement about the parameters given the data using the posterior distribution. There is a common scenario which has a potential pitfall worth discussion: point-null hypotheses. Consider testing the following hypotheses:</p>
+<p><span class="math display">\[H_0: \theta = \theta_0 \qquad \text{vs.} \qquad H_1: \theta \neq \theta_0\]</span></p>
+<p>where here <span class="math inline">\(\Theta_0 = \{\theta_0\}\)</span> is a singleton set. This can pose a problem for many prior distributions. To illustrate, consider computing the prior odds in favor of <span class="math inline">\(H_1\)</span>:</p>
+<p><span class="math display">\[\frac{Pr\left(\theta \neq \theta_0\right)}{Pr\left(\theta = \theta_0\right)} = \frac{\int_{\theta \neq \theta_0}^{} \pi(\theta) d\theta}{\int_{\theta = \theta_0}^{} \pi(\theta) d\theta}.\]</span></p>
+<p>For any continuous prior distribution, the numerator will be 1 and the denominator will be 0! Since continuous distributions always imply the probability the random variable takes a specific value is 0, a point-null hypothesis does not make sense with a continuous prior. The continous prior communicates you are infinitely more likely to believe the parameter is anywhere else but the specific value of <span class="math inline">\(\theta_0\)</span>. There is simply a misalignment of beliefs.</p>
+<p>If you are truly interested in testing a point-null hypothesis, it must be that you believe the null hypothesis is somewhat likely. Therefore, it needs to be incorporated into the prior distribution. If you go into a study believing something is impossible, no amount of data will change your mind.</p>
+<div class="rmdkeyidea">
+<p>You should only test a hypothesis if, a priori, you believe there is some chance the hypothesis is true.</p>
+</div>
+<p>One way of incorporating point-null hypotheses into a prior is the use of a mixture distribution. We place a mass on the value of <span class="math inline">\(\theta_0\)</span> and then spread out the remaining probability along the support.</p>
+<div class="example">
+<p><span id="exm:ex-mixture-prior" class="example"><strong>Example 14.1  (Mixture Prior) </strong></span>Let <span class="math inline">\(\theta\)</span> be a parameter which has support <span class="math inline">\(\Theta\)</span>, and let <span class="math inline">\(\theta_0 \in \Theta\)</span> be a particular value of interest. Suppose, a priori, we believe <span class="math inline">\(Pr(\theta = \theta_0) = u\)</span> for <span class="math inline">\(0 &lt; u &lt; 1\)</span>. Then, a suitable prior has the form</p>
+<p><span class="math display">\[\pi(\theta) = u \delta(\theta - \theta_0) + (1 - u) \pi(\theta)\]</span></p>
+<p>for some continuous density <span class="math inline">\(\pi(\theta)\)</span> on the support <span class="math inline">\(\Theta\)</span>.</p>
+</div>
+<p>This type of density is not a discrete distribution; nor is it a continuous distribution (though we can work with it like it is continuous).</p>
+</div>
+<div id="model-comparison" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> Model Comparison</h2>
+<p>Hypothesis testing is a special case of model comparison, where in the Bayesian framework the “model” consists of <em>both</em> the likelihood and the prior.</p>
+<div class="rmdkeyidea">
+<p>A Bayesian model consists of the choice for the likelihood as well as the choice for the prior.</p>
+</div>
+<p>Consider the M&amp;M’s example (<a href="quantifying-prior-information.html#exm:ex-mms">9.1</a>); the problem could have been framed as a choice between two models:</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \text{Model 0}:&amp; \quad \pi(\theta) = \delta(\theta - 1/6) \\
+    &amp;\quad f(y \mid \theta) = \binom{n}{\theta} \theta^y (1-\theta)^{n-y} \\
+  \text{Model 1}:&amp; \quad \pi(\theta) = \delta(\theta - 1/2) \\
+    &amp;\quad f(y \mid \theta) = \binom{n}{\theta} \theta^y (1-\theta)^{n-y}
+\end{aligned}
+\]</span></p>
+<p>where we believed, a priori, that <span class="math inline">\(Pr(\text{Model 1}) = 0.4\)</span> and <span class="math inline">\(Pr(\text{Model 2}) = 0.6\)</span>. In this case, the models differed only in their choice of prior (which here simplifies further to which value of the parameter to select). In this example, we determined our choice of model by simply working with the posterior distribution.</p>
+<p>We would like to generalize this process to allow the model to alter both the likelihood and the prior distribution, and for us to place some prior probability on the entirety of the model. We are then interested in using the data to quantify the evidence for each model. To do this, we essentially consider the model <span class="math inline">\(\mathcal{M}\)</span> to be a parameter. This is known as a <em>heirarchcial model</em> because the priors on the parameter are conditional on the model, and then a further prior is placed on the model itself (it is a multi-level model).</p>
+<div class="keyidea">
+<p><strong>Model Comparison</strong><br />
+Let <span class="math inline">\(\mathcal{M}_j\)</span> represent the <span class="math inline">\(j\)</span>-th potential model for a data generating process. Reflect the likelihood and prior as a function of the model. For example, we might write</p>
+<p><span class="math display">\[
+\begin{aligned}
+  \text{Model 0}:&amp; \quad f_0(\mathbf{y} \mid \theta_0, \mathcal{M}_0) \\
+    &amp; \quad \pi_0(\theta_0 \mid \mathcal{M}_0) \\
+    &amp; \quad \pi(\mathcal{M}_0) = Pr(\mathcal{M}_0) \\
+  \text{Model 1}:&amp; \quad f_1(\mathbf{y} \mid \theta_1, \mathcal{M}_1) \\
+    &amp; \quad \pi_1(\theta_1 \mid \mathcal{M}_1) \\
+    &amp; \quad \pi(\mathcal{M}_1) = Pr(\mathcal{M}_1) \\
+\end{aligned}
+\]</span></p>
+<p>Notice we (potentially) allow the form of the likelihood, the parameters governing that likelihood, and the form of the prior to differ for each model. Our prior beliefs about the parameter are captured within each prior, but we also have prior beleifs about the model itself — how likely each model is. We are interested in determining <span class="math inline">\(Pr(\mathcal{M}_j \mid \mathbf{Y})\)</span> for each <span class="math inline">\(j\)</span>.</p>
+</div>
+<p>Under this framework, we could compute the likelihood of each model can be written as</p>
+<p><span class="math display">\[
+\begin{aligned}
+  Pr\left(\mathcal{M}_j \mid \mathbf{Y}\right) 
+    &amp;= \frac{f_j(\mathbf{y} \mid \mathcal{M}_j) Pr(\mathcal{M}_j)}{\sum_{j} f_j(\mathbf{y} \mid \mathcal{M}_j) Pr(\mathcal{M}_j)} \\
+  f_j(\mathbf{y} \mid \mathcal{M}_j) 
+    &amp;= \int f_j(\mathbf{y} \mid \theta_j, \mathcal{M}_j) \pi_j(\theta_j \mid \mathcal{M}_j) d\theta_j
+\end{aligned}
+\]</span></p>
+<p>This is an iterated application of Bayes Theorem.</p>
+<div class="definition">
+<p><span id="def:defn-evidence" class="definition"><strong>Definition 14.3  (Evidence for a Model) </strong></span>Under the Model Comparison framework defined above, the evidence for <span class="math inline">\(\mathcal{M}_j\)</span> is defined as</p>
+<p><span class="math display">\[f_j(\mathbf{y} \mid \mathcal{M}_j) = \int f_j(\mathbf{y} \mid \theta_j, \mathcal{M}_j) \pi_j(\theta_j \mid \mathcal{M}_j) d\theta_j\]</span></p>
+</div>
+<p>The evidence for a model is a number; once the data is observed, it is a function only of the known data and is therefore a constant. The evidence is really just the prior predictive distribution under a particular model evaluated at the observed data.</p>
+<div class="rmdwarning">
+<p>It may seem strange to use the prior predictive distribution when defining the evidence instead of the posterior predictive, but keep in mind that within model comparison, the <em>model itself</em> is the parameter of interest. Changing either the likelihood or the prior will impact the evidence.</p>
+</div>
+<p>The evidence can also be used to compute the Bayes Factor for one model over another.</p>
+<div class="definition">
+<p><span id="def:defn-bayes-factor-models" class="definition"><strong>Definition 14.4  (Bayes Factor for Model Comparison) </strong></span>The Bayes factor in favor of Model 1 is</p>
+<p><span class="math display">\[
+\begin{aligned}
+  BF_{10} &amp;= \left(\frac{Pr(\mathcal{M}_1 \mid \mathbf{y})}{Pr(\mathcal{M}_0 \mid \mathbf{y})}\right)\left(\frac{Pr(\mathcal{M}_0)}{Pr(\mathcal{M}_1)}\right) \\
+    &amp;= \left(\frac{f_1(\mathbf{y} \mid \mathcal{M}_1) Pr(\mathcal{M}_1)}{f_0(\mathbf{y} \mid \mathcal{M}_0) Pr(\mathcal{M}_0)}\right)\left(\frac{Pr(\mathcal{M}_0)}{Pr(\mathcal{M}_1)}\right) \\
+    &amp;= \frac{f_1(\mathbf{y} \mid \mathcal{M}_1)}{f_0(\mathbf{y} \mid \mathcal{M}_0)}
+\end{aligned}
+\]</span></p>
+<p>That is, the Bayes factor is a ratio of the evidence for each model.</p>
+</div>
+<p>Model comparison simply extends our framework by the inclusion of another parameter. That parameter, the model itself, just happens to be discrete. Our goal is to use our machinery to quantify the uncertainty in each model given the data observed.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="prediction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="constructing-priors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

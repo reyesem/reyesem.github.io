@@ -27,7 +27,7 @@ install.packages(c("tidyverse",
 
 
 # ---- Install Guided Notes ----
-install.packages("https://reyesem.github.io/files/MA386/reyes386_0.1.0.tar.gz",
+install.packages("https://reyesem.github.io/files/courseprep/reyescourses_0.1.0.tar.gz",
                  repos = NULL,
                  quiet = TRUE)
 
