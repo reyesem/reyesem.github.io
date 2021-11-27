@@ -9,7 +9,7 @@
 # Notes:
 
 # ---- Update Old Packages ----
-update.packages(ask = FALSE, 
+update.packages(ask = FALSE,
                 checkBuilt = TRUE,
                 quiet = TRUE)
 
@@ -23,6 +23,11 @@ install.packages(c("tidyverse",
                    "srvyr"),
                  dependencies = TRUE,
                  quiet = TRUE)
+
+install.packages(
+  "https://github.com/reyesem/reyesem.github.io/raw/master/files/courseprep/reyescourses_0.1.0.tar.gz",
+  repos = NULL,
+  quiet = TRUE)
 
 
 if (testr <- require("tidyverse")) {
