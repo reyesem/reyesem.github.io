@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>17 Markov Chain Monte Carlo | Course Notes for Bayesian Data Analysis</title>
+  <meta name="description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="17 Markov Chain Monte Carlo | Course Notes for Bayesian Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="17 Markov Chain Monte Carlo | Course Notes for Bayesian Data Analysis" />
+  
+  <meta name="twitter:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="mc-integration.html"/>
+<link rel="next" href="mcmc-assessment.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Data Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>1</b> Essential Probability</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>1.1</b> Density Functions as Models</a></li>
+<li class="chapter" data-level="1.2" data-path="essential-probability.html"><a href="essential-probability.html#summarizing-distributions-parameters"><i class="fa fa-check"></i><b>1.2</b> Summarizing Distributions (Parameters)</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="essential-probability.html"><a href="essential-probability.html#kernels"><i class="fa fa-check"></i><b>1.2.1</b> Kernels</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="essential-probability.html"><a href="essential-probability.html#transformations-of-random-variables"><i class="fa fa-check"></i><b>1.3</b> Transformations of Random Variables</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="essential-probability.html"><a href="essential-probability.html#expectations-of-functions"><i class="fa fa-check"></i><b>1.3.1</b> Expectations of Functions</a></li>
+<li class="chapter" data-level="1.3.2" data-path="essential-probability.html"><a href="essential-probability.html#moment-generating-functions"><i class="fa fa-check"></i><b>1.3.2</b> Moment Generating Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="essential-probability.html"><a href="essential-probability.html#independent-random-variables"><i class="fa fa-check"></i><b>1.4</b> Independent Random Variables</a></li>
+</ul></li>
+<li class="part"><span><b>I Language and Logic of Inference</b></span></li>
+<li class="chapter" data-level="2" data-path="CaseDeepwater.html"><a href="CaseDeepwater.html"><i class="fa fa-check"></i><b>2</b> Case Study: Health Effects of the Deepwater Horizon Oil Spill</a></li>
+<li class="chapter" data-level="3" data-path="Basics.html"><a href="Basics.html"><i class="fa fa-check"></i><b>3</b> The Statistical Process</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Basics.html"><a href="Basics.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>3.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="3.2" data-path="Basics.html"><a href="Basics.html#anatomy-of-a-dataset"><i class="fa fa-check"></i><b>3.2</b> Anatomy of a Dataset</a></li>
+<li class="chapter" data-level="3.3" data-path="Basics.html"><a href="Basics.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>3.3</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Questions.html"><a href="Questions.html"><i class="fa fa-check"></i><b>4</b> Asking the Right Questions</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Questions.html"><a href="Questions.html#characterizing-a-variable"><i class="fa fa-check"></i><b>4.1</b> Characterizing a Variable</a></li>
+<li class="chapter" data-level="4.2" data-path="Questions.html"><a href="Questions.html#framing-the-question"><i class="fa fa-check"></i><b>4.2</b> Framing the Question</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>5</b> Gathering the Evidence (Data Collection)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Data.html"><a href="Data.html#what-makes-a-sample-reliable"><i class="fa fa-check"></i><b>5.1</b> What Makes a Sample Reliable</a></li>
+<li class="chapter" data-level="5.2" data-path="Data.html"><a href="Data.html#poor-methods-of-data-collection"><i class="fa fa-check"></i><b>5.2</b> Poor Methods of Data Collection</a></li>
+<li class="chapter" data-level="5.3" data-path="Data.html"><a href="Data.html#preferred-methods-of-sampling"><i class="fa fa-check"></i><b>5.3</b> Preferred Methods of Sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Summaries.html"><a href="Summaries.html"><i class="fa fa-check"></i><b>6</b> Presenting the Evidence (Summarizing Data)</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Summaries.html"><a href="Summaries.html#characteristics-of-a-distribution-summarizing-a-single-variable"><i class="fa fa-check"></i><b>6.1</b> Characteristics of a Distribution (Summarizing a Single Variable)</a></li>
+<li class="chapter" data-level="6.2" data-path="Summaries.html"><a href="Summaries.html#summarizing-relationships"><i class="fa fa-check"></i><b>6.2</b> Summarizing Relationships</a></li>
+</ul></li>
+<li class="part"><span><b>II Fundamentals of Bayesian Inference</b></span></li>
+<li class="chapter" data-level="7" data-path="bayes-rule.html"><a href="bayes-rule.html"><i class="fa fa-check"></i><b>7</b> Bayes Rule</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="bayes-rule.html"><a href="bayes-rule.html#tenants-of-the-bayesian-approach-to-inference"><i class="fa fa-check"></i><b>7.1</b> Tenants of the Bayesian Approach to Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="modeling-samples.html"><a href="modeling-samples.html"><i class="fa fa-check"></i><b>8</b> Modeling Samples</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="modeling-samples.html"><a href="modeling-samples.html#independence"><i class="fa fa-check"></i><b>8.1</b> Independence</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="quantifying-prior-information.html"><a href="quantifying-prior-information.html"><i class="fa fa-check"></i><b>9</b> Quantifying Prior Information</a></li>
+<li class="chapter" data-level="10" data-path="posterior-distributions.html"><a href="posterior-distributions.html"><i class="fa fa-check"></i><b>10</b> Updating Prior Beliefs (Posterior Distributions)</a></li>
+<li class="chapter" data-level="11" data-path="point-estimation.html"><a href="point-estimation.html"><i class="fa fa-check"></i><b>11</b> Point Estimation</a></li>
+<li class="chapter" data-level="12" data-path="interval-estimation.html"><a href="interval-estimation.html"><i class="fa fa-check"></i><b>12</b> Interval Estimation</a></li>
+<li class="chapter" data-level="13" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>13</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="prediction.html"><a href="prediction.html#derivation-of-the-posterior-predictive"><i class="fa fa-check"></i><b>13.1</b> Derivation of the Posterior Predictive</a></li>
+<li class="chapter" data-level="13.2" data-path="prediction.html"><a href="prediction.html#summary"><i class="fa fa-check"></i><b>13.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>14</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#point-null-hypotheses"><i class="fa fa-check"></i><b>14.1</b> Point-Null Hypotheses</a></li>
+<li class="chapter" data-level="14.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#model-comparison"><i class="fa fa-check"></i><b>14.2</b> Model Comparison</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="constructing-priors.html"><a href="constructing-priors.html"><i class="fa fa-check"></i><b>15</b> Constructing Prior Distributions</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="constructing-priors.html"><a href="constructing-priors.html#elicitation-from-experts"><i class="fa fa-check"></i><b>15.1</b> Elicitation from Experts</a></li>
+<li class="chapter" data-level="15.2" data-path="constructing-priors.html"><a href="constructing-priors.html#mixtures"><i class="fa fa-check"></i><b>15.2</b> Mixtures</a></li>
+<li class="chapter" data-level="15.3" data-path="constructing-priors.html"><a href="constructing-priors.html#chains"><i class="fa fa-check"></i><b>15.3</b> Chains</a></li>
+<li class="chapter" data-level="15.4" data-path="constructing-priors.html"><a href="constructing-priors.html#non-informative-priors"><i class="fa fa-check"></i><b>15.4</b> Non-Informative Priors</a></li>
+</ul></li>
+<li class="part"><span><b>III Numerical Approaches to Bayesian Computations</b></span></li>
+<li class="chapter" data-level="16" data-path="mc-integration.html"><a href="mc-integration.html"><i class="fa fa-check"></i><b>16</b> Monte Carlo Integration</a></li>
+<li class="chapter" data-level="17" data-path="mcmc.html"><a href="mcmc.html"><i class="fa fa-check"></i><b>17</b> Markov Chain Monte Carlo</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="mcmc.html"><a href="mcmc.html#hamiltonian-monte-carlo"><i class="fa fa-check"></i><b>17.1</b> Hamiltonian Monte Carlo</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="mcmc-assessment.html"><a href="mcmc-assessment.html"><i class="fa fa-check"></i><b>18</b> Assessing MCMC Samples</a></li>
+<li class="chapter" data-level="19" data-path="additional-study-design.html"><a href="additional-study-design.html"><i class="fa fa-check"></i><b>19</b> Additional Study Design</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="additional-study-design.html"><a href="additional-study-design.html#two-types-of-studies"><i class="fa fa-check"></i><b>19.1</b> Two Types of Studies</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Course Notes for Bayesian Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="mcmc" class="section level1" number="17">
+<h1><span class="header-section-number">17</span> Markov Chain Monte Carlo</h1>
+<p>The previous chapter suggested that we can approximate any Bayesian estimator given only a random sample from the posterior. When the posterior has the form of a known distribution, there are often built-in functions for obtaining a sample from the distribution. The majority of applications, however, involve posteriors which cannot be derived analytically. In such cases, we turn to Markov Chain Monte Carlo (MCMC) techniques for sampling from the posterior. Once we have a sample from the posterior, we can apply the techniques of the previous chapter for computing estimates.</p>
+<p>The following example illustrates the conceptual goal.</p>
+<div class="example">
+<p><span id="exm:ex-mcmc-concepts" class="example"><strong>Example 17.1  (Relative Wealth) </strong></span>Suppose you are attending a large gathering of your relatives. Given your current status as a student, you would like to get to know these relatives in hopes that they may place you in their wills and receive an inheritance. You would like to be strategic about how much time you spend with each person. You decide that you would like to divide your time with each person proportionally according to each person’s wealth (relative to the total wealth in the room).</p>
+<p>Problem 1: you are uncertain about how many people are actually attending the party.</p>
+<p>Problem 2: you have no way of determining the wealth of each person. However, each person is willing to share a bit of information with you. If you show interest in speaking with them, the person will let you know their wealth relative to the wealth of the person you are currently speaking with (“I am half as rich as the person you are speaking with,” for example).</p>
+<p>How do you decide who to speak with and for how long?</p>
+</div>
+<p>While this is a toy problem, it illustrates the problems we are trying to overcome with MCMC methods. We want to take a sample from the posterior distribution, but we do not have the form of the posterior distribution. Instead, we only know the kernel:</p>
+<p><span class="math display">\[\pi(\theta \mid \mathbf{y}) \propto f(\mathbf{y} \mid \theta) \pi(\theta).\]</span></p>
+<p>The first “problem” in the above example reflects our uncertainty about where we should focus our attention within the posterior. We have a sense of the support of the posterior, but there may be large areas of the posterior which have essentially probability 0 of occurring. The second “problem” is that we do not have the value of the posterior; instead, we are only able to compute the posterior up to some scalar constant. Therefore, while we are not able to compute the value of the posterior, we can accurately determine the ratio of the posterior between two points:</p>
+<p><span class="math display">\[\frac{\pi(a \mid \mathbf{y})}{\pi(b \mid \mathbf{y})} = \frac{(1/m(\mathbf{y})) f(\mathbf{y} \mid a) \pi(a)}{(1/m(\mathbf{y})) f(\mathbf{y} \mid b)\pi(b)} = \frac{f(\mathbf{y} \mid a) \pi(a)}{f(\mathbf{y} \mid b)\pi(b)}\]</span></p>
+<p>where <span class="math inline">\(m(\mathbf{y})\)</span> is the prior predictive distribution, the inverse of the scaling constant to normalize the posterior.</p>
+<div class="solution">
+<p><span id="unlabeled-div-1" class="solution"><em>Solution</em>. </span>Consider the following scheme. You will randomly choose a person to begin speaking with (your “partner”). After a fixed period of time, you will flip a coin. If the coin is “heads up,” you will consider speaking with the person to their right; if the coin is “tails up,” you will consider speaking with the person to their left. This determines your “candidate.” Once you determine your candidate, you ask them about their wealth, relative to your current partner. If your candidate is wealthier, you will definitely move to them and make them your new partner. If your candidate is less wealthy, however, you will only move to them with the same probability as their wealth relative to your current partner (if they are half has wealthy, you move to them with probability 0.5). You repeat this process many times.</p>
+</div>
+<p>This process summarizes the idea behind MCMC methods. We generate a candidate value of the parameter; if the value of the posterior at the candidate value is higher than our current position, then we choose to move to the candidate point. Otherwise, we move to the candidate point with a probability equal to the ratio of the posterior for the candidate relative to our current position. We move through the parameter space in this fashion until we have generated a large sample from the posterior (say 3000 replicates).</p>
+<p>The above thought exercise illustrates one of the simplest algorithms for generating from an unknown density known as the Metropolis Algorithm. While in practice this algorithm is rarely implemented directly, it forms the basis of many more complex algorithms and illustrates the basic properties of all MCMC methods.</p>
+<div class="definition">
+<p><span id="def:def-metropolis-algorithm" class="definition"><strong>Definition 17.1  (Metropolis Algorithm) </strong></span>Suppose we want to generate random variates from the density <span class="math inline">\(\pi(\theta \mid \mathbf{y})\)</span>. We perform the following steps:</p>
+<ol style="list-style-type: decimal">
+<li>Generate an initial value <span class="math inline">\(\theta^{(0)}\)</span>.<br />
+</li>
+<li>At the <span class="math inline">\(k\)</span>-th step, generate <span class="math inline">\(\theta^*\)</span> (a candidate) according to a symmetric proposal density <span class="math inline">\(q\left(\theta \mid \theta^{(k-1)}\right)\)</span>.<br />
+</li>
+<li>Compute <span class="math inline">\(A\left(\theta^*, \theta^{(k-1)}\right)\)</span> where
+<span class="math display">\[A\left(\theta^*, \theta^{(k-1)}\right) = \frac{\pi\left(\theta^* \mid \mathbf{y}\right)}{\pi\left(\theta^{(k-1)} \mid \mathbf{y}\right)} = \frac{f\left(\mathbf{y} \mid \theta^*\right) \pi\left(\theta^*\right)}{f\left(\mathbf{y} \mid \theta^{(k-1)}\right) \pi\left(\theta^{(k-1)}\right)}\]</span></li>
+<li>Generate <span class="math inline">\(U \sim Unif(0,1)\)</span>. If , then set <span class="math inline">\(\theta^{(k)} = \theta^*\)</span>; else, set <span class="math inline">\(\theta^{(k)} = \theta^{(k-1)}\)</span>.</li>
+</ol>
+<p>When generating an initial value, <span class="math inline">\(\theta^{(0)}\)</span>, we could choose <span class="math inline">\(\theta^{(0)} \sim \pi(\theta)\)</span> if the prior is easy to generate from. While it is common to choose <span class="math inline">\(q(\cdot)\)</span>, it is not a requirement to do so; when it is used, it can be difficult to determine a reasonable variance (too large, and you drift too far away; too small, and you do not move at all).</p>
+</div>
+<p>The Metropolis Algorithm is typically run several thousand times, resulting in what is known as a Markov Chain.</p>
+<div class="definition">
+<p><span id="def:def-markov-chain" class="definition"><strong>Definition 17.2  (Markov Chain) </strong></span>A sequence of random vectors <span class="math inline">\(\theta^{(0)}, \theta^{(2)}, \dotsc, \theta^{(n)}\)</span> is a Markov Chain with stationary transition probabilities if for any set <span class="math inline">\(A\)</span> and any <span class="math inline">\(k \leq n\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+  Pr\left(\theta^{(k)} \in A \mid \theta^{(1)}, \theta^{(2)}, \dotsc, \theta^{(k-1)}\right)
+    &amp;= Pr\left(\theta^{(k)} \in A \mid \theta^{(k-1)}\right) \\
+    &amp;= \int_{A} q\left(\theta^{(k)} \mid \theta^{(k-1)}\right) d\theta^{(k)}
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(q\)</span> is called the transition kernel.</p>
+</div>
+<p>In general, Markov chains are not required to have stationary transition probabilities, but it is a nice simplifying assumption that is applied in Bayesian computing methods. Markov chains are a discipline in and of themselves in probability theory and are beyond the scope of this text. We primarily focus on the fact that the probability that a value is in some region depends <em>only</em> on the previous state; the remainder of the history is unimportant.</p>
+<p>Of course, a Markov Chain is nice, but we need to establish that the chain is also representative of the appropriate target distribution. That is, we need to know the Markov Chain represents the posterior distribution. This target distribution has a name in Markov Chain literature.</p>
+<div class="definition">
+<p><span id="def:def-stationary-distribution" class="definition"><strong>Definition 17.3  (Stationary Distribution) </strong></span>A distribution <span class="math inline">\(p(\theta)\)</span> such that</p>
+<p><span class="math display">\[Pr\left(\theta^{(k)} \in A\right) = \int_{A} p(\theta) d\theta\]</span></p>
+</div>
+<p>That is, a stationary distribution is where the Markov Chain settles down so that the probability that any variate is in some region is computed using that same distribution <span class="math inline">\(p\)</span> (as opposed to the transition kernel).</p>
+<p>The idea is to choose a <span class="math inline">\(q\)</span> such that the stationary distribution of the Markov Chain, if one exists, will be the posterior distribution. So, we want to pick a <span class="math inline">\(q\)</span> that is easy to generate from, is symmetric, and so that eventually, the values we are generating from are essentially coming from the posterior. The machinery needed to prove such results is beyond the scope of our text, but it can be shown that the Metropolis Algorithm has this property such that using any symmetric proposal density and keeping a proposed point probabilistically will result in drawing points that behave as if drawn from the posterior (as <span class="math inline">\(k\)</span> increases anyway). More, we can show that this is true regardless of where we start.</p>
+<div class="rmdtip">
+<p>It can be shown that the the Metropolis Algorithm has the posterior as the stationary distribution of the Markov Chain, but the Metropolis Algorithm is not always the most efficient algorithm. In practice, other algorithms, such as the Gibbs sampler or Hamiltonian Monte Carlo, are implemented.</p>
+</div>
+<p>We now have a way of generating random variates which have properties similar to those coming from the posterior distribution. The language here is chosen with care because, as always, there is a catch: <strong>the values generated in the Markov Chain are identically distributed, but are not independent.</strong></p>
+<p>In practice, analysts often state that they have obtained a random sample from the posterior using MCMC methods; and, we can often proceed as if that were true. However, when we use MCMC methods, the resulting sample is not a “random sample” in the sense of being IID. The points are identically distributed, but since each variate in the sample was generated based on the value of the previous variate, there is a dependence. There is some autocorrelation (though often times this is small in practice).</p>
+<p>This may seem like we cannot use any of the methods of the last section which required an IID sample. However, there is a Law of Large Numbers-type result for Markov Chains which says</p>
+<p><span class="math display">\[\lim\limits_{m \rightarrow \infty} \frac{1}{m} \sum_{k=1}^{m} g\left(\theta^{(k)}\right) = \int g(\theta) p(\theta) d\theta\]</span></p>
+<p>where <span class="math inline">\(g(\cdot)\)</span> is some real-valued function and <span class="math inline">\(p(\theta)\)</span> is the stationary distribution of the Markov Chain, if it exists. This result says that even though the points are related, as we take a large number of them, we can approximate integrals (therefore, Bayesian estimators) using sample averages.</p>
+<div class="rmdkeyidea">
+<p>For a sufficiently large number of replications, the Markov Chain resulting from an MCMC algorithm will behave as a sample from the posterior distribution.</p>
+</div>
+<div id="hamiltonian-monte-carlo" class="section level2" number="17.1">
+<h2><span class="header-section-number">17.1</span> Hamiltonian Monte Carlo</h2>
+<p>The trick to MCMC methods is to choose a transition kernel that is efficient and can handle the myriad of situations encountered in practice. The Metropolis Algorithm, while simplistic, is not very efficient, and can be quite difficult to implement when the dimension of the parameter vector increases. A commonly implemented method is known as the Gibbs sampler. This is implemented in the popular Bayesian software packages BUGS (Bayesian inference Using Gibbs Sampling) and JAGS (Just Another Gibbs Sampler). BUGS is a standalone software package while JAGS is implemented in R and Python. These software packages provide a myriad of algorithms based on the Gibbs sampler which address hierarchical models in a nice way. However, in some complex models, these algorithms can be inefficient or fail to produce variates from the posterior. Stan implements a Hamiltonian Monte Carlo (HMC) algorithm which can succeed in these situations. While the details of the algorithm are beyond the scope of the course, we discuss the ways in which HMC improves upon the Metropolis Algorithm discussed above.</p>
+<p>The Metropolis Algorithm can be summarized in the following two statements:</p>
+<ul>
+<li>Choose candidate points using a symmetric proposal distribution.</li>
+<li>Favor points whose posterior density is larger, moving to candidate points with lower posterior density probabilistically.</li>
+</ul>
+<p>The key distinction between the Metropolis Algorithm and HMC is to allow the proposal distribution to be dependent upon our current location.</p>
+<div class="rmdkeyidea">
+<p>HMC uses proposal distributions which favor moving toward the posterior mode.</p>
+</div>
+<p>The idea is illustrated in the following graphic, created by John Kruschke <span class="citation">(<a href="#ref-Kruschke2015" role="doc-biblioref">Kruschke 2015</a>)</span>, which shows how proposals are generated for two different initial values. Note, the end result is not a sample from the posterior but the distribution of potential next steps.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mcmc-p1"></span>
+<img src="images/Kruschke-Fig1.jpg" alt="Examples of Hamiltonian Monte Carlo proposal distributions. Two columns show two different current parameter values, marked by the large dots. First row shows posterior distribution. Second row shows the potential energy, with a random impulse given to the dot. Third row shows trajectories, which are the theta value (x-axis) as a function of time (y-axis marked Steps*Eps). Fourth row shows histograms of the proposals." width="286" />
+<p class="caption">
+Figure 17.1: Examples of Hamiltonian Monte Carlo proposal distributions. Two columns show two different current parameter values, marked by the large dots. First row shows posterior distribution. Second row shows the potential energy, with a random impulse given to the dot. Third row shows trajectories, which are the theta value (x-axis) as a function of time (y-axis marked Steps*Eps). Fourth row shows histograms of the proposals.
+</p>
+</div>
+<p>To illustrate how this works, consider a posterior distribution. We consider two different current positions within that posterior. The Metropolis Algorithm would simply say to generate proposals which are symmetric about the current position. HMC generates proposals that are closer to the posterior mode (as evidenced by the bottom part of the figure where the majority of proposals are near the mode).</p>
+<p>In order to determine where to move from the current position, we consider the <em>potential</em> of the position. This is determined by considering the negative log-density. This gives an idea of how far we might want to travel (the potential of the position to change).</p>
+<div class="definition">
+<p><span id="def:def-potential" class="definition"><strong>Definition 17.4  (Potential) </strong></span>The potential is the negative logarithm of the posterior. In practice, we need only know this density up to any scaling constant. That is,</p>
+<p><span class="math display">\[\textit{Potential}(\theta) = -\log\left[f(\mathbf{y} \mid \theta) \pi(\theta)\right]\]</span></p>
+</div>
+<p>Imagine the current position is a ball on the potential; the proposed position is determined by flicking the ball randomly. This is done by selecting a random variable from a Standard Normal distribution. It therefore determines both the magnitude and direction of the flick. We then watch the ball float around for a while. Wherever it stops is the proposed position. This is illustrated in the third pair of graphics which show how the ball moves over time to the proposed position.</p>
+<p>Note the sum of the potential and kinetic energy is known as the Hamiltonian (hence the name of this procedure). It’s energy should be conserved at each point in the algorithm.</p>
+<p>The point will be drawn toward values with lower potential, taking it toward positions with higher posterior density. This can be done by considering the gradient of the potential and taking steps (similar to how we minimize functions). Notice that when the current position is near the posterior mode, the potential positions are nearly symmetric about the current location as in the Metropolis Algorithm. But, if the point is far from the posterior mode, the potential positions are drawn toward the mode and the potential positions are far from the current position.</p>
+<div class="rmdkeyidea">
+<p>HMC generates proposals which tend to have lower potential.</p>
+</div>
+<p>We emphasize that these are just <em>candidate</em> positions. Once a candidate position is identified, we must decide whether to move there or remain in the current position.</p>
+<div class="block2">
+<p><strong>Decision Rule for HMC:</strong><br />
+Generate <span class="math inline">\(U \sim Unif(0,1)\)</span> and <span class="math inline">\(A\left(\theta^*, \theta^{(k-1)}\right)\)</span> where</p>
+<p><span class="math display">\[A\left(\theta^*, \theta^{(k-1)}\right) = \frac{f\left(\mathbf{y} \mid \theta^*\right) \pi\left(\theta^*\right) \omega\left(\theta^*\right)}{f\left(\mathbf{y} \mid \theta^{(k-1)}\right) \pi\left(\theta^{(k-1)}\right) \omega\left(\theta^{(k-1)}\right)}\]</span></p>
+<p>where <span class="math inline">\(\omega(\cdot)\)</span> is the momentum. If <span class="math inline">\(U \leq A\left(\theta^*, \theta^{(k-1)}\right)\)</span>, then we move to the new position; otherwise, we remain in the same position.</p>
+</div>
+<p>The momentum can be thought of as how much speed the ball has when you reach the candidate position (remember, we stop the ball not when it comes to rest but after some fixed amount of time). Recall that we apply a random momentum to the current location of the ball. The big thing here is that the decision rule is quite similar to the Metropolis Algorithm.</p>
+<p>We have described this process as letting the “ball roll around” for some fixed set of time. In reality, we take some number of steps of a certain size based on the gradient (much like function minimization). Both the step size and number of steps require some tuning.</p>
+<p>The step size is tuned to balance how far away from the current position we move and the degree of approximation. If we take small steps, we approximate the curve quite nicely, but we do not get anywhere. If we take large steps, we move away from our current position, but the approximation suffers.</p>
+<p>The total duration, the number of steps taken, is tuned to ensure we do not overshoot or make a u-turn. If we let the ball roll for too long, it could overshoot the posterior mode by a large degree; or, we may end up stopping the ball when it has rolled back to where it started.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mcmc-p2"></span>
+<img src="images/Kruschke-Fig2.jpg" alt="Examples of a Hamiltonian Monte Carlo proposal distributions for two different current parameter values, marked by the large dots, in the two columns. For this figure, a large range of random trajectory lengths (Steps*Eps) is sampled." width="286" />
+<p class="caption">
+Figure 17.2: Examples of a Hamiltonian Monte Carlo proposal distributions for two different current parameter values, marked by the large dots, in the two columns. For this figure, a large range of random trajectory lengths (Steps*Eps) is sampled.
+</p>
+</div>
+<p>In addition to these tuning parameters, we must determine the standard deviation of the symmetric distribution used to apply the momentum to the current position. This choice needs to balance variety with accuracy. Too small of a standard deviation (like nudging the ball) means it will not roll far from where it started, and every candidate is essentially the same (leading to a higher likelihood of acceptance/rejection). Too large of a standard deviation, and a high degree of candidates will be rejected.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mcmc-p3"></span>
+<img src="images/Kruschke-Fig3.jpg" alt="Examples of a Hamiltonian Monte Carlo proposal distributions for two different variances of the initial random momentum, indicated in the second row." width="277" />
+<p class="caption">
+Figure 17.3: Examples of a Hamiltonian Monte Carlo proposal distributions for two different variances of the initial random momentum, indicated in the second row.
+</p>
+</div>
+<p>Proper tuning ensures that the algorithm is efficient and a majority of the variates are useful in representing the posterior. These are handled internally by the software, but it is important to have an understanding of what is happening in the background.</p>
+<p>With MCMC methods, we can now address a multitude of more complex problems. We do note the one limitation of Stan is that it does not currently support discrete parameters directly. This is because the HMC algorithm needs a smooth function in order to compute the gradient. Not supporting discrete parameters is not as limiting as it might seem, but it does prohibit automatic model comparison within Stan and eliminates the ability to put a point mass in the prior distribution.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Kruschke2015" class="csl-entry">
+Kruschke, John K. 2015. <em>Doing Bayesian Data Analysis: A Tutorial with r, JAGS, and Stan</em>. 2nd ed. Elsevier.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="mc-integration.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mcmc-assessment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

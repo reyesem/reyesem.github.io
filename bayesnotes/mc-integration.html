@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9 Quantifying Prior Information | Course Notes for Bayesian Data Analysis</title>
+  <title>16 Monte Carlo Integration | Course Notes for Bayesian Data Analysis</title>
   <meta name="description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9 Quantifying Prior Information | Course Notes for Bayesian Data Analysis" />
+  <meta property="og:title" content="16 Monte Carlo Integration | Course Notes for Bayesian Data Analysis" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9 Quantifying Prior Information | Course Notes for Bayesian Data Analysis" />
+  <meta name="twitter:title" content="16 Monte Carlo Integration | Course Notes for Bayesian Data Analysis" />
   
   <meta name="twitter:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="modeling-samples.html"/>
-<link rel="next" href="posterior-distributions.html"/>
+<link rel="prev" href="constructing-priors.html"/>
+<link rel="next" href="mcmc.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -194,55 +194,82 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="quantifying-prior-information" class="section level1" number="9">
-<h1><span class="header-section-number">9</span> Quantifying Prior Information</h1>
-<p>Data contributes information to our beliefs. But, prior to beginning a study, we generally have some established beliefs. Those beliefs may be based on previous studies, expert opinions, personal experience, etc. The Bayesian framework explicitly incorporates these beliefs in the analysis. It is the job of the analyst to quantify these beliefs.</p>
-<div class="rmdkeyidea">
-<p>The Bayesian framework encodes any uncertainty through a probability distribution.</p>
-</div>
-<p>Recall that our primary aim is to make some statement about the population using a corresponding sample. These statements involve unknown parameters. Thus, we want to make a statement about a parameter using the sample. The data we observe will inform us about the values of these parameters. Prior to beginning the study, however, we generally have some notion about these parameters. What is a typical GPA for a Rose-Hulman student? How much does a member of the mathematics faculty earn each year, on average? Statisticians collect data to inform these beliefs (topic of the next section). But, even without data available, we have some idea of where we think the answer lies. Bayesians encode these beliefs into probability distributions. The beliefs we have prior to seeing the data are described by the prior distribution (since the beliefs were those we had <em>a priori</em>).</p>
-<div class="definition">
-<p><span id="def:defn-prior-distribution" class="definition"><strong>Definition 9.1  (Prior Distribution) </strong></span>A distribution quantifying our beliefs about uncertainty in the <em>parameter(s)</em> of the underlying sampling distribution <em>prior to</em> observing any data. This is often denoted by <span class="math inline">\(\pi(\boldsymbol{\theta})\)</span> where <span class="math inline">\(\boldsymbol{\theta}\)</span> is the parameter vector.</p>
-<ul>
-<li>This relies on a <em>subjective</em> view of probability.</li>
-<li>As prior beliefs are subjective, there is no “one” prior, but each individual may have a unique prior.</li>
-</ul>
-</div>
-<p>Constructing a prior distribution is not all that different from constructing the likelihood. There are several aspects involved, but it is all about understanding the structure of the beliefs.</p>
-<div class="rmdtip">
-<p><strong>Tips for Constructing a Prior:</strong><br />
-The following considerations should be kept in mind when constructing the prior distribution.</p>
-<ul>
-<li>Identify the unknown parameter(s). That is, on what unknown value(s) does the <em>likelihood</em> depend?</li>
-<li>Describe the support for the parameter(s).</li>
-<li>Use clear statements about our beliefs of the parameters to determine the <strong>hyperparameters</strong>.</li>
-</ul>
-</div>
-<div class="definition">
-<p><span id="def:defn-hyperparameter" class="definition"><strong>Definition 9.2  (Hyperparameter) </strong></span>A constant term of a prior distribution which characterizes the family we are considering. While “parameters” (constant terms which characterize the likelihood) are unknown, hyperparameters are chosen such that the prior distribution reflects our prior beliefs.</p>
-</div>
+<div id="mc-integration" class="section level1" number="16">
+<h1><span class="header-section-number">16</span> Monte Carlo Integration</h1>
+<p>Integration plays a critical role in deriving the posterior distribution, which is central to Bayesian inference. This integration can often become analytically intractable. In this unit, we discuss numerical approaches to avoiding this integration by obtaining a sample from the posterior. In this chapter, we discuss a popular method of numerical integration in the statistical community that serves as the foundation for modern Bayesian computational approaches.</p>
 <div class="example">
-<p><span id="exm:ex-mms" class="example"><strong>Example 9.1  (The Green Ones) </strong></span>Despite logically knowing that each tastes the same, Jamie prefers the green M&amp;M candies. Jamie’s husband has sent a small bag (of 30 candies) of M&amp;M’s with her for work. If they are a typical pack, she expects 1/6 of the candies to be green; however, if the pack is a holiday pack, she expects 1/2 of the candies to be green. Since it is close to Christmas, Jamie is 60% sure that she got a holiday pack.</p>
+<p><span id="exm:ex-integration" class="example"><strong>Example 16.1  (Pharmacokinetics) </strong></span>When modeling the rate at which a drug is broken down by the body (known as pharmacokinetics), it is often of interest to know the logarithm of the ED50 value (the time at which 50% of the drug has been metabolized by the body). Suppose it is known that for a particular drug, the ED50 value <span class="math inline">\(T\)</span> for the patient population can be modeled using the following density:</p>
+<p><span class="math display">\[f(t) = \frac{b^a}{\Gamma(a)} t^{a-1} e^{-bt} \qquad t &gt; 0\]</span></p>
+<p>where <span class="math inline">\(a = 4\)</span> and <span class="math inline">\(b = 2\)</span>. We are interested in the average logarithm of the ED50 value, which is given by</p>
+<p><span class="math display">\[\int \log(t) f(t) dt.\]</span></p>
 </div>
-<p>Notice that in this example, no data has been collected — the pack has not been open. The beliefs stated here are <em>prior</em> to seeing any data, and they can therefore be used to form a prior distribution. Again, notice the use of “a” when describing the prior instead of “the.” While this prior will reflect Jamie’s beliefs; if someone had a different set of beliefs, we would arrive at a different prior.</p>
-<p>Let <span class="math inline">\(Y\)</span> represent the number of green candies Jamie will observe when she opens the pack. Then, <span class="math inline">\(Y \sim Bin(30, \theta)\)</span>, where <span class="math inline">\(\theta\)</span> is the probability of a green candy. This is <strong>not</strong> the prior distribution but instead represents the likelihood. We see that this likelihood depends on the unknown parameter <span class="math inline">\(\theta\)</span>, which represents the liklihood of an individual candy being green. This is the first step in constructing a prior — constructing the likelihood and identifying any unknown parameters.</p>
-<p>Now, we must describe the support for <span class="math inline">\(\theta\)</span>. Ordinarily, we might think that <span class="math inline">\(\theta\)</span> could be any value between 0 and 1 since it represents a probability. However, notice that the context we have here suggests there are really only two possible values: either <span class="math inline">\(\theta = 1/6\)</span> representing a typical pack, or <span class="math inline">\(\theta = 1/2\)</span> representing a holiday pack. So, the support of <span class="math inline">\(\theta\)</span> is the set <span class="math inline">\(\{1/6, 1/2\}\)</span>. Since the support is countable, we will need a discrete distribution for <span class="math inline">\(\theta\)</span>.</p>
-<p>Now that we know the support of <span class="math inline">\(\theta\)</span>, we can use any remaining beliefs to create clear statements that help us define the hyperparameters and therefore create the exact form of the prior distribution. Our last piece of information is that Jamie is 60% sure she has a holiday pack. That is,</p>
+<p>While this example is contrived, integrals like this arise in practice regularly. The integral of interest does not yield an analytical solution; a numerical procedure must be used. There are several numerical methods for integration which are developed and studied in mathematics. However, consider the following suggested procedure:</p>
+<ul>
+<li>Let <span class="math inline">\(T_1, T_2, \dots, T_n\)</span> be a random sample such that <span class="math inline">\(T_i \sim f(t)\)</span> for all <span class="math inline">\(i\)</span>.</li>
+<li>Define <span class="math inline">\(Y_i = \log\left(T_i\right)\)</span> for all <span class="math inline">\(i\)</span>.</li>
+<li>Compute <span class="math inline">\(\bar{Y}\)</span>.</li>
+</ul>
+<p>The value of <span class="math inline">\(\bar{Y}\)</span> will estimate the integral! As an initial justification, observe that on average, the estimate is correct. Observe that</p>
 <p><span class="math display">\[
-Pr(\theta = u) = \begin{cases}
-  0.4 &amp; u = 1/6 \\
-  0.6 &amp; u = 1/2
-  \end{cases}.
+\begin{aligned}
+  E\left(\bar{Y}\right) &amp;= E\left(n^{-1} \sum_{i=1}^{n} Y_i\right) \\
+    &amp;= E\left(n^{-1} \sum_{i=1}^{n} \log\left(T_i\right)\right) \\
+    &amp;= n^{-1} \sum_{i=1}^{n} E\left(\log\left(T_i\right)\right) \\
+\end{aligned}
 \]</span></p>
-<p>This is a completely acceptable way of writing the prior distribution. However, as we will later see, formulas are much easier to work with instead of specific cases. As an alternative to the above, we write</p>
-<p><span class="math display">\[\pi(\theta) = 0.4\delta(\theta - 1/6) + 0.6\delta(\theta - 1/2)\]</span></p>
-<p>where <span class="math inline">\(\delta(x)\)</span> is the Dirac Delta function defined as</p>
-<p><span class="math display">\[\int_{-\infty}^{\infty} f(x) \delta(x) dx = f(0)\]</span></p>
-<p>for any function <span class="math inline">\(f\)</span>. There are other ways to represent <span class="math inline">\(\pi(\theta)\)</span>, but this makes it a continuous distribution over potential values of <span class="math inline">\(\theta\)</span>.</p>
-<div class="rmdkeyidea">
-<p>A prior distribution quantifies the uncertainty we have about a parameter prior to observing data.</p>
+<p>where the last line is a result of the expectation being a linear operator. Since each <span class="math inline">\(T_i\)</span> is identically distributed (they are a random sample from the same population), the expectation is the same for each <span class="math inline">\(i\)</span>; specifically, we have (see Definition <a href="essential-probability.html#def:defn-expectation-transformation">1.7</a>)</p>
+<p><span class="math display">\[E\left(\log\left(T_i\right)\right) = \int \log(t) f(t) dt.\]</span></p>
+<p>Since this is not indexed by <span class="math inline">\(i\)</span>, we have that</p>
+<p><span class="math display">\[E\left(\bar{Y}\right) = \int \log(t) f(t) dt\]</span></p>
+<p>the desired integral. Of course, this just states that the distribution of <span class="math inline">\(\bar{Y}\)</span> (across many samples of size <span class="math inline">\(n\)</span>) will center on the true value of the integral. We can actually say a lot more because of the Law of Large Numbers.</p>
+<div class="theorem">
+<p><span id="thm:lln" class="theorem"><strong>Theorem 16.1  (Law of Large Numbers) </strong></span>Let <span class="math inline">\(X_1, X_2,\dotsc, X_n\)</span> be independent and identically distributed random variables with density <span class="math inline">\(f(x)\)</span>. Consider a real valued function <span class="math inline">\(g\)</span>. Then, for any <span class="math inline">\(\epsilon &gt; 0\)</span> we have that</p>
+<p><span class="math display">\[Pr\left(\lvert\frac{1}{n}\sum_{i=1}^n g\left(X_i\right) - E\left[g(X)\right]\rvert &gt; \epsilon\right) \rightarrow 0\]</span></p>
+<p>as <span class="math inline">\(n \rightarrow \infty\)</span>, assuming <span class="math inline">\(E\left[g(X)\right]\)</span> exists.</p>
 </div>
-<p>The above example offers a rather simplistic view of constructing a prior. In practice, nearly every problem will involve some numerical computation at some point. Rarely, perhaps never, are we simply provided with a complete prior distribution and asked to perform an analysis. Generally, we must convert statements from researchers into some type of distribution.</p>
+<p>The Law of Large Numbers essentially says that the sample mean can be made arbitrarily close to the expectation it approximates given a large enough sample size. That is, as the sample size increases, the sample mean is really close to the true mean. That is,</p>
+<p><span class="math display">\[\frac{1}{n} \sum_{i=1}^{n} g\left(X_i\right) \approx \int g(x) f(x) dx.\]</span></p>
+<div class="rmdkeyidea">
+<p>The Law of Large Numbers allows us to approximate integrals, in the form of expectations of random variables, using a corresponding sample mean.</p>
+</div>
+<p>The following pseudo-code illustrates the use of the Law of Large Numbers in order to compute the integral from the Pharmacokinetics example (<a href="mc-integration.html#exm:ex-integration">16.1</a>):</p>
+<pre><code>let m = 10000;
+
+for i from 1 to m do;
+  x[i] = random_gamma(shape = 4, rate = 2);
+  y[i] = log(x[i]);
+end;
+  
+ybar = mean(y[1:m]);</code></pre>
+<p>Since we have a large sample size, we know that the sample mean computed in the last step will be a good approximation to the integral of interest.</p>
+<p>Upon first inspection, it may seem that the Law of Large Numbers is limited to estimating means. However, nearly every quantity of interest we may want to compute can be written in terms of an integral and therefore approximated using this technique. This includes probabilities, means, quantiles (and therefore credible intervals), variances, and even the evidence in favor of a model. That is, the Law of Large Numbers provides a technique for performing integration numerically. Because of its dependence on random processes, it is known as Monte Carlo Integration. This will allow us to compute summaries for the posterior distribution.</p>
+<div class="rmdkeyidea">
+<p>We can construct Bayesian estimators using only a random sample from the posterior distribution.</p>
+</div>
+<p>When using numerical simulation to estimate a quantity, we will typically be required to sample from a joint density. This is difficult in general; however, if we can create a set of chained expressions, this is much simpler. Suppose <span class="math inline">\((X, Y)\)</span> is a vector of two random variables with joint density <span class="math inline">\(f(x, y)\)</span>; we make use of the fact that</p>
+<p><span class="math display">\[f(x, y) = f(x \mid y) f(y);\]</span></p>
+<p>that is, the joint distribution is the product of a conditional distribution and a marginal distribution. This process works for generating random variables as well.</p>
+<div class="block2">
+<p><strong>Simulating from Joint Distributions</strong>
+Let the random vector <span class="math inline">\((X, Y)\)</span> be distributed according to the joint density <span class="math inline">\(f(x,y)\)</span>. The following procedure can be used to simulate observations <span class="math inline">\(\left(X_1, Y_1\right), \left(X_2, Y_2\right), \dotsc, \left(X_m, Y_m\right)\)</span> from the joint density:</p>
+<ol style="list-style-type: decimal">
+<li>Generate <span class="math inline">\(m\)</span> variates <span class="math inline">\(Y_1, Y_2, \dotsc, Y_m\)</span> from <span class="math inline">\(f(y)\)</span>, the marginal distribution of <span class="math inline">\(Y\)</span>.</li>
+<li>For each <span class="math inline">\(Y_i\)</span>, generate a single <span class="math inline">\(X_i\)</span> from <span class="math inline">\(f(x \mid y)\)</span>, the conditional distribution of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y\)</span>.</li>
+</ol>
+<p>The resulting pairs will have the desired joint distribution. Further, the column of <span class="math inline">\(X\)</span>’s will behave according to the density <span class="math inline">\(f(x)\)</span>, the marginal distribution of <span class="math inline">\(X\)</span>.</p>
+</div>
+<p>The Law of Large Numbers guarantees that we can obtain approximations of Bayesian estimators. Of course, given that these approximations are based on random processes, it is reasonable to ask how good the approximation is. Similarly, it is natural to ask how many random samples are needed for a decent approximation. This is addressed via a version of the Central Limit Theorem.</p>
+<div class="theorem">
+<p><span id="thm:clt" class="theorem"><strong>Theorem 16.2  (Central Limit Theorem) </strong></span>Let <span class="math inline">\(X_1, X_2, \dotsc, X_n\)</span> be independent and identically distributed random variables. Consider a real-valued function <span class="math inline">\(g\)</span> such that <span class="math inline">\(E\left[g(X)\right]\)</span> and <span class="math inline">\(Var\left[g(X)\right]\)</span> exist. Then, we have that the quantity</p>
+<p><span class="math display">\[\frac{n^{-1} \sum_{i=1}^{n} g\left(X_i\right) - E\left[g(X)\right]}{\sqrt{\widehat{Var}\left[g(X)\right]/n}}\]</span></p>
+<p>behaves like a standard normal random variable as <span class="math inline">\(n \rightarrow \infty\)</span>.</p>
+</div>
+<p>The Central Limit Theorem provides a way of quantifying the error in the Monte Carlo approximation.</p>
+<div class="definition">
+<p><span id="def:def-mc-error" class="definition"><strong>Definition 16.1  (Monte Carlo Error) </strong></span>Also called the standard error for an approximation of the form <span class="math inline">\(m^{-1} \sum\limits_{k=1}^{m} g\left(X_k\right)\)</span>, the MC error is given by</p>
+<p><span class="math display">\[\sqrt{\frac{1}{m(m-1)} \sum_{k=1}^{m} \left[g\left(X_k\right) - \frac{1}{m} \sum_{j=1}^{m} g\left(X_j\right)\right]^2}\]</span></p>
+<p>which is the sample standard deviation of the generated variates divided by the square root of the number of replications.</p>
+</div>
 
 </div>
             </section>
@@ -250,8 +277,8 @@ Pr(\theta = u) = \begin{cases}
           </div>
         </div>
       </div>
-<a href="modeling-samples.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="posterior-distributions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="constructing-priors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mcmc.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9 Quantifying Prior Information | Course Notes for Bayesian Data Analysis</title>
+  <title>18 Assessing MCMC Samples | Course Notes for Bayesian Data Analysis</title>
   <meta name="description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9 Quantifying Prior Information | Course Notes for Bayesian Data Analysis" />
+  <meta property="og:title" content="18 Assessing MCMC Samples | Course Notes for Bayesian Data Analysis" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9 Quantifying Prior Information | Course Notes for Bayesian Data Analysis" />
+  <meta name="twitter:title" content="18 Assessing MCMC Samples | Course Notes for Bayesian Data Analysis" />
   
   <meta name="twitter:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="modeling-samples.html"/>
-<link rel="next" href="posterior-distributions.html"/>
+<link rel="prev" href="mcmc.html"/>
+<link rel="next" href="additional-study-design.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -194,55 +194,27 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="quantifying-prior-information" class="section level1" number="9">
-<h1><span class="header-section-number">9</span> Quantifying Prior Information</h1>
-<p>Data contributes information to our beliefs. But, prior to beginning a study, we generally have some established beliefs. Those beliefs may be based on previous studies, expert opinions, personal experience, etc. The Bayesian framework explicitly incorporates these beliefs in the analysis. It is the job of the analyst to quantify these beliefs.</p>
-<div class="rmdkeyidea">
-<p>The Bayesian framework encodes any uncertainty through a probability distribution.</p>
-</div>
-<p>Recall that our primary aim is to make some statement about the population using a corresponding sample. These statements involve unknown parameters. Thus, we want to make a statement about a parameter using the sample. The data we observe will inform us about the values of these parameters. Prior to beginning the study, however, we generally have some notion about these parameters. What is a typical GPA for a Rose-Hulman student? How much does a member of the mathematics faculty earn each year, on average? Statisticians collect data to inform these beliefs (topic of the next section). But, even without data available, we have some idea of where we think the answer lies. Bayesians encode these beliefs into probability distributions. The beliefs we have prior to seeing the data are described by the prior distribution (since the beliefs were those we had <em>a priori</em>).</p>
+<div id="mcmc-assessment" class="section level1" number="18">
+<h1><span class="header-section-number">18</span> Assessing MCMC Samples</h1>
+<p>As with any good statistical procedure, we should not blindly accept the results from an MCMC algorithm. We should, at a minimum, investigate that certain assumptions are reasonable before proceeding. This section outlines some checks that are done on the posterior sample to determine its suitability for answering questions.</p>
+<p>There are essentially four considerations when examining the output of any MCMC algorithm.</p>
+<p>First, we must check that the posterior is proper. This is <em>only</em> a concern if the prior is improper. Most software cannot check this assumption for us; so, it must be done analytically. An easy way to ensure this is not a concern is to always use a proper prior.</p>
+<p>Second, we must assess the convergence of the MCMC chains. Recall that we seed a Markov Chain with an initial value. It then takes a while (<span class="math inline">\(k\)</span> must be large, recall) before the generated values reach the stationary distribution. A trace plot (or run chart) showing the value of the variates as the chain is developed can be used to visually assess convergence. You are essentially looking for whether the chain eventually settles in a particular region of the parameter space; this should not be confused with the chain reaching a specific value. As we are looking for a stationary distribution, we expect the variates generated to bounce around (according to the stationary distribution); however, if the chain has some signal to it (trending in location), that is unexpected. It should eventually look like noise around some central point.</p>
+<p>Often, we eliminate the early part of a chain, the discarded portion known as the “warm-up” (or “burn-in”) period. That is, we might remove the first 1000 variates from the resulting Markov chain because we expect the chain is still moving toward the stationary distribution during this time period. The variates after the burn-in period behave more like a sample from the stationary distribution and are retained for analysis.</p>
+<p>Third, we want to determine if the chosen MCMC algorithm is sensitive to the chosen starting (initial) value. We therefore seed the algorithm with multiple starting values, resulting in multiple chains. It is generally sufficient to consider three chains. Overlaying the trace plot from each chain allows us to assess whether the chains “mix” well (overlap). If the various chains are distinct, this suggests that the stationary distribution suggested by the algorithm varies according to the starting value, which means a stationary distribution was not really obtained.</p>
+<p>In addition to the visual check, we can compute the “shrink factor.” Also known as the “potential scale reduction factor,” this is the ratio of the between-chain variability to the within-chain variability. if the chains are well mixed, this ratio should be near 1. If the ratio gets much larger than 1.1, it indicates a serious problem with the mixing.</p>
+<p>Finally, we examine the correlation between the variates. Recall that we expect our Markov chain to result in correlated variates. As a result, each variate does not contain as much unique information as we may believe. The “effective sample size” gives a crude measure of how much <em>independent</em> information there is within the chain. For example, we may generate 5000 iterates, but if the variates are highly dependent, the effective sample size may suggest we act as if only 100 iterates were generated.</p>
 <div class="definition">
-<p><span id="def:defn-prior-distribution" class="definition"><strong>Definition 9.1  (Prior Distribution) </strong></span>A distribution quantifying our beliefs about uncertainty in the <em>parameter(s)</em> of the underlying sampling distribution <em>prior to</em> observing any data. This is often denoted by <span class="math inline">\(\pi(\boldsymbol{\theta})\)</span> where <span class="math inline">\(\boldsymbol{\theta}\)</span> is the parameter vector.</p>
-<ul>
-<li>This relies on a <em>subjective</em> view of probability.</li>
-<li>As prior beliefs are subjective, there is no “one” prior, but each individual may have a unique prior.</li>
-</ul>
+<p><span id="def:def-ess" class="definition"><strong>Definition 18.1  (Effective Sample Size) </strong></span>The effective sample size (ESS) is given by</p>
+<p><span class="math display">\[ESS = \frac{N}{1 + 2\sum_{k=1}^{\infty} ACF(k)}\]</span></p>
+<p>where ACF is the auto-correlation function of degree <span class="math inline">\(k\)</span>.</p>
 </div>
-<p>Constructing a prior distribution is not all that different from constructing the likelihood. There are several aspects involved, but it is all about understanding the structure of the beliefs.</p>
-<div class="rmdtip">
-<p><strong>Tips for Constructing a Prior:</strong><br />
-The following considerations should be kept in mind when constructing the prior distribution.</p>
-<ul>
-<li>Identify the unknown parameter(s). That is, on what unknown value(s) does the <em>likelihood</em> depend?</li>
-<li>Describe the support for the parameter(s).</li>
-<li>Use clear statements about our beliefs of the parameters to determine the <strong>hyperparameters</strong>.</li>
-</ul>
+<div class="rmdwarning">
+<p>When discussing MCMC procedures, it is common to use “sample size” to actually refer to the number of variates generted during the MCMC algorithm. We should not confuse the number of variates generated from the posterior with the number of observations in our data set.</p>
 </div>
-<div class="definition">
-<p><span id="def:defn-hyperparameter" class="definition"><strong>Definition 9.2  (Hyperparameter) </strong></span>A constant term of a prior distribution which characterizes the family we are considering. While “parameters” (constant terms which characterize the likelihood) are unknown, hyperparameters are chosen such that the prior distribution reflects our prior beliefs.</p>
-</div>
-<div class="example">
-<p><span id="exm:ex-mms" class="example"><strong>Example 9.1  (The Green Ones) </strong></span>Despite logically knowing that each tastes the same, Jamie prefers the green M&amp;M candies. Jamie’s husband has sent a small bag (of 30 candies) of M&amp;M’s with her for work. If they are a typical pack, she expects 1/6 of the candies to be green; however, if the pack is a holiday pack, she expects 1/2 of the candies to be green. Since it is close to Christmas, Jamie is 60% sure that she got a holiday pack.</p>
-</div>
-<p>Notice that in this example, no data has been collected — the pack has not been open. The beliefs stated here are <em>prior</em> to seeing any data, and they can therefore be used to form a prior distribution. Again, notice the use of “a” when describing the prior instead of “the.” While this prior will reflect Jamie’s beliefs; if someone had a different set of beliefs, we would arrive at a different prior.</p>
-<p>Let <span class="math inline">\(Y\)</span> represent the number of green candies Jamie will observe when she opens the pack. Then, <span class="math inline">\(Y \sim Bin(30, \theta)\)</span>, where <span class="math inline">\(\theta\)</span> is the probability of a green candy. This is <strong>not</strong> the prior distribution but instead represents the likelihood. We see that this likelihood depends on the unknown parameter <span class="math inline">\(\theta\)</span>, which represents the liklihood of an individual candy being green. This is the first step in constructing a prior — constructing the likelihood and identifying any unknown parameters.</p>
-<p>Now, we must describe the support for <span class="math inline">\(\theta\)</span>. Ordinarily, we might think that <span class="math inline">\(\theta\)</span> could be any value between 0 and 1 since it represents a probability. However, notice that the context we have here suggests there are really only two possible values: either <span class="math inline">\(\theta = 1/6\)</span> representing a typical pack, or <span class="math inline">\(\theta = 1/2\)</span> representing a holiday pack. So, the support of <span class="math inline">\(\theta\)</span> is the set <span class="math inline">\(\{1/6, 1/2\}\)</span>. Since the support is countable, we will need a discrete distribution for <span class="math inline">\(\theta\)</span>.</p>
-<p>Now that we know the support of <span class="math inline">\(\theta\)</span>, we can use any remaining beliefs to create clear statements that help us define the hyperparameters and therefore create the exact form of the prior distribution. Our last piece of information is that Jamie is 60% sure she has a holiday pack. That is,</p>
-<p><span class="math display">\[
-Pr(\theta = u) = \begin{cases}
-  0.4 &amp; u = 1/6 \\
-  0.6 &amp; u = 1/2
-  \end{cases}.
-\]</span></p>
-<p>This is a completely acceptable way of writing the prior distribution. However, as we will later see, formulas are much easier to work with instead of specific cases. As an alternative to the above, we write</p>
-<p><span class="math display">\[\pi(\theta) = 0.4\delta(\theta - 1/6) + 0.6\delta(\theta - 1/2)\]</span></p>
-<p>where <span class="math inline">\(\delta(x)\)</span> is the Dirac Delta function defined as</p>
-<p><span class="math display">\[\int_{-\infty}^{\infty} f(x) \delta(x) dx = f(0)\]</span></p>
-<p>for any function <span class="math inline">\(f\)</span>. There are other ways to represent <span class="math inline">\(\pi(\theta)\)</span>, but this makes it a continuous distribution over potential values of <span class="math inline">\(\theta\)</span>.</p>
-<div class="rmdkeyidea">
-<p>A prior distribution quantifies the uncertainty we have about a parameter prior to observing data.</p>
-</div>
-<p>The above example offers a rather simplistic view of constructing a prior. In practice, nearly every problem will involve some numerical computation at some point. Rarely, perhaps never, are we simply provided with a complete prior distribution and asked to perform an analysis. Generally, we must convert statements from researchers into some type of distribution.</p>
+<p>If you want to measure something that is in the center of the distribution (mean/median), the ESS need not be large. But, if you want to compute a tail probability, you need something much larger. Some texts recommend near 10000 variates from the posterior in order to reliably compute a highest posterior density interval, for example.</p>
+<p>While these four checks are somewhat universal, there is an additional check that can be helpful when using HMC. Recall that the total energy should be conserved during the HMC procedure. A <em>divergent transition</em> occurs when the simulated Hamiltonian departs from the true value (as measured at the initial point). Divergent transitions (after warm-up) indicate the results will be biased. A “pairs plot” allows us to visualize when this occurs. If the amount of error (divergence) is larger than the median, it can often be fixed by increasing the target acceptance rate. If not, then this indicates that the posterior may be very difficult to sample from for this algorithm.</p>
+<p>Posterior checks of the MCMC samples are necessary in order to prevent making judgements which are unreasonable. We have only discussed how to identify problems. Fixing the problems is often dependent upon the specific application. There are several subtleties with each model that take time to learn in order to understand where the algorithm might get hung-up. The fix is often a clever reparameterization of the likelihood or prior in order to help the algorithm. With enough computation, we can overcome many of the problems faced.</p>
 
 </div>
             </section>
@@ -250,8 +222,8 @@ Pr(\theta = u) = \begin{cases}
           </div>
         </div>
       </div>
-<a href="modeling-samples.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="posterior-distributions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="mcmc.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="additional-study-design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>16 Additional Study Design | Course Notes for Bayesian Data Analysis</title>
+  <title>19 Additional Study Design | Course Notes for Bayesian Data Analysis</title>
   <meta name="description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="16 Additional Study Design | Course Notes for Bayesian Data Analysis" />
+  <meta property="og:title" content="19 Additional Study Design | Course Notes for Bayesian Data Analysis" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="16 Additional Study Design | Course Notes for Bayesian Data Analysis" />
+  <meta name="twitter:title" content="19 Additional Study Design | Course Notes for Bayesian Data Analysis" />
   
   <meta name="twitter:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="constructing-priors.html"/>
+<link rel="prev" href="mcmc-assessment.html"/>
 <link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -165,9 +165,16 @@ div.csl-indent {
 <li class="chapter" data-level="15.3" data-path="constructing-priors.html"><a href="constructing-priors.html#chains"><i class="fa fa-check"></i><b>15.3</b> Chains</a></li>
 <li class="chapter" data-level="15.4" data-path="constructing-priors.html"><a href="constructing-priors.html#non-informative-priors"><i class="fa fa-check"></i><b>15.4</b> Non-Informative Priors</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="additional-study-design.html"><a href="additional-study-design.html"><i class="fa fa-check"></i><b>16</b> Additional Study Design</a>
+<li class="part"><span><b>III Numerical Approaches to Bayesian Computations</b></span></li>
+<li class="chapter" data-level="16" data-path="mc-integration.html"><a href="mc-integration.html"><i class="fa fa-check"></i><b>16</b> Monte Carlo Integration</a></li>
+<li class="chapter" data-level="17" data-path="mcmc.html"><a href="mcmc.html"><i class="fa fa-check"></i><b>17</b> Markov Chain Monte Carlo</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="additional-study-design.html"><a href="additional-study-design.html#two-types-of-studies"><i class="fa fa-check"></i><b>16.1</b> Two Types of Studies</a></li>
+<li class="chapter" data-level="17.1" data-path="mcmc.html"><a href="mcmc.html#hamiltonian-monte-carlo"><i class="fa fa-check"></i><b>17.1</b> Hamiltonian Monte Carlo</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="mcmc-assessment.html"><a href="mcmc-assessment.html"><i class="fa fa-check"></i><b>18</b> Assessing MCMC Samples</a></li>
+<li class="chapter" data-level="19" data-path="additional-study-design.html"><a href="additional-study-design.html"><i class="fa fa-check"></i><b>19</b> Additional Study Design</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="additional-study-design.html"><a href="additional-study-design.html#two-types-of-studies"><i class="fa fa-check"></i><b>19.1</b> Two Types of Studies</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -187,14 +194,14 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="additional-study-design" class="section level1" number="16">
-<h1><span class="header-section-number">16</span> Additional Study Design</h1>
-<div id="two-types-of-studies" class="section level2" number="16.1">
-<h2><span class="header-section-number">16.1</span> Two Types of Studies</h2>
+<div id="additional-study-design" class="section level1" number="19">
+<h1><span class="header-section-number">19</span> Additional Study Design</h1>
+<div id="two-types-of-studies" class="section level2" number="19.1">
+<h2><span class="header-section-number">19.1</span> Two Types of Studies</h2>
 <p>Thinking about how the data was collected helps us determine how the results generalize beyond the sample itself (to what population the results apply). When our question of interest is about the relationship between two variables (as most questions are), we must also carefully consider the study design. Too often separated from the statistical analysis that follows, keeping the study design in mind should guide the analysis as well as inform us about the conclusions we can draw.</p>
 <p>In order to illustrate how study design can impact the results, consider the following example.</p>
 <div class="example" label="data-kangaroo">
-<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 16.1  (Kangaroo Care) </strong></span>At birth, infants have low levels of Vitamin K, a vitamin needed in order to form blood clots. Though rare, without the ability for her blood to clot, an infant could develop a serious bleed. In order to prevent this, the American Academy of Pediatrics recommends that all infants be given a Vitamin K shot shortly after birth in order to raise Vitamin K levels. As with any shot, there is typically discomfort to the infant, which can be very discomforting to new parents.</p>
+<p><span id="exm:unlabeled-div-2" class="example"><strong>Example 19.1  (Kangaroo Care) </strong></span>At birth, infants have low levels of Vitamin K, a vitamin needed in order to form blood clots. Though rare, without the ability for her blood to clot, an infant could develop a serious bleed. In order to prevent this, the American Academy of Pediatrics recommends that all infants be given a Vitamin K shot shortly after birth in order to raise Vitamin K levels. As with any shot, there is typically discomfort to the infant, which can be very discomforting to new parents.</p>
 <p>Kangaroo Care is a method of holding a baby which emphasizes skin-to-skin contact. The child, who is dressed only in a diaper, is placed upright on the parent’s bare chest; a light blanket is draped over the child. Suppose we are interested in determining if utilizing the method while giving the child a Vitamin K shot reduces the discomfort in the infant, as measured by the total amount of time the child cries following the shot. Contrast the following two potential study designs:</p>
 <ol style="list-style-type: upper-alpha">
 <li>We allow the attending nurse to determine whether Kangaroo Care is initiated prior to giving the Vitamin K shot. Following the shot, we record the total time (in seconds) the child cries.</li>
@@ -215,10 +222,10 @@ div.csl-indent {
 </ul>
 <p>Design (A) is an example of an <strong>observational study</strong>; design (B) is a <strong>controlled experiment</strong>.</p>
 <div class="definition" label="defn-observational-study">
-<p><span id="def:unlabeled-div-2" class="definition"><strong>Definition 16.1  (Observational Study) </strong></span>A study in which each subject “self-selects” into one of groups being compared in the study. The phrase “self-selects” is used very loosely here and can include studies in which the groups are defined by an inherent characteristic or the groups are chosen haphazardly.</p>
+<p><span id="def:unlabeled-div-3" class="definition"><strong>Definition 19.1  (Observational Study) </strong></span>A study in which each subject “self-selects” into one of groups being compared in the study. The phrase “self-selects” is used very loosely here and can include studies in which the groups are defined by an inherent characteristic or the groups are chosen haphazardly.</p>
 </div>
 <div class="definition" label="defn-controlled-experiment">
-<p><span id="def:unlabeled-div-3" class="definition"><strong>Definition 16.2  (Controlled Experiment) </strong></span>A study in which each subject is <em>randomly</em> assigned to one of the groups being compared in the study.</p>
+<p><span id="def:unlabeled-div-4" class="definition"><strong>Definition 19.2  (Controlled Experiment) </strong></span>A study in which each subject is <em>randomly</em> assigned to one of the groups being compared in the study.</p>
 </div>
 <p>It is common to think that anytime the environment is “controlled” by the researcher that a controlled experiment is taking place, but the defining characteristic is the random assignment to groups (sometimes referred to as the <em>factor</em> under study or <em>treatment</em> groups). In the example above, both study designs involved a controlled setting (the delivery room of a hospital) in which trained staff (the nurse) deliver the shot. However, only design (B) is a controlled experiment because the researchers randomly determined into which group the infant would be placed.</p>
 <p>To understand the impact of random allocation, suppose that we had conducted a study using design (A); further, the results suggest that those infants who were given a shot while using Kangaroo Care cried for a shorter time period, on average. Can we conclude that it was the Kangaroo Care that led to the shorter crying time? Maybe. Consider the following two potential explanations for the resulting data:</p>
@@ -228,24 +235,24 @@ div.csl-indent {
 </ol>
 <p>The problem is that we are unable to determine which of the explanations is correct. Given the data we have collected, we are unable to tease out the effect of the Kangaroo Care from that of the nurse’s bedside manner. As a result, we are able to say we observed an <em>association</em> between the use of Kangaroo Care and reduced crying time, but we are unable to conclude that Kangaroo Care <em>caused</em> a reduction in the crying time (that is, there may not be a <em>relationship</em> between the two variables). In this hypothetical scenario, the nurse’s bedside manner is called a <strong>confounder</strong>.</p>
 <div class="definition" label="defn-confounding">
-<p><span id="def:unlabeled-div-4" class="definition"><strong>Definition 16.3  (Confounding) </strong></span>When the effect of a variable on the response is mis-represented due to the presence of a third, potentially unobserved, variable known as a confounder.</p>
+<p><span id="def:unlabeled-div-5" class="definition"><strong>Definition 19.3  (Confounding) </strong></span>When the effect of a variable on the response is mis-represented due to the presence of a third, potentially unobserved, variable known as a confounder.</p>
 </div>
-<p>Confounders can mask the relationship between the factor under study and the response. There is a documented association between ice cream sales and the risk of shark attacks. As ice cream sales increase, the risk of a shark attack also tends to increase. This does not mean that if a small city in the Midwest increases its ice cream sales that the citizens are at higher risk of being attacked by a shark. As Figure <a href="additional-study-design.html#fig:data-confounding">16.1</a> illustrates, there is a confounder — temperature. As the temperatures increase, people tend to buy more ice cream; as the temperature increases, people tend to go to the beach increasing the risk of a shark attack. Two variables can appear to be related as a result of a confounder.</p>
+<p>Confounders can mask the relationship between the factor under study and the response. There is a documented association between ice cream sales and the risk of shark attacks. As ice cream sales increase, the risk of a shark attack also tends to increase. This does not mean that if a small city in the Midwest increases its ice cream sales that the citizens are at higher risk of being attacked by a shark. As Figure <a href="additional-study-design.html#fig:data-confounding">19.1</a> illustrates, there is a confounder — temperature. As the temperatures increase, people tend to buy more ice cream; as the temperature increases, people tend to go to the beach increasing the risk of a shark attack. Two variables can appear to be related as a result of a confounder.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:data-confounding"></span>
 <img src="images/Data-Confounding.jpg" alt="Illustration of a confounding variable. The confounder, related to both the factor and the treatment can make it appear as though there is a causal relationship when none exists." width="476" />
 <p class="caption">
-Figure 16.1: Illustration of a confounding variable. The confounder, related to both the factor and the treatment can make it appear as though there is a causal relationship when none exists.
+Figure 19.1: Illustration of a confounding variable. The confounder, related to both the factor and the treatment can make it appear as though there is a causal relationship when none exists.
 </p>
 </div>
 
 <div class="rmdtip">
 Confounders are variables that influence <em>both</em> the factor of interest and the response.
 </div>
-<p>Observational studies are subject to confounding; thus, controlled experiments are often considered the gold standard in research because they allow us to infer cause-and-effect relationships from the data. Why does the random allocation make such an impact? Because it removes the impact of confounders. Let’s return to the hypothetical Vitamin-K study. Suppose there are nurses with a gentle bedside manner and those who are a little less gentle. If the infants are randomly assigned to one of the two treatment groups, then for every gentle nurse who is told to implement Kangaroo Care while giving the shot, there tends to be a gentle nurse who is told to not implement Kangaroo Care. Similarly, for every mean nurse who is told to implement Kangaroo Care while giving a shot, there tends to be a mean nurse who is told to not implement Kangaroo Care. This is illustrated in Figure <a href="additional-study-design.html#fig:data-randomization">16.2</a>. For an observational study, the treatment groups can be unbalanced; for example, the figure illustrates a case in which there is a higher fraction (11/12 compared to 1/4) of friendly nurses in the Kangaroo Care group compared to the No Kangaroo Care group. For the controlled experiment however, the treatment groups tend to be balanced; there is approximately the same fraction of friendly nurses in both groups. Random assignment is the great equalizer. It tends to result in groups which are similar in all respects; therefore, any differences we observe between the groups <em>must</em> be due to the grouping and not an underlying confounding variable.</p>
+<p>Observational studies are subject to confounding; thus, controlled experiments are often considered the gold standard in research because they allow us to infer cause-and-effect relationships from the data. Why does the random allocation make such an impact? Because it removes the impact of confounders. Let’s return to the hypothetical Vitamin-K study. Suppose there are nurses with a gentle bedside manner and those who are a little less gentle. If the infants are randomly assigned to one of the two treatment groups, then for every gentle nurse who is told to implement Kangaroo Care while giving the shot, there tends to be a gentle nurse who is told to not implement Kangaroo Care. Similarly, for every mean nurse who is told to implement Kangaroo Care while giving a shot, there tends to be a mean nurse who is told to not implement Kangaroo Care. This is illustrated in Figure <a href="additional-study-design.html#fig:data-randomization">19.2</a>. For an observational study, the treatment groups can be unbalanced; for example, the figure illustrates a case in which there is a higher fraction (11/12 compared to 1/4) of friendly nurses in the Kangaroo Care group compared to the No Kangaroo Care group. For the controlled experiment however, the treatment groups tend to be balanced; there is approximately the same fraction of friendly nurses in both groups. Random assignment is the great equalizer. It tends to result in groups which are similar in all respects; therefore, any differences we observe between the groups <em>must</em> be due to the grouping and not an underlying confounding variable.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:data-randomization"></span>
 <img src="images/Data-Randomization.jpg" alt="Illustration of the impact of random assignment in study design. For the observational study, the treatment groups are unbalanced.  For the controlled experiment, the treatment groups are balanced." width="480" />
 <p class="caption">
-Figure 16.2: Illustration of the impact of random assignment in study design. For the observational study, the treatment groups are unbalanced. For the controlled experiment, the treatment groups are balanced.
+Figure 19.2: Illustration of the impact of random assignment in study design. For the observational study, the treatment groups are unbalanced. For the controlled experiment, the treatment groups are balanced.
 </p>
 </div>
 
@@ -266,7 +273,7 @@ Randomly assigning subjects to groups balances the groups with respect to any co
           </div>
         </div>
       </div>
-<a href="constructing-priors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mcmc-assessment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

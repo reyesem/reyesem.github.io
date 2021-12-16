@@ -165,9 +165,16 @@ div.csl-indent {
 <li class="chapter" data-level="15.3" data-path="constructing-priors.html"><a href="constructing-priors.html#chains"><i class="fa fa-check"></i><b>15.3</b> Chains</a></li>
 <li class="chapter" data-level="15.4" data-path="constructing-priors.html"><a href="constructing-priors.html#non-informative-priors"><i class="fa fa-check"></i><b>15.4</b> Non-Informative Priors</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="additional-study-design.html"><a href="additional-study-design.html"><i class="fa fa-check"></i><b>16</b> Additional Study Design</a>
+<li class="part"><span><b>III Numerical Approaches to Bayesian Computations</b></span></li>
+<li class="chapter" data-level="16" data-path="mc-integration.html"><a href="mc-integration.html"><i class="fa fa-check"></i><b>16</b> Monte Carlo Integration</a></li>
+<li class="chapter" data-level="17" data-path="mcmc.html"><a href="mcmc.html"><i class="fa fa-check"></i><b>17</b> Markov Chain Monte Carlo</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="additional-study-design.html"><a href="additional-study-design.html#two-types-of-studies"><i class="fa fa-check"></i><b>16.1</b> Two Types of Studies</a></li>
+<li class="chapter" data-level="17.1" data-path="mcmc.html"><a href="mcmc.html#hamiltonian-monte-carlo"><i class="fa fa-check"></i><b>17.1</b> Hamiltonian Monte Carlo</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="mcmc-assessment.html"><a href="mcmc-assessment.html"><i class="fa fa-check"></i><b>18</b> Assessing MCMC Samples</a></li>
+<li class="chapter" data-level="19" data-path="additional-study-design.html"><a href="additional-study-design.html"><i class="fa fa-check"></i><b>19</b> Additional Study Design</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="additional-study-design.html"><a href="additional-study-design.html#two-types-of-studies"><i class="fa fa-check"></i><b>19.1</b> Two Types of Studies</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -239,7 +246,7 @@ div.csl-indent {
   \tag{10.4}
 \end{equation}\]</span></p>
 <p>Given the data, there is a 76.41% chance the pack is a holiday pack. Notice that the data has strengthened the prior beliefs. Where we initially only believed there was a 60% chance it was a holiday pack, we have now increased that probability a decent amount. The data may have seemed somewhat consistent with both models (5 candies are expected in a general setting and 15 in a holiday pack). However, if only 1/6 of candies are green, it is much less likely to see 10 out of 30 compared to seeing 10 out of 30 if 1/2 are green. Therefore, the data increased our belief in the holiday pack. Our beliefs are updated based on the data.</p>
-<p>There are a couple of other observations we should draw from this example. Notice that the support of the posterior matches the support of the prior. This is always the case (as long as the support of the data does not depend on the likelihood); if you go into a problem whole-heartedly believing something is not possible, then no amount of data will convince you (think of it as a core belief that is unshakable). Data can only convince those who are open to believing something different!</p>
+<p>There are a couple of other observations we should draw from this example. Notice that the support of the posterior matches the support of the prior. This is always the case (as long as the support of the data does not depend on the parameter); if you go into a problem whole-heartedly believing something is not possible, then no amount of data will convince you (think of it as a core belief that is unshakable). Data can only convince those who are open to believing something different!</p>
 <div class="rmdtip">
 <p>The support of the posterior is determined by the support of the prior distribution as well as whether the support of the likelihood depends on the parameter.</p>
 </div>
