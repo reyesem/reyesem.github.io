@@ -172,10 +172,12 @@ div.csl-indent {
 <li class="chapter" data-level="17.1" data-path="mcmc.html"><a href="mcmc.html#hamiltonian-monte-carlo"><i class="fa fa-check"></i><b>17.1</b> Hamiltonian Monte Carlo</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="mcmc-assessment.html"><a href="mcmc-assessment.html"><i class="fa fa-check"></i><b>18</b> Assessing MCMC Samples</a></li>
-<li class="chapter" data-level="19" data-path="additional-study-design.html"><a href="additional-study-design.html"><i class="fa fa-check"></i><b>19</b> Additional Study Design</a>
+<li class="chapter" data-level="19" data-path="study-design.html"><a href="study-design.html"><i class="fa fa-check"></i><b>19</b> Elements of Good Study Design</a></li>
+<li class="chapter" data-level="20" data-path="independent-groups.html"><a href="independent-groups.html"><i class="fa fa-check"></i><b>20</b> Models for Comparing Independent Groups</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="additional-study-design.html"><a href="additional-study-design.html#two-types-of-studies"><i class="fa fa-check"></i><b>19.1</b> Two Types of Studies</a></li>
+<li class="chapter" data-level="20.1" data-path="independent-groups.html"><a href="independent-groups.html#bridge-sampling"><i class="fa fa-check"></i><b>20.1</b> Bridge Sampling</a></li>
 </ul></li>
+<li class="chapter" data-level="21" data-path="dependent-groups.html"><a href="dependent-groups.html"><i class="fa fa-check"></i><b>21</b> Comparing Related Groups</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -231,7 +233,7 @@ div.csl-indent {
 <p>Since the hypotheses are arbitrarily chosen, it is acceptable to compute the posterior odds of any hypothesis relative to any other.</p>
 <p>The posterior odds captures how strongly we favor one hypothesis over another given the observed data. We may be more interested in how much the data impacted our prior beliefs. For example, if the data simply confirmed our beliefs, that is not nearly as extraordinary as it completely reversing our beliefs. The Bayes Factor captures this impact.</p>
 <div class="definition">
-<p><span id="def:bayes-factor" class="definition"><strong>Definition 14.2  (Bayes Factor) </strong></span>A measure of how the observed data <em>alters</em> your prior beliefs about a hypothesis. The Bayes Factor “in favor of the alternative” hypothesis is the ratio of the posterior odds for the alternative to the prior odds for the alternative:</p>
+<p><span id="def:defn-bayes-factor" class="definition"><strong>Definition 14.2  (Bayes Factor) </strong></span>A measure of how the observed data <em>alters</em> your prior beliefs about a hypothesis. The Bayes Factor “in favor of the alternative” hypothesis is the ratio of the posterior odds for the alternative to the prior odds for the alternative:</p>
 <p><span class="math display">\[BF_{10} = \left(\frac{Pr\left(\theta \in \Theta_1 \mid \mathbf{y}\right)}{Pr\left(\theta \in \Theta_0 \mid \mathbf{y}\right)}\right)\left(\frac{Pr\left(\theta \in \Theta_0\right)}{Pr\left(\theta \in \Theta_1\right)}\right)\]</span></p>
 </div>
 <div class="rmdtip">
@@ -275,7 +277,7 @@ Substantial
 <span class="math inline">\(0.5 \leq \log_{10}(BF) \lt 1\)</span>
 </td>
 <td style="text-align:left;">
-<span class="math inline">\(2 \leq \log(BF) \lt 3\)</span>
+<span class="math inline">\(1 \leq \log(BF) \lt 3\)</span>
 </td>
 </tr>
 <tr>
