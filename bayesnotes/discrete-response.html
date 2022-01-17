@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>20 Models for Comparing Independent Groups | Course Notes for Bayesian Data Analysis</title>
+  <title>27 Regression Models for Discrete Responses | Course Notes for Bayesian Data Analysis</title>
   <meta name="description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="20 Models for Comparing Independent Groups | Course Notes for Bayesian Data Analysis" />
+  <meta property="og:title" content="27 Regression Models for Discrete Responses | Course Notes for Bayesian Data Analysis" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="20 Models for Comparing Independent Groups | Course Notes for Bayesian Data Analysis" />
+  <meta name="twitter:title" content="27 Regression Models for Discrete Responses | Course Notes for Bayesian Data Analysis" />
   
   <meta name="twitter:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="study-design.html"/>
-<link rel="next" href="dependent-groups.html"/>
+<link rel="prev" href="reg-conditions.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -217,73 +217,70 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="independent-groups" class="section level1" number="20">
-<h1><span class="header-section-number">20</span> Models for Comparing Independent Groups</h1>
-<p>While the approaches we have described in the text have been general, we have generally assumed we were modeling a single variable from a single population. That is, we were interested in characterizing the data generating process for a response <span class="math inline">\(Y\)</span>; specifically, we assumed the density <span class="math inline">\(f(y \mid \boldsymbol{\theta})\)</span> of <span class="math inline">\(Y\)</span> depended on unknown parameters <span class="math inline">\(\boldsymbol{\theta}\)</span>. We would use a random sample <span class="math inline">\(Y_1, Y_2, \dots, Y_n\)</span> from this population to make inference on those parameters. Many questions do not fit into that mold.</p>
-<div class="example">
-<p><span id="exm:ex-distracted-driving" class="example"><strong>Example 20.1  (Distracted Driving) </strong></span>Nearly every state in the US has a restriction on cell phone use while driving. Some states prohibit texting while driving, while states like Indiana only permit hands-free use of a phone. The goal of these regulations is to reduce distractions while driving and thereby improve reaction time.</p>
+<div id="discrete-response" class="section level1" number="27">
+<h1><span class="header-section-number">27</span> Regression Models for Discrete Responses</h1>
+<p>On the one hand, modeling a categorical response (discrete distribution) is no different than modeling a quantitative response (continuous distribution). In both cases, we specify a distribution, and we allow one or more parameters to vary across individuals based on their predictors through some pre-specified function. On the other hand, the modeling is quite different as there are often more pitfalls to be aware of. In particular, we are no longer in a position to think of the model as</p>
+<p><span class="math display">\[(\text{Response})_i = (\text{Signal})_i + (\text{Noise})_i.\]</span></p>
+<p>As an example, if the response is binary, what type of noise could be added to “jitter” the response? The response must always be a 0 or 1 in that case, meaning thinking of it as a “jittered” signal seems somehow inauthentic. The key to extending the regression model to categorical response variables is to view regression as an extension as a more complex specification of the conditional response.</p>
+<div id="considerations-for-a-binary-response" class="section level2" number="27.1">
+<h2><span class="header-section-number">27.1</span> Considerations for a Binary Response</h2>
+<p>Suppose our response is binary, taking the value 1 when an event of interest occurs (a “success”) and taking the value 0 when the event does not occur (a “failure”). A starting point for this model is</p>
+<p><span class="math display">\[(\text{Response})_i \stackrel{\text{Ind}}{\sim}Ber\left(\theta_i\right)\]</span></p>
+<p>where we are allowing the probability of success <span class="math inline">\(\theta_i\)</span> to potentially vary from one observation to the next. This model continues to assume the response from one individual is independent of the response from any other individual. Our initial attempt at generalizing to a regression setting may be to borrow the linear model structure of previous sections and consider</p>
+<p><span class="math display">\[\theta_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i.\]</span></p>
+<p>Unfortunately, this can be a poor strategy. Notice that there is nothing ensuring that this linear function produces values of <span class="math inline">\(\theta_i\)</span> which are consistent with its support. That is, we know that since <span class="math inline">\(\theta_i\)</span> is a probability, its support is the interval <span class="math inline">\((0, 1)\)</span>. The linear function, however, could quite easily produce values which are negative or exceed 1; instead, we desire a function that is always bounded between 0 and 1 (see Figure <a href="discrete-response.html#fig:logistic-regression">27.1</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:logistic-regression"></span>
+<img src="images/logistic-regression-1.png" alt="Comparison of two functional forms of a single predictor for the success probability in a regression for a binary response." width="672" />
+<p class="caption">
+Figure 27.1: Comparison of two functional forms of a single predictor for the success probability in a regression for a binary response.
+</p>
 </div>
-<p>Does cell phone use reduce reaction time? Does it increase the likelihood of a collision? These questions seek to compare a response (the reaction time) across groups formed by the predictor (cell phone use or not). There are two ways to conceptually think about this comparison. We can think of there being two independent populations — those who use cell phones while driving, and those who do not use cell phones while driving. In this perspective, we are interested in comparing these two populations. From this perspective, we imagine sampling from each population separately. Specifically, let <span class="math inline">\(Y_{j,i}\)</span> be the response for the <span class="math inline">\(i\)</span>-th observation in population <span class="math inline">\(j\)</span>, <span class="math inline">\(i = 1, 2, \dotsc, n_j\)</span>, where <span class="math inline">\(n_j\)</span> is the number of subjects observed from population <span class="math inline">\(j\)</span> and <span class="math inline">\(j = 1, 2, \dotsc, J\)</span>, where <span class="math inline">\(J\)</span> is the number of populations being compared. Further, we assume <span class="math inline">\(Y_{j, i} \stackrel{IID}{\sim} f_j\left(y \mid \boldsymbol{\theta}_j\right)\)</span>; that is, we have a random sample from each population. Notice that we are potentially allowing the form of the data generating process <span class="math inline">\(f\)</span> to vary for each population; and, we certainly allow the parameters <span class="math inline">\(\boldsymbol{\theta}\)</span> to vary for each population. Since we consider each sample independent of one another, we have that the likelihood has the form</p>
-<p><span class="math display">\[f(\mathbf{y} \mid \boldsymbol{\theta}) = \prod_{j=1}^{J} \prod_{i=1}^{n_j} f_j\left(y_{j, i} \mid \boldsymbol{\theta}_j\right).\]</span></p>
-<p>It now remains to specify a prior on each <span class="math inline">\(\boldsymbol{\theta}_j\)</span>. Of course, if the groups are independent of one another, it is also reasonable to assume the parameters are independent of one another. This leads to</p>
-<p><span class="math display">\[\pi(\boldsymbol{\theta}) = \prod_{j=1}^{J} \pi_j(\boldsymbol{\theta}_j).\]</span></p>
-<p>An alternative perspective is to see this as one population (those who drive) exposed to two different treatments (distracted and not). In this perspective, we are interested in comparing the impact of the treatments on the response. We let <span class="math inline">\(Y_i\)</span> be the response for the <span class="math inline">\(i\)</span>-th observation in the population, and we let <span class="math inline">\(x_i\)</span> be a variable that indicates to which treatment the <span class="math inline">\(i\)</span>-th observation has been exposed; that is, <span class="math inline">\(x_i = j\)</span> if the <span class="math inline">\(i\)</span>-th observation has been exposed to the <span class="math inline">\(j\)</span>-th treatment. We then have that <span class="math inline">\(Y_i \stackrel{Ind}{\sim} f\left(y \mid \boldsymbol{\theta}_{x_i}\right)\)</span>. Notice that we do not say that the responses are identically distributed; while the family of distributions is the same (all have the same <span class="math inline">\(f\)</span>), the parameters on which each distribution depends is allowed to differ (based on the value of <span class="math inline">\(x_i\)</span>). Therefore, we are only willing to say the observations are independent. The likelihood then has the form</p>
-<p><span class="math display">\[f(\mathbf{y} \mid \boldsymbol{\theta}) = \prod_{i=1}^{n} f\left(y \mid \boldsymbol{\theta}_{x_i}\right).\]</span></p>
-<p>It now remains to specify a prior on each <span class="math inline">\(\boldsymbol{\theta}_j\)</span>. If we are willing to assume the treatment groups are independent of one another, it is also reasonable to assume the parameters are independent of one another. This leads to</p>
-<p><span class="math display">\[\pi(\boldsymbol{\theta}) = \prod_{j=1}^{J} \pi_j(\boldsymbol{\theta}_j).\]</span></p>
-<p>These two perspectives are equivalent.</p>
-<div class="rmdtip">
-<p>When comparing groups, whether you view the groups as separate populations or a single population exposed to different treatments, the inference is the same provided the groups are independent.</p>
-</div>
-<p>In order to extend inference from a single variable to comparing groups, we essentially allow our parameters to be based on the group from which the data was taken. That is, we add a second layer to our model.</p>
-<div id="bridge-sampling" class="section level2" number="20.1">
-<h2><span class="header-section-number">20.1</span> Bridge Sampling</h2>
-<p>In Chapter <a href="hypothesis-testing.html#hypothesis-testing">14</a> we introduced the idea of model comparison. This is especially useful when comparing groups. Consider a simple case in which we have two groups. Specifically, suppose</p>
-<p><span class="math display">\[
-\begin{aligned}
-  Y_{1,i} &amp;\stackrel{IID}{\sim} f(y \mid \theta_1) \\
-  Y_{2,i} &amp;\stackrel{IID}{\sim} f(y \mid \theta_2) \\
-  Y_{1,i} &amp;\perp\negthickspace\negmedspace\perp Y_{2,j} \quad \forall i, j
-\end{aligned}
-\]</span></p>
-<p>where <span class="math inline">\(\perp\negthickspace\negmedspace\perp\)</span> refers to independence. In this example, the data generating process for each group is distinguished only by a potentially different value of the parameter. It would be natural in such settings to consider the hypotheses</p>
-<p><span class="math display">\[H_0: \theta_1 = \theta_2 \qquad \text{vs.} \qquad H_1: \theta_1 \neq \theta_2\]</span></p>
-<p>If we place a continuous prior on the parameters, then the probability of <span class="math inline">\(H_0\)</span> must be 0. One way of addressing this problem is to consider a clever prior which places mass along the <em>line</em> equating the two parameters. A more natural solution is to think of this as a model comparison problem:</p>
-<p><span class="math display">\[
-\begin{aligned}
-  \mathcal{M}_0:&amp; \quad Y_{j, i} \stackrel{IID}{\sim} f(y \mid \theta) \\
-    &amp; \quad \theta \sim \pi_0(\theta) \\
-  \mathcal{M}_1:&amp; \quad Y_{j, i} \stackrel{Ind}{\sim} f(y \mid \theta_j) \\
-    &amp; \quad \theta_j \stackrel{Ind}{\sim} \pi_j(\theta_j)
-\end{aligned}
-\]</span></p>
-<p>for <span class="math inline">\(j = 1, 2\)</span>. Notice that under Model <span class="math inline">\(\mathcal{M}_0\)</span>, there is only a single parameter, capturing the null hypothesis <span class="math inline">\(\theta_1 = \theta_2\)</span>. And, model <span class="math inline">\(\mathcal{M}_1\)</span> allows the flexibility for two parameters, capturing the alternative hypothesis. We would therefore be interested in computing a Bayes Factor comparing these two models, as described in Definition <a href="hypothesis-testing.html#def:defn-bayes-factor">14.2</a>. The problem is, the Bayes Factor depends on the evidence</p>
-<p><span class="math display">\[f(\mathbf{y} \mid \mathcal{M}_j) = \int f(\mathbf{y} \mid \boldsymbol{\theta}, \mathcal{M}_j) \pi(\boldsymbol{\theta} \mid \mathcal{M}_j) d\boldsymbol{\theta}.\]</span></p>
-<p>Unfortunately, this integral is quite difficult to estimate. Using the prior and performing MC methods is not typically very good because the prior is often too vague. The solution is to use the posterior along with bridge sampling.</p>
+<p>One of the most common choices for the functional form is the <em>logistic function</em>.</p>
 <div class="definition">
-<p><span id="def:defn-bridge-sampling" class="definition"><strong>Definition 20.1  (Bridge Sampling) </strong></span>The bridge sampling estimator of the marginal likelihood <span class="math inline">\(m(\mathbf{y})\)</span> is given by</p>
+<p><span id="def:defn-logistic-regression" class="definition"><strong>Definition 27.1  (Logistic Regression) </strong></span>Given a binary response; logistic regression assumes that</p>
 <p><span class="math display">\[\begin{aligned}
-  m(\mathbf{y}) 
-    &amp;= \int f(\mathbf{y} \mid \boldsymbol{\theta}) \pi(\boldsymbol{\theta}) d\boldsymbol{\theta} \\
-    &amp;= \frac{E_g\left[h(\boldsymbol{\theta}) f(\mathbf{y} \mid \boldsymbol{\theta}) \pi(\boldsymbol{\theta})\right]}{E_{\pi}\left[h(\boldsymbol{\theta}) g(\boldsymbol{\theta}) \right]} \\
-    &amp;\approx \frac{m^{-1}\sum_{j=1}^{m} h\left(\tilde{\boldsymbol{\theta}}_j\right) f\left(\mathbf{y} \mid \tilde{\boldsymbol{\theta}}_j\right) \pi\left(\tilde{\boldsymbol{\theta}}_j\right)}{m^{-1}\sum_{i=1}^{m} h\left(\boldsymbol{\theta}^*_j\right) g\left(\boldsymbol{\theta}^*_j\right)}
+  (\text{Response})_i \mid (\text{Predictors})_i, \boldsymbol{\beta} &amp;\stackrel{\text{Ind}}{\sim}Ber\left(\theta_i\right) \\
+  \theta_i = \frac{e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}{1 + e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}
 \end{aligned}\]</span></p>
-<p>where <span class="math inline">\(h(\boldsymbol{\theta})\)</span> is called the bridge function and <span class="math inline">\(g(\boldsymbol{\theta})\)</span> is the proposal distribution. Here, <span class="math inline">\(\tilde{\boldsymbol{\theta}}\)</span> denotes a random variate from the proposal distribution and <span class="math inline">\(\boldsymbol{\theta}^*\)</span> a random variate from the posterior, and <span class="math inline">\(E_g\)</span> denotes taking an expectation with respect to the proposal distribution an <span class="math inline">\(E_\pi\)</span> denotes taking an expectation with respect to the posterior distribution.</p>
 </div>
-<p>Typically, a Normal distribution is used for the proposal distribution. This process had been implemented in some computing software. While the details of bridge sampling are beyond the scope of this text, we do want to note that the definition comes from making the following observation:</p>
-<p><span class="math display">\[\begin{aligned}
-  1 &amp;= \frac{\int f(\mathbf{y} \mid \boldsymbol{\theta}) \pi(\boldsymbol{\theta}) g(\boldsymbol{\theta}) h(\boldsymbol{\theta})d\boldsymbol{\theta}}{\int f(\mathbf{y} \mid \boldsymbol{\theta}) \pi(\boldsymbol{\theta}) g(\boldsymbol{\theta}) h(\boldsymbol{\theta})d\boldsymbol{\theta}} \\
-  m(\mathbf{y}) &amp;= m(\mathbf{y}) \frac{\int f(\mathbf{y} \mid \boldsymbol{\theta}) \pi(\boldsymbol{\theta}) g(\boldsymbol{\theta}) h(\boldsymbol{\theta})d\boldsymbol{\theta}}{\int f(\mathbf{y} \mid \boldsymbol{\theta}) \pi(\boldsymbol{\theta}) g(\boldsymbol{\theta}) h(\boldsymbol{\theta})d\boldsymbol{\theta}} 
-\end{aligned}\]</span></p>
-<p>where we simply multiply both sides by the marginal distribution, which will be non-negative on its support. Next, next recognize that the integral is with respect to <span class="math inline">\(\boldsymbol{\theta}\)</span>; therefore, we can move the marginal distribution inside the integral in the denominator to get</p>
-<p><span class="math display">\[\begin{aligned}
-  m(\mathbf{y}) &amp;= \frac{\int f(\mathbf{y} \mid \boldsymbol{\theta}) \pi(\boldsymbol{\theta}) h(\boldsymbol{\theta}) g(\boldsymbol{\theta})d\boldsymbol{\theta}}{\int \frac{f(\mathbf{y} \mid \boldsymbol{\theta}) \pi(\boldsymbol{\theta})}{m(\mathbf{y})} h(\boldsymbol{\theta}) g(\boldsymbol{\theta})d\boldsymbol{\theta}} \\
-    &amp;= \frac{\int f(\mathbf{y} \mid \boldsymbol{\theta}) \pi(\boldsymbol{\theta}) h(\boldsymbol{\theta}) g(\boldsymbol{\theta})d\boldsymbol{\theta}}{\int \pi(\boldsymbol{\theta} \mid \mathbf{y}) h(\boldsymbol{\theta}) g(\boldsymbol{\theta})d\boldsymbol{\theta}}
-\end{aligned}\]</span></p>
-<p>where the last equality makes use of the definition of the posterior distribution from Bayes Theorem. Now, the top integral can be viewed in terms of an expectation over a random variable <span class="math inline">\(\boldsymbol{\theta} \sim g(\boldsymbol{\theta})\)</span>, and the denominator can be viewed as an expectation over a random variable which follows the posterior distribution.</p>
-<div class="rmdkeyidea">
-<p>Bridge sampling is an efficient algorithm for estimating the evidence of a model, allowing for computation of the Bayes Factor.</p>
+<p>This is known as logistic regression because the functional form of the probability matches that of the CDF of the Standard Logistic Distribution:</p>
+<p><span class="math display">\[\frac{e^x}{1+e^{x}}.\]</span></p>
+<div class="rmdtip">
+<p>When performing a regression with a binary response, any CDF could be used for the functional form; the Standard Logistic (“logistic regression”) and Standard Normal (“probit regression”) distributions are most common.</p>
 </div>
+<p>Using a CDF for the functional form ensures that for any choice of <span class="math inline">\(\boldsymbol{\beta}\)</span>, the function will always take a value between 0 and 1. Notice that our choice of <span class="math inline">\(\theta_i\)</span> is <em>nonlinear</em> in the parameters <span class="math inline">\(\boldsymbol{\beta}\)</span>; however, it still has that feel of a linear model because of the <em>linear predictor</em></p>
+<p><span class="math display">\[\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i.\]</span></p>
+<p>Nothing prohibits us from considering a nonlinear function instead of the linear predictor; it is just common practice to use the linear predictor, as we have already seen it is flexible enough to accommodate categorical predictors and curvature.</p>
+<p>For a logistic regression, the <span class="math inline">\(j\)</span>-th coefficient <span class="math inline">\(\beta_j\)</span> is the log odds ratio of the response occurring when the <span class="math inline">\(j\)</span>-th predictor is increased by one unit compared to its current value, holding all other predictors fixed. For probit regression, the <span class="math inline">\(j\)</span>-th coefficient <span class="math inline">\(\beta_j\)</span> has no intuitive interpretation (hence the popularity of logistic regression).</p>
+</div>
+<div id="considerations-for-count-data" class="section level2" number="27.2">
+<h2><span class="header-section-number">27.2</span> Considerations for Count Data</h2>
+<p>As in the binary response setting, we take care to ensure that the functional form relating the predictors to key parameters in the conditional distribution of the response enforces constraints on the support.</p>
+<p>Consider a response which counts the number of successes out of a fixed number of trials. We might consider a model of the form</p>
+<p><span class="math display">\[\begin{aligned}
+(\text{Response})_i \mid (\text{Predictors})_i, \boldsymbol{\beta} &amp;\stackrel{\text{Ind}}{\sim}Bin\left(m_i, \theta_i\right) \\
+\log\left(\frac{\theta_i}{1-\theta_i}\right) &amp;= \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i.
+\end{aligned}\]</span></p>
+<p>While we have written this in a slightly different form, we are using the same functional form for linking the response probability to the predictors; here, we have written it in terms of the <em>link function</em>.</p>
+<div class="definition">
+<p><span id="def:defn-link-function" class="definition"><strong>Definition 27.2  (Link Function) </strong></span>The functional form “linking” the linear predictor</p>
+<p><span class="math display">\[\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i\]</span></p>
+<p>to the mean response of the model in a regression model. In particular, it is the function <span class="math inline">\(g\)</span> such that</p>
+<p><span class="math display">\[g\left(\theta_i\right) = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i.\]</span></p>
+</div>
+<p>The logistic distribution function is chosen since <span class="math inline">\(\theta_i\)</span> should be constrained to the interval <span class="math inline">\((0, 1)\)</span>. Notice that the logit link (inverse of the logistic CDF function) does not specify the mean response directly; instead, it is simply used to link the predictors to the mean response such that</p>
+<p><span class="math display">\[E\left[(\text{Response}) \mid (\text{Predictors}), \boldsymbol{\beta}\right] = m  \frac{e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)}}{1 + e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)}}\]</span></p>
+<p>where <span class="math inline">\(m\)</span> is the number of trials.</p>
+<div class="rmdtip">
+<p>Any distribution for which the mean response is defined through the “success” probability could potentially make use of the logit link: Bernoulli, Binomial, Geometric.</p>
+</div>
+<p>The Poisson distribution is common for modeling the number of rare events in a large population, or for arbitrary counts that have no upper bound. Extending this into a regression model generally takes the form</p>
+<p><span class="math display">\[\begin{aligned}
+(\text{Response})_i \mid (\text{Predictors})_i, \boldsymbol{\beta} &amp;\stackrel{\text{Ind}}{\sim}Poisson\left(\lambda_i\right) \\
+\log\left(\lambda_i\right) &amp;= \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i.
+\end{aligned}\]</span></p>
+<p>The log link function is chosen to ensure that <span class="math inline">\(\lambda &gt; 0\)</span> for all possible choice of the parameter vector <span class="math inline">\(\boldsymbol{\beta}\)</span>.</p>
+<p>In all of the cases considered in this chapter, the model specifies the mean response; however, it also specifies the variability in the response. These distributional models are unique in that knowing the mean response uniquely determines the variability in the response. Occasionally, we come across data for which the response behaves <em>nearly</em> like one of these distributions; however, additional variability is present. There are ways of generalizing these models to account for this additional dispersion.</p>
 
 </div>
 </div>
@@ -292,8 +289,8 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="study-design.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dependent-groups.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="reg-conditions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

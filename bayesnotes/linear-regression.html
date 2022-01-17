@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>22 Regression Models for a Quantitative Response | Course Notes for Bayesian Data Analysis</title>
+  <meta name="description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="22 Regression Models for a Quantitative Response | Course Notes for Bayesian Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="22 Regression Models for a Quantitative Response | Course Notes for Bayesian Data Analysis" />
+  
+  <meta name="twitter:description" content="Course notes for MA483 (Bayesian Data Analysis) at Rose-Hulman Institute of Technology." />
+  
+
+<meta name="author" content="Eric M Reyes" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="dependent-groups.html"/>
+<link rel="next" href="reg-extensions.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Data Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>1</b> Essential Probability</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>1.1</b> Density Functions as Models</a></li>
+<li class="chapter" data-level="1.2" data-path="essential-probability.html"><a href="essential-probability.html#summarizing-distributions-parameters"><i class="fa fa-check"></i><b>1.2</b> Summarizing Distributions (Parameters)</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="essential-probability.html"><a href="essential-probability.html#kernels"><i class="fa fa-check"></i><b>1.2.1</b> Kernels</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="essential-probability.html"><a href="essential-probability.html#transformations-of-random-variables"><i class="fa fa-check"></i><b>1.3</b> Transformations of Random Variables</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="essential-probability.html"><a href="essential-probability.html#expectations-of-functions"><i class="fa fa-check"></i><b>1.3.1</b> Expectations of Functions</a></li>
+<li class="chapter" data-level="1.3.2" data-path="essential-probability.html"><a href="essential-probability.html#moment-generating-functions"><i class="fa fa-check"></i><b>1.3.2</b> Moment Generating Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="essential-probability.html"><a href="essential-probability.html#independent-random-variables"><i class="fa fa-check"></i><b>1.4</b> Independent Random Variables</a></li>
+</ul></li>
+<li class="part"><span><b>I Language and Logic of Inference</b></span></li>
+<li class="chapter" data-level="2" data-path="CaseDeepwater.html"><a href="CaseDeepwater.html"><i class="fa fa-check"></i><b>2</b> Case Study: Health Effects of the Deepwater Horizon Oil Spill</a></li>
+<li class="chapter" data-level="3" data-path="Basics.html"><a href="Basics.html"><i class="fa fa-check"></i><b>3</b> The Statistical Process</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Basics.html"><a href="Basics.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>3.1</b> Overview of Drawing Inference</a></li>
+<li class="chapter" data-level="3.2" data-path="Basics.html"><a href="Basics.html#anatomy-of-a-dataset"><i class="fa fa-check"></i><b>3.2</b> Anatomy of a Dataset</a></li>
+<li class="chapter" data-level="3.3" data-path="Basics.html"><a href="Basics.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>3.3</b> A Note on Codebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Questions.html"><a href="Questions.html"><i class="fa fa-check"></i><b>4</b> Asking the Right Questions</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Questions.html"><a href="Questions.html#characterizing-a-variable"><i class="fa fa-check"></i><b>4.1</b> Characterizing a Variable</a></li>
+<li class="chapter" data-level="4.2" data-path="Questions.html"><a href="Questions.html#framing-the-question"><i class="fa fa-check"></i><b>4.2</b> Framing the Question</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Data.html"><a href="Data.html"><i class="fa fa-check"></i><b>5</b> Gathering the Evidence (Data Collection)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Data.html"><a href="Data.html#what-makes-a-sample-reliable"><i class="fa fa-check"></i><b>5.1</b> What Makes a Sample Reliable</a></li>
+<li class="chapter" data-level="5.2" data-path="Data.html"><a href="Data.html#poor-methods-of-data-collection"><i class="fa fa-check"></i><b>5.2</b> Poor Methods of Data Collection</a></li>
+<li class="chapter" data-level="5.3" data-path="Data.html"><a href="Data.html#preferred-methods-of-sampling"><i class="fa fa-check"></i><b>5.3</b> Preferred Methods of Sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Summaries.html"><a href="Summaries.html"><i class="fa fa-check"></i><b>6</b> Presenting the Evidence (Summarizing Data)</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Summaries.html"><a href="Summaries.html#characteristics-of-a-distribution-summarizing-a-single-variable"><i class="fa fa-check"></i><b>6.1</b> Characteristics of a Distribution (Summarizing a Single Variable)</a></li>
+<li class="chapter" data-level="6.2" data-path="Summaries.html"><a href="Summaries.html#summarizing-relationships"><i class="fa fa-check"></i><b>6.2</b> Summarizing Relationships</a></li>
+</ul></li>
+<li class="part"><span><b>II Fundamentals of Bayesian Inference</b></span></li>
+<li class="chapter" data-level="7" data-path="bayes-rule.html"><a href="bayes-rule.html"><i class="fa fa-check"></i><b>7</b> Bayes Rule</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="bayes-rule.html"><a href="bayes-rule.html#tenants-of-the-bayesian-approach-to-inference"><i class="fa fa-check"></i><b>7.1</b> Tenants of the Bayesian Approach to Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="modeling-samples.html"><a href="modeling-samples.html"><i class="fa fa-check"></i><b>8</b> Modeling Samples</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="modeling-samples.html"><a href="modeling-samples.html#independence"><i class="fa fa-check"></i><b>8.1</b> Independence</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="quantifying-prior-information.html"><a href="quantifying-prior-information.html"><i class="fa fa-check"></i><b>9</b> Quantifying Prior Information</a></li>
+<li class="chapter" data-level="10" data-path="posterior-distributions.html"><a href="posterior-distributions.html"><i class="fa fa-check"></i><b>10</b> Updating Prior Beliefs (Posterior Distributions)</a></li>
+<li class="chapter" data-level="11" data-path="point-estimation.html"><a href="point-estimation.html"><i class="fa fa-check"></i><b>11</b> Point Estimation</a></li>
+<li class="chapter" data-level="12" data-path="interval-estimation.html"><a href="interval-estimation.html"><i class="fa fa-check"></i><b>12</b> Interval Estimation</a></li>
+<li class="chapter" data-level="13" data-path="prediction.html"><a href="prediction.html"><i class="fa fa-check"></i><b>13</b> Prediction</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="prediction.html"><a href="prediction.html#derivation-of-the-posterior-predictive"><i class="fa fa-check"></i><b>13.1</b> Derivation of the Posterior Predictive</a></li>
+<li class="chapter" data-level="13.2" data-path="prediction.html"><a href="prediction.html#summary"><i class="fa fa-check"></i><b>13.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>14</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#point-null-hypotheses"><i class="fa fa-check"></i><b>14.1</b> Point-Null Hypotheses</a></li>
+<li class="chapter" data-level="14.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#model-comparison"><i class="fa fa-check"></i><b>14.2</b> Model Comparison</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="constructing-priors.html"><a href="constructing-priors.html"><i class="fa fa-check"></i><b>15</b> Constructing Prior Distributions</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="constructing-priors.html"><a href="constructing-priors.html#elicitation-from-experts"><i class="fa fa-check"></i><b>15.1</b> Elicitation from Experts</a></li>
+<li class="chapter" data-level="15.2" data-path="constructing-priors.html"><a href="constructing-priors.html#mixtures"><i class="fa fa-check"></i><b>15.2</b> Mixtures</a></li>
+<li class="chapter" data-level="15.3" data-path="constructing-priors.html"><a href="constructing-priors.html#chains"><i class="fa fa-check"></i><b>15.3</b> Chains</a></li>
+<li class="chapter" data-level="15.4" data-path="constructing-priors.html"><a href="constructing-priors.html#non-informative-priors"><i class="fa fa-check"></i><b>15.4</b> Non-Informative Priors</a></li>
+</ul></li>
+<li class="part"><span><b>III Numerical Approaches to Bayesian Computations</b></span></li>
+<li class="chapter" data-level="16" data-path="mc-integration.html"><a href="mc-integration.html"><i class="fa fa-check"></i><b>16</b> Monte Carlo Integration</a></li>
+<li class="chapter" data-level="17" data-path="mcmc.html"><a href="mcmc.html"><i class="fa fa-check"></i><b>17</b> Markov Chain Monte Carlo</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="mcmc.html"><a href="mcmc.html#hamiltonian-monte-carlo"><i class="fa fa-check"></i><b>17.1</b> Hamiltonian Monte Carlo</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="mcmc-assessment.html"><a href="mcmc-assessment.html"><i class="fa fa-check"></i><b>18</b> Assessing MCMC Samples</a></li>
+<li class="part"><span><b>IV Hierarchical Models Comparing Groups</b></span></li>
+<li class="chapter" data-level="19" data-path="study-design.html"><a href="study-design.html"><i class="fa fa-check"></i><b>19</b> Elements of Good Study Design</a></li>
+<li class="chapter" data-level="20" data-path="independent-groups.html"><a href="independent-groups.html"><i class="fa fa-check"></i><b>20</b> Models for Comparing Independent Groups</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="independent-groups.html"><a href="independent-groups.html#bridge-sampling"><i class="fa fa-check"></i><b>20.1</b> Bridge Sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="dependent-groups.html"><a href="dependent-groups.html"><i class="fa fa-check"></i><b>21</b> Comparing Related Groups</a></li>
+<li class="part"><span><b>V Overview of Regression Modeling</b></span></li>
+<li class="chapter" data-level="22" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>22</b> Regression Models for a Quantitative Response</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="linear-regression.html"><a href="linear-regression.html#developing-a-model"><i class="fa fa-check"></i><b>22.1</b> Developing a Model</a></li>
+<li class="chapter" data-level="22.2" data-path="linear-regression.html"><a href="linear-regression.html#note-on-predictors"><i class="fa fa-check"></i><b>22.2</b> Note on Predictors</a></li>
+<li class="chapter" data-level="22.3" data-path="linear-regression.html"><a href="linear-regression.html#interpreting-the-predictors"><i class="fa fa-check"></i><b>22.3</b> Interpreting the Predictors</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="reg-extensions.html"><a href="reg-extensions.html"><i class="fa fa-check"></i><b>23</b> Extensions to the Linear Model</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="reg-extensions.html"><a href="reg-extensions.html#including-categorical-predictors"><i class="fa fa-check"></i><b>23.1</b> Including Categorical Predictors</a></li>
+<li class="chapter" data-level="23.2" data-path="reg-extensions.html"><a href="reg-extensions.html#curvature"><i class="fa fa-check"></i><b>23.2</b> Curvature</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="reg-priors.html"><a href="reg-priors.html"><i class="fa fa-check"></i><b>24</b> Default Priors</a></li>
+<li class="chapter" data-level="25" data-path="qr-factorization.html"><a href="qr-factorization.html"><i class="fa fa-check"></i><b>25</b> QR Factorization</a></li>
+<li class="chapter" data-level="26" data-path="reg-conditions.html"><a href="reg-conditions.html"><i class="fa fa-check"></i><b>26</b> Assessing a Mean Model</a></li>
+<li class="chapter" data-level="27" data-path="discrete-response.html"><a href="discrete-response.html"><i class="fa fa-check"></i><b>27</b> Regression Models for Discrete Responses</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="discrete-response.html"><a href="discrete-response.html#considerations-for-a-binary-response"><i class="fa fa-check"></i><b>27.1</b> Considerations for a Binary Response</a></li>
+<li class="chapter" data-level="27.2" data-path="discrete-response.html"><a href="discrete-response.html#considerations-for-count-data"><i class="fa fa-check"></i><b>27.2</b> Considerations for Count Data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Course Notes for Bayesian Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="linear-regression" class="section level1" number="22">
+<h1><span class="header-section-number">22</span> Regression Models for a Quantitative Response</h1>
+<p>We have examined methods for allowing a response to vary across a finite number of groups. We now turn to allowing our response to be associated with one or more predictors through some functional form. This framework is general enough to address various functional forms for both quantitative and categorical predictors.</p>
+<div class="example">
+<p><span id="exm:ex-therapy" class="example"><strong>Example 22.1  (Rehabilitation Therapy) </strong></span>Physical therapy is a vital part of the recovery process for any surgery, particularly surgery which corrects motor function, such as knee or hip surgery. A rehabilitation center researcher was interesed in examining the relationship between physical fitness prior to surgery of persons undergoing corrective knee surgery and time required in physical therapy until successful rehabilitation. Patient records in the rehabilitation center were examined, and 24 male subjects ranging in age from 18 to 30 years who had undergone similar corrective knee surgery during the past year were selected for the study. The number of days required for successful completion of physical therapy and the prior physical fitness status (below average, average, above average) for each patient was obtained.</p>
+<p>Researchers collected the following information on each subject:</p>
+<ul>
+<li>Prior Activity Level: an indicator of the activity level of the subject prior to surgery (“Below Average,” “Average,” “Above Average”) based on the result of a questionnaire.</li>
+<li>Recovery Time: the time (days) of physical therapy until the subject met their goals.</li>
+<li>Age: age (years, rounded to nearest tenth) of the patient.</li>
+</ul>
+</div>
+<p>By all accounts, this is a small study, recording only 3 variables on 24 subjects. Yet, even with only a few variables, there are a myriad of potential questions that require more complex models than we have previously discussed:</p>
+<ul>
+<li>Overall, is the recovery time, on average, linearly related to the age of patients?</li>
+<li>For subjects of the same age, is there a relationship between the recovery time, on average, and the prior activity level of patients?</li>
+<li>Does the relationship between the recovery time, on average, and the age of a patient depend on the patient’s prior activity level?</li>
+<li>Does the variability in the recovery times differ depend on the age of the patient?</li>
+</ul>
+<p>Any one of these questions could be the focus of a researcher. Notice that each, though, is slightly different. While the first question involves a relationship between a quantitative response and a quantitative variable, the second involves a quantitative response and multiple predictors (one quantitative and one categorical) with a desire to essentially “isolate” the impact of one of the predictors. The third question looks at how the relationship between the response and predictor might be modified by a third variable; and, the fourth looks at a relationship impacting the variability instead of the mean response. These are each questions that are outside of the previous methods we have discussed, and yet are all similar.</p>
+<p>We might be tempted to force these questions into the “comparison of groups” approach studied previously. For example, we might categorize subjects as “in their teens” or “in their 20’s.” However, this approach prevents us from examining trends across age. Such categorizations can also lead to categories with a very small number of subjects, meaning our priors will have undue influence on the results. Over the next several chapters, we consider the regression framework, a flexible approach to addressing these questions and then consider extending it to settings with categorical responses.</p>
+<div class="rmdtip">
+<p>Broadly speaking, there are three types of questions:</p>
+<ul>
+<li>Marginal relationships: captures the “overall” relationship between two variables, ignoring any other contributing factors.</li>
+<li>Adjusted relationships: captures the effect of a variable after “isolating” it from other contributing factors.</li>
+<li>Effect Modification: captures how the effect of one variable on the response is modified by a second contributing factor.</li>
+</ul>
+</div>
+<div id="developing-a-model" class="section level2" number="22.1">
+<h2><span class="header-section-number">22.1</span> Developing a Model</h2>
+<p>In many introductory statistics courses, statistical models are typically introduced in the following generic form:</p>
+<p><span class="math display">\[\text{Response} = \text{Signal} + \text{Noise}\]</span></p>
+<p>The response is the numeric variable we would like to explain or predict. The signal represents the part of the data generating process we can explain; it is the deterministic portion of the model and is a function of the predictor(s). The noise represents the stochastic portion capturing the variability observed beyond what can be explained by the deterministic portion alone. The common starting point for such a model is the simple linear regression model:</p>
+<p><span class="math display">\[(\text{Response})_i = \beta_0 + \beta_1 (\text{Predictor})_i + \varepsilon_i.\]</span></p>
+<p>This model views the deterministic portion of the model as a line. Notice that any subject with the same value of the predictor would have the same deterministic portion; however, they will not necessarily have the same response as the noise <span class="math inline">\(\varepsilon_i\)</span> can differ from one subject to the next. Of course, this model is too vague to be helpful; so, we place additional constraints on the stochastic portion. In particular, we place conditions on the <em>distribution</em> of <span class="math inline">\(\varepsilon_i\)</span>. For example, we might assume that <span class="math inline">\(E\left(\varepsilon_i\right) = 0\)</span> or that the <span class="math inline">\(\varepsilon_i\)</span>’s are identically distributed.</p>
+<p>Notice that this approach, while reasonable, does not align with the approach we have taken thus far in the course. Instead of thinking of the response as a signal plus noise and then placing conditions on the distribution of the noise, we have considered modeling the data-generating process directly. That is, we specified likelihood <span class="math inline">\(f(\mathbf{y} \mid \boldsymbol{\theta})\)</span>. This approach is preferred in the Bayesian perspective (and in the classical perspective in our opinion) because it generalizes more easily.</p>
+<div class="definition">
+<p><span id="def:defn-regression" class="definition"><strong>Definition 22.1  (Regression) </strong></span>A <em>regression</em> model is one for which the parameter(s) governing the data-generating process depends on one or more predictors. “Parametric” regression models do this through some pre-specified functional form.</p>
+</div>
+<p>For example, one potential linear regression model we might consider in the Bayesian framework is</p>
+<p><span class="math display" id="eq:normal-model">\[\begin{equation}
+(\text{Response})_i \mid \beta_0, \beta_1, \sigma^2 \stackrel{\text{Ind}}{\sim}N\left(\beta_0 + \beta_1 (\text{Predictor})_i, \sigma^2\right).
+\tag{22.1}
+\end{equation}\]</span></p>
+<p>Let’s unpack this model a little. Notice that the responses are <em>not</em> identically distributed. The mean response in this model is allowed to vary for different values of the predictor. However, this model is assuming the responses are independent of one another. The model also says that it is the <em>mean</em> response that varies according to the linear function. That is,</p>
+<p><span class="math display">\[E\left[(\text{Response})_i\right] = \beta_0 + \beta_1 (\text{Predictor})_i.\]</span></p>
+<p>Further, it is <em>only</em> the mean response that is impacted by the predictor. The variance of the response is not impacted. This model also fully specifies the distributional form of the response — it is a Normal distribution.</p>
+<p>Notice that by replacing the mean with a functional form, we have introduced new parameters into the distribution: <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>. These parameters govern the mean response. As a result, their interpretation is tied to the mean response:</p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> represents the mean response when the value of the predictor is 0.</li>
+<li><span class="math inline">\(\beta_1\)</span> represents the change in the mean response when the predictor is increased by 1 unit.</li>
+</ul>
+<p>As we stated above, this is <em>one</em> potential linear regression model. We can extend any model in this way:</p>
+<p><span class="math display">\[\begin{aligned}
+(\text{Response})_i \mid \beta_0, \beta_1 &amp;\stackrel{\text{Ind}}{\sim}Exp\left(\beta_0 + \beta_1 (\text{Predictor})_i\right) \\
+(\text{Response})_i \mid \beta_0, \beta_1, \mu &amp;\stackrel{\text{Ind}}{\sim}N\left(\mu, \beta_0 + \beta_1 (\text{Predictor})_i\right).
+\end{aligned}\]</span></p>
+<p>Notice that the interpretation of the parameters <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> would change with each model as they impact different elements (the rate in the first model and the variance of the response in the second model). Of course, there are infinitely other models we could write down. The idea is that we specify the distribution of the response allowing key aspects of the distribution to vary as functions of the predictor(s).</p>
+<p>Let’s return to the model in Equation <a href="linear-regression.html#eq:normal-model">(22.1)</a>. What we have defined is the model for the data-generating process. The assumption of independence would allow us to easily form the likelihood:</p>
+<p><span class="math display">\[\begin{aligned}
+  f\left(\mathbf{Response} \mid \beta_0, \beta_1, \sigma^2\right) 
+    &amp;= \prod_{i=1}^{n} f\left((\text{Response})_i \mid \beta_0, \beta_1, \sigma^2\right) \\
+    &amp;= \left(2\pi \sigma^2\right)^{-n/2} \exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^{n} \left((\text{Response})_i - \beta_0 - \beta_1 (\text{Predictor})_i\right)^2\right\}.
+\end{aligned}\]</span></p>
+<p>We present this to show that the likelihood can quickly become difficult to work with as the complexity of the distributional model grows.</p>
+<p>A common extension to the simple linear model discussed above is to consider a function of multiple predictors. For example, we might say</p>
+<p><span class="math display">\[(\text{Response})_i \mid \boldsymbol{\beta}, \sigma^2 \stackrel{\text{Ind}}{\sim}N\left(\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i, \sigma^2\right)\]</span></p>
+<p>for <span class="math inline">\(j = 1, 2, \dots, p\)</span>.</p>
+<div class="rmdtip">
+<p>While often the deterministic portion of the model is taken to be linear <em>in the parameters</em>, there is nothing that requires this be the case.</p>
+</div>
+</div>
+<div id="note-on-predictors" class="section level2" number="22.2">
+<h2><span class="header-section-number">22.2</span> Note on Predictors</h2>
+<p>Notice that our regression model above has omitted the distribution of the predictors; it only specifies the distribution of the response as a function of the predictors. For a designed experiment in which the values of all predictors are determined in advance by the researchers, the predictors are constants. As such, the above notation is appropriate. However, in many situations, the predictors are also simply observed values of random variables which vary across individuals in the population. Consider the Rehabilitation example above; the age of the subjects is unknown prior to the study. As such, we would expect these predictors to have a distribution across the population that should be modeled.</p>
+<p>It is common in a regression analysis to <em>condition</em> on the predictors when making inference. That is, our model should actually be written as</p>
+<p><span class="math display">\[(\text{Response})_i \mid (\text{Predictors})_i, \boldsymbol{\beta} \stackrel{\text{Ind}}{\sim}f((\text{Response}) \mid (\text{Predictors})_i, \boldsymbol{\beta}).\]</span></p>
+<p>As a result, the regression model does not require us to specify the distribution of the predictors. All interpretations assume that we have access to the same predictors when predicting the response, for example. Nothing prohibits us from extending this model further. For simplicity, consider a simple linear regression model in which we believe</p>
+<p><span class="math display">\[(\text{Response})_i \mid (\text{Predictor})_i, \beta_0, \beta_1, \sigma^2 \stackrel{\text{Ind}}{\sim}N\left(\beta_0 + \beta_1 (\text{Predictor})_i, \sigma^2\right).\]</span></p>
+<p>We might posit that the predictor also has a Normal distribution:</p>
+<p><span class="math display">\[(\text{Predictor}_i \mid \gamma, \eta^2 \stackrel{\text{IID}}{\sim}N\left(\gamma, \eta^2\right).\]</span></p>
+<p>We could then determine the joint distribution of all observed data:</p>
+<p><span class="math display">\[\begin{aligned}
+  f\left(\mathbf{Data} \mid \beta_0, \beta_1, \sigma^2, \gamma, \eta^2\right) 
+    &amp;= \prod_{i=1}^{n} f\left((\text{Response})_i \mid (\text{Predictor})_i, \beta_0, \beta_1, \sigma^2\right) g\left((\text{Predictor})_i \mid \gamma, \eta^2\right) \\
+    &amp;= \left(2\pi \sigma^2\right)^{-n/2} \exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^{n} \left((\text{Response})_i - \beta_0 - \beta_1 (\text{Predictor})_i\right)^2\right\} \left(2\pi \eta^2\right)^{-n/2} \exp\left\{-\frac{1}{2\eta^2} \sum_{i=1}^{n}\left((\text{Predictor})_i - \gamma\right)^2\right\}.
+\end{aligned}\]</span></p>
+<div class="rmdtip">
+<p>It is common to model the response conditional on the predictors and not consider the distribution of the predictors when modeling.</p>
+</div>
+</div>
+<div id="interpreting-the-predictors" class="section level2" number="22.3">
+<h2><span class="header-section-number">22.3</span> Interpreting the Predictors</h2>
+<p>As we have already seen, interpreting the parameter in a model depends on the specific model. In many scientific disciplines, the predictors govern the mean response. For example, the model</p>
+<p><span class="math display">\[(\text{Response})_i \mid \boldsymbol{\beta}, \sigma^2 \stackrel{\text{Ind}}{\sim}N\left(\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i, \sigma^2\right)\]</span></p>
+<p>has the predictors only impacting the mean response; the variability in the response is the constant <span class="math inline">\(\sigma^2\)</span> across all observations. Here, the <span class="math inline">\(\beta_j\)</span> terms describe how the <span class="math inline">\(j\)</span>-th predictor is associated with the response. In particular, we would say</p>
+<blockquote>
+<p><span class="math inline">\(\beta_j\)</span> is the change in the average response given a 1-unit increase in the <span class="math inline">\(j\)</span>-th predictor, holding all other predictors fixed.</p>
+</blockquote>
+<p>The <span class="math inline">\(\beta_0\)</span> term would be interpreted as</p>
+<blockquote>
+<p>the average value of the response when all predictors take the value 0.</p>
+</blockquote>
+<p>Finally, we interpret <span class="math inline">\(\sigma^2\)</span> as</p>
+<blockquote>
+<p>the variability in the response for a fixed set of predictors.</p>
+</blockquote>
+<p>These interpretations are hiding a lot of information. Working backward, notice the conditional/cross-sectional nature of the interpretation of <span class="math inline">\(\sigma^2\)</span>. It is <em>not</em> the overall variability in the response; it is the variability of the response for any value of the predictors. That is, the model is specifying the distribution of the response for a specified level of the predictors.</p>
+<div class="rmdwarning">
+<p>The distributional model in a regression setting is conditional on the values of the predictors. That model need not hold marginally!</p>
+</div>
+<p>Second, we notice that the interpretation of <span class="math inline">\(\beta_0\)</span> may not always make sense in context. For example, suppose our response is the weight of individuals (in pounds) and our predictor is their height (in inches). It does not make sense to talk about an individual with a height of 0 inches. This is the result of extrapolation.</p>
+<div class="definition">
+<p><span id="def:def-extrapolation" class="definition"><strong>Definition 22.2  (Extrapolation) </strong></span>Using a model to predict outside of a region for which data is available.</p>
+</div>
+<p>The impractical interpretation of <span class="math inline">\(\beta_0\)</span> highlights the problem; but, we should never use a model to estimate the value of the parameter outside the region for which we have data.</p>
+<p>Finally, and we cannot emphasize the benefit of this enough, the effects <em>hold the value of other predictors in the model fixed</em>. This means that in a regression model, we are naturally isolating the effect of the predictor. This provides a unique interpretation to a hypothesis of the form</p>
+<p><span class="math display">\[H_0: \beta_j = 0 \qquad \text{vs.} \qquad H_1: \beta_j \neq 0.\]</span></p>
+<p>This hypothesis is really asking whether the <span class="math inline">\(j\)</span>-th predictor is linear associated the mean response (in our model) <em>after accounting for the impact of the other predictors in the model</em>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dependent-groups.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reg-extensions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
