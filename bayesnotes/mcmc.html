@@ -246,7 +246,7 @@ div.csl-indent {
 </li>
 <li>Compute <span class="math inline">\(A\left(\theta^*, \theta^{(k-1)}\right)\)</span> where
 <span class="math display">\[A\left(\theta^*, \theta^{(k-1)}\right) = \frac{\pi\left(\theta^* \mid \mathbf{y}\right)}{\pi\left(\theta^{(k-1)} \mid \mathbf{y}\right)} = \frac{f\left(\mathbf{y} \mid \theta^*\right) \pi\left(\theta^*\right)}{f\left(\mathbf{y} \mid \theta^{(k-1)}\right) \pi\left(\theta^{(k-1)}\right)}\]</span></li>
-<li>Generate <span class="math inline">\(U \sim Unif(0,1)\)</span>. If , then set <span class="math inline">\(\theta^{(k)} = \theta^*\)</span>; else, set <span class="math inline">\(\theta^{(k)} = \theta^{(k-1)}\)</span>.</li>
+<li>Generate <span class="math inline">\(U \sim Unif(0,1)\)</span>. If <span class="math inline">\(U \leq A\left(\theta^*, \theta^{(k-1)}\right)\)</span>, then set <span class="math inline">\(\theta^{(k)} = \theta^*\)</span>; else, set <span class="math inline">\(\theta^{(k)} = \theta^{(k-1)}\)</span>.</li>
 </ol>
 <p>When generating an initial value, <span class="math inline">\(\theta^{(0)}\)</span>, we could choose <span class="math inline">\(\theta^{(0)} \sim \pi(\theta)\)</span> if the prior is easy to generate from. While it is common to choose <span class="math inline">\(q(\cdot)\)</span>, it is not a requirement to do so; when it is used, it can be difficult to determine a reasonable variance (too large, and you drift too far away; too small, and you do not move at all).</p>
 </div>
