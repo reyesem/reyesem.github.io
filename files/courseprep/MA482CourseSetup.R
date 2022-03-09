@@ -25,6 +25,7 @@ install.packages(
     'withr',
     'boot',
     'car',
+    'import',
     'rms',
     'skimr',
     'geepack',
