@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>16 Relaxing the Constant Variance Condition | Statistical Modeling for the Biological Sciences</title>
   <meta name="description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="16 Relaxing the Constant Variance Condition | Statistical Modeling for the Biological Sciences" />
   <meta property="og:type" content="book" />
@@ -32,7 +32,9 @@
   
 <link rel="prev" href="nlm-framework.html"/>
 <link rel="next" href="nlm-logistic.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,12 +50,35 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -73,7 +98,8 @@
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="part"><span><b>I Review of the Inferential Process</b></span></li>
-<li class="chapter" data-level="1" data-path="statistical-process.html"><a href="statistical-process.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1" data-path="statistical-process.html"><a href="statistical-process.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="statistical-process.html"><a href="statistical-process.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
 <li class="chapter" data-level="1.2" data-path="statistical-process.html"><a href="statistical-process.html#data-storage"><i class="fa fa-check"></i><b>1.2</b> Data Storage</a></li>
 <li class="chapter" data-level="1.3" data-path="statistical-process.html"><a href="statistical-process.html#tabular-data-presentation"><i class="fa fa-check"></i><b>1.3</b> Tabular Data Presentation</a></li>
@@ -82,14 +108,16 @@
 <li class="chapter" data-level="1.6" data-path="statistical-process.html"><a href="statistical-process.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.6</b> A Note on Codebooks</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="distributional-quartet.html"><a href="distributional-quartet.html"><i class="fa fa-check"></i><b>2</b> Distributional Quartet</a></li>
-<li class="chapter" data-level="3" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>3</b> Essential Probability</a><ul>
+<li class="chapter" data-level="3" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>3</b> Essential Probability</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>3.1</b> Density Functions as Models</a></li>
 <li class="chapter" data-level="3.2" data-path="essential-probability.html"><a href="essential-probability.html#summarizing-distributions-parameters"><i class="fa fa-check"></i><b>3.2</b> Summarizing Distributions (Parameters)</a></li>
 <li class="chapter" data-level="3.3" data-path="essential-probability.html"><a href="essential-probability.html#specific-models-for-populations"><i class="fa fa-check"></i><b>3.3</b> Specific Models for Populations</a></li>
 <li class="chapter" data-level="3.4" data-path="essential-probability.html"><a href="essential-probability.html#models-for-sampling-distributions-and-null-distributions"><i class="fa fa-check"></i><b>3.4</b> Models for Sampling Distributions and Null Distributions</a></li>
 </ul></li>
 <li class="part"><span><b>II General Linear Model and Modeling Strategies</b></span></li>
-<li class="chapter" data-level="4" data-path="glm-framework.html"><a href="glm-framework.html"><i class="fa fa-check"></i><b>4</b> General Linear Model Framework</a><ul>
+<li class="chapter" data-level="4" data-path="glm-framework.html"><a href="glm-framework.html"><i class="fa fa-check"></i><b>4</b> General Linear Model Framework</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="glm-framework.html"><a href="glm-framework.html#parameter-estimation"><i class="fa fa-check"></i><b>4.1</b> Parameter Estimation</a></li>
 <li class="chapter" data-level="4.2" data-path="glm-framework.html"><a href="glm-framework.html#conditions-on-the-model"><i class="fa fa-check"></i><b>4.2</b> Conditions on the Model</a></li>
 <li class="chapter" data-level="4.3" data-path="glm-framework.html"><a href="glm-framework.html#alternate-characterization-of-the-model"><i class="fa fa-check"></i><b>4.3</b> Alternate Characterization of the Model</a></li>
@@ -98,14 +126,16 @@
 </ul></li>
 <li class="chapter" data-level="5" data-path="glm-assessing-conditions.html"><a href="glm-assessing-conditions.html"><i class="fa fa-check"></i><b>5</b> Assessing Conditions</a></li>
 <li class="part"><span><b>III General Modeling Techniques</b></span></li>
-<li class="chapter" data-level="6" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html"><i class="fa fa-check"></i><b>6</b> Side Effects of Isolating Effects</a><ul>
+<li class="chapter" data-level="6" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html"><i class="fa fa-check"></i><b>6</b> Side Effects of Isolating Effects</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#toward-causal-inference"><i class="fa fa-check"></i><b>6.1</b> Toward Causal Inference</a></li>
 <li class="chapter" data-level="6.2" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#multicollinearity"><i class="fa fa-check"></i><b>6.2</b> Multicollinearity</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glm-categorical-predictors.html"><a href="glm-categorical-predictors.html"><i class="fa fa-check"></i><b>7</b> Incorporating Categorical Predictors</a></li>
 <li class="chapter" data-level="8" data-path="glm-interactions.html"><a href="glm-interactions.html"><i class="fa fa-check"></i><b>8</b> Interaction Terms (Effect Modification)</a></li>
 <li class="chapter" data-level="9" data-path="glm-linear-hypotheses.html"><a href="glm-linear-hypotheses.html"><i class="fa fa-check"></i><b>9</b> General Linear Hypothesis Test</a></li>
-<li class="chapter" data-level="10" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html"><i class="fa fa-check"></i><b>10</b> Large Sample Theory</a><ul>
+<li class="chapter" data-level="10" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html"><i class="fa fa-check"></i><b>10</b> Large Sample Theory</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#two-types-of-models"><i class="fa fa-check"></i><b>10.1</b> Two Types of Models</a></li>
 <li class="chapter" data-level="10.2" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#large-sample-results"><i class="fa fa-check"></i><b>10.2</b> Large Sample Results</a></li>
 <li class="chapter" data-level="10.3" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#residual-bootstrap"><i class="fa fa-check"></i><b>10.3</b> Residual Bootstrap</a></li>
@@ -113,38 +143,44 @@
 </ul></li>
 <li class="chapter" data-level="11" data-path="glm-splines.html"><a href="glm-splines.html"><i class="fa fa-check"></i><b>11</b> Modeling Curvature</a></li>
 <li class="part"><span><b>IV Models for Repeated Measures</b></span></li>
-<li class="chapter" data-level="12" data-path="rm-terminology.html"><a href="rm-terminology.html"><i class="fa fa-check"></i><b>12</b> Terminology</a><ul>
+<li class="chapter" data-level="12" data-path="rm-terminology.html"><a href="rm-terminology.html"><i class="fa fa-check"></i><b>12</b> Terminology</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="rm-terminology.html"><a href="rm-terminology.html#importance-of-study-design"><i class="fa fa-check"></i><b>12.1</b> Importance of Study Design</a></li>
 <li class="chapter" data-level="12.2" data-path="rm-terminology.html"><a href="rm-terminology.html#studies-with-repeated-measures"><i class="fa fa-check"></i><b>12.2</b> Studies with Repeated Measures</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html"><i class="fa fa-check"></i><b>13</b> Mixed Effects Models</a><ul>
+<li class="chapter" data-level="13" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html"><i class="fa fa-check"></i><b>13</b> Mixed Effects Models</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
 <li class="chapter" data-level="13.2" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#model-formulation"><i class="fa fa-check"></i><b>13.2</b> Model Formulation</a></li>
 <li class="chapter" data-level="13.3" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#considerations-when-building-a-mixed-effects-model"><i class="fa fa-check"></i><b>13.3</b> Considerations when Building a Mixed-Effects Model</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="rm-gee.html"><a href="rm-gee.html"><i class="fa fa-check"></i><b>14</b> Generalized Estimating Equations</a><ul>
+<li class="chapter" data-level="14" data-path="rm-gee.html"><a href="rm-gee.html"><i class="fa fa-check"></i><b>14</b> Generalized Estimating Equations</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="rm-gee.html"><a href="rm-gee.html#correlation-structrues"><i class="fa fa-check"></i><b>14.1</b> Correlation Structrues</a></li>
 <li class="chapter" data-level="14.2" data-path="rm-gee.html"><a href="rm-gee.html#the-key-to-success-of-generalized-estimating-equations"><i class="fa fa-check"></i><b>14.2</b> The Key to Success of Generalized Estimating Equations</a></li>
 <li class="chapter" data-level="14.3" data-path="rm-gee.html"><a href="rm-gee.html#comparison-of-gee-and-mixed-effects-approaches"><i class="fa fa-check"></i><b>14.3</b> Comparison of GEE and Mixed Effects Approaches</a></li>
 </ul></li>
 <li class="part"><span><b>V Nonlinear Models</b></span></li>
-<li class="chapter" data-level="15" data-path="nlm-framework.html"><a href="nlm-framework.html"><i class="fa fa-check"></i><b>15</b> Nonlinear Model Framework</a><ul>
+<li class="chapter" data-level="15" data-path="nlm-framework.html"><a href="nlm-framework.html"><i class="fa fa-check"></i><b>15</b> Nonlinear Model Framework</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="nlm-framework.html"><a href="nlm-framework.html#scientific-model-for-theophylline"><i class="fa fa-check"></i><b>15.1</b> Scientific Model for Theophylline</a></li>
 <li class="chapter" data-level="15.2" data-path="nlm-framework.html"><a href="nlm-framework.html#nonlinear-regression-model"><i class="fa fa-check"></i><b>15.2</b> Nonlinear Regression Model</a></li>
 <li class="chapter" data-level="15.3" data-path="nlm-framework.html"><a href="nlm-framework.html#estimation"><i class="fa fa-check"></i><b>15.3</b> Estimation</a></li>
 <li class="chapter" data-level="15.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>15.4</b> Inference on the Parameters</a></li>
 <li class="chapter" data-level="15.5" data-path="nlm-framework.html"><a href="nlm-framework.html#allowing-relationships-to-vary-across-groups"><i class="fa fa-check"></i><b>15.5</b> Allowing Relationships to Vary Across Groups</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html"><i class="fa fa-check"></i><b>16</b> Relaxing the Constant Variance Condition</a><ul>
+<li class="chapter" data-level="16" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html"><i class="fa fa-check"></i><b>16</b> Relaxing the Constant Variance Condition</a>
+<ul>
 <li class="chapter" data-level="16.1" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-assumptions"><i class="fa fa-check"></i><b>16.1</b> Modeling Assumptions</a></li>
 <li class="chapter" data-level="16.2" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-the-variance"><i class="fa fa-check"></i><b>16.2</b> Modeling the Variance</a></li>
 <li class="chapter" data-level="16.3" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#wild-bootstrap"><i class="fa fa-check"></i><b>16.3</b> Wild Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="nlm-logistic.html"><a href="nlm-logistic.html"><i class="fa fa-check"></i><b>17</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="17" data-path="nlm-logistic.html"><a href="nlm-logistic.html"><i class="fa fa-check"></i><b>17</b> Logistic Regression</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="nlm-logistic.html"><a href="nlm-logistic.html#considerations-for-a-binary-response"><i class="fa fa-check"></i><b>17.1</b> Considerations for a Binary Response</a></li>
 <li class="chapter" data-level="17.2" data-path="nlm-logistic.html"><a href="nlm-logistic.html#the-logistic-regression-model"><i class="fa fa-check"></i><b>17.2</b> The Logistic Regression Model</a></li>
 <li class="chapter" data-level="17.3" data-path="nlm-logistic.html"><a href="nlm-logistic.html#estimation-of-the-parameters"><i class="fa fa-check"></i><b>17.3</b> Estimation of the Parameters</a></li>
-<li class="chapter" data-level="17.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>17.4</b> Inference on the Parameters</a></li>
+<li class="chapter" data-level="17.4" data-path="nlm-logistic.html"><a href="nlm-logistic.html#inference-on-the-parameters-1"><i class="fa fa-check"></i><b>17.4</b> Inference on the Parameters</a></li>
 <li class="chapter" data-level="17.5" data-path="nlm-logistic.html"><a href="nlm-logistic.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>17.5</b> Interpretation of Parameters</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="nlm-selection.html"><a href="nlm-selection.html"><i class="fa fa-check"></i><b>18</b> Model Selection</a></li>
@@ -153,7 +189,8 @@
 <li class="part"><span><b>VI Survival Analysis</b></span></li>
 <li class="chapter" data-level="21" data-path="surv-terminology.html"><a href="surv-terminology.html"><i class="fa fa-check"></i><b>21</b> Key Terminolgy</a></li>
 <li class="chapter" data-level="22" data-path="surv-censoring.html"><a href="surv-censoring.html"><i class="fa fa-check"></i><b>22</b> Censoring</a></li>
-<li class="chapter" data-level="23" data-path="surv-basic.html"><a href="surv-basic.html"><i class="fa fa-check"></i><b>23</b> Basic Estimation and Inference</a><ul>
+<li class="chapter" data-level="23" data-path="surv-basic.html"><a href="surv-basic.html"><i class="fa fa-check"></i><b>23</b> Basic Estimation and Inference</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="surv-basic.html"><a href="surv-basic.html#life-table-methods"><i class="fa fa-check"></i><b>23.1</b> Life-Table Methods</a></li>
 <li class="chapter" data-level="23.2" data-path="surv-basic.html"><a href="surv-basic.html#kaplan-meier-estimation"><i class="fa fa-check"></i><b>23.2</b> Kaplan-Meier Estimation</a></li>
 <li class="chapter" data-level="23.3" data-path="surv-basic.html"><a href="surv-basic.html#log-rank-test"><i class="fa fa-check"></i><b>23.3</b> Log-Rank Test</a></li>
@@ -177,41 +214,39 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="nlm-heteroskedasticity" class="section level1">
+<div id="nlm-heteroskedasticity" class="section level1" number="16">
 <h1><span class="header-section-number">16</span> Relaxing the Constant Variance Condition</h1>
 <p>When describing the nonlinear modeling framework, our most limiting assumption was that of constant variance. In Chapter <a href="rm-gee.html#rm-gee">14</a>, we saw one method of handling non-constant variance (the robust sandwich variance-covariance estimator). In this chapter, we discuss other approaches for relaxing the assumption of constant variance. While we introduce them in the context of nonlinear models, they are applicable to a wider range of models including linear models and models for addressing repeated measures.</p>
-<div id="modeling-assumptions" class="section level2">
+<div id="modeling-assumptions" class="section level2" number="16.1">
 <h2><span class="header-section-number">16.1</span> Modeling Assumptions</h2>
 <p>The previous chapter focused on the mechanics of specifying and fitting nonlinear models. But, we only mentioned the conditions on the model. The semiparametric approach does place conditions on the model.</p>
-
-<div class="definition">
-<p><span id="def:defn-nlm-conditions" class="definition"><strong>Definition 16.1  (Conditions on the Nonlinear Model)  </strong></span>- The mean response function is correctly specified.
-- Given the value of the predictors, any two observations are independent.
-- The variability of the response is the same for all values of the predictor.</p>
+<div class="definition" label="defn-nlm-conditions">
+<ul>
+<li><span id="def:unlabeled-div-90" class="definition"><strong>Definition 16.1  (Conditions on the Nonlinear Model) </strong></span></li>
+<li>The mean response function is correctly specified.</li>
+<li>Given the value of the predictors, any two observations are independent.</li>
+<li>The variability of the response is the same for all values of the predictor.</li>
+</ul>
 </div>
-
 <p>These are essentially the same first three conditions we imposed in the linear model framework (which should not be a surprise since the linear model framework is a special case of the nonlinear model we specified). As a result, these conditions can be assessed in much the same way - residual plots. Specifically, a plot of the residuals against the predicted values can be used to assess whether the mean response function is correctly specified. We expect the residuals to balance out at 0 for each predicted value. This helps to assess if the process is behaving according to the scientific model. When the order of the data is known, we can use a time-series plot of the residuals to examine deviations from the independence condition over time. If independence is reasonable, we expect the residuals to display no trends in location or spread over time. We can assess constant variance by examining a plot of the residuals against the predicted values; we would expect the spread of the residuals to be constant as we move left-to-right across the plot.</p>
 
 <div class="rmdtip">
 Nonlinear modeling applications often have small sample sizes. As a result, it can be difficult to assess constant variance from the plot of the residuals against the fitted values. A “trick” is to plot the absolute value of the residuals against the fitted values. This “doubles” the visual information in the graphic and can allow us to more easily pick up trends in the spread.
 </div>
-
 <p>While we do not assume the response (condition on the predictors) follows a Normal distribution, if we had, we could assess this condition using a probability plot of the residuals.</p>
-
-<div class="example">
-<p><span id="exm:nlm-indomethacin" class="example"><strong>Example 16.1  (Pharmacokinetics of Indomethacin)  </strong></span>Indomethacin is an NSAID pain reliever used to treat severe pain and prevent premature labor in some cases. A study was conducted to examine the pharmacokinetic properties of the drug. Indomethacin is given as an IV-bolus and travels through the blood and deeper tissues. Scientists model this as a two-compartment open model, which leads to the following nonlinear model for the concentration <span class="math inline">\(C(t)\)</span> of the drug at any time <span class="math inline">\(t\)</span>:</p>
+<div class="example" label="nlm-indomethacin">
+<p><span id="exm:unlabeled-div-91" class="example"><strong>Example 16.1  (Pharmacokinetics of Indomethacin) </strong></span>Indomethacin is an NSAID pain reliever used to treat severe pain and prevent premature labor in some cases. A study was conducted to examine the pharmacokinetic properties of the drug. Indomethacin is given as an IV-bolus and travels through the blood and deeper tissues. Scientists model this as a two-compartment open model, which leads to the following nonlinear model for the concentration <span class="math inline">\(C(t)\)</span> of the drug at any time <span class="math inline">\(t\)</span>:</p>
 <p><span class="math display">\[C(t) = \beta_1 e^{-\beta_2 t} + \beta_3 e^{-\beta_4 t}\]</span></p>
-which is also known as the bi-exponential model. Blood samples were taken from a single subject after being given an IV-bolus of the drug. The data is shown in Figure <a href="nlm-heteroskedasticity.html#fig:nlm-indomethacin-plot">16.1</a>.
+<p>which is also known as the bi-exponential model. Blood samples were taken from a single subject after being given an IV-bolus of the drug. The data is shown in Figure <a href="nlm-heteroskedasticity.html#fig:nlm-indomethacin-plot">16.1</a>.</p>
 </div>
-
-<div class="figure" style="text-align: center"><span id="fig:nlm-indomethacin-plot"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nlm-indomethacin-plot"></span>
 <img src="images/nlm-indomethacin-plot-1.png" alt="Concentration of Indomethacin in a single subject with the estimated nonlinear model overlayed." width="80%" />
 <p class="caption">
 Figure 16.1: Concentration of Indomethacin in a single subject with the estimated nonlinear model overlayed.
 </p>
 </div>
 <p>While not immediately obvious from the plot of the data, fitting the model and examining the residuals (Figure <a href="nlm-heteroskedasticity.html#fig:nlm-indometh-resids">16.2</a>) reveals that while the bi-exponential model seems appropriate for the mean response function, it seems unreasonable to assume the variance of the response is constant.</p>
-<div class="figure" style="text-align: center"><span id="fig:nlm-indometh-resids"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nlm-indometh-resids"></span>
 <img src="images/nlm-indometh-resids-1.png" alt="Plot of the residuals against predicted values for the Indomethacin example." width="80%" />
 <p class="caption">
 Figure 16.2: Plot of the residuals against predicted values for the Indomethacin example.
@@ -219,50 +254,45 @@ Figure 16.2: Plot of the residuals against predicted values for the Indomethacin
 </div>
 <p>Recall that violations of this condition does not mean our estimates are inappropriate. It means that our model for the sampling distribution will be inappropriate. As a result, confidence intervals and p-values produced will be invalid.</p>
 </div>
-<div id="modeling-the-variance" class="section level2">
+<div id="modeling-the-variance" class="section level2" number="16.2">
 <h2><span class="header-section-number">16.2</span> Modeling the Variance</h2>
 <p>Notice that to assess the condition of constant variance, we plot the residuals against the predicted values. This is not necessarily intuitive. In fact, the condition states that the variability of the response is constant for all values of the predictors; so, it may seem more reasonable to plot the residuals against each predictor. In fact, this is sometimes taught in other texts and routinely done by analysts, and there is nothing wrong with that approach. We advocate for plotting the residuals against the predicted values because it highlights a common phenomena - the variability of the response often depends on the <em>value</em> of the response.</p>
 <p>Figure <a href="nlm-heteroskedasticity.html#fig:nlm-indometh-resids">16.2</a> illustrates that as the concentration increases, the variability in the concentration tends to increase as well. That is, we have much more precision when measuring small concentrations, and we have much less precision when measuring large concentrations. When we have some sense of how the variability behaves, especially as a function of the mean response, we can model that structure.</p>
-
-<div class="definition">
-<p><span id="def:nlm-gls" class="definition"><strong>Definition 16.2  (Generalized Least Squares)  </strong></span>The nonlinear modeling framework can be generalized to capture non-constant variance by altering the moment model. Specifically, we consider</p>
+<div class="definition" label="nlm-gls">
+<p><span id="def:unlabeled-div-92" class="definition"><strong>Definition 16.2  (Generalized Least Squares) </strong></span>The nonlinear modeling framework can be generalized to capture non-constant variance by altering the moment model. Specifically, we consider</p>
 <p><span class="math display">\[
 \begin{aligned}
   E\left[(\text{Response})_i \mid (\text{Predictors})_i\right]
-    &amp;= f\left((\text{Predictors})_i, \bbeta\right) \\
+    &amp;= f\left((\text{Predictors})_i, \boldsymbol{\beta}\right) \\
   Var\left[(\text{Response})_i \mid (\text{Predictors})_i\right]
-    &amp;= g\left((\text{Predictors})_i, \bbeta, \bs{\gamma}\right)
+    &amp;= g\left((\text{Predictors})_i, \boldsymbol{\beta}, \boldsymbol{\gamma}\right)
 \end{aligned}
 \]</span></p>
-Such a model is fit with the method of generalized least squares in which we alternate between minimizing the distance between the observed response and the mean function and the minimizing the distance between the squared residuals and the variance function.
+<p>Such a model is fit with the method of generalized least squares in which we alternate between minimizing the distance between the observed response and the mean function and the minimizing the distance between the squared residuals and the variance function.</p>
 </div>
-
 <p>The generalized least squares approach extends ordinary least squares to account for non-constant variance. Essentially, it down-weights responses which have less precision when fitting the model. As an iterative process, it allows the parameters in the mean model to be updated based on the variance estimates and the estimates in the variance function to be updated based on the mean estimates. Further, allowing the variance function to depend on the parameters in the mean response function captures behaviors like that in the Indomethacin example in which the variability is dependent upon the values of the response. A popular model is the power of the mean model.</p>
-
-<div class="definition">
-<p><span id="def:nlm-pom" class="definition"><strong>Definition 16.3  (Power of the Mean Model)  </strong></span>Allows the variance to be specified as a power of the mean response function. Specifically, we consider</p>
-<span class="math display">\[
+<div class="definition" label="nlm-pom">
+<p><span id="def:unlabeled-div-93" class="definition"><strong>Definition 16.3  (Power of the Mean Model) </strong></span>Allows the variance to be specified as a power of the mean response function. Specifically, we consider</p>
+<p><span class="math display">\[
 \begin{aligned}
   E\left[(\text{Response})_i \mid (\text{Predictors})_i\right]
-    &amp;= f\left((\text{Predictors})_i, \bbeta\right) \\
+    &amp;= f\left((\text{Predictors})_i, \boldsymbol{\beta}\right) \\
   Var\left[(\text{Response})_i \mid (\text{Predictors})_i\right]
-    &amp;= \sigma^2 \left[f\left((\text{Predictors})_i, \bbeta\right)\right]^{2\theta}
+    &amp;= \sigma^2 \left[f\left((\text{Predictors})_i, \boldsymbol{\beta}\right)\right]^{2\theta}
 \end{aligned}
-\]</span>
+\]</span></p>
 </div>
-
 <p>The implementation of generalized least squares is beyond the scope of this text. We simply mention that this is a method for addressing non-constant variance, and that once implemented, results in appropriate inference about the parameters in the mean model.</p>
 </div>
-<div id="wild-bootstrap" class="section level2">
+<div id="wild-bootstrap" class="section level2" number="16.3">
 <h2><span class="header-section-number">16.3</span> Wild Bootstrap</h2>
 <p>In Chapter <a href="glm-large-sample-theory.html#glm-large-sample-theory">10</a>, we introduced the residual bootstrap as a method of relaxing distributional conditions. Specifically, the residual bootstrap avoided the need to assume the errors in a linear model followed a Normal distribution. However, it still required assuming the variability of the errors was constant. In this section, we extend these ideas to overcome heteroskedasticity in nonlinear models.</p>
 <p>At first glance, it is not obvious why an additional algorithm for bootstrapping is necessary. In addition to the residual bootstrap, we discussed case-resampling as a method of bootstrapping. This method does not require that we assume the variability of the response is constant for all values of the predictor. However, the performance of this particular algorithm can be quite poor in nonlinear settings due to the lower sample sizes that are common. In particular, fitting a nonlinear model can be very unstable. If we do not observe data in key regions that define the curvature, the numerical algorithms underlying the minimization can fail to converge to a solution. As an example, consider the Indomethacin data in Figure <a href="nlm-heteroskedasticity.html#fig:nlm-indomethacin-plot">16.1</a>. Suppose that we performed a single bootstrap resample in which we resampled <span class="math inline">\(n = 11\)</span> observations, with resampling, at random. It is quite possible that we end up with a resample containing only data between times 2 and 8 only missing the most prominent curvature in the data. As a result, attempting to fit the bi-exponential model to the resample will fail. This is not the result of specific software limitations; this is a failure to have enough data to adequately model the structure.</p>
 <p>So, case-resampling avoids assuming constant variance but can fail spectacularly in some nonlinear models. The residual bootstrap, on the other hand, assumes constant variance. It does, however, maintain the curvature as the same predictor values are used when performing each resample. Instead, pseudo-responses are generated in each bootstrap resample by adding a sample of the residuals to the fitted values (“jittering” the fitted line). The wild bootstrap is an alteration of the residual bootstrap which relaxes the assumption of constant variance while maintaining this beneficial property of the residual bootstrap.</p>
-
-<div class="definition">
-<p><span id="def:defn-wild-bootstrap" class="definition"><strong>Definition 16.4  (Wild Bootstrap)  </strong></span>Suppose we observe a sample of size <span class="math inline">\(n\)</span> and use it to fit the mean model (linear or nonlinear)</p>
-<p><span class="math display">\[E\left[(\text{Response})_i \mid (\text{Predictors})_i\right]= f\left((\text{Predictors})_i, \bbeta\right)\]</span></p>
-<p>to obtain the ordinary least squares estimates <span class="math inline">\(\widehat{\bbeta}\)</span>. The wild bootstrap proceeds along the following algorithm:</p>
+<div class="definition" label="defn-wild-bootstrap">
+<p><span id="def:unlabeled-div-94" class="definition"><strong>Definition 16.4  (Wild Bootstrap) </strong></span>Suppose we observe a sample of size <span class="math inline">\(n\)</span> and use it to fit the mean model (linear or nonlinear)</p>
+<p><span class="math display">\[E\left[(\text{Response})_i \mid (\text{Predictors})_i\right]= f\left((\text{Predictors})_i, \boldsymbol{\beta}\right)\]</span></p>
+<p>to obtain the ordinary least squares estimates <span class="math inline">\(\widehat{\boldsymbol{\beta}}\)</span>. The wild bootstrap proceeds along the following algorithm:</p>
 <ol style="list-style-type: decimal">
 <li>Compute the residuals
 <span class="math display">\[(\text{Residual})_i = (\text{Response})_i - (\text{Predicted Response})_i\]</span></li>
@@ -270,13 +300,12 @@ Such a model is fit with the method of generalized least squares in which we alt
 <span class="math display">\[(\text{Pseudo-Residual})_i = U_i (\text{Residual})_i\]</span></li>
 <li>Form “new” responses <span class="math inline">\(y_1^*, \dotsc, y_n^*\)</span> according to
 <span class="math display">\[y_i^* = (\text{Predicted Response})_i + (\text{Pseudo-Residual})_i.\]</span></li>
-<li>Obtain the least squares estimates <span class="math inline">\(\widehat{\bs{\alpha}}\)</span> by finding the values of <span class="math inline">\(\bs{\alpha}\)</span> which minimize
-<span class="math display">\[\sum_{i=1}^{n} \left(y_i^* - f\left((\text{Predictors})_i, \bs{\alpha}\right)\right)^2.\]</span></li>
+<li>Obtain the least squares estimates <span class="math inline">\(\widehat{\boldsymbol{\alpha}}\)</span> by finding the values of <span class="math inline">\(\boldsymbol{\alpha}\)</span> which minimize
+<span class="math display">\[\sum_{i=1}^{n} \left(y_i^* - f\left((\text{Predictors})_i, \boldsymbol{\alpha}\right)\right)^2.\]</span></li>
 <li>Repeat steps 2-4 <span class="math inline">\(m\)</span> times.</li>
 </ol>
-We often take <span class="math inline">\(m\)</span> to be large (at least 1000). After each pass through the algorithm, we retain the least squares estimates from the resample. The distribution of the estimates across these resamples is a good empirical model for the sampling distribution of the original least squares estimates.
+<p>We often take <span class="math inline">\(m\)</span> to be large (at least 1000). After each pass through the algorithm, we retain the least squares estimates from the resample. The distribution of the estimates across these resamples is a good empirical model for the sampling distribution of the original least squares estimates.</p>
 </div>
-
 <p>The wild bootstrap alters the residuals (as opposed to resampling them as in the residual bootstrap) to mimic the variability of the response being potentially unique for each observation. The theoretical underpinnings are beyond the scope of this text, but intuitively, we are adding noise to the line (“jittering” the predicted model) such that the noise has mean zero (meaning the model is still correctly specified) and has variance of the same magnitude as the original observation (captured by the magnitude of the residual).</p>
 <p>This process is computationally intensive but can dramatically improve inference when necessary.</p>
 
@@ -292,7 +321,6 @@ We often take <span class="math inline">\(m\)</span> to be large (at least 1000)
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -319,13 +347,16 @@ gitbook.start({
 "text": null
 },
 "download": ["MA482CourseNotes.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 },
 "toolbar": {
 "position": "fixed"
-},
-"search": true
+}
 });
 });
 </script>

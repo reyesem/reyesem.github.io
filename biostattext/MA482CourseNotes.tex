@@ -4,10 +4,10 @@
 %
 \documentclass[
 ]{book}
+\usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -41,7 +41,8 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
-\usepackage{longtable,booktabs}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
@@ -50,7 +51,7 @@
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx,grffile}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -67,6 +68,29 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % File: style.tex
 % Description: Create look for PDF version of text.
@@ -255,9 +279,27 @@
 %  \end{center}
 %  }
 
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
 \title{Statistical Modeling for the Biological Sciences}
 \author{Eric M Reyes}
-\date{Last Updated: 2021-02-16}
+\date{Last Updated: 2022-04-07}
 
 \begin{document}
 \maketitle
@@ -313,19 +355,19 @@ Research is about telling a story, and good data presentation and statistical in
 Every research question posed is trying to characterize a \textbf{population}.
 
 \begin{definition}[Population]
-\protect\hypertarget{def:defn-population}{}{\label{def:defn-population} \iffalse (Population) \fi{} }The collection of subjects we would like to say something about.
+The collection of subjects we would like to say something about.
 \end{definition}
 
 It is often impossible (or impractical) to observe the entire population. Instead, we make observations on a subset of the population; this smaller group is known as the \textbf{sample}.
 
 \begin{definition}[Sample]
-\protect\hypertarget{def:defn-sample}{}{\label{def:defn-sample} \iffalse (Sample) \fi{} }The collection of subjects for which we actually obtain measurements (data).
+The collection of subjects for which we actually obtain measurements (data).
 \end{definition}
 
 For each subject within the sample, we obtain a collection of measurements, which form our data. This could be the result, for example, of a survey, examination of medical records, or a prospective study which follows subjects for a lengthy period of time. The goal of statistical modeling is to use the sample (the group we actually observe) to say something about the population of interest (the group we wish we had observed); this process is known as \textbf{statistical inference} and is illustrated in Figure \ref{fig:statistical-process-statistical-process}.
 
 \begin{definition}[Statistical Inference]
-\protect\hypertarget{def:defn-inference}{}{\label{def:defn-inference} \iffalse (Statistical Inference) \fi{} }The process of using a sample to characterize some aspect of the underlying population.
+The process of using a sample to characterize some aspect of the underlying population.
 \end{definition}
 
 \begin{figure}
@@ -343,10 +385,10 @@ For each subject within the sample, we obtain a collection of measurements, whic
 Each measurement, or piece of information, you record for a subject is a different \textbf{variable}.
 
 \begin{definition}[Variable]
-\protect\hypertarget{def:defn-variable}{}{\label{def:defn-variable} \iffalse (Variable) \fi{} }A measurement, or category, describing some aspect of the subject.
+A measurement, or category, describing some aspect of the subject.
 \end{definition}
 
-In order to conduct analysis, it is best to adhere to tidy data principles (Wickham \protect\hyperlink{ref-Wickham2014}{2014}) when storing data. In brief:
+In order to conduct analysis, it is best to adhere to tidy data principles (\protect\hyperlink{ref-Wickham2014}{Wickham 2014}) when storing data. In brief:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -397,13 +439,13 @@ Once your data has been placed in a spreadsheet, it should be kept separate from
 If you have several variables you want to summarize, this is probably best done using a table. For example, you may want to summarize the demographics of the subjects in your study across each treatment group. How a variable is summarized depends on its type. \textbf{Qualitative} (or \textbf{categorical}) variables define a grouping or categorization of a subject (e.g., race, treatment group, etc.). When summarizing qualitative data, we generally report the number of subjects in each group and the corresponding percentage of the sample.
 
 \begin{definition}[Categorical Variable]
-\protect\hypertarget{def:defn-categorical}{}{\label{def:defn-categorical} \iffalse (Categorical Variable) \fi{} }Also called a ``qualitative variable,'' a measurement on a subject which denotes a grouping or categorization.
+Also called a ``qualitative variable,'' a measurement on a subject which denotes a grouping or categorization.
 \end{definition}
 
 \textbf{Quantitative} (or \textbf{numeric}) variables are those measurements for which arithmetic makes sense (e.g., heart rate, age). These variables are generally summarized by reporting both a measure of location and spread; this could be mean and standard deviation or median and interquartile range.
 
 \begin{definition}[Numeric Variable]
-\protect\hypertarget{def:defn-numeric}{}{\label{def:defn-numeric} \iffalse (Numeric Variable) \fi{} }Also called a ``quantitative variable,'' a measurement on a subject which takes on a numeric value \emph{and} for which ordinary arithmetic makes sense.
+Also called a ``quantitative variable,'' a measurement on a subject which takes on a numeric value \emph{and} for which ordinary arithmetic makes sense.
 \end{definition}
 
 If you are not comparing groups of subjects, it is reasonable to report results for the entire sample. If the goal of your research is to compare groups (such as rural vs.~urban residents), we typically summarize data within each group and present the comparisons side by side. Table \ref{tab:statistical-process-data-summary} summarizes the data from our hypothetical study, comparing the treatment and placebo groups.
@@ -417,7 +459,7 @@ If you are not comparing groups of subjects, it is reasonable to report results 
 \toprule
 Characteristic & Active Treatment & Placebo\\
 \midrule
-Education<br>   0-5 years<br>   6-11 years<br>   12+ years & <br>8 (4.8)<br>80 (48.5)<br>77 (46.7) & <br>4 (4.8)<br>40 (48.2)<br>39 (47)\\
+\makecell[l]{Education\\   0-5 years\\   6-11 years\\   12+ years} & \makecell[l]{\\8 (4.8)\\80 (48.5)\\77 (46.7)} & \makecell[l]{\\4 (4.8)\\40 (48.2)\\39 (47)}\\
 Age & 30.51 (2.67) & 31.53 (5.28)\\
 Parity & 2.08 (1.24) & 2.11 (1.28)\\
 Number of Miscarriages & 0.39 (0.62) & 0.95 (0.79)\\
@@ -430,7 +472,7 @@ When reporting numerical summaries within the body of your report, it is good to
 Statistics is generally concerned with explaining the variation in a variable, and that is characterized by its \textbf{distribution}. When we summarize a variable, whether numerically or graphically, we are actually summarizing this distribution.
 
 \begin{definition}[Distribution]
-\protect\hypertarget{def:defn-distribution}{}{\label{def:defn-distribution} \iffalse (Distribution) \fi{} }The pattern of variability corresponding to a set of values.
+The pattern of variability corresponding to a set of values.
 \end{definition}
 
 \hypertarget{graphical-data-presentation}{%
@@ -439,7 +481,7 @@ Statistics is generally concerned with explaining the variation in a variable, a
 As the saying goes, a picture is worth 1000 words. Each graphic you construct, however, should add value to the story you are telling. We primarily reserve graphics for conveying a message about our primary \textbf{response}.
 
 \begin{definition}[Response Variable]
-\protect\hypertarget{def:defn-response}{}{\label{def:defn-response} \iffalse (Response Variable) \fi{} }Also called the ``outcome,'' this is the primary variable of interest in the research question; it is the variable we either want to explain or predict.
+Also called the ``outcome,'' this is the primary variable of interest in the research question; it is the variable we either want to explain or predict.
 \end{definition}
 
 As with tabular data presentation, our approach to graphical presentation depends on the type of variable being summarized. For example, while a scatter-plot is well suited for examining the relationship between two quantitative variables, side-by-side box-plots are better suited for examining the relationship between a quantitative response and a categorical predictor. Following best practices in the research community, we recommend the use of a \emph{bar chart} instead of a \emph{pie chart} when examining a categorical response. Bar charts are often less cluttered and more clearly communicate the same information.
@@ -474,17 +516,17 @@ In some cases, summarizing the data numerically and graphically is sufficient fo
 A \textbf{statistic} (summary of data) is a point estimate of a \textbf{parameter} (corresponding value in the population of interest). For example, the value 0.39 in Table \ref{tab:statistical-process-data-summary} is the average number of miscarriages among those women in the study who received the active treatment; but, it \emph{estimates} the average number of miscarriages among all women if they were to receive the active treatment.
 
 \begin{definition}[Parameter]
-\protect\hypertarget{def:defn-parameter}{}{\label{def:defn-parameter} \iffalse (Parameter) \fi{} }Numeric quantity which summarizes the distribution of a variable within the \emph{population} of interest. Generally denoted by Greek letters in statistical formulas.
+Numeric quantity which summarizes the distribution of a variable within the \emph{population} of interest. Generally denoted by Greek letters in statistical formulas.
 \end{definition}
 
 \begin{definition}[Statistic]
-\protect\hypertarget{def:defn-statistic}{}{\label{def:defn-statistic} \iffalse (Statistic) \fi{} }Numeric quantity which summarizes the distribution of a variable within the observed \emph{sample}.
+Numeric quantity which summarizes the distribution of a variable within the observed \emph{sample}.
 \end{definition}
 
 Instead of estimating a parameter with this single value, we can estimate the parameter with a \textbf{confidence interval} (a 95\% confidence interval is standard practice).
 
 \begin{definition}[Confidence Interval]
-\protect\hypertarget{def:defn-confidence-interval}{}{\label{def:defn-confidence-interval} \iffalse (Confidence Interval) \fi{} }An interval (range of values) estimate of a parameter that incorporates the variability in the statistic. The process of constructing \(k\)\% confidence intervals results in them containing the parameter of interest in \(k\)\% of repeated studies. The value of \(k\) is called the \emph{confidence level}.
+An interval (range of values) estimate of a parameter that incorporates the variability in the statistic. The process of constructing \(k\)\% confidence intervals results in them containing the parameter of interest in \(k\)\% of repeated studies. The value of \(k\) is called the \emph{confidence level}.
 \end{definition}
 
 It is important to recognize that the entire interval is our estimate. In text, we generally report the point estimate with the 95\% confidence interval in parentheses. For example,
@@ -498,7 +540,7 @@ There are several common misinterpretations of a confidence interval; generally,
 While confidence intervals estimate an effect, a \textbf{p-value} quantifies the amount of evidence in the data against the lack of an effect.
 
 \begin{definition}[P-Value]
-\protect\hypertarget{def:defn-pvalue}{}{\label{def:defn-pvalue} \iffalse (P-Value) \fi{} }The probability, assuming the null hypothesis is true, that we would observe a statistic, from sampling variability alone, as extreme or more so as that observed in our sample. This quantifies the strength of evidence against the null hypothesis. Smaller values indicate stronger evidence.
+The probability, assuming the null hypothesis is true, that we would observe a statistic, from sampling variability alone, as extreme or more so as that observed in our sample. This quantifies the strength of evidence against the null hypothesis. Smaller values indicate stronger evidence.
 \end{definition}
 
 We generally report a p-value to 3 decimal places (with values less than 0.001 being written as ``\textless{} 0.001''). It is best to state p-values alongside the conclusion. For example,
@@ -523,15 +565,15 @@ For these reasons, a p-value should always be accompanied by either a confidence
 When interpreting statistical results, the design of the study plays a role. In particular, we can only conclude a causal relationship when the data is from a \textbf{randomized clinical trial}. When your data is from an \textbf{observational study}, any group comparisons are subject to \textbf{confounding}.
 
 \begin{definition}[Randomized Clinical Trial]
-\protect\hypertarget{def:defn-randomized-clinical-trial}{}{\label{def:defn-randomized-clinical-trial} \iffalse (Randomized Clinical Trial) \fi{} }Also called a ``controlled experiment,'' a study in which each subject is randomly assigned to one of the groups being compared in the study.
+Also called a ``controlled experiment,'' a study in which each subject is randomly assigned to one of the groups being compared in the study.
 \end{definition}
 
 \begin{definition}[Observational Study]
-\protect\hypertarget{def:defn-observational-study}{}{\label{def:defn-observational-study} \iffalse (Observational Study) \fi{} }A study in which each subject ``self-selects'' into one of groups being compared in the study. The phrase ``self-selects'' is used very loosely here and can include studies in which the groups are defined by an inherent characteristic or the groups are chosen haphazardly.
+A study in which each subject ``self-selects'' into one of groups being compared in the study. The phrase ``self-selects'' is used very loosely here and can include studies in which the groups are defined by an inherent characteristic or the groups are chosen haphazardly.
 \end{definition}
 
 \begin{definition}[Confounding]
-\protect\hypertarget{def:defn-confounding}{}{\label{def:defn-confounding} \iffalse (Confounding) \fi{} }When the effect of a variable on the response is mis-represented due to the presence of a third, potentially unobserved, variable known as a confounder.
+When the effect of a variable on the response is mis-represented due to the presence of a third, potentially unobserved, variable known as a confounder.
 \end{definition}
 
 As an example, it has been suggested that brushing your teeth twice a day for at least two minutes may lower the risk of cardiovascular diseases\footnote{\url{https://www.heart.org/en/news/2018/11/07/bad-tooth-brushing-habits-tied-to-higher-heart-risk}}. However, most of these results are from large surveys, which are observational studies. It is quite plausible that those who take excellent care of their teeth tend to be health-conscious individuals, and health-conscious individuals are more likely to have healthy diets and exercise regularly, both of which decrease the risk of cardiovascular diseases. In this example, being health-conscious is a confounder because it is associated with \emph{both} the factor under study (brushing behavior) \emph{and} the outcome of interest (cardiovascular disease); see Figure \ref{fig:statistical-process-confounding}. In order to establish a causal link between brushing and the risk of cardiovascular disease, we could conduct a clinical trial in which we randomize patients to a brushing routine and then track their long-term cardiovascular health; then, the link between the confounder and the treatment group is broken, allowing us to make a causal conclusion. While clinical trials allow for causal conclusions, they are not always feasible or practical; observational studies allow us to add to the body of knowledge in such situations. There are some methods for addressing confounding in observational studies through statistical analysis, but such methods often require a large sample and more advanced methodology.
@@ -551,7 +593,7 @@ As an example, it has been suggested that brushing your teeth twice a day for at
 A dataset on its own is meaningless if you cannot understand what the values represent. \emph{Before} you access a dataset, you should always review any available \textbf{codebooks}.
 
 \begin{definition}[Codebook]
-\protect\hypertarget{def:defn-codebook}{}{\label{def:defn-codebook} \iffalse (Codebook) \fi{} }Also called a ``data dictionary,'' these provide complete information regarding the variables contained within a dataset.
+Also called a ``data dictionary,'' these provide complete information regarding the variables contained within a dataset.
 \end{definition}
 
 Some codebooks are excellent, with detailed descriptions of how the variables were collected and appropriate units. Other codebooks give only an indication of what each variable represents. Whenever you are working with previously collected data, reviewing a codebook is the first step; and, you should be prepared to revisit the codebook often throughout an analysis. When you are collecting your own dataset, constructing a codebook is essential for others to make use of your data.
@@ -564,7 +606,7 @@ Any good statistical analysis moves between four key distributions --- what we r
 We begin by considering the following example from Rosner (\protect\hyperlink{ref-Rosner2006}{2006}).
 
 \begin{example}[Blood Pressure when Lying Down]
-\protect\hypertarget{exm:distributional-quartet-bp}{}{\label{exm:distributional-quartet-bp} \iffalse (Blood Pressure when Lying Down) \fi{} }Blood pressure is one measure for the health of your heart. A blood pressure reading includes two numbers --- the systolic blood pressure (the ``top number,'' measures the amount of pressure in your arteries when your heart contracts) and the diastolic blood pressure (the ``bottom number,'' measures the amount of pressure in your arteries when your heart is between beats). However, an individual does not have a single blood pressure reading; our blood pressure fluctuates as a result of activity as well as our position. In a study examining the impact of position on blood pressure, 32 participants had their blood pressure measured while lying down with their arms at their sides.
+\protect\hypertarget{exm:distributional-quartet-bp}{}\label{exm:distributional-quartet-bp}Blood pressure is one measure for the health of your heart. A blood pressure reading includes two numbers --- the systolic blood pressure (the ``top number,'' measures the amount of pressure in your arteries when your heart contracts) and the diastolic blood pressure (the ``bottom number,'' measures the amount of pressure in your arteries when your heart is between beats). However, an individual does not have a single blood pressure reading; our blood pressure fluctuates as a result of activity as well as our position. In a study examining the impact of position on blood pressure, 32 participants had their blood pressure measured while lying down with their arms at their sides.
 \end{example}
 
 Stated simply, the discipline of statistics is about using data to say something about a process that characterizes a population. Our analysis, therefore, begins with the \textbf{Distribution of the Population}.
@@ -654,7 +696,7 @@ Any process for which the outcome cannot be predicted with certainty is a random
 Each time we collect data, we can think of each observation as the result of a random process. These observations are recorded as variables in our dataset. In probability, a random variable is used to represent a measurement that results from a random process. Just as we have both \emph{quantitative} and \emph{qualitative} variables, there are \emph{continuous} and \emph{discrete} random variables.
 
 \begin{definition}[Random Variable]
-\protect\hypertarget{def:defn-random-variable}{}{\label{def:defn-random-variable} \iffalse (Random Variable) \fi{} }Represents a measurement that will be collected and for which the value cannot be predicted with certainty. Generally represented with a capital letter. Continuous random variables represent quantitative measurements while discrete random variables represent qualitative measurements.
+Represents a measurement that will be collected and for which the value cannot be predicted with certainty. Generally represented with a capital letter. Continuous random variables represent quantitative measurements while discrete random variables represent qualitative measurements.
 \end{definition}
 
 Consider measuring a single variable on a sample of \(n\) subjects. Then, we might represent the measurements we will obtain as \(X_1, X_2, \dots, X_n\).
@@ -666,7 +708,7 @@ There are many ways to interpret probability. In classical (``frequentist'') sta
 Each of our random variables \(X_1, X_2, \dotsc, X_n\) will be observations from some underlying population. As we described in previous chapters, the population is unknown. However, we might posit a model for its distribution. This is our primary use of probability theory in statistics --- to model distributions. The most common way to represent a probability model is through its density function.
 
 \begin{definition}[Density Function]
-\protect\hypertarget{def:defn-density}{}{\label{def:defn-density} \iffalse (Density Function) \fi{} }A density function \(f\) relates the potential values of a random variable \(X\) with the probability those values occur. For a \emph{continuous} random variable, the probability the random variable \(X\) falls within an interval \((a, b)\) is given by
+A density function \(f\) relates the potential values of a random variable \(X\) with the probability those values occur. For a \emph{continuous} random variable, the probability the random variable \(X\) falls within an interval \((a, b)\) is given by
 
 \[Pr(a \leq X \leq b) = \int_{a}^{b} f(x) dx.\]
 
@@ -693,7 +735,7 @@ With few exceptions, we will be working with continuous random variables. As a r
 Especially for visualization, the density function is the most common way of characterizing a probability model. However, computing the probability using the density is problematic due to the integration required. Many software address this by working with the cumulative distribution function (CDF).
 
 \begin{definition}[Cumulative Distribution Function (CDF)]
-\protect\hypertarget{def:defn-cdf}{}{\label{def:defn-cdf} \iffalse (Cumulative Distribution Function (CDF)) \fi{} }Let \(X\) be a random variable; the cumulative distribution function (CDF) is defined as
+Let \(X\) be a random variable; the cumulative distribution function (CDF) is defined as
 
 \[F(u) = Pr(X \leq u).\]
 
@@ -720,7 +762,7 @@ Most scientific questions are focused on the location or spread of a distributio
 In particular, the mean of a random variable (denoted by \(E(X)\)) and the variance of a random variable (denoted by \(Var(X)\)) are measures of the location and spread, respectively, of the distribution represented by its corresponding density function. When the density function is a model for the population, these represent the parameters of the population --- the same parameters we estimate and make inference on using our data analysis. For completeness, we present the computational formulas for the mean and variance of a random variable, but we do not make use of these formulas moving forward. Instead, we simply note that these formulas are similar to their sample counterparts.
 
 \begin{definition}[Mean and Variance of a Random Variable]
-\protect\hypertarget{def:defn-rv-mean-variance}{}{\label{def:defn-rv-mean-variance} \iffalse (Mean and Variance of a Random Variable) \fi{} }Suppose \(X\) is a random variable with density function \(f\). If \(X\) is a continuous random variable, then the mean and variance are given by
+Suppose \(X\) is a random variable with density function \(f\). If \(X\) is a continuous random variable, then the mean and variance are given by
 
 \[
 \begin{aligned}
@@ -755,7 +797,7 @@ When a probability model is specified for a population, it is generally specifie
 While we could posit any non-negative function as a model for a density function, there are some models that are very common. The most common model for the population of a continuous random variable is the Normal distribution.
 
 \begin{definition}[Normal (Guassian) Distribution]
-\protect\hypertarget{def:defn-normal-distribution}{}{\label{def:defn-normal-distribution} \iffalse (Normal (Guassian) Distribution) \fi{} }Let \(X\) be a continuous random variable. \(X\) is said to have a Normal (or Guassian) distribution if the density is given by
+Let \(X\) be a continuous random variable. \(X\) is said to have a Normal (or Guassian) distribution if the density is given by
 
 \[f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{1}{2\sigma^2} (x - \mu)^2} \qquad -\infty < x < \infty,\]
 
@@ -779,7 +821,7 @@ When a response is binary (assumes one of two values), it is a Bernoulli distrib
 \[X = \begin{cases} 1 & \text{if a success is observed} \\ 0 & \text{if a success is not observed} \end{cases}.\]
 
 \begin{definition}[Bernoulli Distribution]
-\protect\hypertarget{def:defn-bernoulli-distribution}{}{\label{def:defn-bernoulli-distribution} \iffalse (Bernoulli Distribution) \fi{} }Let \(X\) be a discrete random variable taking the value 0 or 1. \(X\) is said to have a Bernoulli distribution with density
+Let \(X\) be a discrete random variable taking the value 0 or 1. \(X\) is said to have a Bernoulli distribution with density
 
 \[f(x) = \theta^x (1 - \theta)^(1 - x) \qquad x \in \{0, 1\},\]
 
@@ -808,7 +850,7 @@ A statistical analysis does not exist in a vacuum. Instead, based on the context
 The t-distribution is a bell-shaped distribution, similar to the Normal distribution but with wider tails. It has a single parameter, known as the degrees of freedom. Note that unlike many other distributions, this parameter (the degrees of freedom) are not associated with the location of the distribution. Instead, they govern the spread (but are not the variance).
 
 \begin{definition}[t-Distribution]
-\protect\hypertarget{def:defn-t-distribution}{}{\label{def:defn-t-distribution} \iffalse (t-Distribution) \fi{} }Let \(X\) be a continuous random variable. \(X\) is said to have a t-distribution if the density is given by
+Let \(X\) be a continuous random variable. \(X\) is said to have a t-distribution if the density is given by
 
 \[f(x) = \frac{\Gamma \left(\frac{\nu+1}{2} \right)} {\sqrt{\nu\pi}\,\Gamma \left(\frac{\nu}{2} \right)} \left(1+\frac{x^2}{\nu} \right)^{-\frac{\nu+1}{2}} \qquad x > 0\]
 
@@ -820,7 +862,7 @@ We write \(X \sim t_{\nu}\), which is read ``X has a t-distribution with \(\nu\)
 The Chi-Square distribution is a skewed distribution (looks like a giant slide). It has a single parameter, known as the degrees of freedom. The degrees of freedom for this distribution characterize both the location and spread simultaneously.
 
 \begin{definition}[Chi-Square Distribution]
-\protect\hypertarget{def:defn-chi-square-distribution}{}{\label{def:defn-chi-square-distribution} \iffalse (Chi-Square Distribution) \fi{} }Let \(X\) be a continuous random variable. \(X\) is said to have a Chi-Square distribution if the density is given by
+Let \(X\) be a continuous random variable. \(X\) is said to have a Chi-Square distribution if the density is given by
 
 \[f(x) = \frac{1}{2^{\nu/2}\Gamma (\nu/2)}\;x^{\nu/2-1}e^{-x/2} \qquad x > 0,\]
 
@@ -832,7 +874,7 @@ We write \(X \sim \chi^2_{\nu}\), which is read ``X has a Chi-Square distributio
 The F-distribution is a skewed distribution. It has two parameters, known as the numerator and denominator degrees of freedom. While neither variable is directly the mean and variance, together these two parameters characterize both the location and the spread.
 
 \begin{definition}[F-Distribution]
-\protect\hypertarget{def:defn-f-distribution}{}{\label{def:defn-f-distribution} \iffalse (F-Distribution) \fi{} }Let \(X\) be a continuous random variable. \(X\) is said to have an F-distribution if the density is given by
+Let \(X\) be a continuous random variable. \(X\) is said to have an F-distribution if the density is given by
 
 \[f(x) = \frac{\Gamma((r + s)/2)}{(\Gamma(r/2) \Gamma(s/2))} (r/s)^{(r/2)} x^{(r/2 - 1)} (1 + (r/s) x)^{-(r + s)/2} \qquad x > 0,\]
 
@@ -893,7 +935,7 @@ The first question is an example of predicting; given the fertilizer being consi
 In each of these objectives, there are multiple things at play, requiring modeling techniques that account for multiple predictors simultaneously. The general linear model views the response as a being the results of a linear combination of several variables and error. Specifically, the framework generalizes the simple linear regression model studied in introductory statistics to characterize the average response as a function of several variables simultaneously.
 
 \begin{definition}[General Linear Model]
-\protect\hypertarget{def:defn-general-linear-model}{}{\label{def:defn-general-linear-model} \iffalse (General Linear Model) \fi{} }The general linear model views the response (outcome) as a linear combination of several predictors:
+The general linear model views the response (outcome) as a linear combination of several predictors:
 
 \[
 \begin{aligned}
@@ -929,7 +971,7 @@ The key feature of this model is that it relates the response to several predict
 The coefficients in front of each predictor act as parameters in the model as they are unknown and characterize the distribution of the response in some way. Our goal is to construct estimates of these unknown quantities. The most common method of estimation is the method of least squares.
 
 \begin{definition}[Least Squares Estimation]
-\protect\hypertarget{def:defn-least-squares}{}{\label{def:defn-least-squares} \iffalse (Least Squares Estimation) \fi{} }The method of least squares may be used to estimate the coefficients (parameters) of a linear model. In particular, we choose the values of the coefficients that minimize
+The method of least squares may be used to estimate the coefficients (parameters) of a linear model. In particular, we choose the values of the coefficients that minimize
 
 \[\sum\limits_{i=1}^{n} \left((\text{Response})_i - \beta_0 - \sum\limits_{j=1}^{p} \beta_j (\text{Predictor } j)_{i}\right)^2.\]
 
@@ -948,7 +990,8 @@ The act of estimation alone is really a mathematical problem. Being able to desc
 Most software, by default, places four conditions on the distribution of the error term in the model. We refer to this collection of conditions as the ``classical regression model.''
 
 \begin{definition}[Classical Regression Model]
-\protect\hypertarget{def:defn-classical-regression}{}{\label{def:defn-classical-regression} \iffalse (Classical Regression Model) \fi{} }In the ``classical regression model,'' we place the following four conditions on the distribution of the error \(\varepsilon_i\):
+
+In the ``classical regression model,'' we place the following four conditions on the distribution of the error \(\varepsilon_i\):
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -962,6 +1005,7 @@ Most software, by default, places four conditions on the distribution of the err
 \item
   The distribution of the errors follows a Normal distribution with the above mean and variance.
 \end{enumerate}
+
 \end{definition}
 
 It would be a mistake to consider the above conditions only from a probabilistic perspective; wrestling with what these mean in practice critical for understanding the model.
@@ -977,7 +1021,8 @@ The last condition is a strong one; it states that we are able to fully characte
 Statistics courses (especially the introductory course) focuses on these four conditions on the error. However, additional conditions are often imposed on the predictors of the model as well in the classical framework.
 
 \begin{definition}[Classical Regression Conditions on Predictors]
-\protect\hypertarget{def:defn-classical-regression-cont}{}{\label{def:defn-classical-regression-cont} \iffalse (Classical Regression Conditions on Predictors) \fi{} }The classical regression model places the following conditions on the predictors:
+
+The classical regression model places the following conditions on the predictors:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -987,6 +1032,7 @@ Statistics courses (especially the introductory course) focuses on these four co
 \item
   Each predictor has an additive linear effect on the response.
 \end{enumerate}
+
 \end{definition}
 
 This first additional condition states that there cannot be any noise present in the measurement of the \emph{predictors}. For example, imagine modeling the length (or height) of infants as a function of their age. When the doctor asks for the age of the child, we are assuming that this age can be computed without error. This seems reasonable in this case. However, consider using the temperature of the infant as a predictor in the model; if the thermometer is only accurate to within 2 tenths of a degree, than we may believe that the body temperature is measured with error. Addressing measurement error in models is beyond the scope of this text, and it is in general a difficult problem. Typically, even if a predictor is potentially measured with error, we are able to assume the error is negligible compared to the amount of error in the response. Throughout the text, we will assume all predictors are measured without error.
@@ -1003,9 +1049,9 @@ Recall that a distribution is just the pattern of variability among the values o
 We often think about these parameters as being a single value, but nothing prohibits that value from being described by a function of variables. That is, we could let \(\mu = g(\text{Predictors})\) for some function \(g\). In fact, the conditions on the error term specified in the previous section lead us to an alternate characterization of the general linear model.
 
 \begin{definition}[Alternate Characterization of the Classical Regression Model]
-\protect\hypertarget{def:defn-alternate-characterization}{}{\label{def:defn-alternate-characterization} \iffalse (Alternate Characterization of the Classical Regression Model) \fi{} }Under the classical regression conditions on the error term, we can characterize the classical regression model as
+Under the classical regression conditions on the error term, we can characterize the classical regression model as
 
-\[(\text{Response})_i \mid (\text{Predictors 1 through } p)_i \ind N\left(\beta_0 + \sum\limits_{j=1}^{p} \beta_j (\text{Predictor } j)_i, \sigma^2\right).\]
+\[(\text{Response})_i \mid (\text{Predictors 1 through } p)_i \stackrel{\text{Ind}}{\sim}N\left(\beta_0 + \sum\limits_{j=1}^{p} \beta_j (\text{Predictor } j)_i, \sigma^2\right).\]
 
 Here, the symbol \(\mid\) is read ``given'' and means that the distribution of the response is specified after knowing the values of the predictors. That is, the distribution of the response depends on these variables.
 \end{definition}
@@ -1032,7 +1078,7 @@ Notice what happens if we plug zero in for \emph{every} predictor:
 Since this deterministic portion specifies the average response, then we see that the average response is \(\beta_0\) when all predictors have the value zero.
 
 \begin{definition}[Intercept]
-\protect\hypertarget{def:defn-intercept}{}{\label{def:defn-intercept} \iffalse (Intercept) \fi{} }The population intercept, denoted \(\beta_0\), is the \emph{mean} response when all predictors take the value zero.\\
+The population intercept, denoted \(\beta_0\), is the \emph{mean} response when all predictors take the value zero.
 \end{definition}
 
 We should point out that while this is the valid interpretation, it may not always make sense in context. For example, if we are modeling the heart rate of patients as a function of their body temperature and weight; the model would have the form
@@ -1066,7 +1112,7 @@ Consider taking the difference in these two mean responses (Group 2 minus Group 
 The slope is the difference.
 
 \begin{definition}[Slope]
-\protect\hypertarget{def:defn-slope}{}{\label{def:defn-slope} \iffalse (Slope) \fi{} }The coefficient for the \(j\)-th predictor, denoted \(\beta_j\), is the change in the mean response associated with a one unit increase in Predictor \(j\), \emph{holding all other predictors fixed}.
+The coefficient for the \(j\)-th predictor, denoted \(\beta_j\), is the change in the mean response associated with a one unit increase in Predictor \(j\), \emph{holding all other predictors fixed}.
 \end{definition}
 
 The last part of this definition is critical to our understanding and the full utility of regression models. Again, while holding all other predictors fixed may not be practically feasible (could we really increase an individual's height without also increasing their weight?), it allows us to investigate the impact of a predictor separate from other variables.
@@ -1081,7 +1127,7 @@ As we have stated, the distribution of the sample and point estimates alone, do 
 While beyond the scope of this course, it can be shown that the least squares estimates of the parameters are linear combinations of the observed responses. This, combined with the modeling assumptions, allow us to construct a model for the sampling distribution of the estimates under the classical modeling.
 
 \begin{definition}[Sampling Distribution of Least Squares Estimates]
-\protect\hypertarget{def:defn-ls-sampling-distribution}{}{\label{def:defn-ls-sampling-distribution} \iffalse (Sampling Distribution of Least Squares Estimates) \fi{} }Under the classical regression conditions, we have that
+Under the classical regression conditions, we have that
 
 \[\frac{\widehat{\beta}_j - \beta_j}{\sqrt{Var\left(\widehat{\beta}_j\right)}} \sim t_{n - p - 1}.\]
 
@@ -1093,7 +1139,7 @@ That is, the standardized difference between our estimate and the parameter foll
 The detail-oriented reader will note that we did not include a formula for the standard error of an estimate. The formula is beyond the scope of this course, but it is a function of the values of the predictor as well as the variability in the error term. You see, the moment we specified the second condition (``constant variance''), we introduced another parameter. The parameter \(\sigma^2\) does not govern the mean response; so, it tends to be of less direct interest for our purposes. It does characterizes the variability in the response (for a given set of predictors), and it plays a role in inference (as we see in the above model for the sampling distribution of the least squares estimates of the parameters in the mean model). It will therefore play a role in computing confidence intervals. Since it is unknown, it must also be estimated.
 
 \begin{definition}[Estimate of Variance]
-\protect\hypertarget{def:defn-estimate-sigma2}{}{\label{def:defn-estimate-sigma2} \iffalse (Estimate of Variance) \fi{} }The unknown variance in the linear model, which captures the variability in the response for any set of predictors (also called the residual variance), is estimated by
+The unknown variance in the linear model, which captures the variability in the response for any set of predictors (also called the residual variance), is estimated by
 
 \[\widehat{\sigma}^2 = \frac{1}{n-p-1} \sum\limits_{i=1}^{n} \left((\text{Response})_i - \widehat{\beta}_0 - \sum\limits_{j=1}^{p} \widehat{\beta}_j (\text{Predictor } j)_{i}\right)^2.\]
 \end{definition}
@@ -1103,11 +1149,11 @@ Note that the estimate of the variance depends upon the least squares estimates.
 A model for the sampling distribution is the holy grail of statistical inference. It can be updated to determine the model for the null distribution. And, once you have a model for the sampling distribution in hand, you can wield it to construct a confidence interval (and null distributions to yield p-values).
 
 \begin{definition}[Classical Confidence Interval]
-\protect\hypertarget{def:defn-classical-ci}{}{\label{def:defn-classical-ci} \iffalse (Classical Confidence Interval) \fi{} }Under the classical regression conditions, a \(100c\)\% confidence interval for the parameter \(\beta_j\) is given by
+Under the classical regression conditions, a \(100c\)\% confidence interval for the parameter \(\beta_j\) is given by
 
 \[\widehat{\beta}_j \pm t_{n-p-1, 0.5(1+c)} \sqrt{Var\left(\widehat{\beta}_j\right)}.\]
 
-where \(t_{n-p-1, 0.5(1+c)}\) is the \(0.5(1+c)\) quantile from the \(t_{n-p-1}\) distribution, known as the critical value for the confidence interval.\\
+where \(t_{n-p-1, 0.5(1+c)}\) is the \(0.5(1+c)\) quantile from the \(t_{n-p-1}\) distribution, known as the critical value for the confidence interval.
 \end{definition}
 
 Like many confidence intervals, the idea is that we are grabbing the middle portion of the model for the sampling distribution. The confidence interval represents the values of the parameter for which the data is consistent. Also note that this confidence interval is specified for each parameter individually.
@@ -1115,13 +1161,13 @@ Like many confidence intervals, the idea is that we are grabbing the middle port
 For large values of \(n\) relative to \(p\), this critical value for a 95\% confidence interval is approximately 1.96. Hence, a rough confidence interval is therefore 2 standard errors in either direction of the point estimate.
 
 \begin{definition}[Classical P-Value]
-\protect\hypertarget{def:defn-classical-p}{}{\label{def:defn-classical-p} \iffalse (Classical P-Value) \fi{} }Under the classical regression conditions, the p-value for testing the hypotheses
+Under the classical regression conditions, the p-value for testing the hypotheses
 
 \[H_0: \beta_j = 0 \qquad \text{vs.} \qquad H_1: \beta_j \neq 0\]
 
 is given by
 
-\[Pr\left(\abs{T} > \abs{\frac{\widehat{\beta}_j}{\sqrt{Var\left(\widehat{\beta}_j\right)}}}\right)\]
+\[Pr\left(\lvert T\rvert > \lvert\frac{\widehat{\beta}_j}{\sqrt{Var\left(\widehat{\beta}_j\right)}}\rvert\right)\]
 
 where \(T \sim t_{n-p-1}\).
 \end{definition}
@@ -1142,7 +1188,7 @@ The model for the sampling distribution (and null distribution) is needed for ma
 The majority of the conditions in the classical regression model are placed on the error term, a random variable that we never observe in practice. This means that the conditions cannot be assessed using the errors directly. Instead, modeling conditions are assessed graphically using residuals.
 
 \begin{definition}[Residual]
-\protect\hypertarget{def:defn-residual}{}{\label{def:defn-residual} \iffalse (Residual) \fi{} }A residual for the \(i\)-th observation is the difference between an observed value and the predicted response
+A residual for the \(i\)-th observation is the difference between an observed value and the predicted response
 
 \[
 \begin{aligned}
@@ -1247,7 +1293,7 @@ The difference in the language is subtle but important. We can only adjust for p
 Confounding is all about one predictor manipulating the effect of another. A related, but distinctly unique, topic is that of multicollinearity.
 
 \begin{definition}[Multicollinearity]
-\protect\hypertarget{def:defn-multicollinearity}{}{\label{def:defn-multicollinearity} \iffalse (Multicollinearity) \fi{} }When two predictors are highly correlated with one another, we say that there is multicollinearity in the model.
+When two predictors are highly correlated with one another, we say that there is multicollinearity in the model.
 \end{definition}
 
 To understand the impact, let's consider a very simple hypothetical. Suppose we are modeling the grade of a freshman college student in calculus using their SAT and ACT scores; our model would have the form
@@ -1410,7 +1456,7 @@ The fact that each of the variables \texttt{Sophomore}, \texttt{Junior}, and \te
 So, freshman did not disappear from the model; they were there all along in the intercept. This strategy relied on capturing the grouping structure through a series of binary (0 or 1) variables, known as indicator variables.
 
 \begin{definition}[Indicator Variables]
-\protect\hypertarget{def:defn-indicator-variables}{}{\label{def:defn-indicator-variables} \iffalse (Indicator Variables) \fi{} }Also called ``dummy variables,'' these are a set of binary variables that capture the grouping defined by a categorical variable for regression modeling.
+Also called ``dummy variables,'' these are a set of binary variables that capture the grouping defined by a categorical variable for regression modeling.
 \end{definition}
 
 Indicator variables are like light switches that click on or off in order to specify that a particular subject (or population of subjects) with the corresponding characteristic is being considered. The way in which we have defined these variables ensures that no two light switches are on at the same time; each subject is a member of exactly one group (a student must have a class standing and cannot be classified as both a freshman and a sophomore simultaneously).
@@ -1422,7 +1468,7 @@ A categorical predictor with \(k\) groups/levels requires \(k-1\) indicator vari
 One group (known as the reference group) will always be captured by the intercept term; the choice of this group is arbitrary and is often chosen by the software package (perhaps alphabetically, for example). Note that if the only difference between two models is the choice of the reference group, the models result in equivalent inference (though the interpretation of the parameters differs).
 
 \begin{definition}[Reference Group]
-\protect\hypertarget{def:defn-reference-group}{}{\label{def:defn-reference-group} \iffalse (Reference Group) \fi{} }The group defined by having all indicator variables for a particular categorical variable set to zero.
+The group defined by having all indicator variables for a particular categorical variable set to zero.
 \end{definition}
 
 Recall that provided the ``mean 0'' condition on the error holds, we have an interpretation of the coefficients in the model (Definition \ref{def:defn-slope}). This yields a nice interpretation of the coefficients for indicator variables.
@@ -1516,7 +1562,8 @@ In order to capture complex modeling structures, we embed those structures in a 
 \end{rmdkeyidea}
 
 \begin{definition}[Subgroup Analysis]
-\protect\hypertarget{def:defn-subgroup-analysis}{}{\label{def:defn-subgroup-analysis} \iffalse (Subgroup Analysis) \fi{} }Refers to repeating a specified analysis (e.g., regression model) within various levels of a categorical predictor.
+
+Refers to repeating a specified analysis (e.g., regression model) within various levels of a categorical predictor.
 
 \begin{itemize}
 \tightlist
@@ -1525,18 +1572,21 @@ In order to capture complex modeling structures, we embed those structures in a 
 \item
   It results in a loss of information because \emph{all parameters} are forced to vary across the subgroups.
 \end{itemize}
+
 \end{definition}
 
 The predictor we added to our model (the product of two other predictors) is known as an interaction term.
 
 \begin{definition}[Interaction]
-\protect\hypertarget{def:defn-interaction}{}{\label{def:defn-interaction} \iffalse (Interaction) \fi{} }An interaction term allows the effect of a predictor on the response to depend on the value of a second predictor (capturing an effect modification).
+
+An interaction term allows the effect of a predictor on the response to depend on the value of a second predictor (capturing an effect modification).
 
 \begin{itemize}
 \tightlist
 \item
   This is created by adding the product of the two predictors under consideration to the model.
 \end{itemize}
+
 \end{definition}
 
 While we have illustrated the use of interaction terms using a quantitative and categorical predictor, but interactions can be used with any type of predictors. Similarly, while we have illustrated the use of interaction terms in a linear model, this is a general modeling technique that can be extended to other forms of regression models.
@@ -1555,44 +1605,46 @@ Hypothesis testing is a way of determining if a simpler model (null hypothesis) 
 The vast majority of scientific questions can be framed as a hypothesis which places a constraint on a more complex model for the data generating process. These constraints can in turn often be written as a linear combination of the parameters.
 
 \begin{rmdtip}
-For those less familiar with matrix algebra, a linear combination is simply the product of two vectors, and a series of linear combinations is the product of a matrix and a vector. Let \(\bm{K}\) be a 2-by-3 matrix defined as
+For those less familiar with matrix algebra, a linear combination is simply the product of two vectors, and a series of linear combinations is the product of a matrix and a vector. Let \(\mathbf{K}\) be a 2-by-3 matrix defined as
 
-\[\bm{K} = \begin{pmatrix} 
+\[\mathbf{K} = \begin{pmatrix} 
    K_{1,1} & K_{1,2} & K_{1,3} \\
    K_{2,1} & K_{2,2} & K_{2,3} \end{pmatrix}.\]
 
-Let \(\bs{\beta}\) be a column vector of length 3 defined as
+Let \(\boldsymbol{\beta}\) be a column vector of length 3 defined as
 
-\[\bs{\beta} = \begin{pmatrix}
+\[\boldsymbol{\beta} = \begin{pmatrix}
    \beta_1 \\
    \beta_2 \\
    \beta_3 \end{pmatrix}.\]
 
-The product \(\bm{K} \bs{\beta}\) is defined as
+The product \(\mathbf{K} \boldsymbol{\beta}\) is defined as
 
-\[\bm{K}\bs{\beta} = \begin{pmatrix}
+\[\mathbf{K}\boldsymbol{\beta} = \begin{pmatrix}
    K_{1,1} \beta_1 + K_{1,2} \beta_2 + K_{1,3} \beta_3 \\
    K_{2,1} \beta_1 + K_{2,2} \beta_2 + K_{2,3} \beta_3 \end{pmatrix}\]
 
-which is a vector of length 2. Each element in \(\bm{K}\bs{\beta}\) is a linear combination of the elements of \(\bs{\beta}\).
+which is a vector of length 2. Each element in \(\mathbf{K}\boldsymbol{\beta}\) is a linear combination of the elements of \(\boldsymbol{\beta}\).
 \end{rmdtip}
 
 \begin{definition}[General Linear Hypothesis]
-\protect\hypertarget{def:defn-general-linear-hypothesis}{}{\label{def:defn-general-linear-hypothesis} \iffalse (General Linear Hypothesis) \fi{} }The general linear hypothesis refers to testing
 
-\[H_0: \bm{K}\bs{\beta} = \bm{m} \qquad \text{vs.} \qquad H_1: \bm{K}\bs{\beta} \neq \bm{m}\]
+The general linear hypothesis refers to testing
+
+\[H_0: \mathbf{K}\boldsymbol{\beta} = \mathbf{m} \qquad \text{vs.} \qquad H_1: \mathbf{K}\boldsymbol{\beta} \neq \mathbf{m}\]
 
 where
 
 \begin{itemize}
 \tightlist
 \item
-  \(\bs{\beta}\) is the \((p+1)\)-length vector of the parameters (includes the intercept),
+  \(\boldsymbol{\beta}\) is the \((p+1)\)-length vector of the parameters (includes the intercept),
 \item
-  \(\bm{K}\) is an \(r\)-by-\((p+1)\) matrix that specifies the linear combinations defining the hypothesis of interest, and
+  \(\mathbf{K}\) is an \(r\)-by-\((p+1)\) matrix that specifies the linear combinations defining the hypothesis of interest, and
 \item
-  \(\bm{m}\) is a vector of length \(r\) specifying the null values, the value of each linear combination under the null hypothesis (often a vector of 0's).
+  \(\mathbf{m}\) is a vector of length \(r\) specifying the null values, the value of each linear combination under the null hypothesis (often a vector of 0's).
 \end{itemize}
+
 \end{definition}
 
 Before discussing inference for this hypothesis, we discuss the most common use of this framework. Consider the following linear model:
@@ -1603,29 +1655,29 @@ Suppose we are interested in testing the following hypotheses:
 
 \[H_0: \beta_1 = \beta_2 = 0 \qquad \text{vs.} \qquad H_1: \text{At least one } \beta_j \text{ not equal to 0}.\]
 
-To express this in the general linear hypothesis framework, we must identify the matrix \(\bm{K}\) and the vector \(\bm{m}\). Note that for this example
+To express this in the general linear hypothesis framework, we must identify the matrix \(\mathbf{K}\) and the vector \(\mathbf{m}\). Note that for this example
 
-\[\bs{\beta} = \begin{pmatrix} 
+\[\boldsymbol{\beta} = \begin{pmatrix} 
 \beta_0 \\
 \beta_1 \\
 \beta_2 \end{pmatrix}.\]
 
-There are actually several choices for \(\bm{K}\), but we select the most straight-forward:
+There are actually several choices for \(\mathbf{K}\), but we select the most straight-forward:
 
-\[\bm{K} = \begin{pmatrix}
+\[\mathbf{K} = \begin{pmatrix}
 0 & 1 & 0 \\
-0 & 0 & 1 \end{pmatrix} \qquad \text{with} \qquad \bm{m} = \begin{pmatrix}
+0 & 0 & 1 \end{pmatrix} \qquad \text{with} \qquad \mathbf{m} = \begin{pmatrix}
 0 \\ 0 \end{pmatrix}.\]
 
 That is, the null hypothesis above can be stated as
 
-\[\begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} \bs{\beta} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}.\]
+\[\begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} \boldsymbol{\beta} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}.\]
 
 \begin{rmdtip}
-When developing the matrix \(\bm{K}\), the number of rows corresponds to the number of equal signs in the null hypothesis.
+When developing the matrix \(\mathbf{K}\), the number of rows corresponds to the number of equal signs in the null hypothesis.
 \end{rmdtip}
 
-The general linear hypothesis allows us to say something about multiple parameters (or combinations of parameters) \emph{simultaneously}. Each linear combination is not a separate hypothesis; together, they form a ``joint'' hypothesis. That is, we should think of each linear combination defined by the rows of \(\bm{K}\) as ``and'' statements; we want every statement to be true at the same time. The framework is extremely flexible and can be used across several types of statistical models. It allows us to write the hypotheses compactly, mostly for communicating them to a computer. However, the framework alone does not produce p-values for such tests. In order to obtain a p-value, we need a model for the null distribution. As the hypothesis involve many parameters, we cannot (and should not) test each statement separately.
+The general linear hypothesis allows us to say something about multiple parameters (or combinations of parameters) \emph{simultaneously}. Each linear combination is not a separate hypothesis; together, they form a ``joint'' hypothesis. That is, we should think of each linear combination defined by the rows of \(\mathbf{K}\) as ``and'' statements; we want every statement to be true at the same time. The framework is extremely flexible and can be used across several types of statistical models. It allows us to write the hypotheses compactly, mostly for communicating them to a computer. However, the framework alone does not produce p-values for such tests. In order to obtain a p-value, we need a model for the null distribution. As the hypothesis involve many parameters, we cannot (and should not) test each statement separately.
 
 To fully understand the previous statement requires a background in statistical theory. We hand-wave this by saying that our parameter estimates are related. This is somewhat intuitive. Imagine trying to develop a line that runs through a cloud of points (see Figure \ref{fig:glm-linear-hypotheses-line}); if we constrain the line to go through the ``middle'' of the data (the point represented by the average of the predictor and the average of the response), then changing the slope of the line will necessarily change the intercept of the line. We extend this intuition by claiming that the estimate of one coefficient is related to the estimate of the parameters in a model.
 
@@ -1641,7 +1693,8 @@ To fully understand the previous statement requires a background in statistical 
 We know that the standard error is a measure of the variability in an estimate; we could just as easily use their variance (the square of the standard error). A convenient measure of the relationship between the estimates is known as their covariance. We store this information in the variance-covariance matrix.
 
 \begin{definition}[Variance-Covariance Matrix]
-\protect\hypertarget{def:defn-variance-covariance-matrix}{}{\label{def:defn-variance-covariance-matrix} \iffalse (Variance-Covariance Matrix) \fi{} }Let \(\bs{\beta}\) represent the \((p+1)\)-length vector of the parameters and \(\widehat{\bs{\beta}}\) represent the \((p+1)\) vector of the parameter \emph{estimates}. The variance-covariance matrix of the parameter estimates is the \((p+1)\)-by-\((p+1)\) matrix \(\bs{\Sigma}\) where
+
+Let \(\boldsymbol{\beta}\) represent the \((p+1)\)-length vector of the parameters and \(\widehat{\boldsymbol{\beta}}\) represent the \((p+1)\) vector of the parameter \emph{estimates}. The variance-covariance matrix of the parameter estimates is the \((p+1)\)-by-\((p+1)\) matrix \(\boldsymbol{\Sigma}\) where
 
 \begin{itemize}
 \tightlist
@@ -1650,21 +1703,22 @@ We know that the standard error is a measure of the variability in an estimate; 
 \item
   the \((i,j)\)-th element contains the covariance between \(\widehat{\beta}_i\) and \(\widehat{\beta}_j\).
 \end{itemize}
+
 \end{definition}
 
 The variance-covariance matrix is an extremely important concept in statistical theory; here, we simply note that it is contains information on the structure of how the estimates are related to one another. We further note that this is computed automatically in most software. We are now in a place to discuss inference for the general linear hypothesis.
 
 \begin{definition}[Model for the Null Distribution with the General Linear Hypothesis]
-\protect\hypertarget{def:defn-general-linear-hypothesis-null}{}{\label{def:defn-general-linear-hypothesis-null} \iffalse (Model for the Null Distribution with the General Linear Hypothesis) \fi{} }Let \(\widehat{\bs{\beta}}\) be the \((p+1)\) vector of estimates for the parameter vector \(\bs{\beta}\), and let the estimates have variance-covariance matrix \(\bs{\Sigma}\). Assuming the null hypothesis
+Let \(\widehat{\boldsymbol{\beta}}\) be the \((p+1)\) vector of estimates for the parameter vector \(\boldsymbol{\beta}\), and let the estimates have variance-covariance matrix \(\boldsymbol{\Sigma}\). Assuming the null hypothesis
 
-\[H_0: \bm{K} \bs{\beta} = \bm{m}\]
+\[H_0: \mathbf{K} \boldsymbol{\beta} = \mathbf{m}\]
 
 is true, under the conditions of the classical regression model
 
-\[(1/r) \left(\bm{K}\widehat{\bbeta} - \bm{m}\right)^\top \left(\bm{K}\widehat{\bs{\Sigma}}\bm{K}^\top\right)^{-1} \left(\bm{K}\widehat{\bbeta} - \bm{m}\right) \sim F_{r, n-p-1}\]
+\[(1/r) \left(\mathbf{K}\widehat{\boldsymbol{\beta}} - \mathbf{m}\right)^\top \left(\mathbf{K}\widehat{\boldsymbol{\Sigma}}\mathbf{K}^\top\right)^{-1} \left(\mathbf{K}\widehat{\boldsymbol{\beta}} - \mathbf{m}\right) \sim F_{r, n-p-1}\]
 \end{definition}
 
-Again, the specifics of the above result are not as important as understanding there exists a standardized statistic for which the null distribution can be modeled explicitly, as an F-distribution with \(r\) numerator degrees of freedom and \(n-p-1\) denominator degrees of freedom. While the denominator degrees of freedom are associated with the scaling term for the residual variance estimate, the numerator degrees of freedom are associated with the complexity of the hypothesis (the number of rows of \(\bm{K}\)).
+Again, the specifics of the above result are not as important as understanding there exists a standardized statistic for which the null distribution can be modeled explicitly, as an F-distribution with \(r\) numerator degrees of freedom and \(n-p-1\) denominator degrees of freedom. While the denominator degrees of freedom are associated with the scaling term for the residual variance estimate, the numerator degrees of freedom are associated with the complexity of the hypothesis (the number of rows of \(\mathbf{K}\)).
 
 While the theory that provides the above results holds only for the linear model under the classical regression model, the approach we have outlined here will allow us to provide general results which are applicable under many types of regression models.
 
@@ -1679,11 +1733,11 @@ The classical regression model (Definition \ref{def:defn-classical-regression}) 
 In general, there are two general types of models for a data generating process: parametric and semiparametric models.
 
 \begin{definition}[Parametric Model]
-\protect\hypertarget{def:defn-parametric-model}{}{\label{def:defn-parametric-model} \iffalse (Parametric Model) \fi{} }A parametric model assumes we can \emph{fully} characterize the distribution of the response given the predictors.
+A parametric model assumes we can \emph{fully} characterize the distribution of the response given the predictors.
 \end{definition}
 
 \begin{definition}[Semiparametric Model]
-\protect\hypertarget{def:defn-semiparametric-model}{}{\label{def:defn-semiparametric-model} \iffalse (Semiparametric Model) \fi{} }A semiparametric model specifies some components of the underlying distribution (e.g., mean and variance) of the response, but does not fully characterize it.
+A semiparametric model specifies some components of the underlying distribution (e.g., mean and variance) of the response, but does not fully characterize it.
 \end{definition}
 
 \begin{rmdtip}
@@ -1694,12 +1748,12 @@ Parametric models make strong assumptions, but often make the analysis straight-
 
 The alternate characterization of the classical regression model (Definition \ref{def:defn-alternate-characterization}) reveals that the classical regression model is a parametric model. It completely characterizes the distribution of the response:
 
-\[(\text{Response})_i \mid (\text{Predictors 1 through } p)_i \ind N\left(\beta_0 + \sum\limits_{j=1}^{p} \beta_j (\text{Predictor } j)_i, \sigma^2\right).\]
+\[(\text{Response})_i \mid (\text{Predictors 1 through } p)_i \stackrel{\text{Ind}}{\sim}N\left(\beta_0 + \sum\limits_{j=1}^{p} \beta_j (\text{Predictor } j)_i, \sigma^2\right).\]
 
 This is a very strong assumption. Further, often the questions posed by the researchers do not concern the form of the distribution of the response but only some aspect of the distribution. For example, the hypotheses we have considered thus far in the text surround the parameters of the mean model; that is, we have concerned ourselves only with questions regarding the \emph{mean} response. Since most scientific questions focus on the mean response, we are led to positing a semiparametric linear model.
 
 \begin{definition}[Semiparametric Linear Model]
-\protect\hypertarget{def:defn-semiparametric-linear-model}{}{\label{def:defn-semiparametric-linear-model} \iffalse (Semiparametric Linear Model) \fi{} }Suppose we no longer require that the error terms follow a Normal distribution; however, we do continue to impose the remaining conditions of the classical regression model. Then, our model could be written as
+Suppose we no longer require that the error terms follow a Normal distribution; however, we do continue to impose the remaining conditions of the classical regression model. Then, our model could be written as
 
 \[
 \begin{aligned}
@@ -1721,13 +1775,13 @@ Notice that this version of the model only specifies aspects of the response dis
 The primary benefit of a parametric model is that often the distributional assumption trickles through the analysis and allows us to exactly specify the model for the sampling distribution. When we move to a semi-parametric model, we need additional tools to allow us to model the sampling distribution. One such tool is large-sample theory.
 
 \begin{definition}[Large Sample Theory]
-\protect\hypertarget{def:defn-large-sample-theory}{}{\label{def:defn-large-sample-theory} \iffalse (Large Sample Theory) \fi{} }When a model for the sampling distribution (or null distribution) of an estimate (or standardized statistic) is known as the sample size becomes infinitely large. That is, as the sample size approaches infinity, the sampling distribution (or null distribution) can be easily modeled using a known probability distribution.
+When a model for the sampling distribution (or null distribution) of an estimate (or standardized statistic) is known as the sample size becomes infinitely large. That is, as the sample size approaches infinity, the sampling distribution (or null distribution) can be easily modeled using a known probability distribution.
 \end{definition}
 
 Perhaps the most well-known example of large-sample theory is the Central Limit Theorem encountered in introductory statistics.
 
 \begin{definition}[Central Limit Theorem]
-\protect\hypertarget{def:defn-clt}{}{\label{def:defn-clt} \iffalse (Central Limit Theorem) \fi{} }Let \(Y_1, Y_2, \dotsc, Y_n\) be independent and identically distributed random variables with mean \(\mu\) and variance \(\sigma^2\). Then, as \(n\) approaches infinity
+Let \(Y_1, Y_2, \dotsc, Y_n\) be independent and identically distributed random variables with mean \(\mu\) and variance \(\sigma^2\). Then, as \(n\) approaches infinity
 
 \[\frac{\sqrt{n}\left(\bar{Y} - \mu\right)}{\sigma} \sim N(0, 1).\]
 \end{definition}
@@ -1737,17 +1791,17 @@ Putting this in the language of this text, this states that as the sample size g
 It turns out that similar results can be derived for the semiparametric linear model. That is, in large samples, we can approximate the sampling distribution of our estimates and the null distribution of our standardized statistics.
 
 \begin{definition}[Large Sample Model for the Sampling Distribution of Least Squares Estimates]
-\protect\hypertarget{def:defn-ls-sampling-distribution-large-samples}{}{\label{def:defn-ls-sampling-distribution-large-samples} \iffalse (Large Sample Model for the Sampling Distribution of Least Squares Estimates) \fi{} }Suppose the classical regression conditions hold, with the exception of the errors following a Normal distribution. As the sample size gets large, we have that
+Suppose the classical regression conditions hold, with the exception of the errors following a Normal distribution. As the sample size gets large, we have that
 
 \[\frac{\widehat{\beta}_j - \beta_j}{\sqrt{Var\left(\widehat{\beta}_j\right)}} \sim N(0, 1)\]
 
 for all \(j = 0, 1, \dotsc, p\). Further, under the null hypothesis
 
-\[H_0: \bm{K}\bs{\beta} = \bm{m}\]
+\[H_0: \mathbf{K}\boldsymbol{\beta} = \mathbf{m}\]
 
 we have
 
-\[\left(\bm{K}\widehat{\bbeta} - \bm{m}\right)^\top \left(\bm{K}\widehat{\bs{\Sigma}}\bm{K}^\top\right)^{-1} \left(\bm{K}\widehat{\bbeta} - \bm{m}\right) \sim \chi^2_r.\]
+\[\left(\mathbf{K}\widehat{\boldsymbol{\beta}} - \mathbf{m}\right)^\top \left(\mathbf{K}\widehat{\boldsymbol{\Sigma}}\mathbf{K}^\top\right)^{-1} \left(\mathbf{K}\widehat{\boldsymbol{\beta}} - \mathbf{m}\right) \sim \chi^2_r.\]
 \end{definition}
 
 Notice that our statistics and standardized statistic have a similar form as before; the difference is the probability model being used. In place of a t-distribution, we have a Normal distribution. In place of the F-distribution, we have a Chi-Square distribution. This result allows us to perform inference even if we are unwilling to assume the errors follow a Normal distribution.
@@ -1764,17 +1818,17 @@ Not all software implements methods for relying on these large-sample results. H
 An alternative to large-sample theory is building an empirical model for the sampling distribution (or null distribution) when working with a semiparametric model known as bootstrapping.
 
 \begin{definition}[Bootstrapping]
-\protect\hypertarget{def:defn-bootstrapping}{}{\label{def:defn-bootstrapping} \iffalse (Bootstrapping) \fi{} }A process of resampling the data and estimating the parameters of interest in each resample to construct an empirical model of the sampling distribution.
+A process of resampling the data and estimating the parameters of interest in each resample to construct an empirical model of the sampling distribution.
 \end{definition}
 
 There are several bootstrapping algorithms; the most foundational for regression modeling is the residual bootstrap.
 
 \begin{definition}[Residual Bootstrap]
-\protect\hypertarget{def:defn-residual-bootstrap}{}{\label{def:defn-residual-bootstrap} \iffalse (Residual Bootstrap) \fi{} }Suppose we observe a sample of size \(n\) and use it to fit the linear model
+Suppose we observe a sample of size \(n\) and use it to fit the linear model
 
 \[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i + \varepsilon_i\]
 
-and obtain the least squares estimates \(\widehat{\bbeta}\). The residual bootstrap proceeds along the following algorithm:
+and obtain the least squares estimates \(\widehat{\boldsymbol{\beta}}\). The residual bootstrap proceeds along the following algorithm:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1788,7 +1842,7 @@ and obtain the least squares estimates \(\widehat{\bbeta}\). The residual bootst
   Form ``new'' responses \(y_1^*, \dotsc, y_n^*\) according to
   \[y_i^* = \widehat{\beta}_0 + \sum_{j=1}^{p} \widehat{\beta}_j (\text{Predictor } j)_i + e_i^*.\]
 \item
-  Obtain the least squares estimates \(\widehat{\bs{\alpha}}\) by finding the values of \(\bs{\alpha}\) which minimize
+  Obtain the least squares estimates \(\widehat{\boldsymbol{\alpha}}\) by finding the values of \(\boldsymbol{\alpha}\) which minimize
   \[\sum_{i=1}^{n} \left(y_i^* - \alpha_0 - \sum_{j=1}^{p} \alpha_j (\text{Predictor } j)_i\right)^2.\]
 \item
   Repeat steps 2-4 \(m\) times.
@@ -1800,11 +1854,11 @@ We often take \(m\) to be large (at least 1000). After each pass through the alg
 While the residual bootstrap is the foundation of many similar algorithms, it is perhaps not as easy to understand as the case-resampling bootstrap.
 
 \begin{definition}[Case Resampling Bootstrap]
-\protect\hypertarget{def:defn-case-resampling-bootstrap}{}{\label{def:defn-case-resampling-bootstrap} \iffalse (Case Resampling Bootstrap) \fi{} }Suppose we observe a sample of size \(n\) and use it to fit the linear model
+Suppose we observe a sample of size \(n\) and use it to fit the linear model
 
 \[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i + \varepsilon_i\]
 
-and obtain the least squares estimates \(\widehat{\bbeta}\). The residual bootstrap proceeds along the following algorithm:
+and obtain the least squares estimates \(\widehat{\boldsymbol{\beta}}\). The residual bootstrap proceeds along the following algorithm:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1812,7 +1866,7 @@ and obtain the least squares estimates \(\widehat{\bbeta}\). The residual bootst
 \item
   Take a random sample of size \(n\) (with replacement) of the raw data (keeping all variables from the same observation together).
 \item
-  Obtain the least squares estimates \(\widehat{\bs{\alpha}}\) by finding the values of \(\bs{\alpha}\) which minimize
+  Obtain the least squares estimates \(\widehat{\boldsymbol{\alpha}}\) by finding the values of \(\boldsymbol{\alpha}\) which minimize
   \[\sum_{i=1}^{n} \left((\text{Response})_i^* - \alpha_0 - \sum_{j=1}^{p} \alpha_j (\text{Predictor } j)_i^*\right)^2.\]
 \item
   Repeat steps 1-2 \(m\) times.
@@ -1865,7 +1919,7 @@ We end with a common question: if we are able to model the sampling distribution
 In addition to conditions on the error term, the classical regression model (Definition \ref{def:defn-classical-regression}) requires that the predictors enter the model linearly. It is often the case, however, that the relationship between the response and a predictor is not linear, even after accounting for other predictors. Ignoring this curvature, essentially leaving the deterministic portion of the model incorrectly specified, can result in incorrect conclusions. Fortunately, the linear model framework is flexible enough to model curvature. This may seem to be a contradiction, but it relies on the definition of what it means for a model to be linear.
 
 \begin{definition}[Linear Model]
-\protect\hypertarget{def:defn-linear-model}{}{\label{def:defn-linear-model} \iffalse (Linear Model) \fi{} }A model is said to be linear if it is linear in the \emph{parameters}. That is, the linearity does not refer to the form of the predictors but that the deterministic portion of the model is specified as a linear combination of the parameters for each observation.
+A model is said to be linear if it is linear in the \emph{parameters}. That is, the linearity does not refer to the form of the predictors but that the deterministic portion of the model is specified as a linear combination of the parameters for each observation.
 \end{definition}
 
 The beauty of this understanding of linearity is that it allows us to capture curvature, provided that we can represent that curvature through the addition of predictors. As a simple example, suppose we have a response that is parabolically related to a predictor (Figure \ref{fig:glm-splines-parabola}).
@@ -1883,13 +1937,13 @@ This linear model could be represented as
 
 \[(\text{Response})_i = \beta_0 + \beta_1 (\text{Predictor})_i^2 + \varepsilon_i.\]
 
-The mean response will clearly generate curvature, but the deterministic portion is linear in the parameters; let \(\bm{x}_i\) represent the vector of all predictors for the \(i\)-th observation, including the intercept. In this case we have
+The mean response will clearly generate curvature, but the deterministic portion is linear in the parameters; let \(\mathbf{x}_i\) represent the vector of all predictors for the \(i\)-th observation, including the intercept. In this case we have
 
-\[\bm{x}_i = \begin{pmatrix} 1 \\ (\text{Predictor})_i \end{pmatrix}.\]
+\[\mathbf{x}_i = \begin{pmatrix} 1 \\ (\text{Predictor})_i \end{pmatrix}.\]
 
 Then, we can write the above model as
 
-\[(\text{Response})_i = \bm{x}_i^\top \bbeta + \varepsilon_i\]
+\[(\text{Response})_i = \mathbf{x}_i^\top \boldsymbol{\beta}+ \varepsilon_i\]
 
 where we have that the deterministic portion is the product of two vectors; being able to express the model in this form is the definition of a linear model.
 
@@ -1904,13 +1958,13 @@ even if some of the components involve nonlinear transformations of variables in
 Due to this flexibility, we are interested in investigating transformations of the predictors to add to the model that would capture curvature. In the above example, we knew the form of the curvature we wanted to model (a parabola shifted up from the origin). In practice, we often will not know the form of the curvature, just that it exists (from the plots of the residuals against the predictor). And, that curvature may not be modeled well with a high-degree polynomial (or would require a polynomial of such a high degree it would not be practical). In such cases, we use the idea of a spline.
 
 \begin{definition}[Spline]
-\protect\hypertarget{def:defn-spline}{}{\label{def:defn-spline} \iffalse (Spline) \fi{} }A spline is a piecewise polynomial used in fitting curves. A \emph{linear} spline is comprised only of linear pieces. The points that define the piecewise components are called \emph{knot points}; these are where the functional form is allowed to change.
+A spline is a piecewise polynomial used in fitting curves. A \emph{linear} spline is comprised only of linear pieces. The points that define the piecewise components are called \emph{knot points}; these are where the functional form is allowed to change.
 \end{definition}
 
 A linear spline is perfect for capturing relationships which appear to be linear over regions, but for which the relationship is different in each of those regions. For example, a ``V'' relationship would suggest that as the predictor increases, the response tends to decrease in the first region; however, in the second region, as the predictor increases, the response tends to increase as well. A linear spline can be placed into the linear model framework.
 
 \begin{definition}[Formula for Linear Spline]
-\protect\hypertarget{def:defn-linear-spline-formula}{}{\label{def:defn-linear-spline-formula} \iffalse (Formula for Linear Spline) \fi{} }A response can be related to a predictor using a linear spline with \(k\) knot points, call them \(t_1, t_2, \dotsc, t_k\) using the following formula:
+A response can be related to a predictor using a linear spline with \(k\) knot points, call them \(t_1, t_2, \dotsc, t_k\) using the following formula:
 
 \[(\text{Response})_i = \beta_0 + \beta_1 (\text{Predictor})_i + \sum_{j=1}^{k} \beta_{j+1} \left((\text{Predictor})_i - t_j\right)_{+} + \varepsilon_i\]
 
@@ -1941,13 +1995,13 @@ suggests that a linear relationship is sufficient for modeling the relationship 
 There are plenty of forms of curvature which would not be captured by a linear spline. When we have a more complex relationship that needs to be modeled, we can use a restricted cubic spline.
 
 \begin{definition}[Restricted Cubic Spline]
-\protect\hypertarget{def:defn-restricted-cubic-spline}{}{\label{def:defn-restricted-cubic-spline} \iffalse (Restricted Cubic Spline) \fi{} }A restricted cubic spline is comprised of piecewise cubic polynomials for which the tails of the spline have been restricted to be linear.\\
+A restricted cubic spline is comprised of piecewise cubic polynomials for which the tails of the spline have been restricted to be linear.
 \end{definition}
 
 Restricted cubic splines (related to natural splines in the computational science community) are smooth at the knot points (meaning they have nice mathematical properties). Further, it has been shown empirically that restricted cubic splines are often flexible enough to approximate nearly any nonlinear relationship. Again, these are able to be embedded in the linear framework.
 
 \begin{definition}[Formula for Restricted Cubic Spline]
-\protect\hypertarget{def:defn-restricted-cubic-spline-formula}{}{\label{def:defn-restricted-cubic-spline-formula} \iffalse (Formula for Restricted Cubic Spline) \fi{} }A response can be related to a predictor using a restricted cubic spline with \(k\) knot points, call them \(t_1, t_2, \dotsc, t_k\) using the following formula:
+A response can be related to a predictor using a restricted cubic spline with \(k\) knot points, call them \(t_1, t_2, \dotsc, t_k\) using the following formula:
 
 \[(\text{Response})_i = \beta_0 + \beta_1 (\text{Predictor})_i + \sum_{j=1}^{k-2} \beta_{j+1} x_{j,i} + \varepsilon_i\]
 
@@ -2004,7 +2058,7 @@ When the same response is collected multiple times on a single subject, the assu
 Study design is too often separated from the statistical analysis that follows. However, in addition to informing the conclusions we draw regarding the data, the study design helps in choosing an appropriate analysis to address the question of interest. As an example, consider the following study reported in Vittinghoff et al. (\protect\hyperlink{ref-Vittinghoff2012}{2012}).
 
 \begin{example}[Digestive Enzymes]
-\protect\hypertarget{exm:rm-enzyme}{}{\label{exm:rm-enzyme} \iffalse (Digestive Enzymes) \fi{} }The ability of the bowels to properly absorb nutrients can be impacted by a lack of digestive enzymes. This presents as excess fat in the feces. Pancreatic enzyme supplements can be given to ameliorate the problem. A study was conducted comparing three forms of a particular enzyme supplement; these were compared to no supplement (placebo) as a control. Subjects were given the supplement to take for a specified length of time; then, the amount of fecal fat (g/day) present was recorded. The data is presented in Table \ref{tab:rm-enzyme-data-table}.
+The ability of the bowels to properly absorb nutrients can be impacted by a lack of digestive enzymes. This presents as excess fat in the feces. Pancreatic enzyme supplements can be given to ameliorate the problem. A study was conducted comparing three forms of a particular enzyme supplement; these were compared to no supplement (placebo) as a control. Subjects were given the supplement to take for a specified length of time; then, the amount of fecal fat (g/day) present was recorded. The data is presented in Table \ref{tab:rm-enzyme-data-table}.
 
 Interest is in determining if the amount of fecal fat produced, on average, differed for any of the treatments.
 \end{example}
@@ -2047,7 +2101,7 @@ Of course, the above analysis is predicated on the data being consistent with th
 Let's reconsider the above example but add a little more context to the study design.
 
 \begin{example}[Digestive Enzymes Expanded]
-\protect\hypertarget{exm:rm-enzyme-expanded}{}{\label{exm:rm-enzyme-expanded} \iffalse (Digestive Enzymes Expanded) \fi{} }The \emph{Digestive Enzymes} study was designed as a cross-over study enrolling six subjects. Each subject was placed on a form of the enzyme (determined randomly) and followed for a specified period of time at which point the amount of fecal fat present was obtained. Following a substantial wash-out period the subject was assigned a different form of the supplement. This continued until each subject had been assigned to all four supplement forms. The data, with the subject identifier information is presented in Table \ref{tab:rm-enzyme-data-table-expanded}.
+The \emph{Digestive Enzymes} study was designed as a cross-over study enrolling six subjects. Each subject was placed on a form of the enzyme (determined randomly) and followed for a specified period of time at which point the amount of fecal fat present was obtained. Following a substantial wash-out period the subject was assigned a different form of the supplement. This continued until each subject had been assigned to all four supplement forms. The data, with the subject identifier information is presented in Table \ref{tab:rm-enzyme-data-table-expanded}.
 
 Interest is in determining if the amount of fecal fat produced, on average, differed for any of the treatments. However, it is known that the amount of fecal fat present can vary substantially from one individual to another due to dietary preferences; researchers would like to account for the variation in the fecal fat across subjects when performing the analysis.
 \end{example}
@@ -2079,13 +2133,13 @@ Why would recording multiple observations on the same subject impact the conditi
 To better understand why researchers would design such a study, we review attributes of good study design. Generally speaking, there are three components to any well-designed study: replication, randomization, and comparative groups.
 
 \begin{definition}[Replication]
-\protect\hypertarget{def:defn-replication}{}{\label{def:defn-replication} \iffalse (Replication) \fi{} }Taking measurements on different subjects for which you expect the results to be similar (differences due only to natural variability).
+Taking measurements on different subjects for which you expect the results to be similar (differences due only to natural variability).
 \end{definition}
 
 Replication allows us to estimate subject-to-subject variability. Our intuition is that more data is better; in fact, increasing the sample size (the number of \emph{unique} subjects on which we collect data) will result in less variability in our estimates. That is, the sampling distribution for these estimates will be narrower. Increased replication also leads to increased power --- the ability to detect a signal when it really exists.
 
 \begin{definition}[Randomization]
-\protect\hypertarget{def:defn-randomization}{}{\label{def:defn-randomization} \iffalse (Randomization) \fi{} }Random sampling refers to the selection of subjects from the population at random while random allocation refers to the assignment of subjects to treatment groups at random.
+Random sampling refers to the selection of subjects from the population at random while random allocation refers to the assignment of subjects to treatment groups at random.
 \end{definition}
 
 There are many forms of random sampling. Some sampling schemes ensure each collection of subjects is equally likely, while others ensure representation. Some sampling schemes are weighted to oversample from some subpopulation. Each scheme shares the goal of eliminating bias, making the data more representative of the target population. While random sampling is the ideal, it is not always feasible. In clinical trials, for example, patients must elect to participate, thereby making the sample not random. When a random sample is not possible, summarizing the data to ensure it is representative of the target population is critical.
@@ -2093,7 +2147,7 @@ There are many forms of random sampling. Some sampling schemes ensure each colle
 There are many forms of random allocation. Some randomization schemes ensure each treatment group is equally likely, while others assign to an active treatment with a higher likelihood than the placebo. Other randomization schemes, like that mentioned in the \emph{Digestive Enzymes} example randomizes the \emph{order} of treatments. Each scheme shares the goal of eliminating confounding, allowing for causal interpretations. Whenever possible, random allocation is utilized, but it is not always feasible. Perhaps most famously, it was deemed unethical to conduct a randomized controlled trial to investigate the link between smoking and cancer. Therefore, observational studies were utilized.
 
 \begin{definition}[Comparative Groups]
-\protect\hypertarget{def:defn-comparative-groups}{}{\label{def:defn-comparative-groups} \iffalse (Comparative Groups) \fi{} }The treatment groups (factors) should be as similar as possible to reduce the inclusion of additional variation in the process.
+The treatment groups (factors) should be as similar as possible to reduce the inclusion of additional variation in the process.
 \end{definition}
 
 Intuitively, the less variation in the response, the easier it is to detect a signal. This leads naturally to saying that we could eliminate extraneous variability if the groups were \emph{identical}; that results in using the same subjects in multiple groups, resulting in taking repeated measurements on the subjects.
@@ -2104,7 +2158,7 @@ Intuitively, the less variation in the response, the easier it is to detect a si
 Studies which have repeated measurements taken on subjects typically violate the condition of independence. While the above design concepts apply broadly, the following terminology is specific to such studies.
 
 \begin{definition}[Repeated Measures]
-\protect\hypertarget{def:defn-repeated-measures}{}{\label{def:defn-repeated-measures} \iffalse (Repeated Measures) \fi{} }Data for which the observed responses can be grouped based on some nuisance variable (typically the subject itself) which captures some inherent characteristic about the subject such that observations within a group tend to be more alike than observations across groups.
+Data for which the observed responses can be grouped based on some nuisance variable (typically the subject itself) which captures some inherent characteristic about the subject such that observations within a group tend to be more alike than observations across groups.
 \end{definition}
 
 \begin{rmdtip}
@@ -2114,7 +2168,7 @@ The ``paired data'' setting (typically studied alongside the ``paired t-test'') 
 As discussed in the context of the \emph{Digestive Enzymes} example above, the large variability between subjects relative to the variability within subjects can swamp out the treatment effect if not accounted for appropriately. From a more theoretical perspective, this difference in the variability induces a correlation structure among the error in the responses.
 
 \begin{definition}[Correlation Structure]
-\protect\hypertarget{def:defn-correlation-structure}{}{\label{def:defn-correlation-structure} \iffalse (Correlation Structure) \fi{} }Quantifies the strength and direction of the relationship between the errors in the observed responses.
+Quantifies the strength and direction of the relationship between the errors in the observed responses.
 \end{definition}
 
 \begin{rmdkeyidea}
@@ -2141,7 +2195,7 @@ In order to illustrate the impact of the correlation structure on an analysis, c
 The repeated measures in the \emph{Digestive Enzymes} example is the result of blocking in order to obtain comparative groups.
 
 \begin{definition}[Blocking]
-\protect\hypertarget{def:defn-blocking}{}{\label{def:defn-blocking} \iffalse (Blocking) \fi{} }One way of controlling for an inherent characteristic that contributes additional variation. All observations that are linked through the characteristic are grouped together and random allocation (if applicable) occurs within the block.
+One way of controlling for an inherent characteristic that contributes additional variation. All observations that are linked through the characteristic are grouped together and random allocation (if applicable) occurs within the block.
 \end{definition}
 
 Blocking is useful when we can identify the nuisance characteristic in advance of data collection. Blocking is a way of ensuring the treatment groups are similar because the same subjects (with respect to this particular characteristic) end up in each treatment group. We know that random allocation eliminates confounding because it ensures that, on average, treatment groups are similar. Blocking alone does not eliminate confounding; it must be combined with randomization. However, if we account for the blocking in the analysis, we are able to sharpen our estimates because not only has balance occurred, we are able to explain a portion of the variability within each treatment group.
@@ -2149,13 +2203,13 @@ Blocking is useful when we can identify the nuisance characteristic in advance o
 The introduction of blocks suggests that not all ``grouping'' variables are treated the same. We think about variables differently depending on their role in the model for the data generating process. Loosely, we can categorize factors as either fixed or random effects.
 
 \begin{definition}[Fixed Effect]
-\protect\hypertarget{def:defn-fixed-effect}{}{\label{def:defn-fixed-effect} \iffalse (Fixed Effect) \fi{} }Terms in the model for which we are interested in both the specific values observed and characterizing the relationship it has with the response.
+Terms in the model for which we are interested in both the specific values observed and characterizing the relationship it has with the response.
 \end{definition}
 
 In addition to the treatment/factor of interest, this can include anything we want to account for in the model in such a way that if we were to repeat the study, the same levels would be visible again. In terms of the parameters in the model, we think of the parameters as constants (though unknown) which hold true for all individuals. In the \emph{Digestive Enzymes} example, the form of the supplement is the fixed effect. If we were to repeat the study, we would still expect to use these same four levels (placebo, tablet, coated and uncoated capsule). And, we might readily believe that the difference between a placebo and a tablet is the same for all subjects.
 
 \begin{definition}[Random Effect]
-\protect\hypertarget{def:defn-random-effect}{}{\label{def:defn-random-effect} \iffalse (Random Effect) \fi{} }Terms in the model that capture the correlation induced due to an inherent characteristic that varies across the population and for which we are \emph{not} interested in the specific values observed or characterizing the relationship it has on the response directly.
+Terms in the model that capture the correlation induced due to an inherent characteristic that varies across the population and for which we are \emph{not} interested in the specific values observed or characterizing the relationship it has on the response directly.
 \end{definition}
 
 This is generally \emph{not} the treatment/factor of interest; in fact, we are rarely interested in saying how such terms directly impact the response. We believe that the variability in the response among the groups is large relative to the variability in the response within such groups. The induced correlation can therefore be partitioned out using these variables. In the \emph{Digestive Enzymes} example, the subject is a random effect. Groups of observations on the same subject are more alike than observations across subject. If we were to repeat the study, it is unlikely we would use these same six subjects. Instead, we see these subjects as representative of a random sample from some population; therefore, the difference between subjects 1 and 2 is not of real interest and would change from one study to the next.
@@ -2169,7 +2223,7 @@ A key idea in regression modeling is partitioning variability. The more things y
 In the \emph{Digestive Enzymes} example, each observation is from a unique combination of the subject on which it was observed and the treatment assigned at that time. This is not the only form of a study that can result in repeated measurements. In the biological sciences, it is common to record the response several times on the same subject.
 
 \begin{definition}[Subsampling]
-\protect\hypertarget{def:defn-subsampling}{}{\label{def:defn-subsampling} \iffalse (Subsampling) \fi{} }A process in which each subject has several measurements of the response taken, possibly at unique locations.\\
+A process in which each subject has several measurements of the response taken, possibly at unique locations.
 \end{definition}
 
 In a study with subsampling, the unit of observation is the subject itself. For example, the subject is randomized to a particular treatment; however, the response of interest is measured multiple times. As an example, a person may be assigned to a particular treatment to improve eyesight. The subject's eyesight is then measured in each eye; the person is the unit of measurement but we obtain two measurements of the response (eyesight), one corresponding to each eye. This is sometimes referred to as ``pseudo-replication,'' and many researchers can mistakenly believe they have a larger sample size than exists in reality; the observations recorded on the same subject are related and should not be treated as independent observations.
@@ -2216,13 +2270,13 @@ Taking into account all sources of variability can result in a very complex mode
 Our discussion above illustrates how the various sources of error/variability build on one another to create the observed data. We worked backward; we started with the overall trend and decomposed it to arrive at the data observed. When we model, we work the other direction, building the model in stages. This is known as a hierarchical model.
 
 \begin{definition}[Hierarchcial Model]
-\protect\hypertarget{def:defn-hierarchical-model}{}{\label{def:defn-hierarchical-model} \iffalse (Hierarchcial Model) \fi{} }A model in which is broken into stages defining a hierarchy of units capturing the sources of variability.
+A model in which is broken into stages defining a hierarchy of units capturing the sources of variability.
 \end{definition}
 
 For our purposes, we can consider a hierarchical model that is composed of two stages: the individual and the population. In particular, we first model the trajectory within the individual (the observations within a block); then, we describe how that trajectory changes across individuals in the population (between observations in different blocks).
 
 \begin{definition}[Individual-Level Model]
-\protect\hypertarget{def:defn-individual-model}{}{\label{def:defn-individual-model} \iffalse (Individual-Level Model) \fi{} }Characterizes the responses for the \(i\)-th subject (or block) only.
+Characterizes the responses for the \(i\)-th subject (or block) only.
 \end{definition}
 
 We can often think of the individual-level model as the one we would construct if we only had data for a single subject/block. Therefore, this model can only make use of within-individual predictors --- those which vary within a subject/block. In biological settings, this is most common when measurements are taken across time; for example, following a child over several years, the height of the child will change. However, it is unlikely that the highest level of education achieved by the child's parents is likely to change. In that case, the height and time itself would be within-individual predictors, but the education level of the parents would not be.
@@ -2233,12 +2287,12 @@ Consider the \emph{Digestive Enzyme} Example (\ref{exm:rm-enzyme-expanded}) of t
 
 where here \(i\) is indexing the subject and \(j\) the observation within each subject. It is common to take
 
-\[\varepsilon_{i,j} \iid N\left(0, \sigma^2\right).\]
+\[\varepsilon_{i,j} \stackrel{\text{IID}}{\sim}N\left(0, \sigma^2\right).\]
 
 This model makes use of the supplement form because it changes across the observations within a subject; it is an individual-level predictor. What is unique about this model formulation is at this point, the \emph{parameters} themselves are allowed to vary across subjects. How those vary is determined by the population-level model.
 
 \begin{definition}[Population-Level Model]
-\protect\hypertarget{def:defn-population-model}{}{\label{def:defn-population-model} \iffalse (Population-Level Model) \fi{} }Characterizes how the \emph{parameters} of the individual-level model vary across subjects/blocks in the population.
+Characterizes how the \emph{parameters} of the individual-level model vary across subjects/blocks in the population.
 \end{definition}
 
 While we do not actually proceed in this way, we can conceptualize this as the model we construct using the estimates from the \(i\) individual-level models as responses in a new model. That is, we imagine using the data from each of the \(i\) individuals to estimate the individual-level parameters; we will have \(i\) different estimates. We then feed these into a model as responses and use the characteristics of the groups to explain why these vary. This second-stage model makes use of among-individual predictors --- those which vary across subjects/blocks but are constant for all observations on the same subject/block. Often, these are the treatment groups of interest, with the exception of block designs.
@@ -2270,7 +2324,7 @@ for some unknown \(\sigma^2 > 0\). We are modeling the intercept in the individu
 While we have describe the individual-level and population-level models, the combination of these is needed to fully explain the data. The idea that some of our effects (coefficients) in a model are fixed (not allowed to vary across individuals) and some are random (allowed to vary across individuals) leads to our description of this model as a mixed-effects model.
 
 \begin{definition}[Mixed Effects Model]
-\protect\hypertarget{def:defn-mixed-effects-model}{}{\label{def:defn-mixed-effects-model} \iffalse (Mixed Effects Model) \fi{} }A model which contains both fixed and random effects. Useful for modeling repeated measures from a hierarchical perspective.
+A model which contains both fixed and random effects. Useful for modeling repeated measures from a hierarchical perspective.
 \end{definition}
 
 It can be useful to represent the mixed-effects model in a combined model instead of its individual components. For the \emph{Digestive Enzyme} example, we simply substitute the population-level model into the individual-level model. This results in
@@ -2279,8 +2333,8 @@ It can be useful to represent the mixed-effects model in a combined model instea
 \begin{aligned}
   (\text{Fecal Fat})_{i,j} 
     &= \left(\beta_0 + b_{0,i}\right) + \beta_1 (\text{Tablet})_{i,j} + \beta_2 (\text{Coated})_{i,j} + \beta_3 (\text{Uncoated})_{i,j} + \varepsilon_{i,j} \\
-  \varepsilon_{i,j} &\iid N\left(0, \sigma^2\right) \\
-  b_{0,i} &\iid N\left(0, \sigma^2_0\right).
+  \varepsilon_{i,j} &\stackrel{\text{IID}}{\sim}N\left(0, \sigma^2\right) \\
+  b_{0,i} &\stackrel{\text{IID}}{\sim}N\left(0, \sigma^2_0\right).
 \end{aligned}
 \]
 
@@ -2314,7 +2368,7 @@ In the above discussion, we considered the error term at the individual-level mo
 When representing data from a repeated-measures study, it is useful to convey the correlation structure in the graphic. This is not always straight-forward. When the number of subjects in the study is not overwhelming, a spaghetti plot can be useful. While we made use of such a plot in the \emph{Digestive Enzyme} example in the previous chapter, these are particularly useful for studies which follow subjects over time and illustrate the trend.
 
 \begin{definition}[Spaghetti Plot]
-\protect\hypertarget{def:defn-spaghetti-plot}{}{\label{def:defn-spaghetti-plot} \iffalse (Spaghetti Plot) \fi{} }A scatterplot that displays the trends within a subject, highlighting the correlation structure by connecting points from the same subject.
+A scatterplot that displays the trends within a subject, highlighting the correlation structure by connecting points from the same subject.
 \end{definition}
 
 Before closing this chapter, we address the conditions of a mixed-effects model. We have the same conditions on the individual-level model as we do in classical regression models. Further, they can be assessed and relaxed in the same way. However, the conditions on the random effects are not easily assessed. In particular, the distributional assumption of Normality for the random effects is rarely questioned. Bootstrap algorithms for such processes need to be custom-written to take advantage of the hierarchy, and there is ongoing research on the efficacy of this approach.
@@ -2327,7 +2381,7 @@ In this text, our emphasis is on understanding and interpreting such models. Oth
 In the previous chapter, we addressed the correlation structure present in repeated measures data by developing a hierarchical model in stages. However, the correlation structure was a by-product. That is, we did not model it directly; instead, by first describing the individual-level model, and then allowing the parameters of that model to vary across individuals in the population, the correlation structure was handled naturally. In this chapter, we consider an alternate approach in which we model the correlation structure directly. This is common in longitudinal studies.
 
 \begin{definition}[Longitudinal Study]
-\protect\hypertarget{def:defn-longitudinal-study}{}{\label{def:defn-longitudinal-study} \iffalse (Longitudinal Study) \fi{} }A study which involves repeatedly measuring the response on each subject at various points in time.
+A study which involves repeatedly measuring the response on each subject at various points in time.
 \end{definition}
 
 All clinical trials follow subjects over time; a longitudinal study measures the response of interest multiple times over the course of the trial, resulting in repeated measures. In a longitudinal study, interest is often in modeling the overall trajectory across subjects instead of the trajectory for subjects individually. There are many similarities between longitudinal studies and time-series data as each follows data over time. We do see some differences. Time-series data is often focused on business applications while longitudinal studies are more common in the biological sciences. Time-series data often models a single ``stream'' that is quite long. Longitudinal studies have several ``streams'' (one for each subject), but these tend to be a bit shorter as we do not have constant follow-up. In time-series data, it is often believed that the previous response is useful in predicting the next response; in longitudinal data, we do believe there is correlation among the errors in the model, but we do not generally use the value of the previous observation itself in making the next prediction but instead model with time as the predictor.
@@ -2368,7 +2422,7 @@ All correlation matrices share some basic properties:
 A correlation matrix is very similar to a variance-covariance matix; in fact, we can think of a correlation matrix as a standardized variance-covariance matrix. In the above example, each off-diagonal element is free to take on any value. This is called an unstructured form.
 
 \begin{definition}[Unstructured Correlation Structure]
-\protect\hypertarget{def:defn-unstructure}{}{\label{def:defn-unstructure} \iffalse (Unstructured Correlation Structure) \fi{} }An unstructured correlation structure suggests that the correlation between any two errors within a subject/block can take on any value. We only require that it be a valid correlation matrix.
+An unstructured correlation structure suggests that the correlation between any two errors within a subject/block can take on any value. We only require that it be a valid correlation matrix.
 \end{definition}
 
 If we think of each correlation as an additional parameter to estimate, then we have just specified an additional \(\binom{m}{2}\) parameters to our model, where \(m\) is the number of repeated observations on a subject/block. We are essentially choosing not to place any structure on the correlation matrix and allow the data to completely determine the structure. This can be useful if we have no intuition about the sources of variability; however, it requires a lot of data as we have added a large number of parameters to the model.
@@ -2376,7 +2430,7 @@ If we think of each correlation as an additional parameter to estimate, then we 
 As in any model, there is tension between specifying a model which is flexible and one which is more tractable. We often impose some simplifying structure on the correlation matrix. While there are several possible structures, we discuss the most common. On the other extreme from the unstructured correlation matrix discussed above is to assume the observations within a subject/block are independent of one another.
 
 \begin{definition}[Independence Correlation Structure]
-\protect\hypertarget{def:defn-independence}{}{\label{def:defn-independence} \iffalse (Independence Correlation Structure) \fi{} }No correlation among any of the error terms within a subject/block. If there are five observations within a block, this has the form
+No correlation among any of the error terms within a subject/block. If there are five observations within a block, this has the form
 
 \[\Gamma = \begin{pmatrix} 
 1 & 0 & 0 & 0 & 0 \\
@@ -2391,7 +2445,7 @@ While we already assume that observations between subjects/blocks are independen
 When we feel that observations from the same subject/block are associated primarily because they are from the same subject/block, and that the order of the observations within the subject/block is irrelevant, a compound symmetric correlation structure is appropriate.
 
 \begin{definition}[Compound Symmetric Correlation Structure]
-\protect\hypertarget{def:defn-compound-symmetric}{}{\label{def:defn-compound-symmetric} \iffalse (Compound Symmetric Correlation Structure) \fi{} }Also called \emph{exchangeable}, this suggests the correlation between any two errors within a subject/block is equal. If there are five observations within a block, this has the form
+Also called \emph{exchangeable}, this suggests the correlation between any two errors within a subject/block is equal. If there are five observations within a block, this has the form
 
 \[\Gamma = \begin{pmatrix} 
 1 & \rho & \rho & \rho & \rho \\
@@ -2404,7 +2458,7 @@ When we feel that observations from the same subject/block are associated primar
 The compound symmetric structure adds only one additional parameter to our model and actually models well a great many scenarios. When we do believe that the order of the observations within a subject/block is important, and that observations occurring closer together (generally in time) are more highly correlated than subjects further apart in time, an autoregressive structure is appropriate.
 
 \begin{definition}[Autoregressive Correlation Structure]
-\protect\hypertarget{def:defn-autoregressive}{}{\label{def:defn-autoregressive} \iffalse (Autoregressive Correlation Structure) \fi{} }The autoregressive structure suggestst that the correlation between two observations diminishes as the observations get further apart in time. We generally only consider the autoregressive structure of degree 1 here; if there are five observations within a block, this has the form
+The autoregressive structure suggestst that the correlation between two observations diminishes as the observations get further apart in time. We generally only consider the autoregressive structure of degree 1 here; if there are five observations within a block, this has the form
 
 \[\Gamma = \begin{pmatrix} 
 1 & \rho & \rho^2 & \rho^3 & \rho^4 \\
@@ -2419,7 +2473,7 @@ This structure is borrowed from the time-series literature. It is primarily usef
 Regardless of which of the structures we believe is beneath the data, we also assume stationarity.
 
 \begin{definition}[Stationarity]
-\protect\hypertarget{def:defn-stationarity}{}{\label{def:defn-stationarity} \iffalse (Stationarity) \fi{} }This assumption states that the correlation structure does not depend on time, only the distance between the observations.
+This assumption states that the correlation structure does not depend on time, only the distance between the observations.
 \end{definition}
 
 Essentially, at no point did we say that the structure evolves as the study continues or did we include a parameter such as \(\rho^{(\text{time})}\).
@@ -2432,24 +2486,24 @@ Choosing an appropriate structure is often guided by discipline expertise regard
 In the previous section, we considered models for the correlation structure that results from the combination of the various sources of variability in the data-generating process. This structure will be used within the generalized estimating equation (GEE) approach.
 
 \begin{definition}[Generalized Estimating Equations (GEE)]
-\protect\hypertarget{def:defn-gee}{}{\label{def:defn-gee} \iffalse (Generalized Estimating Equations (GEE)) \fi{} }An approach to repeated measures which focuses on modeling the parameters in the mean model while specifying a model for the correlation structure. This structure is updated during the estimation process and used to adjust the standard errors of the parameter estimates for the mean model.
+An approach to repeated measures which focuses on modeling the parameters in the mean model while specifying a model for the correlation structure. This structure is updated during the estimation process and used to adjust the standard errors of the parameter estimates for the mean model.
 \end{definition}
 
 Recall that our inference on the parameters requires us to compute the variance-covariance matrix of the corresponding parameter estimates. For the GEE approach, the model we specify for the correlation structure is known as the ``working'' correlation matrix; this is then updated using the observed data when computing the variance-covariance matrix. As a result, the variance-covariance matrix we use is not based solely on the specified model but is a blend of the model specified and the observed data; this is known as the robust sandwich estimator.
 
 \begin{definition}[Robust Sandwich Estimator]
-\protect\hypertarget{def:defn-robust-sandwich-estimator}{}{\label{def:defn-robust-sandwich-estimator} \iffalse (Robust Sandwich Estimator) \fi{} }An estimate of the variance-covariance matrix of the parameter estimates from the mean model. This balances the relationship between the parameter estimates specified by the model (and the ``working'' correlation matrix) with the relationship suggested by the observed data. Specifically, it has the form
+An estimate of the variance-covariance matrix of the parameter estimates from the mean model. This balances the relationship between the parameter estimates specified by the model (and the ``working'' correlation matrix) with the relationship suggested by the observed data. Specifically, it has the form
 
-\[\widehat{\bs{\Sigma}} = \widehat{\bm{U}} \widehat{\bm{U}}^{-1/2} \bm{R} \widehat{\bm{U}}^{-1/2} \widehat{\bm{U}}\]
+\[\widehat{\boldsymbol{\Sigma}} = \widehat{\mathbf{U}} \widehat{\mathbf{U}}^{-1/2} \mathbf{R} \widehat{\mathbf{U}}^{-1/2} \widehat{\mathbf{U}}\]
 
-where \(\bm{U}\) represents the model-based variance-covariance matrix if the structure specified by the working correlation matrix were completely correct, and \(\bm{R}\) represents the correction factor estimated from teh residuals which is an empirical estimate.\\
+where \(\mathbf{U}\) represents the model-based variance-covariance matrix if the structure specified by the working correlation matrix were completely correct, and \(\mathbf{R}\) represents the correction factor estimated from teh residuals which is an empirical estimate.
 \end{definition}
 
 \begin{rmdkeyidea}
 The use of the robust sandwich variance-covariance estimator is what makes the GEE approach unique and so powerful.
 \end{rmdkeyidea}
 
-While the structure of \(\bm{U}\) is beyond the scope of the course, we can think of it as what the computer does by default when we specify a model under the classical conditions. Essentially, the use of the robust sandwich estimator in the GEE framework means our posited correlation structure need not be correct; it is okay if \(\bm{U}\) is wrong. With enough data, the inference will be the same regardless of the structure we choose. What we are really specifying is that there is a potential for correlation among these observations. Of course, the better the specified model for the correlation structure, the less adjustment that is needed and the more powerful the results.
+While the structure of \(\mathbf{U}\) is beyond the scope of the course, we can think of it as what the computer does by default when we specify a model under the classical conditions. Essentially, the use of the robust sandwich estimator in the GEE framework means our posited correlation structure need not be correct; it is okay if \(\mathbf{U}\) is wrong. With enough data, the inference will be the same regardless of the structure we choose. What we are really specifying is that there is a potential for correlation among these observations. Of course, the better the specified model for the correlation structure, the less adjustment that is needed and the more powerful the results.
 
 \begin{rmdtip}
 It is the use of the robust-sandwich estimator that makes specifying the ``independent'' correlation structure different than assuming the classical regression model. In classical regression, inference is based on assuming independence. In a GEE framework, the correlation structure will be updated after we assume independence.
@@ -2467,11 +2521,11 @@ While both mixed effects models and estimation via generalized estimating equati
 More broadly, these represent two different approaches to repeated measures data: subject-specific and population-averaged.
 
 \begin{definition}[Subject Specific Models]
-\protect\hypertarget{def:defn-subject-specific}{}{\label{def:defn-subject-specific} \iffalse (Subject Specific Models) \fi{} }Also known as conditional modeling, this approach models at the subject-level and addresses the correlation indirectly through the inclusion of random effects.
+Also known as conditional modeling, this approach models at the subject-level and addresses the correlation indirectly through the inclusion of random effects.
 \end{definition}
 
 \begin{definition}[Population Averaged Models]
-\protect\hypertarget{def:defn-population-average}{}{\label{def:defn-population-average} \iffalse (Population Averaged Models) \fi{} }Also known as marginal modeling, this approach considers a model for the mean response directly and addresses the correlation through directly modeling the structure.
+Also known as marginal modeling, this approach considers a model for the mean response directly and addresses the correlation through directly modeling the structure.
 \end{definition}
 
 \hypertarget{part-nonlinear-models}{%
@@ -2485,7 +2539,7 @@ In Chapter \ref{glm-splines} we saw that linear models are those which are linea
 We motivate this unit by considering the pharmacokinetics (how a drug is processed by the body) of an anti-asthmatic agent known as Theophylline.
 
 \begin{example}[Pharmacokinetics of Theophylline]
-\protect\hypertarget{exm:nlm-theoph}{}{\label{exm:nlm-theoph} \iffalse (Pharmacokinetics of Theophylline) \fi{} }An early-phase clinical study was conducted to assess how Theophylline (an anti-asthmatic agent) is absorbed and eliminated from the human body. A single subject was given an oral dose of 4 mg of the drug, and 11 blood samples were taken over the course of a 24 hour period to determine the concentration of the drug in the body. A graphical summary of the resulting data is presented in Figure \ref{fig:nlm-theoph-plot}.
+An early-phase clinical study was conducted to assess how Theophylline (an anti-asthmatic agent) is absorbed and eliminated from the human body. A single subject was given an oral dose of 4 mg of the drug, and 11 blood samples were taken over the course of a 24 hour period to determine the concentration of the drug in the body. A graphical summary of the resulting data is presented in Figure \ref{fig:nlm-theoph-plot}.
 \end{example}
 
 \begin{figure}
@@ -2540,7 +2594,7 @@ What we want to emphasize is that the form of the model for the concentration of
 We take a semiparametric modeling perspective for developing our framework. Under this approach, we employ the strategy of least squares to obtain our estimates and apply large sample theory to characterize the sampling distributions of our our estimates. This framework is quite flexible.
 
 \begin{definition}[Nonlinear Model]
-\protect\hypertarget{def:defn-nlm}{}{\label{def:defn-nlm} \iffalse (Nonlinear Model) \fi{} }A regression model that is \emph{not} linear in the parameters.
+A regression model that is \emph{not} linear in the parameters.
 \end{definition}
 
 Consider the scientific model for Theophylline:
@@ -2556,12 +2610,12 @@ When your model has more parameters than predictors, you likely have a model whi
 Our semiparametric approach, also known as a \emph{moment model}, focuses on specifying the mean and variance of the response given the predictors.
 
 \begin{definition}[Nonlinear Regression Model]
-\protect\hypertarget{def:defn-nlm-model}{}{\label{def:defn-nlm-model} \iffalse (Nonlinear Regression Model) \fi{} }We specify the nonlinear model in terms of the \emph{mean} and \emph{variance} of the response given the predictors; specifically,
+We specify the nonlinear model in terms of the \emph{mean} and \emph{variance} of the response given the predictors; specifically,
 
 \[
 \begin{aligned}
   E\left[(\text{Response})_i \mid (\text{Predictors})_i\right] 
-    &= f\left((\text{Predictors})_i, \bs{\beta}\right) \\
+    &= f\left((\text{Predictors})_i, \boldsymbol{\beta}\right) \\
   Var\left[(\text{Response})_i \mid (\text{Predictors})_i\right]
     &= \sigma^2
 \end{aligned}
@@ -2572,13 +2626,13 @@ where \(f(\cdot)\) is referred to as the mean response function.
 
 Notice that under this specification there is no ``error'' term. We only concern ourselves with positing the mean and variance; not only do we not specify the distribution of the ``errors,'' we do not even make use of them in our conceptualization of the model. We note that some authors choose to specify the model as
 
-\[(\text{Response})_i = f\left((\text{Predictors})_i, \bs{\beta}\right) + \varepsilon_i\]
+\[(\text{Response})_i = f\left((\text{Predictors})_i, \boldsymbol{\beta}\right) + \varepsilon_i\]
 
-and sometimes go on to assume \(\varepsilon_i \iid N\left(0, \sigma^2\right)\). However, this approach is not as flexible. First, it requires the response to be quantitative. By only specifying the mean and variance of the response, our approach generalizes to accommodating categorical responses (though we focus on quantitative responses for the majority of this unit). Second, there is little to be gained by a fully parametric approach as this does not avoid the requirements for large sample theory as it does in the linear model case.
+and sometimes go on to assume \(\varepsilon_i \stackrel{\text{IID}}{\sim}N\left(0, \sigma^2\right)\). However, this approach is not as flexible. First, it requires the response to be quantitative. By only specifying the mean and variance of the response, our approach generalizes to accommodating categorical responses (though we focus on quantitative responses for the majority of this unit). Second, there is little to be gained by a fully parametric approach as this does not avoid the requirements for large sample theory as it does in the linear model case.
 
 Finally, we note that in our specification above, we have assumed the variability of the response is constant for all values of the predictor. We will relax this condition in a later chapter.
 
-It should be noted that in some cases, the mean response function \(f(\cdot)\) lends itself to a transformation that results in a linear model. For example, if \(f(x, \bs{\beta}) = \beta_0 e^{\beta_1 x}\), then taking the natural logarithm of both sides results in a linear model: \(\ln\left(\beta_0\right) + \beta_1 x\). As a result, in some disciplines, it is standard practice to consider such transformation prior to modeling. There is not widespread agreement in the statistical community on such transformations.
+It should be noted that in some cases, the mean response function \(f(\cdot)\) lends itself to a transformation that results in a linear model. For example, if \(f(x, \boldsymbol{\beta}) = \beta_0 e^{\beta_1 x}\), then taking the natural logarithm of both sides results in a linear model: \(\ln\left(\beta_0\right) + \beta_1 x\). As a result, in some disciplines, it is standard practice to consider such transformation prior to modeling. There is not widespread agreement in the statistical community on such transformations.
 
 \begin{rmdwarning}
 There is a difference between taking nonlinear transformations of a predictor to fit curvature in a linear model and taking nonlinear transformations of a model (the response often) in order to convert a nonlinear model into a model which is linear with respect to some function of the parameters.
@@ -2593,13 +2647,13 @@ Estimation is performed analogous to what occurs in the general linear model fra
 
 While we do not have an error term in the model, we can still consider the residuals when motivating a method for estimating the parameters. The least squares estimates minimize
 
-\[\sum\limits_{i=1}^{n} \left[(\text{Response})_i - f\left((\text{Predictors})_i, \bs{\beta}\right)\right]^2.\]
+\[\sum\limits_{i=1}^{n} \left[(\text{Response})_i - f\left((\text{Predictors})_i, \boldsymbol{\beta}\right)\right]^2.\]
 
 In the nonlinear model literature, this is often referred to as the \emph{ordinary} least squares estimator. Note that if we take \(f(\cdot)\) to be a linear function in the parameters, then the linear model framework is a special case of the nonlinear regression model. This estimation procedure is performed numerically; further details are provided at the end of this unit.
 
 Given parameter estimates, we can then estimate the residual variance:
 
-\[\widehat{\sigma}^2 = \frac{1}{n-p} \sum\limits_{i=1}^{n} \left[(\text{Response})_i - f\left((\text{Predictors})_i, \widehat{\bbeta}\right)\right]^2\]
+\[\widehat{\sigma}^2 = \frac{1}{n-p} \sum\limits_{i=1}^{n} \left[(\text{Response})_i - f\left((\text{Predictors})_i, \widehat{\boldsymbol{\beta}}\right)\right]^2\]
 
 where \(p\) represents the number of \emph{parameters} in the model, which need not correspond to the number of predictors in a nonlinear model.
 
@@ -2611,19 +2665,19 @@ As with previous models discussed in the text, the process of estimating the par
 In order to make inference about the parameters, we need a model for the sampling distribution of the parameter estimates. Unlike previously, we cannot rely on probability theory to obtain exact models for the sampling distributions. Therefore, we rely on large-sample theory and empirical models.
 
 \begin{definition}[Large Sample Sampling Distribution of Parameter Estimates in Nonlinear Models]
-\protect\hypertarget{def:nlm-samp-distns}{}{\label{def:nlm-samp-distns} \iffalse (Large Sample Sampling Distribution of Parameter Estimates in Nonlinear Models) \fi{} }Assuming the form of the model is correctly specified with parameter vector \(\bbeta\), as the sample size gets large, we have that
+Assuming the form of the model is correctly specified with parameter vector \(\boldsymbol{\beta}\), as the sample size gets large, we have that
 
 \[\frac{\widehat{\beta}_j - \beta_j}{\sqrt{Var\left(\widehat{\beta}_j\right)}} \sim N(0, 1)\]
 
 for all \(j = 1, \dotsc, p\). Further, under the null hypothesis
 
-\[H_0: \bm{K}\bs{\beta} = \bm{m}\]
+\[H_0: \mathbf{K}\boldsymbol{\beta} = \mathbf{m}\]
 
 we have
 
-\[\left(\bm{K}\widehat{\bbeta} - \bm{m}\right)^\top \left(\bm{K}\widehat{\bs{\Sigma}}\bm{K}^\top\right)^{-1} \left(\bm{K}\widehat{\bbeta} - \bm{m}\right) \sim \chi^2_r\]
+\[\left(\mathbf{K}\widehat{\boldsymbol{\beta}} - \mathbf{m}\right)^\top \left(\mathbf{K}\widehat{\boldsymbol{\Sigma}}\mathbf{K}^\top\right)^{-1} \left(\mathbf{K}\widehat{\boldsymbol{\beta}} - \mathbf{m}\right) \sim \chi^2_r\]
 
-where \(r\) is the rank (number of rows) of \(\bm{K}\).
+where \(r\) is the rank (number of rows) of \(\mathbf{K}\).
 \end{definition}
 
 \begin{rmdtip}
@@ -2711,9 +2765,17 @@ When describing the nonlinear modeling framework, our most limiting assumption w
 The previous chapter focused on the mechanics of specifying and fitting nonlinear models. But, we only mentioned the conditions on the model. The semiparametric approach does place conditions on the model.
 
 \begin{definition}[Conditions on the Nonlinear Model]
-\protect\hypertarget{def:defn-nlm-conditions}{}{\label{def:defn-nlm-conditions} \iffalse (Conditions on the Nonlinear Model) \fi{} }- The mean response function is correctly specified.
-- Given the value of the predictors, any two observations are independent.
-- The variability of the response is the same for all values of the predictor.
+
+\begin{itemize}
+\tightlist
+\item
+  The mean response function is correctly specified.
+\item
+  Given the value of the predictors, any two observations are independent.
+\item
+  The variability of the response is the same for all values of the predictor.
+\end{itemize}
+
 \end{definition}
 
 These are essentially the same first three conditions we imposed in the linear model framework (which should not be a surprise since the linear model framework is a special case of the nonlinear model we specified). As a result, these conditions can be assessed in much the same way - residual plots. Specifically, a plot of the residuals against the predicted values can be used to assess whether the mean response function is correctly specified. We expect the residuals to balance out at 0 for each predicted value. This helps to assess if the process is behaving according to the scientific model. When the order of the data is known, we can use a time-series plot of the residuals to examine deviations from the independence condition over time. If independence is reasonable, we expect the residuals to display no trends in location or spread over time. We can assess constant variance by examining a plot of the residuals against the predicted values; we would expect the spread of the residuals to be constant as we move left-to-right across the plot.
@@ -2725,7 +2787,7 @@ Nonlinear modeling applications often have small sample sizes. As a result, it c
 While we do not assume the response (condition on the predictors) follows a Normal distribution, if we had, we could assess this condition using a probability plot of the residuals.
 
 \begin{example}[Pharmacokinetics of Indomethacin]
-\protect\hypertarget{exm:nlm-indomethacin}{}{\label{exm:nlm-indomethacin} \iffalse (Pharmacokinetics of Indomethacin) \fi{} }Indomethacin is an NSAID pain reliever used to treat severe pain and prevent premature labor in some cases. A study was conducted to examine the pharmacokinetic properties of the drug. Indomethacin is given as an IV-bolus and travels through the blood and deeper tissues. Scientists model this as a two-compartment open model, which leads to the following nonlinear model for the concentration \(C(t)\) of the drug at any time \(t\):
+Indomethacin is an NSAID pain reliever used to treat severe pain and prevent premature labor in some cases. A study was conducted to examine the pharmacokinetic properties of the drug. Indomethacin is given as an IV-bolus and travels through the blood and deeper tissues. Scientists model this as a two-compartment open model, which leads to the following nonlinear model for the concentration \(C(t)\) of the drug at any time \(t\):
 
 \[C(t) = \beta_1 e^{-\beta_2 t} + \beta_3 e^{-\beta_4 t}\]
 
@@ -2762,14 +2824,14 @@ Notice that to assess the condition of constant variance, we plot the residuals 
 Figure \ref{fig:nlm-indometh-resids} illustrates that as the concentration increases, the variability in the concentration tends to increase as well. That is, we have much more precision when measuring small concentrations, and we have much less precision when measuring large concentrations. When we have some sense of how the variability behaves, especially as a function of the mean response, we can model that structure.
 
 \begin{definition}[Generalized Least Squares]
-\protect\hypertarget{def:nlm-gls}{}{\label{def:nlm-gls} \iffalse (Generalized Least Squares) \fi{} }The nonlinear modeling framework can be generalized to capture non-constant variance by altering the moment model. Specifically, we consider
+The nonlinear modeling framework can be generalized to capture non-constant variance by altering the moment model. Specifically, we consider
 
 \[
 \begin{aligned}
   E\left[(\text{Response})_i \mid (\text{Predictors})_i\right]
-    &= f\left((\text{Predictors})_i, \bbeta\right) \\
+    &= f\left((\text{Predictors})_i, \boldsymbol{\beta}\right) \\
   Var\left[(\text{Response})_i \mid (\text{Predictors})_i\right]
-    &= g\left((\text{Predictors})_i, \bbeta, \bs{\gamma}\right)
+    &= g\left((\text{Predictors})_i, \boldsymbol{\beta}, \boldsymbol{\gamma}\right)
 \end{aligned}
 \]
 
@@ -2779,14 +2841,14 @@ Such a model is fit with the method of generalized least squares in which we alt
 The generalized least squares approach extends ordinary least squares to account for non-constant variance. Essentially, it down-weights responses which have less precision when fitting the model. As an iterative process, it allows the parameters in the mean model to be updated based on the variance estimates and the estimates in the variance function to be updated based on the mean estimates. Further, allowing the variance function to depend on the parameters in the mean response function captures behaviors like that in the Indomethacin example in which the variability is dependent upon the values of the response. A popular model is the power of the mean model.
 
 \begin{definition}[Power of the Mean Model]
-\protect\hypertarget{def:nlm-pom}{}{\label{def:nlm-pom} \iffalse (Power of the Mean Model) \fi{} }Allows the variance to be specified as a power of the mean response function. Specifically, we consider
+Allows the variance to be specified as a power of the mean response function. Specifically, we consider
 
 \[
 \begin{aligned}
   E\left[(\text{Response})_i \mid (\text{Predictors})_i\right]
-    &= f\left((\text{Predictors})_i, \bbeta\right) \\
+    &= f\left((\text{Predictors})_i, \boldsymbol{\beta}\right) \\
   Var\left[(\text{Response})_i \mid (\text{Predictors})_i\right]
-    &= \sigma^2 \left[f\left((\text{Predictors})_i, \bbeta\right)\right]^{2\theta}
+    &= \sigma^2 \left[f\left((\text{Predictors})_i, \boldsymbol{\beta}\right)\right]^{2\theta}
 \end{aligned}
 \]
 \end{definition}
@@ -2803,11 +2865,11 @@ At first glance, it is not obvious why an additional algorithm for bootstrapping
 So, case-resampling avoids assuming constant variance but can fail spectacularly in some nonlinear models. The residual bootstrap, on the other hand, assumes constant variance. It does, however, maintain the curvature as the same predictor values are used when performing each resample. Instead, pseudo-responses are generated in each bootstrap resample by adding a sample of the residuals to the fitted values (``jittering'' the fitted line). The wild bootstrap is an alteration of the residual bootstrap which relaxes the assumption of constant variance while maintaining this beneficial property of the residual bootstrap.
 
 \begin{definition}[Wild Bootstrap]
-\protect\hypertarget{def:defn-wild-bootstrap}{}{\label{def:defn-wild-bootstrap} \iffalse (Wild Bootstrap) \fi{} }Suppose we observe a sample of size \(n\) and use it to fit the mean model (linear or nonlinear)
+Suppose we observe a sample of size \(n\) and use it to fit the mean model (linear or nonlinear)
 
-\[E\left[(\text{Response})_i \mid (\text{Predictors})_i\right]= f\left((\text{Predictors})_i, \bbeta\right)\]
+\[E\left[(\text{Response})_i \mid (\text{Predictors})_i\right]= f\left((\text{Predictors})_i, \boldsymbol{\beta}\right)\]
 
-to obtain the ordinary least squares estimates \(\widehat{\bbeta}\). The wild bootstrap proceeds along the following algorithm:
+to obtain the ordinary least squares estimates \(\widehat{\boldsymbol{\beta}}\). The wild bootstrap proceeds along the following algorithm:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2822,8 +2884,8 @@ to obtain the ordinary least squares estimates \(\widehat{\bbeta}\). The wild bo
   Form ``new'' responses \(y_1^*, \dotsc, y_n^*\) according to
   \[y_i^* = (\text{Predicted Response})_i + (\text{Pseudo-Residual})_i.\]
 \item
-  Obtain the least squares estimates \(\widehat{\bs{\alpha}}\) by finding the values of \(\bs{\alpha}\) which minimize
-  \[\sum_{i=1}^{n} \left(y_i^* - f\left((\text{Predictors})_i, \bs{\alpha}\right)\right)^2.\]
+  Obtain the least squares estimates \(\widehat{\boldsymbol{\alpha}}\) by finding the values of \(\boldsymbol{\alpha}\) which minimize
+  \[\sum_{i=1}^{n} \left(y_i^* - f\left((\text{Predictors})_i, \boldsymbol{\alpha}\right)\right)^2.\]
 \item
   Repeat steps 2-4 \(m\) times.
 \end{enumerate}
@@ -2840,7 +2902,7 @@ This process is computationally intensive but can dramatically improve inference
 
 When the response is binary (taking one of only two values), the models we have discussed so far in this text are inappropriate. To see some of the complications, consider trying to characterize the impact of lifestyle choices on whether an individual is diagnosed with cancer. The response (is a person diagnosed with cancer, yes/no) does not readily fit into a framework such as
 
-\[(\text{Response})_i = f\left((\text{Predictors})_i, \bbeta\right) + \varepsilon_i.\]
+\[(\text{Response})_i = f\left((\text{Predictors})_i, \boldsymbol{\beta}\right) + \varepsilon_i.\]
 
 To begin with, the left-hand side is not a number, but a categorical variable. We could potentially address this using an indicator variable:
 
@@ -2864,15 +2926,15 @@ Placing this in the nonlinear model framework, we would say
 \[
 \begin{aligned}
   E\left[(\text{Response})_i \mid (\text{Predictors})_i\right] 
-    &= f\left((\text{Predictors})_i, \bbeta\right) \\
+    &= f\left((\text{Predictors})_i, \boldsymbol{\beta}\right) \\
   Var\left[(\text{Response})_i \mid (\text{Predictors})_i\right]
-    &= f\left((\text{Predictors})_i, \bbeta\right) \left(1 - f\left((\text{Predictors})_i, \bbeta\right)\right).
+    &= f\left((\text{Predictors})_i, \boldsymbol{\beta}\right) \left(1 - f\left((\text{Predictors})_i, \boldsymbol{\beta}\right)\right).
 \end{aligned}
 \]
 
 The mean response function \(f(\cdot)\) is allowing the mean response (\(p\) in the Bernoulli distribution) to depend upon predictors. And, once the mean response function is specified, the variance is known (through the relationship \(p (1 - p)\)). However, since we know that the response is binary, we can go further and say not only is this an appropriate mean and variance function, but we know the distribution as well:
 
-\[(\text{Response})_i \mid (\text{Predictors})_i \ind Ber\left[f\left((\text{Predictors})_i, \bbeta\right)\right]\]
+\[(\text{Response})_i \mid (\text{Predictors})_i \stackrel{\text{Ind}}{\sim}Ber\left[f\left((\text{Predictors})_i, \boldsymbol{\beta}\right)\right]\]
 
 where we are assuming that each response is independent of all others. Remember, nothing about the nonlinear modeling framework prohibited making distributional assumptions; we just often were unwilling to. Here, we know the distribution; so, we include it as part of the model.
 
@@ -2892,7 +2954,7 @@ If we want a large class of functions \(f(\cdot)\) which have a range on 0 to 1,
 This leads to the logistic regression model.
 
 \begin{definition}[Logistic Regression Model]
-\protect\hypertarget{def:defn-logistic-regression}{}{\label{def:defn-logistic-regression} \iffalse (Logistic Regression Model) \fi{} }A model for binary responses where the response, given the predictors, has a Bernoulli distribution such that
+A model for binary responses where the response, given the predictors, has a Bernoulli distribution such that
 
 \[Pr\left((\text{Response})_i = 1 \mid (\text{Predictors})_i\right) = 
     \frac{e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}{1 + e^{\beta_0 + \sum_{j=1}^{p} \beta_j (\text{Predictor } j)_i}}\]
@@ -2949,11 +3011,11 @@ To help with visualizing this process, Figure \ref{fig:nlm-coins-likelihood} giv
 We generalize this to saying that for a fully parametric nonlinear model (such as logistic regression), it is best to choose the values of the parameters that maximize the likelihood function.
 
 \begin{definition}[Likelihood Function]
-\protect\hypertarget{def:defn-likelihood}{}{\label{def:defn-likelihood} \iffalse (Likelihood Function) \fi{} }For a fully parametric model, the likelihood function \(\Ell(\bbeta, \text{Observed Data})\) captures how likely the observed data is to be realized in a future study under a specific set of parameters. This is directly related to the density function of the parametric model assumed.
+For a fully parametric model, the likelihood function \(\mathcal{L}(\boldsymbol{\beta}, \text{Observed Data})\) captures how likely the observed data is to be realized in a future study under a specific set of parameters. This is directly related to the density function of the parametric model assumed.
 \end{definition}
 
 \begin{definition}[Maximum Likelihood Estimation]
-\protect\hypertarget{def:defn-mle}{}{\label{def:defn-mle} \iffalse (Maximum Likelihood Estimation) \fi{} }Choosing parameter estimates to maximize the likelihood function under an assumed parametric model. The resulting estimates are known as maximum likelihood estimates.
+Choosing parameter estimates to maximize the likelihood function under an assumed parametric model. The resulting estimates are known as maximum likelihood estimates.
 \end{definition}
 
 While the actual form is not critical to our exposition, for completeness, we provide the likelihood function corresponding to logistic regression:
@@ -2962,25 +3024,25 @@ While the actual form is not critical to our exposition, for completeness, we pr
 
 where \((\text{Response})_i\) is an indicator value taking the value 1 or 0. Maximizing this likelihood is done numerically. While the details of this process are beyond the scope of this text, the procedure is similar to the least-squares procedure discussed in Chapter \ref{nlm-estimation}.
 
-\hypertarget{inference-on-the-parameters}{%
-\section{Inference on the Parameters}\label{inference-on-the-parameters}}
+\hypertarget{inference-on-the-parameters-1}{%
+\section{Inference on the Parameters}\label{inference-on-the-parameters-1}}
 
 In order to make inference about the parameters, we need a model for the sampling distribution of the parameter estimates. Likelihood-theory provides results for modeling the sampling distribution of maximum likelihood estimates. Generally, these results rely on large-sample theory (though empirical models could be developed).
 
 \begin{definition}[Large Sample Sampling Distribution of Parameter Estimates in Logistic Regression Models]
-\protect\hypertarget{def:nlm-logistic-samp-distns}{}{\label{def:nlm-logistic-samp-distns} \iffalse (Large Sample Sampling Distribution of Parameter Estimates in Logistic Regression Models) \fi{} }Assuming the form of the model is correctly specified with parameter vector \(\bbeta\), as the sample size gets large, we have that
+Assuming the form of the model is correctly specified with parameter vector \(\boldsymbol{\beta}\), as the sample size gets large, we have that
 
 \[\frac{\widehat{\beta}_j - \beta_j}{\sqrt{Var\left(\widehat{\beta}_j\right)}} \sim N(0, 1)\]
 
 for all \(j = 1, \dotsc, p\). Further, under the null hypothesis
 
-\[H_0: \bm{K}\bs{\beta} = \bm{m}\]
+\[H_0: \mathbf{K}\boldsymbol{\beta} = \mathbf{m}\]
 
 we have
 
-\[\left(\bm{K}\widehat{\bbeta} - \bm{m}\right)^\top \left(\bm{K}\widehat{\bs{\Sigma}}\bm{K}^\top\right)^{-1} \left(\bm{K}\widehat{\bbeta} - \bm{m}\right) \sim \chi^2_r\]
+\[\left(\mathbf{K}\widehat{\boldsymbol{\beta}} - \mathbf{m}\right)^\top \left(\mathbf{K}\widehat{\boldsymbol{\Sigma}}\mathbf{K}^\top\right)^{-1} \left(\mathbf{K}\widehat{\boldsymbol{\beta}} - \mathbf{m}\right) \sim \chi^2_r\]
 
-where \(r\) is the rank (number of rows) of \(\bm{K}\).
+where \(r\) is the rank (number of rows) of \(\mathbf{K}\).
 \end{definition}
 
 \begin{rmdtip}
@@ -3001,7 +3063,7 @@ The above results allow us to not only construct confidence intervals, but we ca
 The parameters in a logistic model have a nice interpretation; however, that interpretation is not a natural scale for most individuals. In order to understand what is happening, we need to think in terms of odds instead of probabilities.
 
 \begin{definition}[Odds]
-\protect\hypertarget{def:defn-odds}{}{\label{def:defn-odds} \iffalse (Odds) \fi{} }The odds of an event with probability \(p\) is defined as
+The odds of an event with probability \(p\) is defined as
 
 \[\frac{p}{1-p}\]
 \end{definition}
@@ -3009,7 +3071,7 @@ The parameters in a logistic model have a nice interpretation; however, that int
 We often hear odds presented in terms of integers. Such as, ``there are 3-to-1 odds the event will occur.'' This would mean that out of four trials, we would expect the event to happen 3 times; this corresponds to \(p = 0.25\) and therefore \(1 - p = 0.75\) given an odds of 3. While many of us think in terms of probabilities, clinicians tend to think in terms of the odds of an event. As a result, it is natural to clinicians to compare the odds of an event under two scenarios instead of comparing the probability of an event under two scenarios.
 
 \begin{definition}[Odds Ratio]
-\protect\hypertarget{def:defn-or}{}{\label{def:defn-or} \iffalse (Odds Ratio) \fi{} }The odds ratio is a method of comparing two events; typically, it is formed by the ratio of the odds of the same event under two different scenarios. Let \(p_1\) be the probability of the event under scenario 1 and let \(p_2\) be the probability of an event under scenario 2; then, the odds of the event under scenario 1 are
+The odds ratio is a method of comparing two events; typically, it is formed by the ratio of the odds of the same event under two different scenarios. Let \(p_1\) be the probability of the event under scenario 1 and let \(p_2\) be the probability of an event under scenario 2; then, the odds of the event under scenario 1 are
 
 \[\gamma_1 = \frac{p_1}{1 - p_1}\]
 
@@ -3051,7 +3113,7 @@ Now, the odds ratio for the group with an increase in Predictor 1 relative to th
 That is, the parameters in the logistic regression model are directly related to the odds ratio.
 
 \begin{definition}[Interpretation of Parameters in Logistic Regression Model]
-\protect\hypertarget{def:defn-logistic-interpretation}{}{\label{def:defn-logistic-interpretation} \iffalse (Interpretation of Parameters in Logistic Regression Model) \fi{} }Let \(\beta_j\) be the parameter associated with the \(j\)-th predictor in the logistic regression model. Then, \(\beta_j\) represents the log-OR (``log odds ratio'') associated with a one-unit increase in the \(j\)-th predictor holding all other predictors fixed.
+Let \(\beta_j\) be the parameter associated with the \(j\)-th predictor in the logistic regression model. Then, \(\beta_j\) represents the log-OR (``log odds ratio'') associated with a one-unit increase in the \(j\)-th predictor holding all other predictors fixed.
 \end{definition}
 
 That is, exponentiating the \(j\)-th coefficient gives the odds ratio comparing the odds of the event under two scenarios: when the \(j\)-th predictor is increased by 1 unit relative to leaving it alone. Notice that unlike the linear model, increasing the \(j\)-th predictor by 1 unit does not result in an additive effect on the mean response (the probability of the response occurring in this case). Instead, it has an additive effect on the log odds.
@@ -3070,7 +3132,7 @@ As we have seen, hypothesis testing is really a formal way of comparing two mode
 There are several ways to quantify how well a model fits a set of data, or more accurately, how closely the data fits a particular model. The most well-known is R-squared.
 
 \begin{definition}[R-squared]
-\protect\hypertarget{def:defn-r-squared}{}{\label{def:defn-r-squared} \iffalse (R-squared) \fi{} }The proportion of the variability in the response explained by the model. When the response is quantitative, R-squared is defined as
+The proportion of the variability in the response explained by the model. When the response is quantitative, R-squared is defined as
 
 \[R^2 = \frac{SSR}{SST} = 1 - \frac{SSE}{SST} = 1 - \frac{\sum_{i=1}^{n} (\text{Residuals})_i^2}{\sum_{i=1}^{n} \left((\text{Response})_i - (\text{Average Response})\right)^2}.\]
 
@@ -3080,7 +3142,7 @@ When the response is categorical (such as logistic regression), there is no uniq
 R-squared has a nice interpretation and is often used to quantify the quality of the model fit. However, it is not a great criteria for comparing models. It can be proven that R-squared will continue to increase as the model becomes more complex. In fact, in many situations it is possible to add enough terms that you will obtain an R-squared value of 1 indicating perfect fit (visually, think about connecting the dots). However, this is the result of overfitting.
 
 \begin{definition}[Overfitting]
-\protect\hypertarget{def:defn-overfitting}{}{\label{def:defn-overfitting} \iffalse (Overfitting) \fi{} }Constructing a model that accurately predicts the observed data at the expense of accurate variance estimation and model parsimony. As a result, the model will have poor prediction for future observations.
+Constructing a model that accurately predicts the observed data at the expense of accurate variance estimation and model parsimony. As a result, the model will have poor prediction for future observations.
 \end{definition}
 
 Remember, models are never correct; by nature, they are simplifications of a complex process. We do, however, want our models to be useful. Creating a model that predicts well in the sample performs poorly outside the sample is not helpful, and it could lead to incorrectly characterizing the scientific behavior being observed. As a result, we want a different metric for assessing model performance when comparing models.
@@ -3092,7 +3154,7 @@ There are a couple ``adjusted R-squared'' metrics which do take into account mod
 As introduced in Chapter \ref{nlm-logistic}, when we define a fully parametric model, we can use likelihood-theory to fit the model. In particular, the maximum likelihood estimates are the values of the parameters which maximize the likelihood function (Definition \ref{def:defn-likelihood}). Larger values of the likelihood (under an estimated model) indicate stronger agreement with the data. That is, larger values of the likelihood indicate a better fit. This suggests a general metric for assessing models regardless of their complexity known as information criteria.
 
 \begin{definition}[Information Criteria]
-\protect\hypertarget{def:defn-information-criteria}{}{\label{def:defn-information-criteria} \iffalse (Information Criteria) \fi{} }Metrics which balance the model fit (through the likelihood function) with model complexity through some penalty term.
+Metrics which balance the model fit (through the likelihood function) with model complexity through some penalty term.
 \end{definition}
 
 Information criteria do not have an intuitive scale like R-squared; therefore, the value has no natural interpretation. However, they do allow for comparisons between arbitrary models.
@@ -3104,17 +3166,17 @@ Information criteria rely on the likelihood; as a result, they only truly make s
 While there have been several information criteria proposed (and more continue to be developed), there are two which are very well known examples which are often defaults in software: AIC and BIC.
 
 \begin{definition}[AIC]
-\protect\hypertarget{def:defn-aic}{}{\label{def:defn-aic} \iffalse (AIC) \fi{} }Given a model \(\mathcal{M}\), Akaike's information criterion (AIC) is defined as
+Given a model \(\mathcal{M}\), Akaike's information criterion (AIC) is defined as
 
 \[\text{AIC}_{\mathcal{M}} = -2\ln\left(\widehat{L}_{\mathcal{M}}\right) + 2p_{\mathcal{M}}\]
 
-where \(\widehat{L}_{\mathcal{M}}\) represents the likelihood function corresponding to model \(\mathcal{M}\) when evaluated at the maximum likelihood estiamtes, and \(p_{\mathcal{M}}\) is the number of parameters in \(\mathcal{M}\).\\
+where \(\widehat{L}_{\mathcal{M}}\) represents the likelihood function corresponding to model \(\mathcal{M}\) when evaluated at the maximum likelihood estiamtes, and \(p_{\mathcal{M}}\) is the number of parameters in \(\mathcal{M}\).
 \end{definition}
 
 Larger values of the likelihood function indicate better agreement; similarly, we prefer parsimonious models when possible. Therefore, \emph{lower} values of AIC are preferred. It favors models which fit the data well (high likelihood) but penalizes for overly complex models (too many parameters). Of course, this penalty is the same regardless of the sample size. This inspires BIC.
 
 \begin{definition}[BIC]
-\protect\hypertarget{def:defn-bic}{}{\label{def:defn-bic} \iffalse (BIC) \fi{} }Given a model \(\mathcal{M}\), Schwarz's Bayesian information criterion (BIC) is defined as
+Given a model \(\mathcal{M}\), Schwarz's Bayesian information criterion (BIC) is defined as
 
 \[\text{BIC}_{\mathcal{M}} = -2\ln\left(\widehat{L}_{\mathcal{M}}\right) + p_{\mathcal{M}} \ln(n).\]
 \end{definition}
@@ -3126,9 +3188,9 @@ Note that the formula for BIC is nearly identical to that of AIC. As with AIC, l
 
 We have stated that numerical methods are needed to obtain estimates of the parameters for nonlinear models. Here we introduce the primary algorithm used for obtaining these estimates and sketch out some ideas for how this is implemented in practice. Readers may skip this section without loss of continuity.
 
-When we begin working with nonlinear models, we will often come across computational issues. In order to begin diagnosing these issues, we must have some understanding of the underlying algorithm. Our objective is to find the values of the parameters \(\bbeta\) such that the mean function is close to the observed response. One way of defining close is to consider minimizing the sum of squared residuals. That is, we desire the values of \(\bbeta\) that minimize
+When we begin working with nonlinear models, we will often come across computational issues. In order to begin diagnosing these issues, we must have some understanding of the underlying algorithm. Our objective is to find the values of the parameters \(\boldsymbol{\beta}\) such that the mean function is close to the observed response. One way of defining close is to consider minimizing the sum of squared residuals. That is, we desire the values of \(\boldsymbol{\beta}\) that minimize
 
-\[\sum_{i=1}^{n} \left((\text{Response})_i - f\left((\text{Predictors})_i, \bbeta\right)\right)^2.\]
+\[\sum_{i=1}^{n} \left((\text{Response})_i - f\left((\text{Predictors})_i, \boldsymbol{\beta}\right)\right)^2.\]
 
 We called the value that minimizes this objective function the ordinary least squares estimates.
 
@@ -3136,42 +3198,42 @@ We called the value that minimizes this objective function the ordinary least sq
 This chapter applies to ordinary least squares. Logistic regression, which makes use of maximum likelihood estimation has a slightly different objective function.\\
 \end{rmdwarning}
 
-For the remainder of this chapter, let \(y_i\) denote the response and \(\bm{x}_i\) the vector of predictors for the \(i\)-th observation. Then, minimizing the objective function above is equivalent to finding the values of \(\bbeta\) which solves the system of equations given by
+For the remainder of this chapter, let \(y_i\) denote the response and \(\mathbf{x}_i\) the vector of predictors for the \(i\)-th observation. Then, minimizing the objective function above is equivalent to finding the values of \(\boldsymbol{\beta}\) which solves the system of equations given by
 
-\[\sum_{i=1}^{n} \left(y_i - f\left(\bm{x}_i, \bbeta\right)\right) f_{\bbeta}\left(\bm{x}_i, \bbeta\right)\]
+\[\sum_{i=1}^{n} \left(y_i - f\left(\mathbf{x}_i, \boldsymbol{\beta}\right)\right) f_{\boldsymbol{\beta}}\left(\mathbf{x}_i, \boldsymbol{\beta}\right)\]
 
-where \(f_{\bbeta}\) represents the gradient vector (with respect to the parameters) of the mean function \(f\). Solving this system of equations is our primary objective. This is typically done via the Gauss-Newton Method.
+where \(f_{\boldsymbol{\beta}}\) represents the gradient vector (with respect to the parameters) of the mean function \(f\). Solving this system of equations is our primary objective. This is typically done via the Gauss-Newton Method.
 
 \begin{definition}[Gauss-Newton Method]
-\protect\hypertarget{def:defn-gauss-newton}{}{\label{def:defn-gauss-newton} \iffalse (Gauss-Newton Method) \fi{} }The most commonly used optimization routine for statistical applications, this method relies on linearizing the problem using a Taylor Series approximation.
+The most commonly used optimization routine for statistical applications, this method relies on linearizing the problem using a Taylor Series approximation.
 \end{definition}
 
-Observe that for a value \(\bs{\beta}^*\) close to \(\bs{\beta}\), a Taylor Series approximation gives
+Observe that for a value \(\boldsymbol{\beta}^*\) close to \(\boldsymbol{\beta}\), a Taylor Series approximation gives
 
 \[
 \begin{aligned}
-  f\left(\bm{x}_i,\bs{\beta}\right)
-    &\approx f\left(\bm{x}_i,\bs{\beta}^*\right) + f^\top_{\bs{\beta}}\left(\bm{x}_i,\bs{\beta}^*\right)\left(\bs{\beta} - \bs{\beta}^*\right) \\
-  f_{\bs{\beta}}\left(\bm{x}_i,\bs{\beta}\right)
-    &\approx f_{\bs{\beta}}\left(\bm{x}_i,\bs{\beta}^*\right) + f_{\bs{\beta}\bs{\beta}}\left(\bm{x}_i,\bs{\beta}^*\right)\left(\bs{\beta} - \bs{\beta}^*\right)
+  f\left(\mathbf{x}_i,\boldsymbol{\beta}\right)
+    &\approx f\left(\mathbf{x}_i,\boldsymbol{\beta}^*\right) + f^\top_{\boldsymbol{\beta}}\left(\mathbf{x}_i,\boldsymbol{\beta}^*\right)\left(\boldsymbol{\beta} - \boldsymbol{\beta}^*\right) \\
+  f_{\boldsymbol{\beta}}\left(\mathbf{x}_i,\boldsymbol{\beta}\right)
+    &\approx f_{\boldsymbol{\beta}}\left(\mathbf{x}_i,\boldsymbol{\beta}^*\right) + f_{\boldsymbol{\beta}\boldsymbol{\beta}}\left(\mathbf{x}_i,\boldsymbol{\beta}^*\right)\left(\boldsymbol{\beta} - \boldsymbol{\beta}^*\right)
 \end{aligned}
 \]
 
-where \(f_{\bs{\beta}\bs{\beta}}\) is a \(p\)-by-\(p\) matrix of second partial derivatives. We appeal to a linear approximation because if \(\bs{\beta}^*\) is sufficiently close to \(\bs{\beta}\), then higher order terms are negligible.
+where \(f_{\boldsymbol{\beta}\boldsymbol{\beta}}\) is a \(p\)-by-\(p\) matrix of second partial derivatives. We appeal to a linear approximation because if \(\boldsymbol{\beta}^*\) is sufficiently close to \(\boldsymbol{\beta}\), then higher order terms are negligible.
 
-Now, we substitute these approximations into the system of equations we need to solve. We end up with four terms, of which the last is small because it has quadratic terms, and the third is small because on average, we expect \(y_i - f(\bm{x}_i,\bs{\beta}^*)\) to be small, which when multiplied by \((\bs{\beta} - \bs{\beta}^*)\) is really small. Thus, we are left with the approximation
+Now, we substitute these approximations into the system of equations we need to solve. We end up with four terms, of which the last is small because it has quadratic terms, and the third is small because on average, we expect \(y_i - f(\mathbf{x}_i,\boldsymbol{\beta}^*)\) to be small, which when multiplied by \((\boldsymbol{\beta} - \boldsymbol{\beta}^*)\) is really small. Thus, we are left with the approximation
 
 \[
-  \sum\limits_{i=1}^{n} f_{\bs{\beta}}\left(\bm{x}_i,\bs{\beta}^*\right)f_{\bs{\beta}}^\top\left(\bm{x}_i,\bs{\beta}^*\right)\left(\bs{\beta}-\bs{\beta}^*\right) = \sum\limits_{i=1}^{n} \left(y_i - f(\bm{x}_i,\bs{\beta}^*)\right)f_{\bs{\beta}}(\bm{x}_i,\bs{\beta}).
+  \sum\limits_{i=1}^{n} f_{\boldsymbol{\beta}}\left(\mathbf{x}_i,\boldsymbol{\beta}^*\right)f_{\boldsymbol{\beta}}^\top\left(\mathbf{x}_i,\boldsymbol{\beta}^*\right)\left(\boldsymbol{\beta}-\boldsymbol{\beta}^*\right) = \sum\limits_{i=1}^{n} \left(y_i - f(\mathbf{x}_i,\boldsymbol{\beta}^*)\right)f_{\boldsymbol{\beta}}(\mathbf{x}_i,\boldsymbol{\beta}).
 \]
 
-We solve this for \(\bbeta\) to obtain an iterative scheme for updating estimates of \(\bbeta\) given a current estimate. That is, given initial estimates \(\bbeta^{(0)}\), we perform iterative updates, terminating the algorithm when two successive iterations yield estimates which are close (iterations converged).
+We solve this for \(\boldsymbol{\beta}\) to obtain an iterative scheme for updating estimates of \(\boldsymbol{\beta}\) given a current estimate. That is, given initial estimates \(\boldsymbol{\beta}^{(0)}\), we perform iterative updates, terminating the algorithm when two successive iterations yield estimates which are close (iterations converged).
 
 One of the key lessons here is that starting estimates of the parameters are always needed, as we have seen in our previous examples. This is always a case when numerical methods are used. There are no all-encompassing strategies here; determining starting values is unique to each problem. Often times, starting values can be obtained by making large simplifications or transformations to the model to get a rough idea of the estimates.
 
 As an example, consider the Michaelis-Menten model:
 
-\[E\left((\text{Response})_i \mid (\text{Predictor})_i\right) = f\left((\text{Predictor})_i, \bs{\theta}\right) = \frac{\theta_1 (\text{Predictor})_i}{\theta_2 + (\text{Predictor})_i}.\]
+\[E\left((\text{Response})_i \mid (\text{Predictor})_i\right) = f\left((\text{Predictor})_i, \boldsymbol{\theta}\right) = \frac{\theta_1 (\text{Predictor})_i}{\theta_2 + (\text{Predictor})_i}.\]
 
 In this model, \(\theta_1\) represents the maximum possible response and \(\theta_2\) the shape parameter known as the inverse affinity. Starting values for this model are obtained by considering a transformation. Specifically observe that if we take the inverse of the observed response, we have
 
@@ -3214,7 +3276,7 @@ where the parameters retain the same interpretations they had previously. While 
 \end{aligned}
 \]
 
-where we assume each \(b_{k,i} \iid N\left(0, \sigma^2_k\right)\) for each \(k\) and all are independent. That is, we are allowing each parameter to have a random effect which allows them to vary across the population. The parameter \(k_a\), for example, represents the average absorption rate across the population and \(\sigma_1^2\) would capture the variability of the absorption rate across the population. We could generalize the population-level model further to allow these parameters to depend upon other predictors (such as the weight of the subject).
+where we assume each \(b_{k,i} \stackrel{\text{IID}}{\sim}N\left(0, \sigma^2_k\right)\) for each \(k\) and all are independent. That is, we are allowing each parameter to have a random effect which allows them to vary across the population. The parameter \(k_a\), for example, represents the average absorption rate across the population and \(\sigma_1^2\) would capture the variability of the absorption rate across the population. We could generalize the population-level model further to allow these parameters to depend upon other predictors (such as the weight of the subject).
 
 These models are commonly fit (using specialized statistical software), but they continue to be the focus of research as there is not complete agreement on modeling constraints and how to relax conditions placed on the model. Unlike the linear case, it is not easy to determine the overall average trend given the subject-level model (though it is theoretically feasible). The nonlinearity makes several aspects of this problem quite challenging.
 
@@ -3231,7 +3293,7 @@ Models for survival analysis, in contrary to other models discussed in this text
 Let \(T\) represent the time until an event occurs; as we cannot predict this time with certainty, \(T\) is a random variable. Since it is a time, it could take on any value larger than 0; and, its distribution can be characterized through the probability density function \(f(t)\) (Definition \ref{def:defn-density}), which links the values it can assume with their likelihood.
 
 \begin{example}[Carcinogen Exposure]
-\protect\hypertarget{exm:surv-rats}{}{\label{exm:surv-rats} \iffalse (Carcinogen Exposure) \fi{} }Consider a study in which rats were exposed to a carcinogen and then monitored closely. Suppose the distribution of the time \(T\) (in days) between exposure and the development of a tumor can be modeled with the following probability density function:
+Consider a study in which rats were exposed to a carcinogen and then monitored closely. Suppose the distribution of the time \(T\) (in days) between exposure and the development of a tumor can be modeled with the following probability density function:
 
 \[f(t) = \frac{1}{10} e^{-t/10} \qquad t > 0.\]
 \end{example}
@@ -3243,7 +3305,7 @@ Survival analysis concerns itself primarily with the likelihood of remaining ``e
 Notice that this is the complement of the cumulative distribution function (CDF); it is known as the survival function.
 
 \begin{definition}[Survival Function]
-\protect\hypertarget{def:defn-survival}{}{\label{def:defn-survival} \iffalse (Survival Function) \fi{} }Let \(T\) be a random variable; the survival function \(S(u)\) is defined as
+Let \(T\) be a random variable; the survival function \(S(u)\) is defined as
 
 \[S(u) = Pr(T > u) = 1 - F(u),\]
 
@@ -3274,7 +3336,7 @@ In addition to the likelihood of being event-free past some point, we may want t
 This captures the event rate in the next time interval among survivors; this is known as the mortality rate.
 
 \begin{definition}[Mortality Rate]
-\protect\hypertarget{def:defn-mortality}{}{\label{def:defn-mortality} \iffalse (Mortality Rate) \fi{} }For any particular time \(t\), the morality rate \(m(t)\) is the proportion of the population who experience the event between times \(t\) and \(t + 1\), among individuals who are event-free at time \(t\). That is,
+For any particular time \(t\), the morality rate \(m(t)\) is the proportion of the population who experience the event between times \(t\) and \(t + 1\), among individuals who are event-free at time \(t\). That is,
 
 \[m(t) = Pr(t \leq T \leq t + 1 \mid T > t) = 1 - \frac{S(t + 1)}{S(t)}.\]
 \end{definition}
@@ -3282,7 +3344,7 @@ This captures the event rate in the next time interval among survivors; this is 
 The mortality rate considers a step of a single unit of time. Imagine taking a step of size \(h\), considering the proportion of deaths \emph{per unit time} with this step size, and then allowing this step size to become very small (mathematically, taking a limit). This would describe the instantaneous mortality rate, known as the hazard function.
 
 \begin{definition}[Hazard Function]
-\protect\hypertarget{def:defn-hazard}{}{\label{def:defn-hazard} \iffalse (Hazard Function) \fi{} }For any time \(t\), the hazard function \(\lambda(t)\) is the instantaneous mortality rate per unit time:
+For any time \(t\), the hazard function \(\lambda(t)\) is the instantaneous mortality rate per unit time:
 
 \[\lambda(t) = \lim_{h \rightarrow 0} \frac{Pr(t \leq T \leq t + h \mid T > t)}{h} = \frac{f(t)}{S(t)} = -  \frac{\frac{d}{dt} S(t)}{S(t)} = -\frac{d}{dt} \log(S(t)).\]
 \end{definition}
@@ -3296,7 +3358,7 @@ Larger values of the hazard function indicate a higher likelihood of the event. 
 The last component of the above definition emphasizes the relationship between the survival function and the hazard function. Inverting this relationship provides another quantity often referenced in survival analysis.
 
 \begin{definition}[Cumulative Hazard]
-\protect\hypertarget{def:defn-cumulative-hazard}{}{\label{def:defn-cumulative-hazard} \iffalse (Cumulative Hazard) \fi{} }For any time \(t\), we have that
+For any time \(t\), we have that
 
 \[S(t) = e^{-\int_{0}^{t} \lambda(u) du}\]
 
@@ -3315,7 +3377,7 @@ There are many named probability models used to characterize the distribution of
 In an ideal world, survival analysis would be a standard analysis with a continuous response (time to event). The problem is that we often do not observe the response on a subject prior to the end of the study but instead only have partial information on the response; this phenomena, known as censoring, requires additional considerations. Consider the following example.
 
 \begin{example}[Hypertension]
-\protect\hypertarget{exm:surv-hypertension}{}{\label{exm:surv-hypertension} \iffalse (Hypertension) \fi{} }A study was conducted to examine the efficacy of a new anti-hypertensive medication. A cohort of 146 patients with previous history of heart disease were treated and then followed over the next 10 years. The primary event of interest was death, which was grouped into one year intervals.
+A study was conducted to examine the efficacy of a new anti-hypertensive medication. A cohort of 146 patients with previous history of heart disease were treated and then followed over the next 10 years. The primary event of interest was death, which was grouped into one year intervals.
 \end{example}
 
 As you might imagine, following patients over the span of years can be challenging. Occasionally, subjects are ``lost to follow-up.'' This can happen for a number of reasons. It could be that the subjects withdrew their consent for the study, prohibiting researchers from further contact. As a result, from the time the subject withdrawals from the study, we are no longer able to ascertain whether the subject has experienced the event; all we know is that they were event-free up until the time they withdrew consent. Other subjects might die during the study; however, their cause of death was not the result of hypertension but something unrelated (such as a car accident). Again, we do not get to see when they would have died from the underlying condition but instead only know they were event-free up until they died from these external circumstances. Finally, some patients may remain event-free throughout the entire study; and, at the end of the study are still event-free. We do not get to see when these patients would experience the event; we only know it is after the study. The central question in survival analysis is how to handle such partial information. Excluding the patients from the analysis throws out valuable information and can bias the results. But, pretending to know their event-time will also bias the results.
@@ -3339,7 +3401,7 @@ The time at which a patient enters a study is often referred to as ``baseline;''
 The first issue is a larger concern known as censoring.
 
 \begin{definition}[Censored Data]
-\protect\hypertarget{def:defn-censored-data}{}{\label{def:defn-censored-data} \iffalse (Censored Data) \fi{} }A type of missing data for which a bound on the missing value is known. In survival analysis, the response of interest (time to an event) is subject to censoring.
+A type of missing data for which a bound on the missing value is known. In survival analysis, the response of interest (time to an event) is subject to censoring.
 \end{definition}
 
 \begin{rmdwarning}
@@ -3372,7 +3434,7 @@ While many scenarios may result in censored data, we can construct a taxonomy of
 In order to illustrate the various types of censoring, we consider variations on the above Carcinogen Exposure study. First, consider a study design in which a sample of \(n\) rats are exposed at the same time point. The rats are followed for a period of two weeks, at which point the study is ended. This design emphasizes a situation in which the duration of the study is the primary constraint. If all rats develop a tumor during this two-week period, then the data set is complete.
 
 \begin{definition}[Complete Data]
-\protect\hypertarget{def:defn-complete}{}{\label{def:defn-complete} \iffalse (Complete Data) \fi{} }Describes a data set for which the event is observed on all subjects.
+Describes a data set for which the event is observed on all subjects.
 \end{definition}
 
 When the data is complete, survival analysis reduces to a standard estimation problem that could be addressed using previously described methods.
@@ -3389,11 +3451,11 @@ Suppose, however, that some rats remain tumor-free at the end of the studied (Fi
 \end{figure}
 
 \begin{definition}[Right Censoring]
-\protect\hypertarget{def:defn-right-censoring}{}{\label{def:defn-right-censoring} \iffalse (Right Censoring) \fi{} }When a \emph{lower} bound is known on the time to event.
+When a \emph{lower} bound is known on the time to event.
 \end{definition}
 
 \begin{definition}[Type I Censoring]
-\protect\hypertarget{def:defn-type-I}{}{\label{def:defn-type-I} \iffalse (Type I Censoring) \fi{} }A form of right-censoring when the only source of censoring is the end of the study, for which the duration was pre-determined. Therefore, the time at which subjects are censored is the pre-determined study duration.
+A form of right-censoring when the only source of censoring is the end of the study, for which the duration was pre-determined. Therefore, the time at which subjects are censored is the pre-determined study duration.
 \end{definition}
 
 In this study, the number of rats that remain tumor-free is random, and out of the control of the researchers. We contrast that with a design which says that the sample of \(n\) rats are exposed at the same time and the study continues until the first \(r\) rats develop a tumor (where \(r\) is chosen ahead of time). In this case, the length of the study is random. This study design might be chosen when running the study itself is cheap once the subjects are obtained; it ensures an adequate number of events to power the study. All rats remaining tumor-free past the \(r\)-th rat will be censored (Figure \ref{fig:surv-censoring-type-2}).
@@ -3408,7 +3470,7 @@ In this study, the number of rats that remain tumor-free is random, and out of t
 \end{figure}
 
 \begin{definition}[Type II Censoring]
-\protect\hypertarget{def:defn-type-II}{}{\label{def:defn-type-II} \iffalse (Type II Censoring) \fi{} }A form of right-censoring when the only source of censoring is the end of the study, which is determined when the \(r\)-th event occurs and \(r\) is pre-determined. Therefore, the time at which subjects are censored is determined by the \(r\)-th event.
+A form of right-censoring when the only source of censoring is the end of the study, which is determined when the \(r\)-th event occurs and \(r\) is pre-determined. Therefore, the time at which subjects are censored is determined by the \(r\)-th event.
 \end{definition}
 
 Type I and Type II censoring tend to occur in controlled settings; in large-scale clinical trials involving human subjects, the source of censoring cannot be controlled. For example, suppose the particular breed of rat being studied is difficult to obtain. As a result, we are unable to obtain the \(n\) rats at the same time. Instead, each rat is obtained as it becomes available; the rat is then exposed to the carcinogen and followed for as long as possible (until it develops a tumor or the study ends). The study will end 2 months after obtaining the first rat. This results in staggered entry into the study, which as described above can be accounted for by thinking of ``time'' as ``time since exposure'' instead of ``time since study began.'' Many rats will experience the event. Others will not experience the event at the time the study ends. However, the length of time between entering the study and the study ending differs across those rats which are censored. Further, it is possible some rats are censored prior to the end of the study because they experience organ failure prior and die prior to the development of a tumor. The key observation is that the censoring times may differ for each rat (see Figure \ref{fig:surv-censoring-random}).
@@ -3423,7 +3485,7 @@ Type I and Type II censoring tend to occur in controlled settings; in large-scal
 \end{figure}
 
 \begin{definition}[Random Censoring]
-\protect\hypertarget{def:defn-random-censoring}{}{\label{def:defn-random-censoring} \iffalse (Random Censoring) \fi{} }A form of right censoring when subjects are withdrawn from the study at any time. It is typically assumed that the event time and the censoring time are independent of one another.
+A form of right censoring when subjects are withdrawn from the study at any time. It is typically assumed that the event time and the censoring time are independent of one another.
 \end{definition}
 
 The assumption of independence between the censoring and event times is important. If only the healthiest patients are censored, then it is difficult to estimate the survival probability correctly; we assume that the reason each patient is censored has nothing to do with their underlying survival. This is fundamentally different than Type I or Type II censoring in which the healthiest subjects are those which are censored. By far, the most common type of censoring is random right censoring.
@@ -3431,7 +3493,7 @@ The assumption of independence between the censoring and event times is importan
 In each of the above cases, a lower bound was known on the event time, but there are other possibilities. Suppose the sample of \(n\) rats were exposed to the carcinogen at the same moment; however, this occurred at an off-site location. The rats are then transported to the lab, which takes several days. Upon arrival, it is discovered that \(m\) rats have already developed a tumor. For these rats, an upper bound is known on the event time.
 
 \begin{definition}[Left Censoring]
-\protect\hypertarget{def:defn-left-censoring}{}{\label{def:defn-left-censoring} \iffalse (Left Censoring) \fi{} }When an \emph{upper} bound is known on the time to event.
+When an \emph{upper} bound is known on the time to event.
 \end{definition}
 
 Finally, we consider the case in which the \(n\) rats are exposed to a carcinogen; the rats are assessed once weekly to determine if a tumor has developed. At the end of each week, the number who have developed a tumor is noted (Figure \ref{fig:surv-interval-censoring}). As a result, we do not know the exact day on which the tumor developed; we only know it occurred sometime within the last week. This creates both an upper and lower bound on the event time.
@@ -3446,7 +3508,7 @@ Finally, we consider the case in which the \(n\) rats are exposed to a carcinoge
 \end{figure}
 
 \begin{definition}[Interval Censoring]
-\protect\hypertarget{def:defn-interval-censoring}{}{\label{def:defn-interval-censoring} \iffalse (Interval Censoring) \fi{} }When the event time is known to have occurred within some interval, but the exact time is unknown.
+When the event time is known to have occurred within some interval, but the exact time is unknown.
 \end{definition}
 
 Interval censoring results when only periodic assessment can be performed. Of course, it is impossible to measure an event time with infinite precision; therefore, it would seem all events are interval censored. In practice, we consider interval censoring to occur when the interval is larger than the smallest unit of time we would like to consider. For example, suppose for the Carcinogen Exposure example, we are interested in the number of days until the rat develops a tumor. In that case, daily assessments on the rats, while periodic, would not result in interval censoring; however, weekly assessments would be. In contrast, if we were interested in the number of hours until the rat develops a tumor, daily assessments would result in interval censoring.
@@ -3454,7 +3516,7 @@ Interval censoring results when only periodic assessment can be performed. Of co
 Regardless of the type of censoring, it cannot be ignored. Due to censoring, we do not observe the survival time on all subjects, and this impacts the likelihood (Definition \ref{def:defn-likelihood}). Consider the case of right censoring; in that case, we observe the smaller of the survival time and the censoring time on each subject. We also are able to note whether our observation was the survival time or the censoring time.
 
 \begin{definition}[Event Time and Censoring Indicator]
-\protect\hypertarget{def:defn-event-time}{}{\label{def:defn-event-time} \iffalse (Event Time and Censoring Indicator) \fi{} }Let \(T_i\) and \(C_i\) represent the survival time and the censoring time for the \(i\)-th subject. When data is subject to right censoring, we observe
+Let \(T_i\) and \(C_i\) represent the survival time and the censoring time for the \(i\)-th subject. When data is subject to right censoring, we observe
 
 \[X_i = \min\left\{T_i, C_i\right\}\]
 
@@ -3484,13 +3546,13 @@ As we have discussed in other settings, there are essentially three approaches t
 In some cohort studies, in which a large group is followed over the course of time with periodic ``check-ins,'' the exact event times are known to fall with key intervals. The origins of survival analysis are steeped in such studies. In such cases, life-table methods are used to characterize survival.
 
 \begin{definition}[Life Table]
-\protect\hypertarget{def:defn-life-table}{}{\label{def:defn-life-table} \iffalse (Life Table) \fi{} }A method of estimating overall survival over key intervals of time, generally constructed for a single population.
+A method of estimating overall survival over key intervals of time, generally constructed for a single population.
 \end{definition}
 
 In order to illustrate the considerations in life-table methods, consider the following example.
 
 \begin{example}[Hypertension]
-\protect\hypertarget{exm:surv-hyptertension}{}{\label{exm:surv-hyptertension} \iffalse (Hypertension) \fi{} }A study was conducted to examine the efficacy of a new anti-hypertensive medication. A cohort of 146 patients with previous history of heart disease were treated and then followed over the next 10 years. The primary event of interest was death. A summary of the data is provided in Table \ref{tab:surv-hypertension-data}.
+A study was conducted to examine the efficacy of a new anti-hypertensive medication. A cohort of 146 patients with previous history of heart disease were treated and then followed over the next 10 years. The primary event of interest was death. A summary of the data is provided in Table \ref{tab:surv-hypertension-data}.
 \end{example}
 
 \begin{table}
@@ -3541,7 +3603,7 @@ This is an estimate of the probability a patient in this cohort dies during the 
 We can apply this adjustment on each interval. That is, the mortality within an interval is computed by considering the number of deaths over that interval as a fraction of the number of people at risk who entered that interval and assuming those censored exited uniformly over the interval. To survive to the end of any interval, you must have survived all previous intervals. This is captured in the following life-table computations.
 
 \begin{definition}[Life Table Computations]
-\protect\hypertarget{def:defn-life-table-computations}{}{\label{def:defn-life-table-computations} \iffalse (Life Table Computations) \fi{} }Let \(d_t\) represent the number of subjects that experienced the event during the \(t\)-th interval. Let \(w_t\) represent the number of subjects censored during the \(t\)-th interval. And, let \(n_{t}\) represent the number of subjects at risk at the start of the \(t\)-th interval.
+Let \(d_t\) represent the number of subjects that experienced the event during the \(t\)-th interval. Let \(w_t\) represent the number of subjects censored during the \(t\)-th interval. And, let \(n_{t}\) represent the number of subjects at risk at the start of the \(t\)-th interval.
 
 Assuming censoring occurs uniformly over the interval, the estimated \emph{mortality} for the \(t\)-th interval is defined as
 
@@ -3557,7 +3619,7 @@ We emphasize that we are estimating survival; the true survival is unknown. Of c
 Of course, a point estimate does not allow for us to make inference on the true survival. In order to perform inference, we need to model the sampling distribution of our estimate.
 
 \begin{definition}[Sampling Distribution of Life-Table Estimates]
-\protect\hypertarget{def:defn-samp-distn-lifetable}{}{\label{def:defn-samp-distn-lifetable} \iffalse (Sampling Distribution of Life-Table Estimates) \fi{} }As the sample size increases, the sampling distribution of the life-table estimate of survival can be modeled as
+As the sample size increases, the sampling distribution of the life-table estimate of survival can be modeled as
 
 \[\frac{\widehat{S}(t) - S(t)}{\widehat{\sigma}^2} \sim N(0, 1)\]
 
@@ -3584,11 +3646,11 @@ Life-table methods are somewhat limited in their use as they apply to a single c
 The life-table estimation approach helps to highlight the key considerations when working with time-to-event data. To remove bias, we must carefully consider how the censored data is addressed. While life-table methods are not always applicable, we can generalize the results by considering how we would apply life-table methods with smaller and smaller intervals of time. Intuitively, the smaller we can make the interval, the less bias our estimates will have. To that end, we shrink the interval under consideration until it includes a single event time; then, we apply the life-table approach. This is known as the Kaplan-Meier estimate.
 
 \begin{definition}[Kaplan Meier Estimator]
-\protect\hypertarget{def:defn-kaplan-meier}{}{\label{def:defn-kaplan-meier} \iffalse (Kaplan Meier Estimator) \fi{} }Also known as the product-limit estimator, this is the limit of the life-table estimate as we allow the intervals to shrink to a single event time:
+Also known as the product-limit estimator, this is the limit of the life-table estimate as we allow the intervals to shrink to a single event time:
 
 \[\widehat{S}(t) = \prod_{t_i \leq t} \left(1 - \frac{d_{t_i}}{n_{t_i}}\right)\]
 
-where \(t_i\) is the \(i\)-th event time where the event of interest was observed.\\
+where \(t_i\) is the \(i\)-th event time where the event of interest was observed.
 \end{definition}
 
 There are a couple of things to note about this definition. Keep in mind that shrinking an interval to have no width is relative to what we consider the unit of time; if we are measuring survival time in days, then an interval only large enough to include a single event time would capture a single day. If survival time is measured in weeks, the interval would shrink to capture a single week. In the Kaplan-Meier estimator, the product is taken over all observed event times prior to \(t\). We emphasize that this does \emph{not} include censoring times.
@@ -3613,7 +3675,7 @@ Kaplan-Meier curves (survival curves estimated using this method) are step-funct
 Of course, a point estimate does not allow for us to make inference on the true survival. In order to perform inference, we need to model the sampling distribution of our estimate.
 
 \begin{definition}[Sampling Distribution of Kaplan-Meier Estimates]
-\protect\hypertarget{def:defn-samp-distn-km}{}{\label{def:defn-samp-distn-km} \iffalse (Sampling Distribution of Kaplan-Meier Estimates) \fi{} }As the sample size increases, the sampling distribution of the life-table estimate of survival can be modeled as
+As the sample size increases, the sampling distribution of the life-table estimate of survival can be modeled as
 
 \[\frac{\widehat{S}(t) - S(t)}{\widehat{\sigma}^2} \sim N(0, 1)\]
 
@@ -3632,7 +3694,7 @@ As with life-table estimates, creating a classical confidence interval using the
 Estimating a survival curve is useful for describing the survival experience of a population; however, we are often interested in formally comparing the survival of two populations. One method of comparing two or more groups is the log-rank test.
 
 \begin{definition}[Log-Rank Test]
-\protect\hypertarget{def:defn-log-rank}{}{\label{def:defn-log-rank} \iffalse (Log-Rank Test) \fi{} }Allows for formal comparison of \(k\) survival curves by testing the hypotheses
+Allows for formal comparison of \(k\) survival curves by testing the hypotheses
 
 \[
 \begin{aligned}
@@ -3656,11 +3718,11 @@ Regression models allow us to quantify the effect of a set of predictors on the 
 As the name of this chapter hints at, our modeling approach depends on the assumption of proportional hazards.
 
 \begin{definition}[Proportional Hazards]
-\protect\hypertarget{def:defn-proportion-hazards}{}{\label{def:defn-proportion-hazards} \iffalse (Proportional Hazards) \fi{} }Let \(\lambda_1(t)\) and \(\lambda_2(t)\) represent the hazard functions for two different groups. The assumption of proportional hazards states that
+Let \(\lambda_1(t)\) and \(\lambda_2(t)\) represent the hazard functions for two different groups. The assumption of proportional hazards states that
 
 \[\frac{\lambda_2(t)}{\lambda_1(t)} = e^{\gamma}\]
 
-for some fixed \(\gamma\).\\
+for some fixed \(\gamma\).
 \end{definition}
 
 Note that \(e^{\gamma}\) does not depend on time \(t\); that is, proportional hazards states that the ratio of two hazard functions, known as the hazard ratio, is constant over time. The reason for choosing to exponentiate the constant is because the hazard ratio must always be positive (since each hazard is positive for all values of \(t\)). This allows \(\gamma\), the natural logarithm of the hazard ratio, to play a role similar to the log-odds ratio (from logistic regression in Chapter \ref{nlm-logistic}). When \(\gamma = 0\), the hazard ratio is 1 and the two hazard functions are equal across all time (meaning the corresponding survival curves are equal across all time). When \(\gamma > 0\), the hazard ratio is larger than 1 and group 2 is more likely to experience the event (survival curve sits below) compared with group 1. When \(\gamma < 0\), the hazard ratio is below 1 and group 2 is less likely to experience the event (survival curve sits above) compared with group 1.
@@ -3682,7 +3744,7 @@ Note that unlike modeling the mean response in which our model specifies a singl
 We could model the hazard function under parametric assumptions (assuming a particular distribution for the event times and censor times, for example). However, Cox developed a semiparametric model which dominates the literature in the biological sciences.
 
 \begin{definition}[Cox Proportional Hazards Model]
-\protect\hypertarget{def:defn-cph}{}{\label{def:defn-cph} \iffalse (Cox Proportional Hazards Model) \fi{} }A model for the hazard function which enforces the assumption of proportional hazards; it has the following form:
+A model for the hazard function which enforces the assumption of proportional hazards; it has the following form:
 
 \[\lambda\left(t \mid (\text{Predictors})_i\right) = \lambda_0(t) e^{\sum\limits_{j=1}^{p} \beta_j (\text{Predictor } j)_i},\]
 
@@ -3712,7 +3774,7 @@ The baseline hazard function does not depend on the predictor values and so is s
 which does not depend on time \(t\) and therefore suggests the hazard functions are proportional across time. Further, it provides an interpretation for the parameters.
 
 \begin{definition}
-\protect\hypertarget{def:Interpretationux20ofux20Parametersux20forux20Coxux20PHux20Model}{}{(\#def:Interpretation of Parameters for Cox PH Model) }
+In a Cox Proportional Hazards (PH) model, the coefficient on the \(j\)-th predictor in the model is the log-hazard ratio associated with a one-unit increase in the \(j\) predictor, holding all other predictors fixed.
 \end{definition}
 
 Of course, we do not observe the actual values of the parameters; therefore, we estimate the parameters and therefore estimate the hazard function. This is done via a partial likelihood, the details of which are beyond the scope of this text; it was this partial likelihood which made the above model useful in practice. This allows us to estimate the parameters and even model their sampling distribution without needing to specify the baseline hazard function!
@@ -3746,13 +3808,16 @@ We have seen the appeal of semi-parametric models throughout the course. Given e
 As with other forms of regression models, residual plots can be created to assess the first three conditions. The final condition must be assessed by discipline expertise. The complication is that there is not a single definition of a residual with time-to-event data. And, different types of residuals are useful for assessing different conditions. While beyond the scope of this text, we want to note that there are methods for relaxing many of these conditions while still remaining in the same general framework, making the Cox PH model extremely flexible.
 
 \hypertarget{refs}{}
-\leavevmode\hypertarget{ref-Rosner2006}{}%
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-Rosner2006}{}}%
 Rosner, Bernard. 2006. \emph{Fundamentals of Biostatistics}. 6th ed. CA: Thomson-Brooks/Cole.
 
-\leavevmode\hypertarget{ref-Vittinghoff2012}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Vittinghoff2012}{}}%
 Vittinghoff, Eric, David V. Glidden, Stephen C. Shiboski, and Charles E. McCulloch. 2012. \emph{Regression Methods in Biostatistics: Linear Logistic, Survival, and Repeated Measures Models}. 2nd ed. NY: Springer-Verlag.
 
-\leavevmode\hypertarget{ref-Wickham2014}{}%
-Wickham, Hadley. 2014. ``Tidy Data.'' \emph{Journal of Statistical Software} 59 (10): 1--23.
+\leavevmode\vadjust pre{\hypertarget{ref-Wickham2014}{}}%
+Wickham, Hadley. 2014. {``Tidy Data.''} \emph{Journal of Statistical Software} 59 (10): 1--23.
+
+\end{CSLReferences}
 
 \end{document}

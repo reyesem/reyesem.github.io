@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 Modeling Curvature | Statistical Modeling for the Biological Sciences</title>
+  <title>Page not found | Statistical Modeling for the Biological Sciences</title>
   <meta name="description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11 Modeling Curvature | Statistical Modeling for the Biological Sciences" />
+  <meta property="og:title" content="Page not found | Statistical Modeling for the Biological Sciences" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 Modeling Curvature | Statistical Modeling for the Biological Sciences" />
+  <meta name="twitter:title" content="Page not found | Statistical Modeling for the Biological Sciences" />
   
   <meta name="twitter:description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="glm-large-sample-theory.html"/>
-<link rel="next" href="rm-terminology.html"/>
+
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -214,102 +214,19 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="glm-splines" class="section level1" number="11">
-<h1><span class="header-section-number">11</span> Modeling Curvature</h1>
-<p>In addition to conditions on the error term, the classical regression model (Definition <a href="#def:defn-classical-regression"><strong>??</strong></a>) requires that the predictors enter the model linearly. It is often the case, however, that the relationship between the response and a predictor is not linear, even after accounting for other predictors. Ignoring this curvature, essentially leaving the deterministic portion of the model incorrectly specified, can result in incorrect conclusions. Fortunately, the linear model framework is flexible enough to model curvature. This may seem to be a contradiction, but it relies on the definition of what it means for a model to be linear.</p>
-<div class="definition" label="defn-linear-model">
-<p><span id="def:unlabeled-div-55" class="definition"><strong>Definition 11.1  (Linear Model) </strong></span>A model is said to be linear if it is linear in the <em>parameters</em>. That is, the linearity does not refer to the form of the predictors but that the deterministic portion of the model is specified as a linear combination of the parameters for each observation.</p>
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
 </div>
-<p>The beauty of this understanding of linearity is that it allows us to capture curvature, provided that we can represent that curvature through the addition of predictors. As a simple example, suppose we have a response that is parabolically related to a predictor (Figure <a href="glm-splines.html#fig:glm-splines-parabola">11.1</a>).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:glm-splines-parabola"></span>
-<img src="images/glm-splines-parabola-1.png" alt="Illustration of a parabolic relationship between a response and a predictor." width="80%" />
-<p class="caption">
-Figure 11.1: Illustration of a parabolic relationship between a response and a predictor.
-</p>
-</div>
-<p>This linear model could be represented as</p>
-<p><span class="math display">\[(\text{Response})_i = \beta_0 + \beta_1 (\text{Predictor})_i^2 + \varepsilon_i.\]</span></p>
-<p>The mean response will clearly generate curvature, but the deterministic portion is linear in the parameters; let <span class="math inline">\(\mathbf{x}_i\)</span> represent the vector of all predictors for the <span class="math inline">\(i\)</span>-th observation, including the intercept. In this case we have</p>
-<p><span class="math display">\[\mathbf{x}_i = \begin{pmatrix} 1 \\ (\text{Predictor})_i \end{pmatrix}.\]</span></p>
-<p>Then, we can write the above model as</p>
-<p><span class="math display">\[(\text{Response})_i = \mathbf{x}_i^\top \boldsymbol{\beta}+ \varepsilon_i\]</span></p>
-<p>where we have that the deterministic portion is the product of two vectors; being able to express the model in this form is the definition of a linear model.</p>
-
-<div class="rmdtip">
-<p>For those not as comfortable with matrix algebra, essentially, the model will be linear as long as we can express it in the form</p>
-<p><span class="math display">\[(\text{Response})_i = \beta_0 + \sum_{j=1}^{p} \beta_j (\text{Something not involving parameters})_i + \varepsilon_i\]</span></p>
-even if some of the components involve nonlinear transformations of variables in our data set.
-</div>
-<p>Due to this flexibility, we are interested in investigating transformations of the predictors to add to the model that would capture curvature. In the above example, we knew the form of the curvature we wanted to model (a parabola shifted up from the origin). In practice, we often will not know the form of the curvature, just that it exists (from the plots of the residuals against the predictor). And, that curvature may not be modeled well with a high-degree polynomial (or would require a polynomial of such a high degree it would not be practical). In such cases, we use the idea of a spline.</p>
-<div class="definition" label="defn-spline">
-<p><span id="def:unlabeled-div-56" class="definition"><strong>Definition 11.2  (Spline) </strong></span>A spline is a piecewise polynomial used in fitting curves. A <em>linear</em> spline is comprised only of linear pieces. The points that define the piecewise components are called <em>knot points</em>; these are where the functional form is allowed to change.</p>
-</div>
-<p>A linear spline is perfect for capturing relationships which appear to be linear over regions, but for which the relationship is different in each of those regions. For example, a “V” relationship would suggest that as the predictor increases, the response tends to decrease in the first region; however, in the second region, as the predictor increases, the response tends to increase as well. A linear spline can be placed into the linear model framework.</p>
-<div class="definition" label="defn-linear-spline-formula">
-<p><span id="def:unlabeled-div-57" class="definition"><strong>Definition 11.3  (Formula for Linear Spline) </strong></span>A response can be related to a predictor using a linear spline with <span class="math inline">\(k\)</span> knot points, call them <span class="math inline">\(t_1, t_2, \dotsc, t_k\)</span> using the following formula:</p>
-<p><span class="math display">\[(\text{Response})_i = \beta_0 + \beta_1 (\text{Predictor})_i + \sum_{j=1}^{k} \beta_{j+1} \left((\text{Predictor})_i - t_j\right)_{+} + \varepsilon_i\]</span></p>
-<p>where <span class="math inline">\(u_{+}\)</span> takes the value <span class="math inline">\(u\)</span> when <span class="math inline">\(u &gt; 0\)</span> and takes the value 0 otherwise. Capturing curvature using a linear spline with <span class="math inline">\(k\)</span> knot points requires <span class="math inline">\(k\)</span> additional terms.</p>
-</div>
-<p>Figure <a href="glm-splines.html#fig:glm-splines-linear-spline">11.2</a> illustrates a linear spline with two knot points.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:glm-splines-linear-spline"></span>
-<img src="images/glm-splines-linear-spline-1.png" alt="Illustration of a linear spline with two knot points." width="80%" />
-<p class="caption">
-Figure 11.2: Illustration of a linear spline with two knot points.
-</p>
-</div>
-
-<div class="rmdtip">
-In practice, the knot points for the linear spline are generally determined by the discipline expert based on some scientific reason why the relationship might change at that particular value.
-</div>
-<p>While the above definition of the linear spline considers only a single predictor, we can add a spline to a model which has additional predictors. Further, once we have these additional elements in the model, we can actually perform a hypothesis test to determine if the additional complexity is needed. Considering the above definition of a linear spline, the hypothesis</p>
-<p><span class="math display">\[H_0: \beta_2 = \beta_3 = \dotsc = \beta_{k+1} = 0\]</span></p>
-<p>suggests that a linear relationship is sufficient for modeling the relationship between the response and the predictor.</p>
-<p>There are plenty of forms of curvature which would not be captured by a linear spline. When we have a more complex relationship that needs to be modeled, we can use a restricted cubic spline.</p>
-<div class="definition" label="defn-restricted-cubic-spline">
-<p><span id="def:unlabeled-div-58" class="definition"><strong>Definition 11.4  (Restricted Cubic Spline) </strong></span>A restricted cubic spline is comprised of piecewise cubic polynomials for which the tails of the spline have been restricted to be linear.</p>
-</div>
-<p>Restricted cubic splines (related to natural splines in the computational science community) are smooth at the knot points (meaning they have nice mathematical properties). Further, it has been shown empirically that restricted cubic splines are often flexible enough to approximate nearly any nonlinear relationship. Again, these are able to be embedded in the linear framework.</p>
-<div class="definition" label="defn-restricted-cubic-spline-formula">
-<p><span id="def:unlabeled-div-59" class="definition"><strong>Definition 11.5  (Formula for Restricted Cubic Spline) </strong></span>A response can be related to a predictor using a restricted cubic spline with <span class="math inline">\(k\)</span> knot points, call them <span class="math inline">\(t_1, t_2, \dotsc, t_k\)</span> using the following formula:</p>
-<p><span class="math display">\[(\text{Response})_i = \beta_0 + \beta_1 (\text{Predictor})_i + \sum_{j=1}^{k-2} \beta_{j+1} x_{j,i} + \varepsilon_i\]</span></p>
-<p>where</p>
-<p><span class="math display">\[
-\begin{aligned}
-  x_{j,i} &amp;= \left((\text{Predictor})_i - t_j\right)^3_{+} - \frac{\left((\text{Predictor})_i - t_{k-1}\right)^3_{+} \left(t_k - t_j\right)}{t_k - t_{k-1}} \\
-    &amp;\qquad +\frac{\left((\text{Predictor})_i - t_k\right)^3_{+} \left(t_{k-1} - t_j\right)}{t_k - t_{k-1}}
-\end{aligned}
-\]</span></p>
-<p>where <span class="math inline">\(u_{+}\)</span> takes the value <span class="math inline">\(u\)</span> when <span class="math inline">\(u &gt; 0\)</span> and takes the value 0 otherwise. Capturing curvature using a restricted cubic spline with <span class="math inline">\(k\)</span> knot points requires <span class="math inline">\(k-2\)</span> additional terms.</p>
-<p>Empirical studies have shown that generally only <span class="math inline">\(k = 5\)</span> knot points are needed, and these are set at the 5-th, 27.5-th, 50-th, 72.5-th, and 95-th percentiles. This ensures there is enough data in each region to appropriately capture the curvature.</p>
-</div>
-<p>Similar to linear splines, we can add a restricted cubic spline for a variable to a model which has additional predictors. Further, once we have these additional elements in the model, we can actually perform a hypothesis test to determine if the additional complexity is needed. Considering the above definition of a restricted cubic spline, the hypothesis</p>
-<p><span class="math display">\[H_0: \beta_2 = \beta_3 = \dotsc = \beta_{k-1} = 0\]</span></p>
-<p>suggests that a linear relationship is sufficient for modeling the relationship between the response and the predictor. Figure <a href="glm-splines.html#fig:glm-splines-restricted-cubic-spline">11.3</a> illustrates a restricted cubic spline with five knot points. We point out that there is quite a bit of curvature here, and yet this is captured by a linear model!</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:glm-splines-restricted-cubic-spline"></span>
-<img src="images/glm-splines-restricted-cubic-spline-1.png" alt="Illustration of a restricted cubic spline with five knot points." width="80%" />
-<p class="caption">
-Figure 11.3: Illustration of a restricted cubic spline with five knot points.
-</p>
-</div>
-<p>Both types of splines can be fit using standard software if we are willing to program the above formulas; however, statistical software often has a direct implementation. This is a benefit over nonparametric approaches which require more advanced computation implemented only in statistical software. Further, by placing this in a semiparametric framework, we are able to model complex curvature with smaller sample sizes.</p>
-<p>Linear splines allow for very easy interpretation since the relationships are linear in each region. Restricted cubic splines, in contrast, have intractable interpretations but provide a lot of flexibility. In general, if the predictor which requires a spline is the primary variable of interest, we recommend trying a linear spline. If however, the predictor is just being adjusted for in the model, and the curvature is not of primary importance, using a restricted cubic spline with five knot points is sufficient.</p>
-
-<div class="rmdtip">
-When a categorical predictor is modeled using a series of indicator variables, linearity cannot be violated for these components. Since there are only two levels for each indicator variable, a line <em>must</em> be an appropriate relationship; therefore, violations of linearity and their subsequent adjustments are only considered for quantitative predictors.
-</div>
-<p>As in the previous chapters of this unit, we introduced splines in the context of the linear model. However, they can be incorporated into a vast number of regression models.</p>
-
-</div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="glm-large-sample-theory.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="rm-terminology.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>14 Generalized Estimating Equations | Statistical Modeling for the Biological Sciences</title>
   <meta name="description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="14 Generalized Estimating Equations | Statistical Modeling for the Biological Sciences" />
   <meta property="og:type" content="book" />
@@ -32,7 +32,9 @@
   
 <link rel="prev" href="rm-mixed-models.html"/>
 <link rel="next" href="nlm-framework.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,12 +50,35 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -73,7 +98,8 @@
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="part"><span><b>I Review of the Inferential Process</b></span></li>
-<li class="chapter" data-level="1" data-path="statistical-process.html"><a href="statistical-process.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1" data-path="statistical-process.html"><a href="statistical-process.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="statistical-process.html"><a href="statistical-process.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
 <li class="chapter" data-level="1.2" data-path="statistical-process.html"><a href="statistical-process.html#data-storage"><i class="fa fa-check"></i><b>1.2</b> Data Storage</a></li>
 <li class="chapter" data-level="1.3" data-path="statistical-process.html"><a href="statistical-process.html#tabular-data-presentation"><i class="fa fa-check"></i><b>1.3</b> Tabular Data Presentation</a></li>
@@ -82,14 +108,16 @@
 <li class="chapter" data-level="1.6" data-path="statistical-process.html"><a href="statistical-process.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.6</b> A Note on Codebooks</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="distributional-quartet.html"><a href="distributional-quartet.html"><i class="fa fa-check"></i><b>2</b> Distributional Quartet</a></li>
-<li class="chapter" data-level="3" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>3</b> Essential Probability</a><ul>
+<li class="chapter" data-level="3" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>3</b> Essential Probability</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>3.1</b> Density Functions as Models</a></li>
 <li class="chapter" data-level="3.2" data-path="essential-probability.html"><a href="essential-probability.html#summarizing-distributions-parameters"><i class="fa fa-check"></i><b>3.2</b> Summarizing Distributions (Parameters)</a></li>
 <li class="chapter" data-level="3.3" data-path="essential-probability.html"><a href="essential-probability.html#specific-models-for-populations"><i class="fa fa-check"></i><b>3.3</b> Specific Models for Populations</a></li>
 <li class="chapter" data-level="3.4" data-path="essential-probability.html"><a href="essential-probability.html#models-for-sampling-distributions-and-null-distributions"><i class="fa fa-check"></i><b>3.4</b> Models for Sampling Distributions and Null Distributions</a></li>
 </ul></li>
 <li class="part"><span><b>II General Linear Model and Modeling Strategies</b></span></li>
-<li class="chapter" data-level="4" data-path="glm-framework.html"><a href="glm-framework.html"><i class="fa fa-check"></i><b>4</b> General Linear Model Framework</a><ul>
+<li class="chapter" data-level="4" data-path="glm-framework.html"><a href="glm-framework.html"><i class="fa fa-check"></i><b>4</b> General Linear Model Framework</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="glm-framework.html"><a href="glm-framework.html#parameter-estimation"><i class="fa fa-check"></i><b>4.1</b> Parameter Estimation</a></li>
 <li class="chapter" data-level="4.2" data-path="glm-framework.html"><a href="glm-framework.html#conditions-on-the-model"><i class="fa fa-check"></i><b>4.2</b> Conditions on the Model</a></li>
 <li class="chapter" data-level="4.3" data-path="glm-framework.html"><a href="glm-framework.html#alternate-characterization-of-the-model"><i class="fa fa-check"></i><b>4.3</b> Alternate Characterization of the Model</a></li>
@@ -98,14 +126,16 @@
 </ul></li>
 <li class="chapter" data-level="5" data-path="glm-assessing-conditions.html"><a href="glm-assessing-conditions.html"><i class="fa fa-check"></i><b>5</b> Assessing Conditions</a></li>
 <li class="part"><span><b>III General Modeling Techniques</b></span></li>
-<li class="chapter" data-level="6" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html"><i class="fa fa-check"></i><b>6</b> Side Effects of Isolating Effects</a><ul>
+<li class="chapter" data-level="6" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html"><i class="fa fa-check"></i><b>6</b> Side Effects of Isolating Effects</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#toward-causal-inference"><i class="fa fa-check"></i><b>6.1</b> Toward Causal Inference</a></li>
 <li class="chapter" data-level="6.2" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#multicollinearity"><i class="fa fa-check"></i><b>6.2</b> Multicollinearity</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glm-categorical-predictors.html"><a href="glm-categorical-predictors.html"><i class="fa fa-check"></i><b>7</b> Incorporating Categorical Predictors</a></li>
 <li class="chapter" data-level="8" data-path="glm-interactions.html"><a href="glm-interactions.html"><i class="fa fa-check"></i><b>8</b> Interaction Terms (Effect Modification)</a></li>
 <li class="chapter" data-level="9" data-path="glm-linear-hypotheses.html"><a href="glm-linear-hypotheses.html"><i class="fa fa-check"></i><b>9</b> General Linear Hypothesis Test</a></li>
-<li class="chapter" data-level="10" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html"><i class="fa fa-check"></i><b>10</b> Large Sample Theory</a><ul>
+<li class="chapter" data-level="10" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html"><i class="fa fa-check"></i><b>10</b> Large Sample Theory</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#two-types-of-models"><i class="fa fa-check"></i><b>10.1</b> Two Types of Models</a></li>
 <li class="chapter" data-level="10.2" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#large-sample-results"><i class="fa fa-check"></i><b>10.2</b> Large Sample Results</a></li>
 <li class="chapter" data-level="10.3" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#residual-bootstrap"><i class="fa fa-check"></i><b>10.3</b> Residual Bootstrap</a></li>
@@ -113,38 +143,44 @@
 </ul></li>
 <li class="chapter" data-level="11" data-path="glm-splines.html"><a href="glm-splines.html"><i class="fa fa-check"></i><b>11</b> Modeling Curvature</a></li>
 <li class="part"><span><b>IV Models for Repeated Measures</b></span></li>
-<li class="chapter" data-level="12" data-path="rm-terminology.html"><a href="rm-terminology.html"><i class="fa fa-check"></i><b>12</b> Terminology</a><ul>
+<li class="chapter" data-level="12" data-path="rm-terminology.html"><a href="rm-terminology.html"><i class="fa fa-check"></i><b>12</b> Terminology</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="rm-terminology.html"><a href="rm-terminology.html#importance-of-study-design"><i class="fa fa-check"></i><b>12.1</b> Importance of Study Design</a></li>
 <li class="chapter" data-level="12.2" data-path="rm-terminology.html"><a href="rm-terminology.html#studies-with-repeated-measures"><i class="fa fa-check"></i><b>12.2</b> Studies with Repeated Measures</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html"><i class="fa fa-check"></i><b>13</b> Mixed Effects Models</a><ul>
+<li class="chapter" data-level="13" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html"><i class="fa fa-check"></i><b>13</b> Mixed Effects Models</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
 <li class="chapter" data-level="13.2" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#model-formulation"><i class="fa fa-check"></i><b>13.2</b> Model Formulation</a></li>
 <li class="chapter" data-level="13.3" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#considerations-when-building-a-mixed-effects-model"><i class="fa fa-check"></i><b>13.3</b> Considerations when Building a Mixed-Effects Model</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="rm-gee.html"><a href="rm-gee.html"><i class="fa fa-check"></i><b>14</b> Generalized Estimating Equations</a><ul>
+<li class="chapter" data-level="14" data-path="rm-gee.html"><a href="rm-gee.html"><i class="fa fa-check"></i><b>14</b> Generalized Estimating Equations</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="rm-gee.html"><a href="rm-gee.html#correlation-structrues"><i class="fa fa-check"></i><b>14.1</b> Correlation Structrues</a></li>
 <li class="chapter" data-level="14.2" data-path="rm-gee.html"><a href="rm-gee.html#the-key-to-success-of-generalized-estimating-equations"><i class="fa fa-check"></i><b>14.2</b> The Key to Success of Generalized Estimating Equations</a></li>
 <li class="chapter" data-level="14.3" data-path="rm-gee.html"><a href="rm-gee.html#comparison-of-gee-and-mixed-effects-approaches"><i class="fa fa-check"></i><b>14.3</b> Comparison of GEE and Mixed Effects Approaches</a></li>
 </ul></li>
 <li class="part"><span><b>V Nonlinear Models</b></span></li>
-<li class="chapter" data-level="15" data-path="nlm-framework.html"><a href="nlm-framework.html"><i class="fa fa-check"></i><b>15</b> Nonlinear Model Framework</a><ul>
+<li class="chapter" data-level="15" data-path="nlm-framework.html"><a href="nlm-framework.html"><i class="fa fa-check"></i><b>15</b> Nonlinear Model Framework</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="nlm-framework.html"><a href="nlm-framework.html#scientific-model-for-theophylline"><i class="fa fa-check"></i><b>15.1</b> Scientific Model for Theophylline</a></li>
 <li class="chapter" data-level="15.2" data-path="nlm-framework.html"><a href="nlm-framework.html#nonlinear-regression-model"><i class="fa fa-check"></i><b>15.2</b> Nonlinear Regression Model</a></li>
 <li class="chapter" data-level="15.3" data-path="nlm-framework.html"><a href="nlm-framework.html#estimation"><i class="fa fa-check"></i><b>15.3</b> Estimation</a></li>
 <li class="chapter" data-level="15.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>15.4</b> Inference on the Parameters</a></li>
 <li class="chapter" data-level="15.5" data-path="nlm-framework.html"><a href="nlm-framework.html#allowing-relationships-to-vary-across-groups"><i class="fa fa-check"></i><b>15.5</b> Allowing Relationships to Vary Across Groups</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html"><i class="fa fa-check"></i><b>16</b> Relaxing the Constant Variance Condition</a><ul>
+<li class="chapter" data-level="16" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html"><i class="fa fa-check"></i><b>16</b> Relaxing the Constant Variance Condition</a>
+<ul>
 <li class="chapter" data-level="16.1" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-assumptions"><i class="fa fa-check"></i><b>16.1</b> Modeling Assumptions</a></li>
 <li class="chapter" data-level="16.2" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-the-variance"><i class="fa fa-check"></i><b>16.2</b> Modeling the Variance</a></li>
 <li class="chapter" data-level="16.3" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#wild-bootstrap"><i class="fa fa-check"></i><b>16.3</b> Wild Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="nlm-logistic.html"><a href="nlm-logistic.html"><i class="fa fa-check"></i><b>17</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="17" data-path="nlm-logistic.html"><a href="nlm-logistic.html"><i class="fa fa-check"></i><b>17</b> Logistic Regression</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="nlm-logistic.html"><a href="nlm-logistic.html#considerations-for-a-binary-response"><i class="fa fa-check"></i><b>17.1</b> Considerations for a Binary Response</a></li>
 <li class="chapter" data-level="17.2" data-path="nlm-logistic.html"><a href="nlm-logistic.html#the-logistic-regression-model"><i class="fa fa-check"></i><b>17.2</b> The Logistic Regression Model</a></li>
 <li class="chapter" data-level="17.3" data-path="nlm-logistic.html"><a href="nlm-logistic.html#estimation-of-the-parameters"><i class="fa fa-check"></i><b>17.3</b> Estimation of the Parameters</a></li>
-<li class="chapter" data-level="17.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>17.4</b> Inference on the Parameters</a></li>
+<li class="chapter" data-level="17.4" data-path="nlm-logistic.html"><a href="nlm-logistic.html#inference-on-the-parameters-1"><i class="fa fa-check"></i><b>17.4</b> Inference on the Parameters</a></li>
 <li class="chapter" data-level="17.5" data-path="nlm-logistic.html"><a href="nlm-logistic.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>17.5</b> Interpretation of Parameters</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="nlm-selection.html"><a href="nlm-selection.html"><i class="fa fa-check"></i><b>18</b> Model Selection</a></li>
@@ -153,7 +189,8 @@
 <li class="part"><span><b>VI Survival Analysis</b></span></li>
 <li class="chapter" data-level="21" data-path="surv-terminology.html"><a href="surv-terminology.html"><i class="fa fa-check"></i><b>21</b> Key Terminolgy</a></li>
 <li class="chapter" data-level="22" data-path="surv-censoring.html"><a href="surv-censoring.html"><i class="fa fa-check"></i><b>22</b> Censoring</a></li>
-<li class="chapter" data-level="23" data-path="surv-basic.html"><a href="surv-basic.html"><i class="fa fa-check"></i><b>23</b> Basic Estimation and Inference</a><ul>
+<li class="chapter" data-level="23" data-path="surv-basic.html"><a href="surv-basic.html"><i class="fa fa-check"></i><b>23</b> Basic Estimation and Inference</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="surv-basic.html"><a href="surv-basic.html#life-table-methods"><i class="fa fa-check"></i><b>23.1</b> Life-Table Methods</a></li>
 <li class="chapter" data-level="23.2" data-path="surv-basic.html"><a href="surv-basic.html#kaplan-meier-estimation"><i class="fa fa-check"></i><b>23.2</b> Kaplan-Meier Estimation</a></li>
 <li class="chapter" data-level="23.3" data-path="surv-basic.html"><a href="surv-basic.html#log-rank-test"><i class="fa fa-check"></i><b>23.3</b> Log-Rank Test</a></li>
@@ -177,21 +214,19 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="rm-gee" class="section level1">
+<div id="rm-gee" class="section level1" number="14">
 <h1><span class="header-section-number">14</span> Generalized Estimating Equations</h1>
 <p>In the previous chapter, we addressed the correlation structure present in repeated measures data by developing a hierarchical model in stages. However, the correlation structure was a by-product. That is, we did not model it directly; instead, by first describing the individual-level model, and then allowing the parameters of that model to vary across individuals in the population, the correlation structure was handled naturally. In this chapter, we consider an alternate approach in which we model the correlation structure directly. This is common in longitudinal studies.</p>
-
-<div class="definition">
-<span id="def:defn-longitudinal-study" class="definition"><strong>Definition 14.1  (Longitudinal Study)  </strong></span>A study which involves repeatedly measuring the response on each subject at various points in time.
+<div class="definition" label="defn-longitudinal-study">
+<p><span id="def:unlabeled-div-76" class="definition"><strong>Definition 14.1  (Longitudinal Study) </strong></span>A study which involves repeatedly measuring the response on each subject at various points in time.</p>
 </div>
-
 <p>All clinical trials follow subjects over time; a longitudinal study measures the response of interest multiple times over the course of the trial, resulting in repeated measures. In a longitudinal study, interest is often in modeling the overall trajectory across subjects instead of the trajectory for subjects individually. There are many similarities between longitudinal studies and time-series data as each follows data over time. We do see some differences. Time-series data is often focused on business applications while longitudinal studies are more common in the biological sciences. Time-series data often models a single “stream” that is quite long. Longitudinal studies have several “streams” (one for each subject), but these tend to be a bit shorter as we do not have constant follow-up. In time-series data, it is often believed that the previous response is useful in predicting the next response; in longitudinal data, we do believe there is correlation among the errors in the model, but we do not generally use the value of the previous observation itself in making the next prediction but instead model with time as the predictor.</p>
-<div id="correlation-structrues" class="section level2">
+<div id="correlation-structrues" class="section level2" number="14.1">
 <h2><span class="header-section-number">14.1</span> Correlation Structrues</h2>
 <p>In Chapter <a href="rm-terminology.html#rm-terminology">12</a> we defined the correlation structure as a summary of the relationship among the errors in the responses. In a mixed effects model, we considered the various sources of variability as contributing to the correlation structure; in this chapter, we are interested in modeling the structure directly. As a result, we are interested in the overall impact of the sources of variability on this structure. By specifying this structure, at least approximately, we are able to adjust the inference in our mean model to obtain appropriate inference.</p>
 <p>We can think of the correlation on the error terms of our model to be a combination of between-subject and within-subject sources of variability. While we may not be discussing the specific sources of variability, they are just as important as before as they help us to determine an appropriate form of the correlation structure. We are generally willing to assume that observations from different subjects/blocks are independent; therefore, when we describe the correlation structure of the errors, we need only focus on the correlation of the observations from the same subject/block. Further, we assume that the correlation strucutre is the same for every subject. Therefore, there is only one correlation structure to be specified, and it will be shared across all subjects/blocks.</p>
 <p>Recall from your introductory course that a correlation coefficient must be between -1 and 1. It captures the strength and direction of the linear relationship between two values. If each subject/block has five observations (for example), then we need to describe the relationship between any pair of these five observations. That is <span class="math inline">\(\binom{5}{2} = 10\)</span> correlation coefficients. This is typically stored in a matrix</p>
-<p><span class="math display">\[\Gamma = \begin{pmatrix} 
+<p><span class="math display">\[\Gamma = \begin{pmatrix}
 1 &amp; \rho_{1,2} &amp; \rho_{1,3} &amp; \rho_{1,4} &amp; \rho_{1,5} \\
 \cdot &amp; 1 &amp; \rho_{2,3} &amp; \rho_{2,4} &amp; \rho_{2,5} \\
 \cdot &amp; \cdot &amp; 1 &amp; \rho_{3,4} &amp; \rho_{3,5} \\
@@ -207,108 +242,86 @@
 <li>All off-diagonal elements must be between -1 and 1.</li>
 </ol>
 </div>
-
 <p>A correlation matrix is very similar to a variance-covariance matix; in fact, we can think of a correlation matrix as a standardized variance-covariance matrix. In the above example, each off-diagonal element is free to take on any value. This is called an unstructured form.</p>
-
-<div class="definition">
-<span id="def:defn-unstructure" class="definition"><strong>Definition 14.2  (Unstructured Correlation Structure)  </strong></span>An unstructured correlation structure suggests that the correlation between any two errors within a subject/block can take on any value. We only require that it be a valid correlation matrix.
+<div class="definition" label="defn-unstructure">
+<p><span id="def:unlabeled-div-77" class="definition"><strong>Definition 14.2  (Unstructured Correlation Structure) </strong></span>An unstructured correlation structure suggests that the correlation between any two errors within a subject/block can take on any value. We only require that it be a valid correlation matrix.</p>
 </div>
-
 <p>If we think of each correlation as an additional parameter to estimate, then we have just specified an additional <span class="math inline">\(\binom{m}{2}\)</span> parameters to our model, where <span class="math inline">\(m\)</span> is the number of repeated observations on a subject/block. We are essentially choosing not to place any structure on the correlation matrix and allow the data to completely determine the structure. This can be useful if we have no intuition about the sources of variability; however, it requires a lot of data as we have added a large number of parameters to the model.</p>
 <p>As in any model, there is tension between specifying a model which is flexible and one which is more tractable. We often impose some simplifying structure on the correlation matrix. While there are several possible structures, we discuss the most common. On the other extreme from the unstructured correlation matrix discussed above is to assume the observations within a subject/block are independent of one another.</p>
-
-<div class="definition">
-<p><span id="def:defn-independence" class="definition"><strong>Definition 14.3  (Independence Correlation Structure)  </strong></span>No correlation among any of the error terms within a subject/block. If there are five observations within a block, this has the form</p>
-<span class="math display">\[\Gamma = \begin{pmatrix} 
+<div class="definition" label="defn-independence">
+<p><span id="def:unlabeled-div-78" class="definition"><strong>Definition 14.3  (Independence Correlation Structure) </strong></span>No correlation among any of the error terms within a subject/block. If there are five observations within a block, this has the form</p>
+<p><span class="math display">\[\Gamma = \begin{pmatrix}
 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 \cdot &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
 \cdot &amp; \cdot &amp; 1 &amp; 0 &amp; 0 \\
 \cdot &amp; \cdot &amp; \cdot &amp; 1 &amp; 0 \\
-\cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; 1 \end{pmatrix}.\]</span>
+\cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; 1 \end{pmatrix}.\]</span></p>
 </div>
-
 <p>While we already assume that observations between subjects/blocks are independent, this goes further and essentially says all observations are independent. At first glance, this would seem to revert back to the classical regression model, which we have already established is inappropriate for repeated measures. However, we will argue later that using such a structure does have some differences.</p>
 <p>When we feel that observations from the same subject/block are associated primarily because they are from the same subject/block, and that the order of the observations within the subject/block is irrelevant, a compound symmetric correlation structure is appropriate.</p>
-
-<div class="definition">
-<p><span id="def:defn-compound-symmetric" class="definition"><strong>Definition 14.4  (Compound Symmetric Correlation Structure)  </strong></span>Also called <em>exchangeable</em>, this suggests the correlation between any two errors within a subject/block is equal. If there are five observations within a block, this has the form</p>
-<span class="math display">\[\Gamma = \begin{pmatrix} 
+<div class="definition" label="defn-compound-symmetric">
+<p><span id="def:unlabeled-div-79" class="definition"><strong>Definition 14.4  (Compound Symmetric Correlation Structure) </strong></span>Also called <em>exchangeable</em>, this suggests the correlation between any two errors within a subject/block is equal. If there are five observations within a block, this has the form</p>
+<p><span class="math display">\[\Gamma = \begin{pmatrix}
 1 &amp; \rho &amp; \rho &amp; \rho &amp; \rho \\
 \cdot &amp; 1 &amp; \rho &amp; \rho &amp; \rho \\
 \cdot &amp; \cdot &amp; 1 &amp; \rho &amp; \rho \\
 \cdot &amp; \cdot &amp; \cdot &amp; 1 &amp; \rho \\
-\cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; 1 \end{pmatrix}.\]</span>
+\cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; 1 \end{pmatrix}.\]</span></p>
 </div>
-
 <p>The compound symmetric structure adds only one additional parameter to our model and actually models well a great many scenarios. When we do believe that the order of the observations within a subject/block is important, and that observations occurring closer together (generally in time) are more highly correlated than subjects further apart in time, an autoregressive structure is appropriate.</p>
-
-<div class="definition">
-<p><span id="def:defn-autoregressive" class="definition"><strong>Definition 14.5  (Autoregressive Correlation Structure)  </strong></span>The autoregressive structure suggestst that the correlation between two observations diminishes as the observations get further apart in time. We generally only consider the autoregressive structure of degree 1 here; if there are five observations within a block, this has the form</p>
-<span class="math display">\[\Gamma = \begin{pmatrix} 
+<div class="definition" label="defn-autoregressive">
+<p><span id="def:unlabeled-div-80" class="definition"><strong>Definition 14.5  (Autoregressive Correlation Structure) </strong></span>The autoregressive structure suggestst that the correlation between two observations diminishes as the observations get further apart in time. We generally only consider the autoregressive structure of degree 1 here; if there are five observations within a block, this has the form</p>
+<p><span class="math display">\[\Gamma = \begin{pmatrix}
 1 &amp; \rho &amp; \rho^2 &amp; \rho^3 &amp; \rho^4 \\
 \cdot &amp; 1 &amp; \rho &amp; \rho^2 &amp; \rho^3 \\
 \cdot &amp; \cdot &amp; 1 &amp; \rho &amp; \rho^2 \\
 \cdot &amp; \cdot &amp; \cdot &amp; 1 &amp; \rho \\
-\cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; 1 \end{pmatrix}.\]</span>
+\cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; 1 \end{pmatrix}.\]</span></p>
 </div>
-
 <p>This structure is borrowed from the time-series literature. It is primarily useful when we are taking observations somewhat close together in time. Like the compound symmetric structure, it only adds a single parameter to the model.</p>
 <p>Regardless of which of the structures we believe is beneath the data, we also assume stationarity.</p>
-
-<div class="definition">
-<span id="def:defn-stationarity" class="definition"><strong>Definition 14.6  (Stationarity)  </strong></span>This assumption states that the correlation structure does not depend on time, only the distance between the observations.
+<div class="definition" label="defn-stationarity">
+<p><span id="def:unlabeled-div-81" class="definition"><strong>Definition 14.6  (Stationarity) </strong></span>This assumption states that the correlation structure does not depend on time, only the distance between the observations.</p>
 </div>
-
 <p>Essentially, at no point did we say that the structure evolves as the study continues or did we include a parameter such as <span class="math inline">\(\rho^{(\text{time})}\)</span>.</p>
 <p>Choosing an appropriate structure is often guided by discipline expertise regarding how the sources of variability combine and impact the relationship between the responses. However, it turns out that the choice of the structure need not have a large impact on the analysis — simply indicating in the analysis that there is a potential for correlation can be sufficient. This is the idea behind the approach we describe.</p>
 </div>
-<div id="the-key-to-success-of-generalized-estimating-equations" class="section level2">
+<div id="the-key-to-success-of-generalized-estimating-equations" class="section level2" number="14.2">
 <h2><span class="header-section-number">14.2</span> The Key to Success of Generalized Estimating Equations</h2>
 <p>In the previous section, we considered models for the correlation structure that results from the combination of the various sources of variability in the data-generating process. This structure will be used within the generalized estimating equation (GEE) approach.</p>
-
-<div class="definition">
-<span id="def:defn-gee" class="definition"><strong>Definition 14.7  (Generalized Estimating Equations (GEE))  </strong></span>An approach to repeated measures which focuses on modeling the parameters in the mean model while specifying a model for the correlation structure. This structure is updated during the estimation process and used to adjust the standard errors of the parameter estimates for the mean model.
+<div class="definition" label="defn-gee">
+<p><span id="def:unlabeled-div-82" class="definition"><strong>Definition 14.7  (Generalized Estimating Equations (GEE)) </strong></span>An approach to repeated measures which focuses on modeling the parameters in the mean model while specifying a model for the correlation structure. This structure is updated during the estimation process and used to adjust the standard errors of the parameter estimates for the mean model.</p>
 </div>
-
 <p>Recall that our inference on the parameters requires us to compute the variance-covariance matrix of the corresponding parameter estimates. For the GEE approach, the model we specify for the correlation structure is known as the “working” correlation matrix; this is then updated using the observed data when computing the variance-covariance matrix. As a result, the variance-covariance matrix we use is not based solely on the specified model but is a blend of the model specified and the observed data; this is known as the robust sandwich estimator.</p>
-
-<div class="definition">
-<p><span id="def:defn-robust-sandwich-estimator" class="definition"><strong>Definition 14.8  (Robust Sandwich Estimator)  </strong></span>An estimate of the variance-covariance matrix of the parameter estimates from the mean model. This balances the relationship between the parameter estimates specified by the model (and the “working” correlation matrix) with the relationship suggested by the observed data. Specifically, it has the form</p>
-<p><span class="math display">\[\widehat{\bs{\Sigma}} = \widehat{\bm{U}} \widehat{\bm{U}}^{-1/2} \bm{R} \widehat{\bm{U}}^{-1/2} \widehat{\bm{U}}\]</span></p>
-where <span class="math inline">\(\bm{U}\)</span> represents the model-based variance-covariance matrix if the structure specified by the working correlation matrix were completely correct, and <span class="math inline">\(\bm{R}\)</span> represents the correction factor estimated from teh residuals which is an empirical estimate.
+<div class="definition" label="defn-robust-sandwich-estimator">
+<p><span id="def:unlabeled-div-83" class="definition"><strong>Definition 14.8  (Robust Sandwich Estimator) </strong></span>An estimate of the variance-covariance matrix of the parameter estimates from the mean model. This balances the relationship between the parameter estimates specified by the model (and the “working” correlation matrix) with the relationship suggested by the observed data. Specifically, it has the form</p>
+<p><span class="math display">\[\widehat{\boldsymbol{\Sigma}} = \widehat{\mathbf{U}} \widehat{\mathbf{U}}^{-1/2} \mathbf{R} \widehat{\mathbf{U}}^{-1/2} \widehat{\mathbf{U}}\]</span></p>
+<p>where <span class="math inline">\(\mathbf{U}\)</span> represents the model-based variance-covariance matrix if the structure specified by the working correlation matrix were completely correct, and <span class="math inline">\(\mathbf{R}\)</span> represents the correction factor estimated from teh residuals which is an empirical estimate.</p>
 </div>
-
 
 <div class="rmdkeyidea">
 The use of the robust sandwich variance-covariance estimator is what makes the GEE approach unique and so powerful.
 </div>
-
-<p>While the structure of <span class="math inline">\(\bm{U}\)</span> is beyond the scope of the course, we can think of it as what the computer does by default when we specify a model under the classical conditions. Essentially, the use of the robust sandwich estimator in the GEE framework means our posited correlation structure need not be correct; it is okay if <span class="math inline">\(\bm{U}\)</span> is wrong. With enough data, the inference will be the same regardless of the structure we choose. What we are really specifying is that there is a potential for correlation among these observations. Of course, the better the specified model for the correlation structure, the less adjustment that is needed and the more powerful the results.</p>
+<p>While the structure of <span class="math inline">\(\mathbf{U}\)</span> is beyond the scope of the course, we can think of it as what the computer does by default when we specify a model under the classical conditions. Essentially, the use of the robust sandwich estimator in the GEE framework means our posited correlation structure need not be correct; it is okay if <span class="math inline">\(\mathbf{U}\)</span> is wrong. With enough data, the inference will be the same regardless of the structure we choose. What we are really specifying is that there is a potential for correlation among these observations. Of course, the better the specified model for the correlation structure, the less adjustment that is needed and the more powerful the results.</p>
 
 <div class="rmdtip">
 It is the use of the robust-sandwich estimator that makes specifying the “independent” correlation structure different than assuming the classical regression model. In classical regression, inference is based on assuming independence. In a GEE framework, the correlation structure will be updated after we assume independence.
 </div>
 
-
 <div class="rmdtip">
 While we are discussing the use of the robust-sandwich estimator as a way of adjusting for the correlation present, we note that this will also adjust for violations in constant variance as a result.
 </div>
-
 </div>
-<div id="comparison-of-gee-and-mixed-effects-approaches" class="section level2">
+<div id="comparison-of-gee-and-mixed-effects-approaches" class="section level2" number="14.3">
 <h2><span class="header-section-number">14.3</span> Comparison of GEE and Mixed Effects Approaches</h2>
 <p>While both mixed effects models and estimation via generalized estimating equations account for the correlation structure, the two approaches differ in many ways. The mixed effects modeling approach is fully parametric, while estimating via GEE is semi-parametric; instead, inference is based on large-sample theory.</p>
 <p>More broadly, these represent two different approaches to repeated measures data: subject-specific and population-averaged.</p>
-
-<div class="definition">
-<span id="def:defn-subject-specific" class="definition"><strong>Definition 14.9  (Subject Specific Models)  </strong></span>Also known as conditional modeling, this approach models at the subject-level and addresses the correlation indirectly through the inclusion of random effects.
+<div class="definition" label="defn-subject-specific">
+<p><span id="def:unlabeled-div-84" class="definition"><strong>Definition 14.9  (Subject Specific Models) </strong></span>Also known as conditional modeling, this approach models at the subject-level and addresses the correlation indirectly through the inclusion of random effects.</p>
 </div>
-
-
-<div class="definition">
-<span id="def:defn-population-average" class="definition"><strong>Definition 14.10  (Population Averaged Models)  </strong></span>Also known as marginal modeling, this approach considers a model for the mean response directly and addresses the correlation through directly modeling the structure.
+<div class="definition" label="defn-population-average">
+<p><span id="def:unlabeled-div-85" class="definition"><strong>Definition 14.10  (Population Averaged Models) </strong></span>Also known as marginal modeling, this approach considers a model for the mean response directly and addresses the correlation through directly modeling the structure.</p>
 </div>
-
 
 </div>
 </div>
@@ -325,7 +338,6 @@ While we are discussing the use of the robust-sandwich estimator as a way of adj
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -352,13 +364,16 @@ gitbook.start({
 "text": null
 },
 "download": ["MA482CourseNotes.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 },
 "toolbar": {
 "position": "fixed"
-},
-"search": true
+}
 });
 });
 </script>

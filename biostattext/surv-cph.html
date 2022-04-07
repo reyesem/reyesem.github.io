@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>24 Cox Proportional Hazards Model | Statistical Modeling for the Biological Sciences</title>
   <meta name="description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="24 Cox Proportional Hazards Model | Statistical Modeling for the Biological Sciences" />
   <meta property="og:type" content="book" />
@@ -32,7 +32,9 @@
   
 <link rel="prev" href="surv-basic.html"/>
 <link rel="next" href="references.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,12 +50,35 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -73,7 +98,8 @@
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="part"><span><b>I Review of the Inferential Process</b></span></li>
-<li class="chapter" data-level="1" data-path="statistical-process.html"><a href="statistical-process.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1" data-path="statistical-process.html"><a href="statistical-process.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="statistical-process.html"><a href="statistical-process.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
 <li class="chapter" data-level="1.2" data-path="statistical-process.html"><a href="statistical-process.html#data-storage"><i class="fa fa-check"></i><b>1.2</b> Data Storage</a></li>
 <li class="chapter" data-level="1.3" data-path="statistical-process.html"><a href="statistical-process.html#tabular-data-presentation"><i class="fa fa-check"></i><b>1.3</b> Tabular Data Presentation</a></li>
@@ -82,14 +108,16 @@
 <li class="chapter" data-level="1.6" data-path="statistical-process.html"><a href="statistical-process.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.6</b> A Note on Codebooks</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="distributional-quartet.html"><a href="distributional-quartet.html"><i class="fa fa-check"></i><b>2</b> Distributional Quartet</a></li>
-<li class="chapter" data-level="3" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>3</b> Essential Probability</a><ul>
+<li class="chapter" data-level="3" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>3</b> Essential Probability</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>3.1</b> Density Functions as Models</a></li>
 <li class="chapter" data-level="3.2" data-path="essential-probability.html"><a href="essential-probability.html#summarizing-distributions-parameters"><i class="fa fa-check"></i><b>3.2</b> Summarizing Distributions (Parameters)</a></li>
 <li class="chapter" data-level="3.3" data-path="essential-probability.html"><a href="essential-probability.html#specific-models-for-populations"><i class="fa fa-check"></i><b>3.3</b> Specific Models for Populations</a></li>
 <li class="chapter" data-level="3.4" data-path="essential-probability.html"><a href="essential-probability.html#models-for-sampling-distributions-and-null-distributions"><i class="fa fa-check"></i><b>3.4</b> Models for Sampling Distributions and Null Distributions</a></li>
 </ul></li>
 <li class="part"><span><b>II General Linear Model and Modeling Strategies</b></span></li>
-<li class="chapter" data-level="4" data-path="glm-framework.html"><a href="glm-framework.html"><i class="fa fa-check"></i><b>4</b> General Linear Model Framework</a><ul>
+<li class="chapter" data-level="4" data-path="glm-framework.html"><a href="glm-framework.html"><i class="fa fa-check"></i><b>4</b> General Linear Model Framework</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="glm-framework.html"><a href="glm-framework.html#parameter-estimation"><i class="fa fa-check"></i><b>4.1</b> Parameter Estimation</a></li>
 <li class="chapter" data-level="4.2" data-path="glm-framework.html"><a href="glm-framework.html#conditions-on-the-model"><i class="fa fa-check"></i><b>4.2</b> Conditions on the Model</a></li>
 <li class="chapter" data-level="4.3" data-path="glm-framework.html"><a href="glm-framework.html#alternate-characterization-of-the-model"><i class="fa fa-check"></i><b>4.3</b> Alternate Characterization of the Model</a></li>
@@ -98,14 +126,16 @@
 </ul></li>
 <li class="chapter" data-level="5" data-path="glm-assessing-conditions.html"><a href="glm-assessing-conditions.html"><i class="fa fa-check"></i><b>5</b> Assessing Conditions</a></li>
 <li class="part"><span><b>III General Modeling Techniques</b></span></li>
-<li class="chapter" data-level="6" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html"><i class="fa fa-check"></i><b>6</b> Side Effects of Isolating Effects</a><ul>
+<li class="chapter" data-level="6" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html"><i class="fa fa-check"></i><b>6</b> Side Effects of Isolating Effects</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#toward-causal-inference"><i class="fa fa-check"></i><b>6.1</b> Toward Causal Inference</a></li>
 <li class="chapter" data-level="6.2" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#multicollinearity"><i class="fa fa-check"></i><b>6.2</b> Multicollinearity</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glm-categorical-predictors.html"><a href="glm-categorical-predictors.html"><i class="fa fa-check"></i><b>7</b> Incorporating Categorical Predictors</a></li>
 <li class="chapter" data-level="8" data-path="glm-interactions.html"><a href="glm-interactions.html"><i class="fa fa-check"></i><b>8</b> Interaction Terms (Effect Modification)</a></li>
 <li class="chapter" data-level="9" data-path="glm-linear-hypotheses.html"><a href="glm-linear-hypotheses.html"><i class="fa fa-check"></i><b>9</b> General Linear Hypothesis Test</a></li>
-<li class="chapter" data-level="10" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html"><i class="fa fa-check"></i><b>10</b> Large Sample Theory</a><ul>
+<li class="chapter" data-level="10" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html"><i class="fa fa-check"></i><b>10</b> Large Sample Theory</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#two-types-of-models"><i class="fa fa-check"></i><b>10.1</b> Two Types of Models</a></li>
 <li class="chapter" data-level="10.2" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#large-sample-results"><i class="fa fa-check"></i><b>10.2</b> Large Sample Results</a></li>
 <li class="chapter" data-level="10.3" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#residual-bootstrap"><i class="fa fa-check"></i><b>10.3</b> Residual Bootstrap</a></li>
@@ -113,38 +143,44 @@
 </ul></li>
 <li class="chapter" data-level="11" data-path="glm-splines.html"><a href="glm-splines.html"><i class="fa fa-check"></i><b>11</b> Modeling Curvature</a></li>
 <li class="part"><span><b>IV Models for Repeated Measures</b></span></li>
-<li class="chapter" data-level="12" data-path="rm-terminology.html"><a href="rm-terminology.html"><i class="fa fa-check"></i><b>12</b> Terminology</a><ul>
+<li class="chapter" data-level="12" data-path="rm-terminology.html"><a href="rm-terminology.html"><i class="fa fa-check"></i><b>12</b> Terminology</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="rm-terminology.html"><a href="rm-terminology.html#importance-of-study-design"><i class="fa fa-check"></i><b>12.1</b> Importance of Study Design</a></li>
 <li class="chapter" data-level="12.2" data-path="rm-terminology.html"><a href="rm-terminology.html#studies-with-repeated-measures"><i class="fa fa-check"></i><b>12.2</b> Studies with Repeated Measures</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html"><i class="fa fa-check"></i><b>13</b> Mixed Effects Models</a><ul>
+<li class="chapter" data-level="13" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html"><i class="fa fa-check"></i><b>13</b> Mixed Effects Models</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
 <li class="chapter" data-level="13.2" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#model-formulation"><i class="fa fa-check"></i><b>13.2</b> Model Formulation</a></li>
 <li class="chapter" data-level="13.3" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#considerations-when-building-a-mixed-effects-model"><i class="fa fa-check"></i><b>13.3</b> Considerations when Building a Mixed-Effects Model</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="rm-gee.html"><a href="rm-gee.html"><i class="fa fa-check"></i><b>14</b> Generalized Estimating Equations</a><ul>
+<li class="chapter" data-level="14" data-path="rm-gee.html"><a href="rm-gee.html"><i class="fa fa-check"></i><b>14</b> Generalized Estimating Equations</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="rm-gee.html"><a href="rm-gee.html#correlation-structrues"><i class="fa fa-check"></i><b>14.1</b> Correlation Structrues</a></li>
 <li class="chapter" data-level="14.2" data-path="rm-gee.html"><a href="rm-gee.html#the-key-to-success-of-generalized-estimating-equations"><i class="fa fa-check"></i><b>14.2</b> The Key to Success of Generalized Estimating Equations</a></li>
 <li class="chapter" data-level="14.3" data-path="rm-gee.html"><a href="rm-gee.html#comparison-of-gee-and-mixed-effects-approaches"><i class="fa fa-check"></i><b>14.3</b> Comparison of GEE and Mixed Effects Approaches</a></li>
 </ul></li>
 <li class="part"><span><b>V Nonlinear Models</b></span></li>
-<li class="chapter" data-level="15" data-path="nlm-framework.html"><a href="nlm-framework.html"><i class="fa fa-check"></i><b>15</b> Nonlinear Model Framework</a><ul>
+<li class="chapter" data-level="15" data-path="nlm-framework.html"><a href="nlm-framework.html"><i class="fa fa-check"></i><b>15</b> Nonlinear Model Framework</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="nlm-framework.html"><a href="nlm-framework.html#scientific-model-for-theophylline"><i class="fa fa-check"></i><b>15.1</b> Scientific Model for Theophylline</a></li>
 <li class="chapter" data-level="15.2" data-path="nlm-framework.html"><a href="nlm-framework.html#nonlinear-regression-model"><i class="fa fa-check"></i><b>15.2</b> Nonlinear Regression Model</a></li>
 <li class="chapter" data-level="15.3" data-path="nlm-framework.html"><a href="nlm-framework.html#estimation"><i class="fa fa-check"></i><b>15.3</b> Estimation</a></li>
 <li class="chapter" data-level="15.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>15.4</b> Inference on the Parameters</a></li>
 <li class="chapter" data-level="15.5" data-path="nlm-framework.html"><a href="nlm-framework.html#allowing-relationships-to-vary-across-groups"><i class="fa fa-check"></i><b>15.5</b> Allowing Relationships to Vary Across Groups</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html"><i class="fa fa-check"></i><b>16</b> Relaxing the Constant Variance Condition</a><ul>
+<li class="chapter" data-level="16" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html"><i class="fa fa-check"></i><b>16</b> Relaxing the Constant Variance Condition</a>
+<ul>
 <li class="chapter" data-level="16.1" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-assumptions"><i class="fa fa-check"></i><b>16.1</b> Modeling Assumptions</a></li>
 <li class="chapter" data-level="16.2" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-the-variance"><i class="fa fa-check"></i><b>16.2</b> Modeling the Variance</a></li>
 <li class="chapter" data-level="16.3" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#wild-bootstrap"><i class="fa fa-check"></i><b>16.3</b> Wild Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="nlm-logistic.html"><a href="nlm-logistic.html"><i class="fa fa-check"></i><b>17</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="17" data-path="nlm-logistic.html"><a href="nlm-logistic.html"><i class="fa fa-check"></i><b>17</b> Logistic Regression</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="nlm-logistic.html"><a href="nlm-logistic.html#considerations-for-a-binary-response"><i class="fa fa-check"></i><b>17.1</b> Considerations for a Binary Response</a></li>
 <li class="chapter" data-level="17.2" data-path="nlm-logistic.html"><a href="nlm-logistic.html#the-logistic-regression-model"><i class="fa fa-check"></i><b>17.2</b> The Logistic Regression Model</a></li>
 <li class="chapter" data-level="17.3" data-path="nlm-logistic.html"><a href="nlm-logistic.html#estimation-of-the-parameters"><i class="fa fa-check"></i><b>17.3</b> Estimation of the Parameters</a></li>
-<li class="chapter" data-level="17.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>17.4</b> Inference on the Parameters</a></li>
+<li class="chapter" data-level="17.4" data-path="nlm-logistic.html"><a href="nlm-logistic.html#inference-on-the-parameters-1"><i class="fa fa-check"></i><b>17.4</b> Inference on the Parameters</a></li>
 <li class="chapter" data-level="17.5" data-path="nlm-logistic.html"><a href="nlm-logistic.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>17.5</b> Interpretation of Parameters</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="nlm-selection.html"><a href="nlm-selection.html"><i class="fa fa-check"></i><b>18</b> Model Selection</a></li>
@@ -153,7 +189,8 @@
 <li class="part"><span><b>VI Survival Analysis</b></span></li>
 <li class="chapter" data-level="21" data-path="surv-terminology.html"><a href="surv-terminology.html"><i class="fa fa-check"></i><b>21</b> Key Terminolgy</a></li>
 <li class="chapter" data-level="22" data-path="surv-censoring.html"><a href="surv-censoring.html"><i class="fa fa-check"></i><b>22</b> Censoring</a></li>
-<li class="chapter" data-level="23" data-path="surv-basic.html"><a href="surv-basic.html"><i class="fa fa-check"></i><b>23</b> Basic Estimation and Inference</a><ul>
+<li class="chapter" data-level="23" data-path="surv-basic.html"><a href="surv-basic.html"><i class="fa fa-check"></i><b>23</b> Basic Estimation and Inference</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="surv-basic.html"><a href="surv-basic.html#life-table-methods"><i class="fa fa-check"></i><b>23.1</b> Life-Table Methods</a></li>
 <li class="chapter" data-level="23.2" data-path="surv-basic.html"><a href="surv-basic.html#kaplan-meier-estimation"><i class="fa fa-check"></i><b>23.2</b> Kaplan-Meier Estimation</a></li>
 <li class="chapter" data-level="23.3" data-path="surv-basic.html"><a href="surv-basic.html#log-rank-test"><i class="fa fa-check"></i><b>23.3</b> Log-Rank Test</a></li>
@@ -177,42 +214,35 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="surv-cph" class="section level1">
+<div id="surv-cph" class="section level1" number="24">
 <h1><span class="header-section-number">24</span> Cox Proportional Hazards Model</h1>
 <p>Regression models allow us to quantify the effect of a set of predictors on the distribution of the response. While there are various regression methods for survival analysis, perhaps the most common is the Cox Proportional Hazards model, which we discuss in this chapter.</p>
 <p>As the name of this chapter hints at, our modeling approach depends on the assumption of proportional hazards.</p>
-
-<div class="definition">
-<p><span id="def:defn-proportion-hazards" class="definition"><strong>Definition 24.1  (Proportional Hazards)  </strong></span>Let <span class="math inline">\(\lambda_1(t)\)</span> and <span class="math inline">\(\lambda_2(t)\)</span> represent the hazard functions for two different groups. The assumption of proportional hazards states that</p>
+<div class="definition" label="defn-proportion-hazards">
+<p><span id="def:unlabeled-div-130" class="definition"><strong>Definition 24.1  (Proportional Hazards) </strong></span>Let <span class="math inline">\(\lambda_1(t)\)</span> and <span class="math inline">\(\lambda_2(t)\)</span> represent the hazard functions for two different groups. The assumption of proportional hazards states that</p>
 <p><span class="math display">\[\frac{\lambda_2(t)}{\lambda_1(t)} = e^{\gamma}\]</span></p>
-for some fixed <span class="math inline">\(\gamma\)</span>.
+<p>for some fixed <span class="math inline">\(\gamma\)</span>.</p>
 </div>
-
 <p>Note that <span class="math inline">\(e^{\gamma}\)</span> does not depend on time <span class="math inline">\(t\)</span>; that is, proportional hazards states that the ratio of two hazard functions, known as the hazard ratio, is constant over time. The reason for choosing to exponentiate the constant is because the hazard ratio must always be positive (since each hazard is positive for all values of <span class="math inline">\(t\)</span>). This allows <span class="math inline">\(\gamma\)</span>, the natural logarithm of the hazard ratio, to play a role similar to the log-odds ratio (from logistic regression in Chapter <a href="nlm-logistic.html#nlm-logistic">17</a>). When <span class="math inline">\(\gamma = 0\)</span>, the hazard ratio is 1 and the two hazard functions are equal across all time (meaning the corresponding survival curves are equal across all time). When <span class="math inline">\(\gamma &gt; 0\)</span>, the hazard ratio is larger than 1 and group 2 is more likely to experience the event (survival curve sits below) compared with group 1. When <span class="math inline">\(\gamma &lt; 0\)</span>, the hazard ratio is below 1 and group 2 is less likely to experience the event (survival curve sits above) compared with group 1.</p>
 
 <div class="rmdwarning">
 Proportional hazards is an assumption. It is not guaranteed to hold in any setting; however, it is a useful simplifying assumption and often does hold at least reasonably well.
 </div>
-
 <p>Early in this unit, we alluded to the idea that some characterizations of the distribution are easier to model than others. When censoring is present, it turns out that modeling the hazard turns out to be easier than modeling the survival function directly. Therefore, we want our model to allow the hazard function to depend upon predictors.</p>
 
 <div class="rmdtip">
 Remember, a key idea in regression modeling is characterizing the distribution of the response through its parameters. We have spent a great deal of time in the text characterizing the mean and variance of the response with our regression models. Here, instead of the mean survival time, we are modeling the hazard function.
 </div>
 
-
 <div class="rmdtip">
 Note that unlike modeling the mean response in which our model specifies a single value (the mean response) for a given set of predictors, in survival analysis, we are modeling an entire function. That is, for a given set of predictors, we are specifying the hazard function, which is a function over time.
 </div>
-
 <p>We could model the hazard function under parametric assumptions (assuming a particular distribution for the event times and censor times, for example). However, Cox developed a semiparametric model which dominates the literature in the biological sciences.</p>
-
-<div class="definition">
-<p><span id="def:defn-cph" class="definition"><strong>Definition 24.2  (Cox Proportional Hazards Model)  </strong></span>A model for the hazard function which enforces the assumption of proportional hazards; it has the following form:</p>
+<div class="definition" label="defn-cph">
+<p><span id="def:unlabeled-div-131" class="definition"><strong>Definition 24.2  (Cox Proportional Hazards Model) </strong></span>A model for the hazard function which enforces the assumption of proportional hazards; it has the following form:</p>
 <p><span class="math display">\[\lambda\left(t \mid (\text{Predictors})_i\right) = \lambda_0(t) e^{\sum\limits_{j=1}^{p} \beta_j (\text{Predictor } j)_i},\]</span></p>
-where the form of <span class="math inline">\(\lambda_0(t)\)</span>, known as the baseline hazard, is not specified.
+<p>where the form of <span class="math inline">\(\lambda_0(t)\)</span>, known as the baseline hazard, is not specified.</p>
 </div>
-
 <p>This model separates the hazard function into a function of time alone (the baseline hazard) and a function of the predictors alone (the exponent). Since the baseline hazard is not specified, this is a semiparametric model; if this form were specified, you would have a fully parametric model. The baseline hazard function represents the hazard function when all predictors take the value of 0. That is, instead of a single intercept, we have a type of “intercept-function.”</p>
 <p>As a result of the product of the baseline hazard with the exponential, the predictors serve to scale the hazard function, making this a multiplicative model instead of additive. The name comes from the fact that the model enforces the assumption of proportional hazards. To see this, consider a simple model with only two predictors. Suppose one group of subjects has predictor values <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, respectively. Then, their hazard function has the form</p>
 <p><span class="math display">\[\lambda_1(t \mid \text{Predictors}) = \lambda_0(t) e^{\beta_1 a + \beta_2 b}.\]</span></p>
@@ -227,11 +257,9 @@ where the form of <span class="math inline">\(\lambda_0(t)\)</span>, known as th
 \end{aligned}
 \]</span></p>
 <p>which does not depend on time <span class="math inline">\(t\)</span> and therefore suggests the hazard functions are proportional across time. Further, it provides an interpretation for the parameters.</p>
-
-<div class="definition">
-<span id="def:Interpretation of Parameters for Cox PH Model" class="definition"><strong>(#def:Interpretation of Parameters for Cox PH Model) </strong></span>
+<div class="definition" label="defn-hr">
+<p><span id="def:unlabeled-div-132" class="definition"><strong>Definition 24.3  </strong></span>In a Cox Proportional Hazards (PH) model, the coefficient on the <span class="math inline">\(j\)</span>-th predictor in the model is the log-hazard ratio associated with a one-unit increase in the <span class="math inline">\(j\)</span> predictor, holding all other predictors fixed.</p>
 </div>
-
 <p>Of course, we do not observe the actual values of the parameters; therefore, we estimate the parameters and therefore estimate the hazard function. This is done via a partial likelihood, the details of which are beyond the scope of this text; it was this partial likelihood which made the above model useful in practice. This allows us to estimate the parameters and even model their sampling distribution without needing to specify the baseline hazard function!</p>
 <p>The simplicity of the Cox PH model has led to wide use. However, its apparent simplicity is also the source of many common mistakes when using the model in practice. We briefly note some of the more common errors researchers make:</p>
 <ul>
@@ -259,7 +287,6 @@ where the form of <span class="math inline">\(\lambda_0(t)\)</span>, known as th
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -286,13 +313,16 @@ gitbook.start({
 "text": null
 },
 "download": ["MA482CourseNotes.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 },
 "toolbar": {
 "position": "fixed"
-},
-"search": true
+}
 });
 });
 </script>

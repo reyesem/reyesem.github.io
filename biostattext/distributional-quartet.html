@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Distributional Quartet | Statistical Modeling for the Biological Sciences</title>
   <meta name="description" content="Course notes for MA482/BE482 (Biostatistics) at Rose-Hulman Institute of Technology." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Distributional Quartet | Statistical Modeling for the Biological Sciences" />
   <meta property="og:type" content="book" />
@@ -32,7 +32,9 @@
   
 <link rel="prev" href="statistical-process.html"/>
 <link rel="next" href="essential-probability.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,12 +50,35 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -73,7 +98,8 @@
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="part"><span><b>I Review of the Inferential Process</b></span></li>
-<li class="chapter" data-level="1" data-path="statistical-process.html"><a href="statistical-process.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a><ul>
+<li class="chapter" data-level="1" data-path="statistical-process.html"><a href="statistical-process.html"><i class="fa fa-check"></i><b>1</b> The Statistical Process</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="statistical-process.html"><a href="statistical-process.html#overview-of-drawing-inference"><i class="fa fa-check"></i><b>1.1</b> Overview of Drawing Inference</a></li>
 <li class="chapter" data-level="1.2" data-path="statistical-process.html"><a href="statistical-process.html#data-storage"><i class="fa fa-check"></i><b>1.2</b> Data Storage</a></li>
 <li class="chapter" data-level="1.3" data-path="statistical-process.html"><a href="statistical-process.html#tabular-data-presentation"><i class="fa fa-check"></i><b>1.3</b> Tabular Data Presentation</a></li>
@@ -82,14 +108,16 @@
 <li class="chapter" data-level="1.6" data-path="statistical-process.html"><a href="statistical-process.html#a-note-on-codebooks"><i class="fa fa-check"></i><b>1.6</b> A Note on Codebooks</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="distributional-quartet.html"><a href="distributional-quartet.html"><i class="fa fa-check"></i><b>2</b> Distributional Quartet</a></li>
-<li class="chapter" data-level="3" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>3</b> Essential Probability</a><ul>
+<li class="chapter" data-level="3" data-path="essential-probability.html"><a href="essential-probability.html"><i class="fa fa-check"></i><b>3</b> Essential Probability</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="essential-probability.html"><a href="essential-probability.html#density-functions-as-models"><i class="fa fa-check"></i><b>3.1</b> Density Functions as Models</a></li>
 <li class="chapter" data-level="3.2" data-path="essential-probability.html"><a href="essential-probability.html#summarizing-distributions-parameters"><i class="fa fa-check"></i><b>3.2</b> Summarizing Distributions (Parameters)</a></li>
 <li class="chapter" data-level="3.3" data-path="essential-probability.html"><a href="essential-probability.html#specific-models-for-populations"><i class="fa fa-check"></i><b>3.3</b> Specific Models for Populations</a></li>
 <li class="chapter" data-level="3.4" data-path="essential-probability.html"><a href="essential-probability.html#models-for-sampling-distributions-and-null-distributions"><i class="fa fa-check"></i><b>3.4</b> Models for Sampling Distributions and Null Distributions</a></li>
 </ul></li>
 <li class="part"><span><b>II General Linear Model and Modeling Strategies</b></span></li>
-<li class="chapter" data-level="4" data-path="glm-framework.html"><a href="glm-framework.html"><i class="fa fa-check"></i><b>4</b> General Linear Model Framework</a><ul>
+<li class="chapter" data-level="4" data-path="glm-framework.html"><a href="glm-framework.html"><i class="fa fa-check"></i><b>4</b> General Linear Model Framework</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="glm-framework.html"><a href="glm-framework.html#parameter-estimation"><i class="fa fa-check"></i><b>4.1</b> Parameter Estimation</a></li>
 <li class="chapter" data-level="4.2" data-path="glm-framework.html"><a href="glm-framework.html#conditions-on-the-model"><i class="fa fa-check"></i><b>4.2</b> Conditions on the Model</a></li>
 <li class="chapter" data-level="4.3" data-path="glm-framework.html"><a href="glm-framework.html#alternate-characterization-of-the-model"><i class="fa fa-check"></i><b>4.3</b> Alternate Characterization of the Model</a></li>
@@ -98,14 +126,16 @@
 </ul></li>
 <li class="chapter" data-level="5" data-path="glm-assessing-conditions.html"><a href="glm-assessing-conditions.html"><i class="fa fa-check"></i><b>5</b> Assessing Conditions</a></li>
 <li class="part"><span><b>III General Modeling Techniques</b></span></li>
-<li class="chapter" data-level="6" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html"><i class="fa fa-check"></i><b>6</b> Side Effects of Isolating Effects</a><ul>
+<li class="chapter" data-level="6" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html"><i class="fa fa-check"></i><b>6</b> Side Effects of Isolating Effects</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#toward-causal-inference"><i class="fa fa-check"></i><b>6.1</b> Toward Causal Inference</a></li>
 <li class="chapter" data-level="6.2" data-path="glm-related-predictors.html"><a href="glm-related-predictors.html#multicollinearity"><i class="fa fa-check"></i><b>6.2</b> Multicollinearity</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="glm-categorical-predictors.html"><a href="glm-categorical-predictors.html"><i class="fa fa-check"></i><b>7</b> Incorporating Categorical Predictors</a></li>
 <li class="chapter" data-level="8" data-path="glm-interactions.html"><a href="glm-interactions.html"><i class="fa fa-check"></i><b>8</b> Interaction Terms (Effect Modification)</a></li>
 <li class="chapter" data-level="9" data-path="glm-linear-hypotheses.html"><a href="glm-linear-hypotheses.html"><i class="fa fa-check"></i><b>9</b> General Linear Hypothesis Test</a></li>
-<li class="chapter" data-level="10" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html"><i class="fa fa-check"></i><b>10</b> Large Sample Theory</a><ul>
+<li class="chapter" data-level="10" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html"><i class="fa fa-check"></i><b>10</b> Large Sample Theory</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#two-types-of-models"><i class="fa fa-check"></i><b>10.1</b> Two Types of Models</a></li>
 <li class="chapter" data-level="10.2" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#large-sample-results"><i class="fa fa-check"></i><b>10.2</b> Large Sample Results</a></li>
 <li class="chapter" data-level="10.3" data-path="glm-large-sample-theory.html"><a href="glm-large-sample-theory.html#residual-bootstrap"><i class="fa fa-check"></i><b>10.3</b> Residual Bootstrap</a></li>
@@ -113,38 +143,44 @@
 </ul></li>
 <li class="chapter" data-level="11" data-path="glm-splines.html"><a href="glm-splines.html"><i class="fa fa-check"></i><b>11</b> Modeling Curvature</a></li>
 <li class="part"><span><b>IV Models for Repeated Measures</b></span></li>
-<li class="chapter" data-level="12" data-path="rm-terminology.html"><a href="rm-terminology.html"><i class="fa fa-check"></i><b>12</b> Terminology</a><ul>
+<li class="chapter" data-level="12" data-path="rm-terminology.html"><a href="rm-terminology.html"><i class="fa fa-check"></i><b>12</b> Terminology</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="rm-terminology.html"><a href="rm-terminology.html#importance-of-study-design"><i class="fa fa-check"></i><b>12.1</b> Importance of Study Design</a></li>
 <li class="chapter" data-level="12.2" data-path="rm-terminology.html"><a href="rm-terminology.html#studies-with-repeated-measures"><i class="fa fa-check"></i><b>12.2</b> Studies with Repeated Measures</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html"><i class="fa fa-check"></i><b>13</b> Mixed Effects Models</a><ul>
+<li class="chapter" data-level="13" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html"><i class="fa fa-check"></i><b>13</b> Mixed Effects Models</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#partitioning-variability"><i class="fa fa-check"></i><b>13.1</b> Partitioning Variability</a></li>
 <li class="chapter" data-level="13.2" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#model-formulation"><i class="fa fa-check"></i><b>13.2</b> Model Formulation</a></li>
 <li class="chapter" data-level="13.3" data-path="rm-mixed-models.html"><a href="rm-mixed-models.html#considerations-when-building-a-mixed-effects-model"><i class="fa fa-check"></i><b>13.3</b> Considerations when Building a Mixed-Effects Model</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="rm-gee.html"><a href="rm-gee.html"><i class="fa fa-check"></i><b>14</b> Generalized Estimating Equations</a><ul>
+<li class="chapter" data-level="14" data-path="rm-gee.html"><a href="rm-gee.html"><i class="fa fa-check"></i><b>14</b> Generalized Estimating Equations</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="rm-gee.html"><a href="rm-gee.html#correlation-structrues"><i class="fa fa-check"></i><b>14.1</b> Correlation Structrues</a></li>
 <li class="chapter" data-level="14.2" data-path="rm-gee.html"><a href="rm-gee.html#the-key-to-success-of-generalized-estimating-equations"><i class="fa fa-check"></i><b>14.2</b> The Key to Success of Generalized Estimating Equations</a></li>
 <li class="chapter" data-level="14.3" data-path="rm-gee.html"><a href="rm-gee.html#comparison-of-gee-and-mixed-effects-approaches"><i class="fa fa-check"></i><b>14.3</b> Comparison of GEE and Mixed Effects Approaches</a></li>
 </ul></li>
 <li class="part"><span><b>V Nonlinear Models</b></span></li>
-<li class="chapter" data-level="15" data-path="nlm-framework.html"><a href="nlm-framework.html"><i class="fa fa-check"></i><b>15</b> Nonlinear Model Framework</a><ul>
+<li class="chapter" data-level="15" data-path="nlm-framework.html"><a href="nlm-framework.html"><i class="fa fa-check"></i><b>15</b> Nonlinear Model Framework</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="nlm-framework.html"><a href="nlm-framework.html#scientific-model-for-theophylline"><i class="fa fa-check"></i><b>15.1</b> Scientific Model for Theophylline</a></li>
 <li class="chapter" data-level="15.2" data-path="nlm-framework.html"><a href="nlm-framework.html#nonlinear-regression-model"><i class="fa fa-check"></i><b>15.2</b> Nonlinear Regression Model</a></li>
 <li class="chapter" data-level="15.3" data-path="nlm-framework.html"><a href="nlm-framework.html#estimation"><i class="fa fa-check"></i><b>15.3</b> Estimation</a></li>
 <li class="chapter" data-level="15.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>15.4</b> Inference on the Parameters</a></li>
 <li class="chapter" data-level="15.5" data-path="nlm-framework.html"><a href="nlm-framework.html#allowing-relationships-to-vary-across-groups"><i class="fa fa-check"></i><b>15.5</b> Allowing Relationships to Vary Across Groups</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html"><i class="fa fa-check"></i><b>16</b> Relaxing the Constant Variance Condition</a><ul>
+<li class="chapter" data-level="16" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html"><i class="fa fa-check"></i><b>16</b> Relaxing the Constant Variance Condition</a>
+<ul>
 <li class="chapter" data-level="16.1" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-assumptions"><i class="fa fa-check"></i><b>16.1</b> Modeling Assumptions</a></li>
 <li class="chapter" data-level="16.2" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#modeling-the-variance"><i class="fa fa-check"></i><b>16.2</b> Modeling the Variance</a></li>
 <li class="chapter" data-level="16.3" data-path="nlm-heteroskedasticity.html"><a href="nlm-heteroskedasticity.html#wild-bootstrap"><i class="fa fa-check"></i><b>16.3</b> Wild Bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="nlm-logistic.html"><a href="nlm-logistic.html"><i class="fa fa-check"></i><b>17</b> Logistic Regression</a><ul>
+<li class="chapter" data-level="17" data-path="nlm-logistic.html"><a href="nlm-logistic.html"><i class="fa fa-check"></i><b>17</b> Logistic Regression</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="nlm-logistic.html"><a href="nlm-logistic.html#considerations-for-a-binary-response"><i class="fa fa-check"></i><b>17.1</b> Considerations for a Binary Response</a></li>
 <li class="chapter" data-level="17.2" data-path="nlm-logistic.html"><a href="nlm-logistic.html#the-logistic-regression-model"><i class="fa fa-check"></i><b>17.2</b> The Logistic Regression Model</a></li>
 <li class="chapter" data-level="17.3" data-path="nlm-logistic.html"><a href="nlm-logistic.html#estimation-of-the-parameters"><i class="fa fa-check"></i><b>17.3</b> Estimation of the Parameters</a></li>
-<li class="chapter" data-level="17.4" data-path="nlm-framework.html"><a href="nlm-framework.html#inference-on-the-parameters"><i class="fa fa-check"></i><b>17.4</b> Inference on the Parameters</a></li>
+<li class="chapter" data-level="17.4" data-path="nlm-logistic.html"><a href="nlm-logistic.html#inference-on-the-parameters-1"><i class="fa fa-check"></i><b>17.4</b> Inference on the Parameters</a></li>
 <li class="chapter" data-level="17.5" data-path="nlm-logistic.html"><a href="nlm-logistic.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>17.5</b> Interpretation of Parameters</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="nlm-selection.html"><a href="nlm-selection.html"><i class="fa fa-check"></i><b>18</b> Model Selection</a></li>
@@ -153,7 +189,8 @@
 <li class="part"><span><b>VI Survival Analysis</b></span></li>
 <li class="chapter" data-level="21" data-path="surv-terminology.html"><a href="surv-terminology.html"><i class="fa fa-check"></i><b>21</b> Key Terminolgy</a></li>
 <li class="chapter" data-level="22" data-path="surv-censoring.html"><a href="surv-censoring.html"><i class="fa fa-check"></i><b>22</b> Censoring</a></li>
-<li class="chapter" data-level="23" data-path="surv-basic.html"><a href="surv-basic.html"><i class="fa fa-check"></i><b>23</b> Basic Estimation and Inference</a><ul>
+<li class="chapter" data-level="23" data-path="surv-basic.html"><a href="surv-basic.html"><i class="fa fa-check"></i><b>23</b> Basic Estimation and Inference</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="surv-basic.html"><a href="surv-basic.html#life-table-methods"><i class="fa fa-check"></i><b>23.1</b> Life-Table Methods</a></li>
 <li class="chapter" data-level="23.2" data-path="surv-basic.html"><a href="surv-basic.html#kaplan-meier-estimation"><i class="fa fa-check"></i><b>23.2</b> Kaplan-Meier Estimation</a></li>
 <li class="chapter" data-level="23.3" data-path="surv-basic.html"><a href="surv-basic.html#log-rank-test"><i class="fa fa-check"></i><b>23.3</b> Log-Rank Test</a></li>
@@ -177,23 +214,20 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="distributional-quartet" class="section level1">
+<div id="distributional-quartet" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Distributional Quartet</h1>
 <p>Any good statistical analysis moves between four key distributions — what we refer to as the <em>Distributional Quartet</em>. While not always explicitly discussed, these distributions are always present in an analysis. Understanding their role is important to implementing and interpreting the various components of an analysis.</p>
 <p>We begin by considering the following example from <span class="citation">Rosner (<a href="#ref-Rosner2006" role="doc-biblioref">2006</a>)</span>.</p>
-
 <div class="example">
-<span id="exm:distributional-quartet-bp" class="example"><strong>Example 2.1  (Blood Pressure when Lying Down)  </strong></span>Blood pressure is one measure for the health of your heart. A blood pressure reading includes two numbers — the systolic blood pressure (the “top number,” measures the amount of pressure in your arteries when your heart contracts) and the diastolic blood pressure (the “bottom number,” measures the amount of pressure in your arteries when your heart is between beats). However, an individual does not have a single blood pressure reading; our blood pressure fluctuates as a result of activity as well as our position. In a study examining the impact of position on blood pressure, 32 participants had their blood pressure measured while lying down with their arms at their sides.
+<p><span id="exm:distributional-quartet-bp" class="example"><strong>Example 2.1  (Blood Pressure when Lying Down) </strong></span>Blood pressure is one measure for the health of your heart. A blood pressure reading includes two numbers — the systolic blood pressure (the “top number,” measures the amount of pressure in your arteries when your heart contracts) and the diastolic blood pressure (the “bottom number,” measures the amount of pressure in your arteries when your heart is between beats). However, an individual does not have a single blood pressure reading; our blood pressure fluctuates as a result of activity as well as our position. In a study examining the impact of position on blood pressure, 32 participants had their blood pressure measured while lying down with their arms at their sides.</p>
 </div>
-
 <p>Stated simply, the discipline of statistics is about using data to say something about a process that characterizes a population. Our analysis, therefore, begins with the <strong>Distribution of the Population</strong>.</p>
 
 <div class="rmdfivefund">
 <strong>Distribution of Population</strong>: The pattern of variability in values of a variable across individuals of the population. The shape of this distribution is governed by unknown parameters. While we generally do not know the shape of this distribution, we may occasionally posit a model for it.
 </div>
-
 <p>We are interested in using the data from this study to characterize the systolic blood pressure of individuals when in this recumbent position, with their arm at their side. Of course, we are unable to assess the blood pressure of all individuals in the world. Therefore, we do not know what the distribution of systolic blood pressure measurements is for this population. However, we <em>might</em> posit a model for this distribution. Such models, which must account for the variability among the population, are studied in probability theory, which we consider in the next section. For now, it suffices to imagine the distribution of the population graphically; it is characterized by the unknown parameters (Figure <a href="distributional-quartet.html#fig:distributional-quartet-population">2.1</a>).</p>
-<div class="figure" style="text-align: center"><span id="fig:distributional-quartet-population"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:distributional-quartet-population"></span>
 <img src="images/distributional-quartet-population-1.png" alt="Hypothetical model for the distribution of systolic blood pressure within the population. The unknown population is denoted on the graphic." width="80%" />
 <p class="caption">
 Figure 2.1: Hypothetical model for the distribution of systolic blood pressure within the population. The unknown population is denoted on the graphic.
@@ -204,9 +238,8 @@ Figure 2.1: Hypothetical model for the distribution of systolic blood pressure w
 <div class="rmdfivefund">
 <strong>Distribution of Sample</strong>: The pattern of variability in values of a variable across individuals of the sample. This is typically summarized graphically and numerically.
 </div>
-
 <p>Figure <a href="distributional-quartet.html#fig:distributional-quartet-sample">2.2</a> summarizes the sample using a histogram. If our sample is collected well, then it should be representative of the population, meaning that the distribution of the sample should reflect the characteristics of the (unobserved) distribution of the population. The location, spread, and shape should all reflect what we might see within the population.</p>
-<div class="figure" style="text-align: center"><span id="fig:distributional-quartet-sample"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:distributional-quartet-sample"></span>
 <img src="images/distributional-quartet-sample-1.png" alt="Distribution of systolic blood pressure within the sample of 32 participants." width="80%" />
 <p class="caption">
 Figure 2.2: Distribution of systolic blood pressure within the sample of 32 participants.
@@ -217,9 +250,8 @@ Figure 2.2: Distribution of systolic blood pressure within the sample of 32 part
 <div class="rmdfivefund">
 <strong>Sampling Distribution</strong>: The pattern of variability in values of a <em>statistic</em> (or standardized statistic) across repeated samples of the same size from the population. This must be modeled in practice.
 </div>
-
 <p>As we are generally unable to perform replicate studies, we model the sampling distribution using the data available (future chapters will discuss the various methods available for modeling this distribution). The model allows us to determine values of the parameter for which the data is consistent. That is, it allows us to compute a confidence interval to estimate a parameter of interest. For example, a 95% CI for the mean systolic blood pressure (mm Hg, when recumbent with arm at their side), based on our data available, is (113.1, 121.9); this is illustrated in Figure <a href="distributional-quartet.html#fig:distributional-quartet-sampling-distribution">2.3</a> alongside the model for the sampling distribution of the sample mean systolic blood pressure from which the CI was computed.</p>
-<div class="figure" style="text-align: center"><span id="fig:distributional-quartet-sampling-distribution"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:distributional-quartet-sampling-distribution"></span>
 <img src="images/distributional-quartet-sampling-distribution-1.png" alt="Empirical model for the sampling distribution of mean systolic blood pressure within the sample of 32 participants. A 95% confidence interval is also illustrated." width="80%" />
 <p class="caption">
 Figure 2.3: Empirical model for the sampling distribution of mean systolic blood pressure within the sample of 32 participants. A 95% confidence interval is also illustrated.
@@ -230,11 +262,10 @@ Figure 2.3: Empirical model for the sampling distribution of mean systolic blood
 <div class="rmdfivefund">
 <strong>Null Distribution</strong>: The sampling distribution of a statistic (or standardized “test” statistic) <em>when the null hypothesis is true</em>. This must be modeled in practice.
 </div>
-
 <p>The null distribution effectively tells us what values of the statistic we would expect to see if the null hypothesis were true. If our observed statistic then seems plausible according to the null distribution, then the null hypothesis is reasonable. If, on the other hand, our observed statistic is unexpected according to the null distribution, then we have evidence that the null hypothesis is false (and therefore that the alternative is true). Note that these are our only two potential conclusions. This evidence is quantified by the p-value. For example, suppose we are interested in using our data to test the following set of hypotheses:</p>
 <p><span class="math display">\[H_0: \mu = 120 \qquad \text{vs.} \qquad H_1: \mu \neq 120.\]</span></p>
 <p>That is, we are interested in determining if there is evidence that, on average, the systolic blood pressure (recumbent with arm at side) differs from 120 mm Hg. According to the data, it is reasonable (p = 0.247) that the average systolic blood pressure is 120 mm Hg. The computation of the p-value is illustrated in Figure <a href="distributional-quartet.html#fig:distributional-quartet-null-distribution">2.4</a> alongside the model for the null distribution for this particular hypothesis.</p>
-<div class="figure" style="text-align: center"><span id="fig:distributional-quartet-null-distribution"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:distributional-quartet-null-distribution"></span>
 <img src="images/distributional-quartet-null-distribution-1.png" alt="Empirical model for the null distribution of mean systolic blood pressure within the sample of 32 participants when the null hypothesis is that the mean systolic blood pressure is 120 mm Hg. The p-value is also illustrated." width="80%" />
 <p class="caption">
 Figure 2.4: Empirical model for the null distribution of mean systolic blood pressure within the sample of 32 participants when the null hypothesis is that the mean systolic blood pressure is 120 mm Hg. The p-value is also illustrated.
@@ -244,9 +275,9 @@ Figure 2.4: Empirical model for the null distribution of mean systolic blood pre
 
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-Rosner2006">
-<p>Rosner, Bernard. 2006. <em>Fundamentals of Biostatistics</em>. 6th ed. CA: Thomson-Brooks/Cole.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Rosner2006" class="csl-entry">
+Rosner, Bernard. 2006. <em>Fundamentals of Biostatistics</em>. 6th ed. CA: Thomson-Brooks/Cole.
 </div>
 </div>
             </section>
@@ -259,7 +290,6 @@ Figure 2.4: Empirical model for the null distribution of mean systolic blood pre
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -286,13 +316,16 @@ gitbook.start({
 "text": null
 },
 "download": ["MA482CourseNotes.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 },
 "toolbar": {
 "position": "fixed"
-},
-"search": true
+}
 });
 });
 </script>
