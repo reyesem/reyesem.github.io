@@ -4,7 +4,6 @@
 # Description: Completes installation of necessary packages.
 #
 # Author: Eric Reyes
-# Date: Fall 2020
 
 # ---- Install CRAN Packages ----
 options(install.packages.check.source = "no")
