@@ -9,6 +9,11 @@
 
 # ---- Package Installation ----
 install.packages(
+  'png',
+  quiet = TRUE
+)
+
+install.packages(
   "https://github.com/reyesem/reyesem.github.io/raw/master/files/courseprep/IntroAnalysis_0.1.0.tar.gz",
   repos = NULL,
   quiet = TRUE)
