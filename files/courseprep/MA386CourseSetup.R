@@ -32,7 +32,7 @@ install.packages("https://reyesem.github.io/files/courseprep/reyescourses_0.1.0.
 
 
 
-if (testr <- require("reyes386")) {
+if (testr <- require("reyescourses")) {
   message("Set-up was successful!")
 } else {
   warning("Set-up unsuccessful; reach out to instructor.")
