@@ -1,6 +1,6 @@
 ################################################################################
-# File: MA490CourseSetup
-# Class: MA490 - Social Justice and Statistics
+# File: MA480CourseSetup
+# Class: MA480 - Social Justice and Statistics
 # Description: Automate the package installation process.
 #
 # Author: Eric Reyes
@@ -17,8 +17,10 @@ update.packages(ask = FALSE,
 # ---- Load Additional Packages First ----
 install.packages(c("tidyverse",
                    "broom",
+                   'rsample',
                    "knitr",
                    "rmarkdown",
+                   'skimr',
                    "survey",
                    "srvyr"),
                  dependencies = TRUE,
