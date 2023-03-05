@@ -17,6 +17,7 @@ update.packages(ask = FALSE,
 # ---- Load Additional Packages First ----
 install.packages(c("tidyverse",
                    "broom",
+                   "import",
                    'rsample',
                    "knitr",
                    "rmarkdown",
