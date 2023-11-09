@@ -45,23 +45,24 @@ install.packages(
 if (!devtools::find_rtools()) installr::install.Rtools(check = FALSE)
 
 # Add RTools to PATH
-write('PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"',
-      file = "~/.Renviron", append = TRUE)
+# write('PATH="${RTOOLS43_HOME}\\usr\\bin;${PATH}"',
+#       file = "~/.Renviron", append = TRUE)
 
 
 # ---- Load rstan ----
 # Following steps on github.com/stan-dev/rstan/wiki/RStan-Getting-Started
 # on loading rstan and configuring the C++ toolchain.
-dotR <- file.path(Sys.getenv('HOME'), '.R')
-if (!file.exists(dotR)) dir.create(dotR)
-
-M <- file.path(dotR, 'Makevars.win')
-if (!file.exists(M)) file.create(M)
-
-cat('\n CXX14FLAGS += -mtune=native -O3 -mmmx -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2',
-    file = M,
-    sep = '\n',
-    append = FALSE)
+# No longer necessary as of September 2023
+# dotR <- file.path(Sys.getenv('HOME'), '.R')
+# if (!file.exists(dotR)) dir.create(dotR)
+# 
+# M <- file.path(dotR, 'Makevars.win')
+# if (!file.exists(M)) file.create(M)
+# 
+# cat('\n CXX14FLAGS += -mtune=native -O3 -mmmx -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2',
+#     file = M,
+#     sep = '\n',
+#     append = FALSE)
 
 
 install.packages(
