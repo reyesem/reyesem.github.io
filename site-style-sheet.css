@@ -173,6 +173,14 @@ a.header-footer-link:active {
   grid-template-columns: minmax(0, 1fr) minmax(min(300px, 100%), 3fr) minmax(0, 1fr);
 }
 
+table.watertable {
+  width: 100%;
+}
+
+table.watertable th {
+  text-align: left;
+}
+
 
 
 
