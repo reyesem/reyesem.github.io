@@ -42,40 +42,41 @@ install.packages(
   quiet = TRUE
 )
 
-if (!devtools::find_rtools()) installr::install.Rtools(check = FALSE)
-
-# Add RTools to PATH
-# write('PATH="${RTOOLS43_HOME}\\usr\\bin;${PATH}"',
-#       file = "~/.Renviron", append = TRUE)
+if (!devtools::find_rtools()) {
+  warning("RTools not installed. See Instructor for help.")
+}
 
 
 # ---- Load rstan ----
-# Following steps on github.com/stan-dev/rstan/wiki/RStan-Getting-Started
-# on loading rstan and configuring the C++ toolchain.
-# No longer necessary as of September 2023
-# dotR <- file.path(Sys.getenv('HOME'), '.R')
-# if (!file.exists(dotR)) dir.create(dotR)
-# 
-# M <- file.path(dotR, 'Makevars.win')
-# if (!file.exists(M)) file.create(M)
-# 
-# cat('\n CXX14FLAGS += -mtune=native -O3 -mmmx -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2',
-#     file = M,
-#     sep = '\n',
-#     append = FALSE)
+# rstan seems to be unstable with respect to how I have run things before. I 
+# am going to try switching to cmdstanr
 
+install.packages("rstan",
+                 repos = c('https://stan-dev.r-universe.dev',
+                           getOption("repos")),
+                 dependencies = TRUE,
+                 quiet = TRUE)
 
-install.packages(
-  'rstan',
-  repos = 'https://cloud.r-project.org/',
-  dependencies = TRUE)
+install.packages("cmdstanr",
+                 repos = c('https://stan-dev.r-universe.dev',
+                           getOption("repos")),
+                 dependencies = TRUE,
+                 quiet = TRUE)
+
+if (!cmdstanr::check_cmdstan_toolchain()) {
+  warning("Something went wrong with RTools. See Instructor for help.")
+}
+
+cmdstanr::install_cmdstan(cores = 2, quiet = TRUE)
+
 
 
 
 # ---- Load Bayesian Packages ----
 # These packages are specific to the Bayesian framework.
 install.packages(
-  c('HDInterval',
+  c('posterior',
+    'HDInterval',
     'bayesplot',
     'rstanarm',
     'bridgesampling',
@@ -90,16 +91,4 @@ install.packages(
 )
 
 
-
-# ---- Install Additional Functionality ----
-install.packages(
-  "https://github.com/reyesem/reyesem.github.io/raw/master/files/courseprep/reyescourses_0.1.0.tar.gz",
-  repos = NULL,
-  quiet = TRUE)
-
-
-if (testr <- require("reyescourses")) {
-  message("Set-up was successful!")
-} else {
-  warning("Set-up unsuccessful; reach out to instructor.")
-}
+message('Set-up Complete')
